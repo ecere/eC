@@ -1,0 +1,234 @@
+{
+   "Version" : 0.2,
+   "ModuleName" : "extract",
+   "Options" : {
+      "Warnings" : "All",
+      "TargetType" : "Executable",
+      "TargetFileName" : "extract",
+      "LibraryDirs" : [
+         "../../ecere/obj/vanilla.$(PLATFORM)$(COMPILER_SUFFIX)",
+         "../../deps/zlib-1.2.8/obj/release.$(PLATFORM)$(COMPILER_SUFFIX)"
+      ]
+   },
+   "Platforms" : [
+      {
+         "Name" : "linux",
+         "Options" : {
+            "LibraryDirs" : [
+               "/usr/X11R6/lib"
+            ]
+         }
+      },
+      {
+         "Name" : "apple",
+         "Options" : {
+            "LibraryDirs" : [
+               "/usr/X11R6/lib"
+            ]
+         }
+      }
+   ],
+   "Configurations" : [
+      {
+         "Name" : "Debug",
+         "Options" : {
+            "Debug" : true,
+            "PreprocessorDefinitions" : [
+               "ECERE_STATIC"
+            ],
+            "Libraries" : [
+               "ecereVanilla",
+               "z"
+            ],
+            "FastMath" : false
+         },
+         "Platforms" : [
+            {
+               "Name" : "Linux",
+               "Options" : {
+                  "Libraries" : [
+                     "fontconfig",
+                     "Xrender",
+                     "Xext",
+                     "ncurses",
+                     "m",
+                     "dl",
+                     "pthread",
+                     "X11",
+                     "freetype"
+                  ]
+               }
+            },
+            {
+               "Name" : "Win32",
+               "Options" : {
+                  "Libraries" : [
+                     "mpr",
+                     "winmm",
+                     "imm32",
+                     "gdi32"
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "Name" : "MemoryGuard",
+         "Options" : {
+            "Debug" : true,
+            "MemoryGuard" : true,
+            "Optimization" : "None",
+            "Libraries" : [
+               "ecere"
+            ],
+            "Console" : true,
+            "FastMath" : false
+         }
+      },
+      {
+         "Name" : "Release",
+         "Options" : {
+            "Warnings" : "None",
+            "NoLineNumbers" : true,
+            "Optimization" : "Size",
+            "PreprocessorDefinitions" : [
+               "ECERE_STATIC"
+            ],
+            "Libraries" : [
+               "ecereVanilla",
+               "z"
+            ],
+            "Compress" : true,
+            "FastMath" : false
+         },
+         "Platforms" : [
+            {
+               "Name" : "Linux",
+               "Options" : {
+                  "Libraries" : [
+                     "fontconfig",
+                     "freetype",
+                     "Xrender",
+                     "Xext",
+                     "ncurses",
+                     "m",
+                     "dl",
+                     "pthread",
+                     "X11"
+                  ]
+               }
+            },
+            {
+               "Name" : "Win32",
+               "Options" : {
+                  "Libraries" : [
+                     "mpr",
+                     "winmm",
+                     "imm32",
+                     "gdi32"
+                  ]
+               }
+            },
+            {
+               "Name" : "apple",
+               "Options" : {
+                  "Libraries" : [
+                     "fontconfig",
+                     "freetype",
+                     "Xrender",
+                     "Xext",
+                     "ncurses",
+                     "m",
+                     "dl",
+                     "pthread",
+                     "X11"
+                  ]
+               }
+            }
+         ]
+      }
+   ],
+   "Files" : [
+      "extract.ec"
+   ],
+   "ResourcesPath" : "",
+   "Resources" : [
+      {
+         "Folder" : "../../ecere/res/vanilla/ecere/ecere",
+         "Files" : [
+            {
+               "Folder" : "actions",
+               "Files" : [
+                  "folderNew.png",
+                  "goUp.png"
+               ]
+            },
+            {
+               "Folder" : "devices",
+               "Files" : [
+                  "computer.png",
+                  "driveHardDisk.png",
+                  "driveRemovableMedia.png",
+                  "mediaFloppy.png",
+                  "mediaOptical.png"
+               ]
+            },
+            {
+               "Folder" : "elements",
+               "Files" : [
+                  "areaClose.png",
+                  "areaMaximize.png",
+                  "areaMinimize.png",
+                  "areaRestore.png",
+                  "arrowDown.png",
+                  "arrowLeft.png",
+                  "arrowRight.png",
+                  "arrowUp.png",
+                  "optionBoxDisabledSelected.png",
+                  "optionBoxDown.png",
+                  "optionBoxSelected.png",
+                  "optionBoxSelectedDown.png",
+                  "optionBoxUp.png"
+               ]
+            },
+            {
+               "Folder" : "places",
+               "Files" : [
+                  "driveRemote.png",
+                  "folder.png",
+                  "folderRemote.png",
+                  "networkServer.png",
+                  "networkWorkgroup.png"
+               ]
+            },
+            {
+               "Folder" : "status",
+               "Files" : [
+                  "folderOpen.png"
+               ]
+            },
+            {
+               "Folder" : "locale",
+               "Files" : [
+                  "../../ecere/locale/es.mo",
+                  "../../ecere/locale/hu.mo",
+                  "../../ecere/locale/mr.mo",
+                  "../../ecere/locale/nl.mo",
+                  "../../ecere/locale/pt_BR.mo",
+                  "../../ecere/locale/ru.mo",
+                  "../../ecere/locale/zh_CN.mo"
+               ]
+            }
+         ]
+      },
+      {
+         "Folder" : "locale",
+         "Files" : [
+            "es.mo",
+            "he.mo",
+            "ru.mo",
+            "zh_CN.mo"
+         ]
+      }
+   ]
+}

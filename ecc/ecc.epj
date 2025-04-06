@@ -1,0 +1,103 @@
+{
+   "Version" : 0.2,
+   "ModuleName" : "ecc",
+   "Options" : {
+      "Warnings" : "All",
+      "TargetType" : "Executable",
+      "TargetFileName" : "ecc",
+      "Libraries" : [
+         "ecrt"
+      ],
+      "Console" : true
+   },
+   "Configurations" : [
+      {
+         "Name" : "Debug",
+         "Options" : {
+            "Debug" : true,
+            "PreprocessorDefinitions" : [
+               "_DEBUG"
+            ],
+            "FastMath" : false
+         }
+      },
+      {
+         "Name" : "Release",
+         "Options" : {
+            "Warnings" : "None",
+            "Debug" : false,
+            "NoLineNumbers" : true,
+            "Optimization" : "Speed",
+            "LibraryDirs" : [
+               "../../obj/$(PLATFORM)/bin",
+               "../../obj/$(PLATFORM)/lib"
+            ],
+            "FastMath" : true,
+            "PostbuildCommands" : [
+               "$(call cp,$(TARGET),../../obj/$(PLATFORM)/bin/)"
+            ],
+            "InstallCommands" : [
+               "$(if $(WINDOWS_HOST),$(call cp,$(TARGET),\"$(BINDIR)/\"),install $(INSTALL_FLAGS) $(TARGET) $(BINDIR)/$(MODULE)$(E))"
+            ]
+         }
+      },
+      {
+         "Name" : "MemoryGuard",
+         "Options" : {
+            "Debug" : true,
+            "MemoryGuard" : true,
+            "PreprocessorDefinitions" : [
+               "_DEBUG"
+            ]
+         }
+      },
+      {
+         "Name" : "Bootstrap",
+         "Options" : {
+            "NoLineNumbers" : true,
+            "Optimization" : "Speed",
+            "PreprocessorDefinitions" : [
+               "ECERE_STATIC",
+               "ECERE_BOOTSTRAP"
+            ],
+            "Libraries" : [
+               "ecrtBootstrap",
+               "ectpBootstrap"
+            ],
+            "LibraryDirs" : [
+               "../ecrt/obj/bootstrap.$(PLATFORM)$(COMPILER_SUFFIX)",
+               "../ectp/obj/bootstrap.$(PLATFORM)$(COMPILER_SUFFIX)"
+            ],
+            "FastMath" : true
+         },
+         "Platforms" : [
+            {
+               "Name" : "Linux",
+               "Options" : {
+                  "Libraries" : [
+                     "m",
+                     "dl"
+                  ]
+               }
+            }
+         ]
+      }
+   ],
+   "Files" : [
+      "ecc.ec"
+   ],
+   "ResourcesPath" : "",
+   "Resources" : [
+      {
+         "Folder" : "locale",
+         "Files" : [
+            "es.mo",
+            "he.mo",
+            "pt_BR.mo",
+            "ru.mo",
+            "vi.mo",
+            "zh_CN.mo"
+         ]
+      }
+   ]
+}
