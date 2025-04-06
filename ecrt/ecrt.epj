@@ -1,0 +1,473 @@
+{
+   "Version" : 0.2,
+   "ModuleName" : "ecrt",
+   "ModuleVersion" : "0.0.1",
+   "Description" : "eC Runtime library",
+   "License" : "The Ecere SDK v0.44.15 - http://ecere.org\n\nThe Ecere SDK is Free Open Source Software. It is provided with NO WARRANTY\nexpressed or implied to the extent permitted by law.\n\nApplications built with it can be distributed both commercially and non\ncommercially, along with the supporting Ecere runtime library(ies):\n\n   * libecere.so / ecere.dll\n      - Core eC framework + GUI toolkit, 2D/3D graphics engine, networking\n   * libecereCOM.so / ecereCOM.dll\n      - Core eC framework only\n   * libEDA.so / EDA.dll\n      - Data Access System\n   * libEDASQLite.so / EDASQLite.dll\n      - SQLite driver for EDA\n   * libEcereAudio.so / EcereAudio.dll\n      - Audio output library (using ALSA / DirectSound)\n\nThe Ecere SDK is distributed under the New BSD license:\n\n================================================================================\n\n   Copyright (c) 1996-2016, Jerome Jacovella-St-Louis\n   Copyright (c) 2005-2016, Ecere Corporation\n\n   All rights reserved.\n\n   Redistribution and use in source and binary forms, with or without\n   modification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright notice,\n      this list of conditions and the following disclaimer in the documentation\n      and/or other materials provided with the distribution.\n    * Neither the name of Ecere Corporation nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\n   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n   \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR\n   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\n   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR\n   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\n   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n================================================================================\n\nThis software makes use of other software components whose licenses may also\napply, which are found in their respective source directories (most under\ndeps/).\n\nAmong them: zlib, libPNG, libJPEG, giflib or libungif, HarfBuzz, FreeType,\n   Tango icons\n\nFor EDA: SQLite (EDASQLite), libffi\n\nOn Windows, applications built statically with the MinGW-w64 runtime should\ninclude the MinGW-w64 runtime license in their application.\n   See ecere-sdk/extras/res/licenses/MinGW-w64.LICENSE or\n       Program Files/Ecere SDK/tdm/licenses/COPYING.MinGW-w64-runtime.txt\n\nThe Ecere IDE also communicates with GCC for compiling\n(MinGW/MinGW-w64 on Windows), GDB for debugging, and UPX for optionally\ncompressing executables.\n\nEach of these have their own license, which can be found from wherever you\nobtained them or under:\n   Program Files/Ecere SDK/tdm/licenses/  and\n   Program Files/Ecere SDK/upx/doc/\nif distributed with the Ecere SDK Windows installer.\n",
+   "Options" : {
+      "Warnings" : "All",
+      "PreprocessorDefinitions" : [
+         "BUILDING_ECRT"
+      ],
+      "IncludeDirs" : [
+         "src/containers/cc"
+      ],
+      "DefaultNameSpace" : "eC",
+      "TargetType" : "SharedLibrary",
+      "TargetFileName" : "ecrt",
+      "TargetDirectory" : "",
+      "Libraries" : [
+         "z"
+      ]
+   },
+   "Platforms" : [
+      {
+         "Name" : "Linux",
+         "Options" : {
+            "Libraries" : [
+               "pthread",
+               "m",
+               "dl"
+            ]
+         }
+      },
+      {
+         "Name" : "Win32",
+         "Options" : {
+            "PreprocessorDefinitions" : [
+               "NOT_OPENSSL_CURL"
+            ],
+            "IncludeDirs" : [
+               "../deps/jpeg-9a",
+               "../deps/libpng-1.6.12",
+               "../deps/libungif-4.1.1/lib",
+               "../deps/zlib-1.2.8",
+               "../deps/freetype-2.3.12/include",
+               "../deps/glext",
+               "../deps/curl-8.5.0/include",
+               "$(OPENSSL_INCLUDE_DIR)"
+            ],
+            "Libraries" : [
+               "winmm",
+               "kernel32",
+               "user32",
+               "mpr",
+               "advapi32",
+               "shell32"
+            ],
+            "LibraryDirs" : [
+               "../deps/zlib-1.2.8/obj/release.$(PLATFORM)$(COMPILER_SUFFIX)"
+            ]
+         }
+      },
+      {
+         "Name" : "apple",
+         "Options" : {
+            "IncludeDirs" : [
+               "/usr/include/freetype2",
+               "$(SYSROOT)/usr/X11/include/freetype2",
+               "$(SYSROOT)/usr/X11/include",
+               "/usr/X11R6/include/freetype2",
+               "/usr/X11R6/include",
+               "../deps/jpeg-9a",
+               "../deps/libpng-1.6.12",
+               "../deps/libungif-4.1.1/lib"
+            ],
+            "Libraries" : [
+               "pthread",
+               "m",
+               "dl"
+            ]
+         }
+      }
+   ],
+   "Configurations" : [
+      {
+         "Name" : "Debug",
+         "Options" : {
+            "Debug" : true,
+            "PreprocessorDefinitions" : [
+               "_DEBUG"
+            ]
+         }
+      },
+      {
+         "Name" : "MemoryGuard",
+         "Options" : {
+            "Debug" : true,
+            "MemoryGuard" : true,
+            "PreprocessorDefinitions" : [
+               "_DEBUG",
+               "MEMINFO",
+               "REDZONE=32"
+            ]
+         }
+      },
+      {
+         "Name" : "Release",
+         "Options" : {
+            "Warnings" : "All",
+            "Debug" : true,
+            "Optimization" : "Speed",
+            "CompilerOptions" : [
+               "-mmmx",
+               "-msse",
+               "-msse2",
+               "-msse3",
+               "-msse4"
+            ],
+            "LinkerOptions" : [
+               "--wrap=fcntl64"
+            ],
+            "FastMath" : true,
+            "PostbuildCommands" : [
+               "$(call mkdir,../$(SODESTDIR))",
+               "$(call cp,$(TARGET),../$(SODESTDIR))"
+            ],
+            "InstallCommands" : [
+               "$(call cp,$(TARGET),\"$(DESTLIBDIR)/\")",
+               "$(if $(WINDOWS_HOST),,ln -sf $(LP)$(MODULE)$(SOV) $(DESTLIBDIR)/$(LP)$(MODULE)$(SO).0)",
+               "$(if $(WINDOWS_HOST),,ln -sf $(LP)$(MODULE)$(SOV) $(DESTLIBDIR)/$(LP)$(MODULE)$(SO))"
+            ]
+         }
+      },
+      {
+         "Name" : "Static",
+         "Options" : {
+            "Optimization" : "Speed",
+            "PreprocessorDefinitions" : [
+               "EC_STATIC"
+            ],
+            "TargetType" : "StaticLibrary",
+            "TargetFileName" : "ecrtStatic",
+            "Libraries" : [
+
+            ],
+            "CompilerOptions" : [
+               "-mmmx",
+               "-msse",
+               "-msse2",
+               "-msse3",
+               "-msse4"
+            ],
+            "Compress" : true,
+            "FastMath" : true
+         }
+      },
+      {
+         "Name" : "Bootstrap",
+         "Options" : {
+            "NoLineNumbers" : true,
+            "PreprocessorDefinitions" : [
+               "EC_STATIC",
+               "EC_BOOTSTRAP"
+            ],
+            "IncludeDirs" : [
+               "../bootstrap/include"
+            ],
+            "TargetType" : "StaticLibrary",
+            "TargetFileName" : "ecrtBootstrap",
+            "Libraries" : [
+
+            ]
+         }
+      }
+   ],
+   "Files" : [
+      {
+         "Folder" : "src",
+         "Files" : [
+            {
+               "Folder" : "mt",
+               "Files" : [
+                  "Mutex.ec",
+                  "Semaphore.ec",
+                  "Thread.ec",
+                  "Condition.ec"
+               ],
+               "Configurations" : [
+                  {
+                     "Name" : "Bootstrap",
+                     "Options" : {
+                        "ExcludeFromBuild" : true
+                     }
+                  }
+               ]
+            },
+            {
+               "Folder" : "containers",
+               "Files" : [
+                  {
+                     "Folder" : "legacy",
+                     "Files" : [
+                        "OldList.ec",
+                        "BTNode.ec",
+                        "BinaryTree.ec"
+                     ]
+                  },
+                  {
+                     "Folder" : "cc",
+                     "Files" : [
+                        "cc.c",
+                        "cc.h",
+                        "ccstr.c",
+                        "cpuconfig.h",
+                        "mm.c",
+                        "mm.h",
+                        "mmatomic.h",
+                        "mmhash.c",
+                        "mmhash.h"
+                     ],
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  "Array.ec",
+                  "AVLTree.ec",
+                  "BuiltInContainer.ec",
+                  "Container.ec",
+                  "CustomAVLTree.ec",
+                  {
+                     "FileName" : "HashMap.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "FileName" : "HashTable.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  "LinkList.ec",
+                  "List.ec",
+                  "Map.ec"
+               ]
+            },
+            {
+               "Folder" : "types",
+               "Files" : [
+                  "dataTypes.ec",
+                  {
+                     "FileName" : "instance.c",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  "instance.ec",
+                  "String.ec",
+                  {
+                     "FileName" : "units.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  "memory.ec",
+                  {
+                     "FileName" : "fieldValue.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "Folder" : "files",
+               "Files" : [
+                  {
+                     "FileName" : "File.c",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  "File.ec",
+                  "TempFile.ec",
+                  {
+                     "FileName" : "EARArchive.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "FileName" : "DualPipe.c",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  "DualPipe.ec",
+                  "BufferedFile.ec",
+                  {
+                     "FileName" : "Archive.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "FileName" : "System.c",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  "System.ec",
+                  {
+                     "FileName" : "FileMonitor.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "Folder" : "i18n",
+               "Files" : [
+                  {
+                     "FileName" : "unicode.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "Bootstrap",
+                           "Options" : {
+                              "ExcludeFromBuild" : true
+                           }
+                        }
+                     ]
+                  },
+                  "i18n.ec"
+               ]
+            },
+            {
+               "Folder" : "time",
+               "Files" : [
+                  "Date.ec",
+                  "Time.ec"
+               ],
+               "Configurations" : [
+                  {
+                     "Name" : "Bootstrap",
+                     "Options" : {
+                        "ExcludeFromBuild" : true
+                     }
+                  }
+               ]
+            },
+            {
+               "Folder" : "json",
+               "Files" : [
+                  "JSON.ec",
+                  "JSONGlobalSettings.ec",
+                  "GlobalAppSettings.ec"
+               ],
+               "Configurations" : [
+                  {
+                     "Name" : "Bootstrap",
+                     "Options" : {
+                        "ExcludeFromBuild" : true
+                     }
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "ResourcesPath" : "res",
+   "Resources" : [
+      {
+         "Folder" : "unicode",
+         "Files" : [
+            "derivedGeneralCategoryStripped.txt",
+            "derivedCombiningClassStripped.txt",
+            "caseFoldingStripped.txt",
+            "decompositionMappings.txt",
+            "diacriticFolding.txt",
+            "katakanaFolding.txt"
+         ],
+         "Configurations" : [
+            {
+               "Name" : "Bootstrap",
+               "Options" : {
+                  "ExcludeFromBuild" : true
+               }
+            }
+         ]
+      },
+      {
+         "Folder" : "locale",
+         "Files" : [
+            "locale/es.mo",
+            "locale/hu.mo",
+            "locale/mr.mo",
+            "locale/nl.mo",
+            "locale/pt_BR.mo",
+            "locale/ru.mo",
+            "locale/zh_CN.mo"
+         ],
+         "Configurations" : [
+            {
+               "Name" : "Bootstrap",
+               "Options" : {
+                  "ExcludeFromBuild" : true
+               }
+            }
+         ]
+      }
+   ]
+}

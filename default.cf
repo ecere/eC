@@ -1,0 +1,131 @@
+EC_BINS := $(_CF_DIR)$(if $(USE_BOOTSTRAP),bootstrap/obj/bin.$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/,obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/bin/)
+
+ifdef WINDOWS_TARGET
+ # Auto-Select MinGW-w64 when asking for 64 bit
+ ifeq ($(ARCH),x64)
+  GCC_PREFIX=x86_64-w64-mingw32-
+ else
+   ifndef WINDOWS_HOST
+     ifeq ($(ARCH),x32)
+       GCC_PREFIX=i686-w64-mingw32-
+     else
+       GCC_PREFIX=x86_64-w64-mingw32-
+     endif
+   endif
+ endif
+endif
+
+# PREFIXES AND EXTENSIONS
+EC := .ec
+S := .sym
+I := .imp
+B := .bowl
+C := .c
+ifndef O
+O := .o
+endif
+A := .a
+E := $(if $(WINDOWS_TARGET),.exe,)
+SO := $(if $(WINDOWS_TARGET),.dll,$(if $(OSX_TARGET),.dylib,.so))
+OUT := $(if $(STATIC_LIBRARY_TARGET),$(A),$(if $(SHARED_LIBRARY_TARGET),$(SO)$(VER),$(if $(EXECUTABLE_TARGET),$(B32_SFX)$(E),)))
+LP := $(if $(WINDOWS_TARGET),$(if $(STATIC_LIBRARY_TARGET),lib,),lib)
+HOST_E := $(if $(WINDOWS_HOST),.exe,)
+HOST_SO := $(if $(WINDOWS_HOST),.dll,$(if $(OSX_HOST),.dylib,.so))
+HOST_LP := $(if $(WINDOWS_HOST),$(if $(STATIC_LIBRARY_TARGET),lib,),lib)
+.SUFFIXES: .c .ec .sym .imp .bowl $(O) $(A)
+
+# TOOLCHAIN
+ifdef TRAVIS
+export CPP     = $(CC)
+else
+export CC      = $(CCACHE_COMPILE)$(DISTCC_COMPILE)$(GCC_PREFIX)gcc$(_SYSROOT)$(if $(GCC_CC_FLAGS),$(space)$(GCC_CC_FLAGS),)
+export CXX     = $(CCACHE_COMPILE)$(DISTCC_COMPILE)$(GCC_PREFIX)g++$(_SYSROOT)$(if $(GCC_CC_FLAGS),$(space)$(GCC_CC_FLAGS),)
+export CPP     = $(CCACHE_COMPILE)$(DISTCC_COMPILE)$(GCC_PREFIX)gcc$(_SYSROOT)
+endif
+export AS      = $(GCC_PREFIX)as
+export LD      = $(if $(CONTAINS_CXX),$(CXX),$(CC)) # $(GCC_PREFIX)ld
+export AR      = $(GCC_PREFIX)ar
+export STRIP   = $(GCC_PREFIX)strip
+ifdef WINDOWS_TARGET
+WINDRES := $(GCC_PREFIX)windres
+ ifdef ARCH
+  ifeq ($(ARCH),x32)
+WINDRES_FLAGS := -F pe-i386
+  else
+   ifeq ($(ARCH),x64)
+WINDRES_FLAGS := -F pe-x86-64
+   endif
+  endif
+ endif
+endif
+ifndef UPX
+UPX := upx
+endif
+
+ifndef ARCH
+# Review all this; TARGET_ARCH is used in crossplatform.mk before .cf is included,
+# does not use triple, and may conflict with predefined TARGET_ARCH?
+TARGET_ARCH :=$(shell $(CC) -dumpmachine)
+ ifdef WINDOWS_TARGET
+  ifneq ($(filter x86_64%,$(TARGET_ARCH)),)
+     TARGET_ARCH := x86_64
+  else
+     TARGET_ARCH := i386
+  endif
+ else
+  ifdef LINUX_TARGET
+   ifneq ($(filter x86_64-pc-linux-gnu,$(TARGET_ARCH)),)    # Fix for PREFIXLIBDIR / DEB_HOST_MULTIARCH with Clang on Debian
+      TARGET_ARCH := x86_64-linux-gnu
+   endif
+   ifneq ($(filter i586-linux-gnu,$(TARGET_ARCH)),)
+      TARGET_ARCH := i386-linux-gnu
+   endif
+  endif
+ endif
+endif
+
+ifndef WINDOWS_HOST
+export LD_LIBRARY_PATH = $(_CF_DIR)obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib/
+export DYLD_LIBRARY_PATH := $(_CF_DIR)obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib/
+else
+export PATH := $(PATH):$(_CF_DIR)obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/bin/
+endif
+
+ifdef OSX_TARGET
+export ECP := DYLD_LIBRARY_PATH=$(DYLD_LIBRARY_PATH) $(call sys_path,$(EC_BINS)ecp$(B32_SFX)$(HOST_E))$(if $(GCC_FLAGS),$(space)$(GCC_FLAGS),)
+export ECC := DYLD_LIBRARY_PATH=$(DYLD_LIBRARY_PATH) $(call sys_path,$(EC_BINS)ecc$(B32_SFX)$(HOST_E))$(if $(CROSS_TARGET), -t $(TARGET_PLATFORM),)$(if $(GCC_FLAGS),$(space)$(GCC_FLAGS),)
+export ECS := DYLD_LIBRARY_PATH=$(DYLD_LIBRARY_PATH) $(call sys_path,$(EC_BINS)ecs$(B32_SFX)$(HOST_E))$(if $(CROSS_TARGET), -t $(TARGET_PLATFORM),)$(if $(OUTPUT_POT), -outputpot,)$(if $(DISABLED_POOLING), -disabled-pooling,)
+export EAR := DYLD_LIBRARY_PATH=$(DYLD_LIBRARY_PATH) $(call sys_path,$(_CF_DIR)obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/bin/ear$(B32_SFX)$(HOST_E))
+export BGEN := DYLD_LIBRARY_PATH=$(DYLD_LIBRARY_PATH) $(call sys_path,$(_CF_DIR)obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/bin/bgen$(HOST_E))
+else
+export ECP := $(call sys_path,$(EC_BINS)ecp$(B32_SFX)$(HOST_E))$(if $(GCC_FLAGS),$(space)$(GCC_FLAGS),)
+export ECC := $(call sys_path,$(EC_BINS)ecc$(B32_SFX)$(HOST_E))$(if $(CROSS_TARGET), -t $(TARGET_PLATFORM),)$(if $(GCC_FLAGS),$(space)$(GCC_FLAGS),)
+export ECS := $(call sys_path,$(EC_BINS)ecs$(B32_SFX)$(HOST_E))$(if $(CROSS_TARGET), -t $(TARGET_PLATFORM),)$(if $(OUTPUT_POT), -outputpot,)$(if $(DISABLED_POOLING), -disabled-pooling,)
+export EAR := $(call sys_path,$(_CF_DIR)obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/bin/ear$(B32_SFX)$(HOST_E))
+export BGEN := $(call sys_path,$(_CF_DIR)obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/bin/bgen$(HOST_E))
+endif
+
+# HARD CODED PLATFORM-SPECIFIC OPTIONS
+LDFLAGS +=$(if $(LINUX_TARGET), -Wl$(comma)--no-undefined,)
+
+ifdef BSD_TARGET
+EXCLUDED_LIBS += $(space)dl
+CFLAGS += -isystem /usr/local/include
+LDFLAGS += -L/usr/local/lib
+endif
+
+OFLAGS += $(LDFLAGS)
+
+# FLAGS
+
+UPXFLAGS = -9 -q
+
+ifdef ARCH_FLAGS
+CFLAGS += $(ARCH_FLAGS)
+CXXFLAGS += $(ARCH_FLAGS)
+OFLAGS += $(ARCH_FLAGS)
+endif
+
+CFLAGS += -fmessage-length=0
+
+EARFLAGS = q

@@ -1,0 +1,58 @@
+{
+   "Version" : 0.2,
+   "ModuleName" : "ear",
+   "Options" : {
+      "TargetType" : "Executable",
+      "TargetFileName" : "ear",
+      "Libraries" : [
+         "ecrt"
+      ],
+      "Console" : true
+   },
+   "Configurations" : [
+      {
+         "Name" : "Debug",
+         "Options" : {
+            "Warnings" : "All",
+            "Debug" : true,
+            "Optimization" : "None",
+            "FastMath" : false
+         }
+      },
+      {
+         "Name" : "Release",
+         "Options" : {
+            "Warnings" : "None",
+            "Debug" : false,
+            "NoLineNumbers" : true,
+            "Optimization" : "Speed",
+            "LibraryDirs" : [
+               "../../obj/$(PLATFORM)/bin",
+               "../../obj/$(PLATFORM)/lib"
+            ],
+            "FastMath" : true,
+            "PostbuildCommands" : [
+               "$(call cp,$(TARGET),../../obj/$(PLATFORM)/bin/)"
+            ],
+            "InstallCommands" : [
+               "$(if $(WINDOWS_HOST),$(call cp,$(TARGET),\"$(BINDIR)/\"),install $(INSTALL_FLAGS) $(TARGET) $(BINDIR)/$(MODULE)$(E))"
+            ]
+         }
+      }
+   ],
+   "Files" : [
+      "ear.ec"
+   ],
+   "ResourcesPath" : "",
+   "Resources" : [
+      {
+         "Folder" : "locale",
+         "Files" : [
+            "es.mo",
+            "ru.mo",
+            "zh_CN.mo"
+         ]
+      },
+      "../extract/obj/release.$(PLATFORM)$(COMPILER_SUFFIX)/extract$(E)"
+   ]
+}

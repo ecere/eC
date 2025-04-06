@@ -1,0 +1,145 @@
+{
+   "Version" : 0.2,
+   "ModuleName" : "ectp",
+   "ModuleVersion" : "0.0.1",
+   "Options" : {
+      "Warnings" : "All",
+      "TargetType" : "SharedLibrary",
+      "TargetFileName" : "ectp",
+      "Libraries" : [
+         "ecrt"
+      ]
+   },
+   "Configurations" : [
+      {
+         "Name" : "Debug",
+         "Options" : {
+            "Debug" : true,
+            "Optimization" : "None",
+            "PreprocessorDefinitions" : [
+               "_DEBUG"
+            ],
+            "FastMath" : false
+         }
+      },
+      {
+         "Name" : "MemoryGuard",
+         "Options" : {
+            "Debug" : true,
+            "MemoryGuard" : true,
+            "Optimization" : "None",
+            "PreprocessorDefinitions" : [
+               "_DEBUG"
+            ],
+            "FastMath" : false
+         }
+      },
+      {
+         "Name" : "Release",
+         "Options" : {
+            "Warnings" : "All",
+            "Debug" : false,
+            "NoLineNumbers" : true,
+            "Optimization" : "Speed",
+            "PreprocessorDefinitions" : [
+
+            ],
+            "LibraryDirs" : [
+               "../obj/$(PLATFORM)/bin",
+               "../obj/$(PLATFORM)/lib"
+            ],
+            "FastMath" : true,
+            "PostbuildCommands" : [
+               "$(call cp,$(TARGET),../../$(SODESTDIR))"
+            ],
+            "InstallCommands" : [
+               "$(call cp,$(TARGET),\"$(DESTLIBDIR)/\")",
+               "$(if $(WINDOWS_HOST),,ln -sf $(LP)$(MODULE)$(SOV) $(DESTLIBDIR)/$(LP)$(MODULE)$(SO).0)",
+               "$(if $(WINDOWS_HOST),,ln -sf $(LP)$(MODULE)$(SOV) $(DESTLIBDIR)/$(LP)$(MODULE)$(SO))"
+            ]
+         }
+      },
+      {
+         "Name" : "Static",
+         "Options" : {
+            "Debug" : false,
+            "Optimization" : "Speed",
+            "PreprocessorDefinitions" : [
+
+            ],
+            "TargetType" : "StaticLibrary",
+            "TargetFileName" : "ectpStatic",
+            "Libraries" : [
+
+            ],
+            "FastMath" : true
+         }
+      },
+      {
+         "Name" : "Bootstrap",
+         "Options" : {
+            "Debug" : false,
+            "NoLineNumbers" : true,
+            "Optimization" : "Speed",
+            "PreprocessorDefinitions" : [
+               "ECERE_STATIC",
+               "ECERE_BOOTSTRAP"
+            ],
+            "TargetType" : "StaticLibrary",
+            "TargetFileName" : "ectpBootstrap",
+            "Libraries" : [
+
+            ],
+            "FastMath" : true
+         }
+      }
+   ],
+   "Files" : [
+      {
+         "Folder" : "src",
+         "Files" : [
+            "ast.ec",
+            "copy.ec",
+            "dbpass.ec",
+            "ecdefs.ec",
+            "expression.ec",
+            "firstPass.ec",
+            "freeAst.ec",
+            "grammar.ec",
+            "lexer.ec",
+            "loadSymbols.ec",
+            "output.ec",
+            "pass0.ec",
+            "pass1.ec",
+            "pass15.ec",
+            "pass16.ec",
+            "pass2.ec",
+            "pass3.ec",
+            "shortcuts.ec",
+            "type.ec",
+            "grammar.y",
+            "expression.y",
+            "type.y",
+            "lexer.l",
+            "grammar.h"
+         ],
+         "Options" : {
+            "IncludeDirs" : [
+               "../bootstrap/include"
+            ]
+         }
+      },
+      "../bootstrap/bsl.c"
+   ],
+   "ResourcesPath" : "",
+   "Resources" : [
+      {
+         "Folder" : "locale",
+         "Files" : [
+            "es.mo",
+            "mr.mo",
+            "zh_CN.mo"
+         ]
+      }
+   ]
+}
