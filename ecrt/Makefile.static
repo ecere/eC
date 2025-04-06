@@ -1,0 +1,699 @@
+ifneq ($(V),1)
+.SILENT:
+endif
+
+.PHONY: all objdir cleantarget clean realclean wipeclean distclean
+
+# CORE VARIABLES
+
+MODULE := ecrt
+VERSION := 0.0.1
+CONFIG := static
+ifndef COMPILER
+COMPILER := default
+endif
+
+TARGET_TYPE = staticlib
+
+# FLAGS
+
+ECFLAGS =
+ifndef DEBIAN_PACKAGE
+CFLAGS =
+LDFLAGS =
+endif
+PRJ_CFLAGS =
+CECFLAGS =
+OFLAGS =
+LIBS =
+
+ifdef DEBUG
+NOSTRIP := y
+endif
+
+CONSOLE = -mwindows
+
+# INCLUDES
+
+_CF_DIR = ../
+USE_BOOTSTRAP := defined
+
+include $(_CF_DIR)crossplatform.mk
+include $(_CF_DIR)default.cf
+
+ifdef PREFIXLIBDIR
+CFLAGS += -DDEB_HOST_MULTIARCH=\"$(call escspace,$(PREFIXLIBDIR))\"
+endif
+
+# POST-INCLUDES VARIABLES
+
+OBJ = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/
+
+RES = res/
+
+TARGET_NAME := ecrtStatic
+
+TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)$(TARGET_NAME)$(OUT)
+
+_ECSOURCES = $(_ECSOURCES1) $(_ECSOURCES2)
+_ECSOURCES1 = \
+	src/files/Archive.ec \
+	src/files/BufferedFile.ec \
+	src/time/Date.ec \
+	src/files/DualPipe.ec \
+	src/files/EARArchive.ec \
+	src/files/File.ec \
+	src/files/FileMonitor.ec \
+	src/json/GlobalAppSettings.ec \
+	src/json/JSON.ec \
+	src/json/JSONGlobalSettings.ec \
+	src/types/fieldValue.ec \
+	src/types/memory.ec \
+	src/mt/Mutex.ec \
+	src/mt/Semaphore.ec \
+	src/files/System.ec \
+	src/files/TempFile.ec \
+	src/mt/Thread.ec \
+	src/time/Time.ec \
+	src/i18n/unicode.ec \
+	src/types/units.ec \
+	src/i18n/i18n.ec \
+	src/mt/Condition.ec
+_ECSOURCES2 = \
+	src/containers/Array.ec \
+	src/containers/AVLTree.ec \
+	src/containers/BuiltInContainer.ec \
+	src/containers/Container.ec \
+	src/containers/CustomAVLTree.ec \
+	src/containers/LinkList.ec \
+	src/containers/List.ec \
+	src/containers/Map.ec \
+	src/containers/HashMap.ec \
+	src/containers/HashTable.ec \
+	src/containers/legacy/BinaryTree.ec \
+	src/containers/legacy/BTNode.ec \
+	src/types/dataTypes.ec \
+	src/types/instance.ec \
+	src/types/String.ec \
+	src/containers/legacy/OldList.ec
+
+ECSOURCES = $(call shwspace,$(_ECSOURCES))
+ECSOURCES1 = $(call shwspace,$(_ECSOURCES1))
+ECSOURCES2 = $(call shwspace,$(_ECSOURCES2))
+
+_COBJECTS = $(COBJECTS1) $(COBJECTS2)
+_COBJECTS1 = $(addprefix $(OBJ),$(patsubst %.ec,%$(C),$(notdir $(_ECSOURCES1))))
+_COBJECTS2 = $(addprefix $(OBJ),$(patsubst %.ec,%$(C),$(notdir $(_ECSOURCES2))))
+
+_SYMBOLS = $(SYMBOLS1) $(SYMBOLS2)
+_SYMBOLS1 = $(addprefix $(OBJ),$(patsubst %.ec,%$(S),$(notdir $(_ECSOURCES1))))
+_SYMBOLS2 = $(addprefix $(OBJ),$(patsubst %.ec,%$(S),$(notdir $(_ECSOURCES2))))
+
+_IMPORTS = $(IMPORTS1) $(IMPORTS2)
+_IMPORTS1 = $(addprefix $(OBJ),$(patsubst %.ec,%$(I),$(notdir $(_ECSOURCES1))))
+_IMPORTS2 = $(addprefix $(OBJ),$(patsubst %.ec,%$(I),$(notdir $(_ECSOURCES2))))
+
+_ECOBJECTS = $(ECOBJECTS1) $(ECOBJECTS2)
+_ECOBJECTS1 = $(addprefix $(OBJ),$(patsubst %.ec,%$(O),$(notdir $(_ECSOURCES1))))
+_ECOBJECTS2 = $(addprefix $(OBJ),$(patsubst %.ec,%$(O),$(notdir $(_ECSOURCES2))))
+
+_BOWLS = $(BOWLS1) $(BOWLS2)
+_BOWLS1 = $(addprefix $(OBJ),$(patsubst %.ec,%$(B),$(notdir $(_ECSOURCES1))))
+_BOWLS2 = $(addprefix $(OBJ),$(patsubst %.ec,%$(B),$(notdir $(_ECSOURCES2))))
+
+COBJECTS = $(COBJECTS1) $(COBJECTS2)
+COBJECTS1 = $(call shwspace,$(_COBJECTS1))
+COBJECTS2 = $(call shwspace,$(_COBJECTS2))
+
+SYMBOLS = $(SYMBOLS1) $(SYMBOLS2)
+SYMBOLS1 = $(call shwspace,$(_SYMBOLS1))
+SYMBOLS2 = $(call shwspace,$(_SYMBOLS2))
+
+IMPORTS = $(IMPORTS1) $(IMPORTS2)
+IMPORTS1 = $(call shwspace,$(_IMPORTS1))
+IMPORTS2 = $(call shwspace,$(_IMPORTS2))
+
+ECOBJECTS = $(ECOBJECTS1) $(ECOBJECTS2)
+ECOBJECTS1 = $(call shwspace,$(_ECOBJECTS1))
+ECOBJECTS2 = $(call shwspace,$(_ECOBJECTS2))
+
+BOWLS = $(BOWLS1) $(BOWLS2)
+BOWLS1 = $(call shwspace,$(_BOWLS1))
+BOWLS2 = $(call shwspace,$(_BOWLS2))
+
+_OBJECTS = $(_OBJECTS1) $(_OBJECTS2)
+_OBJECTS1 = \
+	$(OBJ)File.c$(O) \
+	$(OBJ)DualPipe.c$(O) \
+	$(OBJ)System.c$(O) \
+	$(OBJ)cc$(O) \
+	$(OBJ)mm$(O) \
+	$(OBJ)ccstr$(O)
+_OBJECTS2 = \
+	$(OBJ)mmhash$(O) \
+	$(if $(OSX_TARGET),$(OBJ)CocoaEcereBridge$(O),) \
+	$(if $(OSX_TARGET),$(OBJ)EcereView$(O),) \
+	$(OBJ)instance.c$(O)
+
+OBJECTS = $(_OBJECTS) $(ECOBJECTS) $(OBJ)$(MODULE).main$(O)
+
+SOURCES = $(ECSOURCES) \
+	src/files/File.c \
+	src/files/DualPipe.c \
+	src/files/System.c \
+	src/containers/cc/cc.c \
+	src/containers/cc/mm.c \
+	src/containers/cc/ccstr.c \
+	src/containers/cc/mmhash.c \
+	src/types/instance.c
+
+RESOURCES = $(RESOURCES1)
+RESOURCES1 = \
+	$(RES)unicode/derivedGeneralCategoryStripped.txt \
+	$(RES)unicode/derivedCombiningClassStripped.txt \
+	$(RES)unicode/caseFoldingStripped.txt \
+	$(RES)unicode/decompositionMappings.txt \
+	$(RES)unicode/diacriticFolding.txt \
+	$(RES)unicode/katakanaFolding.txt \
+	locale/es.mo \
+	locale/hu.mo \
+	locale/mr.mo \
+	locale/nl.mo \
+	locale/pt_BR.mo \
+	locale/ru.mo \
+	locale/zh_CN.mo
+
+ifdef USE_RESOURCES_EAR
+RESOURCES_EAR = $(OBJ)resources.ear
+else
+RESOURCES_EAR = $(RESOURCES)
+endif
+
+LIBS += $(SHAREDLIB) $(EXECUTABLE) $(LINKOPT)
+
+PRJ_CFLAGS += \
+	 $(if $(WINDOWS_TARGET), \
+			 -I../deps/zlib-1.2.8,) \
+	 $(if $(DEBUG), -g, -O2 -ffast-math) $(FPIC) -Wall -DREPOSITORY_VERSION="\"$(REPOSITORY_VER)\"" \
+			 -DBUILDING_ECRT \
+			 -DEC_STATIC
+
+CUSTOM1_PRJ_CFLAGS = \
+	 $(if $(LINUX_TARGET), \
+			 -D_FILE_OFFSET_BITS=64,) \
+	 $(PRJ_CFLAGS)
+
+CUSTOM2_PRJ_CFLAGS = \
+			 -DECRT_MODULE \
+	 $(PRJ_CFLAGS)
+
+CUSTOM3_PRJ_CFLAGS = \
+	 $(PRJ_CFLAGS)
+
+CUSTOM4_PRJ_CFLAGS = \
+			 -Isrc/containers/cc \
+	 $(PRJ_CFLAGS)
+
+CUSTOM5_PRJ_CFLAGS = \
+			 -Isrc/containers/cc \
+	 $(CUSTOM2_PRJ_CFLAGS)
+
+ECFLAGS += -module $(MODULE)
+ECFLAGS += \
+	 -defaultns eC
+
+# PLATFORM-SPECIFIC OPTIONS
+
+ifdef WINDOWS_TARGET
+
+
+else
+ifdef LINUX_TARGET
+
+
+else
+ifdef OSX_TARGET
+
+
+endif
+endif
+endif
+
+CFLAGS += \
+	 -mmmx -msse -msse2 -msse3 -msse4
+
+CECFLAGS += -cpp $(_CPP)
+
+# TARGETS
+
+all: objdir $(TARGET)
+
+objdir:
+	$(if $(wildcard $(OBJ)),,$(call mkdir,$(OBJ)))
+	$(if $(EC_SDK_SRC),$(if $(wildcard $(call escspace,$(EC_SDK_SRC)/crossplatform.mk)),,@$(call echo,Ecere SDK Source Warning: The value of EC_SDK_SRC is pointing to an incorrect ($(EC_SDK_SRC)) location.)),)
+	$(if $(EC_SDK_SRC),,$(if $(ECP_DEBUG)$(ECC_DEBUG)$(ECS_DEBUG),@$(call echo,ECC Debug Warning: Please define EC_SDK_SRC before using ECP_DEBUG, ECC_DEBUG or ECS_DEBUG),))
+
+$(OBJ)$(MODULE).main.ec: $(SYMBOLS) $(COBJECTS)
+	@$(call rm,$(OBJ)symbols.lst)
+	@$(call touch,$(OBJ)symbols.lst)
+	$(call addtolistfile,$(SYMBOLS1),$(OBJ)symbols.lst)
+	$(call addtolistfile,$(SYMBOLS2),$(OBJ)symbols.lst)
+	$(call addtolistfile,$(IMPORTS1),$(OBJ)symbols.lst)
+	$(call addtolistfile,$(IMPORTS2),$(OBJ)symbols.lst)
+	$(ECS) $(ARCH_FLAGS) $(ECSLIBOPT) @$(OBJ)symbols.lst -symbols obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX) -o $(call quote_path,$@)
+
+$(OBJ)$(MODULE).main.c: $(OBJ)$(MODULE).main.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(OBJ)$(MODULE).main.ec -o $(OBJ)$(MODULE).main.sym -symbols $(OBJ)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(OBJ)$(MODULE).main.ec -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(SYMBOLS): | objdir
+$(OBJECTS): | objdir
+$(TARGET): $(SOURCES) $(RESOURCES_EAR) $(SYMBOLS) $(OBJECTS) | objdir
+	@$(call rm,$(OBJ)objects.lst)
+	@$(call touch,$(OBJ)objects.lst)
+	$(call addtolistfile,$(_OBJECTS1),$(OBJ)objects.lst)
+	$(call addtolistfile,$(_OBJECTS2),$(OBJ)objects.lst)
+	$(call addtolistfile,$(OBJ)$(MODULE).main$(O),$(OBJ)objects.lst)
+	$(call addtolistfile,$(ECOBJECTS1),$(OBJ)objects.lst)
+	$(call addtolistfile,$(ECOBJECTS2),$(OBJ)objects.lst)
+	$(AR) rcs $(TARGET) $(OBJECTS) $(LIBS)
+	$(call cp,$(TARGET),../obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib/)
+
+# SYMBOL RULES
+
+$(OBJ)Archive.sym: src/files/Archive.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/Archive.ec) -o $(call quote_path,$@)
+
+$(OBJ)BufferedFile.sym: src/files/BufferedFile.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/BufferedFile.ec) -o $(call quote_path,$@)
+
+$(OBJ)Date.sym: src/time/Date.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/time/Date.ec) -o $(call quote_path,$@)
+
+$(OBJ)DualPipe.sym: src/files/DualPipe.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/DualPipe.ec) -o $(call quote_path,$@)
+
+$(OBJ)EARArchive.sym: src/files/EARArchive.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/EARArchive.ec) -o $(call quote_path,$@)
+
+$(OBJ)File.sym: src/files/File.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM1_PRJ_CFLAGS) -c $(call quote_path,src/files/File.ec) -o $(call quote_path,$@)
+
+$(OBJ)FileMonitor.sym: src/files/FileMonitor.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/FileMonitor.ec) -o $(call quote_path,$@)
+
+$(OBJ)GlobalAppSettings.sym: src/json/GlobalAppSettings.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/json/GlobalAppSettings.ec) -o $(call quote_path,$@)
+
+$(OBJ)JSON.sym: src/json/JSON.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/json/JSON.ec) -o $(call quote_path,$@)
+
+$(OBJ)JSONGlobalSettings.sym: src/json/JSONGlobalSettings.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/json/JSONGlobalSettings.ec) -o $(call quote_path,$@)
+
+$(OBJ)fieldValue.sym: src/types/fieldValue.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/types/fieldValue.ec) -o $(call quote_path,$@)
+
+$(OBJ)memory.sym: src/types/memory.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/types/memory.ec) -o $(call quote_path,$@)
+
+$(OBJ)Mutex.sym: src/mt/Mutex.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/mt/Mutex.ec) -o $(call quote_path,$@)
+
+$(OBJ)Semaphore.sym: src/mt/Semaphore.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/mt/Semaphore.ec) -o $(call quote_path,$@)
+
+$(OBJ)System.sym: src/files/System.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/System.ec) -o $(call quote_path,$@)
+
+$(OBJ)TempFile.sym: src/files/TempFile.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/TempFile.ec) -o $(call quote_path,$@)
+
+$(OBJ)Thread.sym: src/mt/Thread.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/mt/Thread.ec) -o $(call quote_path,$@)
+
+$(OBJ)Time.sym: src/time/Time.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/time/Time.ec) -o $(call quote_path,$@)
+
+$(OBJ)unicode.sym: src/i18n/unicode.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/i18n/unicode.ec) -o $(call quote_path,$@)
+
+$(OBJ)units.sym: src/types/units.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/types/units.ec) -o $(call quote_path,$@)
+
+$(OBJ)i18n.sym: src/i18n/i18n.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/i18n/i18n.ec) -o $(call quote_path,$@)
+
+$(OBJ)Condition.sym: src/mt/Condition.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/mt/Condition.ec) -o $(call quote_path,$@)
+
+$(OBJ)Array.sym: src/containers/Array.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/Array.ec) -o $(call quote_path,$@)
+
+$(OBJ)AVLTree.sym: src/containers/AVLTree.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/AVLTree.ec) -o $(call quote_path,$@)
+
+$(OBJ)BuiltInContainer.sym: src/containers/BuiltInContainer.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/BuiltInContainer.ec) -o $(call quote_path,$@)
+
+$(OBJ)Container.sym: src/containers/Container.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/Container.ec) -o $(call quote_path,$@)
+
+$(OBJ)CustomAVLTree.sym: src/containers/CustomAVLTree.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/CustomAVLTree.ec) -o $(call quote_path,$@)
+
+$(OBJ)LinkList.sym: src/containers/LinkList.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/LinkList.ec) -o $(call quote_path,$@)
+
+$(OBJ)List.sym: src/containers/List.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/List.ec) -o $(call quote_path,$@)
+
+$(OBJ)Map.sym: src/containers/Map.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/Map.ec) -o $(call quote_path,$@)
+
+$(OBJ)HashMap.sym: src/containers/HashMap.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM5_PRJ_CFLAGS) -c $(call quote_path,src/containers/HashMap.ec) -o $(call quote_path,$@)
+
+$(OBJ)HashTable.sym: src/containers/HashTable.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM5_PRJ_CFLAGS) -c $(call quote_path,src/containers/HashTable.ec) -o $(call quote_path,$@)
+
+$(OBJ)BinaryTree.sym: src/containers/legacy/BinaryTree.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/legacy/BinaryTree.ec) -o $(call quote_path,$@)
+
+$(OBJ)BTNode.sym: src/containers/legacy/BTNode.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/legacy/BTNode.ec) -o $(call quote_path,$@)
+
+$(OBJ)dataTypes.sym: src/types/dataTypes.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/types/dataTypes.ec) -o $(call quote_path,$@)
+
+$(OBJ)instance.sym: src/types/instance.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/types/instance.ec) -o $(call quote_path,$@)
+
+$(OBJ)String.sym: src/types/String.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/types/String.ec) -o $(call quote_path,$@)
+
+$(OBJ)OldList.sym: src/containers/legacy/OldList.ec
+	$(ECP) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/containers/legacy/OldList.ec) -o $(call quote_path,$@)
+
+# C OBJECT RULES
+
+$(OBJ)Archive.c: src/files/Archive.ec $(OBJ)Archive.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/files/Archive.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)BufferedFile.c: src/files/BufferedFile.ec $(OBJ)BufferedFile.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/files/BufferedFile.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Date.c: src/time/Date.ec $(OBJ)Date.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/time/Date.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)DualPipe.c: src/files/DualPipe.ec $(OBJ)DualPipe.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/files/DualPipe.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)EARArchive.c: src/files/EARArchive.ec $(OBJ)EARArchive.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/files/EARArchive.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)File.c: src/files/File.ec $(OBJ)File.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM1_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/files/File.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)FileMonitor.c: src/files/FileMonitor.ec $(OBJ)FileMonitor.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/files/FileMonitor.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)GlobalAppSettings.c: src/json/GlobalAppSettings.ec $(OBJ)GlobalAppSettings.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/json/GlobalAppSettings.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)JSON.c: src/json/JSON.ec $(OBJ)JSON.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/json/JSON.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)JSONGlobalSettings.c: src/json/JSONGlobalSettings.ec $(OBJ)JSONGlobalSettings.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/json/JSONGlobalSettings.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)fieldValue.c: src/types/fieldValue.ec $(OBJ)fieldValue.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/types/fieldValue.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)memory.c: src/types/memory.ec $(OBJ)memory.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/types/memory.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Mutex.c: src/mt/Mutex.ec $(OBJ)Mutex.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/mt/Mutex.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Semaphore.c: src/mt/Semaphore.ec $(OBJ)Semaphore.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/mt/Semaphore.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)System.c: src/files/System.ec $(OBJ)System.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/files/System.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)TempFile.c: src/files/TempFile.ec $(OBJ)TempFile.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/files/TempFile.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Thread.c: src/mt/Thread.ec $(OBJ)Thread.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/mt/Thread.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Time.c: src/time/Time.ec $(OBJ)Time.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/time/Time.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)unicode.c: src/i18n/unicode.ec $(OBJ)unicode.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/i18n/unicode.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)units.c: src/types/units.ec $(OBJ)units.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/types/units.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)i18n.c: src/i18n/i18n.ec $(OBJ)i18n.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/i18n/i18n.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Condition.c: src/mt/Condition.ec $(OBJ)Condition.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/mt/Condition.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Array.c: src/containers/Array.ec $(OBJ)Array.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/Array.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)AVLTree.c: src/containers/AVLTree.ec $(OBJ)AVLTree.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/AVLTree.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)BuiltInContainer.c: src/containers/BuiltInContainer.ec $(OBJ)BuiltInContainer.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/BuiltInContainer.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Container.c: src/containers/Container.ec $(OBJ)Container.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/Container.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)CustomAVLTree.c: src/containers/CustomAVLTree.ec $(OBJ)CustomAVLTree.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/CustomAVLTree.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)LinkList.c: src/containers/LinkList.ec $(OBJ)LinkList.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/LinkList.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)List.c: src/containers/List.ec $(OBJ)List.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/List.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)Map.c: src/containers/Map.ec $(OBJ)Map.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/Map.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)HashMap.c: src/containers/HashMap.ec $(OBJ)HashMap.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM5_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/HashMap.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)HashTable.c: src/containers/HashTable.ec $(OBJ)HashTable.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM5_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/HashTable.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)BinaryTree.c: src/containers/legacy/BinaryTree.ec $(OBJ)BinaryTree.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/legacy/BinaryTree.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)BTNode.c: src/containers/legacy/BTNode.ec $(OBJ)BTNode.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/legacy/BTNode.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)dataTypes.c: src/types/dataTypes.ec $(OBJ)dataTypes.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/types/dataTypes.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)instance.c: src/types/instance.ec $(OBJ)instance.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/types/instance.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)String.c: src/types/String.ec $(OBJ)String.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/types/String.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+$(OBJ)OldList.c: src/containers/legacy/OldList.ec $(OBJ)OldList.sym | $(SYMBOLS)
+	$(ECC) $(CFLAGS) $(CECFLAGS) $(ECFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,src/containers/legacy/OldList.ec) -o $(call quote_path,$@) -symbols $(OBJ)
+
+# OBJECT RULES
+
+$(OBJ)Archive$(O): $(OBJ)Archive.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Archive.c) -o $(call quote_path,$@)
+
+$(OBJ)BufferedFile$(O): $(OBJ)BufferedFile.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)BufferedFile.c) -o $(call quote_path,$@)
+
+$(OBJ)Date$(O): $(OBJ)Date.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Date.c) -o $(call quote_path,$@)
+
+$(OBJ)DualPipe$(O): $(OBJ)DualPipe.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)DualPipe.c) -o $(call quote_path,$@)
+
+$(OBJ)EARArchive$(O): $(OBJ)EARArchive.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)EARArchive.c) -o $(call quote_path,$@)
+
+$(OBJ)File$(O): $(OBJ)File.c
+	$(CC) $(CFLAGS) $(CUSTOM1_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)File.c) -o $(call quote_path,$@)
+
+$(OBJ)FileMonitor$(O): $(OBJ)FileMonitor.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)FileMonitor.c) -o $(call quote_path,$@)
+
+$(OBJ)GlobalAppSettings$(O): $(OBJ)GlobalAppSettings.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)GlobalAppSettings.c) -o $(call quote_path,$@)
+
+$(OBJ)JSON$(O): $(OBJ)JSON.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)JSON.c) -o $(call quote_path,$@)
+
+$(OBJ)JSONGlobalSettings$(O): $(OBJ)JSONGlobalSettings.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)JSONGlobalSettings.c) -o $(call quote_path,$@)
+
+$(OBJ)fieldValue$(O): $(OBJ)fieldValue.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)fieldValue.c) -o $(call quote_path,$@)
+
+$(OBJ)memory$(O): $(OBJ)memory.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)memory.c) -o $(call quote_path,$@)
+
+$(OBJ)Mutex$(O): $(OBJ)Mutex.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Mutex.c) -o $(call quote_path,$@)
+
+$(OBJ)Semaphore$(O): $(OBJ)Semaphore.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Semaphore.c) -o $(call quote_path,$@)
+
+$(OBJ)System$(O): $(OBJ)System.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)System.c) -o $(call quote_path,$@)
+
+$(OBJ)TempFile$(O): $(OBJ)TempFile.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)TempFile.c) -o $(call quote_path,$@)
+
+$(OBJ)Thread$(O): $(OBJ)Thread.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Thread.c) -o $(call quote_path,$@)
+
+$(OBJ)Time$(O): $(OBJ)Time.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Time.c) -o $(call quote_path,$@)
+
+$(OBJ)unicode$(O): $(OBJ)unicode.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)unicode.c) -o $(call quote_path,$@)
+
+$(OBJ)units$(O): $(OBJ)units.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)units.c) -o $(call quote_path,$@)
+
+$(OBJ)File.c$(O): src/files/File.c
+	$(CC) $(CFLAGS) $(CUSTOM1_PRJ_CFLAGS) -c $(call quote_path,src/files/File.c) -o $(call quote_path,$@)
+
+$(OBJ)DualPipe.c$(O): src/files/DualPipe.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/DualPipe.c) -o $(call quote_path,$@)
+
+$(OBJ)System.c$(O): src/files/System.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/files/System.c) -o $(call quote_path,$@)
+
+$(OBJ)i18n$(O): $(OBJ)i18n.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)i18n.c) -o $(call quote_path,$@)
+
+$(OBJ)Condition$(O): $(OBJ)Condition.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Condition.c) -o $(call quote_path,$@)
+
+$(OBJ)cc$(O): src/containers/cc/cc.c
+	$(CC) $(CFLAGS) $(CUSTOM4_PRJ_CFLAGS) -c $(call quote_path,src/containers/cc/cc.c) -o $(call quote_path,$@)
+
+$(OBJ)mm$(O): src/containers/cc/mm.c
+	$(CC) $(CFLAGS) $(CUSTOM4_PRJ_CFLAGS) -c $(call quote_path,src/containers/cc/mm.c) -o $(call quote_path,$@)
+
+$(OBJ)ccstr$(O): src/containers/cc/ccstr.c
+	$(CC) $(CFLAGS) $(CUSTOM4_PRJ_CFLAGS) -c $(call quote_path,src/containers/cc/ccstr.c) -o $(call quote_path,$@)
+
+$(OBJ)mmhash$(O): src/containers/cc/mmhash.c
+	$(CC) $(CFLAGS) $(CUSTOM4_PRJ_CFLAGS) -c $(call quote_path,src/containers/cc/mmhash.c) -o $(call quote_path,$@)
+
+$(OBJ)Array$(O): $(OBJ)Array.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Array.c) -o $(call quote_path,$@)
+
+$(OBJ)AVLTree$(O): $(OBJ)AVLTree.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)AVLTree.c) -o $(call quote_path,$@)
+
+$(OBJ)BuiltInContainer$(O): $(OBJ)BuiltInContainer.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)BuiltInContainer.c) -o $(call quote_path,$@)
+
+$(OBJ)Container$(O): $(OBJ)Container.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Container.c) -o $(call quote_path,$@)
+
+$(OBJ)CustomAVLTree$(O): $(OBJ)CustomAVLTree.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)CustomAVLTree.c) -o $(call quote_path,$@)
+
+$(OBJ)LinkList$(O): $(OBJ)LinkList.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)LinkList.c) -o $(call quote_path,$@)
+
+$(OBJ)List$(O): $(OBJ)List.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)List.c) -o $(call quote_path,$@)
+
+$(OBJ)Map$(O): $(OBJ)Map.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)Map.c) -o $(call quote_path,$@)
+
+$(OBJ)HashMap$(O): $(OBJ)HashMap.c
+	$(CC) $(CFLAGS) $(CUSTOM5_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)HashMap.c) -o $(call quote_path,$@)
+
+$(OBJ)HashTable$(O): $(OBJ)HashTable.c
+	$(CC) $(CFLAGS) $(CUSTOM5_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)HashTable.c) -o $(call quote_path,$@)
+
+$(OBJ)BinaryTree$(O): $(OBJ)BinaryTree.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)BinaryTree.c) -o $(call quote_path,$@)
+
+$(OBJ)BTNode$(O): $(OBJ)BTNode.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)BTNode.c) -o $(call quote_path,$@)
+
+$(OBJ)dataTypes$(O): $(OBJ)dataTypes.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)dataTypes.c) -o $(call quote_path,$@)
+
+$(OBJ)instance$(O): $(OBJ)instance.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)instance.c) -o $(call quote_path,$@)
+
+$(OBJ)String$(O): $(OBJ)String.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)String.c) -o $(call quote_path,$@)
+
+$(OBJ)OldList$(O): $(OBJ)OldList.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) $(FVISIBILITY) -c $(call quote_path,$(OBJ)OldList.c) -o $(call quote_path,$@)
+
+$(OBJ)instance.c$(O): src/types/instance.c
+	$(CC) $(CFLAGS) $(CUSTOM2_PRJ_CFLAGS) -c $(call quote_path,src/types/instance.c) -o $(call quote_path,$@)
+
+$(OBJ)$(MODULE).main$(O): $(OBJ)$(MODULE).main.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c $(OBJ)$(MODULE).main.c -o $(call quote_path,$@)
+
+cleantarget:
+	$(call rm,$(OBJ)$(MODULE).main$(O) $(OBJ)$(MODULE).main.c $(OBJ)$(MODULE).main.ec $(OBJ)$(MODULE).main$(I) $(OBJ)$(MODULE).main$(S))
+	$(call rm,$(OBJ)symbols.lst)
+	$(call rm,$(OBJ)objects.lst)
+	$(call rm,$(TARGET))
+ifdef SHARED_LIBRARY_TARGET
+ifdef LINUX_TARGET
+ifdef LINUX_HOST
+	$(call rm,$(OBJ)$(LP)$(MODULE)$(SO)$(basename $(VER)))
+	$(call rm,$(OBJ)$(LP)$(MODULE)$(SO))
+endif
+endif
+endif
+
+clean: cleantarget
+	$(call rm,$(_OBJECTS1))
+	$(call rm,$(_OBJECTS2))
+	$(call rm,$(_ECOBJECTS1))
+	$(call rm,$(_ECOBJECTS2))
+	$(call rm,$(_COBJECTS1))
+	$(call rm,$(_COBJECTS2))
+	$(call rm,$(_BOWLS1))
+	$(call rm,$(_BOWLS2))
+	$(call rm,$(_IMPORTS1))
+	$(call rm,$(_IMPORTS2))
+	$(call rm,$(_SYMBOLS1))
+	$(call rm,$(_SYMBOLS2))
+ifdef USE_RESOURCES_EAR
+	$(call rm,$(RESOURCES_EAR))
+endif
+
+realclean: cleantarget
+	$(call rmr,$(OBJ))
+
+wipeclean: cleantarget
+	$(call rmr,obj/)
+
+distclean: cleantarget
+	$(_MAKE) -f $(_CF_DIR)Cleanfile distclean distclean_all_subdirs
+
+$(MAKEFILE_LIST): ;
+$(SOURCES): ;
+$(RESOURCES): ;
