@@ -1,0 +1,61 @@
+{
+   "Version" : 0.2,
+   "ModuleName" : "ectp2",
+   "Options" : {
+      "Warnings" : "All",
+      "TargetType" : "SharedLibrary",
+      "TargetFileName" : "ectp2",
+      "Libraries" : [
+         "ecrt"
+      ]
+   },
+   "Configurations" : [
+      {
+         "Name" : "Debug",
+         "Options" : {
+            "Debug" : true,
+            "Optimization" : "None",
+            "PreprocessorDefinitions" : [
+               "_DEBUG"
+            ],
+            "FastMath" : false
+         }
+      },
+      {
+         "Name" : "Release",
+         "Options" : {
+            "Debug" : false,
+            "Optimization" : "Speed",
+            "FastMath" : true
+         }
+      },
+      {
+         "Name" : "MemoryGuard",
+         "Options" : {
+            "Debug" : true,
+            "MemoryGuard" : true,
+            "Optimization" : "None",
+            "FastMath" : false
+         }
+      }
+   ],
+   "Files" : [
+      {
+         "Folder" : "src",
+         "Files" : [
+            "lexing.ec",
+            "expressions.ec",
+            "statements.ec",
+            "declarators.ec",
+            "specifiers.ec",
+            "classes.ec",
+            "externals.ec",
+            "astNode.ec"
+         ]
+      }
+   ],
+   "ResourcesPath" : "",
+   "Resources" : [
+
+   ]
+}
