@@ -1,0 +1,92 @@
+   # hack: hardcoded content
+   class_members = [ "copySrc" ]
+   def __init__(self, *args, **kwArgs): self.init_args(list(args), kwArgs)
+   def init_args(self, args, kwArgs):
+      if kwArgs.get("impl") is None:
+         templateParams = kwArgs.get("templateParams")
+         if templateParams is None:
+            if len(args) > 0 and type(args[0]) == str:
+               kwArgs["templateParams"] = args[0]
+               del args[0]
+            else:
+               copySrc = kwArgs.get("copySrc")
+               if copySrc is None and len(args) > 0: copySrc = args[0]
+               if isinstance(copySrc, list) and len(copySrc) > 0:
+                  co = coFromPy(copySrc[0])
+                  if co is not None:
+                     type(co)
+                     kwArgs["templateParams"] = "<" + ffis(co.name) + ">"
+      init_args(Container, self, args, kwArgs)
+
+   def __getitem__(self, index):
+      itPtr = self.getAtPosition(index, False, None)
+      if itPtr == ffi.NULL: raise IndexError()
+      d = OTA(self.impl._class.templateArgs[0].dataTypeClass, self.getData(itPtr))
+      return d
+
+   def __len__(self): return getCount()
+
+   @property
+   def copySrc(self): return lib.Container_get_copySrc(self.impl)
+   @copySrc.setter
+   def copySrc(self, value):
+      if isinstance(value, Container):
+         lib.Container_set_copySrc(self.impl, value.impl)
+      if isinstance(value, list):
+         count = len(value)
+         co = ffi.NULL
+         dt = self.impl._class.templateArgs[0].dataTypeClass
+         if dt != ffi.NULL:
+            co = dt
+         if count > 0:
+            v0 = value[0]
+            pc = None
+            if co is None: co = coFromPy(v0)
+            if co is not None:
+               pcn = ffi.string(co.name).decode('u8')
+               for ag in app.appGlobals:
+                  pc = ag.get(pcn, None)
+                  if pc is not None: break
+
+            if co == ffi.NULL:
+               # TODO: Have more type checks?
+               data = ffi.NULL
+            else:
+               ag_ffi = app.ffi
+               if co.type == lib.ClassType_normalClass or co.type == lib.ClassType_noHeadClass:
+                  data = ag_ffi.new("void *[]", count)
+                  for i in range(0, count):
+                     v = value[i]
+                     if isinstance(v, tuple) and pc is not None: v = pc(v)
+                     data[i] = v.impl if v is not None else ffi.NULL
+               elif co.type == lib.ClassType_structClass:
+                  data = ag_ffi.new(ffi.string(co.name).decode('u8') + "[]", count)
+                  for i in range(0, count):
+                     v = value[i]
+#//                     if isinstance(v, tuple) and pc is not None: v = pc(v)    # TODO: Optimization to use tuple directly?
+                     if pc and not isinstance(v, pc): v = pc(v)
+                     if v is not None: data[i] = v.impl[0]
+               else:
+                  if co == lib.class_int: data = ag_ffi.new("int []", value)
+                  elif co == lib.class_float: data = ag_ffi.new("float []", value)
+                  elif co == lib.class_double: data = ag_ffi.new("double []", value)
+                  else:
+                     data = ag_ffi.new("uint[]", count)   # TODO: Determine proper data type / size (bit classes, units, enums, system)
+                     for i in range(0, count):
+                        v = value[i]
+                        if isinstance(v, tuple) and pc is not None: v = pc(v)
+                        data[i] = v.impl if v is not None else 0
+         else:
+            data = ffi.NULL
+
+         bic = ffi.new("eC_BuiltInContainer *", {
+               '_vTbl'     : lib.class_BuiltInContainer._vTbl,
+               '_class'    : lib.class_BuiltInContainer,
+               'data'      : data,
+               '_refCount' : 0,
+               'count'     : count,
+               'type'      : co
+               })
+
+         lib.Container_set_copySrc(self.impl, ffi.cast("eC_Container", bic))
+   # hack: end of hardcoded content
