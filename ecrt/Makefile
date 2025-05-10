@@ -51,11 +51,13 @@ OBJ = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/
 
 RES = res/
 
-TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ecrt$(SO)$(VER)
-ifdef LINUX_TARGET
-SONAME = -Wl,-soname,libecrt.so.0
-else
+TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ecrt$(SO)
 SONAME =
+ifndef SKIP_SONAME
+ifdef LINUX_TARGET
+TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ecrt$(SO)$(VER)
+SONAME = -Wl,-soname,libecrt.so.0
+endif
 endif
 
 _ECSOURCES = $(_ECSOURCES1) $(_ECSOURCES2) $(_ECSOURCES3)
@@ -303,8 +305,10 @@ endif
 	$(call cp,$(TARGET),../$(HOST_SODESTDIR))
 ifdef SHARED_LIBRARY_TARGET
 ifdef LINUX_HOST
+ifndef SKIP_SONAME
 	$(if $(basename $(VER)),ln -sf $(LP)$(MODULE)$(SO)$(VER) ../$(HOST_SODESTDIR)$(LP)$(MODULE)$(SO)$(basename $(VER)),)
 	$(if $(VER),ln -sf $(LP)$(MODULE)$(SO)$(VER) ../$(HOST_SODESTDIR)$(LP)$(MODULE)$(SO),)
+endif
 endif
 endif
 
@@ -336,12 +340,14 @@ endif
 ifdef SHARED_LIBRARY_TARGET
 ifdef LINUX_TARGET
 ifdef LINUX_HOST
+ifndef SKIP_SONAME
 	$(if $(basename $(VER)),ln -sf $(LP)$(MODULE)$(SO)$(VER) $(OBJ)$(LP)$(MODULE)$(SO)$(basename $(VER)),)
 	$(if $(basename $(basename $(VER))),ln -sf $(LP)$(MODULE)$(SO)$(VER) $(OBJ)$(LP)$(MODULE)$(SO)$(basename $(basename $(VER))),)
 	$(if $(VER),ln -sf $(LP)$(MODULE)$(SO)$(VER) $(OBJ)$(LP)$(MODULE)$(SO),)
 	$(if $(basename $(VER)),ln -sf $(LP)$(MODULE)$(SO)$(VER) ../$(SODESTDIR)$(LP)$(MODULE)$(SO)$(basename $(VER)),)
 	$(if $(basename $(basename $(VER))),ln -sf $(LP)$(MODULE)$(SO)$(VER) ../$(SODESTDIR)$(LP)$(MODULE)$(SO)$(basename $(basename $(VER))),)
 	$(if $(VER),ln -sf $(LP)$(MODULE)$(SO)$(VER) ../$(SODESTDIR)$(LP)$(MODULE)$(SO),)
+endif
 endif
 endif
 endif
@@ -732,8 +738,10 @@ cleantarget:
 ifdef SHARED_LIBRARY_TARGET
 ifdef LINUX_TARGET
 ifdef LINUX_HOST
+ifndef SKIP_SONAME
 	$(call rm,$(OBJ)$(LP)$(MODULE)$(SO)$(basename $(VER)))
 	$(call rm,$(OBJ)$(LP)$(MODULE)$(SO))
+endif
 endif
 endif
 endif

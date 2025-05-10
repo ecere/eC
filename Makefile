@@ -88,7 +88,11 @@ ifdef OSX_TARGET
 # TODO: OSX soname
 SOV := $(SO)
 else
+ifndef SKIP_SONAME
 SOV := $(SO)$(LIBVER)
+else
+SOV := $(SO)
+endif
 endif
 
 ifndef DESTDIR
@@ -287,11 +291,13 @@ ifdef LINUX_TARGET
 	mkdir -p $(DESTLIBDIR)/ec
 	install $(INSTALL_FLAGS) $(OBJLIBDIR)$(LP)ecrt$(SOV) $(DESTLIBDIR)/$(LP)ecrt$(SOV)
 	install $(INSTALL_FLAGS) $(OBJLIBDIR)$(LP)ectp$(SOV) $(DESTLIBDIR)/ec/$(LP)ectp$(SOV)
+ifndef SKIP_SONAME
 	ln -sf $(LP)ecrt$(SOV) $(DESTLIBDIR)/$(LP)ecrt$(SO).0
 	ln -sf $(LP)ectp$(SOV) $(DESTLIBDIR)/ec/$(LP)ectp$(SO).0
 	ln -sf $(LP)ecrt$(SOV) $(DESTLIBDIR)/$(LP)ecrt$(SO)
 	ln -sf $(LP)ectp$(SOV) $(DESTLIBDIR)/ec/$(LP)ectp$(SO)
 	ln -sf ../$(LP)ecrt$(SOV) $(DESTLIBDIR)/ec/$(LP)ecrt$(SO)
+endif
 else
 	install $(INSTALL_FLAGS) $(OBJLIBDIR)$(LP)ecrt$(SO) $(DESTLIBDIR)/$(LP)ecrt$(SO)
 endif

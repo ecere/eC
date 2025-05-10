@@ -46,14 +46,14 @@ OBJ = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/
 
 RES =
 
+TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ectp$(SO)
+SONAME =
+ifndef SKIP_SONAME
 ifdef LINUX_TARGET
 TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ectp$(SO).0.0.1
 SONAME = -Wl,-soname,libectp.so.0
-else
-TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ectp$(SO)
-SONAME =
 endif
-
+endif
 
 _ECSOURCES = \
 	src/ast.ec \
@@ -156,6 +156,7 @@ else
 	$(AR) rcs $(TARGET) $(OBJECTS) $(LIBS)
 endif
 	$(call cp,$(TARGET),../$(SODESTDIR))
+ifndef SKIP_SONAME
 ifdef LINUX_TARGET
 	ln -sf $(LP)$(MODULE)$(SO).0.0.1 $(OBJ)$(LP)$(MODULE)$(SO).0.0
 	ln -sf $(LP)$(MODULE)$(SO).0.0.1 $(OBJ)$(LP)$(MODULE)$(SO).0
@@ -163,6 +164,7 @@ ifdef LINUX_TARGET
 	ln -sf $(LP)$(MODULE)$(SO).0.0.1 ../$(SODESTDIR)$(LP)$(MODULE)$(SO).0.0
 	ln -sf $(LP)$(MODULE)$(SO).0.0.1 ../$(SODESTDIR)$(LP)$(MODULE)$(SO).0
 	ln -sf $(LP)$(MODULE)$(SO).0.0.1 ../$(SODESTDIR)$(LP)$(MODULE)$(SO)
+endif
 endif
 ifdef WINDOWS_TARGET
 ifndef CROSS_TARGET
@@ -361,8 +363,10 @@ cleantarget:
 ifdef SHARED_LIBRARY_TARGET
 ifdef LINUX_TARGET
 ifdef LINUX_HOST
+ifndef SKIP_SONAME
 	$(call rm,$(OBJ)$(LP)$(MODULE)$(SO)$(basename $(VER)))
 	$(call rm,$(OBJ)$(LP)$(MODULE)$(SO))
+endif
 endif
 endif
 endif
