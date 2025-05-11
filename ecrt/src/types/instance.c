@@ -551,7 +551,7 @@ void * Instance_Module_Load(const char * libLocation, const char * name, void **
    // dlerror();
    library = dlopen(fileName, RTLD_LAZY);
    // if(!library)
-      // printf("Error opening %s: %s", fileName, dlerror());
+   //    printf("Error opening %s: %s\n", fileName, dlerror());
 #endif
    while(!library && attempts < sizeof(paths)/sizeof(paths[0]))
    {
@@ -585,6 +585,11 @@ void * Instance_Module_Load(const char * libLocation, const char * name, void **
 #endif
 #if !defined(__EMSCRIPTEN__)
       library = dlopen(fileName, RTLD_LAZY);
+
+#ifdef _DEBUG
+    //if(!library)
+    //   printf("Error opening %s: %s\n", fileName, dlerror());
+#endif
 #endif
    }
 
