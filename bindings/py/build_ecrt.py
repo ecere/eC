@@ -7,10 +7,10 @@ from cffi import FFI
 
 owd = os.getcwd()
 
-bindings_py_dir = path.join('bindings', 'py')
-
-if not path.isfile(bindings_py_dir):
-   bindings_py_dir = path.join(owd, bindings_py_dir)
+if path.isfile('cffi-ecrt.h'):
+   bindings_py_dir = '.'
+else:
+   bindings_py_dir = path.join('bindings', 'py')
    if not path.isfile(bindings_py_dir):
       bindings_py_dir = path.join(owd, 'eC', 'bindings', 'py')
 
@@ -49,20 +49,28 @@ libs = []
 libs.append('ecrt')
 if _embedded_c == False:
    libs.append('ecrt_c')
+
+# _py* CFFI packages are currently being packaged outside of the main extension directory
+extra_link_args = ["-Wl,-rpath,$ORIGIN/lib:$ORIGIN/ecrt/lib" ]
+if sys.platform == 'win32':
+   extra_link_args.append('-Wl,--export-all-symbols')
+else:
+   extra_link_args.append('-Wl,--export-dynamic')
+
 ffi_ecrt.set_source('_pyecrt',
                '#include "ecrt.h"',
                sources=srcs,
                define_macros=[('BINDINGS_SHARED', None), ('ECRT_EXPORT', None)],
-               extra_compile_args=['-DECPRFX=eC_', '-DMS_WIN64', '-Wl,--export-dynamic', '-O2'],
+               extra_compile_args=['-DECPRFX=eC_', '-DMS_WIN64', '-O2'], #--export-dynamic' ]
                include_dirs=[bindings_py_dir, incdir],
                libraries=libs,
-               # _py* CFFI packages are currently being packaged outside of the main extension directory
-               extra_link_args=["-Wl,-rpath,$ORIGIN/lib:$ORIGIN/ecrt/lib"],
+               extra_link_args=extra_link_args,
                library_dirs=[libdir],
                py_limited_api=False)
 if __name__ == '__main__':
    V = os.getenv('V')
    v = True if V == '1' or V == 'y' else False
+
    ffi_ecrt.compile(verbose=v,tmpdir='.',debug=False) # True)
 
 if dnf != '':
