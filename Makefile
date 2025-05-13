@@ -283,6 +283,8 @@ ifdef OSX_TARGET
 	install $(OBJBINDIR)ecs$(B32_SFX)$(E) $(BINDIR)/
 #	install $(OBJBINDIR)epj2make$(E) $(BINDIR)/
 	install $(OBJLIBDIR)libecrtStatic$(A) $(DESTSLIBDIR)/
+	mkdir -p $(MANDIR)/man1
+	cp -pRf share/man/man1/* $(MANDIR)/man1
 endif
 
 ifndef OSX_TARGET
@@ -307,6 +309,8 @@ endif
 	install $(INSTALL_FLAGS) $(OBJBINDIR)ecs$(B32_SFX)$(E) $(BINDIR)/ecs$(B32_SFX)$(E)
 #	install $(INSTALL_FLAGS) $(OBJBINDIR)epj2make$(E) $(BINDIR)/epj2make$(E)
 	install $(INSTALL_FLAGS) $(OBJLIBDIR)libecrtStatic$(A) $(DESTSLIBDIR)/libecrtStatic$(A)
+	mkdir -p $(MANDIR)/man1
+	cp -pRf share/man/man1/* $(MANDIR)/man1
 endif
 endif
 	@$(call echo,The eC SDK$(if $(CROSS_BIT32), (32-bit),) has been installed.)
