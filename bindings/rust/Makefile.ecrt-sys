@@ -15,17 +15,13 @@ ifndef COMPILER
 COMPILER := default
 endif
 
-C_BINDINGS_SYMBOLS_PREFIX_ENABLE := y
+# C_BINDINGS_SYMBOLS_PREFIX_ENABLE := y
 
 TARGET_TYPE = sharedlib
 
 # INCLUDES
 
-DGGAL_ABSPATH := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))../../
-
-ifndef EC_SDK_SRC
-EC_SDK_SRC := $(DGGAL_ABSPATH)../eC
-endif
+EC_SDK_SRC := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))../../
 
 _CF_DIR = $(EC_SDK_SRC)/
 include $(_CF_DIR)crossplatform.mk
@@ -62,9 +58,9 @@ OFLAGS =
 
 OFLAGS += \
 	-Lnative=obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX) \
-	-Lnative=$(DGGAL_ABSPATH)obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib \
+	-Lnative=$(EC_SDK_SRC)obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib \
 
-PRJ_CFLAGS += $(if $(DEBUG), -g, -O2 -ffast-math) -w -I$(DGGAL_ABSPATH)bindings/c -DEC_STATIC
+PRJ_CFLAGS += $(if $(DEBUG), -g, -O2 -ffast-math) -w -I$(EC_SDK_SRC)bindings/c -DEC_STATIC
 
 RUSTFLAGS = --edition 2021 -Anon_snake_case -Anon_upper_case_globals -Anon_camel_case_types -Aimproper_ctypes
 
@@ -98,9 +94,9 @@ $(OBJECTS): | objdir
 $(TARGET): $(SOURCES) $(OBJECTS) | objdir
 	$(AR) rcs $(CBINDING_STATIC_LIB) $(_OBJECTS)
 	rustc --crate-type lib --crate-name ecrt_sys $(RUSTFLAGS) $(BINDING_NAME)_cffi.rs $(OFLAGS) $(LIBS) -o $(TARGET)
-	$(call mkdir,$(DGGAL_ABSPATH)obj/$(PLATFORM)/lib)
-	$(call cp,$(TARGET),$(DGGAL_ABSPATH)obj/$(PLATFORM)/lib)
-	$(call cp,$(CBINDING_STATIC_LIB),$(DGGAL_ABSPATH)obj/$(PLATFORM)/lib)
+	$(call mkdir,$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
+	$(call cp,$(TARGET),$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
+	$(call cp,$(CBINDING_STATIC_LIB),$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
 
 cleantarget:
 	$(call rm,$(TARGET))
