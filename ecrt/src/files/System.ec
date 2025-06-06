@@ -541,6 +541,21 @@ public Semaphore getEventSemaphore()
 {
    return globalSystem.eventSemaphore;
 }
+
+public void WaitEvent(void)
+{
+#if !defined(__EMSCRIPTEN__)
+   globalSystem.eventSemaphore.Wait();
+#endif
+}
+
+public void SignalEvent(void)
+{
+#if !defined(__EMSCRIPTEN__)
+   globalSystem.eventSemaphore.Release();
+#endif
+}
+
 #endif
 #endif
 

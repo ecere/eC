@@ -2253,7 +2253,7 @@ static void FixDerivativesBase(Class base, Class mod)
          if(type == noHeadClass && _class.structSize != _class.offset + size)
             printf("ERROR: inconsistent nohead class struct size for %s\n", _class.name);
          _class.structSize = _class.offset + size;
-          _class.typeSize = sizeof(void *);
+         _class.typeSize = sizeof(void *);
       }
 
       /////////////////////
