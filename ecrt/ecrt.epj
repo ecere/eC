@@ -180,7 +180,17 @@
             {
                "Folder" : "mt",
                "Files" : [
-                  "Mutex.ec",
+                  {
+                     "FileName" : "Mutex.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "MemoryGuard",
+                           "Options" : {
+                              "MemoryGuard" : false
+                           }
+                        }
+                     ]
+                  },
                   "Semaphore.ec",
                   "Thread.ec",
                   "Condition.ec"
@@ -201,8 +211,28 @@
                      "Folder" : "legacy",
                      "Files" : [
                         "OldList.ec",
-                        "BTNode.ec",
-                        "BinaryTree.ec"
+                        {
+                           "FileName" : "BTNode.ec",
+                           "Configurations" : [
+                              {
+                                 "Name" : "MemoryGuard",
+                                 "Options" : {
+                                    "MemoryGuard" : false
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "FileName" : "BinaryTree.ec",
+                           "Configurations" : [
+                              {
+                                 "Name" : "MemoryGuard",
+                                 "Options" : {
+                                    "MemoryGuard" : false
+                                 }
+                              }
+                           ]
+                        }
                      ]
                   },
                   {
@@ -274,7 +304,17 @@
                         }
                      ]
                   },
-                  "instance.ec",
+                  {
+                     "FileName" : "instance.ec",
+                     "Configurations" : [
+                        {
+                           "Name" : "MemoryGuard",
+                           "Options" : {
+                              "MemoryGuard" : false
+                           }
+                        }
+                     ]
+                  },
                   "String.ec",
                   {
                      "FileName" : "units.ec",
