@@ -81,7 +81,7 @@ const size_t ccTypeSize[CC_TYPE_COUNT] =
 #define CC_HASH_AREAD16(d,o) ((uint32_t)(*((uint16_t *)ADDRESS(d,o))))
 #define CC_HASH_UREAD16(d,o) ((((uint32_t)(((uint8_t *)(d))[o+1]))<<8)+(uint32_t)(((uint8_t *)(d))[o]))
 
-uint32_t ccHash32Data( void *data, int size )
+uint32_t ccHash32Data( const void *data, int size )
 {
   uint32_t hash;
   int rem;

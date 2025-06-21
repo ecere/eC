@@ -492,7 +492,7 @@ extern const size_t ccTypeSize[CC_TYPE_COUNT];
 ////
 
 
-uint32_t ccHash32Data( void *data, int size );
+uint32_t ccHash32Data( const void *data, int size );
 uint32_t ccHash32Int32( uint32_t data );
 uint32_t ccHash32Int64( uint64_t data );
 uint32_t ccHash32Array32( uint32_t *data, int count );
