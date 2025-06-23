@@ -214,6 +214,7 @@ default:
 "asm"                      { return(ASM); }
 "__asm"                    { return(ASM); }
 "__typeof"                 { return(TYPEOF); }
+"__typeof__"               { return(TYPEOF); }
 "watch"                    { return(WATCH); }
 "stopwatching"             { return(STOPWATCHING); }
 "firewatchers"             { return(FIREWATCHERS); }
