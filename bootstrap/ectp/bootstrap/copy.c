@@ -309,12 +309,12 @@ extern struct Declarator * MkDeclaratorExtended(struct ExtDecl * extended, struc
 
 extern struct Declarator * MkDeclaratorExtendedEnd(struct ExtDecl * extended, struct Declarator * declarator);
 
-struct __eCNameSpace__eC__sys__Item;
+struct __eCNameSpace__eC__containers__Item;
 
-struct __eCNameSpace__eC__sys__Item
+struct __eCNameSpace__eC__containers__Item
 {
-struct __eCNameSpace__eC__sys__Item * prev;
-struct __eCNameSpace__eC__sys__Item * next;
+struct __eCNameSpace__eC__containers__Item * prev;
+struct __eCNameSpace__eC__containers__Item * next;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__containers__OldList * CopyList(struct __eCNameSpace__eC__containers__OldList * source, void * (* CopyFunction)(void *))
@@ -323,7 +323,7 @@ struct __eCNameSpace__eC__containers__OldList * list = (((void *)0));
 
 if(source)
 {
-struct __eCNameSpace__eC__sys__Item * item;
+struct __eCNameSpace__eC__containers__Item * item;
 
 list = MkList();
 for(item = (*source).first; item; item = item->next)

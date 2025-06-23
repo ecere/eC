@@ -155,6 +155,20 @@ struct InitDeclarator;
 
 extern char *  __eCNameSpace__eC__types__CopyString(const char *  string);
 
+struct yy_buffer_state
+{
+void *  yy_input_file;
+char *  yy_ch_buf;
+char *  yy_buf_pos;
+unsigned int yy_buf_size;
+int yy_n_chars;
+int yy_is_our_buffer;
+int yy_is_interactive;
+int yy_at_bol;
+int yy_fill_buffer;
+int yy_buffer_status;
+} eC_gcc_struct;
+
 extern size_t strlen(const char * );
 
 extern void Compiler_Warning(const char *  format, ...);
@@ -677,7 +691,7 @@ struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__TempFile;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__sys__File;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__File;
 
 struct __eCNameSpace__eC__types__Module
 {
@@ -697,8 +711,6 @@ struct __eCNameSpace__eC__types__NameSpace privateNameSpace;
 struct __eCNameSpace__eC__types__NameSpace publicNameSpace;
 } eC_gcc_struct;
 
-// #include <stdio.h>
-
 struct Declarator * SpecDeclFromString(const char * string, struct __eCNameSpace__eC__containers__OldList * specs, struct Declarator * baseDecl)
 {
 struct Location oldLocation = yylloc;
@@ -715,7 +727,7 @@ size_t (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *
 __internal_VirtualMethod = ((size_t (*)(struct __eCNameSpace__eC__types__Instance *, const void *  buffer, size_t size, size_t count))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = fileInput;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Write]);
 __internal_VirtualMethod ? __internal_VirtualMethod(fileInput, string, 1, strlen(string)) : (size_t)1;
 }));
@@ -725,7 +737,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, long long pos, int mode))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = fileInput;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Seek]);
 __internal_VirtualMethod ? __internal_VirtualMethod(fileInput, 0, 0) : (unsigned int)1;
 }));
@@ -737,7 +749,6 @@ resetScanner();
 {
 unsigned int oldParsingType = parsingType;
 
-// printf("Parsing Type: %s\n", string);
 parsingType = 1;
 type_yyparse();
 parsingType = oldParsingType;

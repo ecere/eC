@@ -141,7 +141,7 @@ extern int __eCVMethodID_class_OnFree;
 
 struct __eCNameSpace__eC__types__Property;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Iterator_data, * __eCPropM___eCNameSpace__eC__types__Iterator_data;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Iterator_data, * __eCPropM___eCNameSpace__eC__containers__Iterator_data;
 
 static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Container_copySrc, * __eCPropM___eCNameSpace__eC__containers__Container_copySrc;
 
@@ -244,7 +244,7 @@ extern void __eCNameSpace__eC__types__eInstance_Watch(struct __eCNameSpace__eC__
 
 extern void __eCNameSpace__eC__types__eInstance_FireWatchers(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property);
 
-struct __eCNameSpace__eC__types__Iterator
+struct __eCNameSpace__eC__containers__Iterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
@@ -292,17 +292,17 @@ void __eCMethod___eCNameSpace__eC__types__IOChannel_Put(struct __eCNameSpace__eC
 
 void __eCMethod___eCNameSpace__eC__types__IOChannel_Get(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Class * class, void * *  data);
 
-uint64 __eCProp___eCNameSpace__eC__types__Iterator_Get_data(struct __eCNameSpace__eC__types__Iterator * this);
+uint64 __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(struct __eCNameSpace__eC__containers__Iterator * this);
 
-void __eCProp___eCNameSpace__eC__types__Iterator_Set_data(struct __eCNameSpace__eC__types__Iterator * this, uint64 value);
+void __eCProp___eCNameSpace__eC__containers__Iterator_Set_data(struct __eCNameSpace__eC__containers__Iterator * this, uint64 value);
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -324,7 +324,7 @@ int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -396,10 +396,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -416,11 +416,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -473,7 +473,7 @@ char *  parsedCommand;
 struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 } eC_gcc_struct;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Iterator;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Iterator;
 
 static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Container;
 
@@ -529,7 +529,7 @@ struct __eCNameSpace__eC__types__NameSpace privateNameSpace;
 struct __eCNameSpace__eC__types__NameSpace publicNameSpace;
 } eC_gcc_struct;
 
-uint64 __eCProp___eCNameSpace__eC__types__Iterator_Get_data(struct __eCNameSpace__eC__types__Iterator * this)
+uint64 __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(struct __eCNameSpace__eC__containers__Iterator * this)
 {
 return (__extension__ ({
 uint64 (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * pointer);
@@ -543,7 +543,7 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this->container, this->point
 }));
 }
 
-void __eCProp___eCNameSpace__eC__types__Iterator_Set_data(struct __eCNameSpace__eC__types__Iterator * this, uint64 value)
+void __eCProp___eCNameSpace__eC__containers__Iterator_Set_data(struct __eCNameSpace__eC__containers__Iterator * this, uint64 value)
 {
 (__extension__ ({
 unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * pointer, uint64 data);
@@ -557,7 +557,7 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this->container, this->point
 }));
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Prev(struct __eCNameSpace__eC__types__Iterator * this)
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Prev(struct __eCNameSpace__eC__containers__Iterator * this)
 {
 if(this->pointer && this->container)
 this->pointer = (__extension__ ({
@@ -584,7 +584,7 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this->container) : (struct _
 return this->pointer != (((void *)0));
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Next(struct __eCNameSpace__eC__types__Iterator * this)
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Next(struct __eCNameSpace__eC__containers__Iterator * this)
 {
 if(this->pointer && this->container)
 this->pointer = (__extension__ ({
@@ -611,7 +611,7 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this->container) : (struct _
 return this->pointer != (((void *)0));
 }
 
-uint64 __eCMethod___eCNameSpace__eC__types__Iterator_GetData(struct __eCNameSpace__eC__types__Iterator * this)
+uint64 __eCMethod___eCNameSpace__eC__containers__Iterator_GetData(struct __eCNameSpace__eC__containers__Iterator * this)
 {
 return (__extension__ ({
 uint64 (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * pointer);
@@ -625,7 +625,7 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this->container, this->point
 }));
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_SetData(struct __eCNameSpace__eC__types__Iterator * this, uint64 value)
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_SetData(struct __eCNameSpace__eC__containers__Iterator * this, uint64 value)
 {
 return (__extension__ ({
 unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * pointer, uint64 data);
@@ -639,7 +639,7 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this->container, this->point
 }));
 }
 
-void __eCMethod___eCNameSpace__eC__types__Iterator_Remove(struct __eCNameSpace__eC__types__Iterator * this)
+void __eCMethod___eCNameSpace__eC__containers__Iterator_Remove(struct __eCNameSpace__eC__containers__Iterator * this)
 {
 if(this->container)
 (__extension__ ({
@@ -655,7 +655,7 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this->container, this->point
 this->pointer = (((void *)0));
 }
 
-void __eCMethod___eCNameSpace__eC__types__Iterator_Free(struct __eCNameSpace__eC__types__Iterator * this)
+void __eCMethod___eCNameSpace__eC__containers__Iterator_Free(struct __eCNameSpace__eC__containers__Iterator * this)
 {
 if(this->container)
 (__extension__ ({
@@ -702,9 +702,9 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this, value) : (void)1;
 __eCProp___eCNameSpace__eC__containers__Container_copySrc && __eCProp___eCNameSpace__eC__containers__Container_copySrc->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCProp___eCNameSpace__eC__containers__Container_copySrc) : (void)0, __eCPropM___eCNameSpace__eC__containers__Container_copySrc && __eCPropM___eCNameSpace__eC__containers__Container_copySrc->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCPropM___eCNameSpace__eC__containers__Container_copySrc) : (void)0;
 }
 
-void __eCProp___eCNameSpace__eC__containers__Container_Get_firstIterator(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Iterator * value)
+void __eCProp___eCNameSpace__eC__containers__Container_Get_firstIterator(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__Iterator * value)
 {
-struct __eCNameSpace__eC__types__Iterator __simpleStruct0;
+struct __eCNameSpace__eC__containers__Iterator __simpleStruct0;
 
 *value = (__simpleStruct0.container = (struct __eCNameSpace__eC__types__Instance *)this, __simpleStruct0.pointer = (__extension__ ({
 struct __eCNameSpace__eC__containers__IteratorPointer * (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *);
@@ -718,9 +718,9 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this) : (struct __eCNameSpac
 })), __simpleStruct0);
 }
 
-void __eCProp___eCNameSpace__eC__containers__Container_Get_lastIterator(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Iterator * value)
+void __eCProp___eCNameSpace__eC__containers__Container_Get_lastIterator(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__Iterator * value)
 {
-struct __eCNameSpace__eC__types__Iterator __simpleStruct0;
+struct __eCNameSpace__eC__containers__Iterator __simpleStruct0;
 
 *value = (__simpleStruct0.container = (struct __eCNameSpace__eC__types__Instance *)this, __simpleStruct0.pointer = (__extension__ ({
 struct __eCNameSpace__eC__containers__IteratorPointer * (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *);
@@ -1409,17 +1409,17 @@ if(isStruct)
 void __eCUnregisterModule_Container(struct __eCNameSpace__eC__types__Instance * module)
 {
 
-__eCPropM___eCNameSpace__eC__types__Iterator_data = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__Iterator_data = (void *)0;
 __eCPropM___eCNameSpace__eC__containers__Container_copySrc = (void *)0;
 __eCPropM___eCNameSpace__eC__containers__Container_firstIterator = (void *)0;
 __eCPropM___eCNameSpace__eC__containers__Container_lastIterator = (void *)0;
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Find(struct __eCNameSpace__eC__types__Iterator * this, const uint64 value)
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Find(struct __eCNameSpace__eC__containers__Iterator * this, const uint64 value)
 {
 if(this->container)
 {
-__eCMethod___eCNameSpace__eC__types__Iterator_Free(this);
+__eCMethod___eCNameSpace__eC__containers__Iterator_Free(this);
 this->pointer = (__extension__ ({
 struct __eCNameSpace__eC__containers__IteratorPointer * (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const uint64 value);
 
@@ -1434,13 +1434,13 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this->container, value) : (s
 return this->pointer != (((void *)0));
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Index(struct __eCNameSpace__eC__types__Iterator * this, const uint64 index, unsigned int create)
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Index(struct __eCNameSpace__eC__containers__Iterator * this, const uint64 index, unsigned int create)
 {
 if(this->container)
 {
 unsigned int justAdded = 0;
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Free(this);
+__eCMethod___eCNameSpace__eC__containers__Iterator_Free(this);
 this->pointer = (__extension__ ({
 struct __eCNameSpace__eC__containers__IteratorPointer * (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const uint64 pos, unsigned int create, unsigned int *  justAdded);
 
@@ -1473,23 +1473,23 @@ __internal_VirtualMethod ? __internal_VirtualMethod(this) : (int)1;
 
 if(count >= 2 && ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[1].__anon1.__anon1.dataTypeClass == __eCClass_int)
 {
-struct __eCNameSpace__eC__types__Iterator __simpleStruct1 =
+struct __eCNameSpace__eC__containers__Iterator __simpleStruct1 =
 {
 0, 0
 };
-struct __eCNameSpace__eC__types__Iterator __simpleStruct0 =
+struct __eCNameSpace__eC__containers__Iterator __simpleStruct0 =
 {
 0, 0
 };
-struct __eCNameSpace__eC__types__Iterator a =
+struct __eCNameSpace__eC__containers__Iterator a =
 {
 this, 0
 };
-struct __eCNameSpace__eC__types__Iterator b =
+struct __eCNameSpace__eC__containers__Iterator b =
 {
 this, 0
 };
-struct __eCNameSpace__eC__types__Iterator mid =
+struct __eCNameSpace__eC__containers__Iterator mid =
 {
 this, 0
 };
@@ -1499,8 +1499,8 @@ int (* onCompare)(void *, const void *, const void *) = (void *)Dclass->_vTbl[__
 struct __eCNameSpace__eC__types__Instance * listA = lists[0];
 struct __eCNameSpace__eC__types__Instance * listB = lists[1];
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&mid, (uint64)(count / 2 - 1), 0);
-while(__eCMethod___eCNameSpace__eC__types__Iterator_Next(&a))
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&mid, (uint64)(count / 2 - 1), 0);
+while(__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&a))
 {
 (__extension__ ({
 struct __eCNameSpace__eC__containers__IteratorPointer * (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, uint64 value);
@@ -1510,13 +1510,13 @@ struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = listA;
 
 __internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Container->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Add]);
-__internal_VirtualMethod ? __internal_VirtualMethod(listA, __eCProp___eCNameSpace__eC__types__Iterator_Get_data(&a)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
+__internal_VirtualMethod ? __internal_VirtualMethod(listA, __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&a)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
 }));
 if(a.pointer == mid.pointer)
 break;
 }
 b.pointer = mid.pointer;
-while(__eCMethod___eCNameSpace__eC__types__Iterator_Next(&b))
+while(__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&b))
 (__extension__ ({
 struct __eCNameSpace__eC__containers__IteratorPointer * (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, uint64 value);
 
@@ -1525,7 +1525,7 @@ struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = listB;
 
 __internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Container->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Add]);
-__internal_VirtualMethod ? __internal_VirtualMethod(listB, __eCProp___eCNameSpace__eC__types__Iterator_Get_data(&b)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
+__internal_VirtualMethod ? __internal_VirtualMethod(listB, __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&b)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
 }));
 (__extension__ ({
 void (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *);
@@ -1541,15 +1541,15 @@ __eCMethod___eCNameSpace__eC__containers__Container__Sort(listA, ascending, list
 __eCMethod___eCNameSpace__eC__containers__Container__Sort(listB, ascending, lists + 2);
 a = (__simpleStruct0.container = listA, __simpleStruct0);
 b = (__simpleStruct1.container = listB, __simpleStruct1);
-__eCMethod___eCNameSpace__eC__types__Iterator_Next(&a);
-__eCMethod___eCNameSpace__eC__types__Iterator_Next(&b);
+__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&a);
+__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&b);
 while(a.pointer || b.pointer)
 {
 int r;
 
 if(a.pointer && b.pointer)
 {
-uint64 dataA = __eCProp___eCNameSpace__eC__types__Iterator_Get_data(&a), dataB = __eCProp___eCNameSpace__eC__types__Iterator_Get_data(&b);
+uint64 dataA = __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&a), dataB = __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&b);
 
 r = onCompare(Dclass, byRef ? ((char *)&dataA + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[2].__anon1.__anon1.dataTypeClass->typeSize)) : (const void *)(uintptr_t)dataA, byRef ? ((char *)&dataB + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[2].__anon1.__anon1.dataTypeClass->typeSize)) : (const void *)(uintptr_t)dataB);
 }
@@ -1569,9 +1569,9 @@ struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = this;
 
 __internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Container->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Add]);
-__internal_VirtualMethod ? __internal_VirtualMethod(this, __eCProp___eCNameSpace__eC__types__Iterator_Get_data(&a)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
+__internal_VirtualMethod ? __internal_VirtualMethod(this, __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&a)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
 }));
-__eCMethod___eCNameSpace__eC__types__Iterator_Next(&a);
+__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&a);
 }
 else
 {
@@ -1583,9 +1583,9 @@ struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = this;
 
 __internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Container->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Add]);
-__internal_VirtualMethod ? __internal_VirtualMethod(this, __eCProp___eCNameSpace__eC__types__Iterator_Get_data(&b)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
+__internal_VirtualMethod ? __internal_VirtualMethod(this, __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&b)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
 }));
-__eCMethod___eCNameSpace__eC__types__Iterator_Next(&b);
+__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&b);
 }
 }
 (__extension__ ({
@@ -1667,26 +1667,26 @@ struct __eCNameSpace__eC__types__ClassTemplateArgument __simpleStruct0 =
 };
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::Iterator", 0, sizeof(struct __eCNameSpace__eC__types__Iterator), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::containers::Iterator", 0, sizeof(struct __eCNameSpace__eC__containers__Iterator), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__types__Iterator = class;
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Find", "bool Find(const T value)", __eCMethod___eCNameSpace__eC__types__Iterator_Find, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Free", "void Free()", __eCMethod___eCNameSpace__eC__types__Iterator_Free, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetData", "T GetData()", __eCMethod___eCNameSpace__eC__types__Iterator_GetData, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Index", "bool Index(const IT index, bool create)", __eCMethod___eCNameSpace__eC__types__Iterator_Index, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Next", "bool Next()", __eCMethod___eCNameSpace__eC__types__Iterator_Next, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Prev", "bool Prev()", __eCMethod___eCNameSpace__eC__types__Iterator_Prev, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Remove", "void Remove()", __eCMethod___eCNameSpace__eC__types__Iterator_Remove, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "SetData", "bool SetData(T value)", __eCMethod___eCNameSpace__eC__types__Iterator_SetData, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "container", "eC::types::Container<T, IT>", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "pointer", "eC::types::IteratorPointer", sizeof(void *), 0xF000F000, 1);
-__eCPropM___eCNameSpace__eC__types__Iterator_data = __eCNameSpace__eC__types__eClass_AddProperty(class, "data", "T", __eCProp___eCNameSpace__eC__types__Iterator_Set_data, __eCProp___eCNameSpace__eC__types__Iterator_Get_data, 1);
+__eCClass___eCNameSpace__eC__containers__Iterator = class;
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Find", "bool Find(const T value)", __eCMethod___eCNameSpace__eC__containers__Iterator_Find, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Free", "void Free()", __eCMethod___eCNameSpace__eC__containers__Iterator_Free, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetData", "T GetData()", __eCMethod___eCNameSpace__eC__containers__Iterator_GetData, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Index", "bool Index(const IT index, bool create)", __eCMethod___eCNameSpace__eC__containers__Iterator_Index, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Next", "bool Next()", __eCMethod___eCNameSpace__eC__containers__Iterator_Next, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Prev", "bool Prev()", __eCMethod___eCNameSpace__eC__containers__Iterator_Prev, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Remove", "void Remove()", __eCMethod___eCNameSpace__eC__containers__Iterator_Remove, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "SetData", "bool SetData(T value)", __eCMethod___eCNameSpace__eC__containers__Iterator_SetData, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "container", "eC::containers::Container<T, IT>", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "pointer", "eC::containers::IteratorPointer", sizeof(void *), 0xF000F000, 1);
+__eCPropM___eCNameSpace__eC__containers__Iterator_data = __eCNameSpace__eC__types__eClass_AddProperty(class, "data", "T", __eCProp___eCNameSpace__eC__containers__Iterator_Set_data, __eCProp___eCNameSpace__eC__containers__Iterator_Get_data, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__Iterator_data = __eCPropM___eCNameSpace__eC__types__Iterator_data, __eCPropM___eCNameSpace__eC__types__Iterator_data = (void *)0;
+__eCProp___eCNameSpace__eC__containers__Iterator_data = __eCPropM___eCNameSpace__eC__containers__Iterator_data, __eCPropM___eCNameSpace__eC__containers__Iterator_data = (void *)0;
 __eCNameSpace__eC__types__eClass_AddTemplateParameter(class, "T", 0, 0, (((void *)0)));
 __eCNameSpace__eC__types__eClass_AddTemplateParameter(class, "IT", 0, 0, &__simpleStruct0);
 __eCNameSpace__eC__types__eClass_DoneAddingTemplateParameters(class);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::Container", 0, 0, 0, (void *)0, (void *)__eCDestructor___eCNameSpace__eC__containers__Container, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::containers::Container", 0, 0, 0, (void *)0, (void *)__eCDestructor___eCNameSpace__eC__containers__Container, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__containers__Container = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnCompare", 0, __eCMethod___eCNameSpace__eC__containers__Container_OnCompare, 1);
@@ -1695,33 +1695,33 @@ __eCNameSpace__eC__types__eClass_AddMethod(class, "OnFree", 0, __eCMethod___eCNa
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnGetString", 0, __eCMethod___eCNameSpace__eC__containers__Container_OnGetString, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnSerialize", 0, __eCMethod___eCNameSpace__eC__containers__Container_OnSerialize, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnUnserialize", 0, __eCMethod___eCNameSpace__eC__containers__Container_OnUnserialize, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetFirst", "eC::types::IteratorPointer GetFirst()", __eCMethod___eCNameSpace__eC__containers__Container_GetFirst, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetLast", "eC::types::IteratorPointer GetLast()", __eCMethod___eCNameSpace__eC__containers__Container_GetLast, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetPrev", "eC::types::IteratorPointer GetPrev(eC::types::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__Container_GetPrev, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetNext", "eC::types::IteratorPointer GetNext(eC::types::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__Container_GetNext, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetData", "D GetData(eC::types::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__Container_GetData, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "SetData", "bool SetData(eC::types::IteratorPointer pointer, D data)", 0, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetAtPosition", "eC::types::IteratorPointer GetAtPosition(const I pos, bool create, bool * justAdded)", __eCMethod___eCNameSpace__eC__containers__Container_GetAtPosition, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Insert", "eC::types::IteratorPointer Insert(eC::types::IteratorPointer after, T value)", 0, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Add", "eC::types::IteratorPointer Add(T value)", 0, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Remove", "void Remove(eC::types::IteratorPointer it)", 0, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Move", "void Move(eC::types::IteratorPointer it, eC::types::IteratorPointer after)", 0, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetFirst", "eC::containers::IteratorPointer GetFirst()", __eCMethod___eCNameSpace__eC__containers__Container_GetFirst, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetLast", "eC::containers::IteratorPointer GetLast()", __eCMethod___eCNameSpace__eC__containers__Container_GetLast, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetPrev", "eC::containers::IteratorPointer GetPrev(eC::containers::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__Container_GetPrev, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetNext", "eC::containers::IteratorPointer GetNext(eC::containers::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__Container_GetNext, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetData", "D GetData(eC::containers::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__Container_GetData, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "SetData", "bool SetData(eC::containers::IteratorPointer pointer, D data)", 0, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetAtPosition", "eC::containers::IteratorPointer GetAtPosition(const I pos, bool create, bool * justAdded)", __eCMethod___eCNameSpace__eC__containers__Container_GetAtPosition, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Insert", "eC::containers::IteratorPointer Insert(eC::containers::IteratorPointer after, T value)", 0, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Add", "eC::containers::IteratorPointer Add(T value)", 0, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Remove", "void Remove(eC::containers::IteratorPointer it)", 0, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Move", "void Move(eC::containers::IteratorPointer it, eC::containers::IteratorPointer after)", 0, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "RemoveAll", "void RemoveAll()", __eCMethod___eCNameSpace__eC__containers__Container_RemoveAll, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Copy", "void Copy(eC::types::Container<T> source)", __eCMethod___eCNameSpace__eC__containers__Container_Copy, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Find", "eC::types::IteratorPointer Find(const D value)", __eCMethod___eCNameSpace__eC__containers__Container_Find, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "FreeIterator", "void FreeIterator(eC::types::IteratorPointer it)", 0, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Copy", "void Copy(eC::containers::Container<T> source)", __eCMethod___eCNameSpace__eC__containers__Container_Copy, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Find", "eC::containers::IteratorPointer Find(const D value)", __eCMethod___eCNameSpace__eC__containers__Container_Find, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "FreeIterator", "void FreeIterator(eC::containers::IteratorPointer it)", 0, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetCount", "int GetCount()", __eCMethod___eCNameSpace__eC__containers__Container_GetCount, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Free", "void Free()", __eCMethod___eCNameSpace__eC__containers__Container_Free, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Delete", "void Delete(eC::types::IteratorPointer i)", __eCMethod___eCNameSpace__eC__containers__Container_Delete, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Delete", "void Delete(eC::containers::IteratorPointer i)", __eCMethod___eCNameSpace__eC__containers__Container_Delete, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Sort", "void Sort(bool ascending)", __eCMethod___eCNameSpace__eC__containers__Container_Sort, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "TakeOut", "bool TakeOut(const D d)", __eCMethod___eCNameSpace__eC__containers__Container_TakeOut, 1);
-__eCPropM___eCNameSpace__eC__containers__Container_copySrc = __eCNameSpace__eC__types__eClass_AddProperty(class, "copySrc", "eC::types::Container<T>", __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc, 0, 1);
+__eCPropM___eCNameSpace__eC__containers__Container_copySrc = __eCNameSpace__eC__types__eClass_AddProperty(class, "copySrc", "eC::containers::Container<T>", __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc, 0, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__containers__Container_copySrc = __eCPropM___eCNameSpace__eC__containers__Container_copySrc, __eCPropM___eCNameSpace__eC__containers__Container_copySrc = (void *)0;
-__eCPropM___eCNameSpace__eC__containers__Container_firstIterator = __eCNameSpace__eC__types__eClass_AddProperty(class, "firstIterator", "eC::types::Iterator<T>", 0, __eCProp___eCNameSpace__eC__containers__Container_Get_firstIterator, 1);
+__eCPropM___eCNameSpace__eC__containers__Container_firstIterator = __eCNameSpace__eC__types__eClass_AddProperty(class, "firstIterator", "eC::containers::Iterator<T>", 0, __eCProp___eCNameSpace__eC__containers__Container_Get_firstIterator, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__containers__Container_firstIterator = __eCPropM___eCNameSpace__eC__containers__Container_firstIterator, __eCPropM___eCNameSpace__eC__containers__Container_firstIterator = (void *)0;
-__eCPropM___eCNameSpace__eC__containers__Container_lastIterator = __eCNameSpace__eC__types__eClass_AddProperty(class, "lastIterator", "eC::types::Iterator<T>", 0, __eCProp___eCNameSpace__eC__containers__Container_Get_lastIterator, 1);
+__eCPropM___eCNameSpace__eC__containers__Container_lastIterator = __eCNameSpace__eC__types__eClass_AddProperty(class, "lastIterator", "eC::containers::Iterator<T>", 0, __eCProp___eCNameSpace__eC__containers__Container_Get_lastIterator, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__containers__Container_lastIterator = __eCPropM___eCNameSpace__eC__containers__Container_lastIterator, __eCPropM___eCNameSpace__eC__containers__Container_lastIterator = (void *)0;
 __eCNameSpace__eC__types__eClass_AddTemplateParameter(class, "T", 0, 0, (((void *)0)));

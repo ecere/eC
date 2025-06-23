@@ -124,28 +124,6 @@ __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__containers__Bui
 
 __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__containers__BuiltInContainer_Sort;
 
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_AddObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_CreateNew;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_CreateObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_DestroyObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_DroppedObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_FixProperty;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_ListToolBoxClasses;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_PostCreateObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_PrepareTestObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_Reset;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_SelectObject;
-
 __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__containers__Container_Add;
 
 __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__containers__Container_Copy;
@@ -183,32 +161,6 @@ __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__containers__Con
 __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__containers__Container_SetData;
 
 __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__containers__Container_Sort;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_AddDefaultMethod;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_AddToolBoxClass;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_CodeAddObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_DeleteObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_FindObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_ModifyCode;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_ObjectContainsCode;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_RenameObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_SelectObjectFromDesigner;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_SheetAddObject;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_UpdateProperties;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__IOChannel_ReadData;
-
-__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__IOChannel_WriteData;
 
 __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__files__File_Close;
 
@@ -260,6 +212,54 @@ __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__files__FileSyst
 
 __attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__files__FileSystem_Stats;
 
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_AddObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_CreateNew;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_CreateObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_DestroyObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_DroppedObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_FixProperty;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_ListToolBoxClasses;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_PostCreateObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_PrepareTestObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_Reset;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_SelectObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_AddDefaultMethod;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_AddToolBoxClass;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_CodeAddObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_DeleteObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_FindObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_ModifyCode;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_ObjectContainsCode;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_RenameObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_SelectObjectFromDesigner;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_SheetAddObject;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__DesignerBase_UpdateProperties;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__IOChannel_ReadData;
+
+__attribute__((__common__)) int __eCVMethodID___eCNameSpace__eC__types__IOChannel_WriteData;
+
 __attribute__((__common__)) void * __eCProp_float_Get_isInf;
 
 __attribute__((__common__)) void * __eCProp_float_Get_isNan;
@@ -284,6 +284,8 @@ unsigned int circ;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__containers__BTNode;
+
+struct __eCNameSpace__eC__files__Type;
 
 struct __eCNameSpace__eC__types__DataValue
 {
@@ -346,23 +348,21 @@ __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_c
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_double;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__AVLNode;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__AVLNode;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Application;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Array;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Array;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Array_TPL_String_;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Array_TPL_String_;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Array_TPL_eC__containers__Array_TPL_String___;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Array_TPL_eC__containers__Array_TPL_String___;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__BTNode;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__BuiltInContainer;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Container;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__CustomAVLTree;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Instance;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__CustomAVLTree;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__IteratorPointer;
 
@@ -372,23 +372,25 @@ __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass__
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__ListItem;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map_TPL_String__const_String_;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map_TPL_String__const_String_;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map_TPL_String__eC__types__Map_TPL_String__const_String___;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map_TPL_String__eC__containers__Map_TPL_String__const_String___;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Module;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__OldLink;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__BTNode;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__StringBTNode;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__File;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__OldLink;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__StringBTNode;
-
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__TempFile;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Application;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Instance;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Module;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_float;
 
@@ -417,7 +419,7 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 void (*  Set)(void * , int);
 int (*  Get)(void * );
 unsigned int (*  IsSet)(void * );
@@ -446,21 +448,13 @@ __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp_double_signBit;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_maximum;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_maximum;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_minimum;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_minimum;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_next;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_next;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_prev;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Class_char__PTR_;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Container_copySrc;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Iterator_data;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_map;
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_prev;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__BTNode_count;
 
@@ -472,11 +466,19 @@ __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__BinaryTree_first;
 
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Container_copySrc;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Iterator_data;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_map;
+
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__files__File_buffered;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__files__File_input;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__files__File_output;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Class_char__PTR_;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp_float_isInf;
 
@@ -484,13 +486,13 @@ __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp_float_signBit;
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -509,7 +511,7 @@ int type;
 struct __eCNameSpace__eC__types__Class * _class;
 void *  symbol;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int memberAccess;
 } eC_gcc_struct;
 
@@ -517,33 +519,17 @@ struct __eCNameSpace__eC__types__Module;
 
 static struct __eCNameSpace__eC__types__Instance * __currentModule;
 
-void __eCRegisterModule_BufferedFile(struct __eCNameSpace__eC__types__Instance * module);
+void __eCRegisterModule_OldList(struct __eCNameSpace__eC__types__Instance * module);
 
-void __eCUnregisterModule_BufferedFile(struct __eCNameSpace__eC__types__Instance * module);
+void __eCUnregisterModule_OldList(struct __eCNameSpace__eC__types__Instance * module);
 
-void __eCRegisterModule_DualPipe(struct __eCNameSpace__eC__types__Instance * module);
+void __eCRegisterModule_BTNode(struct __eCNameSpace__eC__types__Instance * module);
 
-void __eCUnregisterModule_DualPipe(struct __eCNameSpace__eC__types__Instance * module);
+void __eCUnregisterModule_BTNode(struct __eCNameSpace__eC__types__Instance * module);
 
-void __eCRegisterModule_File(struct __eCNameSpace__eC__types__Instance * module);
+void __eCRegisterModule_BinaryTree(struct __eCNameSpace__eC__types__Instance * module);
 
-void __eCUnregisterModule_File(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCRegisterModule_memory(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCUnregisterModule_memory(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCRegisterModule_System(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCUnregisterModule_System(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCRegisterModule_TempFile(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCUnregisterModule_TempFile(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCRegisterModule_i18n(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCUnregisterModule_i18n(struct __eCNameSpace__eC__types__Instance * module);
+void __eCUnregisterModule_BinaryTree(struct __eCNameSpace__eC__types__Instance * module);
 
 void __eCRegisterModule_Array(struct __eCNameSpace__eC__types__Instance * module);
 
@@ -577,14 +563,6 @@ void __eCRegisterModule_Map(struct __eCNameSpace__eC__types__Instance * module);
 
 void __eCUnregisterModule_Map(struct __eCNameSpace__eC__types__Instance * module);
 
-void __eCRegisterModule_BinaryTree(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCUnregisterModule_BinaryTree(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCRegisterModule_BTNode(struct __eCNameSpace__eC__types__Instance * module);
-
-void __eCUnregisterModule_BTNode(struct __eCNameSpace__eC__types__Instance * module);
-
 void __eCRegisterModule_dataTypes(struct __eCNameSpace__eC__types__Instance * module);
 
 void __eCUnregisterModule_dataTypes(struct __eCNameSpace__eC__types__Instance * module);
@@ -597,9 +575,33 @@ void __eCRegisterModule_String(struct __eCNameSpace__eC__types__Instance * modul
 
 void __eCUnregisterModule_String(struct __eCNameSpace__eC__types__Instance * module);
 
-void __eCRegisterModule_OldList(struct __eCNameSpace__eC__types__Instance * module);
+void __eCRegisterModule_memory(struct __eCNameSpace__eC__types__Instance * module);
 
-void __eCUnregisterModule_OldList(struct __eCNameSpace__eC__types__Instance * module);
+void __eCUnregisterModule_memory(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCRegisterModule_File(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCUnregisterModule_File(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCRegisterModule_TempFile(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCUnregisterModule_TempFile(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCRegisterModule_DualPipe(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCUnregisterModule_DualPipe(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCRegisterModule_BufferedFile(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCUnregisterModule_BufferedFile(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCRegisterModule_System(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCUnregisterModule_System(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCRegisterModule_i18n(struct __eCNameSpace__eC__types__Instance * module);
+
+void __eCUnregisterModule_i18n(struct __eCNameSpace__eC__types__Instance * module);
 
 extern struct __eCNameSpace__eC__types__Class * __eCNameSpace__eC__types__eSystem_FindClass(struct __eCNameSpace__eC__types__Instance * module, const char *  name);
 
@@ -615,13 +617,9 @@ __eCDestroyModuleInstances_System();
 __eCNameSpace__eC__i18n__UnloadTranslatedStrings("ecrt");
 __eCDestroyModuleInstances_i18n();
 }
-__eCUnregisterModule_BufferedFile(module);
-__eCUnregisterModule_DualPipe(module);
-__eCUnregisterModule_File(module);
-__eCUnregisterModule_memory(module);
-__eCUnregisterModule_System(module);
-__eCUnregisterModule_TempFile(module);
-__eCUnregisterModule_i18n(module);
+__eCUnregisterModule_OldList(module);
+__eCUnregisterModule_BTNode(module);
+__eCUnregisterModule_BinaryTree(module);
 __eCUnregisterModule_Array(module);
 __eCUnregisterModule_AVLTree(module);
 __eCUnregisterModule_BuiltInContainer(module);
@@ -630,12 +628,16 @@ __eCUnregisterModule_CustomAVLTree(module);
 __eCUnregisterModule_LinkList(module);
 __eCUnregisterModule_List(module);
 __eCUnregisterModule_Map(module);
-__eCUnregisterModule_BinaryTree(module);
-__eCUnregisterModule_BTNode(module);
 __eCUnregisterModule_dataTypes(module);
 __eCUnregisterModule_instance(module);
 __eCUnregisterModule_String(module);
-__eCUnregisterModule_OldList(module);
+__eCUnregisterModule_memory(module);
+__eCUnregisterModule_File(module);
+__eCUnregisterModule_TempFile(module);
+__eCUnregisterModule_DualPipe(module);
+__eCUnregisterModule_BufferedFile(module);
+__eCUnregisterModule_System(module);
+__eCUnregisterModule_i18n(module);
 if(__currentModule == module)
 __currentModule = (void *)0;
 return 1;
@@ -651,13 +653,9 @@ if(!__currentModule)
 {
 __currentModule = module;
 }
-__eCRegisterModule_BufferedFile(module);
-__eCRegisterModule_DualPipe(module);
-__eCRegisterModule_File(module);
-__eCRegisterModule_memory(module);
-__eCRegisterModule_System(module);
-__eCRegisterModule_TempFile(module);
-__eCRegisterModule_i18n(module);
+__eCRegisterModule_OldList(module);
+__eCRegisterModule_BTNode(module);
+__eCRegisterModule_BinaryTree(module);
 __eCRegisterModule_Array(module);
 __eCRegisterModule_AVLTree(module);
 __eCRegisterModule_BuiltInContainer(module);
@@ -666,12 +664,16 @@ __eCRegisterModule_CustomAVLTree(module);
 __eCRegisterModule_LinkList(module);
 __eCRegisterModule_List(module);
 __eCRegisterModule_Map(module);
-__eCRegisterModule_BinaryTree(module);
-__eCRegisterModule_BTNode(module);
 __eCRegisterModule_dataTypes(module);
 __eCRegisterModule_instance(module);
 __eCRegisterModule_String(module);
-__eCRegisterModule_OldList(module);
+__eCRegisterModule_memory(module);
+__eCRegisterModule_File(module);
+__eCRegisterModule_TempFile(module);
+__eCRegisterModule_DualPipe(module);
+__eCRegisterModule_BufferedFile(module);
+__eCRegisterModule_System(module);
+__eCRegisterModule_i18n(module);
 if(__currentModule == module)
 {
 __eCClass_String = __eCNameSpace__eC__types__eSystem_FindClass(module, "String");
@@ -715,16 +717,22 @@ __eCProp_double_Get_isNan = _property->Get;
 __eCProp_double_signBit = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass_double, "signBit", module);
 if(_property)
 __eCProp_double_Get_signBit = _property->Get;
-__eCClass___eCNameSpace__eC__types__AVLNode = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::AVLNode");
-__eCProp___eCNameSpace__eC__types__AVLNode_maximum = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__types__AVLNode, "maximum", module);
-__eCProp___eCNameSpace__eC__types__AVLNode_minimum = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__types__AVLNode, "minimum", module);
-__eCProp___eCNameSpace__eC__types__AVLNode_next = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__types__AVLNode, "next", module);
-__eCProp___eCNameSpace__eC__types__AVLNode_prev = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__types__AVLNode, "prev", module);
-__eCClass___eCNameSpace__eC__types__Application = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Application");
-__eCClass___eCNameSpace__eC__types__Array = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Array");
-__eCClass___eCNameSpace__eC__types__Array_TPL_String_ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Array<const String>");
-__eCClass___eCNameSpace__eC__types__Array_TPL_eC__containers__Array_TPL_String___ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Array<eC::types::Array<const String> >");
-__eCClass___eCNameSpace__eC__containers__BuiltInContainer = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::BuiltInContainer");
+__eCClass___eCNameSpace__eC__containers__AVLNode = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::AVLNode");
+__eCProp___eCNameSpace__eC__containers__AVLNode_maximum = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__AVLNode, "maximum", module);
+__eCProp___eCNameSpace__eC__containers__AVLNode_minimum = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__AVLNode, "minimum", module);
+__eCProp___eCNameSpace__eC__containers__AVLNode_next = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__AVLNode, "next", module);
+__eCProp___eCNameSpace__eC__containers__AVLNode_prev = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__AVLNode, "prev", module);
+__eCClass___eCNameSpace__eC__containers__Array = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Array");
+__eCClass___eCNameSpace__eC__containers__Array_TPL_String_ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Array<const String>");
+__eCClass___eCNameSpace__eC__containers__Array_TPL_eC__containers__Array_TPL_String___ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Array<eC::containers::Array<const String> >");
+__eCClass___eCNameSpace__eC__containers__BTNode = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::BTNode");
+__eCProp___eCNameSpace__eC__containers__BTNode_count = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__BTNode, "count", module);
+__eCProp___eCNameSpace__eC__containers__BTNode_maximum = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__BTNode, "maximum", module);
+__eCProp___eCNameSpace__eC__containers__BTNode_minimum = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__BTNode, "minimum", module);
+__eCProp___eCNameSpace__eC__containers__BTNode_next = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__BTNode, "next", module);
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::BinaryTree");
+__eCProp___eCNameSpace__eC__containers__BinaryTree_first = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "first", module);
+__eCClass___eCNameSpace__eC__containers__BuiltInContainer = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::BuiltInContainer");
 method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__containers__BuiltInContainer, "Add", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__containers__BuiltInContainer_Add = method->vid;
@@ -782,43 +790,7 @@ __eCVMethodID___eCNameSpace__eC__containers__BuiltInContainer_SetData = method->
 method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__containers__BuiltInContainer, "Sort", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__containers__BuiltInContainer_Sort = method->vid;
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Class");
-__eCProp___eCNameSpace__eC__types__Class_char__PTR_ = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "char *", module);
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::ClassDesignerBase");
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "AddObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_AddObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "CreateNew", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_CreateNew = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "CreateObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_CreateObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "DestroyObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_DestroyObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "DroppedObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_DroppedObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "FixProperty", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_FixProperty = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "ListToolBoxClasses", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_ListToolBoxClasses = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "PostCreateObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_PostCreateObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "PrepareTestObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_PrepareTestObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "Reset", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_Reset = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "SelectObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_SelectObject = method->vid;
-__eCClass___eCNameSpace__eC__containers__Container = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Container");
+__eCClass___eCNameSpace__eC__containers__Container = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Container");
 method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__containers__Container, "Add", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__containers__Container_Add = method->vid;
@@ -877,68 +849,21 @@ method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC
 if(method)
 __eCVMethodID___eCNameSpace__eC__containers__Container_Sort = method->vid;
 __eCProp___eCNameSpace__eC__containers__Container_copySrc = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__Container, "copySrc", module);
-__eCClass___eCNameSpace__eC__types__CustomAVLTree = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::CustomAVLTree");
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::DesignerBase");
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "AddDefaultMethod", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_AddDefaultMethod = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "AddToolBoxClass", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_AddToolBoxClass = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "CodeAddObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_CodeAddObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "DeleteObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_DeleteObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "FindObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_FindObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "ModifyCode", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_ModifyCode = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "ObjectContainsCode", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_ObjectContainsCode = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "RenameObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_RenameObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "SelectObjectFromDesigner", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_SelectObjectFromDesigner = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "SheetAddObject", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_SheetAddObject = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "UpdateProperties", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__DesignerBase_UpdateProperties = method->vid;
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::IOChannel");
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "ReadData", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__IOChannel_ReadData = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "WriteData", module);
-if(method)
-__eCVMethodID___eCNameSpace__eC__types__IOChannel_WriteData = method->vid;
-__eCClass___eCNameSpace__eC__types__Instance = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Instance");
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Iterator");
-__eCProp___eCNameSpace__eC__types__Iterator_data = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "data", module);
-__eCClass___eCNameSpace__eC__containers__IteratorPointer = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::IteratorPointer");
+__eCClass___eCNameSpace__eC__containers__CustomAVLTree = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::CustomAVLTree");
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Iterator");
+__eCProp___eCNameSpace__eC__containers__Iterator_data = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "data", module);
+__eCClass___eCNameSpace__eC__containers__IteratorPointer = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::IteratorPointer");
 __eCClass___eCNameSpace__eC__containers__LinkList = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::LinkList");
 __eCClass___eCNameSpace__eC__containers__List = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::List");
 __eCClass___eCNameSpace__eC__containers__ListItem = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::ListItem");
-__eCClass___eCNameSpace__eC__types__Map = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Map");
-__eCClass___eCNameSpace__eC__types__Map_TPL_String__const_String_ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Map<const String, const String>");
-__eCClass___eCNameSpace__eC__types__Map_TPL_String__eC__types__Map_TPL_String__const_String___ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Map<const String, eC::types::Map<const String, const String> >");
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::MapIterator");
-__eCProp___eCNameSpace__eC__types__MapIterator_map = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "map", module);
-__eCClass___eCNameSpace__eC__types__Module = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Module");
-__eCClass___eCNameSpace__eC__containers__BTNode = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::BTNode");
-__eCProp___eCNameSpace__eC__containers__BTNode_count = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__BTNode, "count", module);
-__eCProp___eCNameSpace__eC__containers__BTNode_maximum = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__BTNode, "maximum", module);
-__eCProp___eCNameSpace__eC__containers__BTNode_minimum = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__BTNode, "minimum", module);
-__eCProp___eCNameSpace__eC__containers__BTNode_next = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass___eCNameSpace__eC__containers__BTNode, "next", module);
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::BinaryTree");
-__eCProp___eCNameSpace__eC__containers__BinaryTree_first = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "first", module);
+__eCClass___eCNameSpace__eC__containers__Map = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Map");
+__eCClass___eCNameSpace__eC__containers__Map_TPL_String__const_String_ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Map<const String, const String>");
+__eCClass___eCNameSpace__eC__containers__Map_TPL_String__eC__containers__Map_TPL_String__const_String___ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Map<const String, eC::containers::Map<const String, const String> >");
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::MapIterator");
+__eCProp___eCNameSpace__eC__containers__MapIterator_map = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "map", module);
+__eCClass___eCNameSpace__eC__containers__OldLink = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::OldLink");
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::OldList");
+__eCClass___eCNameSpace__eC__containers__StringBTNode = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::StringBTNode");
 __eCClass___eCNameSpace__eC__files__File = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::File");
 method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__files__File, "Close", module);
 if(method)
@@ -1019,10 +944,87 @@ __eCVMethodID___eCNameSpace__eC__files__FileSystem_QuerySize = method->vid;
 method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "Stats", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__files__FileSystem_Stats = method->vid;
-__eCClass___eCNameSpace__eC__files__OldLink = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::OldLink");
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::OldList");
-__eCClass___eCNameSpace__eC__files__StringBTNode = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::StringBTNode");
 __eCClass___eCNameSpace__eC__files__TempFile = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::TempFile");
+__eCClass___eCNameSpace__eC__types__Application = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Application");
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Class");
+__eCProp___eCNameSpace__eC__types__Class_char__PTR_ = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "char *", module);
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::ClassDesignerBase");
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "AddObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_AddObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "CreateNew", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_CreateNew = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "CreateObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_CreateObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "DestroyObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_DestroyObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "DroppedObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_DroppedObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "FixProperty", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_FixProperty = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "ListToolBoxClasses", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_ListToolBoxClasses = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "PostCreateObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_PostCreateObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "PrepareTestObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_PrepareTestObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "Reset", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_Reset = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "SelectObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__ClassDesignerBase_SelectObject = method->vid;
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::DesignerBase");
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "AddDefaultMethod", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_AddDefaultMethod = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "AddToolBoxClass", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_AddToolBoxClass = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "CodeAddObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_CodeAddObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "DeleteObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_DeleteObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "FindObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_FindObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "ModifyCode", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_ModifyCode = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "ObjectContainsCode", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_ObjectContainsCode = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "RenameObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_RenameObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "SelectObjectFromDesigner", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_SelectObjectFromDesigner = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "SheetAddObject", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_SheetAddObject = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "UpdateProperties", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__DesignerBase_UpdateProperties = method->vid;
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::IOChannel");
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "ReadData", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__IOChannel_ReadData = method->vid;
+method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "WriteData", module);
+if(method)
+__eCVMethodID___eCNameSpace__eC__types__IOChannel_WriteData = method->vid;
+__eCClass___eCNameSpace__eC__types__Instance = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Instance");
+__eCClass___eCNameSpace__eC__types__Module = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Module");
 __eCClass_float = __eCNameSpace__eC__types__eSystem_FindClass(module, "float");
 __eCProp_float_isInf = _property = __eCNameSpace__eC__types__eClass_FindProperty(__eCClass_float, "isInf", module);
 if(_property)
@@ -1057,10 +1059,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Application
@@ -1139,12 +1141,12 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -1164,11 +1166,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -1176,7 +1178,7 @@ int type;
 struct __eCNameSpace__eC__types__Instance * module;
 struct __eCNameSpace__eC__types__NameSpace *  nameSpace;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int typeSize;
 int defaultAlignment;
 void (*  Initialize)();

@@ -66,7 +66,7 @@ extern int yydebug;
 
 enum yytokentype
 {
-IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378
+IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378, _ALIGNAS = 379
 };
 
 int yyparse(void);
@@ -336,12 +336,12 @@ extern struct Symbol * FindType(struct Context * ctx, const char *  name);
 
 extern struct Symbol * FindClass(const char *  name);
 
-struct __eCNameSpace__eC__sys__OldLink;
+struct __eCNameSpace__eC__containers__OldLink;
 
-struct __eCNameSpace__eC__sys__OldLink
+struct __eCNameSpace__eC__containers__OldLink
 {
-struct __eCNameSpace__eC__sys__OldLink * prev;
-struct __eCNameSpace__eC__sys__OldLink * next;
+struct __eCNameSpace__eC__containers__OldLink * prev;
+struct __eCNameSpace__eC__containers__OldLink * next;
 void *  data;
 } eC_gcc_struct;
 
@@ -1310,7 +1310,7 @@ if(dataMember)
 dataMember->dataType = dataType;
 else
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Member with same name (%s) already exists in class %s\n", (((void *)0))), declId->string, regClass->name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Member with same name (%s) already exists in class %s\n", (((void *)0))), declId->string, regClass->name);
 FreeType(dataType);
 }
 }
@@ -1328,13 +1328,13 @@ if(member)
 {
 dataMember = __eCNameSpace__eC__types__eMember_AddDataMember(member, declId->string, typeString, 0, 0, def->memberAccess);
 if(!dataMember)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Member with same name (%s) already exists in member %s\n", (((void *)0))), declId->string, member->name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Member with same name (%s) already exists in member %s\n", (((void *)0))), declId->string, member->name);
 }
 else if(regClass)
 {
 dataMember = __eCNameSpace__eC__types__eClass_AddDataMember(regClass, declId->string, typeString, 0, 0, def->memberAccess);
 if(!dataMember)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Member with same name (%s) already exists in class %s\n", (((void *)0))), declId->string, regClass->name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Member with same name (%s) already exists in class %s\n", (((void *)0))), declId->string, regClass->name);
 }
 if(dataMember)
 dataMember->dataType = dataType;
@@ -1382,13 +1382,13 @@ if(member)
 {
 dataMember = __eCNameSpace__eC__types__eMember_AddDataMember(member, id->string, typeString, 0, 0, def->memberAccess);
 if(!dataMember)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Member with same name (%s) already exists in member %s\n", (((void *)0))), id->string, member->name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Member with same name (%s) already exists in member %s\n", (((void *)0))), id->string, member->name);
 }
 else
 {
 dataMember = __eCNameSpace__eC__types__eClass_AddDataMember(regClass, id->string, typeString, 0, 0, def->memberAccess);
 if(!dataMember)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Member with same name (%s) already exists in class %s\n", (((void *)0))), id->string, regClass->name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Member with same name (%s) already exists in class %s\n", (((void *)0))), id->string, regClass->name);
 }
 if(dataMember)
 dataMember->dataType = dataType;
@@ -1416,13 +1416,13 @@ if(member)
 {
 dataMember = __eCNameSpace__eC__types__eMember_AddDataMember(member, string, inst->_class->__anon1.__anon1.name, 0, 0, def->memberAccess);
 if(!dataMember)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Member with same name (%s) already exists in member %s\n", (((void *)0))), string, member->name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Member with same name (%s) already exists in member %s\n", (((void *)0))), string, member->name);
 }
 else
 {
 dataMember = __eCNameSpace__eC__types__eClass_AddDataMember(regClass, string, inst->_class->__anon1.__anon1.name, 0, 0, def->memberAccess);
 if(!dataMember)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Member with same name (%s) already exists in class %s\n", (((void *)0))), string, regClass->name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Member with same name (%s) already exists in class %s\n", (((void *)0))), string, regClass->name);
 }
 if(dataMember)
 dataMember->dataType = dataType;
@@ -1489,7 +1489,7 @@ redefinition = 1;
 if(inCompiler)
 {
 yylloc = *loc;
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "redefinition of class %s\n", (((void *)0))), symbol->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "redefinition of class %s\n", (((void *)0))), symbol->string);
 return ;
 }
 }
@@ -1605,7 +1605,7 @@ struct Specifier * spec = def->__anon1.function->specifiers ? (*def->__anon1.fun
 if(!spec || spec->type != 1 || !spec->__anon1.__anon1.name || (strcmp(spec->__anon1.__anon1.name, regClass->name) && (!spec->__anon1.__anon1.symbol || !spec->__anon1.__anon1.symbol->__anon1.registered || strcmp(spec->__anon1.__anon1.symbol->__anon1.registered->name, regClass->name))))
 {
 yylloc = def->__anon1.function->loc;
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "wrong class name specified for %s\n", (((void *)0))), def->__anon1.function->isConstructor ? __eCNameSpace__eC__i18n__GetTranslatedString("ec", "constructor", (((void *)0))) : __eCNameSpace__eC__i18n__GetTranslatedString("ec", "destructor", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "wrong class name specified for %s\n", (((void *)0))), def->__anon1.function->isConstructor ? __eCNameSpace__eC__i18n__GetTranslatedString("ectp", "constructor", (((void *)0))) : __eCNameSpace__eC__i18n__GetTranslatedString("ectp", "destructor", (((void *)0))));
 }
 FreeList(def->__anon1.function->specifiers, (void *)(FreeSpecifier));
 def->__anon1.function->specifiers = (((void *)0));
@@ -1634,7 +1634,7 @@ char * typeString = StringFromSpecDecl(func->specifiers, func->declarator);
 
 method = __eCNameSpace__eC__types__eClass_AddMethod(regClass, id->string, typeString, inCompiler ? func->declarator->symbol : (((void *)0)), def->memberAccess);
 if(!method)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Redefinition of method %s in class %s\n", (((void *)0))), id->string, regClass->name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Redefinition of method %s in class %s\n", (((void *)0))), id->string, regClass->name);
 (__eCNameSpace__eC__types__eSystem_Delete(typeString), typeString = 0);
 }
 if(method && (method->type != 1 || method->_class == regClass))
@@ -1819,7 +1819,7 @@ struct ClassDefinition * _class = external->__anon1._class;
 
 if(_class->symbol)
 {
-struct __eCNameSpace__eC__sys__OldLink * link;
+struct __eCNameSpace__eC__containers__OldLink * link;
 
 for(link = _class->symbol->templatedClasses.first; link; link = link->next)
 {
@@ -1851,7 +1851,7 @@ if(type)
 }
 else if(symbol)
 {
-struct __eCNameSpace__eC__sys__OldLink * link;
+struct __eCNameSpace__eC__containers__OldLink * link;
 
 for(link = symbol->templatedClasses.first; link; link = link->next)
 {

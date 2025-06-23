@@ -6,7 +6,7 @@ endif
 
 # CORE VARIABLES
 
-MODULE := ec
+MODULE := ectp
 CONFIG := bootstrap
 ifndef COMPILER
 COMPILER := default
@@ -51,7 +51,7 @@ OBJECTS = \
 	$(OBJ)ast.o \
 	$(OBJ)copy.o \
 	$(OBJ)dbpass.o \
-	$(OBJ)ec.main.o \
+	$(OBJ)ectp.main.o \
 	$(OBJ)ecdefs.o \
 	$(OBJ)expression.o \
 	$(OBJ)firstPass.o \
@@ -74,7 +74,7 @@ SOURCES = \
 	bootstrap/ast.c \
 	bootstrap/copy.c \
 	bootstrap/dbpass.c \
-	bootstrap/ec.main.c \
+	bootstrap/ectp.main.c \
 	bootstrap/ecdefs.c \
 	bootstrap/expression.c \
 	bootstrap/firstPass.c \
@@ -101,7 +101,7 @@ endif
 
 PRJ_CFLAGS += \
 	 $(if $(DEBUG), -g, -O2 -ffast-math) $(FPIC) -w \
-			 -DECERE_STATIC
+			 -DEC_STATIC
 ECFLAGS += \
 	 -nolinenumbers
 
@@ -131,8 +131,8 @@ $(OBJ)copy.o: bootstrap/copy.c
 $(OBJ)dbpass.o: bootstrap/dbpass.c
 	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c bootstrap/dbpass.c -o $(OBJ)dbpass.o
 
-$(OBJ)ec.main.o: bootstrap/ec.main.c
-	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c bootstrap/ec.main.c -o $(OBJ)ec.main.o
+$(OBJ)ectp.main.o: bootstrap/ectp.main.c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c bootstrap/ectp.main.c -o $(OBJ)ectp.main.o
 
 $(OBJ)ecdefs.o: bootstrap/ecdefs.c
 	$(CC) $(CFLAGS) $(PRJ_CFLAGS) $(FVISIBILITY) -c bootstrap/ecdefs.c -o $(OBJ)ecdefs.o

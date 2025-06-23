@@ -192,17 +192,17 @@ static void LoadImports(const char * fileName)
                   {
                      if(!(module = _imports.FindName(line, false)))
                      {
-                        if(!strcmp(line, "ecereCOM"))
+                        if(!strcmp(line, "ecrt"))
                         {
-                           module = _imports.FindName("ecere", false);
+                           module = _imports.FindName("ecrt", false);
                         }
-                        else if(!strcmp(line, "ecere"))
+                        else if(!strcmp(line, "ecrt"))
                         {
-                           module = _imports.FindName("ecereCOM", false);
+                           module = _imports.FindName("ecrt", false);
                            if(module)
                            {
                               delete module.name;
-                              module.name = CopyString("ecere");
+                              module.name = CopyString("ecrt");
                            }
                         }
                         if(!module)
@@ -510,7 +510,7 @@ static void WriteMain(const char * fileName)
          {
             if(module.name)
             {
-               //if(strcmp(module.name, "ecereCOM") && strcmp(module.name, "ecere") )
+               //if(strcmp(module.name, "ecrt") && strcmp(module.name, "ecrt") )
                {
                   if(module.importType == staticImport)
                      f.Printf("   if(!eModule_LoadStatic(module, \"%s\", %s, __eCDll_Load_%s, __eCDll_Unload_%s))\n", module.name, (module.importAccess == privateAccess) ? "privateAccess" : "publicAccess", module.name,module.name);

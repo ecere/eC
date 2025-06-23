@@ -217,6 +217,43 @@ bootstrap:
 	@$(call echo,Bootstrapping eC compiling tools...)
 	+cd bootstrap && $(_MAKE)
 
+regenbootstrap: update_ecrt update_ectp update_ecp update_ecc update_ecs
+	@echo Bootstrap regenerated.
+
+updatebootstrap: regenbootstrap
+	@echo Copying files...
+	$(call cp,ecrt/obj/bootstrap.$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/*.c,bootstrap/ecrt/bootstrap)
+	$(call cp,ectp/obj/bootstrap.$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/*.c,bootstrap/ectp/bootstrap)
+	$(call cp,ecp/obj/bootstrap.$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/*.c,bootstrap/ecp/bootstrap)
+	$(call cp,ecc/obj/bootstrap.$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/*.c,bootstrap/ecc/bootstrap)
+	$(call cp,ecs/obj/bootstrap.$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/*.c,bootstrap/ecs/bootstrap)
+	@echo Bootstrap updated.
+
+update_ecrt:
+	@echo Regenerating ecrt bootstrapper...
+	+cd ecrt && $(_MAKE) -f Makefile.bootstrap clean
+	+cd ecrt && $(_MAKE) -f Makefile.bootstrap
+
+update_ectp:
+	@echo Regenerating ectp bootstrapper...
+	+cd ectp && $(_MAKE) -f Makefile.bootstrap clean
+	+cd ectp && $(_MAKE) -f Makefile.bootstrap
+
+update_ecp:
+	@echo Regenerating ecp bootstrapper...
+	+cd ecp && $(_MAKE) -f Makefile.bootstrap clean
+	+cd ecp && $(_MAKE) -f Makefile.bootstrap
+
+update_ecc:
+	@echo Regenerating ecc bootstrapper...
+	+cd ecc && $(_MAKE) -f Makefile.bootstrap clean
+	+cd ecc && $(_MAKE) -f Makefile.bootstrap
+
+update_ecs:
+	@echo Regenerating ecs bootstrapper...
+	+cd ecs && $(_MAKE) -f Makefile.bootstrap clean
+	+cd ecs && $(_MAKE) -f Makefile.bootstrap
+
 cleantarget:
 	+cd bootstrap && $(_MAKE) cleantarget
 	+cd ecrt && $(_MAKE) cleantarget

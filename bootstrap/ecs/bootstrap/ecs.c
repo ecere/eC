@@ -95,11 +95,11 @@ extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__c
 
 extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Platform_char__PTR_;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_map;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_map;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Iterator_data;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Iterator_data;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_key;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_key;
 
 struct __eCNameSpace__eC__containers__OldList
 {
@@ -226,9 +226,9 @@ char * string;
 char * context;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__CustomAVLTree
+struct __eCNameSpace__eC__containers__CustomAVLTree
 {
-struct __eCNameSpace__eC__types__AVLNode * root;
+struct __eCNameSpace__eC__containers__AVLNode * root;
 int count;
 } eC_gcc_struct;
 
@@ -350,13 +350,13 @@ extern void __eCNameSpace__eC__types__eInstance_Delete(struct __eCNameSpace__eC_
 
 extern void OutputTypeName(struct TypeName * type, struct __eCNameSpace__eC__types__Instance * f, unsigned int typeName);
 
-struct __eCNameSpace__eC__types__MapIterator
+struct __eCNameSpace__eC__containers__MapIterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__Iterator
+struct __eCNameSpace__eC__containers__Iterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
@@ -384,19 +384,19 @@ extern int __eCVMethodID___eCNameSpace__eC__containers__Container_RemoveAll;
 
 extern int __eCVMethodID___eCNameSpace__eC__containers__Container_Free;
 
-struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__types__MapIterator_Get_map(struct __eCNameSpace__eC__types__MapIterator * this);
+struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__containers__MapIterator_Get_map(struct __eCNameSpace__eC__containers__MapIterator * this);
 
-void __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(struct __eCNameSpace__eC__types__MapIterator * this, struct __eCNameSpace__eC__types__Instance * value);
+void __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(struct __eCNameSpace__eC__containers__MapIterator * this, struct __eCNameSpace__eC__types__Instance * value);
 
-const uint64 __eCProp___eCNameSpace__eC__types__MapIterator_Get_key(struct __eCNameSpace__eC__types__MapIterator * this);
+const uint64 __eCProp___eCNameSpace__eC__containers__MapIterator_Get_key(struct __eCNameSpace__eC__containers__MapIterator * this);
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Index(struct __eCNameSpace__eC__types__Iterator * this, const uint64 index, unsigned int create);
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Index(struct __eCNameSpace__eC__containers__Iterator * this, const uint64 index, unsigned int create);
 
-uint64 __eCProp___eCNameSpace__eC__types__Iterator_Get_data(struct __eCNameSpace__eC__types__Iterator * this);
+uint64 __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(struct __eCNameSpace__eC__containers__Iterator * this);
 
-void __eCProp___eCNameSpace__eC__types__Iterator_Set_data(struct __eCNameSpace__eC__types__Iterator * this, uint64 value);
+void __eCProp___eCNameSpace__eC__containers__Iterator_Set_data(struct __eCNameSpace__eC__containers__Iterator * this, uint64 value);
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Next(struct __eCNameSpace__eC__types__Iterator * this);
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Next(struct __eCNameSpace__eC__containers__Iterator * this);
 
 struct ModuleInfo;
 
@@ -485,12 +485,12 @@ int depth;
 void *  data;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__sys__OldLink;
+struct __eCNameSpace__eC__containers__OldLink;
 
-struct __eCNameSpace__eC__sys__OldLink
+struct __eCNameSpace__eC__containers__OldLink
 {
-struct __eCNameSpace__eC__sys__OldLink * prev;
-struct __eCNameSpace__eC__sys__OldLink * next;
+struct __eCNameSpace__eC__containers__OldLink * prev;
+struct __eCNameSpace__eC__containers__OldLink * next;
 void *  data;
 } eC_gcc_struct;
 
@@ -762,7 +762,7 @@ extern struct __eCNameSpace__eC__types__Instance * __thisModule;
 
 struct __eCNameSpace__eC__types__Application;
 
-extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__typeseCrt_Initialize(unsigned int guiApp, int argc, char *  argv[]);
+extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__types__eCrt_Initialize(unsigned int guiApp, int argc, char *  argv[]);
 
 struct __eCNameSpace__eC__containers__BinaryTree;
 
@@ -900,7 +900,7 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__con
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_Context;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__sys__File;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__File;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Module;
 
@@ -910,9 +910,9 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass_char__PTR_;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__List;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__CustomAVLTree;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__CustomAVLTree;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map;
 
 struct __eCNameSpace__eC__types__Application
 {
@@ -1158,17 +1158,17 @@ else
 {
 if(!(module = __eCMethod___eCNameSpace__eC__containers__OldList_FindName(&_imports, line, 0)))
 {
-if(!strcmp(line, "ecereCOM"))
+if(!strcmp(line, "ecrt"))
 {
-module = __eCMethod___eCNameSpace__eC__containers__OldList_FindName(&_imports, "ecere", 0);
+module = __eCMethod___eCNameSpace__eC__containers__OldList_FindName(&_imports, "ecrt", 0);
 }
-else if(!strcmp(line, "ecere"))
+else if(!strcmp(line, "ecrt"))
 {
-module = __eCMethod___eCNameSpace__eC__containers__OldList_FindName(&_imports, "ecereCOM", 0);
+module = __eCMethod___eCNameSpace__eC__containers__OldList_FindName(&_imports, "ecrt", 0);
 if(module)
 {
 (__eCNameSpace__eC__types__eSystem_Delete(module->name), module->name = 0);
-module->name = __eCNameSpace__eC__types__CopyString("ecere");
+module->name = __eCNameSpace__eC__types__CopyString("ecrt");
 }
 }
 if(!module)
@@ -1193,7 +1193,7 @@ __eCMethod___eCNameSpace__eC__containers__OldList_AddName(&_imports, module);
 static void BindDCOMClient()
 {
 struct __eCNameSpace__eC__types__Class * dcomClientObjectClass = __eCNameSpace__eC__types__eSystem_FindClass(privateModule, "ecereNet::DCOMClientObject");
-struct __eCNameSpace__eC__sys__OldLink * deriv;
+struct __eCNameSpace__eC__containers__OldLink * deriv;
 
 if(dcomClientObjectClass && dcomClientObjectClass->derivatives.first)
 {
@@ -1318,7 +1318,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, param->name) : (unsigned int)1;
 }));
@@ -1673,7 +1673,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, param->name) : (unsigned int)1;
 }));
@@ -1941,7 +1941,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "typedef void * HINSTANCE;\n") : (unsigned int)1;
 }));
@@ -1951,7 +1951,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "#define WINAPI __stdcall\n") : (unsigned int)1;
 }));
@@ -1972,7 +1972,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "default:\n") : (unsigned int)1;
 }));
@@ -1982,7 +1982,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "static Module __currentModule;\n\n") : (unsigned int)1;
 }));
@@ -2094,7 +2094,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, long long pos, int mode))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = dcomSymbols;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Seek]);
 __internal_VirtualMethod ? __internal_VirtualMethod(dcomSymbols, 0, 0) : (unsigned int)1;
 }));
@@ -2104,7 +2104,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = dcomSymbols;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Eof]);
 __internal_VirtualMethod ? __internal_VirtualMethod(dcomSymbols) : (unsigned int)1;
 })))
@@ -2116,7 +2116,7 @@ size_t (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *
 __internal_VirtualMethod = ((size_t (*)(struct __eCNameSpace__eC__types__Instance *, void *  buffer, size_t size, size_t count))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = dcomSymbols;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Read]);
 __internal_VirtualMethod ? __internal_VirtualMethod(dcomSymbols, buffer, 1, sizeof (buffer)) : (size_t)1;
 }));
@@ -2129,7 +2129,7 @@ size_t (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *
 __internal_VirtualMethod = ((size_t (*)(struct __eCNameSpace__eC__types__Instance *, const void *  buffer, size_t size, size_t count))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Write]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, buffer, 1, read) : (size_t)1;
 }));
@@ -2149,7 +2149,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\ndllexport bool __stdcall __eCDll_Load(Module module)\n{\n") : (unsigned int)1;
 }));
@@ -2160,7 +2160,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\ndllexport bool __eCDll_Load(Module module)\n{\n") : (unsigned int)1;
 }));
@@ -2173,7 +2173,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\nint WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, char * cmdLine, int show)\n{\n") : (unsigned int)1;
 }));
@@ -2185,7 +2185,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\nint main(int _argc, char * _argv[])\n{\n") : (unsigned int)1;
 }));
@@ -2197,7 +2197,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   int exitCode;\n") : (unsigned int)1;
 }));
@@ -2207,7 +2207,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   Module module;\n") : (unsigned int)1;
 }));
@@ -2217,7 +2217,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   bool setThingsUp = !__thisModule;\n") : (unsigned int)1;
 }));
@@ -2228,7 +2228,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   __attribute__((unused)) Class _class;\n") : (unsigned int)1;
 }));
@@ -2239,7 +2239,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   __attribute__((unused)) Method method;\n") : (unsigned int)1;
 }));
@@ -2250,7 +2250,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   __attribute__((unused)) Property _property;\n") : (unsigned int)1;
 }));
@@ -2261,7 +2261,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   __attribute__((unused)) GlobalFunction function;\n") : (unsigned int)1;
 }));
@@ -2271,7 +2271,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\n") : (unsigned int)1;
 }));
@@ -2283,7 +2283,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   eSystem_SetPoolingDisabled(true);\n") : (unsigned int)1;
 }));
@@ -2293,7 +2293,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\n") : (unsigned int)1;
 }));
@@ -2306,7 +2306,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   if(!__currentModule)\n") : (unsigned int)1;
 }));
@@ -2316,7 +2316,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   {\n") : (unsigned int)1;
 }));
@@ -2326,7 +2326,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "      __currentModule = module;\n") : (unsigned int)1;
 }));
@@ -2337,7 +2337,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "      __thisModule = module;\n") : (unsigned int)1;
 }));
@@ -2347,7 +2347,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   }\n\n") : (unsigned int)1;
 }));
@@ -2360,7 +2360,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   if(setThingsUp)\n") : (unsigned int)1;
 }));
@@ -2371,7 +2371,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "      __thisModule = eCrt_Initialize(1, 0, null);\n\n") : (unsigned int)1;
 }));
@@ -2382,7 +2382,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "      __thisModule = eCrt_Initialize(1, _argc, (void *)_argv);\n\n") : (unsigned int)1;
 }));
@@ -2392,7 +2392,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   __currentModule = module = __thisModule;\n") : (unsigned int)1;
 }));
@@ -2439,7 +2439,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   if(__currentModule == module)\n") : (unsigned int)1;
 }));
@@ -2449,7 +2449,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   {\n") : (unsigned int)1;
 }));
@@ -2559,7 +2559,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   }\n") : (unsigned int)1;
 }));
@@ -2578,7 +2578,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   if(__currentModule == module)\n") : (unsigned int)1;
 }));
@@ -2588,7 +2588,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   {\n") : (unsigned int)1;
 }));
@@ -2616,7 +2616,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   }\n") : (unsigned int)1;
 }));
@@ -2633,7 +2633,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   return true;\n") : (unsigned int)1;
 }));
@@ -2643,7 +2643,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "}\n") : (unsigned int)1;
 }));
@@ -2660,7 +2660,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\ndllexport bool __stdcall __eCDll_Unload(Module module)\n{\n") : (unsigned int)1;
 }));
@@ -2671,7 +2671,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\ndllexport bool __eCDll_Unload(Module module)\n{\n") : (unsigned int)1;
 }));
@@ -2685,7 +2685,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   if(__currentModule == module)\n") : (unsigned int)1;
 }));
@@ -2695,7 +2695,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   {\n") : (unsigned int)1;
 }));
@@ -2734,7 +2734,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   }\n") : (unsigned int)1;
 }));
@@ -2759,7 +2759,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   if(__currentModule == module)\n") : (unsigned int)1;
 }));
@@ -2769,7 +2769,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "      __currentModule = (void *)0;\n") : (unsigned int)1;
 }));
@@ -2781,7 +2781,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   if(__thisModule == module)\n") : (unsigned int)1;
 }));
@@ -2791,7 +2791,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "      __thisModule = (void *)0;\n") : (unsigned int)1;
 }));
@@ -2805,7 +2805,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "\n   _class = eSystem_FindClass(__currentModule, \"eC::types::Application\");\n   exitCode = ((eC::types::Application)__currentModule).exitCode;\n   delete __currentModule;\n   return exitCode;\n") : (unsigned int)1;
 }));
@@ -2817,7 +2817,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "   return true;\n") : (unsigned int)1;
 }));
@@ -2827,7 +2827,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f, "}\n") : (unsigned int)1;
 }));
@@ -2979,14 +2979,14 @@ SetCurrentContext(theGlobalContext);
 SetTargetPlatform(targetPlatform);
 SetTargetBits(targetBits);
 SetInSymbolGen(1);
-privateModule = (struct __eCNameSpace__eC__types__Instance *)__eCNameSpace__eC__typeseCrt_Initialize((unsigned int)(1 | (targetBits == sizeof(uintptr_t) * 8 ? (unsigned int)0 : targetBits == 64 ? 2 : targetBits == 32 ? 4 : (unsigned int)0) | 8), 1, (((void *)0)));
+privateModule = (struct __eCNameSpace__eC__types__Instance *)__eCNameSpace__eC__types__eCrt_Initialize((unsigned int)(1 | (targetBits == sizeof(uintptr_t) * 8 ? (unsigned int)0 : targetBits == 64 ? 2 : targetBits == 32 ? 4 : (unsigned int)0) | 8), 1, (((void *)0)));
 SetPrivateModule(privateModule);
 mainModule = __eCNameSpace__eC__types__eInstance_New(__eCClass_ModuleImport);
 SetMainModule(mainModule);
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&_imports, mainModule);
 {
 struct __eCNameSpace__eC__types__Instance * intlStrings = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Map_TPL_ContextStringPair__eC__containers__List_TPL_String___);
-struct __eCNameSpace__eC__types__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(&it, intlStrings), it);
+struct __eCNameSpace__eC__containers__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(&it, intlStrings), it);
 
 for(c = 1; c < ((struct __eCNameSpace__eC__types__Application *)(((char *)this + sizeof(struct __eCNameSpace__eC__types__Module) + sizeof(struct __eCNameSpace__eC__types__Instance))))->argc; c++)
 {
@@ -3127,7 +3127,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Eof]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f) : (unsigned int)1;
 })))
@@ -3182,39 +3182,39 @@ msgid, msgctxt
 };
 
 i18n = 1;
-if(!__eCMethod___eCNameSpace__eC__types__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(&pair), 0))
+if(!__eCMethod___eCNameSpace__eC__containers__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(&pair), 0))
 {
 msgid = (((void *)0));
 msgctxt = (((void *)0));
 __extension__ ({
-struct __eCNameSpace__eC__types__Iterator __internalIterator =
+struct __eCNameSpace__eC__containers__Iterator __internalIterator =
 {
 intlStrings, 0
 };
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(&pair)), 1);
-__eCProp___eCNameSpace__eC__types__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(comments));
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(&pair)), 1);
+__eCProp___eCNameSpace__eC__containers__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(comments));
 });
 comments = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__List_TPL_String_);
 }
 else
 {
 {
-struct __eCNameSpace__eC__types__Iterator s =
+struct __eCNameSpace__eC__containers__Iterator s =
 {
 (comments), 0
 };
 
-while(__eCMethod___eCNameSpace__eC__types__Iterator_Next(&s))
+while(__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&s))
 (__extension__ ({
 struct __eCNameSpace__eC__containers__IteratorPointer * (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, uint64 value);
 
 __internal_VirtualMethod = ((struct __eCNameSpace__eC__containers__IteratorPointer * (*)(struct __eCNameSpace__eC__types__Instance *, uint64 value))__extension__ ({
-struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = ((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data((void *)(&it)));
+struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = ((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data((void *)(&it)));
 
 __internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__List->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Add]);
-__internal_VirtualMethod ? __internal_VirtualMethod(((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data((void *)(&it))), __eCProp___eCNameSpace__eC__types__Iterator_Get_data(&s)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
+__internal_VirtualMethod ? __internal_VirtualMethod(((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data((void *)(&it))), __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&s)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
 }));
 }
 (__extension__ ({
@@ -3261,7 +3261,7 @@ if(!thisAppClass)
 thisAppClass = __eCNameSpace__eC__types__eSystem_FindClass(privateModule, "Application");
 }
 WriteMain(output);
-if(outputPot && ((struct __eCNameSpace__eC__types__CustomAVLTree *)(((char *)intlStrings + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->count)
+if(outputPot && ((struct __eCNameSpace__eC__containers__CustomAVLTree *)(((char *)intlStrings + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->count)
 {
 struct __eCNameSpace__eC__types__Instance * potFile;
 char potFileName[797];
@@ -3278,7 +3278,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "msgid \"\"\n") : (unsigned int)1;
 }));
@@ -3288,7 +3288,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "msgstr \"\"\n") : (unsigned int)1;
 }));
@@ -3298,7 +3298,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"Project-Id-Version: \\n\"\n") : (unsigned int)1;
 }));
@@ -3308,7 +3308,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"POT-Creation-Date: \\n\"\n") : (unsigned int)1;
 }));
@@ -3318,7 +3318,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"PO-Revision-Date: \\n\"\n") : (unsigned int)1;
 }));
@@ -3328,7 +3328,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"Last-Translator: \\n\"\n") : (unsigned int)1;
 }));
@@ -3338,7 +3338,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"Language-Team: \\n\"\n") : (unsigned int)1;
 }));
@@ -3348,7 +3348,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"MIME-Version: 1.0\\n\"\n") : (unsigned int)1;
 }));
@@ -3358,7 +3358,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"Content-Type: text/plain; charset=iso-8859-1\\n\"\n") : (unsigned int)1;
 }));
@@ -3368,7 +3368,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"Content-Transfer-Encoding: 8bit\\n\"\n") : (unsigned int)1;
 }));
@@ -3378,7 +3378,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"X-Poedit-Basepath: ../\\n\"\n") : (unsigned int)1;
 }));
@@ -3388,34 +3388,34 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\n") : (unsigned int)1;
 }));
 {
-struct __eCNameSpace__eC__types__MapIterator i = (i.container = (void *)0, i.pointer = (void *)0, __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(&i, (intlStrings)), i);
+struct __eCNameSpace__eC__containers__MapIterator i = (i.container = (void *)0, i.pointer = (void *)0, __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(&i, (intlStrings)), i);
 
-while(__eCMethod___eCNameSpace__eC__types__Iterator_Next((void *)(&i)))
+while(__eCMethod___eCNameSpace__eC__containers__Iterator_Next((void *)(&i)))
 {
-struct ContextStringPair pair = (*(struct ContextStringPair *)(uintptr_t)__eCProp___eCNameSpace__eC__types__MapIterator_Get_key(&i));
-struct __eCNameSpace__eC__types__Instance * comments = ((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data((void *)(&i)));
+struct ContextStringPair pair = (*(struct ContextStringPair *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__MapIterator_Get_key(&i));
+struct __eCNameSpace__eC__types__Instance * comments = ((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data((void *)(&i)));
 
 {
-struct __eCNameSpace__eC__types__Iterator s =
+struct __eCNameSpace__eC__containers__Iterator s =
 {
 (comments), 0
 };
 
-while(__eCMethod___eCNameSpace__eC__types__Iterator_Next(&s))
+while(__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&s))
 {
-__eCMethod___eCNameSpace__eC__files__File_Printf(potFile, ((char * )((uintptr_t)(__eCProp___eCNameSpace__eC__types__Iterator_Get_data(&s)))));
+__eCMethod___eCNameSpace__eC__files__File_Printf(potFile, ((char * )((uintptr_t)(__eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&s)))));
 (__extension__ ({
 unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const char *  string);
 
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\n") : (unsigned int)1;
 }));
@@ -3429,7 +3429,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "msgctxt \"") : (unsigned int)1;
 }));
@@ -3439,7 +3439,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, pair.context) : (unsigned int)1;
 }));
@@ -3449,7 +3449,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"\n") : (unsigned int)1;
 }));
@@ -3460,7 +3460,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "msgid \"") : (unsigned int)1;
 }));
@@ -3470,7 +3470,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, pair.string) : (unsigned int)1;
 }));
@@ -3480,7 +3480,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"\n") : (unsigned int)1;
 }));
@@ -3490,7 +3490,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "msgstr \"") : (unsigned int)1;
 }));
@@ -3500,7 +3500,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, pair.string) : (unsigned int)1;
 }));
@@ -3510,7 +3510,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\"\n") : (unsigned int)1;
 }));
@@ -3520,7 +3520,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = potFile;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
 __internal_VirtualMethod ? __internal_VirtualMethod(potFile, "\n") : (unsigned int)1;
 }));
@@ -3532,7 +3532,7 @@ void (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *);
 __internal_VirtualMethod = ((void (*)(struct __eCNameSpace__eC__types__Instance *))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = intlStrings;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__types__Map->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Map->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Free]);
 __internal_VirtualMethod ? __internal_VirtualMethod(intlStrings) : (void)1;
 }));

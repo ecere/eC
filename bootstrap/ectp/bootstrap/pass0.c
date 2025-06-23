@@ -66,7 +66,7 @@ extern int yydebug;
 
 enum yytokentype
 {
-IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378
+IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378, _ALIGNAS = 379
 };
 
 int yyparse(void);
@@ -1480,7 +1480,7 @@ dataMember = link ? link->data : (((void *)0));
 else
 dataMember = __eCNameSpace__eC__types__eClass_FindDataMember(regClass, declId->string, privateModule, (((void *)0)), (((void *)0)));
 if(dataMember)
-CheckPublicDataType(dataMember->dataType, (def->memberAccess == 2) ? 2 : access, __eCNameSpace__eC__i18n__GetTranslatedString("ec", "class data member", (((void *)0))));
+CheckPublicDataType(dataMember->dataType, (def->memberAccess == 2) ? 2 : access, __eCNameSpace__eC__i18n__GetTranslatedString("ectp", "class data member", (((void *)0))));
 }
 }
 }
@@ -1507,7 +1507,7 @@ dataMember = link ? link->data : (((void *)0));
 else
 dataMember = __eCNameSpace__eC__types__eClass_FindDataMember(regClass, spec->__anon1.__anon2.id->string, privateModule, (((void *)0)), (((void *)0)));
 if(dataMember)
-CheckPublicDataType(dataMember->dataType, (def->memberAccess == 2) ? 2 : access, __eCNameSpace__eC__i18n__GetTranslatedString("ec", "class data member", (((void *)0))));
+CheckPublicDataType(dataMember->dataType, (def->memberAccess == 2) ? 2 : access, __eCNameSpace__eC__i18n__GetTranslatedString("ectp", "class data member", (((void *)0))));
 }
 }
 }
@@ -1515,7 +1515,7 @@ CheckPublicDataType(dataMember->dataType, (def->memberAccess == 2) ? 2 : access,
 }
 else if(decl->type == 2)
 {
-CheckPublicClass(decl->__anon1.inst->_class->__anon1.__anon1.symbol, (def->memberAccess == 2) ? 2 : access, __eCNameSpace__eC__i18n__GetTranslatedString("ec", "class member instance", (((void *)0))));
+CheckPublicClass(decl->__anon1.inst->_class->__anon1.__anon1.symbol, (def->memberAccess == 2) ? 2 : access, __eCNameSpace__eC__i18n__GetTranslatedString("ectp", "class member instance", (((void *)0))));
 }
 }
 }
@@ -1758,14 +1758,14 @@ if(regClass->templateClass)
 regClass = regClass->templateClass;
 if(classSym->isStatic && access != 3)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Non-static %s making use of a static class\n", (((void *)0))), word);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Non-static %s making use of a static class\n", (((void *)0))), word);
 }
 else if(access == 1)
 {
 if(!NameSpaceContained(regClass->nameSpace, &((struct __eCNameSpace__eC__types__Application *)(((char *)((struct __eCNameSpace__eC__types__Module *)(((char *)regClass->module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application + sizeof(struct __eCNameSpace__eC__types__Module) + sizeof(struct __eCNameSpace__eC__types__Instance))))->systemNameSpace))
 {
 if(NameSpaceContained(regClass->nameSpace, &((struct __eCNameSpace__eC__types__Module *)(((char *)regClass->module + sizeof(struct __eCNameSpace__eC__types__Instance))))->privateNameSpace) || !ModuleAccess(privateModule, regClass->module))
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Public %s making use of a private class\n", (((void *)0))), word);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Public %s making use of a private class\n", (((void *)0))), word);
 }
 }
 }
@@ -1801,13 +1801,13 @@ if(!NameSpaceContained(regClass->nameSpace, &((struct __eCNameSpace__eC__types__
 {
 if(!regClass->base->symbol)
 regClass->base->symbol = FindClass(regClass->base->fullName);
-CheckPublicClass(regClass->base->symbol, 1, __eCNameSpace__eC__i18n__GetTranslatedString("ec", "class", (((void *)0))));
+CheckPublicClass(regClass->base->symbol, 1, __eCNameSpace__eC__i18n__GetTranslatedString("ectp", "class", (((void *)0))));
 }
 else if(!symbol->isStatic && regClass->base)
 {
 if(!regClass->base->symbol)
 regClass->base->symbol = FindClass(regClass->base->fullName);
-CheckPublicClass(regClass->base->symbol, 2, __eCNameSpace__eC__i18n__GetTranslatedString("ec", "class", (((void *)0))));
+CheckPublicClass(regClass->base->symbol, 2, __eCNameSpace__eC__i18n__GetTranslatedString("ectp", "class", (((void *)0))));
 }
 }
 if(definitions != (((void *)0)))
@@ -1835,7 +1835,7 @@ __eCNameSpace__eC__types__eClass_AddMethod(regClass, def->__anon1.__anon1.id->st
 else
 {
 yylloc = def->loc;
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Couldn't find member %s to override\n", (((void *)0))), def->__anon1.__anon1.id->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Couldn't find member %s to override\n", (((void *)0))), def->__anon1.__anon1.id->string);
 }
 }
 }
@@ -1947,7 +1947,7 @@ if(func->isDestructor)
 if(destructor)
 {
 yylloc = *loc;
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "redefinition of destructor for class %s\n", (((void *)0))), symbol->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "redefinition of destructor for class %s\n", (((void *)0))), symbol->string);
 }
 else
 {
@@ -1966,7 +1966,7 @@ if(func->isConstructor)
 if(constructor)
 {
 yylloc = *loc;
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "redefinition of constructor for class %s\n", (((void *)0))), symbol->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "redefinition of constructor for class %s\n", (((void *)0))), symbol->string);
 }
 else
 {
@@ -2342,7 +2342,7 @@ break;
 default:
 useVoid = !isConversion;
 if(useVoid && !propertyDef->__anon1.isDBProp)
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "set defined on type without storage for non-conversion property\n", (((void *)0))));
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "set defined on type without storage for non-conversion property\n", (((void *)0))));
 }
 ListAdd(specifiers, useVoid ? MkSpecifier(VOID) : MkSpecifierName(regClass->fullName));
 }

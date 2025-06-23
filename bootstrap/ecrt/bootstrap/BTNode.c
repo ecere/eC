@@ -125,7 +125,7 @@ extern int printf(const char * , ...);
 
 struct __eCNameSpace__eC__types__GlobalFunction;
 
-void __eCNameSpace__eC__files__strcatf(char * string, const char * format, ...)
+void __eCNameSpace__eC__containers__strcatf(char * string, const char * format, ...)
 {
 va_list args;
 
@@ -607,26 +607,26 @@ void __eCMethod___eCNameSpace__eC__types__IOChannel_Serialize(struct __eCNameSpa
 
 void __eCMethod___eCNameSpace__eC__types__IOChannel_Unserialize(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Class * class, void * *  data);
 
-struct __eCNameSpace__eC__files__StringBTNode;
+struct __eCNameSpace__eC__containers__StringBTNode;
 
-struct __eCNameSpace__eC__files__StringBTNode
+struct __eCNameSpace__eC__containers__StringBTNode
 {
 char * key;
-struct __eCNameSpace__eC__files__StringBTNode * parent, * left, * right;
+struct __eCNameSpace__eC__containers__StringBTNode * parent, * left, * right;
 int depth;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
-unsigned int __eCMethod___eCNameSpace__eC__containers__BTNode_Add(struct __eCNameSpace__eC__containers__BTNode * this, struct __eCNameSpace__eC__files__BinaryTree * tree, struct __eCNameSpace__eC__containers__BTNode * node)
+unsigned int __eCMethod___eCNameSpace__eC__containers__BTNode_Add(struct __eCNameSpace__eC__containers__BTNode * this, struct __eCNameSpace__eC__containers__BinaryTree * tree, struct __eCNameSpace__eC__containers__BTNode * node)
 {
 uintptr_t newKey = node->key;
 
@@ -691,7 +691,7 @@ return 1;
 }
 }
 
-struct __eCNameSpace__eC__containers__BTNode * __eCMethod___eCNameSpace__eC__containers__BTNode_Find(struct __eCNameSpace__eC__containers__BTNode * this, struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t key)
+struct __eCNameSpace__eC__containers__BTNode * __eCMethod___eCNameSpace__eC__containers__BTNode_Find(struct __eCNameSpace__eC__containers__BTNode * this, struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t key)
 {
 while(this)
 {
@@ -748,15 +748,15 @@ case 2:
 case 1:
 {
 if(tps == 2)
-__eCNameSpace__eC__files__strcatf(output, "%d ", this->key);
+__eCNameSpace__eC__containers__strcatf(output, "%d ", this->key);
 if(this->left)
 __eCMethod___eCNameSpace__eC__containers__BTNode_Print(this->left, output, tps);
 if(tps == 0)
-__eCNameSpace__eC__files__strcatf(output, "%d ", this->key);
+__eCNameSpace__eC__containers__strcatf(output, "%d ", this->key);
 if(this->right)
 __eCMethod___eCNameSpace__eC__containers__BTNode_Print(this->right, output, tps);
 if(tps == 1)
-__eCNameSpace__eC__files__strcatf(output, "%d ", this->key);
+__eCNameSpace__eC__containers__strcatf(output, "%d ", this->key);
 return output;
 }
 case 3:
@@ -828,7 +828,7 @@ int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -898,10 +898,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -918,11 +918,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -975,11 +975,11 @@ char *  parsedCommand;
 struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 } eC_gcc_struct;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__TreePrintStyle;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__TreePrintStyle;
 
 static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__BTNode;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__StringBTNode;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__StringBTNode;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_bool;
 
@@ -1060,16 +1060,16 @@ else
 (*this) = (((void *)0));
 }
 
-void __eCMethod___eCNameSpace__eC__containers__StringBTNode_OnSerialize(struct __eCNameSpace__eC__types__Class * class, struct __eCNameSpace__eC__files__StringBTNode * this, struct __eCNameSpace__eC__types__Instance * channel)
+void __eCMethod___eCNameSpace__eC__containers__StringBTNode_OnSerialize(struct __eCNameSpace__eC__types__Class * class, struct __eCNameSpace__eC__containers__StringBTNode * this, struct __eCNameSpace__eC__types__Instance * channel)
 {
-if((struct __eCNameSpace__eC__files__StringBTNode *)this)
+if((struct __eCNameSpace__eC__containers__StringBTNode *)this)
 {
 unsigned int truth = 1;
 
 __eCMethod___eCNameSpace__eC__types__IOChannel_Serialize(channel, __eCClass_bool, (void *)&truth);
 __eCMethod___eCNameSpace__eC__types__IOChannel_Serialize(channel, __eCClass_String, this->key);
-__eCMethod___eCNameSpace__eC__types__IOChannel_Serialize(channel, __eCClass___eCNameSpace__eC__files__StringBTNode, this->left);
-__eCMethod___eCNameSpace__eC__types__IOChannel_Serialize(channel, __eCClass___eCNameSpace__eC__files__StringBTNode, this->right);
+__eCMethod___eCNameSpace__eC__types__IOChannel_Serialize(channel, __eCClass___eCNameSpace__eC__containers__StringBTNode, this->left);
+__eCMethod___eCNameSpace__eC__types__IOChannel_Serialize(channel, __eCClass___eCNameSpace__eC__containers__StringBTNode, this->right);
 }
 else
 {
@@ -1079,26 +1079,26 @@ __eCMethod___eCNameSpace__eC__types__IOChannel_Serialize(channel, __eCClass_uint
 }
 }
 
-void __eCMethod___eCNameSpace__eC__containers__StringBTNode_OnUnserialize(struct __eCNameSpace__eC__types__Class * class, struct __eCNameSpace__eC__files__StringBTNode ** this, struct __eCNameSpace__eC__types__Instance * channel)
+void __eCMethod___eCNameSpace__eC__containers__StringBTNode_OnUnserialize(struct __eCNameSpace__eC__types__Class * class, struct __eCNameSpace__eC__containers__StringBTNode ** this, struct __eCNameSpace__eC__types__Instance * channel)
 {
 unsigned int truth;
 
 __eCMethod___eCNameSpace__eC__types__IOChannel_Unserialize(channel, __eCClass_bool, (void *)&truth);
 if(truth)
 {
-(*this) = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__files__StringBTNode));
+(*this) = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__StringBTNode));
 __eCMethod___eCNameSpace__eC__types__IOChannel_Unserialize(channel, __eCClass_String, (void *)&(*this)->key);
-__eCMethod___eCNameSpace__eC__types__IOChannel_Unserialize(channel, __eCClass___eCNameSpace__eC__files__StringBTNode, (void *)&(*this)->left);
+__eCMethod___eCNameSpace__eC__types__IOChannel_Unserialize(channel, __eCClass___eCNameSpace__eC__containers__StringBTNode, (void *)&(*this)->left);
 if((*this)->left)
 {
-(*this)->left->parent = *(struct __eCNameSpace__eC__files__StringBTNode **)this;
+(*this)->left->parent = *(struct __eCNameSpace__eC__containers__StringBTNode **)this;
 }
-__eCMethod___eCNameSpace__eC__types__IOChannel_Unserialize(channel, __eCClass___eCNameSpace__eC__files__StringBTNode, (void *)&(*this)->right);
+__eCMethod___eCNameSpace__eC__types__IOChannel_Unserialize(channel, __eCClass___eCNameSpace__eC__containers__StringBTNode, (void *)&(*this)->right);
 if((*this)->right)
 {
-(*this)->right->parent = *(struct __eCNameSpace__eC__files__StringBTNode **)this;
+(*this)->right->parent = *(struct __eCNameSpace__eC__containers__StringBTNode **)this;
 }
-(*this)->depth = __eCProp___eCNameSpace__eC__containers__BTNode_Get_depthProp(((struct __eCNameSpace__eC__containers__BTNode *)*(struct __eCNameSpace__eC__files__StringBTNode **)this));
+(*this)->depth = __eCProp___eCNameSpace__eC__containers__BTNode_Get_depthProp(((struct __eCNameSpace__eC__containers__BTNode *)*(struct __eCNameSpace__eC__containers__StringBTNode **)this));
 }
 else
 (*this) = (((void *)0));
@@ -1120,36 +1120,36 @@ void __eCRegisterModule_BTNode(struct __eCNameSpace__eC__types__Instance * modul
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::files::TreePrintStyle", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::containers::TreePrintStyle", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__files__TreePrintStyle = class;
+__eCClass___eCNameSpace__eC__containers__TreePrintStyle = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "inOrder", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "postOrder", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "preOrder", 2);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "depthOrder", 3);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::strcatf", "void eC::files::strcatf(char * string, const char * format, ...)", __eCNameSpace__eC__files__strcatf, module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::BTNode", 0, sizeof(struct __eCNameSpace__eC__containers__BTNode), 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::containers::strcatf", "void eC::containers::strcatf(char * string, const char * format, ...)", __eCNameSpace__eC__containers__strcatf, module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::BTNode", 0, sizeof(struct __eCNameSpace__eC__containers__BTNode), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__containers__BTNode = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnSerialize", 0, __eCMethod___eCNameSpace__eC__containers__BTNode_OnSerialize, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnUnserialize", 0, __eCMethod___eCNameSpace__eC__containers__BTNode_OnUnserialize, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "FindPrefix", "eC::files::BTNode FindPrefix(const char * key)", __eCMethod___eCNameSpace__eC__containers__BTNode_FindPrefix, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "FindString", "eC::files::BTNode FindString(const char * key)", __eCMethod___eCNameSpace__eC__containers__BTNode_FindString, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "FindPrefix", "eC::containers::BTNode FindPrefix(const char * key)", __eCMethod___eCNameSpace__eC__containers__BTNode_FindPrefix, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "FindString", "eC::containers::BTNode FindString(const char * key)", __eCMethod___eCNameSpace__eC__containers__BTNode_FindString, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "key", "uintptr", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "parent", "eC::files::BTNode", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "left", "eC::files::BTNode", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "right", "eC::files::BTNode", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "parent", "eC::containers::BTNode", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "left", "eC::containers::BTNode", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "right", "eC::containers::BTNode", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "depth", "int", 4, 4, 1);
-__eCPropM___eCNameSpace__eC__containers__BTNode_prev = __eCNameSpace__eC__types__eClass_AddProperty(class, "prev", "eC::files::BTNode", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_prev, 1);
+__eCPropM___eCNameSpace__eC__containers__BTNode_prev = __eCNameSpace__eC__types__eClass_AddProperty(class, "prev", "eC::containers::BTNode", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_prev, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__containers__BTNode_prev = __eCPropM___eCNameSpace__eC__containers__BTNode_prev, __eCPropM___eCNameSpace__eC__containers__BTNode_prev = (void *)0;
-__eCPropM___eCNameSpace__eC__containers__BTNode_next = __eCNameSpace__eC__types__eClass_AddProperty(class, "next", "eC::files::BTNode", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_next, 1);
+__eCPropM___eCNameSpace__eC__containers__BTNode_next = __eCNameSpace__eC__types__eClass_AddProperty(class, "next", "eC::containers::BTNode", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_next, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__containers__BTNode_next = __eCPropM___eCNameSpace__eC__containers__BTNode_next, __eCPropM___eCNameSpace__eC__containers__BTNode_next = (void *)0;
-__eCPropM___eCNameSpace__eC__containers__BTNode_minimum = __eCNameSpace__eC__types__eClass_AddProperty(class, "minimum", "eC::files::BTNode", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_minimum, 1);
+__eCPropM___eCNameSpace__eC__containers__BTNode_minimum = __eCNameSpace__eC__types__eClass_AddProperty(class, "minimum", "eC::containers::BTNode", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_minimum, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__containers__BTNode_minimum = __eCPropM___eCNameSpace__eC__containers__BTNode_minimum, __eCPropM___eCNameSpace__eC__containers__BTNode_minimum = (void *)0;
-__eCPropM___eCNameSpace__eC__containers__BTNode_maximum = __eCNameSpace__eC__types__eClass_AddProperty(class, "maximum", "eC::files::BTNode", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_maximum, 1);
+__eCPropM___eCNameSpace__eC__containers__BTNode_maximum = __eCNameSpace__eC__types__eClass_AddProperty(class, "maximum", "eC::containers::BTNode", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_maximum, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__containers__BTNode_maximum = __eCPropM___eCNameSpace__eC__containers__BTNode_maximum, __eCPropM___eCNameSpace__eC__containers__BTNode_maximum = (void *)0;
 __eCPropM___eCNameSpace__eC__containers__BTNode_count = __eCNameSpace__eC__types__eClass_AddProperty(class, "count", "int", 0, __eCProp___eCNameSpace__eC__containers__BTNode_Get_count, 1);
@@ -1163,23 +1163,23 @@ if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct 
 __eCProp___eCNameSpace__eC__containers__BTNode_balanceFactor = __eCPropM___eCNameSpace__eC__containers__BTNode_balanceFactor, __eCPropM___eCNameSpace__eC__containers__BTNode_balanceFactor = (void *)0;
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::StringBTNode", 0, sizeof(struct __eCNameSpace__eC__files__StringBTNode), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::StringBTNode", 0, sizeof(struct __eCNameSpace__eC__containers__StringBTNode), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__files__StringBTNode = class;
+__eCClass___eCNameSpace__eC__containers__StringBTNode = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnSerialize", 0, __eCMethod___eCNameSpace__eC__containers__StringBTNode_OnSerialize, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnUnserialize", 0, __eCMethod___eCNameSpace__eC__containers__StringBTNode_OnUnserialize, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "key", "String", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "parent", "eC::files::StringBTNode", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "left", "eC::files::StringBTNode", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "right", "eC::files::StringBTNode", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "parent", "eC::containers::StringBTNode", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "left", "eC::containers::StringBTNode", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "right", "eC::containers::StringBTNode", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "depth", "int", 4, 4, 1);
 if(class)
 class->fixed = (unsigned int)1;
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__containers__BTNode_Check(struct __eCNameSpace__eC__containers__BTNode *  this, struct __eCNameSpace__eC__files__BinaryTree *  tree);
+unsigned int __eCMethod___eCNameSpace__eC__containers__BTNode_Check(struct __eCNameSpace__eC__containers__BTNode *  this, struct __eCNameSpace__eC__containers__BinaryTree *  tree);
 
-unsigned int __eCMethod___eCNameSpace__eC__containers__BTNode_Check(struct __eCNameSpace__eC__containers__BTNode * this, struct __eCNameSpace__eC__files__BinaryTree * tree)
+unsigned int __eCMethod___eCNameSpace__eC__containers__BTNode_Check(struct __eCNameSpace__eC__containers__BTNode * this, struct __eCNameSpace__eC__containers__BinaryTree * tree)
 {
 unsigned int valid = 1;
 int leftHeight = this->left ? __eCProp___eCNameSpace__eC__containers__BTNode_Get_depthProp(this->left) + 1 : 0;

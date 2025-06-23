@@ -174,6 +174,8 @@ unsigned int offset;
 unsigned int circ;
 } eC_gcc_struct;
 
+struct __eCNameSpace__eC__files__Type;
+
 struct __eCNameSpace__eC__types__DataValue
 {
 union
@@ -351,6 +353,32 @@ struct __eCNameSpace__eC__types__Class * _class;
 int _refCount;
 } eC_gcc_struct;
 
+struct __eCNameSpace__eC__types__Property
+{
+struct __eCNameSpace__eC__types__Property * prev;
+struct __eCNameSpace__eC__types__Property * next;
+const char *  name;
+unsigned int isProperty;
+int memberAccess;
+int id;
+struct __eCNameSpace__eC__types__Class * _class;
+const char *  dataTypeString;
+struct __eCNameSpace__eC__types__Class * dataTypeClass;
+struct __eCNameSpace__eC__files__Type * dataType;
+void (*  Set)(void * , int);
+int (*  Get)(void * );
+unsigned int (*  IsSet)(void * );
+void *  data;
+void *  symbol;
+int vid;
+unsigned int conversion;
+unsigned int watcherOffset;
+const char *  category;
+unsigned int compiled;
+unsigned int selfWatchable;
+unsigned int isWatchable;
+} eC_gcc_struct;
+
 extern long long __eCNameSpace__eC__types__eClass_GetProperty(struct __eCNameSpace__eC__types__Class * _class, const char *  name);
 
 extern void __eCNameSpace__eC__types__eClass_SetProperty(struct __eCNameSpace__eC__types__Class * _class, const char *  name, long long value);
@@ -415,32 +443,6 @@ extern int __eCVMethodID___eCNameSpace__eC__files__File_Unlock;
 
 extern int __eCVMethodID___eCNameSpace__eC__files__File_Close;
 
-struct __eCNameSpace__eC__types__Property
-{
-struct __eCNameSpace__eC__types__Property * prev;
-struct __eCNameSpace__eC__types__Property * next;
-const char *  name;
-unsigned int isProperty;
-int memberAccess;
-int id;
-struct __eCNameSpace__eC__types__Class * _class;
-const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
-void (*  Set)(void * , int);
-int (*  Get)(void * );
-unsigned int (*  IsSet)(void * );
-void *  data;
-void *  symbol;
-int vid;
-unsigned int conversion;
-unsigned int watcherOffset;
-const char *  category;
-unsigned int compiled;
-unsigned int selfWatchable;
-unsigned int isWatchable;
-} eC_gcc_struct;
-
 extern void __eCNameSpace__eC__types__eInstance_FireSelfWatchers(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property);
 
 extern void __eCNameSpace__eC__types__eInstance_SetMethod(struct __eCNameSpace__eC__types__Instance * instance, const char *  name, void *  function);
@@ -484,13 +486,13 @@ __eCProp___eCNameSpace__eC__files__File_Set_output(this, (((void *)0)));
 }
 }
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -507,12 +509,12 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -558,7 +560,7 @@ int type;
 struct __eCNameSpace__eC__types__Class * _class;
 void *  symbol;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int memberAccess;
 } eC_gcc_struct;
 
@@ -584,10 +586,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -604,11 +606,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -616,7 +618,7 @@ int type;
 struct __eCNameSpace__eC__types__Instance * module;
 struct __eCNameSpace__eC__types__NameSpace *  nameSpace;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int typeSize;
 int defaultAlignment;
 void (*  Initialize)();
@@ -660,6 +662,12 @@ struct __eCNameSpace__eC__containers__OldList allModules;
 char *  parsedCommand;
 struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 } eC_gcc_struct;
+
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__ClassDefinition;
+
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__Instantiation;
+
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__Type;
 
 static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__FileSize;
 
@@ -941,7 +949,7 @@ unsigned int __eCMethod___eCNameSpace__eC__files__File_Truncate(struct __eCNameS
 {
 __attribute__((unused)) struct __eCNameSpace__eC__files__File * __eCPointer___eCNameSpace__eC__files__File = (struct __eCNameSpace__eC__files__File *)(this ? (((char *)this) + __eCClass___eCNameSpace__eC__files__File->offset) : 0);
 
-fprintf((bsl_stderr()), "WARNING:  File::Truncate unimplemented in ecrtBootstrap.\n");
+fprintf((bsl_stderr()), "WARNING:  File::Truncate unimplemented in bootstrapped eC library.\n");
 return 0;
 }
 
@@ -1650,6 +1658,15 @@ void __eCRegisterModule_File(struct __eCNameSpace__eC__types__Instance * module)
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::ClassDefinition", 0, 0, 0, (void *)0, (void *)0, module, 2, 1);
+if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
+__eCClass___eCNameSpace__eC__files__ClassDefinition = class;
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::Instantiation", 0, 0, 0, (void *)0, (void *)0, module, 2, 1);
+if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
+__eCClass___eCNameSpace__eC__files__Instantiation = class;
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::Type", 0, 0, 0, (void *)0, (void *)0, module, 2, 1);
+if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
+__eCClass___eCNameSpace__eC__files__Type = class;
 class = __eCNameSpace__eC__types__eSystem_RegisterClass(3, "eC::files::FileSize", "uint", 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__files__FileSize = class;

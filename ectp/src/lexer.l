@@ -186,6 +186,8 @@ default:
 "__attribute__" { return ATTRIB; }
 "__attribute" { return __ATTRIB; }
 
+"_Alignas" { return _ALIGNAS; }
+
 "__inline__"               { return(EXT_STORAGE); }
 "_inline"                  { return(EXT_STORAGE); }
 "__inline"                 { return(EXT_STORAGE); }

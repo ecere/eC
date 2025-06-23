@@ -293,7 +293,7 @@ unsigned int __eCNameSpace__eC__types__poolingDisabled;
 
 unsigned int ccUtf8ToUnicode(unsigned int byte, unsigned int * state, unsigned int * retunicode);
 
-int __eCNameSpace__eC__files__ISO8859_1toUTF8(const char * source, char * dest, int max)
+int __eCNameSpace__eC__i18n__ISO8859_1toUTF8(const char * source, char * dest, int max)
 {
 int c;
 int d = 0;
@@ -882,7 +882,7 @@ void __eCNameSpace__eC__types__eSystem_SetPoolingDisabled(unsigned int disabled)
 __eCNameSpace__eC__types__poolingDisabled = disabled;
 }
 
-static inline unsigned int __eCNameSpace__eC__files__decodeUTF8(unsigned int b, unsigned int * state, unsigned int * retCodePoint)
+static inline unsigned int __eCNameSpace__eC__i18n__decodeUTF8(unsigned int b, unsigned int * state, unsigned int * retCodePoint)
 {
 return ccUtf8ToUnicode(b, state, retCodePoint);
 }
@@ -1112,7 +1112,7 @@ unsigned int codepoint;
 unsigned int state = 0;
 
 while(*s)
-__eCNameSpace__eC__files__decodeUTF8(*s++, &state, &codepoint);
+__eCNameSpace__eC__i18n__decodeUTF8(*s++, &state, &codepoint);
 return state == 0;
 }
 return 1;
@@ -1668,28 +1668,28 @@ int depth;
 
 struct __eCNameSpace__eC__containers__BTNode * __eCProp___eCNameSpace__eC__containers__BTNode_Get_next(struct __eCNameSpace__eC__containers__BTNode * this);
 
-struct __eCNameSpace__eC__files__OldLink;
+struct __eCNameSpace__eC__containers__OldLink;
 
-struct __eCNameSpace__eC__files__OldLink
+struct __eCNameSpace__eC__containers__OldLink
 {
-struct __eCNameSpace__eC__files__OldLink * prev;
-struct __eCNameSpace__eC__files__OldLink * next;
+struct __eCNameSpace__eC__containers__OldLink * prev;
+struct __eCNameSpace__eC__containers__OldLink * next;
 void *  data;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__files__OldLink * __eCMethod___eCNameSpace__eC__containers__OldList_FindLink(struct __eCNameSpace__eC__containers__OldList * this, void *  data);
+struct __eCNameSpace__eC__containers__OldLink * __eCMethod___eCNameSpace__eC__containers__OldList_FindLink(struct __eCNameSpace__eC__containers__OldList * this, void *  data);
 
-struct __eCNameSpace__eC__files__NamedLink64;
+struct __eCNameSpace__eC__containers__NamedLink64;
 
-struct __eCNameSpace__eC__files__NamedLink64
+struct __eCNameSpace__eC__containers__NamedLink64
 {
-struct __eCNameSpace__eC__files__NamedLink64 * prev;
-struct __eCNameSpace__eC__files__NamedLink64 * next;
+struct __eCNameSpace__eC__containers__NamedLink64 * prev;
+struct __eCNameSpace__eC__containers__NamedLink64 * next;
 char *  name;
 long long data;
 } eC_gcc_struct;
 
-static void __eCNameSpace__eC__types__FreeEnumValue(struct __eCNameSpace__eC__files__NamedLink64 * value)
+static void __eCNameSpace__eC__types__FreeEnumValue(struct __eCNameSpace__eC__containers__NamedLink64 * value)
 {
 (__eCNameSpace__eC__types__eSystem_Delete(value->name), value->name = 0);
 }
@@ -1846,13 +1846,13 @@ const char * value;
 struct __eCNameSpace__eC__types__NameSpace * nameSpace;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -1862,23 +1862,23 @@ const char * name;
 struct __eCNameSpace__eC__types__NameSpace * btParent, * left, * right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace * parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__containers__BTNode * __eCProp___eCNameSpace__eC__containers__BinaryTree_Get_first(struct __eCNameSpace__eC__files__BinaryTree * this);
+struct __eCNameSpace__eC__containers__BTNode * __eCProp___eCNameSpace__eC__containers__BinaryTree_Get_first(struct __eCNameSpace__eC__containers__BinaryTree * this);
 
-struct __eCNameSpace__eC__containers__BTNode * __eCMethod___eCNameSpace__eC__containers__BinaryTree_FindString(struct __eCNameSpace__eC__files__BinaryTree * this, const char *  key);
+struct __eCNameSpace__eC__containers__BTNode * __eCMethod___eCNameSpace__eC__containers__BinaryTree_FindString(struct __eCNameSpace__eC__containers__BinaryTree * this, const char *  key);
 
-void __eCMethod___eCNameSpace__eC__containers__BinaryTree_Delete(struct __eCNameSpace__eC__files__BinaryTree * this, struct __eCNameSpace__eC__containers__BTNode * node);
+void __eCMethod___eCNameSpace__eC__containers__BinaryTree_Delete(struct __eCNameSpace__eC__containers__BinaryTree * this, struct __eCNameSpace__eC__containers__BTNode * node);
 
-int __eCMethod___eCNameSpace__eC__containers__BinaryTree_CompareString(struct __eCNameSpace__eC__files__BinaryTree * this, const char *  a, const char *  b);
+int __eCMethod___eCNameSpace__eC__containers__BinaryTree_CompareString(struct __eCNameSpace__eC__containers__BinaryTree * this, const char *  a, const char *  b);
 
-unsigned int __eCMethod___eCNameSpace__eC__containers__BinaryTree_Add(struct __eCNameSpace__eC__files__BinaryTree * this, struct __eCNameSpace__eC__containers__BTNode * node);
+unsigned int __eCMethod___eCNameSpace__eC__containers__BinaryTree_Add(struct __eCNameSpace__eC__containers__BinaryTree * this, struct __eCNameSpace__eC__containers__BTNode * node);
 
-struct __eCNameSpace__eC__containers__BTNode * __eCMethod___eCNameSpace__eC__containers__BinaryTree_Find(struct __eCNameSpace__eC__files__BinaryTree * this, uintptr_t key);
+struct __eCNameSpace__eC__containers__BTNode * __eCMethod___eCNameSpace__eC__containers__BinaryTree_Find(struct __eCNameSpace__eC__containers__BinaryTree * this, uintptr_t key);
 
 struct __eCNameSpace__eC__types__Application
 {
@@ -1905,7 +1905,7 @@ __eCMethod___eCNameSpace__eC__containers__BinaryTree_Delete(&parentNameSpace->na
 
 static struct __eCNameSpace__eC__types__BTNamedLink * __eCNameSpace__eC__types__ScanNameSpace(struct __eCNameSpace__eC__types__NameSpace * nameSpace, const char * name, void * listOffset)
 {
-struct __eCNameSpace__eC__files__BinaryTree * tree = (struct __eCNameSpace__eC__files__BinaryTree *)((unsigned char *)nameSpace + (uintptr_t)listOffset);
+struct __eCNameSpace__eC__containers__BinaryTree * tree = (struct __eCNameSpace__eC__containers__BinaryTree *)((unsigned char *)nameSpace + (uintptr_t)listOffset);
 struct __eCNameSpace__eC__types__BTNamedLink * link = (struct __eCNameSpace__eC__types__BTNamedLink *)__eCMethod___eCNameSpace__eC__containers__BinaryTree_Find((&*tree), (uintptr_t)name);
 struct __eCNameSpace__eC__types__NameSpace * child;
 
@@ -2000,7 +2000,7 @@ int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -2047,7 +2047,7 @@ __eCMethod___eCNameSpace__eC__containers__BinaryTree_Delete(&parentMember->membe
 }
 }
 
-static struct __eCNameSpace__eC__types__DataMember * __eCNameSpace__eC__types__FindDataMember(struct __eCNameSpace__eC__containers__OldList * list, struct __eCNameSpace__eC__files__BinaryTree * alist, const char * name, unsigned int * offset, int * id, unsigned int searchPrivate, struct __eCNameSpace__eC__types__DataMember ** subMemberStack, int * subMemberStackPos)
+static struct __eCNameSpace__eC__types__DataMember * __eCNameSpace__eC__types__FindDataMember(struct __eCNameSpace__eC__containers__OldList * list, struct __eCNameSpace__eC__containers__BinaryTree * alist, const char * name, unsigned int * offset, int * id, unsigned int searchPrivate, struct __eCNameSpace__eC__types__DataMember ** subMemberStack, int * subMemberStackPos)
 {
 struct __eCNameSpace__eC__types__BTNamedLink * link;
 struct __eCNameSpace__eC__types__DataMember * dataMember;
@@ -2119,11 +2119,11 @@ unsigned int (* Constructor)(void *);
 void (* Destructor)(void *);
 int offsetClass, sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID, startMemberID;
 int type;
@@ -2260,7 +2260,7 @@ void __eCMethod___eCNameSpace__eC__types__Class_OnFree(struct __eCNameSpace__eC_
 
 static void __eCNameSpace__eC__types__FixDerivativeVirtualMethod(struct __eCNameSpace__eC__types__Class * base, const char * name, int vid, void * origFunction, const char * type)
 {
-struct __eCNameSpace__eC__files__OldLink * derivative;
+struct __eCNameSpace__eC__containers__OldLink * derivative;
 
 for(derivative = base->derivatives.first; derivative; derivative = derivative->next)
 {
@@ -2298,7 +2298,7 @@ method->vid++;
 }
 _class->_vTbl[vid] = function;
 {
-struct __eCNameSpace__eC__files__OldLink * templateLink;
+struct __eCNameSpace__eC__containers__OldLink * templateLink;
 
 for(templateLink = _class->templatized.first; templateLink; templateLink = templateLink->next)
 {
@@ -2311,7 +2311,7 @@ if(_class->derivatives.first || _class->templatized.first)
 __eCNameSpace__eC__types__FixDerivativeVirtualMethod(_class, name, vid, function, type);
 }
 {
-struct __eCNameSpace__eC__files__OldLink * templateLink;
+struct __eCNameSpace__eC__containers__OldLink * templateLink;
 
 for(templateLink = base->templatized.first; templateLink; templateLink = templateLink->next)
 {
@@ -2325,7 +2325,7 @@ __eCNameSpace__eC__types__FixDerivativeVirtualMethod(template, name, vid, origFu
 
 static void __eCNameSpace__eC__types__FixDerivativeProperty(struct __eCNameSpace__eC__types__Class * base, struct __eCNameSpace__eC__types__Property * _property)
 {
-struct __eCNameSpace__eC__files__OldLink * derivative;
+struct __eCNameSpace__eC__containers__OldLink * derivative;
 
 for(derivative = base->derivatives.first; derivative; derivative = derivative->next)
 {
@@ -2362,8 +2362,8 @@ __eCNameSpace__eC__types__FixDerivativeProperty(_class, _property);
 
 static void __eCNameSpace__eC__types__SetDelayedCPValues(struct __eCNameSpace__eC__types__Class * _class, struct __eCNameSpace__eC__types__ClassProperty * _property)
 {
-struct __eCNameSpace__eC__files__OldLink * deriv;
-struct __eCNameSpace__eC__files__NamedLink64 * value, * next;
+struct __eCNameSpace__eC__containers__OldLink * deriv;
+struct __eCNameSpace__eC__containers__NamedLink64 * value, * next;
 
 for(value = _class->delayedCPValues.first; value; value = next)
 {
@@ -2652,7 +2652,7 @@ return dataMember;
 
 static void __eCNameSpace__eC__types__FixOffsets(struct __eCNameSpace__eC__types__Class * _class)
 {
-struct __eCNameSpace__eC__files__OldLink * deriv;
+struct __eCNameSpace__eC__containers__OldLink * deriv;
 
 _class->structSize += _class->base->structSize - _class->offset;
 _class->offset = _class->base->structSize;
@@ -2665,7 +2665,7 @@ void __eCNameSpace__eC__types__eEnum_AddFixedValue(struct __eCNameSpace__eC__typ
 if(_class && _class->type == 4)
 {
 struct __eCNameSpace__eC__types__EnumClassData * data = (struct __eCNameSpace__eC__types__EnumClassData *)_class->data;
-struct __eCNameSpace__eC__files__NamedLink64 * item;
+struct __eCNameSpace__eC__containers__NamedLink64 * item;
 
 for(item = data->values.first; item; item = item->next)
 if(!strcmp(item->name, string))
@@ -2673,7 +2673,7 @@ break;
 if(!item)
 {
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&data->values, __extension__ ({
-struct __eCNameSpace__eC__files__NamedLink64 * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__files__NamedLink64));
+struct __eCNameSpace__eC__containers__NamedLink64 * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__NamedLink64));
 
 __eCInstance1->data = value, __eCInstance1->name = __eCNameSpace__eC__types__CopyString(string), __eCInstance1;
 }));
@@ -2689,7 +2689,7 @@ if(_class && _class->type == 4)
 {
 struct __eCNameSpace__eC__types__EnumClassData * data = (struct __eCNameSpace__eC__types__EnumClassData *)_class->data;
 long long value = data->largest + 1;
-struct __eCNameSpace__eC__files__NamedLink64 * item;
+struct __eCNameSpace__eC__containers__NamedLink64 * item;
 
 for(item = data->values.first; item; item = item->next)
 if(!strcmp(item->name, string))
@@ -2697,7 +2697,7 @@ break;
 if(!item)
 {
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&data->values, __extension__ ({
-struct __eCNameSpace__eC__files__NamedLink64 * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__files__NamedLink64));
+struct __eCNameSpace__eC__containers__NamedLink64 * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__NamedLink64));
 
 __eCInstance1->data = value, __eCInstance1->name = __eCNameSpace__eC__types__CopyString(string), __eCInstance1;
 }));
@@ -2745,7 +2745,7 @@ unsigned int __eCMethod___eCNameSpace__eC__types__Platform_OnGetDataFromString(s
 return (*this) != 0;
 }
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__OldLink;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__OldLink;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Module;
 
@@ -2774,7 +2774,7 @@ if(method)
 {
 if(method->type == 1)
 {
-struct __eCNameSpace__eC__files__OldLink * deriv;
+struct __eCNameSpace__eC__containers__OldLink * deriv;
 void * oldFunction = _class->_vTbl[method->vid];
 
 if(method->vid >= _class->vTblSize)
@@ -2789,7 +2789,7 @@ if(derivClass->_vTbl[method->vid] == oldFunction)
 __eCNameSpace__eC__types__eClass_AddMethod(derivClass, name, type, function, declMode);
 }
 {
-struct __eCNameSpace__eC__files__OldLink * templateLink;
+struct __eCNameSpace__eC__containers__OldLink * templateLink;
 
 for(templateLink = _class->templatized.first; templateLink; templateLink = templateLink->next)
 {
@@ -3143,7 +3143,7 @@ if(_property->Set)
 else
 {
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&_class->delayedCPValues, __extension__ ({
-struct __eCNameSpace__eC__files__NamedLink64 * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__files__NamedLink64));
+struct __eCNameSpace__eC__containers__NamedLink64 * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__NamedLink64));
 
 __eCInstance1->name = (char *)name, __eCInstance1->data = value, __eCInstance1;
 }));
@@ -3250,7 +3250,7 @@ while(*curMember && (*curMember)->memberAccess == 2)
 
 void __eCNameSpace__eC__types__eClass_Resize(struct __eCNameSpace__eC__types__Class * _class, int newSize)
 {
-struct __eCNameSpace__eC__files__OldLink * deriv;
+struct __eCNameSpace__eC__containers__OldLink * deriv;
 
 _class->structSize = newSize;
 for(deriv = _class->derivatives.first; deriv; deriv = deriv->next)
@@ -3796,7 +3796,7 @@ for(module = ((struct __eCNameSpace__eC__types__Application *)(((char *)app + si
 ((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application = app;
 for(link = (struct __eCNameSpace__eC__types__BTNamedLink *)__eCProp___eCNameSpace__eC__containers__BinaryTree_Get_first(&((struct __eCNameSpace__eC__types__Module *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Instance))))->privateNameSpace.classes); link; link = (struct __eCNameSpace__eC__types__BTNamedLink *)__eCProp___eCNameSpace__eC__containers__BTNode_Get_next(((struct __eCNameSpace__eC__containers__BTNode *)link)))
 {
-struct __eCNameSpace__eC__files__OldLink * t;
+struct __eCNameSpace__eC__containers__OldLink * t;
 
 ((struct __eCNameSpace__eC__types__Class *)link->data)->nameSpace = &((struct __eCNameSpace__eC__types__Module *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Instance))))->privateNameSpace;
 for(t = ((struct __eCNameSpace__eC__types__Class *)link->data)->templatized.first; t; t = t->next)
@@ -3808,7 +3808,7 @@ template->nameSpace = ((struct __eCNameSpace__eC__types__Class *)link->data)->na
 }
 for(link = (struct __eCNameSpace__eC__types__BTNamedLink *)__eCProp___eCNameSpace__eC__containers__BinaryTree_Get_first(&((struct __eCNameSpace__eC__types__Module *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Instance))))->publicNameSpace.classes); link; link = (struct __eCNameSpace__eC__types__BTNamedLink *)__eCProp___eCNameSpace__eC__containers__BTNode_Get_next(((struct __eCNameSpace__eC__containers__BTNode *)link)))
 {
-struct __eCNameSpace__eC__files__OldLink * t;
+struct __eCNameSpace__eC__containers__OldLink * t;
 
 ((struct __eCNameSpace__eC__types__Class *)link->data)->nameSpace = &((struct __eCNameSpace__eC__types__Module *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Instance))))->publicNameSpace;
 for(t = ((struct __eCNameSpace__eC__types__Class *)link->data)->templatized.first; t; t = t->next)
@@ -3832,7 +3832,7 @@ for(nameSpace = (struct __eCNameSpace__eC__types__NameSpace *)__eCProp___eCNameS
 (*nameSpace).parent = &((struct __eCNameSpace__eC__types__Module *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Instance))))->publicNameSpace;
 for(link = (struct __eCNameSpace__eC__types__BTNamedLink *)__eCProp___eCNameSpace__eC__containers__BinaryTree_Get_first(&((struct __eCNameSpace__eC__types__Application *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Module) + sizeof(struct __eCNameSpace__eC__types__Instance))))->systemNameSpace.classes); link; link = (struct __eCNameSpace__eC__types__BTNamedLink *)__eCProp___eCNameSpace__eC__containers__BTNode_Get_next(((struct __eCNameSpace__eC__containers__BTNode *)link)))
 {
-struct __eCNameSpace__eC__files__OldLink * t;
+struct __eCNameSpace__eC__containers__OldLink * t;
 
 ((struct __eCNameSpace__eC__types__Class *)link->data)->nameSpace = &((struct __eCNameSpace__eC__types__Application *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Module) + sizeof(struct __eCNameSpace__eC__types__Instance))))->systemNameSpace;
 for(t = ((struct __eCNameSpace__eC__types__Class *)link->data)->templatized.first; t; t = t->next)
@@ -3852,7 +3852,7 @@ for(nameSpace = (struct __eCNameSpace__eC__types__NameSpace *)__eCProp___eCNameS
 (*nameSpace).parent = &((struct __eCNameSpace__eC__types__Application *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Module) + sizeof(struct __eCNameSpace__eC__types__Instance))))->systemNameSpace;
 for(_class = ((struct __eCNameSpace__eC__types__Module *)(((char *)app + sizeof(struct __eCNameSpace__eC__types__Instance))))->classes.first; _class; _class = _class->next)
 {
-struct __eCNameSpace__eC__files__OldLink * templateLink;
+struct __eCNameSpace__eC__containers__OldLink * templateLink;
 
 _class->module = (struct __eCNameSpace__eC__types__Instance *)app;
 for(templateLink = _class->templatized.first; templateLink; templateLink = templateLink->next)
@@ -3867,7 +3867,7 @@ for(module = ((struct __eCNameSpace__eC__types__Application *)(((char *)app + si
 {
 for(_class = ((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->classes.first; _class; _class = _class->next)
 {
-struct __eCNameSpace__eC__files__OldLink * templateLink;
+struct __eCNameSpace__eC__containers__OldLink * templateLink;
 struct __eCNameSpace__eC__types__Instance * oldModule = _class->module;
 
 _class->module = module;
@@ -4113,7 +4113,7 @@ return 0;
 
 static void __eCNameSpace__eC__types__FreeTemplatesDerivatives(struct __eCNameSpace__eC__types__Class * base)
 {
-struct __eCNameSpace__eC__files__OldLink * derivative, * templateLink;
+struct __eCNameSpace__eC__containers__OldLink * derivative, * templateLink;
 
 for(derivative = base->derivatives.first; derivative; derivative = derivative->next)
 {
@@ -4141,7 +4141,7 @@ __eCNameSpace__eC__types__FreeTemplatesDerivatives(_class);
 
 static void __eCNameSpace__eC__types__FreeTemplate(struct __eCNameSpace__eC__types__Class * template)
 {
-struct __eCNameSpace__eC__files__OldLink * deriv;
+struct __eCNameSpace__eC__containers__OldLink * deriv;
 
 if(template->nameSpace)
 {
@@ -4169,7 +4169,7 @@ __eCNameSpace__eC__types___free(template);
 
 static void __eCNameSpace__eC__types__FreeTemplates(struct __eCNameSpace__eC__types__Class * _class)
 {
-struct __eCNameSpace__eC__files__OldLink * deriv, * template;
+struct __eCNameSpace__eC__containers__OldLink * deriv, * template;
 
 for(deriv = _class->derivatives.first; deriv; deriv = deriv->next)
 {
@@ -4191,13 +4191,13 @@ void __eCNameSpace__eC__types__eClass_Unregister(struct __eCNameSpace__eC__types
 struct __eCNameSpace__eC__types__BTNamedLink * namedLink;
 struct __eCNameSpace__eC__types__DataMember * member;
 struct __eCNameSpace__eC__types__Method * method;
-struct __eCNameSpace__eC__files__OldLink * deriv, * template;
+struct __eCNameSpace__eC__containers__OldLink * deriv, * template;
 struct __eCNameSpace__eC__types__ClassProperty * classProp;
 struct __eCNameSpace__eC__types__ClassTemplateParameter * param;
 
 if(_class->templateClass)
 {
-struct __eCNameSpace__eC__files__OldLink * templateLink;
+struct __eCNameSpace__eC__containers__OldLink * templateLink;
 
 for(templateLink = _class->templateClass->templatized.first; templateLink; templateLink = templateLink->next)
 {
@@ -4422,7 +4422,7 @@ if(ensureCOM && (!strcmp(name, "ecrt")))
 {
 for(module = ((struct __eCNameSpace__eC__types__Application *)(((char *)((struct __eCNameSpace__eC__types__Module *)(((char *)fromModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application + sizeof(struct __eCNameSpace__eC__types__Module) + sizeof(struct __eCNameSpace__eC__types__Instance))))->allModules.first; module; module = ((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->next)
 {
-if(!strcmp(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->name, "ecrt") || !strcmp(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->name, "ecrt"))
+if(!strcmp(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->name, "ecrt"))
 break;
 }
 }
@@ -4474,7 +4474,7 @@ __eCMethod___eCNameSpace__eC__containers__OldList_Add(&((struct __eCNameSpace__e
 }
 if(ensureCOM && !strcmp(name, "ecrt") && module)
 {
-name = !strcmp(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->name, "ecrt") ? "ecrt" : "ecrt";
+name = "ecrt";
 if((!Load && !strcmp(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->name, "ecrt")) || (Load && (!__thisModule || !((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->name || !strcmp(((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->name, "ecrt")) && Load != (void *)__eCDll_Load_ecrt))
 {
 struct __eCNameSpace__eC__types__Instance * module;
@@ -4572,7 +4572,7 @@ return module;
 
 void __eCNameSpace__eC__types__eModule_Unload(struct __eCNameSpace__eC__types__Instance * fromModule, struct __eCNameSpace__eC__types__Instance * module)
 {
-struct __eCNameSpace__eC__files__OldLink * m;
+struct __eCNameSpace__eC__containers__OldLink * m;
 
 for(m = ((struct __eCNameSpace__eC__types__Module *)(((char *)fromModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->modules.first; m; m = m->next)
 {
@@ -4653,7 +4653,7 @@ struct __eCNameSpace__eC__types__BTNamedLink * classLink = (struct __eCNameSpace
 
 if(classLink)
 {
-struct __eCNameSpace__eC__files__OldLink * t;
+struct __eCNameSpace__eC__containers__OldLink * t;
 
 for(t = _class->templatized.first; t; t = t->next)
 {
@@ -4899,7 +4899,7 @@ __eCNameSpace__eC__types__FreeTemplatesDerivatives(_class);
 classLink = (struct __eCNameSpace__eC__types__BTNamedLink *)__eCMethod___eCNameSpace__eC__containers__BinaryTree_FindString(&(*_class->nameSpace).classes, name + start);
 __eCMethod___eCNameSpace__eC__containers__BinaryTree_Delete(&(*_class->nameSpace).classes, (struct __eCNameSpace__eC__containers__BTNode *)classLink);
 {
-struct __eCNameSpace__eC__files__OldLink * t;
+struct __eCNameSpace__eC__containers__OldLink * t;
 
 for(t = _class->templatized.first; t; t = t->next)
 {
@@ -4938,7 +4938,7 @@ if(_class && _class->internalDecl)
 __eCNameSpace__eC__types__FreeTemplatesDerivatives(_class);
 __eCMethod___eCNameSpace__eC__containers__BinaryTree_Delete(&(*_class->nameSpace).classes, (struct __eCNameSpace__eC__containers__BTNode *)classLink);
 {
-struct __eCNameSpace__eC__files__OldLink * t;
+struct __eCNameSpace__eC__containers__OldLink * t;
 
 for(t = _class->templatized.first; t; t = t->next)
 {
@@ -4970,7 +4970,7 @@ struct __eCNameSpace__eC__types__BTNamedLink * __eCInstance1 = __eCNameSpace__eC
 __eCInstance1->name = (char *)_class->name, __eCInstance1->data = _class, __eCInstance1;
 }));
 {
-struct __eCNameSpace__eC__files__OldLink * t;
+struct __eCNameSpace__eC__containers__OldLink * t;
 
 for(t = _class->templatized.first; t; t = t->next)
 {
@@ -5043,7 +5043,7 @@ __eCMethod___eCNameSpace__eC__containers__OldList_Remove(&((struct __eCNameSpace
 if(_class->base)
 {
 struct __eCNameSpace__eC__types__Class * base = _class->base;
-struct __eCNameSpace__eC__files__OldLink * deriv = __eCMethod___eCNameSpace__eC__containers__OldList_FindLink(&base->derivatives, _class);
+struct __eCNameSpace__eC__containers__OldLink * deriv = __eCMethod___eCNameSpace__eC__containers__OldList_FindLink(&base->derivatives, _class);
 
 __eCMethod___eCNameSpace__eC__containers__OldList_Delete(&base->derivatives, deriv);
 }
@@ -5053,7 +5053,7 @@ __eCMethod___eCNameSpace__eC__containers__OldList_Add(&((struct __eCNameSpace__e
 }
 _class->nameSpace = nameSpace;
 {
-struct __eCNameSpace__eC__files__OldLink * t;
+struct __eCNameSpace__eC__containers__OldLink * t;
 
 for(t = _class->templatized.first; t; t = t->next)
 {
@@ -5118,7 +5118,7 @@ else
 _class->offset = 0;
 if(crossBits)
 {
-if(!strcmp(name, "GNOSISSystem") || !strcmp(name, "LineStyle") || !strcmp(name, "FillStyle") || !strcmp(name, "FontObject") || !strcmp(name, "FontObject") || !strcmp(name, "eC::files::Thread"))
+if(!strcmp(name, "GNOSISSystem") || !strcmp(name, "LineStyle") || !strcmp(name, "FillStyle") || !strcmp(name, "FontObject") || !strcmp(name, "FontObject") || !strcmp(name, "eC::mt::Thread"))
 {
 _class->offset = force32Bits ? 24 : 12;
 }
@@ -5234,7 +5234,7 @@ _class->_vTbl[i] = base->_vTbl[i];
 }
 if(_class->base)
 {
-struct __eCNameSpace__eC__files__OldLink * link = (link = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__files__OldLink)), link->data = _class, link);
+struct __eCNameSpace__eC__containers__OldLink * link = (link = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__OldLink)), link->data = _class, link);
 
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&_class->base->derivatives, link);
 }
@@ -6130,7 +6130,7 @@ __eCNameSpace__eC__types__eSystem_RegisterFunction("isblank", "int isblank(int c
 
 static void __eCNameSpace__eC__types__FixDerivativesBase(struct __eCNameSpace__eC__types__Class * base, struct __eCNameSpace__eC__types__Class * mod)
 {
-struct __eCNameSpace__eC__files__OldLink * derivative;
+struct __eCNameSpace__eC__containers__OldLink * derivative;
 
 __eCNameSpace__eC__types__ComputeClassParameters(base, strchr(base->name, '<'), (((void *)0)), base->templateClass != mod);
 for(derivative = base->derivatives.first; derivative; derivative = derivative->next)
@@ -6355,7 +6355,7 @@ __eCNameSpace__eC__types__SetDelayedCPValues(_class, _property);
 }
 }
 {
-struct __eCNameSpace__eC__files__OldLink * templateLink;
+struct __eCNameSpace__eC__containers__OldLink * templateLink;
 
 for(templateLink = base->templatized.first; templateLink; templateLink = templateLink->next)
 {
@@ -6433,9 +6433,9 @@ for(b = _class; b; b = b->base)
 {
 while(b->templateClass)
 b = b->templateClass;
-if(!strcmp(b->fullName, "eC::types::MapNode"))
+if(!strcmp(b->fullName, "eC::containers::MapNode"))
 isMapNode = 1;
-else if(!strcmp(b->fullName, "eC::types::AVLNode"))
+else if(!strcmp(b->fullName, "eC::containers::AVLNode"))
 isAVLNode = 1;
 }
 templatedClass = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__types__Class));
@@ -6476,7 +6476,7 @@ templatedClass->structSize += valSize - sizeof(uint64);
 }
 }
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&_class->templatized, __extension__ ({
-struct __eCNameSpace__eC__files__OldLink * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__files__OldLink));
+struct __eCNameSpace__eC__containers__OldLink * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__OldLink));
 
 __eCInstance1->data = templatedClass, __eCInstance1;
 }));
@@ -6488,7 +6488,7 @@ return templatedClass;
 return (((void *)0));
 }
 
-struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__typeseCrt_Initialize(unsigned int guiApp, int argc, char * argv[])
+struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__types__eCrt_Initialize(unsigned int guiApp, int argc, char * argv[])
 {
 struct __eCNameSpace__eC__types__Instance * app;
 
@@ -6511,16 +6511,16 @@ void __eCRegisterModule_instance(struct __eCNameSpace__eC__types__Instance * mod
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::null", "((void *)0)", module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(3, "eC::types::Angle", "double", 0, 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::null", "((void *)0)", module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(3, "eC::types::Angle", "double", 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__Angle = class;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(3, "unichar", "uint", 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(3, "unichar", "uint", 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass_unichar = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnGetString", 0, __eCMethod_unichar_OnGetString, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnGetDataFromString", 0, __eCMethod_unichar_OnGetDataFromString, 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::Property", 0, sizeof(struct __eCNameSpace__eC__types__Property), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::Property", 0, sizeof(struct __eCNameSpace__eC__types__Property), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__Property = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::types::Property", sizeof(void *), 0xF000F000, 1);
@@ -6549,9 +6549,9 @@ if(class)
 class->fixed = (unsigned int)1;
 if(class)
 class->noExpansion = (unsigned int)1;
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MemoryGuard_PushLoc", "void eC::types::MemoryGuard_PushLoc(const char * loc)", __eCNameSpace__eC__types__MemoryGuard_PushLoc, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MemoryGuard_PopLoc", "void eC::types::MemoryGuard_PopLoc(void)", __eCNameSpace__eC__types__MemoryGuard_PopLoc, module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::BTNamedLink", 0, sizeof(struct __eCNameSpace__eC__types__BTNamedLink), 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MemoryGuard_PushLoc", "void eC::types::MemoryGuard_PushLoc(const char * loc)", __eCNameSpace__eC__types__MemoryGuard_PushLoc, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MemoryGuard_PopLoc", "void eC::types::MemoryGuard_PopLoc(void)", __eCNameSpace__eC__types__MemoryGuard_PopLoc, module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::BTNamedLink", 0, sizeof(struct __eCNameSpace__eC__types__BTNamedLink), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__BTNamedLink = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "name", "const char *", sizeof(void *), 0xF000F000, 1);
@@ -6567,7 +6567,7 @@ if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct 
 __eCClass___eCNameSpace__eC__types__SelfWatcher = class;
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::AccessMode", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::AccessMode", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__AccessMode = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "defaultAccess", 0);
@@ -6575,20 +6575,20 @@ __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "publicAccess", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "privateAccess", 2);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "staticAccess", 3);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "baseSystemAccess", 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::SubModule", 0, sizeof(struct __eCNameSpace__eC__types__SubModule), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::SubModule", 0, sizeof(struct __eCNameSpace__eC__types__SubModule), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__SubModule = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::types::SubModule", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::types::SubModule", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "module", "eC::types::Module", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "importMode", "eC::types::AccessMode", 4, 4, 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::DataMemberType", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::DataMemberType", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__DataMemberType = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "normalMember", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "unionMember", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "structMember", 2);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::ClassType", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::ClassType", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ClassType = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "normalClass", 0);
@@ -6599,7 +6599,7 @@ __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "enumClass", 4);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "noHeadClass", 5);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "unionClass", 6);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "systemClass", 1000);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::Class", 0, sizeof(struct __eCNameSpace__eC__types__Class), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::Class", 0, sizeof(struct __eCNameSpace__eC__types__Class), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__Class = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnFree", 0, __eCMethod___eCNameSpace__eC__types__Class_OnFree, 1);
@@ -6620,12 +6620,12 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "Destructor", "void (*)(vo
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "offsetClass", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "sizeClass", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "base", "eC::types::Class", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "methods", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "members", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "prop", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "membersAndProperties", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "classProperties", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "derivatives", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "methods", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "members", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "prop", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "membersAndProperties", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "classProperties", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "derivatives", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "memberID", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "startMemberID", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "type", "eC::types::ClassType", 4, 4, 1);
@@ -6637,7 +6637,7 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "typeSize", "int", 4, 4, 1
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "defaultAlignment", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "Initialize", "void (*)()", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "memberOffset", "int", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "selfWatchers", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "selfWatchers", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "designerClass", "const char *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "noExpansion", "bool", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "defaultProperty", "const char *", sizeof(void *), 0xF000F000, 1);
@@ -6651,15 +6651,15 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "structAlignment", "short"
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "pointerAlignment", "short", 2, 2, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "destructionWatchOffset", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "fixed", "bool", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "delayedCPValues", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "delayedCPValues", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "inheritanceAccess", "eC::types::AccessMode", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "fullName", "const char *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "symbol", "void *", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "conversions", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "templateParams", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "conversions", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "templateParams", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "templateArgs", "eC::types::ClassTemplateArgument *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "templateClass", "eC::types::Class", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "templatized", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "templatized", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "numParams", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "isInstanceClass", "bool", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "byValueSystemClass", "bool", 4, 4, 1);
@@ -6668,19 +6668,19 @@ if(class)
 class->fixed = (unsigned int)1;
 if(class)
 class->noExpansion = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::TemplateParameterType", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::TemplateParameterType", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__TemplateParameterType = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "type", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "identifier", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "expression", 2);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::TemplateMemberType", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::TemplateMemberType", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__TemplateMemberType = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "dataMember", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "method", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "prop", 2);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::ClassTemplateArgument", 0, sizeof(struct __eCNameSpace__eC__types__ClassTemplateArgument), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::ClassTemplateArgument", 0, sizeof(struct __eCNameSpace__eC__types__ClassTemplateArgument), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ClassTemplateArgument = class;
 {
@@ -6710,7 +6710,7 @@ __eCNameSpace__eC__types__eMember_AddMember(dataMember0, dataMember1);
 }
 __eCNameSpace__eC__types__eClass_AddMember(class, dataMember0);
 }
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::ClassTemplateParameter", 0, sizeof(struct __eCNameSpace__eC__types__ClassTemplateParameter), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::ClassTemplateParameter", 0, sizeof(struct __eCNameSpace__eC__types__ClassTemplateParameter), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ClassTemplateParameter = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::types::ClassTemplateParameter", sizeof(void *), 0xF000F000, 1);
@@ -6728,12 +6728,12 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "defaultArg", "eC::types::
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "param", "void *", sizeof(void *), 0xF000F000, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::MethodType", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::MethodType", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__MethodType = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "normalMethod", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "virtualMethod", 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::Method", 0, sizeof(struct __eCNameSpace__eC__types__Method), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::Method", 0, sizeof(struct __eCNameSpace__eC__types__Method), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__Method = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "name", "const char *", sizeof(void *), 0xF000F000, 1);
@@ -6751,7 +6751,7 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "dataType", "Type", sizeof
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "memberAccess", "eC::types::AccessMode", 4, 4, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::ImportType", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::ImportType", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ImportType = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "normalImport", 0);
@@ -6759,7 +6759,7 @@ __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "staticImport", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "remoteImport", 2);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "preDeclImport", 3);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "comCheckImport", 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::NameSpace", 0, sizeof(struct __eCNameSpace__eC__types__NameSpace), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::NameSpace", 0, sizeof(struct __eCNameSpace__eC__types__NameSpace), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__NameSpace = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "name", "const char *", sizeof(void *), 0xF000F000, 1);
@@ -6768,11 +6768,11 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "left", "eC::types::NameSp
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "right", "eC::types::NameSpace *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "depth", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "parent", "eC::types::NameSpace *", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "nameSpaces", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "classes", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "defines", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "functions", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::DataValue", 0, sizeof(struct __eCNameSpace__eC__types__DataValue), 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "nameSpaces", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "classes", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "defines", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "functions", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::DataValue", 0, sizeof(struct __eCNameSpace__eC__types__DataValue), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__DataValue = class;
 {
@@ -6791,7 +6791,7 @@ __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "i64", "int64", 8, 
 __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "ui64", "uint64", 8, 8, 1);
 __eCNameSpace__eC__types__eClass_AddMember(class, dataMember0);
 }
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::DataMember", 0, sizeof(struct __eCNameSpace__eC__types__DataMember), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::DataMember", 0, sizeof(struct __eCNameSpace__eC__types__DataMember), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__DataMember = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::types::DataMember", sizeof(void *), 0xF000F000, 1);
@@ -6807,14 +6807,14 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "dataType", "Type", sizeof
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "type", "eC::types::DataMemberType", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "offset", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "memberID", "int", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "members", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "membersAlpha", "eC::files::BinaryTree", sizeof(struct __eCNameSpace__eC__files__BinaryTree), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "members", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "membersAlpha", "eC::containers::BinaryTree", sizeof(struct __eCNameSpace__eC__containers__BinaryTree), 8, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "memberOffset", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "structAlignment", "short", 2, 2, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "pointerAlignment", "short", 2, 2, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::BitMember", 0, sizeof(struct __eCNameSpace__eC__types__BitMember), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::BitMember", 0, sizeof(struct __eCNameSpace__eC__types__BitMember), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__BitMember = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::types::BitMember", sizeof(void *), 0xF000F000, 1);
@@ -6833,7 +6833,7 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "pos", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "mask", "uint64", 8, 8, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::ClassProperty", 0, sizeof(struct __eCNameSpace__eC__types__ClassProperty), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::ClassProperty", 0, sizeof(struct __eCNameSpace__eC__types__ClassProperty), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ClassProperty = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "name", "const char *", sizeof(void *), 0xF000F000, 1);
@@ -6848,7 +6848,7 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "dataType", "Type", sizeof
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "constant", "bool", 4, 4, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::DefinedExpression", 0, sizeof(struct __eCNameSpace__eC__types__DefinedExpression), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::DefinedExpression", 0, sizeof(struct __eCNameSpace__eC__types__DefinedExpression), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__DefinedExpression = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::types::DefinedExpression", sizeof(void *), 0xF000F000, 1);
@@ -6858,7 +6858,7 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "value", "const char *", s
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "nameSpace", "eC::types::NameSpace *", sizeof(void *), 0xF000F000, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::GlobalFunction", 0, sizeof(struct __eCNameSpace__eC__types__GlobalFunction), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::GlobalFunction", 0, sizeof(struct __eCNameSpace__eC__types__GlobalFunction), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__GlobalFunction = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::types::GlobalFunction", sizeof(void *), 0xF000F000, 1);
@@ -6872,10 +6872,10 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "dataType", "Type", sizeof
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "symbol", "void *", sizeof(void *), 0xF000F000, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::EnumClassData", 0, sizeof(struct __eCNameSpace__eC__types__EnumClassData), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::EnumClassData", 0, sizeof(struct __eCNameSpace__eC__types__EnumClassData), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__EnumClassData = class;
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "values", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "values", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "largest", "int64", 8, 8, 1);
 if(class)
 class->fixed = (unsigned int)1;
@@ -6907,78 +6907,78 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "numParts", "int", 4, 4, 1
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "numBlocks", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "totalSize", "uint", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "usedSpace", "uint", 4, 4, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::log2i", "uint eC::types::log2i(uint number)", __eCNameSpace__eC__types__log2i, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::pow2i", "uint eC::types::pow2i(uint number)", __eCNameSpace__eC__types__pow2i, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::memswap", "void eC::types::memswap(byte * a, byte * b, uint size)", __eCNameSpace__eC__types__memswap, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CheckConsistency", "void eC::types::CheckConsistency(void)", __eCNameSpace__eC__types__CheckConsistency, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CheckMemory", "void eC::types::CheckMemory(void)", __eCNameSpace__eC__types__CheckMemory, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterClass", "eC::types::Class eC::types::eSystem_RegisterClass(eC::types::ClassType type, const char * name, const char * baseName, int size, int sizeClass, bool (* Constructor)(void *), void (* Destructor)(void *), eC::types::Module module, eC::types::AccessMode declMode, eC::types::AccessMode inheritanceAccess)", __eCNameSpace__eC__types__eSystem_RegisterClass, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_Unregister", "void eC::types::eClass_Unregister(eC::types::Class _class)", __eCNameSpace__eC__types__eClass_Unregister, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::_strtoi64", "int64 eC::types::_strtoi64(const char * string, const char * * endString, int base)", __eCNameSpace__eC__types___strtoi64, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::_strtoui64", "uint64 eC::types::_strtoui64(const char * string, const char * * endString, int base)", __eCNameSpace__eC__types___strtoui64, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_FindClass", "eC::types::Class eC::types::eSystem_FindClass(eC::types::Module module, const char * name)", __eCNameSpace__eC__types__eSystem_FindClass, module, 4);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::log2i", "uint eC::types::log2i(uint number)", __eCNameSpace__eC__types__log2i, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::pow2i", "uint eC::types::pow2i(uint number)", __eCNameSpace__eC__types__pow2i, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::memswap", "void eC::types::memswap(byte * a, byte * b, uint size)", __eCNameSpace__eC__types__memswap, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CheckConsistency", "void eC::types::CheckConsistency(void)", __eCNameSpace__eC__types__CheckConsistency, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CheckMemory", "void eC::types::CheckMemory(void)", __eCNameSpace__eC__types__CheckMemory, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterClass", "eC::types::Class eC::types::eSystem_RegisterClass(eC::types::ClassType type, const char * name, const char * baseName, int size, int sizeClass, bool (* Constructor)(void *), void (* Destructor)(void *), eC::types::Module module, eC::types::AccessMode declMode, eC::types::AccessMode inheritanceAccess)", __eCNameSpace__eC__types__eSystem_RegisterClass, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_Unregister", "void eC::types::eClass_Unregister(eC::types::Class _class)", __eCNameSpace__eC__types__eClass_Unregister, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::_strtoi64", "int64 eC::types::_strtoi64(const char * string, const char * * endString, int base)", __eCNameSpace__eC__types___strtoi64, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::_strtoui64", "uint64 eC::types::_strtoui64(const char * string, const char * * endString, int base)", __eCNameSpace__eC__types___strtoui64, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_FindClass", "eC::types::Class eC::types::eSystem_FindClass(eC::types::Module module, const char * name)", __eCNameSpace__eC__types__eSystem_FindClass, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::System_FindClass", "eC::types::Class eC::types::System_FindClass(eC::types::Module module, const char * name, bool registerTemplatesInternalDecl)", __eCNameSpace__eC__types__System_FindClass, module, 2);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::DefaultFunction", "bool eC::types::DefaultFunction(void)", __eCNameSpace__eC__types__DefaultFunction, module, 2);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_IsDerived", "bool eC::types::eClass_IsDerived(eC::types::Class _class, eC::types::Class from)", __eCNameSpace__eC__types__eClass_IsDerived, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddMethod", "eC::types::Method eC::types::eClass_AddMethod(eC::types::Class _class, const char * name, const char * type, void * function, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddMethod, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddVirtualMethod", "eC::types::Method eC::types::eClass_AddVirtualMethod(eC::types::Class _class, const char * name, const char * type, void * function, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddVirtualMethod, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddProperty", "eC::types::Property eC::types::eClass_AddProperty(eC::types::Class _class, const char * name, const char * dataType, void * setStmt, void * getStmt, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddProperty, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddClassProperty", "eC::types::ClassProperty eC::types::eClass_AddClassProperty(eC::types::Class _class, const char * name, const char * dataType, void * setStmt, void * getStmt)", __eCNameSpace__eC__types__eClass_AddClassProperty, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindClassProperty", "eC::types::ClassProperty eC::types::eClass_FindClassProperty(eC::types::Class _class, const char * name)", __eCNameSpace__eC__types__eClass_FindClassProperty, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_GetProperty", "int64 eC::types::eClass_GetProperty(eC::types::Class _class, const char * name)", __eCNameSpace__eC__types__eClass_GetProperty, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_SetProperty", "void eC::types::eClass_SetProperty(eC::types::Class _class, const char * name, int64 value)", __eCNameSpace__eC__types__eClass_SetProperty, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindMethod", "eC::types::Method eC::types::eClass_FindMethod(eC::types::Class _class, const char * name, eC::types::Module module)", __eCNameSpace__eC__types__eClass_FindMethod, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_New", "void * eC::types::eInstance_New(eC::types::Class _class)", __eCNameSpace__eC__types__eInstance_New, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_NewEx", "void * eC::types::eInstance_NewEx(eC::types::Class _class, bool bindingsAlloc)", __eCNameSpace__eC__types__eInstance_NewEx, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_Evolve", "void eC::types::eInstance_Evolve(eC::types::Instance * instancePtr, eC::types::Class _class)", __eCNameSpace__eC__types__eInstance_Evolve, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_Delete", "void eC::types::eInstance_Delete(eC::types::Instance instance)", __eCNameSpace__eC__types__eInstance_Delete, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindProperty", "eC::types::Property eC::types::eClass_FindProperty(eC::types::Class _class, const char * name, eC::types::Module module)", __eCNameSpace__eC__types__eClass_FindProperty, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindDataMember", "eC::types::DataMember eC::types::eClass_FindDataMember(eC::types::Class _class, const char * name, eC::types::Module module, eC::types::DataMember * subMemberStack, int * subMemberStackPos)", __eCNameSpace__eC__types__eClass_FindDataMember, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindDataMemberAndOffset", "eC::types::DataMember eC::types::eClass_FindDataMemberAndOffset(eC::types::Class _class, const char * name, uint * offset, eC::types::Module module, eC::types::DataMember * subMemberStack, int * subMemberStackPos)", __eCNameSpace__eC__types__eClass_FindDataMemberAndOffset, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindDataMemberAndId", "eC::types::DataMember eC::types::eClass_FindDataMemberAndId(eC::types::Class _class, const char * name, int * id, eC::types::Module module, eC::types::DataMember * subMemberStack, int * subMemberStackPos)", __eCNameSpace__eC__types__eClass_FindDataMemberAndId, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindNextMember", "void eC::types::eClass_FindNextMember(eC::types::Class _class, eC::types::Class * curClass, eC::types::DataMember * curMember, eC::types::DataMember * subMemberStack, int * subMemberStackPos)", __eCNameSpace__eC__types__eClass_FindNextMember, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_SetMethod", "void eC::types::eInstance_SetMethod(eC::types::Instance instance, const char * name, void * function)", __eCNameSpace__eC__types__eInstance_SetMethod, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_IsDerived", "bool eC::types::eInstance_IsDerived(eC::types::Instance instance, eC::types::Class from)", __eCNameSpace__eC__types__eInstance_IsDerived, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_IncRef", "void eC::types::eInstance_IncRef(eC::types::Instance instance)", __eCNameSpace__eC__types__eInstance_IncRef, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_DecRef", "void eC::types::eInstance_DecRef(eC::types::Instance instance)", __eCNameSpace__eC__types__eInstance_DecRef, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_Resize", "void eC::types::eClass_Resize(eC::types::Class _class, int newSize)", __eCNameSpace__eC__types__eClass_Resize, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddDataMember", "eC::types::DataMember eC::types::eClass_AddDataMember(eC::types::Class _class, const char * name, const char * type, uint size, uint alignment, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddDataMember, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eMember_AddDataMember", "eC::types::DataMember eC::types::eMember_AddDataMember(eC::types::DataMember member, const char * name, const char * type, uint size, uint alignment, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eMember_AddDataMember, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eMember_New", "eC::types::DataMember eC::types::eMember_New(eC::types::DataMemberType type, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eMember_New, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eMember_AddMember", "bool eC::types::eMember_AddMember(eC::types::DataMember addTo, eC::types::DataMember dataMember)", __eCNameSpace__eC__types__eMember_AddMember, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddMember", "bool eC::types::eClass_AddMember(eC::types::Class _class, eC::types::DataMember dataMember)", __eCNameSpace__eC__types__eClass_AddMember, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddBitMember", "eC::types::BitMember eC::types::eClass_AddBitMember(eC::types::Class _class, const char * name, const char * type, int bitSize, int bitPos, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddBitMember, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eModule_Load", "eC::types::Module eC::types::eModule_Load(eC::types::Module fromModule, const char * name, eC::types::AccessMode importAccess)", __eCNameSpace__eC__types__eModule_Load, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eModule_LoadStrict", "eC::types::Module eC::types::eModule_LoadStrict(eC::types::Module fromModule, const char * name, eC::types::AccessMode importAccess)", __eCNameSpace__eC__types__eModule_LoadStrict, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eModule_LoadStatic", "eC::types::Module eC::types::eModule_LoadStatic(eC::types::Module fromModule, const char * name, eC::types::AccessMode importAccess, bool (* Load)(eC::types::Module module), bool (* Unload)(eC::types::Module module))", __eCNameSpace__eC__types__eModule_LoadStatic, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eModule_Unload", "void eC::types::eModule_Unload(eC::types::Module fromModule, eC::types::Module module)", __eCNameSpace__eC__types__eModule_Unload, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eEnum_AddFixedValue", "void eC::types::eEnum_AddFixedValue(eC::types::Class _class, const char * string, int64 value)", __eCNameSpace__eC__types__eEnum_AddFixedValue, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eEnum_AddValue", "int64 eC::types::eEnum_AddValue(eC::types::Class _class, const char * string)", __eCNameSpace__eC__types__eEnum_AddValue, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterDefine", "eC::types::DefinedExpression eC::types::eSystem_RegisterDefine(const char * name, const char * value, eC::types::Module module, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eSystem_RegisterDefine, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterFunction", "eC::types::GlobalFunction eC::types::eSystem_RegisterFunction(const char * name, const char * type, void * func, eC::types::Module module, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eSystem_RegisterFunction, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_FindDefine", "eC::types::DefinedExpression eC::types::eSystem_FindDefine(eC::types::Module module, const char * name)", __eCNameSpace__eC__types__eSystem_FindDefine, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_FindFunction", "eC::types::GlobalFunction eC::types::eSystem_FindFunction(eC::types::Module module, const char * name)", __eCNameSpace__eC__types__eSystem_FindFunction, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Renew", "void * eC::types::eSystem_Renew(void * memory, uint size)", __eCNameSpace__eC__types__eSystem_Renew, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Renew0", "void * eC::types::eSystem_Renew0(void * memory, uint size)", __eCNameSpace__eC__types__eSystem_Renew0, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_New", "void * eC::types::eSystem_New(uint size)", __eCNameSpace__eC__types__eSystem_New, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_New0", "void * eC::types::eSystem_New0(uint size)", __eCNameSpace__eC__types__eSystem_New0, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Delete", "void eC::types::eSystem_Delete(void * memory)", __eCNameSpace__eC__types__eSystem_Delete, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_FireSelfWatchers", "void eC::types::eInstance_FireSelfWatchers(eC::types::Instance instance, eC::types::Property _property)", __eCNameSpace__eC__types__eInstance_FireSelfWatchers, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_FireWatchers", "void eC::types::eInstance_FireWatchers(eC::types::Instance instance, eC::types::Property _property)", __eCNameSpace__eC__types__eInstance_FireWatchers, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eProperty_Watchable", "void eC::types::eProperty_Watchable(eC::types::Property _property)", __eCNameSpace__eC__types__eProperty_Watchable, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_DestructionWatchable", "void eC::types::eClass_DestructionWatchable(eC::types::Class _class)", __eCNameSpace__eC__types__eClass_DestructionWatchable, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eProperty_SelfWatch", "void eC::types::eProperty_SelfWatch(eC::types::Class _class, const char * name, void (* callback)(void *))", __eCNameSpace__eC__types__eProperty_SelfWatch, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_Watch", "void eC::types::eInstance_Watch(eC::types::Instance instance, eC::types::Property _property, void * object, void (* callback)(void *, void *))", __eCNameSpace__eC__types__eInstance_Watch, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_WatchDestruction", "void eC::types::eInstance_WatchDestruction(eC::types::Instance instance, eC::types::Instance object, void (* callback)(void *, void *))", __eCNameSpace__eC__types__eInstance_WatchDestruction, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_StopWatching", "void eC::types::eInstance_StopWatching(eC::types::Instance instance, eC::types::Property _property, eC::types::Instance object)", __eCNameSpace__eC__types__eInstance_StopWatching, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_GetDesigner", "subclass(eC::types::ClassDesignerBase) eC::types::eClass_GetDesigner(eC::types::Class _class)", __eCNameSpace__eC__types__eClass_GetDesigner, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_GetDesigner", "subclass(eC::types::ClassDesignerBase) eC::types::eInstance_GetDesigner(eC::types::Instance instance)", __eCNameSpace__eC__types__eInstance_GetDesigner, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::LocateModule", "bool eC::types::LocateModule(const char * name, const char * fileName)", __eCNameSpace__eC__types__LocateModule, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eCrt_Initialize", "eC::types::Application eC::types::eCrt_Initialize(bool guiApp, int argc, char * argv[])", __eCNameSpace__eC__typeseCrt_Initialize, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_SetArgs", "void eC::types::eSystem_SetArgs(eC::types::Application app, int argc, char * argv[])", __eCNameSpace__eC__types__eSystem_SetArgs, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddTemplateParameter", "eC::types::ClassTemplateParameter eC::types::eClass_AddTemplateParameter(eC::types::Class _class, const char * name, eC::types::TemplateParameterType type, const void * info, eC::types::ClassTemplateArgument defaultArg)", __eCNameSpace__eC__types__eClass_AddTemplateParameter, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_DoneAddingTemplateParameters", "void eC::types::eClass_DoneAddingTemplateParameters(eC::types::Class base)", __eCNameSpace__eC__types__eClass_DoneAddingTemplateParameters, module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::Platform", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_IsDerived", "bool eC::types::eClass_IsDerived(eC::types::Class _class, eC::types::Class from)", __eCNameSpace__eC__types__eClass_IsDerived, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddMethod", "eC::types::Method eC::types::eClass_AddMethod(eC::types::Class _class, const char * name, const char * type, void * function, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddMethod, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddVirtualMethod", "eC::types::Method eC::types::eClass_AddVirtualMethod(eC::types::Class _class, const char * name, const char * type, void * function, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddVirtualMethod, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddProperty", "eC::types::Property eC::types::eClass_AddProperty(eC::types::Class _class, const char * name, const char * dataType, void * setStmt, void * getStmt, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddProperty, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddClassProperty", "eC::types::ClassProperty eC::types::eClass_AddClassProperty(eC::types::Class _class, const char * name, const char * dataType, void * setStmt, void * getStmt)", __eCNameSpace__eC__types__eClass_AddClassProperty, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindClassProperty", "eC::types::ClassProperty eC::types::eClass_FindClassProperty(eC::types::Class _class, const char * name)", __eCNameSpace__eC__types__eClass_FindClassProperty, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_GetProperty", "int64 eC::types::eClass_GetProperty(eC::types::Class _class, const char * name)", __eCNameSpace__eC__types__eClass_GetProperty, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_SetProperty", "void eC::types::eClass_SetProperty(eC::types::Class _class, const char * name, int64 value)", __eCNameSpace__eC__types__eClass_SetProperty, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindMethod", "eC::types::Method eC::types::eClass_FindMethod(eC::types::Class _class, const char * name, eC::types::Module module)", __eCNameSpace__eC__types__eClass_FindMethod, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_New", "void * eC::types::eInstance_New(eC::types::Class _class)", __eCNameSpace__eC__types__eInstance_New, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_NewEx", "void * eC::types::eInstance_NewEx(eC::types::Class _class, bool bindingsAlloc)", __eCNameSpace__eC__types__eInstance_NewEx, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_Evolve", "void eC::types::eInstance_Evolve(eC::types::Instance * instancePtr, eC::types::Class _class)", __eCNameSpace__eC__types__eInstance_Evolve, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_Delete", "void eC::types::eInstance_Delete(eC::types::Instance instance)", __eCNameSpace__eC__types__eInstance_Delete, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindProperty", "eC::types::Property eC::types::eClass_FindProperty(eC::types::Class _class, const char * name, eC::types::Module module)", __eCNameSpace__eC__types__eClass_FindProperty, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindDataMember", "eC::types::DataMember eC::types::eClass_FindDataMember(eC::types::Class _class, const char * name, eC::types::Module module, eC::types::DataMember * subMemberStack, int * subMemberStackPos)", __eCNameSpace__eC__types__eClass_FindDataMember, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindDataMemberAndOffset", "eC::types::DataMember eC::types::eClass_FindDataMemberAndOffset(eC::types::Class _class, const char * name, uint * offset, eC::types::Module module, eC::types::DataMember * subMemberStack, int * subMemberStackPos)", __eCNameSpace__eC__types__eClass_FindDataMemberAndOffset, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindDataMemberAndId", "eC::types::DataMember eC::types::eClass_FindDataMemberAndId(eC::types::Class _class, const char * name, int * id, eC::types::Module module, eC::types::DataMember * subMemberStack, int * subMemberStackPos)", __eCNameSpace__eC__types__eClass_FindDataMemberAndId, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_FindNextMember", "void eC::types::eClass_FindNextMember(eC::types::Class _class, eC::types::Class * curClass, eC::types::DataMember * curMember, eC::types::DataMember * subMemberStack, int * subMemberStackPos)", __eCNameSpace__eC__types__eClass_FindNextMember, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_SetMethod", "void eC::types::eInstance_SetMethod(eC::types::Instance instance, const char * name, void * function)", __eCNameSpace__eC__types__eInstance_SetMethod, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_IsDerived", "bool eC::types::eInstance_IsDerived(eC::types::Instance instance, eC::types::Class from)", __eCNameSpace__eC__types__eInstance_IsDerived, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_IncRef", "void eC::types::eInstance_IncRef(eC::types::Instance instance)", __eCNameSpace__eC__types__eInstance_IncRef, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_DecRef", "void eC::types::eInstance_DecRef(eC::types::Instance instance)", __eCNameSpace__eC__types__eInstance_DecRef, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_Resize", "void eC::types::eClass_Resize(eC::types::Class _class, int newSize)", __eCNameSpace__eC__types__eClass_Resize, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddDataMember", "eC::types::DataMember eC::types::eClass_AddDataMember(eC::types::Class _class, const char * name, const char * type, uint size, uint alignment, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddDataMember, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eMember_AddDataMember", "eC::types::DataMember eC::types::eMember_AddDataMember(eC::types::DataMember member, const char * name, const char * type, uint size, uint alignment, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eMember_AddDataMember, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eMember_New", "eC::types::DataMember eC::types::eMember_New(eC::types::DataMemberType type, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eMember_New, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eMember_AddMember", "bool eC::types::eMember_AddMember(eC::types::DataMember addTo, eC::types::DataMember dataMember)", __eCNameSpace__eC__types__eMember_AddMember, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddMember", "bool eC::types::eClass_AddMember(eC::types::Class _class, eC::types::DataMember dataMember)", __eCNameSpace__eC__types__eClass_AddMember, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddBitMember", "eC::types::BitMember eC::types::eClass_AddBitMember(eC::types::Class _class, const char * name, const char * type, int bitSize, int bitPos, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eClass_AddBitMember, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eModule_Load", "eC::types::Module eC::types::eModule_Load(eC::types::Module fromModule, const char * name, eC::types::AccessMode importAccess)", __eCNameSpace__eC__types__eModule_Load, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eModule_LoadStrict", "eC::types::Module eC::types::eModule_LoadStrict(eC::types::Module fromModule, const char * name, eC::types::AccessMode importAccess)", __eCNameSpace__eC__types__eModule_LoadStrict, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eModule_LoadStatic", "eC::types::Module eC::types::eModule_LoadStatic(eC::types::Module fromModule, const char * name, eC::types::AccessMode importAccess, bool (* Load)(eC::types::Module module), bool (* Unload)(eC::types::Module module))", __eCNameSpace__eC__types__eModule_LoadStatic, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eModule_Unload", "void eC::types::eModule_Unload(eC::types::Module fromModule, eC::types::Module module)", __eCNameSpace__eC__types__eModule_Unload, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eEnum_AddFixedValue", "void eC::types::eEnum_AddFixedValue(eC::types::Class _class, const char * string, int64 value)", __eCNameSpace__eC__types__eEnum_AddFixedValue, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eEnum_AddValue", "int64 eC::types::eEnum_AddValue(eC::types::Class _class, const char * string)", __eCNameSpace__eC__types__eEnum_AddValue, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterDefine", "eC::types::DefinedExpression eC::types::eSystem_RegisterDefine(const char * name, const char * value, eC::types::Module module, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eSystem_RegisterDefine, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterFunction", "eC::types::GlobalFunction eC::types::eSystem_RegisterFunction(const char * name, const char * type, void * func, eC::types::Module module, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eSystem_RegisterFunction, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_FindDefine", "eC::types::DefinedExpression eC::types::eSystem_FindDefine(eC::types::Module module, const char * name)", __eCNameSpace__eC__types__eSystem_FindDefine, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_FindFunction", "eC::types::GlobalFunction eC::types::eSystem_FindFunction(eC::types::Module module, const char * name)", __eCNameSpace__eC__types__eSystem_FindFunction, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Renew", "void * eC::types::eSystem_Renew(void * memory, uint size)", __eCNameSpace__eC__types__eSystem_Renew, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Renew0", "void * eC::types::eSystem_Renew0(void * memory, uint size)", __eCNameSpace__eC__types__eSystem_Renew0, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_New", "void * eC::types::eSystem_New(uint size)", __eCNameSpace__eC__types__eSystem_New, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_New0", "void * eC::types::eSystem_New0(uint size)", __eCNameSpace__eC__types__eSystem_New0, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Delete", "void eC::types::eSystem_Delete(void * memory)", __eCNameSpace__eC__types__eSystem_Delete, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_FireSelfWatchers", "void eC::types::eInstance_FireSelfWatchers(eC::types::Instance instance, eC::types::Property _property)", __eCNameSpace__eC__types__eInstance_FireSelfWatchers, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_FireWatchers", "void eC::types::eInstance_FireWatchers(eC::types::Instance instance, eC::types::Property _property)", __eCNameSpace__eC__types__eInstance_FireWatchers, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eProperty_Watchable", "void eC::types::eProperty_Watchable(eC::types::Property _property)", __eCNameSpace__eC__types__eProperty_Watchable, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_DestructionWatchable", "void eC::types::eClass_DestructionWatchable(eC::types::Class _class)", __eCNameSpace__eC__types__eClass_DestructionWatchable, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eProperty_SelfWatch", "void eC::types::eProperty_SelfWatch(eC::types::Class _class, const char * name, void (* callback)(void *))", __eCNameSpace__eC__types__eProperty_SelfWatch, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_Watch", "void eC::types::eInstance_Watch(eC::types::Instance instance, eC::types::Property _property, void * object, void (* callback)(void *, void *))", __eCNameSpace__eC__types__eInstance_Watch, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_WatchDestruction", "void eC::types::eInstance_WatchDestruction(eC::types::Instance instance, eC::types::Instance object, void (* callback)(void *, void *))", __eCNameSpace__eC__types__eInstance_WatchDestruction, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_StopWatching", "void eC::types::eInstance_StopWatching(eC::types::Instance instance, eC::types::Property _property, eC::types::Instance object)", __eCNameSpace__eC__types__eInstance_StopWatching, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_GetDesigner", "subclass(eC::types::ClassDesignerBase) eC::types::eClass_GetDesigner(eC::types::Class _class)", __eCNameSpace__eC__types__eClass_GetDesigner, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_GetDesigner", "subclass(eC::types::ClassDesignerBase) eC::types::eInstance_GetDesigner(eC::types::Instance instance)", __eCNameSpace__eC__types__eInstance_GetDesigner, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::LocateModule", "bool eC::types::LocateModule(const char * name, const char * fileName)", __eCNameSpace__eC__types__LocateModule, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eCrt_Initialize", "eC::types::Application eC::types::eCrt_Initialize(bool guiApp, int argc, char * argv[])", __eCNameSpace__eC__types__eCrt_Initialize, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_SetArgs", "void eC::types::eSystem_SetArgs(eC::types::Application app, int argc, char * argv[])", __eCNameSpace__eC__types__eSystem_SetArgs, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_AddTemplateParameter", "eC::types::ClassTemplateParameter eC::types::eClass_AddTemplateParameter(eC::types::Class _class, const char * name, eC::types::TemplateParameterType type, const void * info, eC::types::ClassTemplateArgument defaultArg)", __eCNameSpace__eC__types__eClass_AddTemplateParameter, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eClass_DoneAddingTemplateParameters", "void eC::types::eClass_DoneAddingTemplateParameters(eC::types::Class base)", __eCNameSpace__eC__types__eClass_DoneAddingTemplateParameters, module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::Platform", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__Platform = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnGetString", 0, __eCMethod___eCNameSpace__eC__types__Platform_OnGetString, 1);
@@ -6988,8 +6988,8 @@ __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "unknown", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "win32", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "tux", 2);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "apple", 3);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetRuntimePlatform", "eC::types::Platform eC::types::GetRuntimePlatform(void)", __eCNameSpace__eC__types__GetRuntimePlatform, module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::ObjectInfo", 0, sizeof(struct __eCNameSpace__eC__types__ObjectInfo), 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetRuntimePlatform", "eC::types::Platform eC::types::GetRuntimePlatform(void)", __eCNameSpace__eC__types__GetRuntimePlatform, module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::ObjectInfo", 0, sizeof(struct __eCNameSpace__eC__types__ObjectInfo), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ObjectInfo = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::types::ObjectInfo", sizeof(void *), 0xF000F000, 1);
@@ -6999,11 +6999,11 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "name", "char *", sizeof(v
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "instCode", "Instantiation", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "deleted", "bool", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "oClass", "eC::types::ObjectInfo", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "instances", "eC::files::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "instances", "eC::containers::OldList", sizeof(struct __eCNameSpace__eC__containers__OldList), 8, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "classDefinition", "ClassDefinition", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "modified", "bool", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "i18nStrings", "void *", sizeof(void *), 0xF000F000, 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::DesignerBase", "ecereGUI::Window", sizeof(struct __eCNameSpace__eC__types__DesignerBase), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::DesignerBase", 0, sizeof(struct __eCNameSpace__eC__types__DesignerBase), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__DesignerBase = class;
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "FindObject", "bool FindObject(eC::types::Instance * instance, const char * string)", 0, 1);
@@ -7029,7 +7029,7 @@ __eCProp___eCNameSpace__eC__types__DesignerBase_objectClass = __eCPropM___eCName
 __eCPropM___eCNameSpace__eC__types__DesignerBase_isDragging = __eCNameSpace__eC__types__eClass_AddProperty(class, "isDragging", "bool", __eCProp___eCNameSpace__eC__types__DesignerBase_Set_isDragging, __eCProp___eCNameSpace__eC__types__DesignerBase_Get_isDragging, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__types__DesignerBase_isDragging = __eCPropM___eCNameSpace__eC__types__DesignerBase_isDragging, __eCPropM___eCNameSpace__eC__types__DesignerBase_isDragging = (void *)0;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::ClassDesignerBase", "ecereGUI::Window", 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::ClassDesignerBase", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ClassDesignerBase = class;
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Reset", "void Reset(void)", 0, 1);
@@ -7042,22 +7042,22 @@ __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "PostCreateObject", "vo
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "DroppedObject", "void ::DroppedObject(eC::types::Instance instance, eC::types::ObjectInfo object, bool isClass, eC::types::Instance _class)", 0, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "DestroyObject", "void ::DestroyObject(eC::types::Instance object)", 0, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "FixProperty", "void ::FixProperty(eC::types::Property prop, eC::types::Instance object)", 0, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "CreateNew", "void ::CreateNew(EditBox editBox, Size clientSize, const char * name, const char * inherit)", 0, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::SetActiveDesigner", "void eC::types::SetActiveDesigner(eC::types::DesignerBase designer)", __eCNameSpace__eC__types__SetActiveDesigner, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetActiveDesigner", "eC::types::DesignerBase eC::types::GetActiveDesigner(void)", __eCNameSpace__eC__types__GetActiveDesigner, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_SetPoolingDisabled", "void eC::types::eSystem_SetPoolingDisabled(bool disabled)", __eCNameSpace__eC__types__eSystem_SetPoolingDisabled, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::files::LEAD_OFFSET", "0xD800 - (0x10000 >> 10)", module, 2);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::files::SURROGATE_OFFSET", "0x10000 - (0xD800 << 10) - 0xDC00", module, 2);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::UTF8Validate", "bool eC::i18n::UTF8Validate(const char * source)", __eCNameSpace__eC__i18n__UTF8Validate, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::ISO8859_1toUTF8", "int eC::i18n::ISO8859_1toUTF8(const char * source, char * dest, int max)", __eCNameSpace__eC__files__ISO8859_1toUTF8, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::UTF16toUTF8", "char * eC::i18n::UTF16toUTF8(const uint16 * source)", __eCNameSpace__eC__i18n__UTF16toUTF8, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::UTF16toUTF8Buffer", "int eC::i18n::UTF16toUTF8Buffer(const uint16 * source, char * dest, int max)", __eCNameSpace__eC__i18n__UTF16toUTF8Buffer, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::UTF8GetChar", "unichar eC::i18n::UTF8GetChar(const char * string, int * numBytes)", __eCNameSpace__eC__i18n__UTF8GetChar, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::UTF8toUTF16Buffer", "int eC::i18n::UTF8toUTF16Buffer(const char * source, uint16 * dest, int max)", __eCNameSpace__eC__i18n__UTF8toUTF16Buffer, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::UTF32toUTF8Len", "int eC::i18n::UTF32toUTF8Len(const unichar * source, int count, char * dest, int max)", __eCNameSpace__eC__i18n__UTF32toUTF8Len, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::UTF8toUTF16", "uint16 * eC::i18n::UTF8toUTF16(const char * source, int * wordCount)", __eCNameSpace__eC__i18n__UTF8toUTF16, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::queryMemInfo", "void eC::types::queryMemInfo(char * string)", __eCNameSpace__eC__types__queryMemInfo, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_LockMem", "void eC::types::eSystem_LockMem(void)", __eCNameSpace__eC__types__eSystem_LockMem, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_UnlockMem", "void eC::types::eSystem_UnlockMem(void)", __eCNameSpace__eC__types__eSystem_UnlockMem, module, 4);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "CreateNew", "void ::CreateNew(eC::types::Instance editBox, Size clientSize, const char * name, const char * inherit)", 0, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::SetActiveDesigner", "void eC::types::SetActiveDesigner(eC::types::DesignerBase designer)", __eCNameSpace__eC__types__SetActiveDesigner, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetActiveDesigner", "eC::types::DesignerBase eC::types::GetActiveDesigner(void)", __eCNameSpace__eC__types__GetActiveDesigner, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_SetPoolingDisabled", "void eC::types::eSystem_SetPoolingDisabled(bool disabled)", __eCNameSpace__eC__types__eSystem_SetPoolingDisabled, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::i18n::LEAD_OFFSET", "0xD800 - (0x10000 >> 10)", module, 2);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::i18n::SURROGATE_OFFSET", "0x10000 - (0xD800 << 10) - 0xDC00", module, 2);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UTF8Validate", "bool eC::i18n::UTF8Validate(const char * source)", __eCNameSpace__eC__i18n__UTF8Validate, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::ISO8859_1toUTF8", "int eC::i18n::ISO8859_1toUTF8(const char * source, char * dest, int max)", __eCNameSpace__eC__i18n__ISO8859_1toUTF8, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UTF16toUTF8", "char * eC::i18n::UTF16toUTF8(const uint16 * source)", __eCNameSpace__eC__i18n__UTF16toUTF8, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UTF16toUTF8Buffer", "int eC::i18n::UTF16toUTF8Buffer(const uint16 * source, char * dest, int max)", __eCNameSpace__eC__i18n__UTF16toUTF8Buffer, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UTF8GetChar", "unichar eC::i18n::UTF8GetChar(const char * string, int * numBytes)", __eCNameSpace__eC__i18n__UTF8GetChar, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UTF8toUTF16Buffer", "int eC::i18n::UTF8toUTF16Buffer(const char * source, uint16 * dest, int max)", __eCNameSpace__eC__i18n__UTF8toUTF16Buffer, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UTF32toUTF8Len", "int eC::i18n::UTF32toUTF8Len(const unichar * source, int count, char * dest, int max)", __eCNameSpace__eC__i18n__UTF32toUTF8Len, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UTF8toUTF16", "uint16 * eC::i18n::UTF8toUTF16(const char * source, int * wordCount)", __eCNameSpace__eC__i18n__UTF8toUTF16, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::queryMemInfo", "void eC::types::queryMemInfo(char * string)", __eCNameSpace__eC__types__queryMemInfo, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_LockMem", "void eC::types::eSystem_LockMem(void)", __eCNameSpace__eC__types__eSystem_LockMem, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_UnlockMem", "void eC::types::eSystem_UnlockMem(void)", __eCNameSpace__eC__types__eSystem_UnlockMem, module, 1);
 }
 

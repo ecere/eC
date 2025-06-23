@@ -62,11 +62,11 @@ typedef unsigned __int64 uint64;
 #endif
 #include <stdint.h>
 #include <sys/types.h>
-static struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__moduleMaps;
+static struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__i18n__moduleMaps;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_map;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_map;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Iterator_data;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Iterator_data;
 
 struct __eCNameSpace__eC__containers__OldList
 {
@@ -78,6 +78,8 @@ unsigned int circ;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__containers__BTNode;
+
+struct __eCNameSpace__eC__files__Type;
 
 struct __eCNameSpace__eC__types__DataValue
 {
@@ -160,13 +162,13 @@ extern void __eCNameSpace__eC__types__eInstance_IncRef(struct __eCNameSpace__eC_
 
 extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__files__FileOpen(const char *  fileName, int mode);
 
-struct __eCNameSpace__eC__types__MapIterator
+struct __eCNameSpace__eC__containers__MapIterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__Iterator
+struct __eCNameSpace__eC__containers__Iterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
@@ -182,52 +184,52 @@ extern int __eCVMethodID___eCNameSpace__eC__containers__Container_Free;
 
 extern int __eCVMethodID___eCNameSpace__eC__containers__Container_Delete;
 
-struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__types__MapIterator_Get_map(struct __eCNameSpace__eC__types__MapIterator * this);
+struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__containers__MapIterator_Get_map(struct __eCNameSpace__eC__containers__MapIterator * this);
 
-void __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(struct __eCNameSpace__eC__types__MapIterator * this, struct __eCNameSpace__eC__types__Instance * value);
+void __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(struct __eCNameSpace__eC__containers__MapIterator * this, struct __eCNameSpace__eC__types__Instance * value);
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Index(struct __eCNameSpace__eC__types__Iterator * this, const uint64 index, unsigned int create);
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Index(struct __eCNameSpace__eC__containers__Iterator * this, const uint64 index, unsigned int create);
 
-uint64 __eCProp___eCNameSpace__eC__types__Iterator_Get_data(struct __eCNameSpace__eC__types__Iterator * this);
+uint64 __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(struct __eCNameSpace__eC__containers__Iterator * this);
 
-void __eCProp___eCNameSpace__eC__types__Iterator_Set_data(struct __eCNameSpace__eC__types__Iterator * this, uint64 value);
+void __eCProp___eCNameSpace__eC__containers__Iterator_Set_data(struct __eCNameSpace__eC__containers__Iterator * this, uint64 value);
 
 void __eCDestroyModuleInstances_i18n()
 {
-(__eCNameSpace__eC__types__eInstance_DecRef(__eCNameSpace__eC__moduleMaps), __eCNameSpace__eC__moduleMaps = 0);
+(__eCNameSpace__eC__types__eInstance_DecRef(__eCNameSpace__eC__i18n__moduleMaps), __eCNameSpace__eC__i18n__moduleMaps = 0);
 }
 
 const char * __eCNameSpace__eC__i18n__GetTranslatedString(const char * name, const char * string, const char * stringAndContext)
 {
-struct __eCNameSpace__eC__types__Instance * textMap = __eCNameSpace__eC__moduleMaps ? (((struct __eCNameSpace__eC__types__Instance *)((uintptr_t)(__extension__ ({
-struct __eCNameSpace__eC__types__Iterator __internalIterator =
+struct __eCNameSpace__eC__types__Instance * textMap = __eCNameSpace__eC__i18n__moduleMaps ? (((struct __eCNameSpace__eC__types__Instance *)((uintptr_t)(__extension__ ({
+struct __eCNameSpace__eC__containers__Iterator __internalIterator =
 {
-__eCNameSpace__eC__moduleMaps, 0
+__eCNameSpace__eC__i18n__moduleMaps, 0
 };
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(name)), 0);
-((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data(&__internalIterator));
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(name)), 0);
+((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&__internalIterator));
 }))))) : (((void *)0));
 const char * result = textMap ? (((const char *)((uintptr_t)(__extension__ ({
-struct __eCNameSpace__eC__types__Iterator __internalIterator =
+struct __eCNameSpace__eC__containers__Iterator __internalIterator =
 {
 textMap, 0
 };
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(stringAndContext ? stringAndContext : string)), 0);
-((char *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data(&__internalIterator));
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(stringAndContext ? stringAndContext : string)), 0);
+((char *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&__internalIterator));
 }))))) : string;
 
 return (result && result[0]) ? result : string;
 }
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -244,12 +246,12 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -268,7 +270,7 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 void (*  Set)(void * , int);
 int (*  Get)(void * );
 unsigned int (*  IsSet)(void * );
@@ -329,7 +331,7 @@ int type;
 struct __eCNameSpace__eC__types__Class * _class;
 void *  symbol;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int memberAccess;
 } eC_gcc_struct;
 
@@ -347,10 +349,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -367,11 +369,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -379,7 +381,7 @@ int type;
 struct __eCNameSpace__eC__types__Instance * module;
 struct __eCNameSpace__eC__types__NameSpace *  nameSpace;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int typeSize;
 int defaultAlignment;
 void (*  Initialize)();
@@ -424,13 +426,13 @@ char *  parsedCommand;
 struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 } eC_gcc_struct;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map_TPL_String__eC__types__Map_TPL_String__const_String___;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map_TPL_String__eC__containers__Map_TPL_String__const_String___;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map_TPL_String__const_String_;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map_TPL_String__const_String_;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__File;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map;
 
 struct __eCNameSpace__eC__types__Module
 {
@@ -452,8 +454,8 @@ struct __eCNameSpace__eC__types__NameSpace publicNameSpace;
 
 void __eCCreateModuleInstances_i18n()
 {
-__eCNameSpace__eC__moduleMaps = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__types__Map_TPL_String__eC__types__Map_TPL_String__const_String___);
-__eCNameSpace__eC__types__eInstance_IncRef(__eCNameSpace__eC__moduleMaps);
+__eCNameSpace__eC__i18n__moduleMaps = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Map_TPL_String__eC__containers__Map_TPL_String__const_String___);
+__eCNameSpace__eC__types__eInstance_IncRef(__eCNameSpace__eC__i18n__moduleMaps);
 }
 
 void __eCNameSpace__eC__i18n__LoadTranslatedStrings(const char * moduleName, const char * name)
@@ -651,22 +653,22 @@ __internal_VirtualMethod ? __internal_VirtualMethod(f, &hashingOffset, sizeof(un
 }));
 if(swap)
 hashingOffset = ((((hashingOffset) & 0x000000ff) << 24) | (((hashingOffset) & 0x0000ff00) << 8) | (((hashingOffset) & 0x00ff0000) >> 8) | (((hashingOffset) & 0xff000000) >> 24));
-if(!__eCNameSpace__eC__moduleMaps)
-__eCNameSpace__eC__moduleMaps = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__types__Map_TPL_String__eC__types__Map_TPL_String__const_String___);
+if(!__eCNameSpace__eC__i18n__moduleMaps)
+__eCNameSpace__eC__i18n__moduleMaps = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Map_TPL_String__eC__containers__Map_TPL_String__const_String___);
 {
-struct __eCNameSpace__eC__types__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(&it, __eCNameSpace__eC__moduleMaps), it);
+struct __eCNameSpace__eC__containers__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(&it, __eCNameSpace__eC__i18n__moduleMaps), it);
 
-if(__eCMethod___eCNameSpace__eC__types__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(name), 0))
-(__eCNameSpace__eC__types__eInstance_DecRef(((void * )((uintptr_t)(__eCProp___eCNameSpace__eC__types__Iterator_Get_data((void *)(&it)))))), __eCProp___eCNameSpace__eC__types__Iterator_Set_data((void *)(&it), 0));
+if(__eCMethod___eCNameSpace__eC__containers__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(name), 0))
+(__eCNameSpace__eC__types__eInstance_DecRef(((void * )((uintptr_t)(__eCProp___eCNameSpace__eC__containers__Iterator_Get_data((void *)(&it)))))), __eCProp___eCNameSpace__eC__containers__Iterator_Set_data((void *)(&it), 0));
 }
 __extension__ ({
-struct __eCNameSpace__eC__types__Iterator __internalIterator =
+struct __eCNameSpace__eC__containers__Iterator __internalIterator =
 {
-__eCNameSpace__eC__moduleMaps, 0
+__eCNameSpace__eC__i18n__moduleMaps, 0
 };
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(name)), 1);
-__eCProp___eCNameSpace__eC__types__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(textMap = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__types__Map_TPL_String__const_String_)));
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(name)), 1);
+__eCProp___eCNameSpace__eC__containers__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(textMap = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Map_TPL_String__const_String_)));
 });
 for(c = 0; c < numStrings; c++)
 {
@@ -785,19 +787,19 @@ __internal_VirtualMethod ? __internal_VirtualMethod(f, translated, 1, len + 1) :
 }));
 if(len)
 {
-struct __eCNameSpace__eC__types__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(&it, textMap), it);
+struct __eCNameSpace__eC__containers__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(&it, textMap), it);
 
-if(__eCMethod___eCNameSpace__eC__types__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(original), 0))
+if(__eCMethod___eCNameSpace__eC__containers__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(original), 0))
 (__eCNameSpace__eC__types__eSystem_Delete(translated), translated = 0);
 else
 __extension__ ({
-struct __eCNameSpace__eC__types__Iterator __internalIterator =
+struct __eCNameSpace__eC__containers__Iterator __internalIterator =
 {
 textMap, 0
 };
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(original)), 1);
-__eCProp___eCNameSpace__eC__types__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(translated));
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(original)), 1);
+__eCProp___eCNameSpace__eC__containers__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(translated));
 });
 }
 else
@@ -815,29 +817,29 @@ printf("Invalid format while loading %s\n", fileName);
 
 void __eCNameSpace__eC__i18n__UnloadTranslatedStrings(const char * name)
 {
-struct __eCNameSpace__eC__types__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(&it, __eCNameSpace__eC__moduleMaps), it);
+struct __eCNameSpace__eC__containers__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(&it, __eCNameSpace__eC__i18n__moduleMaps), it);
 
-if(__eCMethod___eCNameSpace__eC__types__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(name), 0))
+if(__eCMethod___eCNameSpace__eC__containers__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(name), 0))
 {
 (__extension__ ({
 void (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *);
 
 __internal_VirtualMethod = ((void (*)(struct __eCNameSpace__eC__types__Instance *))__extension__ ({
-struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = ((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data((void *)(&it)));
+struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = ((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data((void *)(&it)));
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__types__Map->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Map->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Free]);
-__internal_VirtualMethod ? __internal_VirtualMethod(((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data((void *)(&it)))) : (void)1;
+__internal_VirtualMethod ? __internal_VirtualMethod(((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data((void *)(&it)))) : (void)1;
 }));
 (__extension__ ({
 void (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * i);
 
 __internal_VirtualMethod = ((void (*)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * i))__extension__ ({
-struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = __eCNameSpace__eC__moduleMaps;
+struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = __eCNameSpace__eC__i18n__moduleMaps;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__types__Map->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Map->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Delete]);
-__internal_VirtualMethod ? __internal_VirtualMethod(__eCNameSpace__eC__moduleMaps, it.pointer) : (void)1;
+__internal_VirtualMethod ? __internal_VirtualMethod(__eCNameSpace__eC__i18n__moduleMaps, it.pointer) : (void)1;
 }));
 }
 }
@@ -851,7 +853,8 @@ void __eCRegisterModule_i18n(struct __eCNameSpace__eC__types__Instance * module)
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::LoadTranslatedStrings", "void eC::i18n::LoadTranslatedStrings(const String moduleName, const char * name)", __eCNameSpace__eC__i18n__LoadTranslatedStrings, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UnloadTranslatedStrings", "void eC::i18n::UnloadTranslatedStrings(const String name)", __eCNameSpace__eC__i18n__UnloadTranslatedStrings, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::GetTranslatedString", "const char * eC::i18n::GetTranslatedString(const String name, const char * string, const char * stringAndContext)", __eCNameSpace__eC__i18n__GetTranslatedString, module, 4);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::LoadTranslatedStrings", "void eC::i18n::LoadTranslatedStrings(const String moduleName, const char * name)", __eCNameSpace__eC__i18n__LoadTranslatedStrings, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::UnloadTranslatedStrings", "void eC::i18n::UnloadTranslatedStrings(const String name)", __eCNameSpace__eC__i18n__UnloadTranslatedStrings, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::i18n::GetTranslatedString", "const char * eC::i18n::GetTranslatedString(const String name, const char * string, const char * stringAndContext)", __eCNameSpace__eC__i18n__GetTranslatedString, module, 1);
 }
+

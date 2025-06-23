@@ -66,7 +66,7 @@ extern int yydebug;
 
 enum yytokentype
 {
-IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378
+IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378, _ALIGNAS = 379
 };
 
 int yyparse(void);
@@ -100,7 +100,7 @@ extern unsigned int inCompiler;
 
 extern const char *  i18nModuleName;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Iterator_data;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Iterator_data;
 
 extern unsigned int buildingECRTModule;
 
@@ -114,9 +114,9 @@ extern int targetBits;
 
 extern int targetPlatform;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_map;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_map;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_key;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_key;
 
 extern int yyparse();
 
@@ -226,9 +226,9 @@ extern unsigned long strtoul(const char *  nptr, char * *  endptr, int base);
 
 extern void FullClassNameCat(char *  output, const char *  className, unsigned int includeTemplateParams);
 
-struct __eCNameSpace__eC__types__CustomAVLTree
+struct __eCNameSpace__eC__containers__CustomAVLTree
 {
-struct __eCNameSpace__eC__types__AVLNode * root;
+struct __eCNameSpace__eC__containers__AVLNode * root;
 int count;
 } eC_gcc_struct;
 
@@ -376,13 +376,13 @@ extern void __eCNameSpace__eC__types__eInstance_IncRef(struct __eCNameSpace__eC_
 
 extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__files__FileOpen(const char *  fileName, int mode);
 
-struct __eCNameSpace__eC__types__MapIterator
+struct __eCNameSpace__eC__containers__MapIterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__Iterator
+struct __eCNameSpace__eC__containers__Iterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
@@ -396,19 +396,19 @@ extern void __eCNameSpace__eC__types__eInstance_DecRef(struct __eCNameSpace__eC_
 
 extern int __eCVMethodID___eCNameSpace__eC__containers__Container_Free;
 
-struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__types__MapIterator_Get_map(struct __eCNameSpace__eC__types__MapIterator * this);
+struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__containers__MapIterator_Get_map(struct __eCNameSpace__eC__containers__MapIterator * this);
 
-void __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(struct __eCNameSpace__eC__types__MapIterator * this, struct __eCNameSpace__eC__types__Instance * value);
+void __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(struct __eCNameSpace__eC__containers__MapIterator * this, struct __eCNameSpace__eC__types__Instance * value);
 
-const uint64 __eCProp___eCNameSpace__eC__types__MapIterator_Get_key(struct __eCNameSpace__eC__types__MapIterator * this);
+const uint64 __eCProp___eCNameSpace__eC__containers__MapIterator_Get_key(struct __eCNameSpace__eC__containers__MapIterator * this);
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Index(struct __eCNameSpace__eC__types__Iterator * this, const uint64 index, unsigned int create);
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Index(struct __eCNameSpace__eC__containers__Iterator * this, const uint64 index, unsigned int create);
 
-uint64 __eCProp___eCNameSpace__eC__types__Iterator_Get_data(struct __eCNameSpace__eC__types__Iterator * this);
+uint64 __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(struct __eCNameSpace__eC__containers__Iterator * this);
 
-void __eCProp___eCNameSpace__eC__types__Iterator_Set_data(struct __eCNameSpace__eC__types__Iterator * this, uint64 value);
+void __eCProp___eCNameSpace__eC__containers__Iterator_Set_data(struct __eCNameSpace__eC__containers__Iterator * this, uint64 value);
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Next(struct __eCNameSpace__eC__types__Iterator * this);
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Next(struct __eCNameSpace__eC__containers__Iterator * this);
 
 void __eCDestroyModuleInstances_ast()
 {
@@ -537,22 +537,22 @@ struct ClassFunction;
 
 extern void FreeClassFunction(struct ClassFunction * func);
 
-struct __eCNameSpace__eC__sys__NamedLink64;
+struct __eCNameSpace__eC__containers__NamedLink64;
 
-struct __eCNameSpace__eC__sys__NamedLink64
+struct __eCNameSpace__eC__containers__NamedLink64
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * prev;
-struct __eCNameSpace__eC__sys__NamedLink64 * next;
+struct __eCNameSpace__eC__containers__NamedLink64 * prev;
+struct __eCNameSpace__eC__containers__NamedLink64 * next;
 char *  name;
 long long data;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__sys__OldLink;
+struct __eCNameSpace__eC__containers__OldLink;
 
-struct __eCNameSpace__eC__sys__OldLink
+struct __eCNameSpace__eC__containers__OldLink
 {
-struct __eCNameSpace__eC__sys__OldLink * prev;
-struct __eCNameSpace__eC__sys__OldLink * next;
+struct __eCNameSpace__eC__containers__OldLink * prev;
+struct __eCNameSpace__eC__containers__OldLink * next;
 void *  data;
 } eC_gcc_struct;
 
@@ -929,13 +929,13 @@ type->typeName = __eCNameSpace__eC__types__CopyString(src->typeName);
 type->refCount = 1;
 if(src->kind == 15)
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * member;
+struct __eCNameSpace__eC__containers__NamedLink64 * member;
 
 __eCMethod___eCNameSpace__eC__containers__OldList_Clear(&type->__anon1.__anon1.members);
 for(member = src->__anon1.__anon1.members.first; member; member = member->next)
 {
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&type->__anon1.__anon1.members, __extension__ ({
-struct __eCNameSpace__eC__sys__NamedLink64 * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__sys__NamedLink64));
+struct __eCNameSpace__eC__containers__NamedLink64 * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__NamedLink64));
 
 __eCInstance1->name = __eCNameSpace__eC__types__CopyString(member->name), __eCInstance1->data = member->data, __eCInstance1;
 }));
@@ -1731,7 +1731,7 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass_Context;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_ModuleImport;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__sys__NamedLink64;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__NamedLink64;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_AsmField;
 
@@ -1743,7 +1743,7 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass_DBTableEntry;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_DBIndexItem;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map_TPL_ContextStringPair__eC__containers__List_TPL_Location___;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map_TPL_ContextStringPair__eC__containers__List_TPL_Location___;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__BTNode;
 
@@ -1755,9 +1755,9 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass_char__PTR_;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_DeclaratorType;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__CustomAVLTree;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__CustomAVLTree;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map;
 
 struct __eCNameSpace__eC__types__Module
 {
@@ -2495,7 +2495,7 @@ struct Specifier * spec = tn->qualifiers ? (*tn->qualifiers).first : (((void *)0
 if(!tn->declarator && !tn->prev && !tn->next && spec && !spec->next && spec->type == 0 && spec->__anon1.specifier == VOID)
 ;
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "parameter name omitted\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "parameter name omitted\n", (((void *)0))));
 break;
 }
 }
@@ -2607,7 +2607,7 @@ break;
 FreeList(specs, (void *)(FreeSpecifier));
 if(!spec)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Expecting class specifier\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Expecting class specifier\n", (((void *)0))));
 inst->_class = MkSpecifierName("");
 }
 }
@@ -2687,7 +2687,7 @@ __eCInstance1->id = id, __eCInstance1->order = order, __eCInstance1;
 
 void __eCCreateModuleInstances_ast()
 {
-intlStrings = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__types__Map_TPL_ContextStringPair__eC__containers__List_TPL_Location___);
+intlStrings = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Map_TPL_ContextStringPair__eC__containers__List_TPL_Location___);
 __eCNameSpace__eC__types__eInstance_IncRef(intlStrings);
 }
 
@@ -2711,7 +2711,7 @@ return (((void *)0));
 
 void OutputIntlStrings()
 {
-if(((struct __eCNameSpace__eC__types__CustomAVLTree *)(((char *)intlStrings + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->count)
+if(((struct __eCNameSpace__eC__containers__CustomAVLTree *)(((char *)intlStrings + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->count)
 {
 const char * srcFile = GetSourceFile();
 const char * objFile = GetOutputFile();
@@ -2729,20 +2729,20 @@ if(!(srcFile[0] && (srcFile[1] == ':' || srcFile[0] == '/')))
 filePrefix = "./";
 __eCNameSpace__eC__files__GetSlashPathBuffer(srcFileFixed, srcFile);
 {
-struct __eCNameSpace__eC__types__MapIterator s = (s.container = (void *)0, s.pointer = (void *)0, __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(&s, (intlStrings)), s);
+struct __eCNameSpace__eC__containers__MapIterator s = (s.container = (void *)0, s.pointer = (void *)0, __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(&s, (intlStrings)), s);
 
-while(__eCMethod___eCNameSpace__eC__types__Iterator_Next((void *)(&s)))
+while(__eCMethod___eCNameSpace__eC__containers__Iterator_Next((void *)(&s)))
 {
-struct ContextStringPair pair = (*(struct ContextStringPair *)(uintptr_t)__eCProp___eCNameSpace__eC__types__MapIterator_Get_key(&s));
+struct ContextStringPair pair = (*(struct ContextStringPair *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__MapIterator_Get_key(&s));
 
 {
-struct __eCNameSpace__eC__types__Iterator l =
+struct __eCNameSpace__eC__containers__Iterator l =
 {
-((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data((void *)(&s))), 0
+((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data((void *)(&s))), 0
 };
 
-while(__eCMethod___eCNameSpace__eC__types__Iterator_Next(&l))
-__eCMethod___eCNameSpace__eC__files__File_Printf(f, "#: %s%s:%d\n", filePrefix, srcFileFixed, (*(struct Location *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data(&l)).start.line);
+while(__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&l))
+__eCMethod___eCNameSpace__eC__files__File_Printf(f, "#: %s%s:%d\n", filePrefix, srcFileFixed, (*(struct Location *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&l)).start.line);
 }
 if(pair.context)
 __eCMethod___eCNameSpace__eC__files__File_Printf(f, "msgctxt \"%s\"\n", pair.context);
@@ -2758,7 +2758,7 @@ void (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *);
 __internal_VirtualMethod = ((void (*)(struct __eCNameSpace__eC__types__Instance *))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = intlStrings;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__types__Map->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Map->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Free]);
 __internal_VirtualMethod ? __internal_VirtualMethod(intlStrings) : (void)1;
 }));
@@ -2814,25 +2814,25 @@ memcpy(pair.context, context + 1, len - 2);
 pair.context[len - 2] = '\0';
 }
 list = (((struct __eCNameSpace__eC__types__Instance *)((uintptr_t)(__extension__ ({
-struct __eCNameSpace__eC__types__Iterator __internalIterator =
+struct __eCNameSpace__eC__containers__Iterator __internalIterator =
 {
 intlStrings, 0
 };
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(&pair)), 0);
-((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data(&__internalIterator));
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(&pair)), 0);
+((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&__internalIterator));
 })))));
 if(!list)
 {
 list = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__List_TPL_Location_);
 __extension__ ({
-struct __eCNameSpace__eC__types__Iterator __internalIterator =
+struct __eCNameSpace__eC__containers__Iterator __internalIterator =
 {
 intlStrings, 0
 };
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(&pair)), 1);
-__eCProp___eCNameSpace__eC__types__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(list));
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(&pair)), 1);
+__eCProp___eCNameSpace__eC__containers__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(list));
 });
 }
 else
@@ -3143,7 +3143,7 @@ symbol->notYetDeclared = 1;
 }
 if(spec->__anon1.__anon1.symbol)
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&spec->__anon1.__anon1.symbol->templatedClasses, __extension__ ({
-struct __eCNameSpace__eC__sys__OldLink * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__sys__OldLink));
+struct __eCNameSpace__eC__containers__OldLink * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__OldLink));
 
 __eCInstance1->data = symbol, __eCInstance1;
 }));
@@ -3926,7 +3926,7 @@ id->string = __eCNameSpace__eC__types__CopyString(name);
 if(!__eCNameSpace__eC__types__eSystem_FindDefine(privateModule, id->string))
 __eCNameSpace__eC__types__eSystem_RegisterDefine(id->string, expString, privateModule, buildingECRTModule ? 4 : 1);
 else
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Redefinition of %s ignored\n", (((void *)0))), id->string);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Redefinition of %s ignored\n", (((void *)0))), id->string);
 return decl;
 }
 
@@ -4374,7 +4374,7 @@ struct __eCNameSpace__eC__types__Class * instanceClass = ((curExternal && curExt
 struct __eCNameSpace__eC__types__Class * _class = curClass ? curClass : instanceClass;
 
 if(thisClassFrom && instanceClass && thisClassFrom != instanceClass && strcmp(thisClassFrom->name, "class"))
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "unresolved template type (%s)\n", (((void *)0))), paramName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "unresolved template type (%s)\n", (((void *)0))), paramName);
 if(_class)
 {
 int id = 0;
@@ -4775,7 +4775,7 @@ struct Enumerator * e;
 
 for(e = (*spec->__anon1.__anon2.list).first; e; e = e->next)
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * i = (i = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__sys__NamedLink64)), i->name = __eCNameSpace__eC__types__CopyString(e->id->string), i);
+struct __eCNameSpace__eC__containers__NamedLink64 * i = (i = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__NamedLink64)), i->name = __eCNameSpace__eC__types__CopyString(e->id->string), i);
 
 if(e->exp && e->exp->type == 2 && e->exp->__anon1.__anon1.constant)
 i->data = strtoll(e->exp->__anon1.__anon1.constant, (((void *)0)), 0);
@@ -4821,12 +4821,12 @@ specType->__anon1.__anon1.enumName = __eCNameSpace__eC__types__CopyString(symbol
 specType->refCount = 1;
 if(symbol->type->kind == 15)
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * member;
+struct __eCNameSpace__eC__containers__NamedLink64 * member;
 
 __eCMethod___eCNameSpace__eC__containers__OldList_Clear(&specType->__anon1.__anon1.members);
 for(member = symbol->type->__anon1.__anon1.members.first; member; member = member->next)
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * item = (item = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__sys__NamedLink64)), item->name = __eCNameSpace__eC__types__CopyString(member->name), item->data = member->data, item);
+struct __eCNameSpace__eC__containers__NamedLink64 * item = (item = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__NamedLink64)), item->name = __eCNameSpace__eC__types__CopyString(member->name), item->data = member->data, item);
 
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&specType->__anon1.__anon1.members, item);
 }

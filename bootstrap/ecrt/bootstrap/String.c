@@ -247,9 +247,9 @@ return (char *)s + i;
 return (((void *)0));
 }
 
-struct __eCNameSpace__eC__types__BTNode;
+struct __eCNameSpace__eC__containers__BTNode;
 
-struct __eCNameSpace__eC__types__OldList
+struct __eCNameSpace__eC__containers__OldList
 {
 void *  first;
 void *  last;
@@ -1614,13 +1614,13 @@ const char *  __eCProp___eCNameSpace__eC__types__ZString_Get_char__PTR_(struct _
 
 struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__types__ZString_Set_char__PTR_(const char *  value);
 
-struct __eCNameSpace__eC__types__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__types__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
-struct __eCNameSpace__eC__types__BTNode * root;
+struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__types__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -1641,8 +1641,8 @@ struct __eCNameSpace__eC__types__Instance * dataType;
 int type;
 int offset;
 int memberID;
-struct __eCNameSpace__eC__types__OldList members;
-struct __eCNameSpace__eC__types__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__OldList members;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -1714,10 +1714,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__types__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__types__BinaryTree classes;
-struct __eCNameSpace__eC__types__BinaryTree defines;
-struct __eCNameSpace__eC__types__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -1734,12 +1734,12 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__types__BinaryTree methods;
-struct __eCNameSpace__eC__types__BinaryTree members;
-struct __eCNameSpace__eC__types__BinaryTree prop;
-struct __eCNameSpace__eC__types__OldList membersAndProperties;
-struct __eCNameSpace__eC__types__BinaryTree classProperties;
-struct __eCNameSpace__eC__types__OldList derivatives;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
+struct __eCNameSpace__eC__containers__OldList membersAndProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
 int type;
@@ -1751,7 +1751,7 @@ int typeSize;
 int defaultAlignment;
 void (*  Initialize)();
 int memberOffset;
-struct __eCNameSpace__eC__types__OldList selfWatchers;
+struct __eCNameSpace__eC__containers__OldList selfWatchers;
 const char *  designerClass;
 unsigned int noExpansion;
 const char *  defaultProperty;
@@ -1765,15 +1765,15 @@ short structAlignment;
 short pointerAlignment;
 int destructionWatchOffset;
 unsigned int fixed;
-struct __eCNameSpace__eC__types__OldList delayedCPValues;
+struct __eCNameSpace__eC__containers__OldList delayedCPValues;
 int inheritanceAccess;
 const char *  fullName;
 void *  symbol;
-struct __eCNameSpace__eC__types__OldList conversions;
-struct __eCNameSpace__eC__types__OldList templateParams;
+struct __eCNameSpace__eC__containers__OldList conversions;
+struct __eCNameSpace__eC__containers__OldList templateParams;
 struct __eCNameSpace__eC__types__ClassTemplateArgument *  templateArgs;
 struct __eCNameSpace__eC__types__Class * templateClass;
-struct __eCNameSpace__eC__types__OldList templatized;
+struct __eCNameSpace__eC__containers__OldList templatized;
 int numParams;
 unsigned int isInstanceClass;
 unsigned int byValueSystemClass;
@@ -1786,7 +1786,7 @@ int argc;
 const char * *  argv;
 int exitCode;
 unsigned int isGUIApp;
-struct __eCNameSpace__eC__types__OldList allModules;
+struct __eCNameSpace__eC__containers__OldList allModules;
 char *  parsedCommand;
 struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 } eC_gcc_struct;
@@ -1806,10 +1806,10 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__typ
 struct __eCNameSpace__eC__types__Module
 {
 struct __eCNameSpace__eC__types__Instance * application;
-struct __eCNameSpace__eC__types__OldList classes;
-struct __eCNameSpace__eC__types__OldList defines;
-struct __eCNameSpace__eC__types__OldList functions;
-struct __eCNameSpace__eC__types__OldList modules;
+struct __eCNameSpace__eC__containers__OldList classes;
+struct __eCNameSpace__eC__containers__OldList defines;
+struct __eCNameSpace__eC__containers__OldList functions;
+struct __eCNameSpace__eC__containers__OldList modules;
 struct __eCNameSpace__eC__types__Instance * prev;
 struct __eCNameSpace__eC__types__Instance * next;
 const char *  name;
@@ -2069,6 +2069,8 @@ void __eCMethod___eCNameSpace__eC__types__ZString_copy(struct __eCNameSpace__eC_
 __attribute__((unused)) struct __eCNameSpace__eC__types__ZString * __eCPointer___eCNameSpace__eC__types__ZString = (struct __eCNameSpace__eC__types__ZString *)(this ? (((char *)this) + __eCClass___eCNameSpace__eC__types__ZString->offset) : 0);
 
 __eCMethod___eCNameSpace__eC__types__ZString_copyString(this, ((struct __eCNameSpace__eC__types__ZString *)(((char *)s + __eCClass___eCNameSpace__eC__types__ZString->offset)))->_string, ((struct __eCNameSpace__eC__types__ZString *)(((char *)s + __eCClass___eCNameSpace__eC__types__ZString->offset)))->len);
+if(((struct __eCNameSpace__eC__types__ZString *)(((char *)s + __eCClass___eCNameSpace__eC__types__ZString->offset)))->allocType == 0)
+(__eCNameSpace__eC__types__eInstance_DecRef(s), s = 0);
 }
 
 void __eCMethod___eCNameSpace__eC__types__ZString_concatx(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Class * class, const void * object, ...)
@@ -2091,32 +2093,32 @@ void __eCRegisterModule_String(struct __eCNameSpace__eC__types__Instance * modul
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::DIR_SEP", "(__runtimePlatform == win32) ? '\\\\' : '/'", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::DIR_SEPS", "(__runtimePlatform == win32) ? \"\\\\\" : \"/\"", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_F_STRING", "1025", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_EXTENSION", "17", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_FILENAME", "274", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_DIRECTORY", "534", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_LOCATION", "797", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetExtension", "char * eC::types::GetExtension(const char * string, char * output)", __eCNameSpace__eC__types__GetExtension, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StripLastDirectory", "char * eC::types::StripLastDirectory(const char * string, char * output)", __eCNameSpace__eC__types__StripLastDirectory, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::SplitDirectory", "char * eC::types::SplitDirectory(const char * string, char * part, char * rest)", __eCNameSpace__eC__types__SplitDirectory, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetLastDirectory", "char * eC::types::GetLastDirectory(const char * string, char * output)", __eCNameSpace__eC__types__GetLastDirectory, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::SplitArchivePath", "bool eC::types::SplitArchivePath(const char * fileName, char * archiveName, const char * * archiveFile)", __eCNameSpace__eC__types__SplitArchivePath, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PathCatSlash", "char * eC::types::PathCatSlash(char * string, const char * addedPath)", __eCNameSpace__eC__types__PathCatSlash, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PathCat", "char * eC::types::PathCat(char * string, const char * addedPath)", __eCNameSpace__eC__types__PathCat, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MakePathRelative", "char * eC::types::MakePathRelative(const char * path, const char * to, char * destination)", __eCNameSpace__eC__types__MakePathRelative, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StripExtension", "bool eC::types::StripExtension(char * string)", __eCNameSpace__eC__types__StripExtension, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::ChangeExtension", "char * eC::types::ChangeExtension(const char * string, const char * ext, char * output)", __eCNameSpace__eC__types__ChangeExtension, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::IsPathInsideOf", "bool eC::types::IsPathInsideOf(const char * path, const char * of)", __eCNameSpace__eC__types__IsPathInsideOf, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintSize", "void eC::types::PrintSize(char * string, uint64 size, int prec)", __eCNameSpace__eC__types__PrintSize, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintBigSize", "void eC::types::PrintBigSize(char * string, double size, int prec)", __eCNameSpace__eC__types__PrintBigSize, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::ishexdigit", "bool eC::types::ishexdigit(char x)", __eCNameSpace__eC__types__ishexdigit, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::SearchString", "char * eC::types::SearchString(const char * buffer, int start, const char * subStr, bool matchCase, bool matchWord)", __eCNameSpace__eC__types__SearchString, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::RSearchString", "char * eC::types::RSearchString(const char * buffer, const char * subStr, int maxLen, bool matchCase, bool matchWord)", __eCNameSpace__eC__types__RSearchString, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::UnescapeCString", "int eC::types::UnescapeCString(char * d, const char * s, int len)", __eCNameSpace__eC__types__UnescapeCString, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::UnescapeCStringLoose", "int eC::types::UnescapeCStringLoose(char * d, const char * s, int len)", __eCNameSpace__eC__types__UnescapeCStringLoose, module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(2, "eC::types::EscapeCStringOptions", "uint", 0, 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::DIR_SEP", "(__runtimePlatform == win32) ? '\\\\' : '/'", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::DIR_SEPS", "(__runtimePlatform == win32) ? \"\\\\\" : \"/\"", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_F_STRING", "1025", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_EXTENSION", "17", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_FILENAME", "274", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_DIRECTORY", "534", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAX_LOCATION", "797", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetExtension", "char * eC::types::GetExtension(const char * string, char * output)", __eCNameSpace__eC__types__GetExtension, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StripLastDirectory", "char * eC::types::StripLastDirectory(const char * string, char * output)", __eCNameSpace__eC__types__StripLastDirectory, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::SplitDirectory", "char * eC::types::SplitDirectory(const char * string, char * part, char * rest)", __eCNameSpace__eC__types__SplitDirectory, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetLastDirectory", "char * eC::types::GetLastDirectory(const char * string, char * output)", __eCNameSpace__eC__types__GetLastDirectory, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::SplitArchivePath", "bool eC::types::SplitArchivePath(const char * fileName, char * archiveName, const char * * archiveFile)", __eCNameSpace__eC__types__SplitArchivePath, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PathCatSlash", "char * eC::types::PathCatSlash(char * string, const char * addedPath)", __eCNameSpace__eC__types__PathCatSlash, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PathCat", "char * eC::types::PathCat(char * string, const char * addedPath)", __eCNameSpace__eC__types__PathCat, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MakePathRelative", "char * eC::types::MakePathRelative(const char * path, const char * to, char * destination)", __eCNameSpace__eC__types__MakePathRelative, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StripExtension", "bool eC::types::StripExtension(char * string)", __eCNameSpace__eC__types__StripExtension, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::ChangeExtension", "char * eC::types::ChangeExtension(const char * string, const char * ext, char * output)", __eCNameSpace__eC__types__ChangeExtension, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::IsPathInsideOf", "bool eC::types::IsPathInsideOf(const char * path, const char * of)", __eCNameSpace__eC__types__IsPathInsideOf, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintSize", "void eC::types::PrintSize(char * string, uint64 size, int prec)", __eCNameSpace__eC__types__PrintSize, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintBigSize", "void eC::types::PrintBigSize(char * string, double size, int prec)", __eCNameSpace__eC__types__PrintBigSize, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::ishexdigit", "bool eC::types::ishexdigit(char x)", __eCNameSpace__eC__types__ishexdigit, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::SearchString", "char * eC::types::SearchString(const char * buffer, int start, const char * subStr, bool matchCase, bool matchWord)", __eCNameSpace__eC__types__SearchString, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::RSearchString", "char * eC::types::RSearchString(const char * buffer, const char * subStr, int maxLen, bool matchCase, bool matchWord)", __eCNameSpace__eC__types__RSearchString, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::UnescapeCString", "int eC::types::UnescapeCString(char * d, const char * s, int len)", __eCNameSpace__eC__types__UnescapeCString, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::UnescapeCStringLoose", "int eC::types::UnescapeCStringLoose(char * d, const char * s, int len)", __eCNameSpace__eC__types__UnescapeCStringLoose, module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(2, "eC::types::EscapeCStringOptions", "uint", 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__EscapeCStringOptions = class;
 __eCNameSpace__eC__types__eClass_AddBitMember(class, "escapeSingleQuote", "bool", 1, 0, 1);
@@ -2124,32 +2126,32 @@ __eCNameSpace__eC__types__eClass_AddBitMember(class, "escapeDoubleQuotes", "bool
 __eCNameSpace__eC__types__eClass_AddBitMember(class, "writeQuotes", "bool", 1, 2, 1);
 __eCNameSpace__eC__types__eClass_AddBitMember(class, "multiLine", "bool", 1, 3, 1);
 __eCNameSpace__eC__types__eClass_AddBitMember(class, "indent", "int", 16, 4, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::EscapeCString", "int eC::types::EscapeCString(String outString, int bufferLen, const String s, eC::types::EscapeCStringOptions options)", __eCNameSpace__eC__types__EscapeCString, module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::BackSlashEscaping", "bool", 0, 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::EscapeCString", "int eC::types::EscapeCString(String outString, int bufferLen, const String s, eC::types::EscapeCStringOptions options)", __eCNameSpace__eC__types__EscapeCString, module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::BackSlashEscaping", "bool", 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__BackSlashEscaping = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "forArgsPassing", 2);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Tokenize", "int eC::types::Tokenize(char * string, int maxTokens, char * tokens[], eC::types::BackSlashEscaping esc)", __eCNameSpace__eC__types__Tokenize, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::TokenizeWith", "int eC::types::TokenizeWith(char * string, int maxTokens, char * tokens[], const char * tokenizers, bool escapeBackSlashes)", __eCNameSpace__eC__types__TokenizeWith, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::TrimLSpaces", "char * eC::types::TrimLSpaces(const char * string, char * output)", __eCNameSpace__eC__types__TrimLSpaces, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::TrimRSpaces", "char * eC::types::TrimRSpaces(const char * string, char * output)", __eCNameSpace__eC__types__TrimRSpaces, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StripChars", "char * eC::types::StripChars(String string, const String chars)", __eCNameSpace__eC__types__StripChars, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::ChangeCh", "void eC::types::ChangeCh(char * string, char ch1, char ch2)", __eCNameSpace__eC__types__ChangeCh, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::ChangeChars", "void eC::types::ChangeChars(char * string, const char * chars, char alt)", __eCNameSpace__eC__types__ChangeChars, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::RepeatCh", "void eC::types::RepeatCh(char * string, int count, char ch)", __eCNameSpace__eC__types__RepeatCh, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyString", "char * eC::types::CopyString(const char * string)", __eCNameSpace__eC__types__CopyString, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetString", "bool eC::types::GetString(const char * * buffer, char * string, int max)", __eCNameSpace__eC__types__GetString, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetValue", "int eC::types::GetValue(const char * * buffer)", __eCNameSpace__eC__types__GetValue, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetHexValue", "uint eC::types::GetHexValue(const char * * buffer)", __eCNameSpace__eC__types__GetHexValue, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StripQuotes", "char * eC::types::StripQuotes(const char * string, char * output)", __eCNameSpace__eC__types__StripQuotes, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FloatFromString", "double eC::types::FloatFromString(const char * string)", __eCNameSpace__eC__types__FloatFromString, module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::StringAllocType", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Tokenize", "int eC::types::Tokenize(char * string, int maxTokens, char * tokens[], eC::types::BackSlashEscaping esc)", __eCNameSpace__eC__types__Tokenize, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::TokenizeWith", "int eC::types::TokenizeWith(char * string, int maxTokens, char * tokens[], const char * tokenizers, bool escapeBackSlashes)", __eCNameSpace__eC__types__TokenizeWith, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::TrimLSpaces", "char * eC::types::TrimLSpaces(const char * string, char * output)", __eCNameSpace__eC__types__TrimLSpaces, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::TrimRSpaces", "char * eC::types::TrimRSpaces(const char * string, char * output)", __eCNameSpace__eC__types__TrimRSpaces, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StripChars", "char * eC::types::StripChars(String string, const String chars)", __eCNameSpace__eC__types__StripChars, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::ChangeCh", "void eC::types::ChangeCh(char * string, char ch1, char ch2)", __eCNameSpace__eC__types__ChangeCh, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::ChangeChars", "void eC::types::ChangeChars(char * string, const char * chars, char alt)", __eCNameSpace__eC__types__ChangeChars, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::RepeatCh", "void eC::types::RepeatCh(char * string, int count, char ch)", __eCNameSpace__eC__types__RepeatCh, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyString", "char * eC::types::CopyString(const char * string)", __eCNameSpace__eC__types__CopyString, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetString", "bool eC::types::GetString(const char * * buffer, char * string, int max)", __eCNameSpace__eC__types__GetString, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetValue", "int eC::types::GetValue(const char * * buffer)", __eCNameSpace__eC__types__GetValue, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::GetHexValue", "uint eC::types::GetHexValue(const char * * buffer)", __eCNameSpace__eC__types__GetHexValue, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StripQuotes", "char * eC::types::StripQuotes(const char * string, char * output)", __eCNameSpace__eC__types__StripQuotes, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FloatFromString", "double eC::types::FloatFromString(const char * string)", __eCNameSpace__eC__types__FloatFromString, module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::StringAllocType", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__StringAllocType = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "pointer", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "stack", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "heap", 2);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::ZString", 0, sizeof(struct __eCNameSpace__eC__types__ZString), 0, (void *)__eCConstructor___eCNameSpace__eC__types__ZString, (void *)__eCDestructor___eCNameSpace__eC__types__ZString, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::ZString", 0, sizeof(struct __eCNameSpace__eC__types__ZString), 0, (void *)__eCConstructor___eCNameSpace__eC__types__ZString, (void *)__eCDestructor___eCNameSpace__eC__types__ZString, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ZString = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnGetString", 0, __eCMethod___eCNameSpace__eC__types__ZString_OnGetString, 1);
@@ -2171,7 +2173,7 @@ __eCNameSpace__eC__types__eClass_AddDataMember(class, "maxSize", "int", 4, 4, 1)
 __eCPropM___eCNameSpace__eC__types__ZString_string = __eCNameSpace__eC__types__eClass_AddProperty(class, "string", "const char *", __eCProp___eCNameSpace__eC__types__ZString_Set_string, __eCProp___eCNameSpace__eC__types__ZString_Get_string, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__types__ZString_string = __eCPropM___eCNameSpace__eC__types__ZString_string, __eCPropM___eCNameSpace__eC__types__ZString_string = (void *)0;
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::strchrmax", "char * eC::types::strchrmax(const char * s, int c, int max)", __eCNameSpace__eC__types__strchrmax, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StringLikePattern", "bool eC::types::StringLikePattern(const String string, const String pattern)", __eCNameSpace__eC__types__StringLikePattern, module, 4);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::strchrmax", "char * eC::types::strchrmax(const char * s, int c, int max)", __eCNameSpace__eC__types__strchrmax, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::StringLikePattern", "bool eC::types::StringLikePattern(const String string, const String pattern)", __eCNameSpace__eC__types__StringLikePattern, module, 1);
 }
 

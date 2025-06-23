@@ -178,6 +178,8 @@ unsigned int offset;
 unsigned int circ;
 } eC_gcc_struct;
 
+struct __eCNameSpace__eC__files__Type;
+
 struct __eCNameSpace__eC__types__DataValue
 {
 union
@@ -214,7 +216,7 @@ extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, unsigned
 
 extern void __eCNameSpace__eC__types__eSystem_Delete(void *  memory);
 
-struct __eCNameSpace__eC__types__Array
+struct __eCNameSpace__eC__containers__Array
 {
 uint64 *  array;
 unsigned int count;
@@ -349,40 +351,13 @@ void __eCNameSpace__eC__files__GetFreeSpace(const char * path, uint64 * size)
 System_GetFreeSpace(path, size);
 }
 
-struct __eCNameSpace__eC__files__System __eCNameSpace__eC__files__globalSystem;
+struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__files__globalSystem;
 
 static struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__files__errorMessages;
 
 static struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__files__sysErrorMessages;
 
 static struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__files__guiErrorMessages;
-
-void __eCNameSpace__eC__files__DumpErrors(unsigned int display)
-{
-if(__eCNameSpace__eC__files__globalSystem.errorBuffer && __eCNameSpace__eC__files__globalSystem.errorBuffer[0])
-{
-if(display)
-{
-printf("%s", __eCNameSpace__eC__files__globalSystem.errorBuffer);
-}
-__eCNameSpace__eC__files__globalSystem.errorBuffer[0] = '\0';
-}
-}
-
-unsigned int __eCNameSpace__eC__files__GetLastErrorCode()
-{
-return (unsigned int)__eCNameSpace__eC__files__globalSystem.lastErrorCode;
-}
-
-void __eCNameSpace__eC__files__ResetError()
-{
-__eCNameSpace__eC__files__globalSystem.lastErrorCode = 0;
-}
-
-void __eCNameSpace__eC__files__SetErrorLevel(int level)
-{
-__eCNameSpace__eC__files__globalSystem.errorLevel = level;
-}
 
 struct __eCNameSpace__eC__types__Class;
 
@@ -425,42 +400,9 @@ extern void __eCNameSpace__eC__types__eInstance_DecRef(struct __eCNameSpace__eC_
 
 void __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Instance * value);
 
-void __eCNameSpace__eC__files__SetLoggingMode(int mode, void * where)
-{
-__eCNameSpace__eC__files__globalSystem.errorLoggingMode = mode;
-if(mode == 4)
-{
-struct __eCNameSpace__eC__types__Instance * file;
-
-strcpy(__eCNameSpace__eC__files__globalSystem.logFile, where);
-file = __eCNameSpace__eC__files__FileOpen(__eCNameSpace__eC__files__globalSystem.logFile, 2);
-(__eCNameSpace__eC__types__eInstance_DecRef(file), file = 0);
-}
-else if(mode == 6 || mode == 5)
-{
-if(!__eCNameSpace__eC__files__globalSystem.errorBuffer)
-{
-__eCNameSpace__eC__files__globalSystem.errorBufferSize = (100 * (1025));
-__eCNameSpace__eC__files__globalSystem.errorBuffer = __eCNameSpace__eC__types__eSystem_New(sizeof(char) * ((100 * (1025))));
-}
-__eCNameSpace__eC__files__globalSystem.errorBuffer[0] = 0;
-}
-else if(mode == 3)
-{
-}
-if(mode == (int)0)
-{
-__eCNameSpace__eC__files__DumpErrors(1);
-if(__eCNameSpace__eC__files__globalSystem.errorBuffer)
-{
-(__eCNameSpace__eC__types__eSystem_Delete(__eCNameSpace__eC__files__globalSystem.errorBuffer), __eCNameSpace__eC__files__globalSystem.errorBuffer = 0);
-__eCNameSpace__eC__files__globalSystem.errorBufferSize = 0;
-}
-}
-}
-
 void __eCDestroyModuleInstances_System()
 {
+(__eCNameSpace__eC__types__eInstance_DecRef(__eCNameSpace__eC__files__globalSystem), __eCNameSpace__eC__files__globalSystem = 0);
 (__eCNameSpace__eC__types__eInstance_DecRef(__eCNameSpace__eC__files__errorMessages), __eCNameSpace__eC__files__errorMessages = 0);
 (__eCNameSpace__eC__types__eInstance_DecRef(__eCNameSpace__eC__files__guiErrorMessages), __eCNameSpace__eC__files__guiErrorMessages = 0);
 (__eCNameSpace__eC__types__eInstance_DecRef(__eCNameSpace__eC__files__sysErrorMessages), __eCNameSpace__eC__files__sysErrorMessages = 0);
@@ -480,13 +422,13 @@ __eCNameSpace__eC__files__Log(string);
 __builtin_va_end(args);
 }
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -503,12 +445,12 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -529,7 +471,7 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 void (*  Set)(void * , int);
 int (*  Get)(void * );
 unsigned int (*  IsSet)(void * );
@@ -590,7 +532,7 @@ int type;
 struct __eCNameSpace__eC__types__Class * _class;
 void *  symbol;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int memberAccess;
 } eC_gcc_struct;
 
@@ -614,10 +556,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -634,11 +576,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -646,7 +588,7 @@ int type;
 struct __eCNameSpace__eC__types__Instance * module;
 struct __eCNameSpace__eC__types__NameSpace *  nameSpace;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int typeSize;
 int defaultAlignment;
 void (*  Initialize)();
@@ -705,13 +647,13 @@ static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__fil
 
 static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__System;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Array_TPL_String_;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Array_TPL_String_;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Array_TPL_eC__containers__Array_TPL_String___;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Array_TPL_eC__containers__Array_TPL_String___;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__File;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Array;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Array;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Module;
 
@@ -737,9 +679,36 @@ struct __eCNameSpace__eC__types__NameSpace privateNameSpace;
 struct __eCNameSpace__eC__types__NameSpace publicNameSpace;
 } eC_gcc_struct;
 
+void __eCNameSpace__eC__files__DumpErrors(unsigned int display)
+{
+if(((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer && ((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer[0])
+{
+if(display)
+{
+printf("%s", ((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer);
+}
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer[0] = '\0';
+}
+}
+
+unsigned int __eCNameSpace__eC__files__GetLastErrorCode()
+{
+return (unsigned int)((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->lastErrorCode;
+}
+
+void __eCNameSpace__eC__files__ResetError()
+{
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->lastErrorCode = 0;
+}
+
+void __eCNameSpace__eC__files__SetErrorLevel(int level)
+{
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorLevel = level;
+}
+
 void __eCNameSpace__eC__files__Log(const char * text)
 {
-switch(__eCNameSpace__eC__files__globalSystem.errorLoggingMode)
+switch(((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorLoggingMode)
 {
 case 3:
 case 1:
@@ -754,7 +723,7 @@ case 4:
 {
 struct __eCNameSpace__eC__types__Instance * f;
 
-if((f = __eCNameSpace__eC__files__FileOpen(__eCNameSpace__eC__files__globalSystem.logFile, 3)))
+if((f = __eCNameSpace__eC__files__FileOpen(((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->logFile, 3)))
 {
 (__extension__ ({
 unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const char *  string);
@@ -772,37 +741,37 @@ break;
 }
 case 6:
 case 5:
-strcat(__eCNameSpace__eC__files__globalSystem.errorBuffer, text);
+strcat(((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer, text);
 break;
 }
 }
 
 void __eCNameSpace__eC__files__LogErrorCode(unsigned int errorCode, const char * details)
 {
-if(((int)((errorCode & 0x3000) >> 12)) <= __eCNameSpace__eC__files__globalSystem.errorLevel)
+if(((int)((errorCode & 0x3000) >> 12)) <= ((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorLevel)
 {
 int cat = (((unsigned int)((errorCode & 0xFFF) >> 0)) & 0xF00) >> 8;
 int code = ((unsigned int)((errorCode & 0xFFF) >> 0)) & 0xFF;
 
 if(details)
 __eCNameSpace__eC__files__Logf("System Error [%d]: %s (%s).\n", ((int)((errorCode & 0x3000) >> 12)), (((const char **)__extension__ ({
-char * __ecTemp1 = (char *)((((struct __eCNameSpace__eC__types__Instance **)((struct __eCNameSpace__eC__types__Array *)(((char *)__eCNameSpace__eC__files__errorMessages + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->array))[cat]);
+char * __ecTemp1 = (char *)((((struct __eCNameSpace__eC__types__Instance **)((struct __eCNameSpace__eC__containers__Array *)(((char *)__eCNameSpace__eC__files__errorMessages + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->array))[cat]);
 
-((struct __eCNameSpace__eC__types__Array *)(__ecTemp1 + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)));
+((struct __eCNameSpace__eC__containers__Array *)(__ecTemp1 + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)));
 })->array))[code], details);
 else
 __eCNameSpace__eC__files__Logf("System Error [%d]: %s.\n", ((int)((errorCode & 0x3000) >> 12)), (((const char **)__extension__ ({
-char * __ecTemp1 = (char *)((((struct __eCNameSpace__eC__types__Instance **)((struct __eCNameSpace__eC__types__Array *)(((char *)__eCNameSpace__eC__files__errorMessages + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->array))[cat]);
+char * __ecTemp1 = (char *)((((struct __eCNameSpace__eC__types__Instance **)((struct __eCNameSpace__eC__containers__Array *)(((char *)__eCNameSpace__eC__files__errorMessages + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->array))[cat]);
 
-((struct __eCNameSpace__eC__types__Array *)(__ecTemp1 + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)));
+((struct __eCNameSpace__eC__containers__Array *)(__ecTemp1 + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)));
 })->array))[code]);
 }
-__eCNameSpace__eC__files__globalSystem.lastErrorCode = errorCode;
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->lastErrorCode = errorCode;
 }
 
 void __eCCreateModuleInstances_System()
 {
-(__eCNameSpace__eC__files__sysErrorMessages = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__types__Array_TPL_String_), __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc(__eCNameSpace__eC__files__sysErrorMessages, ((struct __eCNameSpace__eC__types__Instance *)&__extension__ (struct __eCNameSpace__eC__containers__BuiltInContainer)
+(__eCNameSpace__eC__files__sysErrorMessages = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Array_TPL_String_), __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc(__eCNameSpace__eC__files__sysErrorMessages, ((struct __eCNameSpace__eC__types__Instance *)&__extension__ (struct __eCNameSpace__eC__containers__BuiltInContainer)
 {
 __eCClass___eCNameSpace__eC__containers__BuiltInContainer->_vTbl, __eCClass___eCNameSpace__eC__containers__BuiltInContainer, 0, __extension__ (const char * [])
 {
@@ -810,7 +779,7 @@ __eCNameSpace__eC__i18n__GetTranslatedString("ecrt", "No error", (((void *)0))),
 }, 7, __eCClass_String
 })));
 __eCNameSpace__eC__types__eInstance_IncRef(__eCNameSpace__eC__files__sysErrorMessages);
-(__eCNameSpace__eC__files__guiErrorMessages = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__types__Array_TPL_String_), __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc(__eCNameSpace__eC__files__guiErrorMessages, ((struct __eCNameSpace__eC__types__Instance *)&__extension__ (struct __eCNameSpace__eC__containers__BuiltInContainer)
+(__eCNameSpace__eC__files__guiErrorMessages = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Array_TPL_String_), __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc(__eCNameSpace__eC__files__guiErrorMessages, ((struct __eCNameSpace__eC__types__Instance *)&__extension__ (struct __eCNameSpace__eC__containers__BuiltInContainer)
 {
 __eCClass___eCNameSpace__eC__containers__BuiltInContainer->_vTbl, __eCClass___eCNameSpace__eC__containers__BuiltInContainer, 0, __extension__ (const char * [])
 {
@@ -818,14 +787,16 @@ __eCNameSpace__eC__i18n__GetTranslatedString("ecrt", "No error", (((void *)0))),
 }, 5, __eCClass_String
 })));
 __eCNameSpace__eC__types__eInstance_IncRef(__eCNameSpace__eC__files__guiErrorMessages);
-(__eCNameSpace__eC__files__errorMessages = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__types__Array_TPL_eC__containers__Array_TPL_String___), __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc(__eCNameSpace__eC__files__errorMessages, ((struct __eCNameSpace__eC__types__Instance *)&__extension__ (struct __eCNameSpace__eC__containers__BuiltInContainer)
+(__eCNameSpace__eC__files__errorMessages = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Array_TPL_eC__containers__Array_TPL_String___), __eCProp___eCNameSpace__eC__containers__Container_Set_copySrc(__eCNameSpace__eC__files__errorMessages, ((struct __eCNameSpace__eC__types__Instance *)&__extension__ (struct __eCNameSpace__eC__containers__BuiltInContainer)
 {
 __eCClass___eCNameSpace__eC__containers__BuiltInContainer->_vTbl, __eCClass___eCNameSpace__eC__containers__BuiltInContainer, 0, __extension__ (struct __eCNameSpace__eC__types__Instance * [])
 {
 __eCNameSpace__eC__files__sysErrorMessages, __eCNameSpace__eC__files__guiErrorMessages
-}, 2, __eCClass___eCNameSpace__eC__types__Array_TPL_String_
+}, 2, __eCClass___eCNameSpace__eC__containers__Array_TPL_String_
 })));
 __eCNameSpace__eC__types__eInstance_IncRef(__eCNameSpace__eC__files__errorMessages);
+__eCNameSpace__eC__files__globalSystem = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__files__System);
+__eCNameSpace__eC__types__eInstance_IncRef(__eCNameSpace__eC__files__globalSystem);
 }
 
 void __eCUnregisterModule_System(struct __eCNameSpace__eC__types__Instance * module)
@@ -833,11 +804,45 @@ void __eCUnregisterModule_System(struct __eCNameSpace__eC__types__Instance * mod
 
 }
 
+void __eCNameSpace__eC__files__SetLoggingMode(int mode, void * where)
+{
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorLoggingMode = mode;
+if(mode == 4)
+{
+struct __eCNameSpace__eC__types__Instance * file;
+
+strcpy(((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->logFile, where);
+file = __eCNameSpace__eC__files__FileOpen(((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->logFile, 2);
+(__eCNameSpace__eC__types__eInstance_DecRef(file), file = 0);
+}
+else if(mode == 6 || mode == 5)
+{
+if(!((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer)
+{
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBufferSize = (100 * (1025));
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer = __eCNameSpace__eC__types__eSystem_New(sizeof(char) * ((100 * (1025))));
+}
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer[0] = 0;
+}
+else if(mode == 3)
+{
+}
+if(mode == (int)0)
+{
+__eCNameSpace__eC__files__DumpErrors(1);
+if(((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer)
+{
+(__eCNameSpace__eC__types__eSystem_Delete(((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer), ((struct __eCNameSpace__eC__files__System * )(((char * )__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBuffer = 0);
+((struct __eCNameSpace__eC__files__System *)(((char *)__eCNameSpace__eC__files__globalSystem + __eCClass___eCNameSpace__eC__files__System->offset)))->errorBufferSize = 0;
+}
+}
+}
+
 void __eCRegisterModule_System(struct __eCNameSpace__eC__types__Instance * module)
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "ecrt::files::LoggingMode", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::files::LoggingMode", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__files__LoggingMode = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "noLogging", 0);
@@ -847,14 +852,14 @@ __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "debug", 3);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "logFile", 4);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "msgBox", 5);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "buffer", 6);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "ecrt::files::ErrorLevel", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::files::ErrorLevel", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__files__ErrorLevel = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "veryFatal", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "fatal", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "major", 2);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "minor", 3);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("ecrt::files::AllErrors", "ecrt::files::ErrorLevel::minor", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::files::AllErrors", "eC::files::ErrorLevel::minor", module, 1);
 class = __eCNameSpace__eC__types__eSystem_RegisterClass(2, "eC::files::ErrorCode", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__files__ErrorCode = class;
@@ -905,15 +910,10 @@ __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::GetLastErrorCode"
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::ResetError", "void eC::files::ResetError(void)", __eCNameSpace__eC__files__ResetError, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::SetErrorLevel", "void eC::files::SetErrorLevel(eC::files::ErrorLevel level)", __eCNameSpace__eC__files__SetErrorLevel, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::SetLoggingMode", "void eC::files::SetLoggingMode(eC::files::LoggingMode mode, void * where)", __eCNameSpace__eC__files__SetLoggingMode, module, 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::files::System", 0, sizeof(struct __eCNameSpace__eC__files__System), 0, (void *)0, (void *)0, module, 2, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::files::System", 0, sizeof(struct __eCNameSpace__eC__files__System), 0, (void *)0, (void *)0, module, 2, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__files__System = class;
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "errorLoggingMode", "eC::files::LoggingMode", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "errorBuffer", "char *", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "errorBufferSize", "int", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "logFile", "char[MAX_LOCATION]", 797, 1, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "lastErrorCode", "eC::files::ErrorCode", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "errorLevel", "eC::files::ErrorLevel", 4, 4, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, (((void *)0)), (((void *)0)), 0, sizeof(void *) > 4 ? sizeof(void *) : 4, 2);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::debugBreakpoint", "void eC::files::debugBreakpoint(void)", __eCNameSpace__eC__files__debugBreakpoint, module, 1);
 }
 

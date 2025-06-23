@@ -74,7 +74,7 @@ static char ** includes;
 
 unsigned int inIDE = 0;
 
-unsigned int ecrtImported;
+unsigned int ecereImported;
 
 unsigned int inPreCompiler = 0;
 
@@ -97,9 +97,9 @@ extern char *  symbolsDir;
 
 extern unsigned int inCompiler;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_map;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_map;
 
-extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Iterator_data;
+extern struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Iterator_data;
 
 struct __eCNameSpace__eC__containers__OldList
 {
@@ -266,12 +266,12 @@ inIDE = b;
 
 void SetEcereImported(unsigned int b)
 {
-ecrtImported = b;
+ecereImported = b;
 }
 
 unsigned int GetEcereImported()
 {
-return ecrtImported;
+return ecereImported;
 }
 
 void SetInPreCompiler(unsigned int b)
@@ -560,13 +560,13 @@ int yy_init;
 int yy_start;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__MapIterator
+struct __eCNameSpace__eC__containers__MapIterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__Iterator
+struct __eCNameSpace__eC__containers__Iterator
 {
 struct __eCNameSpace__eC__types__Instance * container;
 struct __eCNameSpace__eC__containers__IteratorPointer * pointer;
@@ -591,17 +591,17 @@ extern struct __eCNameSpace__eC__types__Instance * pushLexer(void);
 
 extern void popLexer(struct __eCNameSpace__eC__types__Instance * backup);
 
-struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__types__MapIterator_Get_map(struct __eCNameSpace__eC__types__MapIterator * this);
+struct __eCNameSpace__eC__types__Instance * __eCProp___eCNameSpace__eC__containers__MapIterator_Get_map(struct __eCNameSpace__eC__containers__MapIterator * this);
 
-void __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(struct __eCNameSpace__eC__types__MapIterator * this, struct __eCNameSpace__eC__types__Instance * value);
+void __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(struct __eCNameSpace__eC__containers__MapIterator * this, struct __eCNameSpace__eC__types__Instance * value);
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Index(struct __eCNameSpace__eC__types__Iterator * this, const uint64 index, unsigned int create);
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Index(struct __eCNameSpace__eC__containers__Iterator * this, const uint64 index, unsigned int create);
 
-uint64 __eCProp___eCNameSpace__eC__types__Iterator_Get_data(struct __eCNameSpace__eC__types__Iterator * this);
+uint64 __eCProp___eCNameSpace__eC__containers__Iterator_Get_data(struct __eCNameSpace__eC__containers__Iterator * this);
 
-void __eCProp___eCNameSpace__eC__types__Iterator_Set_data(struct __eCNameSpace__eC__types__Iterator * this, uint64 value);
+void __eCProp___eCNameSpace__eC__containers__Iterator_Set_data(struct __eCNameSpace__eC__containers__Iterator * this, uint64 value);
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Iterator_Next(struct __eCNameSpace__eC__types__Iterator * this);
+unsigned int __eCMethod___eCNameSpace__eC__containers__Iterator_Next(struct __eCNameSpace__eC__containers__Iterator * this);
 
 void __eCDestroyModuleInstances_loadSymbols()
 {
@@ -639,12 +639,12 @@ extern struct Symbol * FindClass(const char *  name);
 
 extern void FreeSymbol(struct Symbol * symbol);
 
-struct __eCNameSpace__eC__sys__OldLink;
+struct __eCNameSpace__eC__containers__OldLink;
 
-struct __eCNameSpace__eC__sys__OldLink
+struct __eCNameSpace__eC__containers__OldLink
 {
-struct __eCNameSpace__eC__sys__OldLink * prev;
-struct __eCNameSpace__eC__sys__OldLink * next;
+struct __eCNameSpace__eC__containers__OldLink * prev;
+struct __eCNameSpace__eC__containers__OldLink * next;
 void *  data;
 } eC_gcc_struct;
 
@@ -713,7 +713,7 @@ char type2String[1024] = "";
 PrintType(type1, type1String, 0, 1);
 PrintType(type2, type2String, 0, 1);
 if(strcmp(type1String, type2String))
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Redefinition of %s (defining as %s, already defined as %s)\n", (((void *)0))), redefinition->name, type1String, type2String);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Redefinition of %s (defining as %s, already defined as %s)\n", (((void *)0))), redefinition->name, type1String, type2String);
 FreeType(type1);
 FreeType(type2);
 }
@@ -734,12 +734,12 @@ unsigned int dllOnly;
 int importAccess;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__sys__NamedItem;
+struct __eCNameSpace__eC__containers__NamedItem;
 
-struct __eCNameSpace__eC__sys__NamedItem
+struct __eCNameSpace__eC__containers__NamedItem
 {
-struct __eCNameSpace__eC__sys__NamedItem * prev;
-struct __eCNameSpace__eC__sys__NamedItem * next;
+struct __eCNameSpace__eC__containers__NamedItem * prev;
+struct __eCNameSpace__eC__containers__NamedItem * next;
 char *  name;
 } eC_gcc_struct;
 
@@ -757,7 +757,7 @@ strcpy(sourceFileStack[include_stack_ptr + 1], location);
 }
 else if(inIDE)
 {
-struct __eCNameSpace__eC__sys__NamedItem * includeDir;
+struct __eCNameSpace__eC__containers__NamedItem * includeDir;
 
 if(includeDirs)
 {
@@ -1237,9 +1237,9 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass_ImportedModule;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__List_TPL_eC__types__Module_;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map_TPL_String__eC__containers__List_TPL_eC__types__Module___;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map_TPL_String__eC__containers__List_TPL_eC__types__Module___;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__sys__File;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__File;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Module;
 
@@ -1267,7 +1267,7 @@ struct __eCNameSpace__eC__types__NameSpace publicNameSpace;
 
 void __eCCreateModuleInstances_loadSymbols()
 {
-loadedModules = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__types__Map_TPL_String__eC__containers__List_TPL_eC__types__Module___);
+loadedModules = __eCNameSpace__eC__types__eInstance_New(__eCClass___eCNameSpace__eC__containers__Map_TPL_String__eC__containers__List_TPL_eC__types__Module___);
 __eCNameSpace__eC__types__eInstance_IncRef(loadedModules);
 }
 
@@ -1313,15 +1313,15 @@ unsigned int globalInstance = 0;
 
 if(f)
 {
-unsigned int ecrtModule = 0;
+unsigned int ecereCOMModule = 0;
 char moduleName[797];
 
 __eCNameSpace__eC__types__GetLastDirectory(fileName, moduleName);
 if(!((strcasecmp)(moduleName, "instance.sym") && (strcasecmp)(moduleName, "BinaryTree.sym") && (strcasecmp)(moduleName, "dataTypes.sym") && (strcasecmp)(moduleName, "OldList.sym") && (strcasecmp)(moduleName, "String.sym") && (strcasecmp)(moduleName, "BTNode.sym") && (strcasecmp)(moduleName, "Array.sym") && (strcasecmp)(moduleName, "AVLTree.sym") && (strcasecmp)(moduleName, "BuiltInContainer.sym") && (strcasecmp)(moduleName, "Container.sym") && (strcasecmp)(moduleName, "CustomAVLTree.sym") && (strcasecmp)(moduleName, "LinkList.sym") && (strcasecmp)(moduleName, "List.sym") && (strcasecmp)(moduleName, "Map.sym") && (strcasecmp)(moduleName, "Mutex.sym")))
-ecrtModule = 1;
+ecereCOMModule = 1;
 for(; ; )
 {
-char line[1024];
+char line[4096];
 
 if(!__eCMethod___eCNameSpace__eC__files__File_GetLine(f, line, sizeof (line)))
 break;
@@ -1392,7 +1392,7 @@ const char * baseName = (classType == 0 && importType == 2 && isRemote) ? "DCOMC
 if(!isRemote || (importType != 2) || (!sourceFile || !strstr(sourceFile, ".main.ec")))
 {
 if(!regClass || regClass->internalDecl)
-regClass = __eCNameSpace__eC__types__eSystem_RegisterClass(classType, name, isRemote ? (((void *)0)) : baseName, 0, 0, (((void *)0)), (((void *)0)), privateModule, ecrtModule ? 4 : accessMode, inheritanceAccess);
+regClass = __eCNameSpace__eC__types__eSystem_RegisterClass(classType, name, isRemote ? (((void *)0)) : baseName, 0, 0, (((void *)0)), (((void *)0)), privateModule, ecereCOMModule ? 4 : accessMode, inheritanceAccess);
 if(regClass && isRemote)
 regClass->isRemote = (importType == 2) ? 1 : 2;
 if(isRemote)
@@ -1404,14 +1404,14 @@ char className[1024] = "DCOMClient_";
 strcat(className, name);
 if(!existingClass)
 existingClass = DeclClass((((void *)0)), name);
-regClass = __eCNameSpace__eC__types__eSystem_RegisterClass(classType, className, baseName, 0, 0, (((void *)0)), (((void *)0)), privateModule, ecrtModule ? 4 : accessMode, inheritanceAccess);
+regClass = __eCNameSpace__eC__types__eSystem_RegisterClass(classType, className, baseName, 0, 0, (((void *)0)), (((void *)0)), privateModule, ecereCOMModule ? 4 : accessMode, inheritanceAccess);
 }
 if(regClass)
 regClass->isRemote = (importType == 2) ? 1 : 3;
 }
 if(existingClass)
 {
-struct __eCNameSpace__eC__sys__OldLink * link;
+struct __eCNameSpace__eC__containers__OldLink * link;
 
 for(link = existingClass->templatedClasses.first; link; link = link->next)
 {
@@ -1639,7 +1639,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Eof]);
 __internal_VirtualMethod ? __internal_VirtualMethod(f) : (unsigned int)1;
 })))
@@ -1770,7 +1770,7 @@ if(!strcmp(line, "[Value]"))
 __eCMethod___eCNameSpace__eC__files__File_GetLine(f, line, sizeof (line));
 __eCNameSpace__eC__types__TrimLSpaces(line, line);
 if(!loadDllOnly && importType != 3 && importType != 4)
-__eCNameSpace__eC__types__eSystem_RegisterDefine(name, line, privateModule, ecrtModule ? 4 : 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine(name, line, privateModule, ecereCOMModule ? 4 : 1);
 }
 else if(line[0] != '[')
 {
@@ -1794,7 +1794,7 @@ if(!strcmp(line, "[Type]"))
 __eCMethod___eCNameSpace__eC__files__File_GetLine(f, line, sizeof (line));
 __eCNameSpace__eC__types__TrimLSpaces(line, line);
 if(!loadDllOnly && importType != 3 && importType != 4)
-__eCNameSpace__eC__types__eSystem_RegisterFunction(name, line, (((void *)0)), privateModule, ecrtModule ? 4 : 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction(name, line, (((void *)0)), privateModule, ecereCOMModule ? 4 : 1);
 }
 else if(line[0] != '[')
 {
@@ -1907,8 +1907,8 @@ if(importType != 3 && importType != 4)
 ImportModule(line, moduleImportType, importAccess, loadDllOnly);
 else
 ImportModule(line, 4, importAccess, loadDllOnly);
-if(!strcmp(line, "ecrt"))
-ecrtImported = 1;
+if(!strcmp(line, "ecere"))
+ecereImported = 1;
 moduleImportType = 0;
 importAccess = 1;
 }
@@ -1923,7 +1923,7 @@ else if(importType != 4)
 char sysFileName[797];
 
 __eCNameSpace__eC__files__GetSystemPathBuffer(sysFileName, fileName);
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Couldn't open %s\n", (((void *)0))), sysFileName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Couldn't open %s\n", (((void *)0))), sysFileName);
 }
 return globalInstance;
 }
@@ -1992,9 +1992,9 @@ struct __eCNameSpace__eC__types__Instance * list = (((void *)0));
 
 if(!inCompiler && !inPreCompiler && !inSymbolGen && !inDocumentor)
 {
-struct __eCNameSpace__eC__types__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__types__MapIterator_Set_map(&it, loadedModules), it);
+struct __eCNameSpace__eC__containers__MapIterator it = (it.container = (void *)0, it.pointer = (void *)0, __eCProp___eCNameSpace__eC__containers__MapIterator_Set_map(&it, loadedModules), it);
 
-if(!__eCMethod___eCNameSpace__eC__types__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(name), 0))
+if(!__eCMethod___eCNameSpace__eC__containers__Iterator_Index((void *)(&it), (uint64)(uintptr_t)(name), 0))
 {
 struct __eCNameSpace__eC__types__Instance * firstModule = __eCNameSpace__eC__types__eModule_LoadStrict(((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application, name, importAccess);
 
@@ -2012,20 +2012,20 @@ __internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC
 __internal_VirtualMethod ? __internal_VirtualMethod(list, (uint64)(uintptr_t)(firstModule)) : (struct __eCNameSpace__eC__containers__IteratorPointer *)1;
 }));
 __extension__ ({
-struct __eCNameSpace__eC__types__Iterator __internalIterator =
+struct __eCNameSpace__eC__containers__Iterator __internalIterator =
 {
 loadedModules, 0
 };
 
-__eCMethod___eCNameSpace__eC__types__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(name)), 1);
-__eCProp___eCNameSpace__eC__types__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(list));
+__eCMethod___eCNameSpace__eC__containers__Iterator_Index(&__internalIterator, ((uint64)(uintptr_t)(name)), 1);
+__eCProp___eCNameSpace__eC__containers__Iterator_Set_data(&__internalIterator, (uint64)(uintptr_t)(list));
 });
 }
 else
 skipLoad = 1;
 }
 else
-list = ((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__types__Iterator_Get_data((void *)(&it)));
+list = ((struct __eCNameSpace__eC__types__Instance *)(uintptr_t)__eCProp___eCNameSpace__eC__containers__Iterator_Get_data((void *)(&it)));
 }
 if(!skipLoad)
 {
@@ -2077,16 +2077,16 @@ return ;
 if(inIDE && !__eCNameSpace__eC__files__FileExists(symFile) && sourceDirs)
 {
 {
-struct __eCNameSpace__eC__types__Iterator dir =
+struct __eCNameSpace__eC__containers__Iterator dir =
 {
 (sourceDirs), 0
 };
 
-while(__eCMethod___eCNameSpace__eC__types__Iterator_Next(&dir))
+while(__eCMethod___eCNameSpace__eC__containers__Iterator_Next(&dir))
 {
 char configDir[274];
 
-strcpy(symFile, ((char * )((uintptr_t)(__eCProp___eCNameSpace__eC__types__Iterator_Get_data(&dir)))));
+strcpy(symFile, ((char * )((uintptr_t)(__eCProp___eCNameSpace__eC__containers__Iterator_Get_data(&dir)))));
 __eCNameSpace__eC__types__PathCat(symFile, "obj");
 sprintf(configDir, "debug.%s", (__runtimePlatform == 1) ? "win32" : (__runtimePlatform == 3) ? "apple" : "linux");
 __eCNameSpace__eC__types__PathCat(symFile, configDir);

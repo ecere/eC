@@ -152,13 +152,23 @@ extern void __eCNameSpace__eC__types__eClass_SetProperty(struct __eCNameSpace__e
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_char__PTR_;
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Application;
-
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__List_TPL_String_;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map_TPL_ContextStringPair__eC__containers__List_TPL_String___;
 
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Application;
+
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Module;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__CustomAVLTree;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__List;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Map;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__File;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__TempFile;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_ClassImport;
 
@@ -173,16 +183,6 @@ __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_M
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_ModuleImport;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_PropertyImport;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__CustomAVLTree;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__List;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Map;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__sys__File;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__TempFile;
 
 extern void __eCNameSpace__eC__types__eInstance_SetMethod(struct __eCNameSpace__eC__types__Instance * instance, const char *  name, void *  function);
 
@@ -228,17 +228,17 @@ extern void __eCNameSpace__eC__types__eInstance_Watch(struct __eCNameSpace__eC__
 
 extern void __eCNameSpace__eC__types__eInstance_FireWatchers(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property);
 
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Iterator_data;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_key;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__MapIterator_map;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Platform_char__PTR_;
-
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__BTNode_next;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__BinaryTree_first;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Iterator_data;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_key;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__MapIterator_map;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Platform_char__PTR_;
 
 struct __eCNameSpace__eC__containers__BinaryTree;
 
@@ -275,13 +275,13 @@ static struct __eCNameSpace__eC__types__Instance * __currentModule;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Instance * __thisModule;
 
-unsigned int __eCDll_Load_ec(struct __eCNameSpace__eC__types__Instance * module);
-
-unsigned int __eCDll_Unload_ec(struct __eCNameSpace__eC__types__Instance * module);
-
 unsigned int __eCDll_Load_ecrt(struct __eCNameSpace__eC__types__Instance * module);
 
 unsigned int __eCDll_Unload_ecrt(struct __eCNameSpace__eC__types__Instance * module);
+
+unsigned int __eCDll_Load_ectp(struct __eCNameSpace__eC__types__Instance * module);
+
+unsigned int __eCDll_Unload_ectp(struct __eCNameSpace__eC__types__Instance * module);
 
 void __eCRegisterModule_ecs(struct __eCNameSpace__eC__types__Instance * module);
 
@@ -291,13 +291,13 @@ extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__types__eMo
 
 extern struct __eCNameSpace__eC__types__Class * __eCNameSpace__eC__types__eSystem_FindClass(struct __eCNameSpace__eC__types__Instance * module, const char *  name);
 
-extern struct __eCNameSpace__eC__types__Method * __eCNameSpace__eC__types__eClass_FindMethod(struct __eCNameSpace__eC__types__Class * _class, const char *  name, struct __eCNameSpace__eC__types__Instance * module);
-
 extern struct __eCNameSpace__eC__types__Property * __eCNameSpace__eC__types__eClass_FindProperty(struct __eCNameSpace__eC__types__Class * _class, const char *  name, struct __eCNameSpace__eC__types__Instance * module);
+
+extern struct __eCNameSpace__eC__types__Method * __eCNameSpace__eC__types__eClass_FindMethod(struct __eCNameSpace__eC__types__Class * _class, const char *  name, struct __eCNameSpace__eC__types__Instance * module);
 
 struct __eCNameSpace__eC__types__Application;
 
-extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__typeseCrt_Initialize(unsigned int guiApp, int argc, char *  argv[]);
+extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__types__eCrt_Initialize(unsigned int guiApp, int argc, char *  argv[]);
 
 struct __eCNameSpace__eC__types__NameSpace;
 
@@ -476,25 +476,22 @@ __attribute__((unused)) struct __eCNameSpace__eC__types__Method * method;
 __attribute__((unused)) struct __eCNameSpace__eC__types__Property * _property;
 
 if(setThingsUp)
-__thisModule = __eCNameSpace__eC__typeseCrt_Initialize((unsigned int)1, _argc, (void *)_argv);
+__thisModule = __eCNameSpace__eC__types__eCrt_Initialize((unsigned int)1, _argc, (void *)_argv);
 __currentModule = module = __thisModule;
-if(!__eCNameSpace__eC__types__eModule_LoadStatic(module, "ecrt", 2, (void *)(__eCDll_Load_ecrt), (void *)(__eCDll_Unload_ecrt)))
+if(!__eCNameSpace__eC__types__eModule_LoadStatic(module, "ecrt", 1, (void *)(__eCDll_Load_ecrt), (void *)(__eCDll_Unload_ecrt)))
 printf("Error loading eC module \"%s\" (statically linked)\nThings might go very wrong.\n", "ecrt");
-if(!__eCNameSpace__eC__types__eModule_LoadStatic(module, "ec", 2, (void *)(__eCDll_Load_ec), (void *)(__eCDll_Unload_ec)))
-printf("Error loading eC module \"%s\" (statically linked)\nThings might go very wrong.\n", "ec");
+if(!__eCNameSpace__eC__types__eModule_LoadStatic(module, "ectp", 2, (void *)(__eCDll_Load_ectp), (void *)(__eCDll_Unload_ectp)))
+printf("Error loading eC module \"%s\" (statically linked)\nThings might go very wrong.\n", "ectp");
 __eCRegisterModule_ecs(module);
 __eCClass_char__PTR_ = __eCNameSpace__eC__types__eSystem_FindClass(module, "char *");
-__eCClass___eCNameSpace__eC__types__Application = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Application");
 __eCClass___eCNameSpace__eC__containers__List_TPL_String_ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::List<String>");
 __eCClass___eCNameSpace__eC__containers__Map_TPL_ContextStringPair__eC__containers__List_TPL_String___ = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Map<ContextStringPair, eC::containers::List<String> >");
+__eCClass___eCNameSpace__eC__types__Application = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Application");
 __eCClass___eCNameSpace__eC__types__Module = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Module");
-__eCClass_ClassImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "ClassImport");
-__eCClass_Context = __eCNameSpace__eC__types__eSystem_FindClass(module, "Context");
-__eCClass_FunctionImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "FunctionImport");
-__eCClass_ImportedModule = __eCNameSpace__eC__types__eSystem_FindClass(module, "ImportedModule");
-__eCClass_MethodImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "MethodImport");
-__eCClass_ModuleImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "ModuleImport");
-__eCClass_PropertyImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "PropertyImport");
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::BTNode");
+__eCProp___eCNameSpace__eC__containers__BTNode_next = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "next", module);
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::BinaryTree");
+__eCProp___eCNameSpace__eC__containers__BinaryTree_first = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "first", module);
 _class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Container");
 method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "Add", module);
 if(method)
@@ -505,38 +502,41 @@ __eCVMethodID___eCNameSpace__eC__containers__Container_Free = method->vid;
 method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "RemoveAll", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__containers__Container_RemoveAll = method->vid;
-__eCClass___eCNameSpace__eC__types__CustomAVLTree = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::CustomAVLTree");
+__eCClass___eCNameSpace__eC__containers__CustomAVLTree = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::CustomAVLTree");
 _class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Iterator");
-__eCProp___eCNameSpace__eC__types__Iterator_data = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "data", module);
+__eCProp___eCNameSpace__eC__containers__Iterator_data = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "data", module);
 __eCClass___eCNameSpace__eC__containers__List = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::List");
-__eCClass___eCNameSpace__eC__types__Map = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Map");
+__eCClass___eCNameSpace__eC__containers__Map = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::Map");
 _class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::MapIterator");
-__eCProp___eCNameSpace__eC__types__MapIterator_key = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "key", module);
-__eCProp___eCNameSpace__eC__types__MapIterator_map = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "map", module);
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Platform");
-__eCProp___eCNameSpace__eC__types__Platform_char__PTR_ = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "char *", module);
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::BTNode");
-__eCProp___eCNameSpace__eC__containers__BTNode_next = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "next", module);
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::BinaryTree");
-__eCProp___eCNameSpace__eC__containers__BinaryTree_first = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "first", module);
-__eCClass___eCNameSpace__eC__sys__File = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::File");
-method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__sys__File, "Eof", module);
+__eCProp___eCNameSpace__eC__containers__MapIterator_key = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "key", module);
+__eCProp___eCNameSpace__eC__containers__MapIterator_map = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "map", module);
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::OldList");
+__eCClass___eCNameSpace__eC__files__File = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::File");
+method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__files__File, "Eof", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__files__File_Eof = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__sys__File, "Puts", module);
+method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__files__File, "Puts", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__files__File_Puts = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__sys__File, "Read", module);
+method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__files__File, "Read", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__files__File_Read = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__sys__File, "Seek", module);
+method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__files__File, "Seek", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__files__File_Seek = method->vid;
-method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__sys__File, "Write", module);
+method = __eCNameSpace__eC__types__eClass_FindMethod(__eCClass___eCNameSpace__eC__files__File, "Write", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__files__File_Write = method->vid;
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::OldList");
 __eCClass___eCNameSpace__eC__files__TempFile = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::TempFile");
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Platform");
+__eCProp___eCNameSpace__eC__types__Platform_char__PTR_ = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "char *", module);
+__eCClass_ClassImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "ClassImport");
+__eCClass_Context = __eCNameSpace__eC__types__eSystem_FindClass(module, "Context");
+__eCClass_FunctionImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "FunctionImport");
+__eCClass_ImportedModule = __eCNameSpace__eC__types__eSystem_FindClass(module, "ImportedModule");
+__eCClass_MethodImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "MethodImport");
+__eCClass_ModuleImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "ModuleImport");
+__eCClass_PropertyImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "PropertyImport");
 __eCNameSpace__eC__i18n__LoadTranslatedStrings((((void *)0)), "ecs");
 _class = __eCNameSpace__eC__types__eSystem_FindClass(__currentModule, "SymbolgenApp");
 if(setThingsUp)

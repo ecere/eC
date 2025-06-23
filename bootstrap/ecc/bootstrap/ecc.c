@@ -557,7 +557,7 @@ static struct __eCNameSpace__eC__types__NameSpace globalData;
 
 extern void FreeGlobalData(struct __eCNameSpace__eC__types__NameSpace * globalDataList);
 
-extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__typeseCrt_Initialize(unsigned int guiApp, int argc, char *  argv[]);
+extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__types__eCrt_Initialize(unsigned int guiApp, int argc, char *  argv[]);
 
 struct __eCNameSpace__eC__types__DataMember;
 
@@ -936,7 +936,7 @@ if(!strcmp(arg, "-DBUILDING_ECRT"))
 SetBuildingEcereCom(1);
 else if(!strcmp(arg, "-DECRT_MODULE"))
 SetBuildingEcereComModule(1);
-else if(!strcmp(arg, "-DECERE_BOOTSTRAP"))
+else if(!strcmp(arg, "-DEC_BOOTSTRAP"))
 buildingBootStrap = 1;
 }
 }
@@ -1093,7 +1093,7 @@ SetInCompiler(1);
 SetTargetPlatform(targetPlatform);
 SetTargetBits(targetBits);
 SetEchoOn(0);
-privateModule = (struct __eCNameSpace__eC__types__Instance *)__eCNameSpace__eC__typeseCrt_Initialize((unsigned int)(1 | (targetBits == sizeof(uintptr_t) * 8 ? (unsigned int)0 : targetBits == 64 ? 2 : targetBits == 32 ? 4 : (unsigned int)0) | 8), 1, (((void *)0)));
+privateModule = (struct __eCNameSpace__eC__types__Instance *)__eCNameSpace__eC__types__eCrt_Initialize((unsigned int)(1 | (targetBits == sizeof(uintptr_t) * 8 ? (unsigned int)0 : targetBits == 64 ? 2 : targetBits == 32 ? 4 : (unsigned int)0) | 8), 1, (((void *)0)));
 SetPrivateModule(privateModule);
 __eCMethod___eCNameSpace__eC__containers__BinaryTree_Add(&globalContext->types, (struct __eCNameSpace__eC__containers__BTNode *)__extension__ ({
 struct Symbol * __eCInstance1 = __eCNameSpace__eC__types__eInstance_New(__eCClass_Symbol);

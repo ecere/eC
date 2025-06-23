@@ -66,7 +66,7 @@ extern int yydebug;
 
 enum yytokentype
 {
-IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378
+IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378, _ALIGNAS = 379
 };
 
 int yyparse(void);
@@ -2247,33 +2247,33 @@ if(((unsigned int)((exp->usage & 0x1) >> 0)) && ((!convertTo && prop->Get) || (c
 int __simpleStruct0, __simpleStruct1;
 struct __eCNameSpace__eC__containers__OldList * list = MkList();
 struct __eCNameSpace__eC__containers__OldList * args;
-char eCTemp[100];
+char ecTemp[100];
 struct Context * context = PushContext();
 
 exp->tempCount++;
 curExternal->__anon1.function->tempCount = (__simpleStruct0 = curExternal->__anon1.function->tempCount, __simpleStruct1 = exp->tempCount, (__simpleStruct0 > __simpleStruct1) ? __simpleStruct0 : __simpleStruct1);
-sprintf(eCTemp, "__eCTemp%d", exp->tempCount);
+sprintf(ecTemp, "__ecTemp%d", exp->tempCount);
 curContext = context;
 exp->type = 23;
-exp->__anon1.compound = MkCompoundStmt(MkListOne(MkDeclaration(MkListOne(MkSpecifier(VOID)), MkListOne(MkInitDeclarator(MkDeclaratorPointer(MkPointer((((void *)0)), (((void *)0))), MkDeclaratorIdentifier(MkIdentifier(eCTemp))), MkInitializerAssignment(QBrackets(memberExp->__anon1.member.exp)))))), list);
+exp->__anon1.compound = MkCompoundStmt(MkListOne(MkDeclaration(MkListOne(MkSpecifier(VOID)), MkListOne(MkInitDeclarator(MkDeclaratorPointer(MkPointer((((void *)0)), (((void *)0))), MkDeclaratorIdentifier(MkIdentifier(ecTemp))), MkInitializerAssignment(QBrackets(memberExp->__anon1.member.exp)))))), list);
 args = MkList();
 if(convertTo)
 {
 ListAdd(args, value);
-ListAdd(args, QMkExpId(eCTemp));
+ListAdd(args, QMkExpId(ecTemp));
 ListAdd(list, MkExpressionStmt(MkListOne(MkExpCall(QMkExpId(getName), args))));
 }
 else
 {
-ListAdd(args, QMkExpId(eCTemp));
+ListAdd(args, QMkExpId(ecTemp));
 ListAdd(args, value);
 ListAdd(list, MkExpressionStmt(MkListOne(MkExpCall(QMkExpId(setName), args))));
 }
 args = MkList();
 if(convertTo)
-ListAdd(args, QMkExpId(eCTemp));
+ListAdd(args, QMkExpId(ecTemp));
 else
-__eCMethod___eCNameSpace__eC__containers__OldList_Insert((&*args), (((void *)0)), QMkExpId(eCTemp));
+__eCMethod___eCNameSpace__eC__containers__OldList_Insert((&*args), (((void *)0)), QMkExpId(ecTemp));
 ListAdd(list, MkExpressionStmt(MkListOne(MkExpCall(QMkExpId(getToUse), args))));
 exp->__anon1.compound->__anon1.compound.context = context;
 PopContext(context);
@@ -2328,7 +2328,7 @@ if(member)
 memberExp->__anon1.member.memberType = 3;
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "no set defined for property %s of class %s\n", (((void *)0))), prop->name, prop->_class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "no set defined for property %s of class %s\n", (((void *)0))), prop->name, prop->_class->fullName);
 }
 }
 else
@@ -3549,11 +3549,11 @@ prop = (((void *)0));
 else
 {
 if(((unsigned int)((exp->usage & 0x40) >> 6)))
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "cannot obtain address of property\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "cannot obtain address of property\n", (((void *)0))));
 else if(!prop->Get)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "no get defined for property %s of class %s\n", (((void *)0))), prop->name, prop->_class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "no get defined for property %s of class %s\n", (((void *)0))), prop->name, prop->_class->fullName);
 else if(((unsigned int)((exp->usage & 0x80) >> 7)))
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "no get defined for property %s of class %s\n", (((void *)0))), prop->name, prop->_class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "no get defined for property %s of class %s\n", (((void *)0))), prop->name, prop->_class->fullName);
 }
 }
 }
@@ -3730,6 +3730,7 @@ exp->__anon1.cast.typeName = MkTypeName(specs, decl);
 else
 exp->__anon1.cast.typeName = QMkType("uint64", (((void *)0)));
 exp->__anon1.cast.exp = MkExpCall(MkExpIdentifier(MkIdentifier("eC::types::eClass_GetProperty")), args);
+DeclareFunctionUtil(curExternal, "eClass_GetProperty");
 if(__eCProp_Type_Get_isPointerType(exp->expType))
 exp->__anon1.cast.exp = MkExpCast(MkTypeName(MkListOne(MkSpecifierName("uintptr")), (((void *)0))), exp->__anon1.cast.exp);
 ListAdd(args, classExp);
@@ -3912,7 +3913,7 @@ checkedExp = checkedExp->__anon1.cast.exp;
 if(checkedExp->type != 0 && checkedExp->type != 2 && checkedExp->type != 8 && checkedExp->type != 9)
 {
 int __simpleStruct0, __simpleStruct1;
-char eCTemp[100];
+char ecTemp[100];
 struct Statement * compound;
 struct Context * context = PushContext();
 
@@ -3920,9 +3921,9 @@ if(exp->__anon1.member.exp->tempCount > exp->tempCount)
 exp->tempCount = exp->__anon1.member.exp->tempCount;
 exp->tempCount++;
 curExternal->__anon1.function->tempCount = (__simpleStruct0 = curExternal->__anon1.function->tempCount, __simpleStruct1 = exp->tempCount, (__simpleStruct0 > __simpleStruct1) ? __simpleStruct0 : __simpleStruct1);
-sprintf(eCTemp, "__eCTemp%d", exp->tempCount);
+sprintf(ecTemp, "__ecTemp%d", exp->tempCount);
 curContext = context;
-compound = MkCompoundStmt(MkListOne(MkDeclaration(MkListOne(MkSpecifier(CHAR)), MkListOne(MkInitDeclarator(MkDeclaratorPointer(MkPointer((((void *)0)), (((void *)0))), MkDeclaratorIdentifier(MkIdentifier(eCTemp))), MkInitializerAssignment(MkExpCast(MkTypeName(MkListOne(MkSpecifier(CHAR)), MkDeclaratorPointer(MkPointer((((void *)0)), (((void *)0))), (((void *)0)))), QBrackets(exp->__anon1.member.exp))))))), (((void *)0)));
+compound = MkCompoundStmt(MkListOne(MkDeclaration(MkListOne(MkSpecifier(CHAR)), MkListOne(MkInitDeclarator(MkDeclaratorPointer(MkPointer((((void *)0)), (((void *)0))), MkDeclaratorIdentifier(MkIdentifier(ecTemp))), MkInitializerAssignment(MkExpCast(MkTypeName(MkListOne(MkSpecifier(CHAR)), MkDeclaratorPointer(MkPointer((((void *)0)), (((void *)0))), (((void *)0)))), QBrackets(exp->__anon1.member.exp))))))), (((void *)0)));
 if(member->_class->fixed)
 {
 struct __eCNameSpace__eC__types__Class * c = member->_class->templateClass ? member->_class->templateClass : member->_class;
@@ -3944,14 +3945,14 @@ char string[256];
 sprintf(string, "%d", c->offset);
 se = MkExpConstant(string);
 }
-e = QBrackets(MkExpOp(QMkExpId(eCTemp), '+', se));
+e = QBrackets(MkExpOp(QMkExpId(ecTemp), '+', se));
 }
 else
-e = QMkExpId(eCTemp);
+e = QMkExpId(ecTemp);
 }
 else
 {
-e = QBrackets(MkExpOp(QMkExpId(eCTemp), '+', MkExpPointer(QMkExpId(className), MkIdentifier("offset"))));
+e = QBrackets(MkExpOp(QMkExpId(ecTemp), '+', MkExpPointer(QMkExpId(className), MkIdentifier("offset"))));
 }
 compound->__anon1.compound.context = context;
 compound->__anon1.compound.statements = MkListOne(MkExpressionStmt(MkListOne(QBrackets(MkExpCast(MkTypeName(MkListOne(MkStructOrUnion(3, MkIdentifier(structName), (((void *)0)))), MkDeclaratorPointer(MkPointer((((void *)0)), (((void *)0))), (((void *)0)))), e)))));

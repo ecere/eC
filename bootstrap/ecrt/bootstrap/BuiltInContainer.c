@@ -274,13 +274,13 @@ void __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Sort(struct __eC
 {
 }
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -302,7 +302,7 @@ int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -372,10 +372,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -392,11 +392,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -615,33 +615,33 @@ void __eCRegisterModule_BuiltInContainer(struct __eCNameSpace__eC__types__Instan
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::IteratorPointer", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::IteratorPointer", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__containers__IteratorPointer = class;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::BuiltInContainer", 0, sizeof(struct __eCNameSpace__eC__containers__BuiltInContainer), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::containers::BuiltInContainer", 0, sizeof(struct __eCNameSpace__eC__containers__BuiltInContainer), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__containers__BuiltInContainer = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnGetString", 0, __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_OnGetString, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetFirst", "eC::types::IteratorPointer GetFirst()", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetFirst, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetLast", "eC::types::IteratorPointer GetLast()", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetLast, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetPrev", "eC::types::IteratorPointer GetPrev(eC::types::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetPrev, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetNext", "eC::types::IteratorPointer GetNext(eC::types::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetNext, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetData", "uint64 GetData(eC::types::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetData, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "SetData", "bool SetData(eC::types::IteratorPointer pointer, uint64 data)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_SetData, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetAtPosition", "eC::types::IteratorPointer GetAtPosition(const uint64 pos, bool create)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetAtPosition, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Insert", "eC::types::IteratorPointer Insert(eC::types::IteratorPointer after, uint64 value)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Insert, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Add", "eC::types::IteratorPointer Add(uint64 value)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Add, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Remove", "void Remove(eC::types::IteratorPointer it)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Remove, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Move", "void Move(eC::types::IteratorPointer it, eC::types::IteratorPointer after)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Move, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetFirst", "eC::containers::IteratorPointer GetFirst()", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetFirst, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetLast", "eC::containers::IteratorPointer GetLast()", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetLast, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetPrev", "eC::containers::IteratorPointer GetPrev(eC::containers::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetPrev, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetNext", "eC::containers::IteratorPointer GetNext(eC::containers::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetNext, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetData", "uint64 GetData(eC::containers::IteratorPointer pointer)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetData, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "SetData", "bool SetData(eC::containers::IteratorPointer pointer, uint64 data)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_SetData, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetAtPosition", "eC::containers::IteratorPointer GetAtPosition(const uint64 pos, bool create)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetAtPosition, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Insert", "eC::containers::IteratorPointer Insert(eC::containers::IteratorPointer after, uint64 value)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Insert, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Add", "eC::containers::IteratorPointer Add(uint64 value)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Add, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Remove", "void Remove(eC::containers::IteratorPointer it)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Remove, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Move", "void Move(eC::containers::IteratorPointer it, eC::containers::IteratorPointer after)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Move, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "RemoveAll", "void RemoveAll()", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_RemoveAll, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Copy", "void Copy(eC::types::Container source)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Copy, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Find", "eC::types::IteratorPointer Find(uint64 value)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Find, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "FreeIterator", "void FreeIterator(eC::types::IteratorPointer it)", 0, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Copy", "void Copy(eC::containers::Container source)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Copy, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Find", "eC::containers::IteratorPointer Find(uint64 value)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Find, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "FreeIterator", "void FreeIterator(eC::containers::IteratorPointer it)", 0, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "GetCount", "int GetCount()", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_GetCount, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Free", "void Free()", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Free, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Delete", "void Delete(eC::types::IteratorPointer it)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Delete, 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Delete", "void Delete(eC::containers::IteratorPointer it)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Delete, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "Sort", "void Sort(bool ascending)", __eCMethod___eCNameSpace__eC__containers__BuiltInContainer_Sort, 1);
-__eCProp___eCNameSpace__eC__containers__BuiltInContainer___eCNameSpace__eC__containers__Container = __eCNameSpace__eC__types__eClass_AddProperty(class, 0, "eC::types::Container", 0, __eCProp___eCNameSpace__eC__containers__BuiltInContainer_Get___eCNameSpace__eC__containers__Container, 1);
+__eCProp___eCNameSpace__eC__containers__BuiltInContainer___eCNameSpace__eC__containers__Container = __eCNameSpace__eC__types__eClass_AddProperty(class, 0, "eC::containers::Container", 0, __eCProp___eCNameSpace__eC__containers__BuiltInContainer_Get___eCNameSpace__eC__containers__Container, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "_vTbl", "void * *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "_class", "eC::types::Class", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "_refCount", "int", 4, 4, 1);

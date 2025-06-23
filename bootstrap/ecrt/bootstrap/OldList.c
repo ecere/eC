@@ -120,33 +120,33 @@ this->count = 0;
 this->first = this->last = (((void *)0));
 }
 
-struct __eCNameSpace__eC__files__Item;
+struct __eCNameSpace__eC__containers__Item;
 
-struct __eCNameSpace__eC__files__Item
+struct __eCNameSpace__eC__containers__Item
 {
-struct __eCNameSpace__eC__files__Item * prev, * next;
+struct __eCNameSpace__eC__containers__Item * prev, * next;
 } eC_gcc_struct;
 
-void __eCMethod___eCNameSpace__eC__containers__Item_Copy(struct __eCNameSpace__eC__files__Item * this, struct __eCNameSpace__eC__files__Item * src, int size)
+void __eCMethod___eCNameSpace__eC__containers__Item_Copy(struct __eCNameSpace__eC__containers__Item * this, struct __eCNameSpace__eC__containers__Item * src, int size)
 {
-memcpy((unsigned char *)this + sizeof(struct __eCNameSpace__eC__files__Item), (unsigned char *)src + sizeof(struct __eCNameSpace__eC__files__Item), size - sizeof(struct __eCNameSpace__eC__files__Item *));
+memcpy((unsigned char *)this + sizeof(struct __eCNameSpace__eC__containers__Item), (unsigned char *)src + sizeof(struct __eCNameSpace__eC__containers__Item), size - sizeof(struct __eCNameSpace__eC__containers__Item *));
 }
 
 void __eCMethod___eCNameSpace__eC__containers__OldList_Add(struct __eCNameSpace__eC__containers__OldList * this, void * item)
 {
 if(item)
 {
-struct __eCNameSpace__eC__files__Item * link = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)item + this->offset);
+struct __eCNameSpace__eC__containers__Item * link = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)item + this->offset);
 
 link->prev = this->last;
 if(link->prev)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->prev + this->offset))->next = item;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->prev + this->offset))->next = item;
 if(!this->first)
 this->first = item;
 this->last = item;
 link->next = this->circ ? this->first : (((void *)0));
 if(this->circ)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)this->first + this->offset))->prev = item;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)this->first + this->offset))->prev = item;
 this->count++;
 }
 }
@@ -155,8 +155,8 @@ unsigned int __eCMethod___eCNameSpace__eC__containers__OldList_Insert(struct __e
 {
 if(item && prevItem != item)
 {
-struct __eCNameSpace__eC__files__Item * prevLink = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)prevItem + this->offset);
-struct __eCNameSpace__eC__files__Item * link = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)item + this->offset);
+struct __eCNameSpace__eC__containers__Item * prevLink = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)prevItem + this->offset);
+struct __eCNameSpace__eC__containers__Item * link = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)item + this->offset);
 
 link->prev = prevItem ? prevItem : (this->circ ? this->last : (((void *)0)));
 if(prevItem)
@@ -171,7 +171,7 @@ this->first = item;
 if(this->circ)
 {
 if(link->prev)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->prev + this->offset))->next = item;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->prev + this->offset))->next = item;
 else
 link->next = item;
 }
@@ -179,7 +179,7 @@ link->next = item;
 if(prevItem == this->last)
 this->last = item;
 if(link->next)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->next + this->offset))->prev = item;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->next + this->offset))->prev = item;
 this->count++;
 return 1;
 }
@@ -190,12 +190,12 @@ void __eCMethod___eCNameSpace__eC__containers__OldList_Remove(struct __eCNameSpa
 {
 if(item)
 {
-struct __eCNameSpace__eC__files__Item * link = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)item + this->offset);
+struct __eCNameSpace__eC__containers__Item * link = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)item + this->offset);
 
 if(link->prev)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->prev + this->offset))->next = link->next;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->prev + this->offset))->next = link->next;
 if(link->next)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->next + this->offset))->prev = link->prev;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->next + this->offset))->prev = link->prev;
 if(this->circ && this->last == this->first)
 this->last = this->first = (((void *)0));
 else
@@ -217,7 +217,7 @@ void * item, * next;
 
 for(item = this->first; item; item = next)
 {
-struct __eCNameSpace__eC__files__Item * link = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)item + this->offset);
+struct __eCNameSpace__eC__containers__Item * link = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)item + this->offset);
 
 next = link->next;
 if(freeFn)
@@ -236,7 +236,7 @@ void * item, * next;
 
 for(item = this->first; item; item = next)
 {
-struct __eCNameSpace__eC__files__Item * link = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)item + this->offset);
+struct __eCNameSpace__eC__containers__Item * link = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)item + this->offset);
 
 next = link->next;
 if(freeFn)
@@ -252,15 +252,15 @@ void __eCMethod___eCNameSpace__eC__containers__OldList_Move(struct __eCNameSpace
 {
 if(item)
 {
-struct __eCNameSpace__eC__files__Item * link = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)item + this->offset);
-struct __eCNameSpace__eC__files__Item * prevLink = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)prevItem + this->offset);
+struct __eCNameSpace__eC__containers__Item * link = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)item + this->offset);
+struct __eCNameSpace__eC__containers__Item * prevLink = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)prevItem + this->offset);
 
 if(prevItem != item && (this->first != item || prevItem))
 {
 if(link->prev)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->prev + this->offset))->next = link->next;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->prev + this->offset))->next = link->next;
 if(link->next)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->next + this->offset))->prev = link->prev;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->next + this->offset))->prev = link->prev;
 if(item == this->first)
 this->first = link->next;
 if(item == this->last)
@@ -280,22 +280,22 @@ this->first = item;
 if(this->circ)
 {
 if(link->prev)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->prev + this->offset))->next = item;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->prev + this->offset))->next = item;
 else
 link->next = item;
 }
 }
 if(link->next)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link->next + this->offset))->prev = item;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link->next + this->offset))->prev = item;
 }
 }
 }
 
 void __eCMethod___eCNameSpace__eC__containers__OldList_Swap(struct __eCNameSpace__eC__containers__OldList * this, void * item1, void * item2)
 {
-struct __eCNameSpace__eC__files__Item * link1 = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)item1 + this->offset);
-struct __eCNameSpace__eC__files__Item * link2 = (struct __eCNameSpace__eC__files__Item *)((unsigned char *)item2 + this->offset);
-struct __eCNameSpace__eC__files__Item * prev1 = link1->prev, * next1 = link1->next;
+struct __eCNameSpace__eC__containers__Item * link1 = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)item1 + this->offset);
+struct __eCNameSpace__eC__containers__Item * link2 = (struct __eCNameSpace__eC__containers__Item *)((unsigned char *)item2 + this->offset);
+struct __eCNameSpace__eC__containers__Item * prev1 = link1->prev, * next1 = link1->next;
 void * tmp1 = item1, * tmp2 = item2;
 
 link1->prev = link2->prev;
@@ -311,23 +311,23 @@ this->last = item1;
 else if(this->last == tmp2)
 this->last = item2;
 if(link1->next)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link1->next + this->offset))->prev = item2;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link1->next + this->offset))->prev = item2;
 if(link1->prev)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link1->prev + this->offset))->next = item2;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link1->prev + this->offset))->next = item2;
 if(link2->next)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link2->next + this->offset))->prev = item1;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link2->next + this->offset))->prev = item1;
 if(link2->prev)
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)link2->prev + this->offset))->next = item1;
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)link2->prev + this->offset))->next = item1;
 }
 
 void __eCMethod___eCNameSpace__eC__containers__OldList_Copy(struct __eCNameSpace__eC__containers__OldList * this, struct __eCNameSpace__eC__containers__OldList * src, int size, void (* copy)(void * dest, void * src))
 {
-struct __eCNameSpace__eC__files__Item * item;
+struct __eCNameSpace__eC__containers__Item * item;
 
 __eCMethod___eCNameSpace__eC__containers__OldList_Clear(this);
 for(item = src->first; item; item = item->next)
 {
-struct __eCNameSpace__eC__files__Item * newItem = (struct __eCNameSpace__eC__files__Item *)__eCNameSpace__eC__types__eSystem_New0(sizeof(unsigned char) * (size));
+struct __eCNameSpace__eC__containers__Item * newItem = (struct __eCNameSpace__eC__containers__Item *)__eCNameSpace__eC__types__eSystem_New0(sizeof(unsigned char) * (size));
 
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(this, newItem);
 __eCMethod___eCNameSpace__eC__containers__Item_Copy(newItem, item, size);
@@ -377,11 +377,11 @@ __eCMethod___eCNameSpace__eC__containers__OldList_Remove(this, item);
 }
 }
 
-struct __eCNameSpace__eC__files__NamedItem;
+struct __eCNameSpace__eC__containers__NamedItem;
 
-struct __eCNameSpace__eC__files__NamedItem
+struct __eCNameSpace__eC__containers__NamedItem
 {
-struct __eCNameSpace__eC__files__NamedItem * prev, * next;
+struct __eCNameSpace__eC__containers__NamedItem * prev, * next;
 char * name;
 } eC_gcc_struct;
 
@@ -392,12 +392,12 @@ void * result = (((void *)0));
 if(name)
 {
 void * item;
-struct __eCNameSpace__eC__files__NamedItem * link;
+struct __eCNameSpace__eC__containers__NamedItem * link;
 int compare = 1;
 
 for(item = this->first; item; item = link->next)
 {
-link = (struct __eCNameSpace__eC__files__NamedItem *)(((unsigned char *)item) + this->offset);
+link = (struct __eCNameSpace__eC__containers__NamedItem *)(((unsigned char *)item) + this->offset);
 if(link->name && (compare = strcmp(link->name, name)) >= 0)
 break;
 }
@@ -413,12 +413,12 @@ unsigned int __eCMethod___eCNameSpace__eC__containers__OldList_PlaceName(struct 
 {
 unsigned int result = 1;
 void * item;
-struct __eCNameSpace__eC__files__NamedItem * link;
+struct __eCNameSpace__eC__containers__NamedItem * link;
 int compare = 1;
 
 for(item = this->first; item; item = link->next)
 {
-link = (struct __eCNameSpace__eC__files__NamedItem *)((unsigned char *)item + this->offset);
+link = (struct __eCNameSpace__eC__containers__NamedItem *)((unsigned char *)item + this->offset);
 if(link->name && (compare = strcmp(link->name, name)) >= 0)
 break;
 }
@@ -437,7 +437,7 @@ unsigned int __eCMethod___eCNameSpace__eC__containers__OldList_AddName(struct __
 {
 unsigned int result = 0;
 void * place;
-struct __eCNameSpace__eC__files__NamedItem * link = ((struct __eCNameSpace__eC__files__NamedItem *)((unsigned char *)item + this->offset));
+struct __eCNameSpace__eC__containers__NamedItem * link = ((struct __eCNameSpace__eC__containers__NamedItem *)((unsigned char *)item + this->offset));
 
 if(__eCMethod___eCNameSpace__eC__containers__OldList_PlaceName(this, link->name, &place))
 {
@@ -447,38 +447,38 @@ result = 1;
 return result;
 }
 
-struct __eCNameSpace__eC__files__OldLink;
+struct __eCNameSpace__eC__containers__OldLink;
 
-struct __eCNameSpace__eC__files__OldLink
+struct __eCNameSpace__eC__containers__OldLink
 {
-struct __eCNameSpace__eC__files__OldLink * prev, * next;
+struct __eCNameSpace__eC__containers__OldLink * prev, * next;
 void * data;
 } eC_gcc_struct;
 
-void __eCMethod___eCNameSpace__eC__containers__OldLink_Free(struct __eCNameSpace__eC__files__OldLink * this)
+void __eCMethod___eCNameSpace__eC__containers__OldLink_Free(struct __eCNameSpace__eC__containers__OldLink * this)
 {
 (__eCNameSpace__eC__types__eSystem_Delete(this->data), this->data = 0);
 }
 
-struct __eCNameSpace__eC__files__OldLink * __eCMethod___eCNameSpace__eC__containers__OldList_FindLink(struct __eCNameSpace__eC__containers__OldList * this, void * data)
+struct __eCNameSpace__eC__containers__OldLink * __eCMethod___eCNameSpace__eC__containers__OldList_FindLink(struct __eCNameSpace__eC__containers__OldList * this, void * data)
 {
 void * item;
-struct __eCNameSpace__eC__files__OldLink * link;
+struct __eCNameSpace__eC__containers__OldLink * link;
 
 for(item = this->first; item; item = link->next)
 {
-link = (struct __eCNameSpace__eC__files__OldLink *)((unsigned char *)item + this->offset);
+link = (struct __eCNameSpace__eC__containers__OldLink *)((unsigned char *)item + this->offset);
 if(link->data == data)
 break;
 }
 return item;
 }
 
-struct __eCNameSpace__eC__files__NamedLink;
+struct __eCNameSpace__eC__containers__NamedLink;
 
-struct __eCNameSpace__eC__files__NamedLink
+struct __eCNameSpace__eC__containers__NamedLink
 {
-struct __eCNameSpace__eC__files__NamedLink * prev, * next;
+struct __eCNameSpace__eC__containers__NamedLink * prev, * next;
 char * name;
 void * data;
 } eC_gcc_struct;
@@ -489,16 +489,16 @@ if(name)
 {
 void * item = __eCMethod___eCNameSpace__eC__containers__OldList_FindName(this, name, warn);
 
-return item ? ((struct __eCNameSpace__eC__files__NamedLink *)((unsigned char *)item + this->offset))->data : (((void *)0));
+return item ? ((struct __eCNameSpace__eC__containers__NamedLink *)((unsigned char *)item + this->offset))->data : (((void *)0));
 }
 return (((void *)0));
 }
 
-struct __eCNameSpace__eC__files__NamedLink64;
+struct __eCNameSpace__eC__containers__NamedLink64;
 
-struct __eCNameSpace__eC__files__NamedLink64
+struct __eCNameSpace__eC__containers__NamedLink64
 {
-struct __eCNameSpace__eC__files__NamedLink64 * prev, * next;
+struct __eCNameSpace__eC__containers__NamedLink64 * prev, * next;
 char * name;
 long long data;
 } eC_gcc_struct;
@@ -520,13 +520,13 @@ extern void __eCNameSpace__eC__types__eInstance_SetMethod(struct __eCNameSpace__
 
 extern void __eCNameSpace__eC__types__eInstance_IncRef(struct __eCNameSpace__eC__types__Instance * instance);
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -534,14 +534,14 @@ void __eCMethod___eCNameSpace__eC__containers__OldList_Sort(struct __eCNameSpace
 
 void __eCMethod___eCNameSpace__eC__containers__OldList_Sort(struct __eCNameSpace__eC__containers__OldList * this, int (* compare)(void *, void *, void *), void * data)
 {
-if(this->first && ((struct __eCNameSpace__eC__files__Item *)((unsigned char *)this->first + this->offset))->next)
+if(this->first && ((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)this->first + this->offset))->next)
 {
 struct __eCNameSpace__eC__containers__OldList list1, list2;
 void * middle, * end;
 
-for(middle = this->first, list1.count = 0, list2.count = 0, end = ((struct __eCNameSpace__eC__files__Item *)((unsigned char *)this->first + this->offset))->next; middle && end; middle = ((struct __eCNameSpace__eC__files__Item *)((unsigned char *)middle + this->offset))->next, list1.count++, end = ((struct __eCNameSpace__eC__files__Item *)((unsigned char *)end + this->offset))->next, list2.count++)
+for(middle = this->first, list1.count = 0, list2.count = 0, end = ((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)this->first + this->offset))->next; middle && end; middle = ((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)middle + this->offset))->next, list1.count++, end = ((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)end + this->offset))->next, list2.count++)
 {
-end = ((struct __eCNameSpace__eC__files__Item *)((unsigned char *)end + this->offset))->next;
+end = ((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)end + this->offset))->next;
 if(!end)
 break;
 }
@@ -551,10 +551,10 @@ list1.circ = this->circ;
 list2.circ = this->circ;
 list1.first = this->first;
 list1.last = middle;
-list2.first = ((struct __eCNameSpace__eC__files__Item *)((unsigned char *)middle + this->offset))->next;
+list2.first = ((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)middle + this->offset))->next;
 list2.last = this->last;
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)list1.last + this->offset))->next = (((void *)0));
-((struct __eCNameSpace__eC__files__Item *)((unsigned char *)list2.first + this->offset))->prev = (((void *)0));
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)list1.last + this->offset))->next = (((void *)0));
+((struct __eCNameSpace__eC__containers__Item *)((unsigned char *)list2.first + this->offset))->prev = (((void *)0));
 __eCMethod___eCNameSpace__eC__containers__OldList_Sort(&list1, compare, data);
 __eCMethod___eCNameSpace__eC__containers__OldList_Sort(&list2, compare, data);
 __eCMethod___eCNameSpace__eC__containers__OldList_Merge(this, &list1, &list2, compare, data);
@@ -579,7 +579,7 @@ int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -683,10 +683,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -703,11 +703,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -760,15 +760,15 @@ char *  parsedCommand;
 struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 } eC_gcc_struct;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__Item;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Item;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__NamedItem;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__NamedItem;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__OldLink;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__OldLink;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__NamedLink;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__NamedLink;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__NamedLink64;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__NamedLink64;
 
 static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__OldList;
 
@@ -796,58 +796,58 @@ void __eCRegisterModule_OldList(struct __eCNameSpace__eC__types__Instance * modu
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::Item", 0, sizeof(struct __eCNameSpace__eC__files__Item), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::Item", 0, sizeof(struct __eCNameSpace__eC__containers__Item), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__files__Item = class;
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Copy", "void Copy(eC::files::Item src, int size)", __eCMethod___eCNameSpace__eC__containers__Item_Copy, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::files::Item", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::files::Item", sizeof(void *), 0xF000F000, 1);
+__eCClass___eCNameSpace__eC__containers__Item = class;
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Copy", "void Copy(eC::containers::Item src, int size)", __eCMethod___eCNameSpace__eC__containers__Item_Copy, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::containers::Item", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::containers::Item", sizeof(void *), 0xF000F000, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::NamedItem", 0, sizeof(struct __eCNameSpace__eC__files__NamedItem), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::NamedItem", 0, sizeof(struct __eCNameSpace__eC__containers__NamedItem), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__files__NamedItem = class;
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::files::NamedItem", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::files::NamedItem", sizeof(void *), 0xF000F000, 1);
+__eCClass___eCNameSpace__eC__containers__NamedItem = class;
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::containers::NamedItem", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::containers::NamedItem", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "name", "char *", sizeof(void *), 0xF000F000, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::OldLink", 0, sizeof(struct __eCNameSpace__eC__files__OldLink), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::OldLink", 0, sizeof(struct __eCNameSpace__eC__containers__OldLink), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__files__OldLink = class;
+__eCClass___eCNameSpace__eC__containers__OldLink = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "Free", "void Free()", __eCMethod___eCNameSpace__eC__containers__OldLink_Free, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::files::OldLink", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::files::OldLink", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::containers::OldLink", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::containers::OldLink", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "data", "void *", sizeof(void *), 0xF000F000, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::NamedLink", 0, sizeof(struct __eCNameSpace__eC__files__NamedLink), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::NamedLink", 0, sizeof(struct __eCNameSpace__eC__containers__NamedLink), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__files__NamedLink = class;
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::files::NamedLink", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::files::NamedLink", sizeof(void *), 0xF000F000, 1);
+__eCClass___eCNameSpace__eC__containers__NamedLink = class;
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::containers::NamedLink", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::containers::NamedLink", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "name", "char *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "data", "void *", sizeof(void *), 0xF000F000, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::files::NamedLink64", 0, sizeof(struct __eCNameSpace__eC__files__NamedLink64), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::NamedLink64", 0, sizeof(struct __eCNameSpace__eC__containers__NamedLink64), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__files__NamedLink64 = class;
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::files::NamedLink64", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::files::NamedLink64", sizeof(void *), 0xF000F000, 1);
+__eCClass___eCNameSpace__eC__containers__NamedLink64 = class;
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "prev", "eC::containers::NamedLink64", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "next", "eC::containers::NamedLink64", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "name", "char *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "data", "int64", 8, 8, 1);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::files::OldList", 0, sizeof(struct __eCNameSpace__eC__containers__OldList), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::containers::OldList", 0, sizeof(struct __eCNameSpace__eC__containers__OldList), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__containers__OldList = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "Add", "void Add(void * item)", __eCMethod___eCNameSpace__eC__containers__OldList_Add, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "AddName", "bool AddName(void * item)", __eCMethod___eCNameSpace__eC__containers__OldList_AddName, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "Clear", "void Clear(void)", __eCMethod___eCNameSpace__eC__containers__OldList_Clear, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Copy", "void Copy(eC::files::OldList src, int size, void (* copy)(void * dest, void * src))", __eCMethod___eCNameSpace__eC__containers__OldList_Copy, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Copy", "void Copy(eC::containers::OldList src, int size, void (* copy)(void * dest, void * src))", __eCMethod___eCNameSpace__eC__containers__OldList_Copy, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "Delete", "void Delete(void * item)", __eCMethod___eCNameSpace__eC__containers__OldList_Delete, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "FindLink", "eC::files::OldLink FindLink(void * data)", __eCMethod___eCNameSpace__eC__containers__OldList_FindLink, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "FindLink", "eC::containers::OldLink FindLink(void * data)", __eCMethod___eCNameSpace__eC__containers__OldList_FindLink, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "FindName", "void * FindName(const char * name, bool warn)", __eCMethod___eCNameSpace__eC__containers__OldList_FindName, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "FindNamedLink", "void * FindNamedLink(const char * name, bool warn)", __eCMethod___eCNameSpace__eC__containers__OldList_FindNamedLink, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "Free", "void Free(void (* freeFn)(void *))", __eCMethod___eCNameSpace__eC__containers__OldList_Free, 1);

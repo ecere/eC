@@ -253,7 +253,8 @@ extern int yydebug;
      WIDE_STRING_LITERAL = 375,
      BUILTIN_OFFSETOF = 376,
      PRAGMA = 377,
-     STATIC_ASSERT = 378
+     STATIC_ASSERT = 378,
+     _ALIGNAS = 379
    };
 #endif
 

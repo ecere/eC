@@ -200,6 +200,7 @@ default:
 %token BUILTIN_OFFSETOF
 %token PRAGMA
 %token STATIC_ASSERT
+%token _ALIGNAS
 
 %destructor { FreeIdentifier($$); } identifier
 %destructor { FreePointer($$); } pointer
@@ -2911,6 +2912,17 @@ ext_decl:
          strcat(temp, ")");
          $$ = MkExtDeclString(CopyString(temp));
          delete $3;
+      }
+   | _ALIGNAS '(' constant_expression ')'
+      {
+         TempFile f { };
+         f.Puts("_Alignas(");
+         OutputExpression($3, f);
+         f.Puts(")");
+         f.Putc(0);
+         $$ = MkExtDeclString((String)f.StealBuffer());
+         FreeExpression($3);
+         delete f;
       }
    ;
 

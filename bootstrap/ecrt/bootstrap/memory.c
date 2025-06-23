@@ -62,7 +62,7 @@ typedef unsigned __int64 uint64;
 #endif
 #include <stdint.h>
 #include <sys/types.h>
-void __eCNameSpace__eC__files__FillBytesBy2(void * area, unsigned short value, unsigned int count)
+void __eCNameSpace__eC__types__FillBytesBy2(void * area, unsigned short value, unsigned int count)
 {
 unsigned short * dest = area;
 int c;
@@ -71,7 +71,7 @@ for(c = 0; c < count; c++)
 dest[c] = value;
 }
 
-void __eCNameSpace__eC__files__FillBytesBy4(void * area, unsigned int value, unsigned int count)
+void __eCNameSpace__eC__types__FillBytesBy4(void * area, unsigned int value, unsigned int count)
 {
 unsigned int * dest = area;
 int c;
@@ -90,6 +90,8 @@ unsigned int circ;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__containers__BTNode;
+
+struct __eCNameSpace__eC__files__Type;
 
 struct __eCNameSpace__eC__types__DataValue
 {
@@ -135,27 +137,27 @@ extern void *  memset(void *  area, int value, size_t count);
 
 struct __eCNameSpace__eC__types__GlobalFunction;
 
-void __eCNameSpace__eC__files__MoveBytes(void * dest, const void * source, unsigned int count)
+void __eCNameSpace__eC__types__MoveBytes(void * dest, const void * source, unsigned int count)
 {
 memmove(dest, source, count);
 }
 
-void __eCNameSpace__eC__files__CopyBytes(void * dest, const void * source, uint64 count)
+void __eCNameSpace__eC__types__CopyBytes(void * dest, const void * source, uint64 count)
 {
 memcpy(dest, source, count);
 }
 
-void __eCNameSpace__eC__files__CopyBytesBy2(void * dest, const void * source, unsigned int count)
+void __eCNameSpace__eC__types__CopyBytesBy2(void * dest, const void * source, unsigned int count)
 {
 memcpy(dest, source, count << 1);
 }
 
-void __eCNameSpace__eC__files__CopyBytesBy4(void * dest, const void * source, unsigned int count)
+void __eCNameSpace__eC__types__CopyBytesBy4(void * dest, const void * source, unsigned int count)
 {
 memcpy(dest, source, count << 2);
 }
 
-void __eCNameSpace__eC__files__FillBytes(void * area, unsigned char value, unsigned int count)
+void __eCNameSpace__eC__types__FillBytes(void * area, unsigned char value, unsigned int count)
 {
 memset(area, value, count);
 }
@@ -177,13 +179,13 @@ extern void __eCNameSpace__eC__types__eInstance_SetMethod(struct __eCNameSpace__
 
 extern void __eCNameSpace__eC__types__eInstance_IncRef(struct __eCNameSpace__eC__types__Instance * instance);
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -200,12 +202,12 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -224,7 +226,7 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 void (*  Set)(void * , int);
 int (*  Get)(void * );
 unsigned int (*  IsSet)(void * );
@@ -285,7 +287,7 @@ int type;
 struct __eCNameSpace__eC__types__Class * _class;
 void *  symbol;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int memberAccess;
 } eC_gcc_struct;
 
@@ -303,10 +305,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -323,11 +325,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -335,7 +337,7 @@ int type;
 struct __eCNameSpace__eC__types__Instance * module;
 struct __eCNameSpace__eC__types__NameSpace *  nameSpace;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int typeSize;
 int defaultAlignment;
 void (*  Initialize)();
@@ -402,13 +404,13 @@ void __eCRegisterModule_memory(struct __eCNameSpace__eC__types__Instance * modul
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::MoveBytes", "void eC::files::MoveBytes(void * dest, const void * source, uint count)", __eCNameSpace__eC__files__MoveBytes, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::CopyBytes", "void eC::files::CopyBytes(void * dest, const void * source, uint64 count)", __eCNameSpace__eC__files__CopyBytes, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::CopyBytesBy2", "void eC::files::CopyBytesBy2(void * dest, const void * source, uint count)", __eCNameSpace__eC__files__CopyBytesBy2, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::CopyBytesBy4", "void eC::files::CopyBytesBy4(void * dest, const void * source, uint count)", __eCNameSpace__eC__files__CopyBytesBy4, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::FillBytes", "void eC::files::FillBytes(void * area, byte value, uint count)", __eCNameSpace__eC__files__FillBytes, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::FillBytesBy2", "void eC::files::FillBytesBy2(void * area, uint16 value, uint count)", __eCNameSpace__eC__files__FillBytesBy2, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::files::FillBytesBy4", "void eC::files::FillBytesBy4(void * area, uint value, uint count)", __eCNameSpace__eC__files__FillBytesBy4, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MoveBytes", "void eC::types::MoveBytes(void * dest, const void * source, uint count)", __eCNameSpace__eC__types__MoveBytes, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytes", "void eC::types::CopyBytes(void * dest, const void * source, uint64 count)", __eCNameSpace__eC__types__CopyBytes, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytesBy2", "void eC::types::CopyBytesBy2(void * dest, const void * source, uint count)", __eCNameSpace__eC__types__CopyBytesBy2, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytesBy4", "void eC::types::CopyBytesBy4(void * dest, const void * source, uint count)", __eCNameSpace__eC__types__CopyBytesBy4, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytes", "void eC::types::FillBytes(void * area, byte value, uint count)", __eCNameSpace__eC__types__FillBytes, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytesBy2", "void eC::types::FillBytesBy2(void * area, uint16 value, uint count)", __eCNameSpace__eC__types__FillBytesBy2, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytesBy4", "void eC::types::FillBytesBy4(void * area, uint value, uint count)", __eCNameSpace__eC__types__FillBytesBy4, module, 1);
 }
 
 void __eCUnregisterModule_memory(struct __eCNameSpace__eC__types__Instance * module)

@@ -68,9 +68,9 @@ extern int __eCVMethodID_class_OnCopy;
 
 extern int __eCVMethodID_class_OnFree;
 
-struct __eCNameSpace__eC__types__CustomAVLTree
+struct __eCNameSpace__eC__containers__CustomAVLTree
 {
-struct __eCNameSpace__eC__types__AVLNode * root;
+struct __eCNameSpace__eC__containers__AVLNode * root;
 int count;
 } eC_gcc_struct;
 
@@ -121,7 +121,7 @@ extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, unsigned
 
 extern void __eCNameSpace__eC__types__eSystem_Delete(void *  memory);
 
-struct __eCNameSpace__eC__types__AVLNode;
+struct __eCNameSpace__eC__containers__AVLNode;
 
 extern int strcmp(const char * , const char * );
 
@@ -129,7 +129,7 @@ extern int printf(const char * , ...);
 
 struct __eCNameSpace__eC__containers__IteratorPointer;
 
-struct __eCNameSpace__eC__types__AVLNode;
+struct __eCNameSpace__eC__containers__AVLNode;
 
 extern void *  memcpy(void * , const void * , size_t size);
 
@@ -139,28 +139,28 @@ extern int __eCVMethodID_class_OnCompare;
 
 extern int __eCVMethodID_class_OnFree;
 
-struct __eCNameSpace__eC__types__AVLNode
+struct __eCNameSpace__eC__containers__AVLNode
 {
-struct __eCNameSpace__eC__types__AVLNode * parent, * left, * right;
+struct __eCNameSpace__eC__containers__AVLNode * parent, * left, * right;
 int depth;
 uint64 key;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__AVLNode * __eCProp___eCNameSpace__eC__types__AVLNode_Get_minimum(struct __eCNameSpace__eC__types__AVLNode * this)
+struct __eCNameSpace__eC__containers__AVLNode * __eCProp___eCNameSpace__eC__containers__AVLNode_Get_minimum(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
 while(this->left)
 this = this->left;
 return this;
 }
 
-struct __eCNameSpace__eC__types__AVLNode * __eCProp___eCNameSpace__eC__types__AVLNode_Get_maximum(struct __eCNameSpace__eC__types__AVLNode * this)
+struct __eCNameSpace__eC__containers__AVLNode * __eCProp___eCNameSpace__eC__containers__AVLNode_Get_maximum(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
 while(this->right)
 this = this->right;
 return this;
 }
 
-void __eCMethod___eCNameSpace__eC__types__AVLNode_RemoveSwap(struct __eCNameSpace__eC__types__AVLNode * this, struct __eCNameSpace__eC__types__AVLNode * swap)
+void __eCMethod___eCNameSpace__eC__containers__AVLNode_RemoveSwap(struct __eCNameSpace__eC__containers__AVLNode * this, struct __eCNameSpace__eC__containers__AVLNode * swap)
 {
 if(swap->left)
 {
@@ -185,7 +185,7 @@ swap->parent->left = (((void *)0));
 else if(swap == swap->parent->right)
 swap->parent->right = (((void *)0));
 {
-struct __eCNameSpace__eC__types__AVLNode * n;
+struct __eCNameSpace__eC__containers__AVLNode * n;
 
 for(n = swap->parent; n; n = n->parent)
 {
@@ -217,7 +217,7 @@ this->parent->right = swap;
 }
 }
 
-int __eCProp___eCNameSpace__eC__types__AVLNode_Get_balanceFactor(struct __eCNameSpace__eC__types__AVLNode * this)
+int __eCProp___eCNameSpace__eC__containers__AVLNode_Get_balanceFactor(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
 int leftDepth = this->left ? (this->left->depth + 1) : 0;
 int rightDepth = this->right ? (this->right->depth + 1) : 0;
@@ -225,7 +225,7 @@ int rightDepth = this->right ? (this->right->depth + 1) : 0;
 return rightDepth - leftDepth;
 }
 
-void __eCMethod___eCNameSpace__eC__types__AVLNode_SingleRotateRight(struct __eCNameSpace__eC__types__AVLNode * this)
+void __eCMethod___eCNameSpace__eC__containers__AVLNode_SingleRotateRight(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
 int __simpleStruct2, __simpleStruct3;
 int __simpleStruct0, __simpleStruct1;
@@ -246,7 +246,7 @@ this->parent->right = this;
 this->depth = (__simpleStruct0 = this->left ? (this->left->depth + 1) : 0, __simpleStruct1 = this->right ? (this->right->depth + 1) : 0, (__simpleStruct0 > __simpleStruct1) ? __simpleStruct0 : __simpleStruct1);
 this->parent->depth = (__simpleStruct2 = this->parent->left ? (this->parent->left->depth + 1) : 0, __simpleStruct3 = this->parent->right ? (this->parent->right->depth + 1) : 0, (__simpleStruct2 > __simpleStruct3) ? __simpleStruct2 : __simpleStruct3);
 {
-struct __eCNameSpace__eC__types__AVLNode * n;
+struct __eCNameSpace__eC__containers__AVLNode * n;
 
 for(n = this->parent->parent; n; n = n->parent)
 {
@@ -260,7 +260,7 @@ n->depth = newDepth;
 }
 }
 
-void __eCMethod___eCNameSpace__eC__types__AVLNode_SingleRotateLeft(struct __eCNameSpace__eC__types__AVLNode * this)
+void __eCMethod___eCNameSpace__eC__containers__AVLNode_SingleRotateLeft(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
 int __simpleStruct2, __simpleStruct3;
 int __simpleStruct0, __simpleStruct1;
@@ -281,7 +281,7 @@ this->parent->left = this;
 this->depth = (__simpleStruct0 = this->left ? (this->left->depth + 1) : 0, __simpleStruct1 = this->right ? (this->right->depth + 1) : 0, (__simpleStruct0 > __simpleStruct1) ? __simpleStruct0 : __simpleStruct1);
 this->parent->depth = (__simpleStruct2 = this->parent->left ? (this->parent->left->depth + 1) : 0, __simpleStruct3 = this->parent->right ? (this->parent->right->depth + 1) : 0, (__simpleStruct2 > __simpleStruct3) ? __simpleStruct2 : __simpleStruct3);
 {
-struct __eCNameSpace__eC__types__AVLNode * n;
+struct __eCNameSpace__eC__containers__AVLNode * n;
 
 for(n = this->parent->parent; n; n = n->parent)
 {
@@ -295,57 +295,57 @@ n->depth = newDepth;
 }
 }
 
-struct __eCNameSpace__eC__types__AVLNode * __eCProp___eCNameSpace__eC__types__AVLNode_Get_maximum(struct __eCNameSpace__eC__types__AVLNode * this);
+struct __eCNameSpace__eC__containers__AVLNode * __eCProp___eCNameSpace__eC__containers__AVLNode_Get_maximum(struct __eCNameSpace__eC__containers__AVLNode * this);
 
-struct __eCNameSpace__eC__types__AVLNode * __eCProp___eCNameSpace__eC__types__AVLNode_Get_minimum(struct __eCNameSpace__eC__types__AVLNode * this);
+struct __eCNameSpace__eC__containers__AVLNode * __eCProp___eCNameSpace__eC__containers__AVLNode_Get_minimum(struct __eCNameSpace__eC__containers__AVLNode * this);
 
-int __eCProp___eCNameSpace__eC__types__AVLNode_Get_count(struct __eCNameSpace__eC__types__AVLNode * this);
+int __eCProp___eCNameSpace__eC__containers__AVLNode_Get_count(struct __eCNameSpace__eC__containers__AVLNode * this);
 
-int __eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp(struct __eCNameSpace__eC__types__AVLNode * this);
+int __eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp(struct __eCNameSpace__eC__containers__AVLNode * this);
 
-int __eCProp___eCNameSpace__eC__types__AVLNode_Get_balanceFactor(struct __eCNameSpace__eC__types__AVLNode * this);
+int __eCProp___eCNameSpace__eC__containers__AVLNode_Get_balanceFactor(struct __eCNameSpace__eC__containers__AVLNode * this);
 
-struct __eCNameSpace__eC__types__AVLNode * __eCProp___eCNameSpace__eC__types__AVLNode_Get_prev(struct __eCNameSpace__eC__types__AVLNode * this);
+struct __eCNameSpace__eC__containers__AVLNode * __eCProp___eCNameSpace__eC__containers__AVLNode_Get_prev(struct __eCNameSpace__eC__containers__AVLNode * this);
 
-struct __eCNameSpace__eC__types__AVLNode * __eCProp___eCNameSpace__eC__types__AVLNode_Get_next(struct __eCNameSpace__eC__types__AVLNode * this);
+struct __eCNameSpace__eC__containers__AVLNode * __eCProp___eCNameSpace__eC__containers__AVLNode_Get_next(struct __eCNameSpace__eC__containers__AVLNode * this);
 
-void __eCMethod___eCNameSpace__eC__types__AVLNode_DoubleRotateRight(struct __eCNameSpace__eC__types__AVLNode * this)
+void __eCMethod___eCNameSpace__eC__containers__AVLNode_DoubleRotateRight(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
-__eCMethod___eCNameSpace__eC__types__AVLNode_SingleRotateLeft(this->left);
-__eCMethod___eCNameSpace__eC__types__AVLNode_SingleRotateRight(this);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_SingleRotateLeft(this->left);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_SingleRotateRight(this);
 }
 
-void __eCMethod___eCNameSpace__eC__types__AVLNode_DoubleRotateLeft(struct __eCNameSpace__eC__types__AVLNode * this)
+void __eCMethod___eCNameSpace__eC__containers__AVLNode_DoubleRotateLeft(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
-__eCMethod___eCNameSpace__eC__types__AVLNode_SingleRotateRight(this->right);
-__eCMethod___eCNameSpace__eC__types__AVLNode_SingleRotateLeft(this);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_SingleRotateRight(this->right);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_SingleRotateLeft(this);
 }
 
 struct __eCNameSpace__eC__types__Property;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_prev, * __eCPropM___eCNameSpace__eC__types__AVLNode_prev;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_prev, * __eCPropM___eCNameSpace__eC__containers__AVLNode_prev;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_next, * __eCPropM___eCNameSpace__eC__types__AVLNode_next;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_next, * __eCPropM___eCNameSpace__eC__containers__AVLNode_next;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_minimum, * __eCPropM___eCNameSpace__eC__types__AVLNode_minimum;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_minimum, * __eCPropM___eCNameSpace__eC__containers__AVLNode_minimum;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_maximum, * __eCPropM___eCNameSpace__eC__types__AVLNode_maximum;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_maximum, * __eCPropM___eCNameSpace__eC__containers__AVLNode_maximum;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_count, * __eCPropM___eCNameSpace__eC__types__AVLNode_count;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_count, * __eCPropM___eCNameSpace__eC__containers__AVLNode_count;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_depthProp, * __eCPropM___eCNameSpace__eC__types__AVLNode_depthProp;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_depthProp, * __eCPropM___eCNameSpace__eC__containers__AVLNode_depthProp;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__AVLNode_balanceFactor, * __eCPropM___eCNameSpace__eC__types__AVLNode_balanceFactor;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__AVLNode_balanceFactor, * __eCPropM___eCNameSpace__eC__containers__AVLNode_balanceFactor;
 
-struct __eCNameSpace__eC__types__AVLNode * __eCProp___eCNameSpace__eC__types__AVLNode_Get_next(struct __eCNameSpace__eC__types__AVLNode * this)
+struct __eCNameSpace__eC__containers__AVLNode * __eCProp___eCNameSpace__eC__containers__AVLNode_Get_next(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
-struct __eCNameSpace__eC__types__AVLNode * right = this->right;
+struct __eCNameSpace__eC__containers__AVLNode * right = this->right;
 
 if(right)
-return __eCProp___eCNameSpace__eC__types__AVLNode_Get_minimum(right);
+return __eCProp___eCNameSpace__eC__containers__AVLNode_Get_minimum(right);
 while(this)
 {
-struct __eCNameSpace__eC__types__AVLNode * parent = this->parent;
+struct __eCNameSpace__eC__containers__AVLNode * parent = this->parent;
 
 if(parent && this == parent->left)
 return parent;
@@ -355,10 +355,10 @@ this = parent;
 return (((void *)0));
 }
 
-struct __eCNameSpace__eC__types__AVLNode * __eCProp___eCNameSpace__eC__types__AVLNode_Get_prev(struct __eCNameSpace__eC__types__AVLNode * this)
+struct __eCNameSpace__eC__containers__AVLNode * __eCProp___eCNameSpace__eC__containers__AVLNode_Get_prev(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
 if(this->left)
-return __eCProp___eCNameSpace__eC__types__AVLNode_Get_maximum(this->left);
+return __eCProp___eCNameSpace__eC__containers__AVLNode_Get_maximum(this->left);
 while(this)
 {
 if(this->parent && this == this->parent->right)
@@ -369,38 +369,38 @@ this = this->parent;
 return this;
 }
 
-int __eCProp___eCNameSpace__eC__types__AVLNode_Get_count(struct __eCNameSpace__eC__types__AVLNode * this)
+int __eCProp___eCNameSpace__eC__containers__AVLNode_Get_count(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
-return 1 + (this->left ? __eCProp___eCNameSpace__eC__types__AVLNode_Get_count(this->left) : 0) + (this->right ? __eCProp___eCNameSpace__eC__types__AVLNode_Get_count(this->right) : 0);
+return 1 + (this->left ? __eCProp___eCNameSpace__eC__containers__AVLNode_Get_count(this->left) : 0) + (this->right ? __eCProp___eCNameSpace__eC__containers__AVLNode_Get_count(this->right) : 0);
 }
 
-int __eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp(struct __eCNameSpace__eC__types__AVLNode * this)
+int __eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
-int leftDepth = this->left ? (__eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp(this->left) + 1) : 0;
-int rightDepth = this->right ? (__eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp(this->right) + 1) : 0;
+int leftDepth = this->left ? (__eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp(this->left) + 1) : 0;
+int rightDepth = this->right ? (__eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp(this->right) + 1) : 0;
 
 return ((leftDepth > rightDepth) ? leftDepth : rightDepth);
 }
 
-struct __eCNameSpace__eC__types__AVLNode * __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(struct __eCNameSpace__eC__types__AVLNode * this)
+struct __eCNameSpace__eC__containers__AVLNode * __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
 while(1)
 {
-int factor = __eCProp___eCNameSpace__eC__types__AVLNode_Get_balanceFactor(this);
+int factor = __eCProp___eCNameSpace__eC__containers__AVLNode_Get_balanceFactor(this);
 
 if(factor < -1)
 {
-if(__eCProp___eCNameSpace__eC__types__AVLNode_Get_balanceFactor(this->left) == 1)
-__eCMethod___eCNameSpace__eC__types__AVLNode_DoubleRotateRight(this);
+if(__eCProp___eCNameSpace__eC__containers__AVLNode_Get_balanceFactor(this->left) == 1)
+__eCMethod___eCNameSpace__eC__containers__AVLNode_DoubleRotateRight(this);
 else
-__eCMethod___eCNameSpace__eC__types__AVLNode_SingleRotateRight(this);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_SingleRotateRight(this);
 }
 else if(factor > 1)
 {
-if(__eCProp___eCNameSpace__eC__types__AVLNode_Get_balanceFactor(this->right) == -1)
-__eCMethod___eCNameSpace__eC__types__AVLNode_DoubleRotateLeft(this);
+if(__eCProp___eCNameSpace__eC__containers__AVLNode_Get_balanceFactor(this->right) == -1)
+__eCMethod___eCNameSpace__eC__containers__AVLNode_DoubleRotateLeft(this);
 else
-__eCMethod___eCNameSpace__eC__types__AVLNode_SingleRotateLeft(this);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_SingleRotateLeft(this);
 }
 if(this->parent)
 this = this->parent;
@@ -409,15 +409,15 @@ return this;
 }
 }
 
-struct __eCNameSpace__eC__types__AVLNode * __eCMethod___eCNameSpace__eC__types__AVLNode_RemoveSwapLeft(struct __eCNameSpace__eC__types__AVLNode * this)
+struct __eCNameSpace__eC__containers__AVLNode * __eCMethod___eCNameSpace__eC__containers__AVLNode_RemoveSwapLeft(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
-struct __eCNameSpace__eC__types__AVLNode * swap = this->left ? __eCProp___eCNameSpace__eC__types__AVLNode_Get_maximum(this->left) : this->right;
-struct __eCNameSpace__eC__types__AVLNode * swapParent = (((void *)0));
+struct __eCNameSpace__eC__containers__AVLNode * swap = this->left ? __eCProp___eCNameSpace__eC__containers__AVLNode_Get_maximum(this->left) : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * swapParent = (((void *)0));
 
 if(swap)
 {
 swapParent = swap->parent;
-__eCMethod___eCNameSpace__eC__types__AVLNode_RemoveSwap(this, swap);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_RemoveSwap(this, swap);
 }
 if(this->parent)
 {
@@ -427,7 +427,7 @@ else if(this == this->parent->right)
 this->parent->right = (((void *)0));
 }
 {
-struct __eCNameSpace__eC__types__AVLNode * n;
+struct __eCNameSpace__eC__containers__AVLNode * n;
 
 for(n = swap ? swap : this->parent; n; n = n->parent)
 {
@@ -440,25 +440,25 @@ n->depth = newDepth;
 }
 }
 if(swapParent && swapParent != this)
-return __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(swapParent);
+return __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(swapParent);
 else if(swap)
-return __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(swap);
+return __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(swap);
 else if(this->parent)
-return __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(this->parent);
+return __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(this->parent);
 else
 return (((void *)0));
 }
 
-struct __eCNameSpace__eC__types__AVLNode * __eCMethod___eCNameSpace__eC__types__AVLNode_RemoveSwapRight(struct __eCNameSpace__eC__types__AVLNode * this)
+struct __eCNameSpace__eC__containers__AVLNode * __eCMethod___eCNameSpace__eC__containers__AVLNode_RemoveSwapRight(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
-struct __eCNameSpace__eC__types__AVLNode * result;
-struct __eCNameSpace__eC__types__AVLNode * swap = this->right ? __eCProp___eCNameSpace__eC__types__AVLNode_Get_minimum(this->right) : this->left;
-struct __eCNameSpace__eC__types__AVLNode * swapParent = (((void *)0));
+struct __eCNameSpace__eC__containers__AVLNode * result;
+struct __eCNameSpace__eC__containers__AVLNode * swap = this->right ? __eCProp___eCNameSpace__eC__containers__AVLNode_Get_minimum(this->right) : this->left;
+struct __eCNameSpace__eC__containers__AVLNode * swapParent = (((void *)0));
 
 if(swap)
 {
 swapParent = swap->parent;
-__eCMethod___eCNameSpace__eC__types__AVLNode_RemoveSwap(this, swap);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_RemoveSwap(this, swap);
 }
 if(this->parent)
 {
@@ -468,7 +468,7 @@ else if(this == this->parent->right)
 this->parent->right = (((void *)0));
 }
 {
-struct __eCNameSpace__eC__types__AVLNode * n;
+struct __eCNameSpace__eC__containers__AVLNode * n;
 
 for(n = swap ? swap : this->parent; n; n = n->parent)
 {
@@ -481,11 +481,11 @@ n->depth = newDepth;
 }
 }
 if(swapParent && swapParent != this)
-result = __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(swapParent);
+result = __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(swapParent);
 else if(swap)
-result = __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(swap);
+result = __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(swap);
 else if(this->parent)
-result = __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(this->parent);
+result = __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(this->parent);
 else
 result = (((void *)0));
 return result;
@@ -550,28 +550,28 @@ extern void __eCNameSpace__eC__types__eInstance_FireWatchers(struct __eCNameSpac
 
 extern int __eCVMethodID___eCNameSpace__eC__containers__Container_Remove;
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__AVLNode *  __eCMethod___eCNameSpace__eC__types__AVLNode_FindAll(struct __eCNameSpace__eC__types__AVLNode *  this, const uint64 key);
+struct __eCNameSpace__eC__containers__AVLNode *  __eCMethod___eCNameSpace__eC__containers__AVLNode_FindAll(struct __eCNameSpace__eC__containers__AVLNode *  this, const uint64 key);
 
-struct __eCNameSpace__eC__types__AVLNode * __eCMethod___eCNameSpace__eC__types__AVLNode_FindAll(struct __eCNameSpace__eC__types__AVLNode * this, const uint64 key)
+struct __eCNameSpace__eC__containers__AVLNode * __eCMethod___eCNameSpace__eC__containers__AVLNode_FindAll(struct __eCNameSpace__eC__containers__AVLNode * this, const uint64 key)
 {
-struct __eCNameSpace__eC__types__AVLNode * result = (((void *)0));
+struct __eCNameSpace__eC__containers__AVLNode * result = (((void *)0));
 
 if(this->key == key)
 result = this;
 if(!result && this->left)
-result = __eCMethod___eCNameSpace__eC__types__AVLNode_FindAll(this->left, key);
+result = __eCMethod___eCNameSpace__eC__containers__AVLNode_FindAll(this->left, key);
 if(!result && this->right)
-result = __eCMethod___eCNameSpace__eC__types__AVLNode_FindAll(this->right, key);
+result = __eCMethod___eCNameSpace__eC__containers__AVLNode_FindAll(this->right, key);
 return result;
 }
 
@@ -593,7 +593,7 @@ int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -601,11 +601,11 @@ short pointerAlignment;
 
 extern struct __eCNameSpace__eC__types__DataMember * __eCNameSpace__eC__types__eClass_AddDataMember(struct __eCNameSpace__eC__types__Class * _class, const char *  name, const char *  type, unsigned int size, unsigned int alignment, int declMode);
 
-struct __eCNameSpace__eC__types__AVLNode *  __eCMethod___eCNameSpace__eC__types__AVLNode_FindEx(struct __eCNameSpace__eC__types__AVLNode *  this, struct __eCNameSpace__eC__types__Class *  Tclass, const uint64 key, struct __eCNameSpace__eC__types__AVLNode * *  addTo, int *  addSide);
+struct __eCNameSpace__eC__containers__AVLNode *  __eCMethod___eCNameSpace__eC__containers__AVLNode_FindEx(struct __eCNameSpace__eC__containers__AVLNode *  this, struct __eCNameSpace__eC__types__Class *  Tclass, const uint64 key, struct __eCNameSpace__eC__containers__AVLNode * *  addTo, int *  addSide);
 
-struct __eCNameSpace__eC__types__AVLNode * __eCMethod___eCNameSpace__eC__types__AVLNode_Find(struct __eCNameSpace__eC__types__AVLNode * this, struct __eCNameSpace__eC__types__Class * Tclass, const uint64 key)
+struct __eCNameSpace__eC__containers__AVLNode * __eCMethod___eCNameSpace__eC__containers__AVLNode_Find(struct __eCNameSpace__eC__containers__AVLNode * this, struct __eCNameSpace__eC__types__Class * Tclass, const uint64 key)
 {
-return __eCMethod___eCNameSpace__eC__types__AVLNode_FindEx(this, Tclass, key, (((void *)0)), (((void *)0)));
+return __eCMethod___eCNameSpace__eC__containers__AVLNode_FindEx(this, Tclass, key, (((void *)0)), (((void *)0)));
 }
 
 struct __eCNameSpace__eC__types__Method;
@@ -672,10 +672,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -692,11 +692,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -749,11 +749,11 @@ char *  parsedCommand;
 struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 } eC_gcc_struct;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__AddSide;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__AddSide;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__AVLNode;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__AVLNode;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__CustomAVLTree;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__CustomAVLTree;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__IteratorPointer;
 
@@ -789,69 +789,69 @@ struct __eCNameSpace__eC__types__NameSpace privateNameSpace;
 struct __eCNameSpace__eC__types__NameSpace publicNameSpace;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetFirst(struct __eCNameSpace__eC__types__Instance * this)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetFirst(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root ? __eCProp___eCNameSpace__eC__types__AVLNode_Get_minimum(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root)))) : (((void *)0)));
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root ? __eCProp___eCNameSpace__eC__containers__AVLNode_Get_minimum(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root)))) : (((void *)0)));
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetLast(struct __eCNameSpace__eC__types__Instance * this)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetLast(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root ? __eCProp___eCNameSpace__eC__types__AVLNode_Get_maximum(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root)))) : (((void *)0)));
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root ? __eCProp___eCNameSpace__eC__containers__AVLNode_Get_maximum(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root)))) : (((void *)0)));
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetPrev(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetPrev(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return (void *)(__eCProp___eCNameSpace__eC__types__AVLNode_Get_prev(((struct __eCNameSpace__eC__types__AVLNode *)node)));
+return (void *)(__eCProp___eCNameSpace__eC__containers__AVLNode_Get_prev(((struct __eCNameSpace__eC__containers__AVLNode *)node)));
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetNext(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetNext(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return (void *)(__eCProp___eCNameSpace__eC__types__AVLNode_Get_next(((struct __eCNameSpace__eC__types__AVLNode *)node)));
+return (void *)(__eCProp___eCNameSpace__eC__containers__AVLNode_Get_next(((struct __eCNameSpace__eC__containers__AVLNode *)node)));
 }
 
-uint64 __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetData(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node)
+uint64 __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetData(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return (uint64)(uintptr_t)(struct __eCNameSpace__eC__types__AVLNode *)(uintptr_t)node;
+return (uint64)(uintptr_t)(struct __eCNameSpace__eC__containers__AVLNode *)(uintptr_t)node;
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__CustomAVLTree_SetData(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node, uint64 data)
+unsigned int __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_SetData(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node, uint64 data)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
 return 0;
 }
 
-void __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Remove(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node)
+void __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Remove(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * node)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
-struct __eCNameSpace__eC__types__AVLNode * parent = ((struct __eCNameSpace__eC__types__AVLNode *)node)->parent;
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+struct __eCNameSpace__eC__containers__AVLNode * parent = ((struct __eCNameSpace__eC__containers__AVLNode *)node)->parent;
 
-if(parent || ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root))) == (struct __eCNameSpace__eC__types__AVLNode *)node)
+if(parent || ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root))) == (struct __eCNameSpace__eC__containers__AVLNode *)node)
 {
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root = __eCMethod___eCNameSpace__eC__types__AVLNode_RemoveSwapRight(((struct __eCNameSpace__eC__types__AVLNode *)node));
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->count--;
-((struct __eCNameSpace__eC__types__AVLNode *)node)->parent = (((void *)0));
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root = __eCMethod___eCNameSpace__eC__containers__AVLNode_RemoveSwapRight(((struct __eCNameSpace__eC__containers__AVLNode *)node));
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->count--;
+((struct __eCNameSpace__eC__containers__AVLNode *)node)->parent = (((void *)0));
 }
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Find(struct __eCNameSpace__eC__types__Instance * this, uint64 value)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Find(struct __eCNameSpace__eC__types__Instance * this, uint64 value)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(value)));
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(value)));
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__AVLNode_Add(struct __eCNameSpace__eC__types__AVLNode * this, struct __eCNameSpace__eC__types__Class * Tclass, struct __eCNameSpace__eC__types__AVLNode * node, int addSide)
+unsigned int __eCMethod___eCNameSpace__eC__containers__AVLNode_Add(struct __eCNameSpace__eC__containers__AVLNode * this, struct __eCNameSpace__eC__types__Class * Tclass, struct __eCNameSpace__eC__containers__AVLNode * node, int addSide)
 {
 int t;
 int (* onCompare)(void *, void *, void *);
@@ -907,7 +907,7 @@ break;
 node->parent = this;
 node->depth = 0;
 {
-struct __eCNameSpace__eC__types__AVLNode * n;
+struct __eCNameSpace__eC__containers__AVLNode * n;
 
 for(n = this; n; n = n->parent)
 {
@@ -922,7 +922,7 @@ n->depth = newDepth;
 return 1;
 }
 
-struct __eCNameSpace__eC__types__AVLNode * __eCMethod___eCNameSpace__eC__types__AVLNode_FindEx(struct __eCNameSpace__eC__types__AVLNode * this, struct __eCNameSpace__eC__types__Class * Tclass, const uint64 key, struct __eCNameSpace__eC__types__AVLNode ** addTo, int * addSide)
+struct __eCNameSpace__eC__containers__AVLNode * __eCMethod___eCNameSpace__eC__containers__AVLNode_FindEx(struct __eCNameSpace__eC__containers__AVLNode * this, struct __eCNameSpace__eC__types__Class * Tclass, const uint64 key, struct __eCNameSpace__eC__containers__AVLNode ** addTo, int * addSide)
 {
 unsigned char * a;
 unsigned int reference = 0;
@@ -930,7 +930,7 @@ unsigned int offset = 0;
 int t = Tclass->type;
 int (* onCompare)(void *, void *, void *) = (void *)Tclass->_vTbl[__eCVMethodID_class_OnCompare];
 unsigned int isInt64 = 0, isDouble = 0;
-struct __eCNameSpace__eC__types__AVLNode * to = (((void *)0));
+struct __eCNameSpace__eC__containers__AVLNode * to = (((void *)0));
 int side = (int)0;
 
 if(onCompare == (void *)__eCClass_int64->_vTbl[__eCVMethodID_class_OnCompare] || (t == 3 && Tclass->typeSize == sizeof(long long) && !strcmp(Tclass->name, "Id")) || (t == 2 && Tclass->typeSize == sizeof(long long)))
@@ -959,7 +959,7 @@ int result = ia > ib ? 1 : ia < ib ? -1 : 0;
 
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -978,7 +978,7 @@ int result = ia > ib ? 1 : ia < ib ? -1 : 0;
 
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1003,7 +1003,7 @@ int result = ia > ib ? 1 : ia < ib ? -1 : 0;
 
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1022,7 +1022,7 @@ int result = ia > ib ? 1 : ia < ib ? -1 : 0;
 
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1059,7 +1059,7 @@ else
 result = 0;
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1084,7 +1084,7 @@ else
 result = 0;
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1103,7 +1103,7 @@ const unsigned char * b = ((unsigned char *)&this->key) + offset;
 result = onCompare(Tclass, a, (unsigned char *)b);
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1130,7 +1130,7 @@ else
 result = 0;
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1154,7 +1154,7 @@ else
 result = 0;
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1173,7 +1173,7 @@ const unsigned char * b = (unsigned char *)(uintptr_t)(uint64)(this->key);
 result = onCompare(Tclass, a, (unsigned char *)b);
 if(result)
 {
-struct __eCNameSpace__eC__types__AVLNode * node = result < 0 ? this->left : this->right;
+struct __eCNameSpace__eC__containers__AVLNode * node = result < 0 ? this->left : this->right;
 
 if(!node)
 to = this, side = (int)result;
@@ -1192,9 +1192,9 @@ if(addSide)
 return this;
 }
 
-void __eCMethod___eCNameSpace__eC__types__CustomAVLTree_FreeKey(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__AVLNode * item)
+void __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_FreeKey(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__AVLNode * item)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
 if(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass->type == 1)
 {
@@ -1209,21 +1209,21 @@ else
 void __eCUnregisterModule_CustomAVLTree(struct __eCNameSpace__eC__types__Instance * module)
 {
 
-__eCPropM___eCNameSpace__eC__types__AVLNode_prev = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_next = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_minimum = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_maximum = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_count = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_depthProp = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_balanceFactor = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_prev = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_next = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_minimum = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_maximum = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_count = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_depthProp = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_balanceFactor = (void *)0;
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Add(struct __eCNameSpace__eC__types__Instance * this, uint64 node)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Add(struct __eCNameSpace__eC__types__Instance * this, uint64 node)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-if(!((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root))))
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(node)));
+if(!((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root))))
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(node)));
 else
 {
 struct __eCNameSpace__eC__types__Class * btClass = ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass;
@@ -1233,21 +1233,21 @@ if(!Tclass)
 {
 Tclass = btClass->templateArgs[0].__anon1.__anon1.dataTypeClass = __eCNameSpace__eC__types__eSystem_FindClass(((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application, btClass->templateArgs[0].__anon1.__anon1.dataTypeString);
 }
-if(__eCMethod___eCNameSpace__eC__types__AVLNode_Add(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root))), Tclass, ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(node))), (int)0))
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root = __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(node))));
+if(__eCMethod___eCNameSpace__eC__containers__AVLNode_Add(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root))), Tclass, ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(node))), (int)0))
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root = __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(node))));
 else
 return (((void *)0));
 }
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->count++;
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(node)));
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->count++;
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(node)));
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__CustomAVLTree_AddEx(struct __eCNameSpace__eC__types__Instance * this, uint64 node, uint64 addNode, int addSide)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_AddEx(struct __eCNameSpace__eC__types__Instance * this, uint64 node, uint64 addNode, int addSide)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-if(!((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root))))
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(node)));
+if(!((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root))))
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(node)));
 else
 {
 struct __eCNameSpace__eC__types__Class * Tclass = ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass->templateArgs[0].__anon1.__anon1.dataTypeClass;
@@ -1256,71 +1256,71 @@ if(!Tclass)
 {
 Tclass = ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass->templateArgs[0].__anon1.__anon1.dataTypeClass = __eCNameSpace__eC__types__eSystem_FindClass(((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass->templateArgs[0].__anon1.__anon1.dataTypeString);
 }
-if(__eCMethod___eCNameSpace__eC__types__AVLNode_Add(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(addNode))), Tclass, ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(node))), addSide))
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root = __eCMethod___eCNameSpace__eC__types__AVLNode_Rebalance(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(node))));
+if(__eCMethod___eCNameSpace__eC__containers__AVLNode_Add(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(addNode))), Tclass, ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(node))), addSide))
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root = __eCMethod___eCNameSpace__eC__containers__AVLNode_Rebalance(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(node))));
 else
 return (((void *)0));
 }
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->count++;
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(node)));
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->count++;
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(node)));
 }
 
-void __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Delete(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * _item)
+void __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Delete(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * _item)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
-struct __eCNameSpace__eC__types__AVLNode * item = (struct __eCNameSpace__eC__types__AVLNode *)_item;
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+struct __eCNameSpace__eC__containers__AVLNode * item = (struct __eCNameSpace__eC__containers__AVLNode *)_item;
 
 (__extension__ ({
 void (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * it);
 
-__internal_VirtualMethod = ((void (*)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * it))__eCClass___eCNameSpace__eC__types__CustomAVLTree->_vTbl[__eCVMethodID___eCNameSpace__eC__containers__Container_Remove]);
+__internal_VirtualMethod = ((void (*)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * it))__eCClass___eCNameSpace__eC__containers__CustomAVLTree->_vTbl[__eCVMethodID___eCNameSpace__eC__containers__Container_Remove]);
 __internal_VirtualMethod ? __internal_VirtualMethod(this, _item) : (void)1;
 }));
-__eCMethod___eCNameSpace__eC__types__CustomAVLTree_FreeKey(this, ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item))));
+__eCMethod___eCNameSpace__eC__containers__CustomAVLTree_FreeKey(this, ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item))));
 (((void (* )(void *  _class, void *  data))((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass->_vTbl[__eCVMethodID_class_OnFree])(((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass, ((void * )((uintptr_t)(item)))), item = 0);
 }
 
-void __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Free(struct __eCNameSpace__eC__types__Instance * this)
+void __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Free(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
-struct __eCNameSpace__eC__types__AVLNode * item;
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+struct __eCNameSpace__eC__containers__AVLNode * item;
 
-item = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root)));
+item = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root)));
 while(item)
 {
-if(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item)))->left)
+if(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item)))->left)
 {
-struct __eCNameSpace__eC__types__AVLNode * left = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item)))->left;
+struct __eCNameSpace__eC__containers__AVLNode * left = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item)))->left;
 
-((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item)))->left = (((void *)0));
-item = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(left)));
+((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item)))->left = (((void *)0));
+item = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(left)));
 }
-else if(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item)))->right)
+else if(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item)))->right)
 {
-struct __eCNameSpace__eC__types__AVLNode * right = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item)))->right;
+struct __eCNameSpace__eC__containers__AVLNode * right = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item)))->right;
 
-((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item)))->right = (((void *)0));
-item = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(right)));
+((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item)))->right = (((void *)0));
+item = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(right)));
 }
 else
 {
-struct __eCNameSpace__eC__types__AVLNode * parent = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item)))->parent;
+struct __eCNameSpace__eC__containers__AVLNode * parent = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item)))->parent;
 
-__eCMethod___eCNameSpace__eC__types__CustomAVLTree_FreeKey(this, ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(item))));
+__eCMethod___eCNameSpace__eC__containers__CustomAVLTree_FreeKey(this, ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(item))));
 (((void (* )(void *  _class, void *  data))((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass->_vTbl[__eCVMethodID_class_OnFree])(((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[3].__anon1.__anon1.dataTypeClass, ((void * )((uintptr_t)(item)))), item = 0);
-item = ((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(parent)));
+item = ((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(parent)));
 }
 }
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root = (((void *)0));
-__eCPointer___eCNameSpace__eC__types__CustomAVLTree->count = 0;
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root = (((void *)0));
+__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->count = 0;
 }
 
-struct __eCNameSpace__eC__types__AVLNode * __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetAtPosition(struct __eCNameSpace__eC__types__Instance * this, const uint64 pos, unsigned int create, unsigned int * justAdded)
+struct __eCNameSpace__eC__containers__AVLNode * __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetAtPosition(struct __eCNameSpace__eC__types__Instance * this, const uint64 pos, unsigned int create, unsigned int * justAdded)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
-struct __eCNameSpace__eC__types__AVLNode * addNode = (((void *)0));
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+struct __eCNameSpace__eC__containers__AVLNode * addNode = (((void *)0));
 int addSide = 0;
-struct __eCNameSpace__eC__types__AVLNode * node = __eCPointer___eCNameSpace__eC__types__CustomAVLTree->root ? __eCMethod___eCNameSpace__eC__types__AVLNode_FindEx(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root))), ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[4].__anon1.__anon1.dataTypeClass, pos, &addNode, &addSide) : (((void *)0));
+struct __eCNameSpace__eC__containers__AVLNode * node = __eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root ? __eCMethod___eCNameSpace__eC__containers__AVLNode_FindEx(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root))), ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[4].__anon1.__anon1.dataTypeClass, pos, &addNode, &addSide) : (((void *)0));
 
 if(!node && create)
 {
@@ -1329,16 +1329,16 @@ void (* onCopy)(void *, void *, void *) = Tclass->_vTbl[__eCVMethodID_class_OnCo
 
 if(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[4].__anon1.__anon1.dataTypeClass->type == 1)
 {
-unsigned int size = sizeof(struct __eCNameSpace__eC__types__AVLNode);
+unsigned int size = sizeof(struct __eCNameSpace__eC__containers__AVLNode);
 
 if(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[4].__anon1.__anon1.dataTypeClass->type == 1)
 size += ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[4].__anon1.__anon1.dataTypeClass->typeSize - sizeof node->key;
-node = (struct __eCNameSpace__eC__types__AVLNode *)__eCNameSpace__eC__types__eSystem_New0(sizeof(unsigned char) * (size));
+node = (struct __eCNameSpace__eC__containers__AVLNode *)__eCNameSpace__eC__types__eSystem_New0(sizeof(unsigned char) * (size));
 }
 else
 {
 node = __extension__ ({
-struct __eCNameSpace__eC__types__AVLNode * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__types__AVLNode));
+struct __eCNameSpace__eC__containers__AVLNode * __eCInstance1 = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__AVLNode));
 
 __eCInstance1->key = pos, __eCInstance1;
 });
@@ -1347,31 +1347,31 @@ if((Tclass->type == 1000 && !Tclass->byValueSystemClass) || Tclass->type == 2 ||
 memcpy((unsigned char *)&node->key + __ENDIAN_PAD(Tclass->typeSize), (unsigned char *)((char *)&pos + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[4].__anon1.__anon1.dataTypeClass->typeSize)) + __ENDIAN_PAD(Tclass->typeSize), Tclass->typeSize);
 else
 onCopy(Tclass, (unsigned char *)&node->key + __ENDIAN_PAD(sizeof(void *)), (void *)(uintptr_t)pos);
-__eCMethod___eCNameSpace__eC__types__CustomAVLTree_AddEx(this, (uint64)(uintptr_t)node, (uint64)(uintptr_t)addNode, addSide);
+__eCMethod___eCNameSpace__eC__containers__CustomAVLTree_AddEx(this, (uint64)(uintptr_t)node, (uint64)(uintptr_t)addNode, addSide);
 if(justAdded)
 *justAdded = 1;
 }
 return node;
 }
 
-void __eCMethod___eCNameSpace__eC__types__AVLNode_Free(struct __eCNameSpace__eC__types__AVLNode *  this);
+void __eCMethod___eCNameSpace__eC__containers__AVLNode_Free(struct __eCNameSpace__eC__containers__AVLNode *  this);
 
-void __eCMethod___eCNameSpace__eC__types__AVLNode_Free(struct __eCNameSpace__eC__types__AVLNode * this)
+void __eCMethod___eCNameSpace__eC__containers__AVLNode_Free(struct __eCNameSpace__eC__containers__AVLNode * this)
 {
 if(this->left)
-__eCMethod___eCNameSpace__eC__types__AVLNode_Free(this->left);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_Free(this->left);
 if(this->right)
-__eCMethod___eCNameSpace__eC__types__AVLNode_Free(this->right);
+__eCMethod___eCNameSpace__eC__containers__AVLNode_Free(this->right);
 ((this ? __extension__ ({
 void * __eCPtrToDelete = (this);
 
-__eCClass___eCNameSpace__eC__types__AVLNode->Destructor ? __eCClass___eCNameSpace__eC__types__AVLNode->Destructor((void *)__eCPtrToDelete) : 0, __eCClass___eCNameSpace__eC__containers__IteratorPointer->Destructor ? __eCClass___eCNameSpace__eC__containers__IteratorPointer->Destructor((void *)__eCPtrToDelete) : 0, __eCNameSpace__eC__types__eSystem_Delete(__eCPtrToDelete);
+__eCClass___eCNameSpace__eC__containers__AVLNode->Destructor ? __eCClass___eCNameSpace__eC__containers__AVLNode->Destructor((void *)__eCPtrToDelete) : 0, __eCClass___eCNameSpace__eC__containers__IteratorPointer->Destructor ? __eCClass___eCNameSpace__eC__containers__IteratorPointer->Destructor((void *)__eCPtrToDelete) : 0, __eCNameSpace__eC__types__eSystem_Delete(__eCPtrToDelete);
 }) : 0), this = 0);
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__AVLNode_Check(struct __eCNameSpace__eC__types__AVLNode *  this, struct __eCNameSpace__eC__types__Class *  Tclass);
+unsigned int __eCMethod___eCNameSpace__eC__containers__AVLNode_Check(struct __eCNameSpace__eC__containers__AVLNode *  this, struct __eCNameSpace__eC__types__Class *  Tclass);
 
-unsigned int __eCMethod___eCNameSpace__eC__types__AVLNode_Check(struct __eCNameSpace__eC__types__AVLNode * this, struct __eCNameSpace__eC__types__Class * Tclass)
+unsigned int __eCMethod___eCNameSpace__eC__containers__AVLNode_Check(struct __eCNameSpace__eC__containers__AVLNode * this, struct __eCNameSpace__eC__types__Class * Tclass)
 {
 unsigned int valid = 1;
 unsigned int offset = 0;
@@ -1379,8 +1379,8 @@ unsigned int reference = 0;
 unsigned char * b;
 int (* onCompare)(void *, void *, void *);
 int t;
-int leftHeight = this->left ? __eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp(this->left) + 1 : 0;
-int rightHeight = this->right ? __eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp(this->right) + 1 : 0;
+int leftHeight = this->left ? __eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp(this->left) + 1 : 0;
+int rightHeight = this->right ? __eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp(this->right) + 1 : 0;
 int diffHeight = rightHeight - leftHeight;
 
 if(!Tclass)
@@ -1399,7 +1399,7 @@ if(this->left->parent != this)
 printf("Parent not set properly at node %d\n", (int)(uint64)(this->left->key));
 valid = 0;
 }
-valid *= __eCMethod___eCNameSpace__eC__types__AVLNode_Check(this->left, Tclass);
+valid *= __eCMethod___eCNameSpace__eC__containers__AVLNode_Check(this->left, Tclass);
 }
 if(this->right)
 {
@@ -1408,11 +1408,11 @@ if(this->right->parent != this)
 printf("Parent not set properly at node %d\n", (int)(uint64)(this->right->key));
 valid = 0;
 }
-valid *= __eCMethod___eCNameSpace__eC__types__AVLNode_Check(this->right, Tclass);
+valid *= __eCMethod___eCNameSpace__eC__containers__AVLNode_Check(this->right, Tclass);
 }
-if(this->depth != __eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp(this))
+if(this->depth != __eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp(this))
 {
-printf("Depth value at node %d (%d) doesn't match depth property (%d)\n", (int)(uint64)(this->key), this->depth, __eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp(this));
+printf("Depth value at node %d (%d) doesn't match depth property (%d)\n", (int)(uint64)(this->key), this->depth, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp(this));
 valid = 0;
 }
 if(diffHeight < -1 || diffHeight > 1)
@@ -1420,10 +1420,10 @@ if(diffHeight < -1 || diffHeight > 1)
 valid = 0;
 printf("Height difference is %d at node %d\n", diffHeight, (int)(uint64)(this->key));
 }
-if(diffHeight != __eCProp___eCNameSpace__eC__types__AVLNode_Get_balanceFactor(this))
+if(diffHeight != __eCProp___eCNameSpace__eC__containers__AVLNode_Get_balanceFactor(this))
 {
 valid = 0;
-printf("Height difference %d doesn't match balance-factor of %d at node %d\n", diffHeight, __eCProp___eCNameSpace__eC__types__AVLNode_Get_balanceFactor(this), (int)(uint64)(this->key));
+printf("Height difference %d doesn't match balance-factor of %d at node %d\n", diffHeight, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_balanceFactor(this), (int)(uint64)(this->key));
 }
 b = reference ? ((unsigned char *)&this->key + offset) : ((unsigned char *)(uintptr_t)(uint64)(this->key));
 if(this->left)
@@ -1449,11 +1449,11 @@ printf("Node %d is *greater* than right subtree %d\n", (int)(uint64)(this->key),
 return valid;
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Check(struct __eCNameSpace__eC__types__Instance * this)
+unsigned int __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Check(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__CustomAVLTree * __eCPointer___eCNameSpace__eC__types__CustomAVLTree = (struct __eCNameSpace__eC__types__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__CustomAVLTree * __eCPointer___eCNameSpace__eC__containers__CustomAVLTree = (struct __eCNameSpace__eC__containers__CustomAVLTree *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return __eCPointer___eCNameSpace__eC__types__CustomAVLTree->root ? __eCMethod___eCNameSpace__eC__types__AVLNode_Check(((struct __eCNameSpace__eC__types__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__types__CustomAVLTree->root))), ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[4].__anon1.__anon1.dataTypeClass) : 1;
+return __eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root ? __eCMethod___eCNameSpace__eC__containers__AVLNode_Check(((struct __eCNameSpace__eC__containers__AVLNode *)((uintptr_t)(__eCPointer___eCNameSpace__eC__containers__CustomAVLTree->root))), ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[4].__anon1.__anon1.dataTypeClass) : 1;
 }
 
 void __eCRegisterModule_CustomAVLTree(struct __eCNameSpace__eC__types__Instance * module)
@@ -1470,64 +1470,64 @@ struct __eCNameSpace__eC__types__ClassTemplateArgument __simpleStruct0 =
 };
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::AddSide", "int", 0, 0, (void *)0, (void *)0, module, 2, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::containers::AddSide", "int", 0, 0, (void *)0, (void *)0, module, 2, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__types__AddSide = class;
+__eCClass___eCNameSpace__eC__containers__AddSide = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "compare", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "left", -1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "right", 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::AVLNode", "eC::types::IteratorPointer", sizeof(struct __eCNameSpace__eC__types__AVLNode), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::containers::AVLNode", "eC::containers::IteratorPointer", sizeof(struct __eCNameSpace__eC__containers__AVLNode), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__types__AVLNode = class;
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Find", "thisclass Find(eC::types::Class Tclass, const T key)", __eCMethod___eCNameSpace__eC__types__AVLNode_Find, 1);
+__eCClass___eCNameSpace__eC__containers__AVLNode = class;
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Find", "thisclass Find(eC::types::Class Tclass, const T key)", __eCMethod___eCNameSpace__eC__containers__AVLNode_Find, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "__eCPrivateData0", "byte[32]", 32, 1, 2);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "key", "T", 8, 8, 1);
-__eCPropM___eCNameSpace__eC__types__AVLNode_prev = __eCNameSpace__eC__types__eClass_AddProperty(class, "prev", "thisclass", 0, __eCProp___eCNameSpace__eC__types__AVLNode_Get_prev, 1);
+__eCPropM___eCNameSpace__eC__containers__AVLNode_prev = __eCNameSpace__eC__types__eClass_AddProperty(class, "prev", "thisclass", 0, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_prev, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__AVLNode_prev = __eCPropM___eCNameSpace__eC__types__AVLNode_prev, __eCPropM___eCNameSpace__eC__types__AVLNode_prev = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_next = __eCNameSpace__eC__types__eClass_AddProperty(class, "next", "thisclass", 0, __eCProp___eCNameSpace__eC__types__AVLNode_Get_next, 1);
+__eCProp___eCNameSpace__eC__containers__AVLNode_prev = __eCPropM___eCNameSpace__eC__containers__AVLNode_prev, __eCPropM___eCNameSpace__eC__containers__AVLNode_prev = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_next = __eCNameSpace__eC__types__eClass_AddProperty(class, "next", "thisclass", 0, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_next, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__AVLNode_next = __eCPropM___eCNameSpace__eC__types__AVLNode_next, __eCPropM___eCNameSpace__eC__types__AVLNode_next = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_minimum = __eCNameSpace__eC__types__eClass_AddProperty(class, "minimum", "thisclass", 0, __eCProp___eCNameSpace__eC__types__AVLNode_Get_minimum, 1);
+__eCProp___eCNameSpace__eC__containers__AVLNode_next = __eCPropM___eCNameSpace__eC__containers__AVLNode_next, __eCPropM___eCNameSpace__eC__containers__AVLNode_next = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_minimum = __eCNameSpace__eC__types__eClass_AddProperty(class, "minimum", "thisclass", 0, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_minimum, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__AVLNode_minimum = __eCPropM___eCNameSpace__eC__types__AVLNode_minimum, __eCPropM___eCNameSpace__eC__types__AVLNode_minimum = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_maximum = __eCNameSpace__eC__types__eClass_AddProperty(class, "maximum", "thisclass", 0, __eCProp___eCNameSpace__eC__types__AVLNode_Get_maximum, 1);
+__eCProp___eCNameSpace__eC__containers__AVLNode_minimum = __eCPropM___eCNameSpace__eC__containers__AVLNode_minimum, __eCPropM___eCNameSpace__eC__containers__AVLNode_minimum = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_maximum = __eCNameSpace__eC__types__eClass_AddProperty(class, "maximum", "thisclass", 0, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_maximum, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__AVLNode_maximum = __eCPropM___eCNameSpace__eC__types__AVLNode_maximum, __eCPropM___eCNameSpace__eC__types__AVLNode_maximum = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_count = __eCNameSpace__eC__types__eClass_AddProperty(class, "count", "int", 0, __eCProp___eCNameSpace__eC__types__AVLNode_Get_count, 1);
+__eCProp___eCNameSpace__eC__containers__AVLNode_maximum = __eCPropM___eCNameSpace__eC__containers__AVLNode_maximum, __eCPropM___eCNameSpace__eC__containers__AVLNode_maximum = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_count = __eCNameSpace__eC__types__eClass_AddProperty(class, "count", "int", 0, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_count, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__AVLNode_count = __eCPropM___eCNameSpace__eC__types__AVLNode_count, __eCPropM___eCNameSpace__eC__types__AVLNode_count = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_depthProp = __eCNameSpace__eC__types__eClass_AddProperty(class, "depthProp", "int", 0, __eCProp___eCNameSpace__eC__types__AVLNode_Get_depthProp, 1);
+__eCProp___eCNameSpace__eC__containers__AVLNode_count = __eCPropM___eCNameSpace__eC__containers__AVLNode_count, __eCPropM___eCNameSpace__eC__containers__AVLNode_count = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_depthProp = __eCNameSpace__eC__types__eClass_AddProperty(class, "depthProp", "int", 0, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_depthProp, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__AVLNode_depthProp = __eCPropM___eCNameSpace__eC__types__AVLNode_depthProp, __eCPropM___eCNameSpace__eC__types__AVLNode_depthProp = (void *)0;
-__eCPropM___eCNameSpace__eC__types__AVLNode_balanceFactor = __eCNameSpace__eC__types__eClass_AddProperty(class, "balanceFactor", "int", 0, __eCProp___eCNameSpace__eC__types__AVLNode_Get_balanceFactor, 2);
+__eCProp___eCNameSpace__eC__containers__AVLNode_depthProp = __eCPropM___eCNameSpace__eC__containers__AVLNode_depthProp, __eCPropM___eCNameSpace__eC__containers__AVLNode_depthProp = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__AVLNode_balanceFactor = __eCNameSpace__eC__types__eClass_AddProperty(class, "balanceFactor", "int", 0, __eCProp___eCNameSpace__eC__containers__AVLNode_Get_balanceFactor, 2);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__AVLNode_balanceFactor = __eCPropM___eCNameSpace__eC__types__AVLNode_balanceFactor, __eCPropM___eCNameSpace__eC__types__AVLNode_balanceFactor = (void *)0;
+__eCProp___eCNameSpace__eC__containers__AVLNode_balanceFactor = __eCPropM___eCNameSpace__eC__containers__AVLNode_balanceFactor, __eCPropM___eCNameSpace__eC__containers__AVLNode_balanceFactor = (void *)0;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, (((void *)0)), (((void *)0)), 0, sizeof(void *) > 4 ? sizeof(void *) : 4, 2);
 __eCNameSpace__eC__types__eClass_AddTemplateParameter(class, "T", 0, 0, (((void *)0)));
 __eCNameSpace__eC__types__eClass_DoneAddingTemplateParameters(class);
 if(class)
 class->fixed = (unsigned int)1;
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::CustomAVLTree", "eC::types::Container<BT, I = KT>", sizeof(struct __eCNameSpace__eC__types__CustomAVLTree), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::containers::CustomAVLTree", "eC::containers::Container<BT, I = KT>", sizeof(struct __eCNameSpace__eC__containers__CustomAVLTree), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__types__CustomAVLTree = class;
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetFirst", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetFirst, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetLast", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetLast, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetPrev", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetPrev, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetNext", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetNext, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetData", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetData, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "SetData", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_SetData, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetAtPosition", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_GetAtPosition, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Add", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Add, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Remove", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Remove, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Find", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Find, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Free", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Free, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Delete", 0, __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Delete, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Check", "bool Check()", __eCMethod___eCNameSpace__eC__types__CustomAVLTree_Check, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "FreeKey", "void FreeKey(eC::types::AVLNode<KT> item)", __eCMethod___eCNameSpace__eC__types__CustomAVLTree_FreeKey, 1);
+__eCClass___eCNameSpace__eC__containers__CustomAVLTree = class;
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetFirst", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetFirst, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetLast", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetLast, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetPrev", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetPrev, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetNext", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetNext, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetData", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetData, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "SetData", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_SetData, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetAtPosition", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_GetAtPosition, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Add", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Add, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Remove", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Remove, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Find", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Find, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Free", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Free, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Delete", 0, __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Delete, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Check", "bool Check()", __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_Check, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "FreeKey", "void FreeKey(eC::containers::AVLNode<KT> item)", __eCMethod___eCNameSpace__eC__containers__CustomAVLTree_FreeKey, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "root", "BT", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "count", "int", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddTemplateParameter(class, "BT", 0, "eC::types::AVLNode<KT>", (((void *)0)));
+__eCNameSpace__eC__types__eClass_AddTemplateParameter(class, "BT", 0, "eC::containers::AVLNode<KT>", (((void *)0)));
 __eCNameSpace__eC__types__eClass_AddTemplateParameter(class, "KT", 0, 0, &__simpleStruct0);
 __eCNameSpace__eC__types__eClass_DoneAddingTemplateParameters(class);
 if(class)

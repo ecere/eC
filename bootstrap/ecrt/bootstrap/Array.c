@@ -66,13 +66,13 @@ extern int __eCVMethodID_class_OnUnserialize;
 
 extern int __eCVMethodID_class_OnCompare;
 
-struct __eCNameSpace__eC__types__SortRData
+struct __eCNameSpace__eC__containers__SortRData
 {
 void * arg;
 int (* compare)(void *, const void *, const void *);
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__Array
+struct __eCNameSpace__eC__containers__Array
 {
 uint64 * array;
 unsigned int count;
@@ -138,42 +138,42 @@ struct __eCNameSpace__eC__types__GlobalFunction;
 
 extern int __eCVMethodID_class_OnFree;
 
-static inline int __eCNameSpace__eC__types__compareDeref(struct __eCNameSpace__eC__types__SortRData * cs, const void ** a, const void ** b)
+static inline int __eCNameSpace__eC__containers__compareDeref(struct __eCNameSpace__eC__containers__SortRData * cs, const void ** a, const void ** b)
 {
 return cs->compare(cs->arg, *a, *b);
 }
 
-static inline int __eCNameSpace__eC__types__compareDescDeref(struct __eCNameSpace__eC__types__SortRData * cs, const void ** a, const void ** b)
+static inline int __eCNameSpace__eC__containers__compareDescDeref(struct __eCNameSpace__eC__containers__SortRData * cs, const void ** a, const void ** b)
 {
 return -cs->compare(cs->arg, *a, *b);
 }
 
-static inline int __eCNameSpace__eC__types__compareDesc(struct __eCNameSpace__eC__types__SortRData * cs, const void * a, const void * b)
+static inline int __eCNameSpace__eC__containers__compareDesc(struct __eCNameSpace__eC__containers__SortRData * cs, const void * a, const void * b)
 {
 return -cs->compare(cs->arg, a, b);
 }
 
-static inline int __eCNameSpace__eC__types__compareArgLast(const void * a, const void * b, struct __eCNameSpace__eC__types__SortRData * cs)
+static inline int __eCNameSpace__eC__containers__compareArgLast(const void * a, const void * b, struct __eCNameSpace__eC__containers__SortRData * cs)
 {
 return cs->compare(cs->arg, a, b);
 }
 
-static inline int __eCNameSpace__eC__types__compareDerefArgLast(const void ** a, const void ** b, struct __eCNameSpace__eC__types__SortRData * cs)
+static inline int __eCNameSpace__eC__containers__compareDerefArgLast(const void ** a, const void ** b, struct __eCNameSpace__eC__containers__SortRData * cs)
 {
 return cs->compare(cs->arg, *a, *b);
 }
 
-static inline int __eCNameSpace__eC__types__compareDescDerefArgLast(const void ** a, const void ** b, struct __eCNameSpace__eC__types__SortRData * cs)
+static inline int __eCNameSpace__eC__containers__compareDescDerefArgLast(const void ** a, const void ** b, struct __eCNameSpace__eC__containers__SortRData * cs)
 {
 return -cs->compare(cs->arg, *a, *b);
 }
 
-static inline int __eCNameSpace__eC__types__compareDescArgLast(const void * a, const void * b, struct __eCNameSpace__eC__types__SortRData * cs)
+static inline int __eCNameSpace__eC__containers__compareDescArgLast(const void * a, const void * b, struct __eCNameSpace__eC__containers__SortRData * cs)
 {
 return -cs->compare(cs->arg, a, b);
 }
 
-static inline void __eCNameSpace__eC__types__quickSort(void * base, size_t nel, size_t w, char * piv, int (* compare)(void *, const void *, const void *), void * arg)
+static inline void __eCNameSpace__eC__containers__quickSort(void * base, size_t nel, size_t w, char * piv, int (* compare)(void *, const void *, const void *), void * arg)
 {
 ssize_t beg[300], end[300];
 int frame = 0;
@@ -225,20 +225,20 @@ frame--;
 }
 }
 
-static inline void __eCNameSpace__eC__types___qsortrx(void * base, size_t nel, size_t width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), void * arg, unsigned int deref, unsigned int ascending)
+static inline void __eCNameSpace__eC__containers___qsortrx(void * base, size_t nel, size_t width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), void * arg, unsigned int deref, unsigned int ascending)
 {
 if(!deref && ascending)
 {
 {
 char * buf = __eCNameSpace__eC__types__eSystem_New(sizeof(char) * (width));
 
-__eCNameSpace__eC__types__quickSort(base, nel, width, buf, compare, arg);
+__eCNameSpace__eC__containers__quickSort(base, nel, width, buf, compare, arg);
 (__eCNameSpace__eC__types__eSystem_Delete(buf), buf = 0);
 }
 }
 else
 {
-struct __eCNameSpace__eC__types__SortRData s =
+struct __eCNameSpace__eC__containers__SortRData s =
 {
 arg, compare
 };
@@ -246,27 +246,27 @@ arg, compare
 {
 char * buf = __eCNameSpace__eC__types__eSystem_New(sizeof(char) * (width));
 
-__eCNameSpace__eC__types__quickSort(base, nel, width, buf, (void *)(!deref ? (void *)(__eCNameSpace__eC__types__compareDesc) : (void *)(ascending ? (void *)(__eCNameSpace__eC__types__compareDeref) : (void *)(__eCNameSpace__eC__types__compareDescDeref))), &s);
+__eCNameSpace__eC__containers__quickSort(base, nel, width, buf, (void *)(!deref ? (void *)(__eCNameSpace__eC__containers__compareDesc) : (void *)(ascending ? (void *)(__eCNameSpace__eC__containers__compareDeref) : (void *)(__eCNameSpace__eC__containers__compareDescDeref))), &s);
 (__eCNameSpace__eC__types__eSystem_Delete(buf), buf = 0);
 }
 }
 }
 
-void __eCNameSpace__eC__types__qsortrx(void * base, size_t nel, size_t width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), void * arg, unsigned int deref, unsigned int ascending)
+void __eCNameSpace__eC__containers__qsortrx(void * base, size_t nel, size_t width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), void * arg, unsigned int deref, unsigned int ascending)
 {
-__eCNameSpace__eC__types___qsortrx(base, nel, width, compare, optCompareArgLast, arg, deref, ascending);
+__eCNameSpace__eC__containers___qsortrx(base, nel, width, compare, optCompareArgLast, arg, deref, ascending);
 }
 
-void __eCNameSpace__eC__types__qsortr(void * base, size_t nel, size_t width, int (* compare)(void * arg, const void * a, const void * b), void * arg)
+void __eCNameSpace__eC__containers__qsortr(void * base, size_t nel, size_t width, int (* compare)(void * arg, const void * a, const void * b), void * arg)
 {
-__eCNameSpace__eC__types___qsortrx(base, nel, width, compare, (((void *)0)), arg, 0, 1);
+__eCNameSpace__eC__containers___qsortrx(base, nel, width, compare, (((void *)0)), arg, 0, 1);
 }
 
 struct __eCNameSpace__eC__types__Property;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Array_size, * __eCPropM___eCNameSpace__eC__types__Array_size;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Array_size, * __eCPropM___eCNameSpace__eC__containers__Array_size;
 
-static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__types__Array_minAllocSize, * __eCPropM___eCNameSpace__eC__types__Array_minAllocSize;
+static __attribute__((unused)) struct __eCNameSpace__eC__types__Property * __eCProp___eCNameSpace__eC__containers__Array_minAllocSize, * __eCPropM___eCNameSpace__eC__containers__Array_minAllocSize;
 
 struct __eCNameSpace__eC__types__Class;
 
@@ -335,13 +335,13 @@ extern void __eCNameSpace__eC__types__eInstance_Watch(struct __eCNameSpace__eC__
 
 extern void __eCNameSpace__eC__types__eInstance_FireWatchers(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property);
 
-unsigned int __eCProp___eCNameSpace__eC__types__Array_Get_size(struct __eCNameSpace__eC__types__Instance * this);
+unsigned int __eCProp___eCNameSpace__eC__containers__Array_Get_size(struct __eCNameSpace__eC__types__Instance * this);
 
-void __eCProp___eCNameSpace__eC__types__Array_Set_size(struct __eCNameSpace__eC__types__Instance * this, unsigned int value);
+void __eCProp___eCNameSpace__eC__containers__Array_Set_size(struct __eCNameSpace__eC__types__Instance * this, unsigned int value);
 
-unsigned int __eCProp___eCNameSpace__eC__types__Array_Get_minAllocSize(struct __eCNameSpace__eC__types__Instance * this);
+unsigned int __eCProp___eCNameSpace__eC__containers__Array_Get_minAllocSize(struct __eCNameSpace__eC__types__Instance * this);
 
-void __eCProp___eCNameSpace__eC__types__Array_Set_minAllocSize(struct __eCNameSpace__eC__types__Instance * this, unsigned int value);
+void __eCProp___eCNameSpace__eC__containers__Array_Set_minAllocSize(struct __eCNameSpace__eC__types__Instance * this, unsigned int value);
 
 void __eCMethod___eCNameSpace__eC__types__IOChannel_Get(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Class * class, void * *  data);
 
@@ -355,13 +355,13 @@ extern int __eCVMethodID___eCNameSpace__eC__containers__Container_GetData;
 
 extern int __eCVMethodID___eCNameSpace__eC__containers__Container_Remove;
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -383,7 +383,7 @@ int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -453,10 +453,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -473,11 +473,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -530,9 +530,9 @@ char *  parsedCommand;
 struct __eCNameSpace__eC__types__NameSpace systemNameSpace;
 } eC_gcc_struct;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__SortRData;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__SortRData;
 
-static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Array;
+static struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__Array;
 
 extern void __eCNameSpace__eC__types__PrintLn(struct __eCNameSpace__eC__types__Class * class, const void * object, ...);
 
@@ -566,155 +566,155 @@ struct __eCNameSpace__eC__types__NameSpace privateNameSpace;
 struct __eCNameSpace__eC__types__NameSpace publicNameSpace;
 } eC_gcc_struct;
 
-void __eCDestructor___eCNameSpace__eC__types__Array(struct __eCNameSpace__eC__types__Instance * this)
+void __eCDestructor___eCNameSpace__eC__containers__Array(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
 {
-(__eCNameSpace__eC__types__eSystem_Delete(__eCPointer___eCNameSpace__eC__types__Array->array), __eCPointer___eCNameSpace__eC__types__Array->array = 0);
+(__eCNameSpace__eC__types__eSystem_Delete(__eCPointer___eCNameSpace__eC__containers__Array->array), __eCPointer___eCNameSpace__eC__containers__Array->array = 0);
 }
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__Array_GetFirst(struct __eCNameSpace__eC__types__Instance * this)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__Array_GetFirst(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)(__eCPointer___eCNameSpace__eC__types__Array->count ? __eCPointer___eCNameSpace__eC__types__Array->array : (((void *)0)));
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)(__eCPointer___eCNameSpace__eC__containers__Array->count ? __eCPointer___eCNameSpace__eC__containers__Array->array : (((void *)0)));
 }
 
-int __eCMethod___eCNameSpace__eC__types__Array_GetCount(struct __eCNameSpace__eC__types__Instance * this)
+int __eCMethod___eCNameSpace__eC__containers__Array_GetCount(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return __eCPointer___eCNameSpace__eC__types__Array->count;
+return __eCPointer___eCNameSpace__eC__containers__Array->count;
 }
 
-unsigned int __eCProp___eCNameSpace__eC__types__Array_Get_size(struct __eCNameSpace__eC__types__Instance * this)
+unsigned int __eCProp___eCNameSpace__eC__containers__Array_Get_size(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return __eCPointer___eCNameSpace__eC__types__Array->count;
+return __eCPointer___eCNameSpace__eC__containers__Array->count;
 }
 
-unsigned int __eCProp___eCNameSpace__eC__types__Array_Get_minAllocSize(struct __eCNameSpace__eC__types__Instance * this)
+unsigned int __eCProp___eCNameSpace__eC__containers__Array_Get_minAllocSize(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return __eCPointer___eCNameSpace__eC__types__Array->minAllocSize;
+return __eCPointer___eCNameSpace__eC__containers__Array->minAllocSize;
 }
 
-void __eCMethod___eCNameSpace__eC__types__Array_OnUnserialize(struct __eCNameSpace__eC__types__Class * class, struct __eCNameSpace__eC__types__Instance ** this, struct __eCNameSpace__eC__types__Instance * channel)
+void __eCMethod___eCNameSpace__eC__containers__Array_OnUnserialize(struct __eCNameSpace__eC__types__Class * class, struct __eCNameSpace__eC__types__Instance ** this, struct __eCNameSpace__eC__types__Instance * channel)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 struct __eCNameSpace__eC__types__Instance * array = __eCNameSpace__eC__types__eInstance_New(class);
 unsigned int count, c;
 struct __eCNameSpace__eC__types__Class * Dclass = class->templateArgs[2].__anon1.__anon1.dataTypeClass;
 
 array->_refCount++;
 __eCMethod___eCNameSpace__eC__types__IOChannel_Get(channel, __eCClass_uint, (void *)&count);
-__eCProp___eCNameSpace__eC__types__Array_Set_size(array, count);
+__eCProp___eCNameSpace__eC__containers__Array_Set_size(array, count);
 for(c = 0; c < count; c++)
-((void (*)(void *, void *, void *))(void *)Dclass->_vTbl[__eCVMethodID_class_OnUnserialize])(Dclass, ((unsigned char *)((struct __eCNameSpace__eC__types__Array *)(((char *)array + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->array) + Dclass->typeSize * c, channel);
+((void (*)(void *, void *, void *))(void *)Dclass->_vTbl[__eCVMethodID_class_OnUnserialize])(Dclass, ((unsigned char *)((struct __eCNameSpace__eC__containers__Array *)(((char *)array + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->array) + Dclass->typeSize * c, channel);
 (*this) = array;
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__Array_GetLast(struct __eCNameSpace__eC__types__Instance * this)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__Array_GetLast(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)(__eCPointer___eCNameSpace__eC__types__Array->count && __eCPointer___eCNameSpace__eC__types__Array->array ? (((unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array) + ((__eCPointer___eCNameSpace__eC__types__Array->count - 1) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) : (((void *)0)));
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)(__eCPointer___eCNameSpace__eC__containers__Array->count && __eCPointer___eCNameSpace__eC__containers__Array->array ? (((unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array) + ((__eCPointer___eCNameSpace__eC__containers__Array->count - 1) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) : (((void *)0)));
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__Array_GetPrev(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__Array_GetPrev(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 uint64 * item = (uint64 *)ip;
 
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)((item && (void *)(item) > (void *)(__eCPointer___eCNameSpace__eC__types__Array->array)) ? (((unsigned char *)item) - (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) : (((void *)0)));
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)((item && (void *)(item) > (void *)(__eCPointer___eCNameSpace__eC__containers__Array->array)) ? (((unsigned char *)item) - (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) : (((void *)0)));
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__Array_GetNext(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__Array_GetNext(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 uint64 * item = (uint64 *)ip;
 
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)((item && (void *)(item) < (void *)(((unsigned char *)((unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array) + (__eCPointer___eCNameSpace__eC__types__Array->count * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) - (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize))) ? (((unsigned char *)item) + (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) : (((void *)0)));
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)((item && (void *)(item) < (void *)(((unsigned char *)((unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array) + (__eCPointer___eCNameSpace__eC__containers__Array->count * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) - (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize))) ? (((unsigned char *)item) + (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) : (((void *)0)));
 }
 
-uint64 __eCMethod___eCNameSpace__eC__types__Array_GetData(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip)
+uint64 __eCMethod___eCNameSpace__eC__containers__Array_GetData(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 uint64 * item = (uint64 *)ip;
 
 return ((((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? ((uint64)(uintptr_t)item) : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 1) ? *((unsigned char *)item) : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 2) ? *((unsigned short *)item) : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 4) ? *((unsigned int *)item) : *(item)))))));
 }
 
-unsigned int __eCMethod___eCNameSpace__eC__types__Array_SetData(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip, uint64 value)
+unsigned int __eCMethod___eCNameSpace__eC__containers__Array_SetData(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip, uint64 value)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 uint64 * item = (uint64 *)ip;
 
 (memcpy(item, (((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? (char *)(uintptr_t)(value) : ((char *)&value + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)), ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize));
 return 1;
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__Array_GetAtPosition(struct __eCNameSpace__eC__types__Instance * this, const uint64 pos, unsigned int create, unsigned int * justAdded)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__Array_GetAtPosition(struct __eCNameSpace__eC__types__Instance * this, const uint64 pos, unsigned int create, unsigned int * justAdded)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-if((int)((const uint64)(pos)) > __eCPointer___eCNameSpace__eC__types__Array->count && create)
+if((int)((const uint64)(pos)) > __eCPointer___eCNameSpace__eC__containers__Array->count && create)
 {
-if((int)((const uint64)(pos)) + 1 > __eCPointer___eCNameSpace__eC__types__Array->minAllocSize)
-__eCPointer___eCNameSpace__eC__types__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * ((int)((const uint64)(pos)) + 1));
-__eCPointer___eCNameSpace__eC__types__Array->count = (int)((const uint64)(pos)) + 1;
+if((int)((const uint64)(pos)) + 1 > __eCPointer___eCNameSpace__eC__containers__Array->minAllocSize)
+__eCPointer___eCNameSpace__eC__containers__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * ((int)((const uint64)(pos)) + 1));
+__eCPointer___eCNameSpace__eC__containers__Array->count = (int)((const uint64)(pos)) + 1;
 if(justAdded)
 *justAdded = 1;
 }
-return ((int)((const uint64)(pos)) < __eCPointer___eCNameSpace__eC__types__Array->count && __eCPointer___eCNameSpace__eC__types__Array->array) ? (struct __eCNameSpace__eC__containers__IteratorPointer *)(((unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array) + ((int)((const uint64)(pos)) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) : (((void *)0));
+return ((int)((const uint64)(pos)) < __eCPointer___eCNameSpace__eC__containers__Array->count && __eCPointer___eCNameSpace__eC__containers__Array->array) ? (struct __eCNameSpace__eC__containers__IteratorPointer *)(((unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array) + ((int)((const uint64)(pos)) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) : (((void *)0));
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__Array_Insert(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip, uint64 value)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__Array_Insert(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip, uint64 value)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 unsigned int tsize = ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize;
-unsigned char * pos = ip ? ((unsigned char *)ip + tsize) : (unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array;
+unsigned char * pos = ip ? ((unsigned char *)ip + tsize) : (unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array;
 
-if(__eCPointer___eCNameSpace__eC__types__Array->count + 1 > __eCPointer___eCNameSpace__eC__types__Array->minAllocSize)
+if(__eCPointer___eCNameSpace__eC__containers__Array->count + 1 > __eCPointer___eCNameSpace__eC__containers__Array->minAllocSize)
 {
-int offset = pos - (unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array;
+int offset = pos - (unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array;
 
-__eCPointer___eCNameSpace__eC__types__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__types__Array->count + 1));
-pos = (unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array + offset;
+__eCPointer___eCNameSpace__eC__containers__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__containers__Array->count + 1));
+pos = (unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array + offset;
 }
-memmove(pos + tsize, pos, (unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array + (__eCPointer___eCNameSpace__eC__types__Array->count++) * tsize - pos);
+memmove(pos + tsize, pos, (unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array + (__eCPointer___eCNameSpace__eC__containers__Array->count++) * tsize - pos);
 (memcpy((uint64 *)pos, (((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? (char *)(uintptr_t)(value) : ((char *)&value + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)), ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize));
 return (struct __eCNameSpace__eC__containers__IteratorPointer *)pos;
 }
 
-struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__types__Array_Add(struct __eCNameSpace__eC__types__Instance * this, uint64 value)
+struct __eCNameSpace__eC__containers__IteratorPointer * __eCMethod___eCNameSpace__eC__containers__Array_Add(struct __eCNameSpace__eC__types__Instance * this, uint64 value)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-if(__eCPointer___eCNameSpace__eC__types__Array->count + 1 > __eCPointer___eCNameSpace__eC__types__Array->minAllocSize)
-__eCPointer___eCNameSpace__eC__types__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__types__Array->count + 1));
-(memcpy((char *)__eCPointer___eCNameSpace__eC__types__Array->array + (__eCPointer___eCNameSpace__eC__types__Array->count * ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize), (((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? (char *)(uintptr_t)(value) : ((char *)&value + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)), ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize));
-return (struct __eCNameSpace__eC__containers__IteratorPointer *)(((unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array) + ((__eCPointer___eCNameSpace__eC__types__Array->count++) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize));
+if(__eCPointer___eCNameSpace__eC__containers__Array->count + 1 > __eCPointer___eCNameSpace__eC__containers__Array->minAllocSize)
+__eCPointer___eCNameSpace__eC__containers__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__containers__Array->count + 1));
+(memcpy((char *)__eCPointer___eCNameSpace__eC__containers__Array->array + (__eCPointer___eCNameSpace__eC__containers__Array->count * ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize), (((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? (char *)(uintptr_t)(value) : ((char *)&value + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)), ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize));
+return (struct __eCNameSpace__eC__containers__IteratorPointer *)(((unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array) + ((__eCPointer___eCNameSpace__eC__containers__Array->count++) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize));
 }
 
-void __eCMethod___eCNameSpace__eC__types__Array_Remove(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip)
+void __eCMethod___eCNameSpace__eC__containers__Array_Remove(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 uint64 * it = (uint64 *)ip;
 
-memmove(it, ((unsigned char *)it) + (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize), (__eCPointer___eCNameSpace__eC__types__Array->count - ((((unsigned char *)(it) - (unsigned char *)(__eCPointer___eCNameSpace__eC__types__Array->array)) / ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) - 1) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize);
-__eCPointer___eCNameSpace__eC__types__Array->count--;
-if(__eCPointer___eCNameSpace__eC__types__Array->count + 1 > __eCPointer___eCNameSpace__eC__types__Array->minAllocSize)
-__eCPointer___eCNameSpace__eC__types__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__types__Array->count));
+memmove(it, ((unsigned char *)it) + (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize), (__eCPointer___eCNameSpace__eC__containers__Array->count - ((((unsigned char *)(it) - (unsigned char *)(__eCPointer___eCNameSpace__eC__containers__Array->array)) / ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize)) - 1) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize);
+__eCPointer___eCNameSpace__eC__containers__Array->count--;
+if(__eCPointer___eCNameSpace__eC__containers__Array->count + 1 > __eCPointer___eCNameSpace__eC__containers__Array->minAllocSize)
+__eCPointer___eCNameSpace__eC__containers__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__containers__Array->count));
 }
 
-void __eCMethod___eCNameSpace__eC__types__Array_Move(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip, struct __eCNameSpace__eC__containers__IteratorPointer * afterIp)
+void __eCMethod___eCNameSpace__eC__containers__Array_Move(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * ip, struct __eCNameSpace__eC__containers__IteratorPointer * afterIp)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 uint64 * it = (uint64 *)ip;
 uint64 * after = (uint64 *)afterIp;
 size_t size = ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize;
@@ -723,8 +723,8 @@ unsigned char * temp = __eCNameSpace__eC__types__eSystem_New(sizeof(unsigned cha
 memcpy(temp, it, size);
 if(!after)
 {
-memmove(((unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array) + (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize), __eCPointer___eCNameSpace__eC__types__Array->array, (unsigned char *)it - (unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array);
-memcpy(__eCPointer___eCNameSpace__eC__types__Array->array, temp, size);
+memmove(((unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array) + (1 * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize), __eCPointer___eCNameSpace__eC__containers__Array->array, (unsigned char *)it - (unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array);
+memcpy(__eCPointer___eCNameSpace__eC__containers__Array->array, temp, size);
 }
 else
 {
@@ -742,64 +742,64 @@ memcpy(((unsigned char *)after) + (1 * ((struct __eCNameSpace__eC__types__Instan
 (__eCNameSpace__eC__types__eSystem_Delete(temp), temp = 0);
 }
 
-void __eCMethod___eCNameSpace__eC__types__Array_RemoveAll(struct __eCNameSpace__eC__types__Instance * this)
+void __eCMethod___eCNameSpace__eC__containers__Array_RemoveAll(struct __eCNameSpace__eC__types__Instance * this)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-if(__eCPointer___eCNameSpace__eC__types__Array->minAllocSize && __eCPointer___eCNameSpace__eC__types__Array->array)
-__eCPointer___eCNameSpace__eC__types__Array->array = __eCNameSpace__eC__types__eSystem_Renew0(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__types__Array->minAllocSize));
+if(__eCPointer___eCNameSpace__eC__containers__Array->minAllocSize && __eCPointer___eCNameSpace__eC__containers__Array->array)
+__eCPointer___eCNameSpace__eC__containers__Array->array = __eCNameSpace__eC__types__eSystem_Renew0(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__containers__Array->minAllocSize));
 else
-(__eCNameSpace__eC__types__eSystem_Delete(__eCPointer___eCNameSpace__eC__types__Array->array), __eCPointer___eCNameSpace__eC__types__Array->array = 0);
-__eCPointer___eCNameSpace__eC__types__Array->count = 0;
+(__eCNameSpace__eC__types__eSystem_Delete(__eCPointer___eCNameSpace__eC__containers__Array->array), __eCPointer___eCNameSpace__eC__containers__Array->array = 0);
+__eCPointer___eCNameSpace__eC__containers__Array->count = 0;
 }
 
-void __eCProp___eCNameSpace__eC__types__Array_Set_size(struct __eCNameSpace__eC__types__Instance * this, unsigned int value)
+void __eCProp___eCNameSpace__eC__containers__Array_Set_size(struct __eCNameSpace__eC__types__Instance * this, unsigned int value)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-if(__eCPointer___eCNameSpace__eC__types__Array->count != value)
+if(__eCPointer___eCNameSpace__eC__containers__Array->count != value)
 {
-if(!__eCPointer___eCNameSpace__eC__types__Array->minAllocSize || value > __eCPointer___eCNameSpace__eC__types__Array->minAllocSize)
-__eCPointer___eCNameSpace__eC__types__Array->array = __eCNameSpace__eC__types__eSystem_Renew0(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (value));
-else if(value > __eCPointer___eCNameSpace__eC__types__Array->count)
-memset((unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array + __eCPointer___eCNameSpace__eC__types__Array->count * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize, 0, (value - __eCPointer___eCNameSpace__eC__types__Array->count) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize);
-__eCPointer___eCNameSpace__eC__types__Array->count = value;
+if(!__eCPointer___eCNameSpace__eC__containers__Array->minAllocSize || value > __eCPointer___eCNameSpace__eC__containers__Array->minAllocSize)
+__eCPointer___eCNameSpace__eC__containers__Array->array = __eCNameSpace__eC__types__eSystem_Renew0(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (value));
+else if(value > __eCPointer___eCNameSpace__eC__containers__Array->count)
+memset((unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array + __eCPointer___eCNameSpace__eC__containers__Array->count * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize, 0, (value - __eCPointer___eCNameSpace__eC__containers__Array->count) * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize);
+__eCPointer___eCNameSpace__eC__containers__Array->count = value;
 }
-__eCProp___eCNameSpace__eC__types__Array_size && __eCProp___eCNameSpace__eC__types__Array_size->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCProp___eCNameSpace__eC__types__Array_size) : (void)0, __eCPropM___eCNameSpace__eC__types__Array_size && __eCPropM___eCNameSpace__eC__types__Array_size->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCPropM___eCNameSpace__eC__types__Array_size) : (void)0;
-}
-
-void __eCProp___eCNameSpace__eC__types__Array_Set_minAllocSize(struct __eCNameSpace__eC__types__Instance * this, unsigned int value)
-{
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
-
-if(__eCPointer___eCNameSpace__eC__types__Array->minAllocSize != value)
-{
-if(value > __eCPointer___eCNameSpace__eC__types__Array->count)
-__eCPointer___eCNameSpace__eC__types__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (value));
-__eCPointer___eCNameSpace__eC__types__Array->minAllocSize = value;
-}
-__eCProp___eCNameSpace__eC__types__Array_minAllocSize && __eCProp___eCNameSpace__eC__types__Array_minAllocSize->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCProp___eCNameSpace__eC__types__Array_minAllocSize) : (void)0, __eCPropM___eCNameSpace__eC__types__Array_minAllocSize && __eCPropM___eCNameSpace__eC__types__Array_minAllocSize->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCPropM___eCNameSpace__eC__types__Array_minAllocSize) : (void)0;
+__eCProp___eCNameSpace__eC__containers__Array_size && __eCProp___eCNameSpace__eC__containers__Array_size->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCProp___eCNameSpace__eC__containers__Array_size) : (void)0, __eCPropM___eCNameSpace__eC__containers__Array_size && __eCPropM___eCNameSpace__eC__containers__Array_size->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCPropM___eCNameSpace__eC__containers__Array_size) : (void)0;
 }
 
-void __eCMethod___eCNameSpace__eC__types__Array_Free(struct __eCNameSpace__eC__types__Instance * this)
+void __eCProp___eCNameSpace__eC__containers__Array_Set_minAllocSize(struct __eCNameSpace__eC__types__Instance * this, unsigned int value)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+
+if(__eCPointer___eCNameSpace__eC__containers__Array->minAllocSize != value)
+{
+if(value > __eCPointer___eCNameSpace__eC__containers__Array->count)
+__eCPointer___eCNameSpace__eC__containers__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (value));
+__eCPointer___eCNameSpace__eC__containers__Array->minAllocSize = value;
+}
+__eCProp___eCNameSpace__eC__containers__Array_minAllocSize && __eCProp___eCNameSpace__eC__containers__Array_minAllocSize->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCProp___eCNameSpace__eC__containers__Array_minAllocSize) : (void)0, __eCPropM___eCNameSpace__eC__containers__Array_minAllocSize && __eCPropM___eCNameSpace__eC__containers__Array_minAllocSize->selfWatchable ? __eCNameSpace__eC__types__eInstance_FireSelfWatchers(this, __eCPropM___eCNameSpace__eC__containers__Array_minAllocSize) : (void)0;
+}
+
+void __eCMethod___eCNameSpace__eC__containers__Array_Free(struct __eCNameSpace__eC__types__Instance * this)
+{
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 int c;
 
-for(c = 0; c < __eCPointer___eCNameSpace__eC__types__Array->count; c++)
+for(c = 0; c < __eCPointer___eCNameSpace__eC__containers__Array->count; c++)
 {
-uint64 data = ((((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? (uint64)(uintptr_t)(((unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array) + (c) * ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize) : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 1) ? ((unsigned char *)__eCPointer___eCNameSpace__eC__types__Array->array)[c] : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 2) ? ((unsigned short *)__eCPointer___eCNameSpace__eC__types__Array->array)[c] : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 4) ? ((unsigned int *)__eCPointer___eCNameSpace__eC__types__Array->array)[c] : (__eCPointer___eCNameSpace__eC__types__Array->array)[c]))))));
+uint64 data = ((((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? (uint64)(uintptr_t)(((unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array) + (c) * ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize) : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 1) ? ((unsigned char *)__eCPointer___eCNameSpace__eC__containers__Array->array)[c] : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 2) ? ((unsigned short *)__eCPointer___eCNameSpace__eC__containers__Array->array)[c] : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 4) ? ((unsigned int *)__eCPointer___eCNameSpace__eC__containers__Array->array)[c] : (__eCPointer___eCNameSpace__eC__containers__Array->array)[c]))))));
 
 (((void (* )(void *  _class, void *  data))((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->_vTbl[__eCVMethodID_class_OnFree])(((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass, ((void * )((uintptr_t)(data)))), data = 0);
 }
-(__eCNameSpace__eC__types__eSystem_Delete(__eCPointer___eCNameSpace__eC__types__Array->array), __eCPointer___eCNameSpace__eC__types__Array->array = 0);
-__eCPointer___eCNameSpace__eC__types__Array->count = 0;
-__eCPointer___eCNameSpace__eC__types__Array->minAllocSize = 0;
+(__eCNameSpace__eC__types__eSystem_Delete(__eCPointer___eCNameSpace__eC__containers__Array->array), __eCPointer___eCNameSpace__eC__containers__Array->array = 0);
+__eCPointer___eCNameSpace__eC__containers__Array->count = 0;
+__eCPointer___eCNameSpace__eC__containers__Array->minAllocSize = 0;
 }
 
-void __eCMethod___eCNameSpace__eC__types__Array_Delete(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * item)
+void __eCMethod___eCNameSpace__eC__containers__Array_Delete(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__containers__IteratorPointer * item)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 uint64 data = ((((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? ((uint64)(uintptr_t)(uint64 * )item) : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 1) ? *((unsigned char *)(uint64 * )item) : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 2) ? *((unsigned short *)(uint64 * )item) : ((((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize == 4) ? *((unsigned int *)(uint64 * )item) : *((uint64 *)item)))))));
 
 (((void (* )(void *  _class, void *  data))((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->_vTbl[__eCVMethodID_class_OnFree])(((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass, ((void * )((uintptr_t)(data)))), data = 0);
@@ -809,26 +809,26 @@ void (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, 
 __internal_VirtualMethod = ((void (*)(struct __eCNameSpace__eC__types__Instance *, struct __eCNameSpace__eC__containers__IteratorPointer * it))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = this;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__types__Array->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__containers__Array->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_Remove]);
 __internal_VirtualMethod ? __internal_VirtualMethod(this, item) : (void)1;
 }));
 }
 
-void __eCMethod___eCNameSpace__eC__types__Array_Sort(struct __eCNameSpace__eC__types__Instance * this, unsigned int ascending)
+void __eCMethod___eCNameSpace__eC__containers__Array_Sort(struct __eCNameSpace__eC__types__Instance * this, unsigned int ascending)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 struct __eCNameSpace__eC__types__Class * Dclass = ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[2].__anon1.__anon1.dataTypeClass;
 unsigned int byRef = (Dclass->type == 1000 && !Dclass->byValueSystemClass) || Dclass->type == 2 || Dclass->type == 4 || Dclass->type == 3 || Dclass->type == 1;
 
-__eCNameSpace__eC__types___qsortrx(__eCPointer___eCNameSpace__eC__types__Array->array, __eCPointer___eCNameSpace__eC__types__Array->count, Dclass->typeSize, (void *)Dclass->_vTbl[__eCVMethodID_class_OnCompare], (((void *)0)), Dclass, !byRef, ascending);
+__eCNameSpace__eC__containers___qsortrx(__eCPointer___eCNameSpace__eC__containers__Array->array, __eCPointer___eCNameSpace__eC__containers__Array->count, Dclass->typeSize, (void *)Dclass->_vTbl[__eCVMethodID_class_OnCompare], (((void *)0)), Dclass, !byRef, ascending);
 }
 
-void __eCMethod___eCNameSpace__eC__types__Array_Copy(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Instance * source)
+void __eCMethod___eCNameSpace__eC__containers__Array_Copy(struct __eCNameSpace__eC__types__Instance * this, struct __eCNameSpace__eC__types__Instance * source)
 {
-__attribute__((unused)) struct __eCNameSpace__eC__types__Array * __eCPointer___eCNameSpace__eC__types__Array = (struct __eCNameSpace__eC__types__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
+__attribute__((unused)) struct __eCNameSpace__eC__containers__Array * __eCPointer___eCNameSpace__eC__containers__Array = (struct __eCNameSpace__eC__containers__Array *)(this ? (((char *)this) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance)) : 0);
 
-__eCPointer___eCNameSpace__eC__types__Array->count = (__extension__ ({
+__eCPointer___eCNameSpace__eC__containers__Array->count = (__extension__ ({
 int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *);
 
 __internal_VirtualMethod = ((int (*)(struct __eCNameSpace__eC__types__Instance *))__extension__ ({
@@ -838,18 +838,18 @@ __internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC
 })[__eCVMethodID___eCNameSpace__eC__containers__Container_GetCount]);
 __internal_VirtualMethod ? __internal_VirtualMethod(source) : (int)1;
 }));
-if(__eCPointer___eCNameSpace__eC__types__Array->count > __eCPointer___eCNameSpace__eC__types__Array->minAllocSize)
+if(__eCPointer___eCNameSpace__eC__containers__Array->count > __eCPointer___eCNameSpace__eC__containers__Array->minAllocSize)
 {
 if(!((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass)
 {
 __eCNameSpace__eC__types__PrintLn(__eCClass_char__PTR_, "ERROR: Array::Copy() called with undefined type", (void *)0);
 return ;
 }
-__eCPointer___eCNameSpace__eC__types__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__types__Array->count));
+__eCPointer___eCNameSpace__eC__containers__Array->array = __eCNameSpace__eC__types__eSystem_Renew(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize * (__eCPointer___eCNameSpace__eC__containers__Array->count));
 }
-if((((struct __eCNameSpace__eC__types__Instance *)(char *)source)->_class == __eCClass___eCNameSpace__eC__containers__BuiltInContainer && (*((struct __eCNameSpace__eC__containers__BuiltInContainer *)source)).type->type != 1) || __eCNameSpace__eC__types__eClass_IsDerived(((struct __eCNameSpace__eC__types__Instance *)(char *)source)->_class, __eCClass___eCNameSpace__eC__types__Array))
+if((((struct __eCNameSpace__eC__types__Instance *)(char *)source)->_class == __eCClass___eCNameSpace__eC__containers__BuiltInContainer && (*((struct __eCNameSpace__eC__containers__BuiltInContainer *)source)).type->type != 1) || __eCNameSpace__eC__types__eClass_IsDerived(((struct __eCNameSpace__eC__types__Instance *)(char *)source)->_class, __eCClass___eCNameSpace__eC__containers__Array))
 {
-memcpy(__eCPointer___eCNameSpace__eC__types__Array->array, ((struct __eCNameSpace__eC__types__Array *)(((char *)((struct __eCNameSpace__eC__types__Instance *)source) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->array, __eCPointer___eCNameSpace__eC__types__Array->count * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize);
+memcpy(__eCPointer___eCNameSpace__eC__containers__Array->array, ((struct __eCNameSpace__eC__containers__Array *)(((char *)((struct __eCNameSpace__eC__types__Instance *)source) + 0 + sizeof(struct __eCNameSpace__eC__types__Instance))))->array, __eCPointer___eCNameSpace__eC__containers__Array->count * ((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize);
 }
 else
 {
@@ -887,7 +887,7 @@ __internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC
 __internal_VirtualMethod ? __internal_VirtualMethod(source, i) : (uint64)1;
 }));
 
-(memcpy((char *)__eCPointer___eCNameSpace__eC__types__Array->array + ((c) * ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize), (((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? (char *)(uintptr_t)(data) : ((char *)&data + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[2].__anon1.__anon1.dataTypeClass->typeSize)), ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize));
+(memcpy((char *)__eCPointer___eCNameSpace__eC__containers__Array->array + ((c) * ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize), (((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->type == 1) ? (char *)(uintptr_t)(data) : ((char *)&data + __ENDIAN_PAD(((struct __eCNameSpace__eC__types__Instance *)(char *)this)->_class->templateArgs[2].__anon1.__anon1.dataTypeClass->typeSize)), ((struct __eCNameSpace__eC__types__Instance * )(char * )this)->_class->templateArgs[0].__anon1.__anon1.dataTypeClass->typeSize));
 }
 }
 }
@@ -895,51 +895,51 @@ __internal_VirtualMethod ? __internal_VirtualMethod(source, i) : (uint64)1;
 void __eCUnregisterModule_Array(struct __eCNameSpace__eC__types__Instance * module)
 {
 
-__eCPropM___eCNameSpace__eC__types__Array_size = (void *)0;
-__eCPropM___eCNameSpace__eC__types__Array_minAllocSize = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__Array_size = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__Array_minAllocSize = (void *)0;
 }
 
 void __eCRegisterModule_Array(struct __eCNameSpace__eC__types__Instance * module)
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "Array_ec}eC::types::SortRData", 0, sizeof(struct __eCNameSpace__eC__types__SortRData), 0, (void *)0, (void *)0, module, 3, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "Array_ec}eC::containers::SortRData", 0, sizeof(struct __eCNameSpace__eC__containers__SortRData), 0, (void *)0, (void *)0, module, 3, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__types__SortRData = class;
+__eCClass___eCNameSpace__eC__containers__SortRData = class;
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "arg", "void *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "compare", "int (*)(void *, const void *, const void *)", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::qsortrx", "void eC::types::qsortrx(void * base, uintsize nel, uintsize width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), void * arg, bool deref, bool ascending)", __eCNameSpace__eC__types__qsortrx, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::qsortr", "void eC::types::qsortr(void * base, uintsize nel, uintsize width, int (* compare)(void * arg, const void * a, const void * b), void * arg)", __eCNameSpace__eC__types__qsortr, module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::Array", "eC::types::Container", sizeof(struct __eCNameSpace__eC__types__Array), 0, (void *)0, (void *)__eCDestructor___eCNameSpace__eC__types__Array, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::containers::qsortrx", "void eC::containers::qsortrx(void * base, uintsize nel, uintsize width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), void * arg, bool deref, bool ascending)", __eCNameSpace__eC__containers__qsortrx, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::containers::qsortr", "void eC::containers::qsortr(void * base, uintsize nel, uintsize width, int (* compare)(void * arg, const void * a, const void * b), void * arg)", __eCNameSpace__eC__containers__qsortr, module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::containers::Array", "eC::containers::Container", sizeof(struct __eCNameSpace__eC__containers__Array), 0, (void *)0, (void *)__eCDestructor___eCNameSpace__eC__containers__Array, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
-__eCClass___eCNameSpace__eC__types__Array = class;
-__eCNameSpace__eC__types__eClass_AddMethod(class, "OnUnserialize", 0, __eCMethod___eCNameSpace__eC__types__Array_OnUnserialize, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetFirst", 0, __eCMethod___eCNameSpace__eC__types__Array_GetFirst, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetLast", 0, __eCMethod___eCNameSpace__eC__types__Array_GetLast, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetPrev", 0, __eCMethod___eCNameSpace__eC__types__Array_GetPrev, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetNext", 0, __eCMethod___eCNameSpace__eC__types__Array_GetNext, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetData", 0, __eCMethod___eCNameSpace__eC__types__Array_GetData, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "SetData", 0, __eCMethod___eCNameSpace__eC__types__Array_SetData, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetAtPosition", 0, __eCMethod___eCNameSpace__eC__types__Array_GetAtPosition, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Insert", 0, __eCMethod___eCNameSpace__eC__types__Array_Insert, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Add", 0, __eCMethod___eCNameSpace__eC__types__Array_Add, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Remove", 0, __eCMethod___eCNameSpace__eC__types__Array_Remove, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Move", 0, __eCMethod___eCNameSpace__eC__types__Array_Move, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "RemoveAll", 0, __eCMethod___eCNameSpace__eC__types__Array_RemoveAll, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Copy", 0, __eCMethod___eCNameSpace__eC__types__Array_Copy, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "GetCount", 0, __eCMethod___eCNameSpace__eC__types__Array_GetCount, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Free", 0, __eCMethod___eCNameSpace__eC__types__Array_Free, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Delete", 0, __eCMethod___eCNameSpace__eC__types__Array_Delete, 1);
-__eCNameSpace__eC__types__eClass_AddMethod(class, "Sort", 0, __eCMethod___eCNameSpace__eC__types__Array_Sort, 1);
+__eCClass___eCNameSpace__eC__containers__Array = class;
+__eCNameSpace__eC__types__eClass_AddMethod(class, "OnUnserialize", 0, __eCMethod___eCNameSpace__eC__containers__Array_OnUnserialize, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetFirst", 0, __eCMethod___eCNameSpace__eC__containers__Array_GetFirst, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetLast", 0, __eCMethod___eCNameSpace__eC__containers__Array_GetLast, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetPrev", 0, __eCMethod___eCNameSpace__eC__containers__Array_GetPrev, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetNext", 0, __eCMethod___eCNameSpace__eC__containers__Array_GetNext, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetData", 0, __eCMethod___eCNameSpace__eC__containers__Array_GetData, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "SetData", 0, __eCMethod___eCNameSpace__eC__containers__Array_SetData, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetAtPosition", 0, __eCMethod___eCNameSpace__eC__containers__Array_GetAtPosition, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Insert", 0, __eCMethod___eCNameSpace__eC__containers__Array_Insert, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Add", 0, __eCMethod___eCNameSpace__eC__containers__Array_Add, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Remove", 0, __eCMethod___eCNameSpace__eC__containers__Array_Remove, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Move", 0, __eCMethod___eCNameSpace__eC__containers__Array_Move, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "RemoveAll", 0, __eCMethod___eCNameSpace__eC__containers__Array_RemoveAll, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Copy", 0, __eCMethod___eCNameSpace__eC__containers__Array_Copy, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "GetCount", 0, __eCMethod___eCNameSpace__eC__containers__Array_GetCount, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Free", 0, __eCMethod___eCNameSpace__eC__containers__Array_Free, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Delete", 0, __eCMethod___eCNameSpace__eC__containers__Array_Delete, 1);
+__eCNameSpace__eC__types__eClass_AddMethod(class, "Sort", 0, __eCMethod___eCNameSpace__eC__containers__Array_Sort, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "array", "T *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "count", "uint", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "minAllocSize", "uint", 4, 4, 1);
-__eCPropM___eCNameSpace__eC__types__Array_size = __eCNameSpace__eC__types__eClass_AddProperty(class, "size", "uint", __eCProp___eCNameSpace__eC__types__Array_Set_size, __eCProp___eCNameSpace__eC__types__Array_Get_size, 1);
+__eCPropM___eCNameSpace__eC__containers__Array_size = __eCNameSpace__eC__types__eClass_AddProperty(class, "size", "uint", __eCProp___eCNameSpace__eC__containers__Array_Set_size, __eCProp___eCNameSpace__eC__containers__Array_Get_size, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__Array_size = __eCPropM___eCNameSpace__eC__types__Array_size, __eCPropM___eCNameSpace__eC__types__Array_size = (void *)0;
-__eCPropM___eCNameSpace__eC__types__Array_minAllocSize = __eCNameSpace__eC__types__eClass_AddProperty(class, "minAllocSize", "uint", __eCProp___eCNameSpace__eC__types__Array_Set_minAllocSize, __eCProp___eCNameSpace__eC__types__Array_Get_minAllocSize, 1);
+__eCProp___eCNameSpace__eC__containers__Array_size = __eCPropM___eCNameSpace__eC__containers__Array_size, __eCPropM___eCNameSpace__eC__containers__Array_size = (void *)0;
+__eCPropM___eCNameSpace__eC__containers__Array_minAllocSize = __eCNameSpace__eC__types__eClass_AddProperty(class, "minAllocSize", "uint", __eCProp___eCNameSpace__eC__containers__Array_Set_minAllocSize, __eCProp___eCNameSpace__eC__containers__Array_Get_minAllocSize, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
-__eCProp___eCNameSpace__eC__types__Array_minAllocSize = __eCPropM___eCNameSpace__eC__types__Array_minAllocSize, __eCPropM___eCNameSpace__eC__types__Array_minAllocSize = (void *)0;
+__eCProp___eCNameSpace__eC__containers__Array_minAllocSize = __eCPropM___eCNameSpace__eC__containers__Array_minAllocSize, __eCPropM___eCNameSpace__eC__containers__Array_minAllocSize = (void *)0;
 if(class)
 class->fixed = (unsigned int)1;
 }

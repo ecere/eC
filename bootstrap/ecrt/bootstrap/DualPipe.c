@@ -122,6 +122,8 @@ unsigned int offset;
 unsigned int circ;
 } eC_gcc_struct;
 
+struct __eCNameSpace__eC__files__Type;
+
 struct __eCNameSpace__eC__types__DataValue
 {
 union
@@ -215,13 +217,13 @@ extern int __eCVMethodID___eCNameSpace__eC__files__File_GetSize;
 
 extern int __eCVMethodID___eCNameSpace__eC__files__File_Eof;
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -266,39 +268,54 @@ int id;
 struct __eCNameSpace__eC__types__Class * _class;
 const char *  dataTypeString;
 struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__Method;
+struct __eCNameSpace__eC__types__Property;
 
-struct __eCNameSpace__eC__types__Method
+struct __eCNameSpace__eC__types__Property
 {
+struct __eCNameSpace__eC__types__Property * prev;
+struct __eCNameSpace__eC__types__Property * next;
 const char *  name;
-struct __eCNameSpace__eC__types__Method * parent;
-struct __eCNameSpace__eC__types__Method * left;
-struct __eCNameSpace__eC__types__Method * right;
-int depth;
-int (*  function)();
-int vid;
-int type;
-struct __eCNameSpace__eC__types__Class * _class;
-void *  symbol;
-const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+unsigned int isProperty;
 int memberAccess;
+int id;
+struct __eCNameSpace__eC__types__Class * _class;
+const char *  dataTypeString;
+struct __eCNameSpace__eC__types__Class * dataTypeClass;
+struct __eCNameSpace__eC__files__Type * dataType;
+void (*  Set)(void * , int);
+int (*  Get)(void * );
+unsigned int (*  IsSet)(void * );
+void *  data;
+void *  symbol;
+int vid;
+unsigned int conversion;
+unsigned int watcherOffset;
+const char *  category;
+unsigned int compiled;
+unsigned int selfWatchable;
+unsigned int isWatchable;
 } eC_gcc_struct;
 
-extern struct __eCNameSpace__eC__types__Method * __eCNameSpace__eC__types__eClass_AddMethod(struct __eCNameSpace__eC__types__Class * _class, const char *  name, const char *  type, void *  function, int declMode);
+extern void __eCNameSpace__eC__types__eInstance_FireSelfWatchers(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property);
 
-struct __eCNameSpace__eC__types__Property;
+extern void __eCNameSpace__eC__types__eInstance_StopWatching(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property, struct __eCNameSpace__eC__types__Instance * object);
+
+extern void __eCNameSpace__eC__types__eInstance_Watch(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property, void *  object, void (*  callback)(void * , void * ));
+
+extern void __eCNameSpace__eC__types__eInstance_FireWatchers(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property);
+
+struct __eCNameSpace__eC__types__Method;
 
 struct __eCNameSpace__eC__types__ClassTemplateArgument
 {
@@ -323,39 +340,24 @@ struct __eCNameSpace__eC__types__Method * method;
 } eC_gcc_struct __anon1;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__types__Property
+struct __eCNameSpace__eC__types__Method
 {
-struct __eCNameSpace__eC__types__Property * prev;
-struct __eCNameSpace__eC__types__Property * next;
 const char *  name;
-unsigned int isProperty;
-int memberAccess;
-int id;
-struct __eCNameSpace__eC__types__Class * _class;
-const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Class * dataTypeClass;
-struct __eCNameSpace__eC__types__Instance * dataType;
-void (*  Set)(void * , int);
-int (*  Get)(void * );
-unsigned int (*  IsSet)(void * );
-void *  data;
-void *  symbol;
+struct __eCNameSpace__eC__types__Method * parent;
+struct __eCNameSpace__eC__types__Method * left;
+struct __eCNameSpace__eC__types__Method * right;
+int depth;
+int (*  function)();
 int vid;
-unsigned int conversion;
-unsigned int watcherOffset;
-const char *  category;
-unsigned int compiled;
-unsigned int selfWatchable;
-unsigned int isWatchable;
+int type;
+struct __eCNameSpace__eC__types__Class * _class;
+void *  symbol;
+const char *  dataTypeString;
+struct __eCNameSpace__eC__files__Type * dataType;
+int memberAccess;
 } eC_gcc_struct;
 
-extern void __eCNameSpace__eC__types__eInstance_FireSelfWatchers(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property);
-
-extern void __eCNameSpace__eC__types__eInstance_StopWatching(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property, struct __eCNameSpace__eC__types__Instance * object);
-
-extern void __eCNameSpace__eC__types__eInstance_Watch(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property, void *  object, void (*  callback)(void * , void * ));
-
-extern void __eCNameSpace__eC__types__eInstance_FireWatchers(struct __eCNameSpace__eC__types__Instance * instance, struct __eCNameSpace__eC__types__Property * _property);
+extern struct __eCNameSpace__eC__types__Method * __eCNameSpace__eC__types__eClass_AddMethod(struct __eCNameSpace__eC__types__Class * _class, const char *  name, const char *  type, void *  function, int declMode);
 
 struct __eCNameSpace__eC__types__Module;
 
@@ -375,10 +377,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -395,11 +397,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -407,7 +409,7 @@ int type;
 struct __eCNameSpace__eC__types__Instance * module;
 struct __eCNameSpace__eC__types__NameSpace *  nameSpace;
 const char *  dataTypeString;
-struct __eCNameSpace__eC__types__Instance * dataType;
+struct __eCNameSpace__eC__files__Type * dataType;
 int typeSize;
 int defaultAlignment;
 void (*  Initialize)();

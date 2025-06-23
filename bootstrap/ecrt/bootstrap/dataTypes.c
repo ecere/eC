@@ -269,11 +269,13 @@ extern uint64 __eCNameSpace__eC__types___strtoui64(const char *  string, const c
 
 extern char *  __eCNameSpace__eC__types__CopyString(const char *  string);
 
+extern double fabs(double number);
+
 extern double strtod(const char * , char * * );
 
 extern unsigned int __eCNameSpace__eC__i18n__UTF8Validate(const char *  source);
 
-extern int __eCNameSpace__eC__files__ISO8859_1toUTF8(const char *  source, char *  dest, int max);
+extern int __eCNameSpace__eC__i18n__ISO8859_1toUTF8(const char *  source, char *  dest, int max);
 
 extern int puts(const char * );
 
@@ -310,6 +312,67 @@ struct __eCNameSpace__eC__types__EnumClassData
 struct __eCNameSpace__eC__containers__OldList values;
 long long largest;
 } eC_gcc_struct;
+
+static void __eCNameSpace__eC__types__cleanFinalDigits(char * number, int numDigits)
+{
+int len = strlen(number);
+int c;
+int last = 0;
+unsigned int checkFor1 = 1, checkFor9 = 1;
+int first9 = 0;
+const char * dot = strchr(number, '.');
+
+for(c = len - 1; c >= 0; c--)
+{
+char ch = number[c];
+
+if(ch != '0' && dot)
+{
+if(ch == '1' && number + c - dot >= numDigits - 1 && c == len - 1 && checkFor1)
+checkFor1 = 0;
+else if(ch == '9' && number + c - dot >= numDigits - 1 && c == len - 1 && checkFor9)
+first9 = c;
+else
+{
+last = ((last > c) ? last : c);
+checkFor9 = 0;
+checkFor1 = 0;
+}
+}
+if(ch == '.')
+{
+if(last == c)
+number[c] = 0;
+else
+{
+number[last + 1] = 0;
+if(first9)
+{
+while(--first9 > 0)
+{
+if(first9 != c)
+{
+ch = number[first9];
+if(!ch || ch == '.')
+;
+else if(number[first9] < '9')
+{
+int j;
+
+number[first9]++;
+for(j = first9 + 1; j < (dot - number); j++)
+number[j] = '0';
+number[j] = 0;
+break;
+}
+}
+}
+}
+}
+break;
+}
+}
+}
 
 struct __eCNameSpace__eC__types__Property;
 
@@ -707,68 +770,16 @@ else if(f && (((f < 0) ? -f : f) > 1E20 || ((f < 0) ? -f : f) < 1E-20))
 sprintf(string, "%.15e", f);
 else
 {
-int c;
-int last = 0;
-unsigned int checkFor1 = 1, checkFor9 = 1;
-int numDigits = 7, num = 1;
-int first9 = 0;
-char format[10];
-char * dot;
-int len;
+int numDigits = 9;
+float num = 0.01f;
+char format[128];
+double af = fabs(f);
 
-while(numDigits && (float)num < f)
+while(numDigits && num < af)
 numDigits--, num *= 10;
 sprintf(format, "%%.%df", numDigits);
 sprintf(string, format, f);
-dot = strchr(string, '.');
-len = strlen(string);
-c = len - 1;
-for(; c >= 0; c--)
-{
-char ch = string[c];
-
-if(ch != '0' && dot)
-{
-if(ch == '1' && string + c - dot >= 6 && c == len - 1 && checkFor1)
-checkFor1 = 0;
-else if(ch == '9' && string + c - dot >= 6 && c == len - 1 && checkFor9)
-first9 = c;
-else
-{
-last = ((last > c) ? last : c);
-checkFor9 = 0;
-checkFor1 = 0;
-}
-}
-if(ch == '.')
-{
-if(last == c)
-string[c] = 0;
-else
-{
-string[last + 1] = 0;
-if(first9)
-{
-while(--first9 > 0)
-{
-if(first9 != c)
-if(string[first9] < '9')
-{
-string[first9]++;
-break;
-}
-}
-if(first9 < c)
-{
-string[c - 1] = '1';
-first9 = c;
-}
-string[first9 + 1] = 0;
-}
-}
-break;
-}
-}
+__eCNameSpace__eC__types__cleanFinalDigits(string, numDigits);
 }
 return string;
 }
@@ -827,27 +838,16 @@ else if(f && (((f < 0) ? -f : f) > 1E20 || ((f < 0) ? -f : f) < 1E-20))
 sprintf(string, "%.15e", f);
 else
 {
-int c;
-int last = 0;
+int numDigits = 17;
+double num = 0.01;
+char format[128];
+double af = fabs(f);
 
-if(runtimePlatform == 1)
-sprintf(string, "%.15g", f);
-else
-sprintf(string, "%.13lf", f);
-c = strlen(string) - 1;
-for(; c >= 0; c--)
-{
-if(string[c] != '0')
-last = ((last > c) ? last : c);
-if(string[c] == '.')
-{
-if(last == c)
-string[c] = 0;
-else
-string[last + 1] = 0;
-break;
-}
-}
+while(numDigits && num < af)
+numDigits--, num *= 10;
+sprintf(format, "%%.%dlf", numDigits);
+sprintf(string, format, f);
+__eCNameSpace__eC__types__cleanFinalDigits(string, numDigits);
 }
 return string;
 }
@@ -1007,23 +1007,23 @@ static const char * __eCNameSpace__eC__types__UIntPtr64_OnGetString(struct __eCN
 return __eCNameSpace__eC__types__UInt64Hex_OnGetString(_class, &data, string, fieldData, onType);
 }
 
-struct __eCNameSpace__eC__files__NamedLink64;
+struct __eCNameSpace__eC__containers__NamedLink64;
 
-struct __eCNameSpace__eC__files__NamedLink64
+struct __eCNameSpace__eC__containers__NamedLink64
 {
-struct __eCNameSpace__eC__files__NamedLink64 * prev;
-struct __eCNameSpace__eC__files__NamedLink64 * next;
+struct __eCNameSpace__eC__containers__NamedLink64 * prev;
+struct __eCNameSpace__eC__containers__NamedLink64 * next;
 char *  name;
 long long data;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__files__BinaryTree;
+struct __eCNameSpace__eC__containers__BinaryTree;
 
-struct __eCNameSpace__eC__files__BinaryTree
+struct __eCNameSpace__eC__containers__BinaryTree
 {
 struct __eCNameSpace__eC__containers__BTNode * root;
 int count;
-int (*  CompareKey)(struct __eCNameSpace__eC__files__BinaryTree * tree, uintptr_t a, uintptr_t b);
+int (*  CompareKey)(struct __eCNameSpace__eC__containers__BinaryTree * tree, uintptr_t a, uintptr_t b);
 void (*  FreeKey)(void *  key);
 } eC_gcc_struct;
 
@@ -1045,7 +1045,7 @@ int type;
 int offset;
 int memberID;
 struct __eCNameSpace__eC__containers__OldList members;
-struct __eCNameSpace__eC__files__BinaryTree membersAlpha;
+struct __eCNameSpace__eC__containers__BinaryTree membersAlpha;
 int memberOffset;
 short structAlignment;
 short pointerAlignment;
@@ -1147,10 +1147,10 @@ struct __eCNameSpace__eC__types__NameSpace *  left;
 struct __eCNameSpace__eC__types__NameSpace *  right;
 int depth;
 struct __eCNameSpace__eC__types__NameSpace *  parent;
-struct __eCNameSpace__eC__files__BinaryTree nameSpaces;
-struct __eCNameSpace__eC__files__BinaryTree classes;
-struct __eCNameSpace__eC__files__BinaryTree defines;
-struct __eCNameSpace__eC__files__BinaryTree functions;
+struct __eCNameSpace__eC__containers__BinaryTree nameSpaces;
+struct __eCNameSpace__eC__containers__BinaryTree classes;
+struct __eCNameSpace__eC__containers__BinaryTree defines;
+struct __eCNameSpace__eC__containers__BinaryTree functions;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__Class
@@ -1167,11 +1167,11 @@ void (*  Destructor)(void * );
 int offsetClass;
 int sizeClass;
 struct __eCNameSpace__eC__types__Class * base;
-struct __eCNameSpace__eC__files__BinaryTree methods;
-struct __eCNameSpace__eC__files__BinaryTree members;
-struct __eCNameSpace__eC__files__BinaryTree prop;
+struct __eCNameSpace__eC__containers__BinaryTree methods;
+struct __eCNameSpace__eC__containers__BinaryTree members;
+struct __eCNameSpace__eC__containers__BinaryTree prop;
 struct __eCNameSpace__eC__containers__OldList membersAndProperties;
-struct __eCNameSpace__eC__files__BinaryTree classProperties;
+struct __eCNameSpace__eC__containers__BinaryTree classProperties;
 struct __eCNameSpace__eC__containers__OldList derivatives;
 int memberID;
 int startMemberID;
@@ -1276,7 +1276,7 @@ __internal_VirtualMethod ? __internal_VirtualMethod(class, data, this) : (void)1
 
 const char * __eCNameSpace__eC__types__Enum_OnGetString(struct __eCNameSpace__eC__types__Class * _class, void * data, char * tempString, void * fieldData, unsigned int * onType)
 {
-struct __eCNameSpace__eC__files__NamedLink64 * item = (((void *)0));
+struct __eCNameSpace__eC__containers__NamedLink64 * item = (((void *)0));
 struct __eCNameSpace__eC__types__Class * b;
 long long i64Data = 0;
 
@@ -1321,7 +1321,7 @@ return (((void *)0));
 
 static unsigned int __eCNameSpace__eC__types__Enum_OnGetDataFromString(struct __eCNameSpace__eC__types__Class * _class, void * data, const char * string)
 {
-struct __eCNameSpace__eC__files__NamedLink64 * item = (((void *)0));
+struct __eCNameSpace__eC__containers__NamedLink64 * item = (((void *)0));
 struct __eCNameSpace__eC__types__Class * b;
 
 for(b = _class; !item && b && b->type == 4; b = b->base)
@@ -2012,7 +2012,7 @@ if(!__eCNameSpace__eC__i18n__UTF8Validate(*string))
 {
 char * newString = __eCNameSpace__eC__types__eSystem_New(sizeof(char) * (c * 2));
 
-__eCNameSpace__eC__files__ISO8859_1toUTF8(*string, newString, c * 2);
+__eCNameSpace__eC__i18n__ISO8859_1toUTF8(*string, newString, c * 2);
 (__eCNameSpace__eC__types__eSystem_Delete(*string), *string = 0);
 *string = __eCNameSpace__eC__types__eSystem_Renew(newString, sizeof(char) * (strlen(newString) + 1));
 }
@@ -3556,16 +3556,16 @@ void __eCNameSpace__eC__types__InitializeDataTypes1(struct __eCNameSpace__eC__ty
 {
 struct __eCNameSpace__eC__types__Class * baseClass = __eCNameSpace__eC__types__eSystem_FindClass(module, "class");
 
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnDisplay", "void typed_object::OnDisplay(Surface surface, int x, int y, int width, void * fieldData, Alignment alignment, DataDisplayFlags displayFlags)", (((void *)0)), 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnDisplay", "void typed_object::OnDisplay(Instance surface, int x, int y, int width, void * fieldData, int alignment, uint displayFlags)", (((void *)0)), 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnCompare", "int typed_object::OnCompare(any_object object)", __eCNameSpace__eC__types__OnCompare, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnCopy", "void typed_object&::OnCopy(any_object newData)", __eCNameSpace__eC__types__OnCopy, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnFree", "void typed_object::OnFree(void)", __eCNameSpace__eC__types__OnFree, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnGetString", "const char * typed_object::OnGetString(char * tempString, void * reserved, ObjectNotationType * onType)", __eCNameSpace__eC__types__OnGetString, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnGetDataFromString", "bool typed_object&::OnGetDataFromString(const char * string)", __eCNameSpace__eC__types__OnGetDataFromString, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnEdit", "Window typed_object::OnEdit(DataBox dataBox, DataBox obsolete, int x, int y, int w, int h, void * userData)", (((void *)0)), 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnEdit", "Instance typed_object::OnEdit(Instance dataBox, Instance obsolete, int x, int y, int w, int h, void * userData)", (((void *)0)), 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnSerialize", "void typed_object::OnSerialize(IOChannel channel)", __eCNameSpace__eC__types__OnSerialize, 1);
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnUnserialize", "void typed_object&::OnUnserialize(IOChannel channel)", __eCNameSpace__eC__types__OnUnserialize, 1);
-__eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnSaveEdit", "bool typed_object&::OnSaveEdit(Window window, void * object)", (((void *)0)), 1);
+__eCNameSpace__eC__types__eClass_AddVirtualMethod(baseClass, "OnSaveEdit", "bool typed_object&::OnSaveEdit(Instance window, void * object)", (((void *)0)), 1);
 }
 
 void __eCNameSpace__eC__types__InitializeDataTypes(struct __eCNameSpace__eC__types__Instance * module)
@@ -3584,24 +3584,24 @@ void __eCRegisterModule_dataTypes(struct __eCNameSpace__eC__types__Instance * mo
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXBYTE", "0xff", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXWORD", "0xffff", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MININT", "((int)0x80000000)", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXINT", "((int)0x7fffffff)", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MININT64", "((long long)0x8000000000000000LL)", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXINT64", "((long long)0x7fffffffffffffffLL)", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXDWORD", "0xffffffff", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXQWORD", "0xffffffffffffffffLL", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MINFLOAT", "1.17549435082228750e-38f", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXFLOAT", "3.40282346638528860e+38f", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MINDOUBLE", "2.2250738585072014e-308", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXDOUBLE", "1.7976931348623158e+308", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64HEXLL", "(__runtimePlatform == win32) ? \"0x%I64XLL\" : \"0x%llXLL\"", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64HEX", "(__runtimePlatform == win32) ? \"0x%I64X\" : \"0x%llX\"", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64DLL", "(__runtimePlatform == win32) ? \"%I64dLL\" : \"%lldLL\"", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64D", "(__runtimePlatform == win32) ? \"%I64d\" : \"%lld\"", module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64U", "(__runtimePlatform == win32) ? \"%I64u\" : \"%llu\"", module, 4);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::IOChannel", 0, 0, 0, (void *)0, (void *)0, module, 4, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXBYTE", "0xff", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXWORD", "0xffff", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MININT", "((int)0x80000000)", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXINT", "((int)0x7fffffff)", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MININT64", "((long long)0x8000000000000000LL)", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXINT64", "((long long)0x7fffffffffffffffLL)", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXDWORD", "0xffffffff", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXQWORD", "0xffffffffffffffffLL", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MINFLOAT", "1.17549435082228750e-38f", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXFLOAT", "3.40282346638528860e+38f", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MINDOUBLE", "2.2250738585072014e-308", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::MAXDOUBLE", "1.7976931348623158e+308", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64HEXLL", "(__runtimePlatform == win32) ? \"0x%I64XLL\" : \"0x%llXLL\"", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64HEX", "(__runtimePlatform == win32) ? \"0x%I64X\" : \"0x%llX\"", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64DLL", "(__runtimePlatform == win32) ? \"%I64dLL\" : \"%lldLL\"", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64D", "(__runtimePlatform == win32) ? \"%I64d\" : \"%lld\"", module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterDefine("eC::types::FORMAT64U", "(__runtimePlatform == win32) ? \"%I64u\" : \"%llu\"", module, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::IOChannel", 0, 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__IOChannel = class;
 __eCNameSpace__eC__types__eClass_AddVirtualMethod(class, "WriteData", "uintsize WriteData(const void * data, uintsize numBytes)", 0, 1);
@@ -3610,7 +3610,7 @@ __eCNameSpace__eC__types__eClass_AddMethod(class, "Get", "void Get(typed_object 
 __eCNameSpace__eC__types__eClass_AddMethod(class, "Put", "void Put(typed_object data)", __eCMethod___eCNameSpace__eC__types__IOChannel_Put, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "Serialize", "void Serialize(typed_object data)", __eCMethod___eCNameSpace__eC__types__IOChannel_Serialize, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "Unserialize", "void Unserialize(typed_object * data)", __eCMethod___eCNameSpace__eC__types__IOChannel_Unserialize, 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::SerialBuffer", "eC::types::IOChannel", sizeof(struct __eCNameSpace__eC__types__SerialBuffer), 0, (void *)0, (void *)__eCDestructor___eCNameSpace__eC__types__SerialBuffer, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::SerialBuffer", "eC::types::IOChannel", sizeof(struct __eCNameSpace__eC__types__SerialBuffer), 0, (void *)0, (void *)__eCDestructor___eCNameSpace__eC__types__SerialBuffer, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__SerialBuffer = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "WriteData", 0, __eCMethod___eCNameSpace__eC__types__SerialBuffer_WriteData, 1);
@@ -3627,7 +3627,7 @@ __eCPropM___eCNameSpace__eC__types__SerialBuffer_size = __eCNameSpace__eC__types
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application)
 __eCProp___eCNameSpace__eC__types__SerialBuffer_size = __eCPropM___eCNameSpace__eC__types__SerialBuffer_size, __eCPropM___eCNameSpace__eC__types__SerialBuffer_size = (void *)0;
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Enum_OnGetString", "const char * eC::types::Enum_OnGetString(eC::types::Class _class, void * data, char * tempString, void * fieldData, eC::types::ObjectNotationType * onType)", __eCNameSpace__eC__types__Enum_OnGetString, module, 2);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::ObjectNotationType", "bool", 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(4, "eC::types::ObjectNotationType", "bool", 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__ObjectNotationType = class;
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "none", 0);
@@ -3645,7 +3645,7 @@ __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Int64_OnSerialize
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Int64_OnUnserialize", "void eC::types::Int64_OnUnserialize(eC::types::Class _class, int64 * data, eC::types::IOChannel channel)", __eCNameSpace__eC__types__Int64_OnUnserialize, module, 2);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Word_OnSerialize", "void eC::types::Word_OnSerialize(eC::types::Class _class, uint16 * data, eC::types::IOChannel channel)", __eCNameSpace__eC__types__Word_OnSerialize, module, 2);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Word_OnUnserialize", "void eC::types::Word_OnUnserialize(eC::types::Class _class, uint16 * data, eC::types::IOChannel channel)", __eCNameSpace__eC__types__Word_OnUnserialize, module, 2);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::StaticString", 0, sizeof(struct __eCNameSpace__eC__types__StaticString), 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(1, "eC::types::StaticString", 0, sizeof(struct __eCNameSpace__eC__types__StaticString), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__StaticString = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnCompare", 0, __eCMethod___eCNameSpace__eC__types__StaticString_OnCompare, 1);
@@ -3654,18 +3654,18 @@ __eCNameSpace__eC__types__eClass_AddMethod(class, "OnGetString", 0, __eCMethod__
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnSerialize", 0, __eCMethod___eCNameSpace__eC__types__StaticString_OnSerialize, 1);
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnUnserialize", 0, __eCMethod___eCNameSpace__eC__types__StaticString_OnUnserialize, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "string", "char[1]", 1, 1, 1);
-class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::CIString", "String", 0, 0, (void *)0, (void *)0, module, 4, 1);
+class = __eCNameSpace__eC__types__eSystem_RegisterClass(0, "eC::types::CIString", "String", 0, 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__CIString = class;
 __eCNameSpace__eC__types__eClass_AddMethod(class, "OnCompare", 0, __eCMethod___eCNameSpace__eC__types__CIString_OnCompare, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::InitializeDataTypes1", "void eC::types::InitializeDataTypes1(eC::types::Module module)", __eCNameSpace__eC__types__InitializeDataTypes1, module, 2);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::InitializeDataTypes", "void eC::types::InitializeDataTypes(eC::types::Module module)", __eCNameSpace__eC__types__InitializeDataTypes, module, 2);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintStdArgsToBuffer", "int eC::types::PrintStdArgsToBuffer(char * buffer, int maxLen, const typed_object object, __builtin_va_list args)", __eCNameSpace__eC__types__PrintStdArgsToBuffer, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintBuf", "int eC::types::PrintBuf(char * buffer, int maxLen, const typed_object object, ...)", __eCNameSpace__eC__types__PrintBuf, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintLnBuf", "int eC::types::PrintLnBuf(char * buffer, int maxLen, const typed_object object, ...)", __eCNameSpace__eC__types__PrintLnBuf, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintString", "char * eC::types::PrintString(const typed_object object, ...)", __eCNameSpace__eC__types__PrintString, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintLnString", "char * eC::types::PrintLnString(const typed_object object, ...)", __eCNameSpace__eC__types__PrintLnString, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintLn", "void eC::types::PrintLn(const typed_object object, ...)", __eCNameSpace__eC__types__PrintLn, module, 4);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Print", "void eC::types::Print(const typed_object object, ...)", __eCNameSpace__eC__types__Print, module, 4);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintStdArgsToBuffer", "int eC::types::PrintStdArgsToBuffer(char * buffer, int maxLen, const typed_object object, __builtin_va_list args)", __eCNameSpace__eC__types__PrintStdArgsToBuffer, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintBuf", "int eC::types::PrintBuf(char * buffer, int maxLen, const typed_object object, ...)", __eCNameSpace__eC__types__PrintBuf, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintLnBuf", "int eC::types::PrintLnBuf(char * buffer, int maxLen, const typed_object object, ...)", __eCNameSpace__eC__types__PrintLnBuf, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintString", "char * eC::types::PrintString(const typed_object object, ...)", __eCNameSpace__eC__types__PrintString, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintLnString", "char * eC::types::PrintLnString(const typed_object object, ...)", __eCNameSpace__eC__types__PrintLnString, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::PrintLn", "void eC::types::PrintLn(const typed_object object, ...)", __eCNameSpace__eC__types__PrintLn, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::Print", "void eC::types::Print(const typed_object object, ...)", __eCNameSpace__eC__types__Print, module, 1);
 }
 

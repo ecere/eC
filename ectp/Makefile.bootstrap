@@ -6,7 +6,7 @@ endif
 
 # CORE VARIABLES
 
-MODULE := ec
+MODULE := ectp
 VERSION := 0.0.1
 CONFIG := bootstrap
 ifndef COMPILER

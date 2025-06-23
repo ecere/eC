@@ -516,7 +516,7 @@ private class System
    bool systemTerminate;
 #endif
 
-#if !defined(__EMSCRIPTEN__)
+#if !defined(__EMSCRIPTEN__) && !defined(EC_BOOTSTRAP)
    System()
    {
       eventSemaphore = Semaphore { };

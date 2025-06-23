@@ -323,7 +323,7 @@ class CompilerApp : Application
                      SetBuildingEcereCom(true);
                   else if(!strcmp(arg, "-DECRT_MODULE"))
                      SetBuildingEcereComModule(true);
-                  else if(!strcmp(arg, "-DECERE_BOOTSTRAP"))
+                  else if(!strcmp(arg, "-DEC_BOOTSTRAP"))
                      buildingBootStrap = true;
                }
             }
@@ -599,7 +599,7 @@ class CompilerApp : Application
                }
 
                if(!GetEcereImported() && !GetBuildingECRT())
-                  eModule_LoadStrict(privateModule, "ecereCOM", publicAccess /*privateAccess*/);
+                  eModule_LoadStrict(privateModule, "ecrt", publicAccess /*privateAccess*/);
             }
 
             ParseEc();
@@ -756,7 +756,7 @@ class CompilerApp : Application
                {
                   // Compile right away
                   File output = FileOpen(GetOutputFile(), Write);
-                  output.Printf("#include <ecereCOM.h>\n\n");
+                  output.Printf("#include <ecrt.h>\n\n");
                   OutputTree(ast, output);
                   delete output;
                }*/

@@ -66,7 +66,7 @@ extern int yydebug;
 
 enum yytokentype
 {
-IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378
+IDENTIFIER = 258, CONSTANT = 259, STRING_LITERAL = 260, SIZEOF = 261, PTR_OP = 262, INC_OP = 263, DEC_OP = 264, LEFT_OP = 265, RIGHT_OP = 266, LE_OP = 267, GE_OP = 268, EQ_OP = 269, NE_OP = 270, AND_OP = 271, OR_OP = 272, MUL_ASSIGN = 273, DIV_ASSIGN = 274, MOD_ASSIGN = 275, ADD_ASSIGN = 276, SUB_ASSIGN = 277, LEFT_ASSIGN = 278, RIGHT_ASSIGN = 279, AND_ASSIGN = 280, XOR_ASSIGN = 281, OR_ASSIGN = 282, TYPE_NAME = 283, TYPEDEF = 284, EXTERN = 285, STATIC = 286, AUTO = 287, REGISTER = 288, CHAR = 289, SHORT = 290, INT = 291, UINT = 292, INT64 = 293, INT128 = 294, FLOAT128 = 295, FLOAT16 = 296, LONG = 297, SIGNED = 298, UNSIGNED = 299, FLOAT = 300, DOUBLE = 301, CONST = 302, VOLATILE = 303, VOID = 304, VALIST = 305, STRUCT = 306, UNION = 307, ENUM = 308, ELLIPSIS = 309, CASE = 310, DEFAULT = 311, IF = 312, SWITCH = 313, WHILE = 314, DO = 315, FOR = 316, GOTO = 317, CONTINUE = 318, BREAK = 319, RETURN = 320, IFX = 321, ELSE = 322, CLASS = 323, THISCLASS = 324, PROPERTY = 325, SETPROP = 326, GETPROP = 327, NEWOP = 328, RENEW = 329, DELETE = 330, EXT_DECL = 331, EXT_STORAGE = 332, IMPORT = 333, DEFINE = 334, VIRTUAL = 335, ATTRIB = 336, PUBLIC = 337, PRIVATE = 338, TYPED_OBJECT = 339, ANY_OBJECT = 340, _INCREF = 341, EXTENSION = 342, ASM = 343, TYPEOF = 344, WATCH = 345, STOPWATCHING = 346, FIREWATCHERS = 347, WATCHABLE = 348, CLASS_DESIGNER = 349, CLASS_NO_EXPANSION = 350, CLASS_FIXED = 351, ISPROPSET = 352, CLASS_DEFAULT_PROPERTY = 353, PROPERTY_CATEGORY = 354, CLASS_DATA = 355, CLASS_PROPERTY = 356, SUBCLASS = 357, NAMESPACE = 358, NEW0OP = 359, RENEW0 = 360, VAARG = 361, DBTABLE = 362, DBFIELD = 363, DBINDEX = 364, DATABASE_OPEN = 365, ALIGNOF = 366, ATTRIB_DEP = 367, __ATTRIB = 368, BOOL = 369, _BOOL = 370, _COMPLEX = 371, _IMAGINARY = 372, RESTRICT = 373, THREAD = 374, WIDE_STRING_LITERAL = 375, BUILTIN_OFFSETOF = 376, PRAGMA = 377, STATIC_ASSERT = 378, _ALIGNAS = 379
 };
 
 int yyparse(void);
@@ -791,12 +791,12 @@ extern struct Identifier * CopyIdentifier(struct Identifier * id);
 
 extern struct Expression * MkExpPointer(struct Expression * expression, struct Identifier * member);
 
-struct __eCNameSpace__eC__sys__OldLink;
+struct __eCNameSpace__eC__containers__OldLink;
 
-struct __eCNameSpace__eC__sys__OldLink
+struct __eCNameSpace__eC__containers__OldLink
 {
-struct __eCNameSpace__eC__sys__OldLink * prev;
-struct __eCNameSpace__eC__sys__OldLink * next;
+struct __eCNameSpace__eC__containers__OldLink * prev;
+struct __eCNameSpace__eC__containers__OldLink * next;
 void *  data;
 } eC_gcc_struct;
 
@@ -1102,12 +1102,12 @@ int depth;
 void *  data;
 } eC_gcc_struct;
 
-struct __eCNameSpace__eC__sys__NamedLink64;
+struct __eCNameSpace__eC__containers__NamedLink64;
 
-struct __eCNameSpace__eC__sys__NamedLink64
+struct __eCNameSpace__eC__containers__NamedLink64
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * prev;
-struct __eCNameSpace__eC__sys__NamedLink64 * next;
+struct __eCNameSpace__eC__containers__NamedLink64 * prev;
+struct __eCNameSpace__eC__containers__NamedLink64 * next;
 char *  name;
 long long data;
 } eC_gcc_struct;
@@ -7558,7 +7558,7 @@ if(!destType->constant && sourceType->constant)
 {
 status = 0;
 if(warn)
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "discarding const qualifier\n", (((void *)0))));
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "discarding const qualifier\n", (((void *)0))));
 }
 }
 }
@@ -8001,7 +8001,7 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass_Expression;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_Instantiation;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__sys__NamedLink64;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__containers__NamedLink64;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_TypeName;
 
@@ -8019,7 +8019,7 @@ extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__typ
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Instance;
 
-extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__sys__File;
+extern struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__File;
 
 extern struct __eCNameSpace__eC__types__Class * __eCClass_External;
 
@@ -8339,7 +8339,7 @@ type = source;
 source->refCount++;
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "cannot dereference type\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "cannot dereference type\n", (((void *)0))));
 }
 return type;
 }
@@ -8423,7 +8423,7 @@ size_t (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *
 __internal_VirtualMethod = ((size_t (*)(struct __eCNameSpace__eC__types__Instance *, const void *  buffer, size_t size, size_t count))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = fileInput;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Write]);
 __internal_VirtualMethod ? __internal_VirtualMethod(fileInput, expression, 1, strlen(expression)) : (size_t)1;
 }));
@@ -8433,7 +8433,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, long long pos, int mode))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = fileInput;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Seek]);
 __internal_VirtualMethod ? __internal_VirtualMethod(fileInput, 0, 0) : (unsigned int)1;
 }));
@@ -9244,7 +9244,7 @@ struct __eCNameSpace__eC__types__ClassProperty * classProp = (((void *)0));
 
 if(_class && _class->type == 4)
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * value = (((void *)0));
+struct __eCNameSpace__eC__containers__NamedLink64 * value = (((void *)0));
 struct __eCNameSpace__eC__types__Class * enumClass = __eCNameSpace__eC__types__eSystem_FindClass(privateModule, "enum");
 
 if(enumClass)
@@ -9880,6 +9880,12 @@ if(function)
 char name[1024];
 
 name[0] = 0;
+if(!function->dataType)
+{
+function->dataType = ProcessTypeString(function->dataTypeString, 0);
+if(!function->dataType->__anon1.__anon2.thisClass)
+function->dataType->__anon1.__anon2.staticMethod = 1;
+}
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)function->module + sizeof(struct __eCNameSpace__eC__types__Instance))))->importType != 1 && (!function->dataType || !function->dataType->dllExport))
 strcpy(name, "__eCFunction_");
 FullClassNameCat(name, s, 0);
@@ -9940,7 +9946,7 @@ _class->symbol = FindClass(_class->fullName);
 type->__anon1._class = _class->symbol;
 if(MatchTypes(type, dest, &converts, (((void *)0)), (((void *)0)), dest->kind != 8 || !dest->__anon1._class || strcmp(dest->__anon1._class->string, "bool"), 0, 0, 0, 0))
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * value;
+struct __eCNameSpace__eC__containers__NamedLink64 * value;
 struct __eCNameSpace__eC__types__Class * enumClass = __eCNameSpace__eC__types__eSystem_FindClass(privateModule, "enum");
 
 if(enumClass)
@@ -10303,7 +10309,7 @@ _class->structSize += sizeof(struct __eCNameSpace__eC__containers__OldList);
 }
 }
 {
-struct __eCNameSpace__eC__sys__OldLink * derivative;
+struct __eCNameSpace__eC__containers__OldLink * derivative;
 
 for(derivative = _class->derivatives.first; derivative; derivative = derivative->next)
 {
@@ -10757,9 +10763,9 @@ if((dest->__anon1.__anon2.staticMethod || (!dest->__anon1.__anon2.thisClass && !
 if(!paramDest || (!(paramDest->kind == 13 && paramDest->__anon1.type && paramDest->__anon1.type->kind == 0) && (paramDest->kind != 8 || !__eCNameSpace__eC__types__eClass_IsDerived(source->__anon1.__anon2.thisClass ? source->__anon1.__anon2.thisClass->__anon1.registered : owningClassSource, paramDest->__anon1._class->__anon1.registered))))
 {
 if(paramDest && paramDest->kind == 8)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "method class must be derived from %s\n", (((void *)0))), paramDest->__anon1._class->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "method class must be derived from %s\n", (((void *)0))), paramDest->__anon1._class->string);
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "method class should not take an object\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "method class should not take an object\n", (((void *)0))));
 return 0;
 }
 paramDest = paramDest->next;
@@ -10772,7 +10778,7 @@ if(dest->__anon1.__anon2.thisClass)
 {
 if(!paramSource || paramSource->kind != 8 || !__eCNameSpace__eC__types__eClass_IsDerived(paramSource->__anon1._class->__anon1.registered, dest->__anon1.__anon2.thisClass->__anon1.registered))
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "method class must be derived from %s\n", (((void *)0))), dest->__anon1.__anon2.thisClass->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "method class must be derived from %s\n", (((void *)0))), dest->__anon1.__anon2.thisClass->string);
 return 0;
 }
 }
@@ -10781,9 +10787,9 @@ else
 if(!paramSource || paramSource->kind != 8 || (owningClassDest && !__eCNameSpace__eC__types__eClass_IsDerived(paramSource->__anon1._class->__anon1.registered, owningClassDest)))
 {
 if(owningClassDest)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "%s expected to be derived from method class\n", (((void *)0))), owningClassDest->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "%s expected to be derived from method class\n", (((void *)0))), owningClassDest->fullName);
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "overriding class expected to be derived from method class\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "overriding class expected to be derived from method class\n", (((void *)0))));
 return 0;
 }
 }
@@ -10795,7 +10801,7 @@ if(dest->__anon1.__anon2.thisClass)
 {
 if(!__eCNameSpace__eC__types__eClass_IsDerived(source->__anon1.__anon2.thisClass ? source->__anon1.__anon2.thisClass->__anon1.registered : owningClassSource, dest->__anon1.__anon2.thisClass->__anon1.registered))
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "method class must be derived from %s\n", (((void *)0))), dest->__anon1.__anon2.thisClass->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "method class must be derived from %s\n", (((void *)0))), dest->__anon1.__anon2.thisClass->string);
 return 0;
 }
 }
@@ -10803,7 +10809,7 @@ else
 {
 if(source->__anon1.__anon2.thisClass && source->__anon1.__anon2.thisClass->__anon1.registered && owningClassDest && !__eCNameSpace__eC__types__eClass_IsDerived(source->__anon1.__anon2.thisClass->__anon1.registered, owningClassDest))
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "%s expected to be derived from method class\n", (((void *)0))), source->__anon1.__anon2.thisClass->__anon1.registered->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "%s expected to be derived from method class\n", (((void *)0))), source->__anon1.__anon2.thisClass->__anon1.registered->fullName);
 return 0;
 }
 }
@@ -10811,7 +10817,7 @@ return 0;
 }
 if(!MatchTypes(source->__anon1.__anon2.returnType, dest->__anon1.__anon2.returnType, (((void *)0)), (((void *)0)), (((void *)0)), 1, 1, 0, 0, warnConst))
 {
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "incompatible return type for function\n", (((void *)0))));
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "incompatible return type for function\n", (((void *)0))));
 return 0;
 }
 else
@@ -10820,7 +10826,7 @@ for(; paramDest; paramDest = paramDest->next)
 {
 if(!paramSource)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "not enough parameters\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "not enough parameters\n", (((void *)0))));
 return 0;
 }
 {
@@ -10869,7 +10875,7 @@ char type[1024];
 
 type[0] = 0;
 PrintType(paramDest, type, 0, 1);
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "incompatible parameter %s (expected %s)\n", (((void *)0))), paramSource->name, type);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "incompatible parameter %s (expected %s)\n", (((void *)0))), paramSource->name, type);
 if(paramDestType != paramDest)
 FreeType(paramDestType);
 return 0;
@@ -10881,7 +10887,7 @@ paramSource = paramSource->next;
 }
 if(paramSource)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "too many parameters\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "too many parameters\n", (((void *)0))));
 return 0;
 }
 return 1;
@@ -11290,7 +11296,7 @@ else if(destType && e->expType && (e->expType->classObjectType == 3 || e->expTyp
 {
 if(destType->kind == 14)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Unspecified type\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Unspecified type\n", (((void *)0))));
 }
 else if(!(destType->truth && e->expType->kind == 8 && e->expType->__anon1._class && e->expType->__anon1._class->__anon1.registered && e->expType->__anon1._class->__anon1.registered->type == 1))
 {
@@ -11371,7 +11377,7 @@ destType->refCount++;
 void ComputeModuleClasses(struct __eCNameSpace__eC__types__Instance * module)
 {
 struct __eCNameSpace__eC__types__Class * _class;
-struct __eCNameSpace__eC__sys__OldLink * subModule;
+struct __eCNameSpace__eC__containers__OldLink * subModule;
 
 for(subModule = ((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->modules.first; subModule; subModule = subModule->next)
 ComputeModuleClasses(subModule->data);
@@ -11710,7 +11716,7 @@ type->__anon1.__anon4.arraySizeExp->expType = (((void *)0));
 yylloc = type->__anon1.__anon4.arraySizeExp->loc;
 if(inCompiler)
 PrintExpression(type->__anon1.__anon4.arraySizeExp, expression);
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Array size not constant int (%s)\n", (((void *)0))), expression);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Array size not constant int (%s)\n", (((void *)0))), expression);
 yylloc = oldLoc;
 }
 GetInt(type->__anon1.__anon4.arraySizeExp, &type->__anon1.__anon4.arraySize);
@@ -12313,7 +12319,7 @@ if(enumClass)
 {
 for(; _class && _class->type == 4; _class = _class->base)
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * value;
+struct __eCNameSpace__eC__containers__NamedLink64 * value;
 struct __eCNameSpace__eC__types__EnumClassData * e = (_class ? ((void *)(((char *)_class->data) + enumClass->offsetClass)) : (((void *)0)));
 
 for(value = e->values.first; value; value = value->next)
@@ -12395,7 +12401,7 @@ struct __eCNameSpace__eC__types__Class * enumClass = __eCNameSpace__eC__types__e
 if(enumClass)
 {
 struct __eCNameSpace__eC__types__EnumClassData * e = (_class ? ((void *)(((char *)_class->data) + enumClass->offsetClass)) : (((void *)0)));
-struct __eCNameSpace__eC__sys__NamedLink64 * item;
+struct __eCNameSpace__eC__containers__NamedLink64 * item;
 
 for(item = e->values.first; item; item = item->next)
 {
@@ -12468,7 +12474,7 @@ exp->type = 2;
 break;
 }
 default:
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Unhandled type populating instance\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Unhandled type populating instance\n", (((void *)0))));
 }
 }
 ListAdd(memberList, member);
@@ -12832,7 +12838,7 @@ if(type && type->kind == 12)
 FreeType(initializerType);
 if(type && !type->isVector && type->kind != 12 && type->kind != 9 && type->kind != 10 && (type->kind != 8 || !type->__anon1._class->__anon1.registered || type->__anon1._class->__anon1.registered->type != 1))
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Assigning list initializer to non list\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Assigning list initializer to non list\n", (((void *)0))));
 }
 break;
 }
@@ -13038,7 +13044,7 @@ struct __eCNameSpace__eC__types__Class * enumClass = __eCNameSpace__eC__types__e
 if(enumClass)
 {
 struct __eCNameSpace__eC__types__EnumClassData * e = (_class ? ((void *)(((char *)_class->data) + enumClass->offsetClass)) : (((void *)0)));
-struct __eCNameSpace__eC__sys__NamedLink64 * item;
+struct __eCNameSpace__eC__containers__NamedLink64 * item;
 
 for(item = e->values.first; item; item = item->next)
 {
@@ -13099,7 +13105,7 @@ exp->type = 2;
 break;
 }
 default:
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Unhandled type populating instance\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Unhandled type populating instance\n", (((void *)0))));
 }
 }
 ListAdd(memberList, member);
@@ -13407,12 +13413,12 @@ char expString[10240];
 expString[0] = '\0';
 PrintExpression(member->initializer->__anon1.exp, expString);
 __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "unresolved symbol used as an instance method %s\n", (((void *)0))), expString);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "unresolved symbol used as an instance method %s\n", (((void *)0))), expString);
 }
 }
 else if(!MatchTypes(member->initializer->__anon1.exp->expType, type, (((void *)0)), (((void *)0)), _class, 1, 1, 0, 0, 1))
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "incompatible instance method %s\n", (((void *)0))), ident->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "incompatible instance method %s\n", (((void *)0))), ident->string);
 }
 }
 else if(member->initializer)
@@ -13444,17 +13450,17 @@ if(ident)
 {
 if(method)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't find virtual method %s in class %s\n", (((void *)0))), ident->string, _class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't find virtual method %s in class %s\n", (((void *)0))), ident->string, _class->fullName);
 }
 else if(_class)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't find member %s in class %s\n", (((void *)0))), ident->string, _class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't find member %s in class %s\n", (((void *)0))), ident->string, _class->fullName);
 if(inCompiler)
 __eCNameSpace__eC__types__eClass_AddDataMember(_class, ident->string, "int", 0, 0, 1);
 }
 }
 else if(_class)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "too many initializers for instantiation of class %s\n", (((void *)0))), _class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "too many initializers for instantiation of class %s\n", (((void *)0))), _class->fullName);
 }
 }
 }
@@ -13932,7 +13938,7 @@ struct __eCNameSpace__eC__types__Class * enumClass = __eCNameSpace__eC__types__e
 
 if(enumClass)
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * value;
+struct __eCNameSpace__eC__containers__NamedLink64 * value;
 struct __eCNameSpace__eC__types__EnumClassData * e = (c ? ((void *)(((char *)c->data) + enumClass->offsetClass)) : (((void *)0)));
 
 for(value = e->values.first; value; value = value->next)
@@ -14815,7 +14821,7 @@ DeclareType(curExternal, symbol->type, 1, 1);
 }
 else if(classSym)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't find virtual method %s in class %s\n", (((void *)0))), unmangled, classSym->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't find virtual method %s in class %s\n", (((void *)0))), unmangled, classSym->string);
 }
 }
 createdExternal = ProcessClassFunction(classSym ? classSym->__anon1.registered : (((void *)0)), members->__anon1.function, ast, afterExternal, 1);
@@ -15518,7 +15524,7 @@ FreeType(type);
 else
 {
 arrayExp->expType = ProcessTypeString("Container", 0);
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Couldn't determine type of array elements\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Couldn't determine type of array elements\n", (((void *)0))));
 }
 }
 else if(inCompiler && isLinkList && !isList)
@@ -15637,7 +15643,7 @@ break;
 }
 else
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Expression is not a container\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Expression is not a container\n", (((void *)0))));
 }
 break;
 }
@@ -15727,7 +15733,7 @@ char watcherName[1024];
 struct __eCNameSpace__eC__types__Class * watcherClass = watcher ? ((watcher->expType && watcher->expType->kind == 8 && watcher->expType->__anon1._class) ? watcher->expType->__anon1._class->__anon1.registered : (((void *)0))) : thisClass;
 struct External * createdExternal;
 
-sprintf(watcherName, "__eCPropertyWatcher_%d", propWatcherID++);
+sprintf(watcherName, "__ecCPropertyWatcher_%d", propWatcherID++);
 if(propWatch->deleteWatch)
 strcat(watcherName, "_delete");
 else
@@ -15786,12 +15792,12 @@ ListAdd(stmt->__anon1.expressions, MkExpCall(MkExpIdentifier(MkIdentifier("eC::t
 __eCMethod_External_CreateUniqueEdge(external, createdExternal, 1);
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Property %s not found in class %s\n", (((void *)0))), propID->string, _class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Property %s not found in class %s\n", (((void *)0))), propID->string, _class->fullName);
 }
 }
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Invalid watched object\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Invalid watched object\n", (((void *)0))));
 }
 curExternal = external;
 curContext = context;
@@ -15802,7 +15808,7 @@ FreeExpression(object);
 FreeList(watches, (void *)(FreePropertyWatch));
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "No observer specified and not inside a class\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "No observer specified and not inside a class\n", (((void *)0))));
 }
 else
 {
@@ -15848,7 +15854,7 @@ if(prop)
 CreateFireWatcher(prop, object, stmt);
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Property %s not found in class %s\n", (((void *)0))), propID->string, _class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Property %s not found in class %s\n", (((void *)0))), propID->string, _class->fullName);
 }
 }
 else
@@ -15872,7 +15878,7 @@ FreeExpression(object);
 FreeList(watches, (void *)(FreeIdentifier));
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Invalid object specified and not inside a class\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Invalid object specified and not inside a class\n", (((void *)0))));
 }
 break;
 }
@@ -15934,7 +15940,7 @@ ListAdd(args, watcher ? CopyExpression(watcher) : MkExpIdentifier(MkIdentifier("
 ListAdd(stmt->__anon1.expressions, MkExpCall(MkExpIdentifier(MkIdentifier("eC::types::eInstance_StopWatching")), args));
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Property %s not found in class %s\n", (((void *)0))), propID->string, _class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Property %s not found in class %s\n", (((void *)0))), propID->string, _class->fullName);
 }
 }
 if(object)
@@ -15944,10 +15950,10 @@ FreeExpression(watcher);
 FreeList(watches, (void *)(FreeIdentifier));
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Invalid object specified and not inside a class\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Invalid object specified and not inside a class\n", (((void *)0))));
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "No observer specified and not inside a class\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "No observer specified and not inside a class\n", (((void *)0))));
 }
 break;
 }
@@ -16205,7 +16211,7 @@ size_t (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *
 __internal_VirtualMethod = ((size_t (*)(struct __eCNameSpace__eC__types__Instance *, const void *  buffer, size_t size, size_t count))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = fileInput;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Write]);
 __internal_VirtualMethod ? __internal_VirtualMethod(fileInput, definedExp->value, 1, strlen(definedExp->value)) : (size_t)1;
 }));
@@ -16215,7 +16221,7 @@ unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Inst
 __internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, long long pos, int mode))__extension__ ({
 struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = fileInput;
 
-__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__sys__File->_vTbl;
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
 })[__eCVMethodID___eCNameSpace__eC__files__File_Seek]);
 __internal_VirtualMethod ? __internal_VirtualMethod(fileInput, 0, 0) : (unsigned int)1;
 }));
@@ -16243,7 +16249,7 @@ else
 {
 if(inCompiler)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Recursion in defined expression %s\n", (((void *)0))), id->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Recursion in defined expression %s\n", (((void *)0))), id->string);
 }
 }
 }
@@ -16663,7 +16669,7 @@ if(exp->__anon1.op.op == MUL_ASSIGN || exp->__anon1.op.op == DIV_ASSIGN || exp->
 {
 char s[10];
 
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "operator %s illegal on pointer\n", (((void *)0))), GetOperatorString(s, exp->__anon1.op.op));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "operator %s illegal on pointer\n", (((void *)0))), GetOperatorString(s, exp->__anon1.op.op));
 }
 else if(exp->__anon1.op.op == '=')
 {
@@ -16764,17 +16770,17 @@ if(assign && type1 && type1->kind == 13 && exp->__anon1.op.exp2->expType)
 if(exp->__anon1.op.exp2->expType->kind == 23 || exp->__anon1.op.exp2->expType->kind == 22 || exp->__anon1.op.exp2->expType->kind == 4 || exp->__anon1.op.exp2->expType->kind == 3 || exp->__anon1.op.exp2->expType->kind == 2 || exp->__anon1.op.exp2->expType->kind == 1)
 {
 if(exp->__anon1.op.op != '=' && type1->__anon1.type->kind == 0)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "void *: unknown size\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "void *: unknown size\n", (((void *)0))));
 }
 else if(exp->__anon1.op.exp2->expType->kind == 13 || exp->__anon1.op.exp2->expType->kind == 12 || exp->__anon1.op.exp2->expType->kind == 11 || exp->__anon1.op.exp2->expType->kind == 16 || (type1->__anon1.type->kind == 0 && exp->__anon1.op.exp2->expType->kind == 8 && exp->__anon1.op.exp2->expType->__anon1._class->__anon1.registered && (exp->__anon1.op.exp2->expType->__anon1._class->__anon1.registered->type == 0 || exp->__anon1.op.exp2->expType->__anon1._class->__anon1.registered->type == 1 || exp->__anon1.op.exp2->expType->__anon1._class->__anon1.registered->type == 5)))
 {
 if(exp->__anon1.op.op == ADD_ASSIGN)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "cannot add two pointers\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "cannot add two pointers\n", (((void *)0))));
 }
 else if((exp->__anon1.op.exp2->expType->kind == 8 && type1->kind == 13 && type1->__anon1.type->kind == 8 && type1->__anon1.type->__anon1._class == exp->__anon1.op.exp2->expType->__anon1._class && exp->__anon1.op.exp2->expType->__anon1._class->__anon1.registered && exp->__anon1.op.exp2->expType->__anon1._class->__anon1.registered->type == 1))
 {
 if(exp->__anon1.op.op == ADD_ASSIGN)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "cannot add two pointers\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "cannot add two pointers\n", (((void *)0))));
 }
 else if(inCompiler)
 {
@@ -16786,7 +16792,7 @@ type2String[0] = '\0';
 PrintType(exp->__anon1.op.exp2->expType, type1String, 0, 1);
 PrintType(type1, type2String, 0, 1);
 __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "incompatible expression %s (%s); expected %s\n", (((void *)0))), expString, type1String, type2String);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "incompatible expression %s (%s); expected %s\n", (((void *)0))), expString, type1String, type2String);
 }
 }
 if(exp->__anon1.op.exp2->destType == dummy)
@@ -16821,13 +16827,13 @@ type2->refCount++;
 c1 = type1 && type1->kind == 8 && type1->__anon1._class ? type1->__anon1._class->__anon1.registered : (((void *)0));
 c2 = type2 && type2->kind == 8 && type2->__anon1._class ? type2->__anon1._class->__anon1.registered : (((void *)0));
 if(relationOp && ((exp->__anon1.op.exp1 && exp->__anon1.op.exp1->ambiguousUnits && (!c2 || c2->type != 3)) || (exp->__anon1.op.exp2 && exp->__anon1.op.exp2->ambiguousUnits && (!c1 || c1->type != 3))))
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "ambiguous units in relational operation\n", (((void *)0))));
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "ambiguous units in relational operation\n", (((void *)0))));
 if(!relationOp && ((exp->__anon1.op.exp1 && exp->__anon1.op.exp1->ambiguousUnits) || (exp->__anon1.op.exp2 && exp->__anon1.op.exp2->ambiguousUnits)) && (!powerOp || !c1 || c1->type != 3 || !c2 || c2->type != 3 || !RelatedUnits(c1, c2)))
 {
 if(exp->opDestType || exp->usedInComparison)
 exp->ambiguousUnits = 1;
 else
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "ambiguous units\n", (((void *)0))));
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "ambiguous units\n", (((void *)0))));
 }
 dummy->kind = 0;
 if(exp->__anon1.op.op == SIZEOF)
@@ -16946,7 +16952,7 @@ if(!boolResult && !exp->opDestType && (!exp->destType || exp->destType->kind != 
 if(exp->usedInComparison || exp->parentOpDestType)
 exp->ambiguousUnits = 1;
 else
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "operating on %s and %s with an untyped result, assuming %s\n", (((void *)0))), type1->__anon1._class->string, type2->__anon1._class->string, type1->__anon1._class->string);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "operating on %s and %s with an untyped result, assuming %s\n", (((void *)0))), type1->__anon1._class->string, type2->__anon1._class->string, type1->__anon1._class->string);
 }
 if(type1->kind == 13 && type1->__anon1.type->kind == 20 && type2->kind != 13)
 {
@@ -16977,7 +16983,7 @@ ProcessExpressionType(exp->__anon1.op.exp2);
 if(!boolResult && ((type1->kind == 13 || type1->kind == 12 || (type1->kind == 8 && !strcmp(type1->__anon1._class->string, "String"))) && (type2->kind == 23 || type2->kind == 22 || type2->kind == 4 || type2->kind == 3 || type2->kind == 2 || type2->kind == 1)))
 {
 if(type1->kind != 8 && type1->__anon1.type->kind == 0)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "void *: unknown size\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "void *: unknown size\n", (((void *)0))));
 exp->expType = type1;
 if(type1)
 type1->refCount++;
@@ -16985,14 +16991,14 @@ type1->refCount++;
 else if(!boolResult && ((type2->kind == 13 || type2->kind == 12 || (type2->kind == 8 && !strcmp(type2->__anon1._class->string, "String"))) && (type1->kind == 23 || type1->kind == 22 || type1->kind == 4 || type1->kind == 3 || type1->kind == 2 || type1->kind == 1)))
 {
 if(type2->kind != 8 && type2->__anon1.type->kind == 0)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "void *: unknown size\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "void *: unknown size\n", (((void *)0))));
 exp->expType = type2;
 if(type2)
 type2->refCount++;
 }
 else if((type1->kind == 13 && type2->kind != 13 && type2->kind != 12 && type2->kind != 11 && type2->kind != 16 && type2->kind != 8 && type2->kind != 19) || (type2->kind == 13 && type1->kind != 13 && type1->kind != 12 && type1->kind != 11 && type1->kind != 16 && type1->kind != 8 && type1->kind != 19))
 {
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "different levels of indirection\n", (((void *)0))));
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "different levels of indirection\n", (((void *)0))));
 }
 else
 {
@@ -17001,7 +17007,7 @@ unsigned int success = 0;
 if(type1->kind == 13 && type2->kind == 13)
 {
 if(exp->__anon1.op.op == '+')
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "cannot add two pointers\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "cannot add two pointers\n", (((void *)0))));
 else if(exp->__anon1.op.op == '-')
 {
 if(MatchTypes(type1->__anon1.type, type2->__anon1.type, (((void *)0)), (((void *)0)), (((void *)0)), 0, 0, 0, 0, 0))
@@ -17093,7 +17099,7 @@ __eCNameSpace__eC__types__ChangeCh(expString2, '\n', ' ');
 PrintType(exp->__anon1.op.exp1->expType, type1, 0, 1);
 PrintType(exp->__anon1.op.exp2->expType, type2, 0, 1);
 }
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "incompatible expressions %s (%s) and %s (%s)\n", (((void *)0))), expString1, type1, expString2, type2);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "incompatible expressions %s (%s) and %s (%s)\n", (((void *)0))), expString1, type1, expString2, type2);
 }
 }
 }
@@ -17264,7 +17270,7 @@ __eCNameSpace__eC__types__ChangeCh(expString2, '\n', ' ');
 PrintType(exp->__anon1.op.exp1->expType, type1String, 0, 1);
 PrintType(exp->__anon1.op.exp2->expType, type2String, 0, 1);
 }
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "incompatible expressions %s (%s) and %s (%s)\n", (((void *)0))), expString1, type1String, expString2, type2String);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "incompatible expressions %s (%s) and %s (%s)\n", (((void *)0))), expString1, type1String, expString2, type2String);
 if(c1 && c1->type == 4)
 {
 exp->expType = exp->__anon1.op.exp1->expType;
@@ -17358,7 +17364,7 @@ PrintExpression(exp->__anon1.op.exp1, expString);
 __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
 }
 if(expString[0])
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't determine type of %s\n", (((void *)0))), expString);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't determine type of %s\n", (((void *)0))), expString);
 }
 if(exp->__anon1.op.exp2 && !exp->__anon1.op.exp2->expType)
 {
@@ -17371,7 +17377,7 @@ PrintExpression(exp->__anon1.op.exp2, expString);
 __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
 }
 if(expString[0])
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't determine type of %s\n", (((void *)0))), expString);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't determine type of %s\n", (((void *)0))), expString);
 }
 if(boolResult)
 {
@@ -17386,7 +17392,7 @@ if(exp->__anon1.op.op == SIZEOF && exp->__anon1.op.exp2->expType)
 DeclareType(curExternal, exp->__anon1.op.exp2->expType, 1, 0);
 }
 if(exp->__anon1.op.op == DELETE && exp->__anon1.op.exp2 && exp->__anon1.op.exp2->expType && __eCProp_Type_Get_specConst(exp->__anon1.op.exp2->expType))
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "deleting const qualified object\n", (((void *)0))));
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "deleting const qualified object\n", (((void *)0))));
 yylloc = oldyylloc;
 FreeType(dummy);
 if(type2)
@@ -17748,7 +17754,7 @@ functionType = type;
 }
 if(functionType && functionType->kind != 11)
 {
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "called object %s is not a function\n", (((void *)0))), name);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "called object %s is not a function\n", (((void *)0))), name);
 }
 else if(functionType)
 {
@@ -17810,9 +17816,9 @@ if(!type && !emptyParams)
 {
 yylloc = e->loc;
 if(methodType && methodType->__anon1.__anon3.methodClass)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "too many arguments for method %s::%s (%d given, expected %d)\n", (((void *)0))), methodType->__anon1.__anon3.methodClass->fullName, methodType->__anon1.__anon3.method->name, (*exp->__anon1.call.arguments).count, noParams ? 0 : functionType->__anon1.__anon2.params.count);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "too many arguments for method %s::%s (%d given, expected %d)\n", (((void *)0))), methodType->__anon1.__anon3.methodClass->fullName, methodType->__anon1.__anon3.method->name, (*exp->__anon1.call.arguments).count, noParams ? 0 : functionType->__anon1.__anon2.params.count);
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "too many arguments for function %s (%d given, expected %d)\n", (((void *)0))), name, (*exp->__anon1.call.arguments).count, noParams ? 0 : functionType->__anon1.__anon2.params.count);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "too many arguments for function %s (%d given, expected %d)\n", (((void *)0))), name, (*exp->__anon1.call.arguments).count, noParams ? 0 : functionType->__anon1.__anon2.params.count);
 break;
 }
 if(methodType && type && type->kind == 20 && type->__anon1.templateParameter->type == 0)
@@ -17912,9 +17918,9 @@ type = next;
 if(type && type->kind != 14)
 {
 if(methodType && methodType->__anon1.__anon3.methodClass)
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "not enough arguments for method %s::%s (%d given, expected %d)\n", (((void *)0))), methodType->__anon1.__anon3.methodClass->fullName, methodType->__anon1.__anon3.method->name, exp->__anon1.call.arguments ? (*exp->__anon1.call.arguments).count : 0, functionType->__anon1.__anon2.params.count + extra);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "not enough arguments for method %s::%s (%d given, expected %d)\n", (((void *)0))), methodType->__anon1.__anon3.methodClass->fullName, methodType->__anon1.__anon3.method->name, exp->__anon1.call.arguments ? (*exp->__anon1.call.arguments).count : 0, functionType->__anon1.__anon2.params.count + extra);
 else
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "not enough arguments for function %s (%d given, expected %d)\n", (((void *)0))), name, exp->__anon1.call.arguments ? (*exp->__anon1.call.arguments).count : 0, functionType->__anon1.__anon2.params.count + extra);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "not enough arguments for function %s (%d given, expected %d)\n", (((void *)0))), name, exp->__anon1.call.arguments ? (*exp->__anon1.call.arguments).count : 0, functionType->__anon1.__anon2.params.count + extra);
 }
 yylloc = oldyylloc;
 if(type && !type->refCount)
@@ -17946,7 +17952,7 @@ exp->destType->refCount++;
 }
 }
 else
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "%s undefined; assuming extern returning int\n", (((void *)0))), string);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "%s undefined; assuming extern returning int\n", (((void *)0))), string);
 symbol = __extension__ ({
 struct Symbol * __eCInstance1 = __eCNameSpace__eC__types__eInstance_New(__eCClass_Symbol);
 
@@ -17962,7 +17968,7 @@ else if(exp->__anon1.call.exp->type == 8)
 {
 }
 else
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "callable object undefined; extern assuming returning int\n", (((void *)0))));
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "callable object undefined; extern assuming returning int\n", (((void *)0))));
 if(!functionType->__anon1.__anon2.returnType)
 {
 functionType->__anon1.__anon2.returnType = __extension__ ({
@@ -18243,7 +18249,7 @@ struct __eCNameSpace__eC__types__ClassProperty * classProp = (((void *)0));
 if(id && id->_class && id->_class->__anon1.__anon1.name && !strcmp(id->_class->__anon1.__anon1.name, "property"))
 exp->__anon1.member.memberType = 1;
 if(id && id->_class && type->__anon1._class && !__eCNameSpace__eC__types__eClass_IsDerived(type->__anon1._class->__anon1.registered, _class))
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "invalid class specifier %s for object of class %s\n", (((void *)0))), _class->fullName, type->__anon1._class->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "invalid class specifier %s for object of class %s\n", (((void *)0))), _class->fullName, type->__anon1._class->string);
 if(typeKind != 19)
 {
 if((exp->__anon1.member.memberType == 0 && thisPtr) || exp->__anon1.member.memberType == 3)
@@ -18425,7 +18431,7 @@ exp->expType = MkClassType("eC::types::Class");
 return ;
 }
 yylloc = exp->__anon1.member.member->loc;
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't find member %s in class %s\n", (((void *)0))), id->string, _class->fullName);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't find member %s in class %s\n", (((void *)0))), id->string, _class->fullName);
 if(inCompiler)
 __eCNameSpace__eC__types__eClass_AddDataMember(_class, id->string, "int", 0, 0, 1);
 }
@@ -18715,7 +18721,7 @@ FinishTemplatesContext(context);
 }
 }
 else
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "undefined class %s\n", (((void *)0))), (id && (!id->_class || id->_class->__anon1.__anon1.name)) ? (id->classSym ? id->classSym->string : (type->__anon1._class ? type->__anon1._class->string : (((void *)0)))) : "(null)");
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "undefined class %s\n", (((void *)0))), (id && (!id->_class || id->_class->__anon1.__anon1.name)) ? (id->classSym ? id->classSym->string : (type->__anon1._class ? type->__anon1._class->string : (((void *)0)))) : "(null)");
 }
 else if(type && (type->kind == 9 || type->kind == 10))
 {
@@ -18738,7 +18744,7 @@ if(inCompiler)
 PrintExpression(exp, expString);
 __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
 }
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "member operator on non-structure type expression %s\n", (((void *)0))), expString);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "member operator on non-structure type expression %s\n", (((void *)0))), expString);
 }
 if(exp->expType && exp->expType->kind == 21 && (!exp->destType || exp->destType->kind != 21))
 {
@@ -19159,7 +19165,7 @@ ProcessExpressionType(expExt);
 else
 {
 exp->expType = ProcessTypeString("Container", 0);
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "Couldn't determine type of array elements\n", (((void *)0))));
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "Couldn't determine type of array elements\n", (((void *)0))));
 }
 break;
 }
@@ -19191,11 +19197,11 @@ member->refCount++;
 }
 else
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * member;
+struct __eCNameSpace__eC__containers__NamedLink64 * member;
 
 for(member = symbol->type->__anon1.__anon1.members.first; member; member = member->next)
 {
-struct __eCNameSpace__eC__sys__NamedLink64 * value = (value = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__sys__NamedLink64)), value->name = __eCNameSpace__eC__types__CopyString(member->name), value);
+struct __eCNameSpace__eC__containers__NamedLink64 * value = (value = __eCNameSpace__eC__types__eSystem_New0(sizeof(struct __eCNameSpace__eC__containers__NamedLink64)), value->name = __eCNameSpace__eC__types__CopyString(member->name), value);
 
 __eCMethod___eCNameSpace__eC__containers__OldList_Add(&exp->expType->__anon1.__anon1.members, value);
 }
@@ -19253,9 +19259,9 @@ PrintExpression(exp, expString);
 __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
 }
 if(unresolved)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "unresolved identifier %s; expected %s\n", (((void *)0))), expString, type2);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "unresolved identifier %s; expected %s\n", (((void *)0))), expString, type2);
 else if(exp->type != 16)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't determine type of %s; expected %s\n", (((void *)0))), expString, type2);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't determine type of %s; expected %s\n", (((void *)0))), expString, type2);
 }
 }
 else
@@ -19269,9 +19275,9 @@ PrintExpression(exp, expString);
 __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
 }
 if(unresolved)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "unresolved identifier %s\n", (((void *)0))), expString);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "unresolved identifier %s\n", (((void *)0))), expString);
 else if(exp->type != 16)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't determine type of %s\n", (((void *)0))), expString);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't determine type of %s\n", (((void *)0))), expString);
 }
 }
 else
@@ -19387,9 +19393,9 @@ __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
 if(!sourceFile || (!strstr(sourceFile, "src\\lexer.ec") && !strstr(sourceFile, "src/lexer.ec") && !strstr(sourceFile, "src\\grammar.ec") && !strstr(sourceFile, "src/grammar.ec") && !strstr(sourceFile, "src\\type.ec") && !strstr(sourceFile, "src/type.ec") && !strstr(sourceFile, "src\\expression.ec") && !strstr(sourceFile, "src/expression.ec")))
 {
 if(invalidCast)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "incompatible expression %s (%s); expected %s\n", (((void *)0))), expString, type1, type2);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "incompatible expression %s (%s); expected %s\n", (((void *)0))), expString, type1, type2);
 else
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "incompatible expression %s (%s); expected %s\n", (((void *)0))), expString, type1, type2);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "incompatible expression %s (%s); expected %s\n", (((void *)0))), expString, type1, type2);
 }
 }
 if(!inCompiler)
@@ -19422,9 +19428,9 @@ exp->__anon1.cast.typeName = MkTypeName(MkListOne(MkSpecifier(VOID)), MkDeclarat
 else if(unresolved)
 {
 if(exp->__anon1.__anon1.identifier->_class && exp->__anon1.__anon1.identifier->_class->__anon1.__anon1.name)
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "unresolved identifier %s::%s\n", (((void *)0))), exp->__anon1.__anon1.identifier->_class->__anon1.__anon1.name, exp->__anon1.__anon1.identifier->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "unresolved identifier %s::%s\n", (((void *)0))), exp->__anon1.__anon1.identifier->_class->__anon1.__anon1.name, exp->__anon1.__anon1.identifier->string);
 else if(exp->__anon1.__anon1.identifier->string && exp->__anon1.__anon1.identifier->string[0])
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "unresolved identifier %s\n", (((void *)0))), exp->__anon1.__anon1.identifier->string);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "unresolved identifier %s\n", (((void *)0))), exp->__anon1.__anon1.identifier->string);
 }
 else if(!exp->expType && exp->type != 16)
 {
@@ -19436,7 +19442,7 @@ if(inCompiler)
 PrintExpression(exp, expString);
 __eCNameSpace__eC__types__ChangeCh(expString, '\n', ' ');
 }
-Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "couldn't determine type of %s\n", (((void *)0))), expString);
+Compiler_Error(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "couldn't determine type of %s\n", (((void *)0))), expString);
 }
 if(inCompiler)
 ApplyAnyObjectLogic(exp);

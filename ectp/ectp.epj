@@ -82,8 +82,8 @@
             "NoLineNumbers" : true,
             "Optimization" : "Speed",
             "PreprocessorDefinitions" : [
-               "ECERE_STATIC",
-               "ECERE_BOOTSTRAP"
+               "EC_STATIC",
+               "EC_BOOTSTRAP"
             ],
             "TargetType" : "StaticLibrary",
             "TargetFileName" : "ectpBootstrap",

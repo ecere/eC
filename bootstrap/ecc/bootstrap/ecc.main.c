@@ -148,6 +148,10 @@ __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass__
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__types__Module;
 
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__DualPipe;
+
+__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__TempFile;
+
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_Context;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_GlobalData;
@@ -157,10 +161,6 @@ __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_I
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_ModuleImport;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass_Symbol;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__DualPipe;
-
-__attribute__((__common__)) struct __eCNameSpace__eC__types__Class * __eCClass___eCNameSpace__eC__files__TempFile;
 
 extern void __eCNameSpace__eC__types__eInstance_SetMethod(struct __eCNameSpace__eC__types__Instance * instance, const char *  name, void *  function);
 
@@ -243,13 +243,13 @@ static struct __eCNameSpace__eC__types__Instance * __currentModule;
 
 __attribute__((__common__)) struct __eCNameSpace__eC__types__Instance * __thisModule;
 
-unsigned int __eCDll_Load_ec(struct __eCNameSpace__eC__types__Instance * module);
-
-unsigned int __eCDll_Unload_ec(struct __eCNameSpace__eC__types__Instance * module);
-
 unsigned int __eCDll_Load_ecrt(struct __eCNameSpace__eC__types__Instance * module);
 
 unsigned int __eCDll_Unload_ecrt(struct __eCNameSpace__eC__types__Instance * module);
+
+unsigned int __eCDll_Load_ectp(struct __eCNameSpace__eC__types__Instance * module);
+
+unsigned int __eCDll_Unload_ectp(struct __eCNameSpace__eC__types__Instance * module);
 
 void __eCRegisterModule_ecc(struct __eCNameSpace__eC__types__Instance * module);
 
@@ -259,13 +259,13 @@ extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__types__eMo
 
 extern struct __eCNameSpace__eC__types__Class * __eCNameSpace__eC__types__eSystem_FindClass(struct __eCNameSpace__eC__types__Instance * module, const char *  name);
 
-extern struct __eCNameSpace__eC__types__Property * __eCNameSpace__eC__types__eClass_FindProperty(struct __eCNameSpace__eC__types__Class * _class, const char *  name, struct __eCNameSpace__eC__types__Instance * module);
-
 extern struct __eCNameSpace__eC__types__Method * __eCNameSpace__eC__types__eClass_FindMethod(struct __eCNameSpace__eC__types__Class * _class, const char *  name, struct __eCNameSpace__eC__types__Instance * module);
+
+extern struct __eCNameSpace__eC__types__Property * __eCNameSpace__eC__types__eClass_FindProperty(struct __eCNameSpace__eC__types__Class * _class, const char *  name, struct __eCNameSpace__eC__types__Instance * module);
 
 struct __eCNameSpace__eC__types__Application;
 
-extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__typeseCrt_Initialize(unsigned int guiApp, int argc, char *  argv[]);
+extern struct __eCNameSpace__eC__types__Instance * __eCNameSpace__eC__types__eCrt_Initialize(unsigned int guiApp, int argc, char *  argv[]);
 
 struct __eCNameSpace__eC__types__NameSpace;
 
@@ -444,24 +444,18 @@ __attribute__((unused)) struct __eCNameSpace__eC__types__Method * method;
 __attribute__((unused)) struct __eCNameSpace__eC__types__Property * _property;
 
 if(setThingsUp)
-__thisModule = __eCNameSpace__eC__typeseCrt_Initialize((unsigned int)1, _argc, (void *)_argv);
+__thisModule = __eCNameSpace__eC__types__eCrt_Initialize((unsigned int)1, _argc, (void *)_argv);
 __currentModule = module = __thisModule;
-if(!__eCNameSpace__eC__types__eModule_LoadStatic(module, "ecrt", 2, (void *)(__eCDll_Load_ecrt), (void *)(__eCDll_Unload_ecrt)))
+if(!__eCNameSpace__eC__types__eModule_LoadStatic(module, "ecrt", 1, (void *)(__eCDll_Load_ecrt), (void *)(__eCDll_Unload_ecrt)))
 printf("Error loading eC module \"%s\" (statically linked)\nThings might go very wrong.\n", "ecrt");
-if(!__eCNameSpace__eC__types__eModule_LoadStatic(module, "ec", 2, (void *)(__eCDll_Load_ec), (void *)(__eCDll_Unload_ec)))
-printf("Error loading eC module \"%s\" (statically linked)\nThings might go very wrong.\n", "ec");
+if(!__eCNameSpace__eC__types__eModule_LoadStatic(module, "ectp", 2, (void *)(__eCDll_Load_ectp), (void *)(__eCDll_Unload_ectp)))
+printf("Error loading eC module \"%s\" (statically linked)\nThings might go very wrong.\n", "ectp");
 __eCRegisterModule_ecc(module);
 __eCClass_char__PTR_ = __eCNameSpace__eC__types__eSystem_FindClass(module, "char *");
 __eCClass___eCNameSpace__eC__types__Application = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Application");
 __eCClass___eCNameSpace__eC__types__Module = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Module");
-__eCClass_Context = __eCNameSpace__eC__types__eSystem_FindClass(module, "Context");
-__eCClass_GlobalData = __eCNameSpace__eC__types__eSystem_FindClass(module, "GlobalData");
-__eCClass_ImportedModule = __eCNameSpace__eC__types__eSystem_FindClass(module, "ImportedModule");
-__eCClass_ModuleImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "ModuleImport");
-__eCClass_Symbol = __eCNameSpace__eC__types__eSystem_FindClass(module, "Symbol");
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Platform");
-__eCProp___eCNameSpace__eC__types__Platform_char__PTR_ = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "char *", module);
 _class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::BinaryTree");
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::OldList");
 __eCClass___eCNameSpace__eC__files__DualPipe = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::DualPipe");
 _class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::File");
 method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "Eof", module);
@@ -476,8 +470,14 @@ __eCVMethodID___eCNameSpace__eC__files__File_Seek = method->vid;
 method = __eCNameSpace__eC__types__eClass_FindMethod(_class, "Write", module);
 if(method)
 __eCVMethodID___eCNameSpace__eC__files__File_Write = method->vid;
-_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::containers::OldList");
 __eCClass___eCNameSpace__eC__files__TempFile = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::files::TempFile");
+_class = __eCNameSpace__eC__types__eSystem_FindClass(module, "eC::types::Platform");
+__eCProp___eCNameSpace__eC__types__Platform_char__PTR_ = _property = __eCNameSpace__eC__types__eClass_FindProperty(_class, "char *", module);
+__eCClass_Context = __eCNameSpace__eC__types__eSystem_FindClass(module, "Context");
+__eCClass_GlobalData = __eCNameSpace__eC__types__eSystem_FindClass(module, "GlobalData");
+__eCClass_ImportedModule = __eCNameSpace__eC__types__eSystem_FindClass(module, "ImportedModule");
+__eCClass_ModuleImport = __eCNameSpace__eC__types__eSystem_FindClass(module, "ModuleImport");
+__eCClass_Symbol = __eCNameSpace__eC__types__eSystem_FindClass(module, "Symbol");
 __eCNameSpace__eC__i18n__LoadTranslatedStrings((((void *)0)), "ecc");
 _class = __eCNameSpace__eC__types__eSystem_FindClass(__currentModule, "CompilerApp");
 if(setThingsUp)
