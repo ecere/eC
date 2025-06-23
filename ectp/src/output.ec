@@ -1083,6 +1083,18 @@ static void OutputSpecifier(Specifier spec, File f, bool typeName)
             f.Puts(" ");
             OutputIdentifier(spec.id, f);
          }
+         if(spec.baseSpecs)
+         {
+            Specifier s;
+
+            f.Puts(" : ");
+            for(s = spec.baseSpecs->first; s; s = s.next)
+            {
+               OutputSpecifier(s, f, false);
+               if(s.next) f.Puts(" ");
+            }
+         }
+
          if(spec.list)
          {
             Enumerator enumerator;

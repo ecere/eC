@@ -2834,6 +2834,36 @@ __internal_VirtualMethod ? __internal_VirtualMethod(f, " ") : (unsigned int)1;
 }));
 OutputIdentifier(spec->__anon1.__anon2.id, f);
 }
+if(spec->__anon1.__anon2.baseSpecs)
+{
+struct Specifier * s;
+
+(__extension__ ({
+unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const char *  string);
+
+__internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
+struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
+
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
+})[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
+__internal_VirtualMethod ? __internal_VirtualMethod(f, " : ") : (unsigned int)1;
+}));
+for(s = (*spec->__anon1.__anon2.baseSpecs).first; s; s = s->next)
+{
+OutputSpecifier(s, f, 0);
+if(s->next)
+(__extension__ ({
+unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const char *  string);
+
+__internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
+struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
+
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
+})[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
+__internal_VirtualMethod ? __internal_VirtualMethod(f, " ") : (unsigned int)1;
+}));
+}
+}
 if(spec->__anon1.__anon2.list)
 {
 struct Enumerator * enumerator;
