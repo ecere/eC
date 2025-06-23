@@ -26,7 +26,7 @@ if path.isdir(cpath) != True:
 if path.isfile(path.join(bindings_py_dir, 'cffi-ecrt.h')) != True:
    print('Cannot find cffi-ecrt.h in ', bindings_py_dir)
 
-sysdir = 'win32' if sys.platform == 'win32' else 'linux'
+sysdir = 'win32' if sys.platform == 'win32' else ('apple' if sys.platform == 'darwin' else 'linux')
 syslibdir = 'bin' if sys.platform == 'win32' else 'lib'
 libdir = path.join(bindings_py_dir, '..', '..', 'obj', sysdir, syslibdir)
 
@@ -51,10 +51,14 @@ if _embedded_c == False:
    libs.append('ecrt_c')
 
 # _py* CFFI packages are currently being packaged outside of the main extension directory
-extra_link_args = ["-Wl,-rpath,$ORIGIN/lib:$ORIGIN/ecrt/lib" ]
+if sys.platform == 'darwin':
+   extra_link_args = ["-Wl,-rpath,@loader_path/ecrt/lib" ]
+else:
+   extra_link_args = ["-Wl,-rpath,$ORIGIN/lib:$ORIGIN/ecrt/lib" ]
+
 if sys.platform == 'win32':
    extra_link_args.append('-Wl,--export-all-symbols')
-else:
+elif sys.platform != 'darwin':
    extra_link_args.append('-Wl,--export-dynamic')
 
 ffi_ecrt.set_source('_pyecrt',
