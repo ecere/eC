@@ -513,9 +513,12 @@ class CompilerApp : Application
 
          snprintf(command, sizeof(command), "%s%s -x c -E %s \"%s\"", cppCommand, cppOptions ? cppOptions : "", buildingBootStrap ? "" : "-include stdint.h -include sys/types.h", GetSourceFile());
          command[sizeof(command)-1] = 0;
-#if 0 //def _DEBUG
+#if 1 //def _DEBUG
          PrintLn("ECC Executing:");
          PrintLn(command);
+         PrintLn("---------- preprocessing output ----------");
+         system(command);
+         PrintLn("---------- end of preprocessing output ----------");
 #endif
          if((cppOutput = DualPipeOpen({ output = true }, command)))
          {

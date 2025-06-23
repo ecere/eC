@@ -185,6 +185,8 @@ struct ClassDefinition;
 
 extern int snprintf(char * , size_t, const char * , ...);
 
+extern int system(const char * );
+
 extern char *  __eCNameSpace__eC__types__GetLastDirectory(const char *  string, char *  output);
 
 extern unsigned int __eCNameSpace__eC__types__StripExtension(char *  string);
@@ -1165,6 +1167,11 @@ __eCMethod___eCNameSpace__eC__containers__BinaryTree_Add(&globalData.functions, 
 }
 snprintf(command, sizeof (command), "%s%s -x c -E %s \"%s\"", cppCommand, cppOptions ? cppOptions : "", buildingBootStrap ? "" : "-include stdint.h -include sys/types.h", GetSourceFile());
 command[sizeof (command) - 1] = 0;
+__eCNameSpace__eC__types__PrintLn(__eCClass_char__PTR_, "ECC Executing:", (void *)0);
+__eCNameSpace__eC__types__PrintLn(__eCClass_char__PTR_, command, (void *)0);
+__eCNameSpace__eC__types__PrintLn(__eCClass_char__PTR_, "---------- preprocessing output ----------", (void *)0);
+system(command);
+__eCNameSpace__eC__types__PrintLn(__eCClass_char__PTR_, "---------- end of preprocessing output ----------", (void *)0);
 if((cppOutput = __eCNameSpace__eC__files__DualPipeOpen((((unsigned int)(1))), command)))
 {
 char impFile[797];
