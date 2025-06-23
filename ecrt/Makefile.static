@@ -151,8 +151,6 @@ _OBJECTS1 = \
 	$(OBJ)ccstr$(O)
 _OBJECTS2 = \
 	$(OBJ)mmhash$(O) \
-	$(if $(OSX_TARGET),$(OBJ)CocoaEcereBridge$(O),) \
-	$(if $(OSX_TARGET),$(OBJ)EcereView$(O),) \
 	$(OBJ)instance.c$(O)
 
 OBJECTS = $(_OBJECTS) $(ECOBJECTS) $(OBJ)$(MODULE).main$(O)
