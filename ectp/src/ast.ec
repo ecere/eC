@@ -740,6 +740,11 @@ public Identifier GetDeclId(Declarator decl)
    return decl ? decl.identifier : null;
 }
 
+Declaration MkDeclarationPragma(const String pragma)
+{
+   return { type = pragmaDeclaration, pragma = CopyString(pragma), loc = yylloc };
+}
+
 Declaration MkDeclarationClassInst(Instantiation inst)
 {
    return { type = instDeclaration, inst = inst, loc = yylloc };

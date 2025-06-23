@@ -1946,6 +1946,7 @@ struct Expression * exp;
 struct Specifier * extStorage;
 struct Symbol * symbol;
 int declMode;
+char * pragma;
 } eC_gcc_struct;
 
 struct Expression
@@ -3045,6 +3046,7 @@ __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "structDeclaration", 0);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "initDeclaration", 1);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "instDeclaration", 2);
 __eCNameSpace__eC__types__eEnum_AddFixedValue(class, "defineDeclaration", 3);
+__eCNameSpace__eC__types__eEnum_AddFixedValue(class, "pragmaDeclaration", 4);
 class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "Declaration", 0, sizeof(struct Declaration), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass_Declaration = class;
@@ -3075,6 +3077,7 @@ __eCNameSpace__eC__types__eClass_AddMember(class, dataMember0);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "extStorage", "Specifier", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "symbol", "Symbol", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "declMode", "eC::types::AccessMode", 4, 4, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "pragma", "String", sizeof(void *), 0xF000F000, 1);
 class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "Instantiation", 0, sizeof(struct Instantiation), 0, (void *)0, (void *)0, module, 1, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass_Instantiation = class;

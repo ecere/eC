@@ -3398,6 +3398,7 @@ declaration:
    | declaration_error ';'                            { $$ = $1; structDeclMode = defaultDeclMode; }
    | STATIC_ASSERT '(' expression ')' { $$ = MkExpDummy(); $$.loc = @$; FreeList($3, FreeExpression); }
    | STATIC_ASSERT '(' expression ',' string_literal ')' { $$ = MkExpDummy(); $$.loc = @$; FreeList($3, FreeExpression); delete $5; }
+   | PRAGMA { $$ = MkDeclarationPragma(yytext); $$.loc = @$; }
 	;
 
 external_guess_declaration:

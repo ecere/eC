@@ -591,6 +591,7 @@ struct Expression * exp;
 struct Specifier * extStorage;
 struct Symbol * symbol;
 int declMode;
+char * pragma;
 } eC_gcc_struct;
 
 extern struct Declaration * MkDeclarationInst(struct Instantiation * inst);

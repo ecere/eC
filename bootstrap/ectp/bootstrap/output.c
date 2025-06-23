@@ -1066,6 +1066,7 @@ struct Expression * exp;
 struct Specifier * extStorage;
 struct Symbol * symbol;
 int declMode;
+char * pragma;
 } eC_gcc_struct;
 
 struct Instantiation
@@ -3324,6 +3325,38 @@ if(decl->__anon1.inst)
 OutputInstance(decl->__anon1.inst, f);
 }
 break;
+case 4:
+(__extension__ ({
+unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const char *  string);
+
+__internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
+struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
+
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
+})[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
+__internal_VirtualMethod ? __internal_VirtualMethod(f, "\n#") : (unsigned int)1;
+}));
+(__extension__ ({
+unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const char *  string);
+
+__internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
+struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
+
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
+})[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
+__internal_VirtualMethod ? __internal_VirtualMethod(f, decl->pragma) : (unsigned int)1;
+}));
+(__extension__ ({
+unsigned int (*  __internal_VirtualMethod)(struct __eCNameSpace__eC__types__Instance *, const char *  string);
+
+__internal_VirtualMethod = ((unsigned int (*)(struct __eCNameSpace__eC__types__Instance *, const char *  string))__extension__ ({
+struct __eCNameSpace__eC__types__Instance * __internal_ClassInst = f;
+
+__internal_ClassInst ? __internal_ClassInst->_vTbl : __eCClass___eCNameSpace__eC__files__File->_vTbl;
+})[__eCVMethodID___eCNameSpace__eC__files__File_Puts]);
+__internal_VirtualMethod ? __internal_VirtualMethod(f, "\n") : (unsigned int)1;
+}));
+return ;
 case 3:
 return ;
 }

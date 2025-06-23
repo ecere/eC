@@ -3468,6 +3468,7 @@ struct Expression * exp;
 struct Specifier * extStorage;
 struct Symbol * symbol;
 int declMode;
+char * pragma;
 } eC_gcc_struct;
 
 struct Statement
@@ -3879,6 +3880,15 @@ gotType = 1;
 }
 }
 return decl;
+}
+
+struct Declaration * MkDeclarationPragma(const char * pragma)
+{
+return __extension__ ({
+struct Declaration * __eCInstance1 = __eCNameSpace__eC__types__eInstance_New(__eCClass_Declaration);
+
+__eCInstance1->type = 4, __eCInstance1->pragma = __eCNameSpace__eC__types__CopyString(pragma), __eCInstance1->loc = yylloc, __eCInstance1;
+});
 }
 
 struct Declaration * MkDeclarationClassInst(struct Instantiation * inst)
@@ -5368,6 +5378,7 @@ __eCNameSpace__eC__types__eSystem_RegisterFunction("MkInitDeclarator", "InitDecl
 __eCNameSpace__eC__types__eSystem_RegisterFunction("MkTypeName", "TypeName MkTypeName(eC::containers::OldList qualifiers, Declarator declarator)", MkTypeName, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("MkTypeNameGuessDecl", "TypeName MkTypeNameGuessDecl(eC::containers::OldList qualifiers, Declarator declarator)", MkTypeNameGuessDecl, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("GetDeclId", "Identifier GetDeclId(Declarator decl)", GetDeclId, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("MkDeclarationPragma", "Declaration MkDeclarationPragma(const String pragma)", MkDeclarationPragma, module, 2);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("MkDeclarationClassInst", "Declaration MkDeclarationClassInst(Instantiation inst)", MkDeclarationClassInst, module, 2);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("MkDeclarationInst", "Declaration MkDeclarationInst(Instantiation inst)", MkDeclarationInst, module, 2);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("MkDeclarationDefine", "Declaration MkDeclarationDefine(Identifier id, Expression exp)", MkDeclarationDefine, module, 2);

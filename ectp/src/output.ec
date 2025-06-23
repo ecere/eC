@@ -1324,6 +1324,11 @@ static void OutputDeclaration(Declaration decl, File f)
             OutputInstance(decl.inst, f);
          }
          break;
+      case pragmaDeclaration:
+         f.Puts("\n#");
+         f.Puts(decl.pragma);
+         f.Puts("\n");
+         return; // Skip semicolon
       case defineDeclaration:
          return; // Skip semicolon
    }

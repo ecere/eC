@@ -919,7 +919,7 @@ public:
    };
 };
 
-public enum DeclarationType { structDeclaration, initDeclaration, instDeclaration, defineDeclaration };
+public enum DeclarationType { structDeclaration, initDeclaration, instDeclaration, defineDeclaration, pragmaDeclaration };
 
 public class Declaration : struct
 {
@@ -944,6 +944,7 @@ public:
    Specifier extStorage;
    Symbol symbol;
    AccessMode declMode;
+   String pragma;
 };
 
 public class Instantiation : struct

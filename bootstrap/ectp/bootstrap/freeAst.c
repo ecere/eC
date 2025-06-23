@@ -1526,6 +1526,7 @@ struct Expression * exp;
 struct Specifier * extStorage;
 struct Symbol * symbol;
 int declMode;
+char * pragma;
 } eC_gcc_struct;
 
 struct External
@@ -2623,6 +2624,12 @@ if(decl->__anon1.__anon2.exp)
 FreeExpression(decl->__anon1.__anon2.exp);
 if(decl->__anon1.__anon2.id)
 FreeIdentifier(decl->__anon1.__anon2.id);
+break;
+}
+case 4:
+{
+if(decl->pragma)
+(__eCNameSpace__eC__types__eSystem_Delete(decl->pragma), decl->pragma = 0);
 break;
 }
 }
