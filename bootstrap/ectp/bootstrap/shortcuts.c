@@ -308,11 +308,40 @@ extern void __eCNameSpace__eC__types__eInstance_IncRef(struct __eCNameSpace__eC_
 
 extern struct __eCNameSpace__eC__types__Instance * fileInput;
 
+struct LexerBackup
+{
+struct Location yylloc;
+struct Location type_yylloc;
+struct Location expression_yylloc;
+int declMode;
+int defaultDeclMode;
+struct __eCNameSpace__eC__types__Instance * fileInput;
+struct yy_buffer_state *  include_stack[30];
+struct __eCNameSpace__eC__types__Instance * fileStack[30];
+char sourceFileStack[30][797];
+struct Location locStack[30];
+int declModeStack[30];
+int include_stack_ptr;
+struct yy_buffer_state *  buffer;
+int yy_n_chars;
+char *  yytext;
+char *  yy_c_buf_p;
+void *  yyin;
+char yy_hold_char;
+int yychar;
+int yy_init;
+int yy_start;
+} eC_gcc_struct;
+
 extern int __eCVMethodID___eCNameSpace__eC__files__File_Write;
 
 extern int __eCVMethodID___eCNameSpace__eC__files__File_Seek;
 
 extern void __eCNameSpace__eC__types__eInstance_DecRef(struct __eCNameSpace__eC__types__Instance * instance);
+
+extern struct __eCNameSpace__eC__types__Instance * pushLexer(void);
+
+extern void popLexer(struct __eCNameSpace__eC__types__Instance * backup);
 
 struct Declarator;
 
@@ -675,6 +704,7 @@ struct Declarator * SpecDeclFromString(const char * string, struct __eCNameSpace
 struct Location oldLocation = yylloc;
 struct Declarator * decl = (((void *)0));
 struct __eCNameSpace__eC__types__Instance * backFileInput = fileInput;
+struct __eCNameSpace__eC__types__Instance * backup = pushLexer();
 
 if(!string)
 string = "void()";
@@ -737,16 +767,17 @@ FreeTypeName(parsedType);
 parsedType = (((void *)0));
 if(parseTypeError)
 {
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "parsing type %s\n", (((void *)0))), string);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "parsing type %s\n", (((void *)0))), string);
 }
 }
 else
 {
-Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ec", "parsing type %s\n", (((void *)0))), string);
+Compiler_Warning(__eCNameSpace__eC__i18n__GetTranslatedString("ectp", "parsing type %s\n", (((void *)0))), string);
 decl = baseDecl;
 }
 yylloc = oldLocation;
 fileInput = backFileInput;
+popLexer(backup);
 return decl;
 }
 
