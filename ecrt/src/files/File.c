@@ -2,8 +2,9 @@
 
 #undef __BLOCKS__
 
-#if !defined(__x86_64__)
+#if !defined(__x86_64__) || !defined(__GLIBC__)
 #define _FILE_OFFSET_BITS 64
+#define fnctl64 fnctl
 #endif
 
 #include <stdio.h>
@@ -21,7 +22,7 @@
 
 #include <fcntl.h>
 
-#if defined(__linux__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__) && defined(__x86_64__)
+#if defined(__linux__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__) && defined(__x86_64__) && defined(__GLIBC__)
 
 // From https://stackoverflow.com/questions/58472958/how-to-force-linkage-to-older-libc-fcntl-instead-of-fcntl64
 

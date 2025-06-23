@@ -696,6 +696,11 @@ void Instance_Module_Free(void * library)
 
 #include <math.h>
 
+#ifndef __GLIBC__    // musl libc does not define isnanf() which is declared obsolete in C99
+#define isnanf isnan
+#define isinff isinf
+#endif
+
 __attribute__((__optimize__("no-finite-math-only")))
 bool Float_isNan(float n) { return isnanf(n); }
 __attribute__((__optimize__("no-finite-math-only")))

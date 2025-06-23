@@ -41,7 +41,7 @@ default:
 #include <dirent.h>
 #endif
 
-#if defined(__linux__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__) && defined(__x86_64__)
+#if defined(__linux__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__) && defined(__x86_64__) && defined(__GLIBC__)
 
 asm(".symver __xstat,__xstat@GLIBC_2.2.5");
 
