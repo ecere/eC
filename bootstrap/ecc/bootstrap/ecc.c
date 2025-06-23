@@ -6,6 +6,10 @@
 #else
 #define __runtimePlatform 2
 #endif
+#if defined(__APPLE__) && defined(__SIZEOF_INT128__) // Fix for incomplete __darwin_arm_neon_state64
+typedef unsigned __int128 __uint128_t;
+typedef          __int128  __int128_t;
+#endif
 #if defined(__GNUC__) || defined(__clang__)
 #if defined(__clang__) && defined(__WIN32__)
 #define int64 long long
@@ -1120,6 +1124,16 @@ struct Symbol * __eCInstance1 = __eCNameSpace__eC__types__eInstance_New(__eCClas
 
 __eCInstance1->string = __eCNameSpace__eC__types__CopyString("byte"), __eCInstance1->type = ProcessTypeString("unsigned char", 0), __eCInstance1;
 }));
+__eCMethod___eCNameSpace__eC__containers__BinaryTree_Add(&globalContext->types, (struct __eCNameSpace__eC__containers__BTNode *)__extension__ ({
+struct Symbol * __eCInstance1 = __eCNameSpace__eC__types__eInstance_New(__eCClass_Symbol);
+
+__eCInstance1->string = __eCNameSpace__eC__types__CopyString("__uint128_t"), __eCInstance1->type = ProcessTypeString("unsigned __int128", 0), __eCInstance1;
+}));
+__eCMethod___eCNameSpace__eC__containers__BinaryTree_Add(&globalContext->types, (struct __eCNameSpace__eC__containers__BTNode *)__extension__ ({
+struct Symbol * __eCInstance1 = __eCNameSpace__eC__types__eInstance_New(__eCClass_Symbol);
+
+__eCInstance1->string = __eCNameSpace__eC__types__CopyString("__int128_t"), __eCInstance1->type = ProcessTypeString("__int128", 0), __eCInstance1;
+}));
 if(buildingBootStrap)
 {
 __eCMethod___eCNameSpace__eC__containers__BinaryTree_Add(&globalContext->types, (struct __eCNameSpace__eC__containers__BTNode *)__extension__ ({
@@ -1281,6 +1295,10 @@ __eCMethod___eCNameSpace__eC__files__File_Printf(output, "#elif defined(__APPLE_
 __eCMethod___eCNameSpace__eC__files__File_Printf(output, "#define __runtimePlatform 3\n");
 __eCMethod___eCNameSpace__eC__files__File_Printf(output, "#else\n");
 __eCMethod___eCNameSpace__eC__files__File_Printf(output, "#define __runtimePlatform 2\n");
+__eCMethod___eCNameSpace__eC__files__File_Printf(output, "#endif\n");
+__eCMethod___eCNameSpace__eC__files__File_Printf(output, "#if defined(__APPLE__) && defined(__SIZEOF_INT128__) // Fix for incomplete __darwin_arm_neon_state64\n");
+__eCMethod___eCNameSpace__eC__files__File_Printf(output, "typedef unsigned __int128 __uint128_t;\n");
+__eCMethod___eCNameSpace__eC__files__File_Printf(output, "typedef          __int128  __int128_t;\n");
 __eCMethod___eCNameSpace__eC__files__File_Printf(output, "#endif\n");
 __eCMethod___eCNameSpace__eC__files__File_Printf(output, "#if defined(__GNUC__) || defined(__clang__)\n");
 __eCMethod___eCNameSpace__eC__files__File_Printf(output, "#if defined(__clang__) && defined(__WIN32__)\n");

@@ -489,6 +489,9 @@ class CompilerApp : Application
          globalContext.types.Add((BTNode)Symbol { string = CopyString("uint32"), type = ProcessTypeString("unsigned int", false) });
          globalContext.types.Add((BTNode)Symbol { string = CopyString("uint16"), type = ProcessTypeString("unsigned short", false) });
          globalContext.types.Add((BTNode)Symbol { string = CopyString("byte"), type = ProcessTypeString("unsigned char", false) });
+
+         globalContext.types.Add((BTNode)Symbol { string = CopyString("__uint128_t"), type = ProcessTypeString("unsigned __int128", false) });
+         globalContext.types.Add((BTNode)Symbol { string = CopyString("__int128_t"), type = ProcessTypeString("__int128", false) });
          if(buildingBootStrap)
          {
             // Do not define this when we pre-include stdint.h or the eC compiler will be confused when parsing these types (External prioritization in pass15.ec will fail)
@@ -668,6 +671,11 @@ class CompilerApp : Application
                      output.Printf("#define __runtimePlatform 2\n");
                      output.Printf("#endif\n");
 
+                     output.Printf("#if defined(__APPLE__) && defined(__SIZEOF_INT128__) // Fix for incomplete __darwin_arm_neon_state64\n");
+                     output.Printf("typedef unsigned __int128 __uint128_t;\n");
+                     output.Printf("typedef          __int128  __int128_t;\n");
+                     output.Printf("#endif\n");
+
                      output.Printf("#if defined(__GNUC__) || defined(__clang__)\n");
                         output.Printf("#if defined(__clang__) && defined(__WIN32__)\n");
                            output.Printf("#define int64 long long\n");
@@ -680,6 +688,7 @@ class CompilerApp : Application
                         output.Printf("#else\n");
                            output.Printf("typedef long long int64;\n");
                            output.Printf("typedef unsigned long long uint64;\n");
+
                         output.Printf("#endif\n");
 
                         output.Printf("#ifndef _WIN32\n");
