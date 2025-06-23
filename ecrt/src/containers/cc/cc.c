@@ -46,7 +46,7 @@
 #endif
 
 
-#if defined(__linux__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__) && !defined(__i386__)
+#if defined(__linux__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__) && defined(__x86_64__)
 
 asm(".symver __xstat,__xstat@GLIBC_2.2.5");
 

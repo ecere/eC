@@ -239,8 +239,7 @@ endif
 endif
 endif
 
-CFLAGS += \
-	 -mmmx -msse -msse2 -msse3 -msse4
+CFLAGS +=
 
 CECFLAGS += -cpp $(_CPP)
 
