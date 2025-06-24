@@ -106,7 +106,11 @@ LIBS += $(SHAREDLIB) $(EXECUTABLE) $(LINKOPT)
 ifndef STATIC_LIBRARY_TARGET
 LIBS += \
 	$(call _L,ecrt)
+ifdef OSX_TARGET
+OFLAGS += $(if $(ENABLE_PYTHON_RPATHS),-Wl$(comma)-rpath$(comma)'@loader_path',)
+else
 OFLAGS += $(if $(ENABLE_PYTHON_RPATHS),-Wl$(comma)-rpath='$$ORIGIN',)
+endif
 OFLAGS += $(RPATHS_FOR_PORTABLE_BINARIES)
 endif
 
@@ -148,6 +152,9 @@ $(OBJECTS): | objdir
 $(TARGET): $(SOURCES) $(RESOURCES) $(SYMBOLS) $(OBJECTS) | objdir
 ifndef STATIC_LIBRARY_TARGET
 	$(CC) $(OFLAGS) $(OBJECTS) $(LIBS) -o $(TARGET) $(SONAME) $(INSTALLNAME)
+ifdef OSX_TARGET
+	install_name_tool -id @rpath/lib$(MODULE).dylib $(TARGET)
+endif
 ifndef NOSTRIP
 	$(STRIP) $(STRIPOPT) $(TARGET)
 endif

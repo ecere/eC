@@ -78,7 +78,11 @@ LIBS += $(SHAREDLIB) $(EXECUTABLE) $(LINKOPT)
 ifndef STATIC_LIBRARY_TARGET
 LIBS += \
 	$(call _L,ecrt)
+ifdef OSX_TARGET
+OFLAGS += $(if $(ENABLE_PYTHON_RPATHS),-Wl$(comma)-rpath$(comma)'@executable_path/../lib',)
+else
 OFLAGS += $(if $(ENABLE_PYTHON_RPATHS),-Wl$(comma)-rpath='$$ORIGIN/../lib',)
+endif
 OFLAGS += $(RPATHS_FOR_PORTABLE_BINARIES)
 endif
 

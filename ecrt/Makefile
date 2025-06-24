@@ -177,7 +177,11 @@ ifndef STATIC_LIBRARY_TARGET
 LIBS += \
 	$(call _L,z)
 
+ifdef OSX_TARGET
+OFLAGS += $(if $(ENABLE_PYTHON_RPATHS),-Wl$(comma)-rpath$(comma)'@loader_path',)
+else
 OFLAGS += $(if $(ENABLE_PYTHON_RPATHS),-Wl$(comma)-rpath='$$ORIGIN',)
+endif
 OFLAGS += $(RPATHS_FOR_PORTABLE_BINARIES)
 endif
 
