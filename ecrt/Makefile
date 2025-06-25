@@ -237,9 +237,11 @@ ifdef LINUX_TARGET
 
 ifndef STATIC_LIBRARY_TARGET
 ifneq ($(ARCH),x32)
+ifneq ($(shell uname -m),x86_64)
 # $(warning ARCH: $(ARCH) -- adding -Wl,--wrap=fcntl64 to OFLAGS)
 OFLAGS += \
 	 -Wl,--wrap=fcntl64
+endif
 endif
 OFLAGS +=
 
