@@ -10,7 +10,11 @@
 #if !defined(__ECRT_H__)
 #define __ECRT_H__
 
-#define CPP11 (defined(__cplusplus) && __cplusplus >= 201103L)
+#if defined(__cplusplus) && __cplusplus >= 201103L
+#define CPP11 1
+#else
+#define CPP11 0
+#endif
 
 #ifdef __cplusplus
 
