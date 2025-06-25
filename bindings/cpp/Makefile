@@ -7,7 +7,7 @@ include $(_CF_DIR)crossplatform.mk
 
 # TARGETS
 
-all: ecrt_cpp dggal_cpp
+all: ecrt_cpp
 
 ecrt_cpp:
 	+$(_MAKE) -f Makefile.ecrt_cpp
