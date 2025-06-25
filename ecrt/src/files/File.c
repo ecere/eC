@@ -4,7 +4,7 @@
 
 #if !defined(__x86_64__) || !defined(__GLIBC__)
 #define _FILE_OFFSET_BITS 64
-#define fnctl64 fnctl
+#define fcntl64 fcntl
 #endif
 
 #include <stdio.h>
