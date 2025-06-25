@@ -11,12 +11,16 @@ all: ecrt_c
 
 ecrt_c:
 	+$(_MAKE) -f Makefile.ecrt_c
+	+$(_MAKE) -f Makefile.ecrt_c.static
 
 clean:
 	+$(_MAKE) -f Makefile.ecrt_c clean
+	+$(_MAKE) -f Makefile.ecrt_c.static clean
 
 realclean:
 	+$(_MAKE) -f Makefile.ecrt_c realclean
+	+$(_MAKE) -f Makefile.ecrt_c.static realclean
 
 distclean:
 	+$(_MAKE) -f Makefile.ecrt_c distclean
+	+$(_MAKE) -f Makefile.ecrt_c.static distclean

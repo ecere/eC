@@ -4,7 +4,7 @@ ifneq ($(V),1)
 .SILENT:
 endif
 
-MODULE := ecrt_sys
+MODULE := ecrt
 BINDING_NAME := ecrt
 
 # CORE VARIABLES
@@ -31,46 +31,30 @@ include $(_CF_DIR)default.cf
 
 OBJ = obj/$(PLATFORM)$(COMPILER_SUFFIX)
 
-TARGET = $(OBJ)/lib$(MODULE).rlib
-
-SOURCES = $(MODULE).rs
-
-LIBS += \
-   $(call _L,ecrt_cStatic) \
-	$(call _L,ecrtStatic) \
-	$(call _L,z)
-
-ifdef WINDOWS_TARGET
-
-LIBS += \
-	$(call _L,winmm) \
-	$(call _L,kernel32) \
-	$(call _L,user32) \
-	$(call _L,mpr) \
-	$(call _L,advapi32) \
-	$(call _L,shell32)
-
-endif
-
 #	-Clink-arg=$(OBJ)/$(BINDING_NAME)$(O)
 
-OFLAGS =
+PRJ_CFLAGS += $(if $(DEBUG), -g, -O2 -ffast-math) -w -I$(EC_SDK_SRC)bindings/c -DEC_STATIC
 
-OFLAGS += \
-	-Lnative=obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX) \
-	-Lnative=$(EC_SDK_SRC)obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib
-
-RUSTFLAGS = --edition 2021 -Anon_snake_case -Anon_upper_case_globals -Anon_camel_case_types -Aimproper_ctypes
+ifdef C_BINDINGS_SYMBOLS_PREFIX_ENABLE
+PRJ_CFLAGS += -DECPRFX=eC_
+endif
 
 _OBJECTS = $(_DEP_OBJECTS) $(OBJ)/$(BINDING_NAME)$(O)
 
 OBJECTS = $(_OBJECTS)
 
-SOURCES = $(_DEP_SOURCES) $(BINDING_NAME)_cffi.rs
+SOURCES = $(_DEP_SOURCES) ../c/$(BINDING_NAME).c
 
-CBINDING_STATIC_LIB = $(EC_SDK_SRC)obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib/libecrt_cStatic.a
+CBINDING_STATIC_LIB = $(OBJ)/lib$(BINDING_NAME)_cStatic.a
+
+TARGET = $(CBINDING_STATIC_LIB)
 
 all: objdir $(TARGET);
+
+# OBJECT RULES
+
+$(OBJ)/$(BINDING_NAME)$(O): ../c/$(BINDING_NAME).c
+	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,$<) -o $(call quote_path,$@)
 
 # TARGETS
 
@@ -80,16 +64,17 @@ objdir:
 $(SYMBOLS): | objdir
 $(OBJECTS): | objdir
 
-$(TARGET): $(SOURCES) $(OBJECTS) $(CBINDING_STATIC_LIB) | objdir
-	rustc --crate-type lib --crate-name ecrt_sys $(RUSTFLAGS) $(BINDING_NAME)_cffi.rs $(OFLAGS) $(LIBS) -o $(TARGET)
+$(TARGET): $(SOURCES) $(OBJECTS) | objdir
+	$(AR) rcs $(CBINDING_STATIC_LIB) $(_OBJECTS)
 	$(call mkdir,$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
-	$(call cp,$(TARGET),$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
+	$(call cp,$(CBINDING_STATIC_LIB),$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
 
 cleantarget:
 	$(call rm,$(TARGET))
 
 clean: cleantarget
 	$(call rm,_OBJECTS)
+	$(call rm,$(OBJ)/$(BINDING_NAME)_cStatic.a)
 
 realclean: cleantarget
 	$(call rmr,$(OBJ))
