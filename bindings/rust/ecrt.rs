@@ -128,23 +128,23 @@ pub trait TTAU64 {
 
 impl TTAU64 for u64
 {
-   fn from_u64(value: u64) -> Self { unsafe { transmute(value) } }
-   fn to_u64(&self) -> u64 { unsafe { transmute(*self) } }
+   fn from_u64(value: u64) -> Self { value }
+   fn to_u64(&self) -> u64 { *self }
 }
 impl TTAU64 for i64
 {
-   fn from_u64(value: u64) -> Self { unsafe { transmute(value) } }
-   fn to_u64(&self) -> u64 { unsafe { transmute(*self) } }
+   fn from_u64(value: u64) -> Self { u64::cast_signed(value) }
+   fn to_u64(&self) -> u64 { i64::cast_unsigned(*self) }
 }
 impl TTAU64 for f64
 {
-   fn from_u64(value: u64) -> Self { unsafe { transmute(value) } }
-   fn to_u64(&self) -> u64 { unsafe { transmute(*self) } }
+   fn from_u64(value: u64) -> Self { f64::from_bits(value) }
+   fn to_u64(&self) -> u64 { f64::to_bits(*self) }
 }
 impl TTAU64 for f32
 {
-   fn from_u64(value: u64) -> Self { unsafe { transmute(value as u32) } }
-   fn to_u64(&self) -> u64 { unsafe { transmute::<f32, u32>(*self) as u64 } }
+   fn from_u64(value: u64) -> Self { f32::from_bits(value as u32) }
+   fn to_u64(&self) -> u64 { f32::to_bits(*self) as u64 }
 }
 impl TTAU64 for u32
 {
