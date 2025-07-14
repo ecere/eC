@@ -11,6 +11,11 @@ import "Container"
 #include "cc.h"
 #include "mmhash.h"
 
+public uint32 hash32Data( const void *data, int size )
+{
+   return ccHash32Data(data, size);
+}
+
 static define HASH_PAGE_SHIFT = 7;
 
 #define NULL_KEY  ((int64)0xFFFFFFFFFFFFFFFFLL)
