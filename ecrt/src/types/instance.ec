@@ -206,9 +206,19 @@ public class ::unichar : uint32
 };
 
 // Forward declarations to hook on to libec:
+#ifdef MEMINFO
+
+#define Type void *
+#define Instantiation void *
+#define ClassDefinition void *
+
+#else
+
 public class ::Type;
 public class ::Instantiation;
 public class ::ClassDefinition;
+
+#endif
 
 public class Property : struct
 {
