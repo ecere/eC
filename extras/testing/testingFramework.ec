@@ -7,6 +7,8 @@
 #endif
 public import IMPORT_STATIC "ecrt"
 
+int numFailures;
+
 public class eTest
 {
 public:
@@ -28,6 +30,7 @@ public:
    {
       PrintLn("!FAILED!  [", _class.name, ":", testID, testCase ? ":" : "", testCase ? testCase : "", "]", $" because ", reason, ".");
       app.exitCode = 1;
+      numFailures++;
    }
 
    virtual bool prepareTests();
@@ -133,7 +136,10 @@ class TestApp : Application
       delete options;
 
       if(exitCode)
+      {
          PrintLn($"\nSome tests or preparation FAILED.");
+         PrintLn($"\nNumber of failures: ", numFailures);
+      }
       else if(action == prepare)
          PrintLn($"\nAll tests prepared successfully.");
       else if(action == clean)
