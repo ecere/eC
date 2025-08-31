@@ -26,7 +26,29 @@ extern int __eCVMethodID_class_OnCompare;
 #endif
 private:
 
-// Quick Sort algorithm adapted from public domain code by Darel Rex Finley
+static struct SortRData { void *arg; int (*compare)(void *, const void *, const void *); };
+
+static inline int compareDeref            (SortRData cs, const void **a, const void **b)  { return  cs.compare(cs.arg, *a, *b); }
+static inline int compareDescDeref        (SortRData cs, const void **a, const void **b)  { return -cs.compare(cs.arg, *a, *b); }
+static inline int compareDesc             (SortRData cs, const void * a, const void * b)  { return -cs.compare(cs.arg,  a,  b); }
+
+static inline int compareArgLast          (const void * a, const void * b, SortRData cs)  { return  cs.compare(cs.arg,  a,  b); }
+static inline int compareDerefArgLast     (const void **a, const void **b, SortRData cs)  { return  cs.compare(cs.arg, *a, *b); }
+static inline int compareDescDerefArgLast (const void **a, const void **b, SortRData cs)  { return -cs.compare(cs.arg, *a, *b); }
+static inline int compareDescArgLast      (const void * a, const void * b, SortRData cs)  { return -cs.compare(cs.arg,  a,  b); }
+
+// #define USE_CUSTOM_SORT
+
+#if defined(USE_CUSTOM_SORT) || defined(EC_BOOTSTRAP) || (!defined(GLIBC) && !defined(BSD) && (!defined(__WIN32__) || defined(EC_STATIC)))
+
+// #define USE_QUICKSORT
+
+#ifdef USE_QUICKSORT
+
+// Quick Sort algorithm adapted from public domain code by Darel Rex Finley ( https://alienryderflex.com/quicksort/ )
+
+// NOTE: This implementation, which is the "No-Fail" version, is not performing so well,
+//       possibly due to selecting the worst case O(N^2) to never run into the MAX_LEVELS limit.
 static inline void quickSort(void *base, uintsize nel, uintsize w, char * piv, int (*compare)(void *, const void *, const void *), void *arg)
 {
    #define MAX_LEVELS  300
@@ -74,17 +96,11 @@ static inline void quickSort(void *base, uintsize nel, uintsize w, char * piv, i
    }
    #undef MAX_LEVELS
 }
+#else
+#include "crumsort/crumsort.h"
+#endif
 
-static struct SortRData { void *arg; int (*compare)(void *, const void *, const void *); };
-
-static inline int compareDeref            (SortRData cs, const void **a, const void **b)  { return  cs.compare(cs.arg, *a, *b); }
-static inline int compareDescDeref        (SortRData cs, const void **a, const void **b)  { return -cs.compare(cs.arg, *a, *b); }
-static inline int compareDesc             (SortRData cs, const void * a, const void * b)  { return -cs.compare(cs.arg,  a,  b); }
-
-static inline int compareArgLast          (const void * a, const void * b, SortRData cs)  { return  cs.compare(cs.arg,  a,  b); }
-static inline int compareDerefArgLast     (const void **a, const void **b, SortRData cs)  { return  cs.compare(cs.arg, *a, *b); }
-static inline int compareDescDerefArgLast (const void **a, const void **b, SortRData cs)  { return -cs.compare(cs.arg, *a, *b); }
-static inline int compareDescArgLast      (const void * a, const void * b, SortRData cs)  { return -cs.compare(cs.arg,  a,  b); }
+#endif
 
 static inline void _qsortrx(void *base, uintsize nel, uintsize width,
    int (*compare)(void *arg, const void *a, const void *b),
@@ -109,12 +125,12 @@ static inline void _qsortrx(void *base, uintsize nel, uintsize width,
       qsort_r(base, nel, width, arg, compare);
    #elif defined(__WIN32__) && !defined(EC_BOOTSTRAP) && !defined(EC_STATIC)
       qsort_s(base, nel, width, compare, arg);
+   #elif defined(USE_QUICKSORT)
+      char * buf = new char[width];
+      quickSort(base, nel, width, buf, compare, arg);
+      delete buf;
    #else
-      {
-         char * buf = new char[width];
-         quickSort(base, nel, width, buf, compare, arg);
-         delete buf;
-      }
+      crumsort(base, nel, width, compare, arg);
    #endif
    }
    else
@@ -125,12 +141,12 @@ static inline void _qsortrx(void *base, uintsize nel, uintsize width,
       qsort_r(base, nel, width, s, compare_fn);
    #elif defined(__WIN32__) && !defined(EC_BOOTSTRAP) && !defined(EC_STATIC)
       qsort_s(base, nel, width, compare_fn, s);
+   #elif defined(USE_QUICKSORT)
+      char * buf = new char[width];
+      quickSort(base, nel, width, buf, compare_fn, s);
+      delete buf;
    #else
-      {
-         char * buf = new char[width];
-         quickSort(base, nel, width, buf, compare_fn, s);
-         delete buf;
-      }
+      crumsort(base, nel, width, compare_fn, s);
    #endif
       #undef compare_fn
    }

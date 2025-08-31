@@ -257,6 +257,18 @@
                         }
                      ]
                   },
+                  {
+                     "Folder" : "crumsort",
+                     "Files" : [
+                        "crumsort.c",
+                        "crumsort.h",
+                        "quadsort.c",
+                        "quadsort.h"
+                     ],
+                     "Options" : {
+                        "ExcludeFromBuild" : true
+                     }
+                  },
                   "Array.ec",
                   "AVLTree.ec",
                   "BuiltInContainer.ec",
