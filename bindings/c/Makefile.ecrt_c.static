@@ -33,7 +33,7 @@ OBJ = obj/$(PLATFORM)$(COMPILER_SUFFIX)
 
 #	-Clink-arg=$(OBJ)/$(BINDING_NAME)$(O)
 
-PRJ_CFLAGS += $(if $(DEBUG), -g, -O2 -ffast-math) -w -I$(EC_SDK_SRC)bindings/c -DEC_STATIC
+PRJ_CFLAGS += $(if $(DEBUG), -g, -O2 -ffast-math) $(FPIC) -w -I$(EC_SDK_SRC)bindings/c -DEC_STATIC
 
 ifdef C_BINDINGS_SYMBOLS_PREFIX_ENABLE
 PRJ_CFLAGS += -DECPRFX=eC_
