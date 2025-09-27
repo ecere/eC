@@ -13,7 +13,7 @@ include $(_CF_DIR)default.cf
 
 .NOTPARALLEL: $(NOT_PARALLEL_TARGETS)
 
-LIBVER := .0.0.1
+LIBVER := .0.0.5
 
 ifdef WINDOWS_HOST
 HOST_SOV := $(HOST_SO)

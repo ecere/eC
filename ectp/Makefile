@@ -7,6 +7,7 @@ endif
 # CORE VARIABLES
 
 MODULE := ectp
+VERSION := .0.0.5
 CONFIG := release
 ifndef COMPILER
 COMPILER := default
@@ -50,7 +51,7 @@ TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ectp$(S
 SONAME =
 ifndef SKIP_SONAME
 ifdef LINUX_TARGET
-TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ectp$(SO).0.0.1
+TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)ectp$(SO)$(VERSION)
 SONAME = -Wl,-soname,libectp.so.0
 endif
 endif
@@ -165,12 +166,12 @@ endif
 	$(call cp,$(TARGET),../$(SODESTDIR))
 ifndef SKIP_SONAME
 ifdef LINUX_TARGET
-	ln -sf $(LP)$(MODULE)$(SO).0.0.1 $(OBJ)$(LP)$(MODULE)$(SO).0.0
-	ln -sf $(LP)$(MODULE)$(SO).0.0.1 $(OBJ)$(LP)$(MODULE)$(SO).0
-	ln -sf $(LP)$(MODULE)$(SO).0.0.1 $(OBJ)$(LP)$(MODULE)$(SO)
-	ln -sf $(LP)$(MODULE)$(SO).0.0.1 ../$(SODESTDIR)$(LP)$(MODULE)$(SO).0.0
-	ln -sf $(LP)$(MODULE)$(SO).0.0.1 ../$(SODESTDIR)$(LP)$(MODULE)$(SO).0
-	ln -sf $(LP)$(MODULE)$(SO).0.0.1 ../$(SODESTDIR)$(LP)$(MODULE)$(SO)
+	ln -sf $(LP)$(MODULE)$(SO)$(VERSION) $(OBJ)$(LP)$(MODULE)$(SO).0.0
+	ln -sf $(LP)$(MODULE)$(SO)$(VERSION) $(OBJ)$(LP)$(MODULE)$(SO).0
+	ln -sf $(LP)$(MODULE)$(SO)$(VERSION) $(OBJ)$(LP)$(MODULE)$(SO)
+	ln -sf $(LP)$(MODULE)$(SO)$(VERSION) ../$(SODESTDIR)$(LP)$(MODULE)$(SO).0.0
+	ln -sf $(LP)$(MODULE)$(SO)$(VERSION) ../$(SODESTDIR)$(LP)$(MODULE)$(SO).0
+	ln -sf $(LP)$(MODULE)$(SO)$(VERSION) ../$(SODESTDIR)$(LP)$(MODULE)$(SO)
 endif
 endif
 ifdef WINDOWS_TARGET
