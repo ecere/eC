@@ -172,7 +172,7 @@ def TA(a):
       u.i64 = a
    elif type(a) == float:
       u.f = a
-   elif isinstance(a, Instance):
+   elif isinstance(a, Instance) or isinstance(a, Struct):
       u.p = a.impl
    return u.ui64
 
