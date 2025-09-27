@@ -2,7 +2,7 @@ ifneq ($(V),1)
 .SILENT:
 endif
 
-.PHONY: all bootstrap cleantarget clean realclean wipeclean distclean ecrt ectp ecp ecc ecs ecrt_static ectp_static outputdirs install
+.PHONY: all bootstrap cleantarget clean realclean wipeclean distclean ecrt ectp ecp ecc ecs ecrt_static ectp_static outputdirs bindings clean_python_bindings install
 
 CONFIG := release
 
@@ -254,6 +254,18 @@ update_ecs:
 	+cd ecs && $(_MAKE) -f Makefile.bootstrap clean
 	+cd ecs && $(_MAKE) -f Makefile.bootstrap
 
+clean_bindings:
+
+bindings:
+	@echo Building C bindings...
+	+cd bindings/c && $(MAKE)
+	@echo Building C++ bindings...
+	+cd bindings/cpp && $(MAKE)
+	@echo Building Python bindings...
+	+cd bindings/py && python build_ecrt.py
+	@echo Building Rust bindings...
+	+cd bindings/rust && $(MAKE)
+
 cleantarget:
 	+cd bootstrap && $(_MAKE) cleantarget
 	+cd ecrt && $(_MAKE) cleantarget
@@ -264,7 +276,10 @@ cleantarget:
 	+cd ear && $(_MAKE) cleantarget
 #	+cd epj2make && $(_MAKE) cleantarget
 
-clean:
+clean_python_bindings:
+	+cd bindings/py && rm -rf *.c *.o *.so *.dyld *.dll __pycache__ projects
+
+clean: clean_python_bindings
 	+cd bootstrap && $(_MAKE) clean
 	+cd ecrt && $(_MAKE) clean
 	+cd ectp && $(_MAKE) clean
@@ -273,8 +288,11 @@ clean:
 	+cd ecs && $(_MAKE) clean
 	+cd ear && $(_MAKE) clean
 #	+cd epj2make && $(_MAKE) clean
+	+cd bindings/c && $(MAKE) clean
+	+cd bindings/cpp && $(MAKE) clean
+	+cd bindings/rust && $(MAKE) clean
 
-realclean:
+realclean: clean_python_bindings
 	+cd bootstrap && $(_MAKE) realclean
 	+cd ecrt && $(_MAKE) realclean
 	+cd ectp && $(_MAKE) realclean
@@ -283,8 +301,11 @@ realclean:
 	+cd ecs && $(_MAKE) realclean
 	+cd ear && $(_MAKE) realclean
 #	+cd epj2make && $(_MAKE) realclean
+	+cd bindings/c && $(MAKE) realclean
+	+cd bindings/cpp && $(MAKE) realclean
+	+cd bindings/rust && $(MAKE) realclean
 
-wipeclean:
+wipeclean: clean_python_bindings
 	+cd bootstrap && $(_MAKE) wipeclean
 	+cd ecrt && $(_MAKE) wipeclean
 	+cd ectp && $(_MAKE) wipeclean
@@ -293,6 +314,9 @@ wipeclean:
 	+cd ecs && $(_MAKE) wipeclean
 	+cd ear && $(_MAKE) wipeclean
 #	+cd epj2make && $(_MAKE) wipeclean
+	+cd bindings/c && $(MAKE) wipeclean
+	+cd bindings/cpp && $(MAKE) wipeclean
+	+cd bindings/rust && $(MAKE) wipeclean
 
 distclean:
 	$(_MAKE) -f $(_CF_DIR)Cleanfile distclean distclean_all_subdirs
