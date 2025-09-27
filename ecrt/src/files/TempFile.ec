@@ -44,6 +44,14 @@ public class TempFile : File
             this.allocated *= 2;
             if(this.allocated < this.size)
                this.allocated = this.size * 2;
+            if(this.allocated > MAXDWORD)
+               this.allocated = MAXDWORD;
+            if(this.allocated < this.size)
+            {
+               this.size = this.allocated;
+               writeSize = this.size - position;
+            }
+            // eC memory allocation functions currently are limited to 32-bit
             this.buffer = renew0 this.buffer byte[this.allocated];
             if(!this.buffer)
             {
