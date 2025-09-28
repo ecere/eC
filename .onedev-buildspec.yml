@@ -1,0 +1,153 @@
+version: 20
+jobs:
+- name: Build
+  jobExecutor: DockerExecutor
+  steps:
+  - !CheckoutStep
+    name: Checkout
+    cloneCredential: !DefaultCredential {}
+    withLfs: false
+    withSubmodules: false
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !CommandStep
+    name: Build
+    runInContainer: true
+    image: ubuntu:18.04
+    interpreter: !DefaultInterpreter
+      commands:
+      - rm /etc/apt/apt.conf.d/docker-clean
+      - echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/98keep-debs
+      - echo 'APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/99keep-debs
+      - dpkg --add-architecture i386
+      - apt -y update
+      - apt -y install build-essential
+      - apt -y install gcc-8
+      - apt -y install g++-8
+      - apt -y install gcc-multilib
+      - apt -y install mingw-w64
+      - apt -y install make
+      - apt -y install zlib1g-dev
+      - apt -y install zlib1g-dev:i386
+      - apt -y install git
+      - apt -y install python3-pip
+#      - apt -y install rustc
+      - apt -y install curl && export RUSTUP_HOME="/usr" && export CARGO_HOME="/usr" && curl https://sh.rustup.rs -sSf | sh -s -- -y
+      - pip3 install cffi
+      - tar xf upx/*linux-x86_64.tar.gz -C /usr/bin &&
+        make -j2 && mkdir output && make install DESTDIR=output &&
+        tar xf win32-patches/*.tar.gz &&
+        tar xf zlib-win32/*zlib-windows-x64.tar.gz &&
+        ln -sf $(pwd)/zlib-windows-x64/include/zlib.h /usr/x86_64-w64-mingw32/include/ &&
+        ln -sf $(pwd)/zlib-windows-x64/include/zconf.h /usr/x86_64-w64-mingw32/include/ &&
+        ln -sf $(pwd)/zlib-windows-x64/lib/libz.a /usr/x86_64-w64-mingw32/lib/ &&
+        tar xf zlib-win32/*zlib-windows-x32.tar.gz &&
+        ln -sf $(pwd)/zlib-windows-x32/include/zlib.h /usr/i686-w64-mingw32/include/ &&
+        ln -sf $(pwd)/zlib-windows-x32/include/zconf /usr/i686-w64-mingw32/include/ &&
+        ln -sf $(pwd)/zlib-windows-x32/lib/libz.a /usr/i686-w64-mingw32/lib/ &&
+        rm /usr/bin/gcc && rm /usr/bin/g++ && ln -s /usr/bin/gcc-8 /usr/bin/gcc && ln -s /usr/bin/g++-8 /usr/bin/g++ &&
+        make bindings &&
+        rm /usr/bin/gcc && rm /usr/bin/g++ && ln -s /usr/bin/gcc-7 /usr/bin/gcc && ln -s /usr/bin/g++-7 /usr/bin/g++ &&
+        make ARCH=x32 -j2 && make ARCH=x32 install DESTDIR=output &&
+        tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-extras-src.tar.gz extras ecrt/src ecrt/res default.cf crossplatform.mk  &&
+        cd output && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-linux.tar.gz * &&
+        cd .. && cd obj && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-linux-x86_64.tar.gz
+        linux && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-linux-i686.tar.gz
+        linux.x32 && cd .. && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-bindings-linux-x86_64.tar.gz bindings &&
+        make PLATFORM=win32 &&
+        mkdir output-win32 &&
+        make PLATFORM=win32 DESTDIR=output-win32 install &&
+        cd output-win32 &&
+        tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-windows-x86_64.tar.gz * &&
+        cd .. && make PLATFORM=win32 ARCH=x32 &&
+        mkdir output-win32-x32 &&
+        make PLATFORM=win32 ARCH=x32 DESTDIR=output-win32-x32 install &&
+        cd output-win32-x32 && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-windows-i686.tar.gz * &&
+        cd .. &&
+        cd obj && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-windows-x86_64.tar.gz win32 &&
+        tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-windows-i686.tar.gz win32.x32 &&
+        cd ..
+    useTTY: true
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsLinuxInstall
+    sourcePath: output
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-linux.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsWindowsInstall
+    sourcePath: output-win32
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-windows-x86_64.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsWindows32BitInstall
+    sourcePath: output-win32-x32
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-windows-i686.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsLinuxBinaries
+    sourcePath: obj
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-linux-x86_64.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsLinux32BitBinaries
+    sourcePath: obj
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-linux-i686.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsLinuxBindings
+    sourcePath: .
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-bindings-linux-x86_64.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsWindowsBinaries
+    sourcePath: obj
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-windows-x86_64.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsWindows32BitBinaries
+    sourcePath: obj
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-windows-i686.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PublishArtifactStep
+    name: ArtefactsExtrasSource
+    sourcePath: .
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-extras-src.tar.gz'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  triggers:
+  - !PullRequestUpdateTrigger
+    projects: eC
+  - !BranchUpdateTrigger
+    projects: eC
+  projectDependencies:
+  - projectPath: zlib-win32
+    buildProvider: !LastFinishedBuild
+      jobName: Build
+      refName: refs/heads/main
+    artifacts: '**'
+    accessTokenSecret: deps-access
+    destinationPath: zlib-win32
+  - projectPath: win32-patches
+    buildProvider: !LastFinishedBuild
+      jobName: Build
+      refName: refs/heads/master
+    artifacts: '**'
+    accessTokenSecret: deps-access
+    destinationPath: win32-patches
+  - projectPath: upx
+    buildProvider: !LastFinishedBuild
+      jobName: Build
+      refName: refs/heads/master
+    artifacts: '**'
+    accessTokenSecret: deps-access
+    destinationPath: upx
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  caches:
+  - key: AptCache
+    path: /var/cache/apt
+  - key: AptList
+    path: /var/lib/apt/lists
+  - key: pip
+    path: /root/.cache/pip
+  timeout: 3600

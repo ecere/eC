@@ -13,12 +13,20 @@ include $(_CF_DIR)default.cf
 
 .NOTPARALLEL: $(NOT_PARALLEL_TARGETS)
 
+XBOOT := $(if $(CROSS_TARGET),GCC_PREFIX= TARGET_PLATFORM=$(HOST_PLATFORM) PLATFORM=$(HOST_PLATFORM),)
+
 LIBVER := .0.0.5
 
 ifdef WINDOWS_HOST
 HOST_SOV := $(HOST_SO)
 else
 HOST_SOV := $(HOST_SO)$(LIBVER)
+endif
+
+ifdef WINDOWS_HOST
+PYTHON := python
+else
+PYTHON := python3
 endif
 
 ifdef WINDOWS_TARGET
@@ -174,10 +182,18 @@ ifdef CROSS_TARGET
 endif
 
 ecrt: bootstrap outputdirs
+ifdef CROSS_TARGET
+	@$(call echo,Building 2nd stage eC runtime library (host)...)
+else
 	@$(call echo,Building 2nd stage eC runtime library...)
-	+cd ecrt && $(_MAKE) nores
-	+cd ear && $(_MAKE) nores
+endif
+# TOCHECK: $(XBOOT) Even when not using cross-target?
+	+cd ecrt && $(_MAKE) nores $(XBOOT)
+	+cd ear && $(_MAKE) nores $(XBOOT)
 	+cd ecrt && $(_MAKE) cleanecrttarget
+ifdef CROSS_TARGET
+	@$(call echo,Building 2nd stage eC runtime library...)
+endif
 	+cd ecrt && $(_MAKE)
 
 ecrt_static: ecc ecs ecp
@@ -185,6 +201,10 @@ ecrt_static: ecc ecs ecp
 	+cd ecrt && $(_MAKE) -f Makefile.static
 
 ectp: ecrt
+ifdef CROSS_TARGET
+	@$(call echo,Building 2nd stage eC transpiler library (host))
+	+cd ectp && $(_MAKE) $(XBOOT)
+endif
 	@$(call echo,Building 2nd stage eC transpiler library...)
 	+cd ectp && $(_MAKE)
 
@@ -215,7 +235,7 @@ ear: ecrt ecrt_static
 
 bootstrap:
 	@$(call echo,Bootstrapping eC compiling tools...)
-	+cd bootstrap && $(_MAKE)
+	+cd bootstrap && $(_MAKE) $(XBOOT)
 
 regenbootstrap: update_ecrt update_ectp update_ecp update_ecc update_ecs
 	@echo Bootstrap regenerated.
@@ -262,7 +282,7 @@ bindings:
 	@echo Building C++ bindings...
 	+cd bindings/cpp && $(MAKE)
 	@echo Building Python bindings...
-	+cd bindings/py && python build_ecrt.py
+	+cd bindings/py && $(PYTHON) build_ecrt.py
 	@echo Building Rust bindings...
 	+cd bindings/rust && $(MAKE)
 
@@ -352,6 +372,7 @@ ifndef OSX_TARGET
 ifndef WINDOWS_TARGET
 ifdef LINUX_TARGET
 	mkdir -p $(DESTLIBDIR)/ec
+	mkdir -p $(BINDIR)/
 	install $(INSTALL_FLAGS) $(OBJLIBDIR)$(LP)ecrt$(SOV) $(DESTLIBDIR)/$(LP)ecrt$(SOV)
 	install $(INSTALL_FLAGS) $(OBJLIBDIR)$(LP)ectp$(SOV) $(DESTLIBDIR)/ec/$(LP)ectp$(SOV)
 ifndef SKIP_SONAME
