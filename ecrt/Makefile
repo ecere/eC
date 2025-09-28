@@ -220,7 +220,8 @@ ifdef WINDOWS_TARGET
 
 ifndef STATIC_LIBRARY_TARGET
 OFLAGS += \
-	 -L../deps/zlib-1.2.8/obj/release.$(PLATFORM)$(COMPILER_SUFFIX)
+	 -L../deps/zlib-1.2.8/obj/release.$(PLATFORM)$(COMPILER_SUFFIX) \
+	 -static-libgcc
 
 LIBS += \
 	$(call _L,winmm) \

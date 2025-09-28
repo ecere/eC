@@ -276,15 +276,23 @@ update_ecs:
 
 clean_bindings:
 
-bindings:
+c_bindings:
 	@echo Building C bindings...
 	+cd bindings/c && $(MAKE)
+
+cpp_bindings: c_bindings
 	@echo Building C++ bindings...
 	+cd bindings/cpp && $(MAKE)
+
+py_bindings: c_bindings
 	@echo Building Python bindings...
 	+cd bindings/py && $(PYTHON) build_ecrt.py
+
+rust_bindings: c_bindings
 	@echo Building Rust bindings...
 	+cd bindings/rust && $(MAKE)
+
+bindings: c_bindings cpp_bindings py_bindings rust_bindings
 
 cleantarget:
 	+cd bootstrap && $(_MAKE) cleantarget

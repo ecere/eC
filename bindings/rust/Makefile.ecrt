@@ -65,7 +65,7 @@ $(OBJECTS): | objdir
 $(TARGET): $(SOURCES) $(OBJECTS) | objdir
 	rustc --crate-type lib $(RUSTFLAGS) $(MODULE).rs $(OFLAGS) $(LIBS) -o $(TARGET)
 	$(call mkdir,$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
-	$(call cp,$(TARGET),$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
+	$(call cp,$(TARGET),$(EC_SDK_SRC)obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib)
 
 cleantarget:
 	$(call rm,$(TARGET))

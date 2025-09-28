@@ -82,8 +82,8 @@ $(OBJECTS): | objdir
 
 $(TARGET): $(SOURCES) $(OBJECTS) $(CBINDING_STATIC_LIB) | objdir
 	rustc --crate-type lib --crate-name ecrt_sys $(RUSTFLAGS) $(BINDING_NAME)_cffi.rs $(OFLAGS) $(LIBS) -o $(TARGET)
-	$(call mkdir,$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
-	$(call cp,$(TARGET),$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
+	$(call mkdir,$(EC_SDK_SRC)obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib)
+	$(call cp,$(TARGET),$(EC_SDK_SRC)obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib)
 
 cleantarget:
 	$(call rm,$(TARGET))
