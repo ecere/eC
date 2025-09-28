@@ -308,7 +308,7 @@ class CompilerApp : Application
             {
                targetBits = !strcmp(arg + 1, "t32") ? 32 : 64;
             }
-            else if(arg[1] == 'D' || arg[1] == 'I')
+            else if(arg[1] == 'D' || arg[1] == 'I' || strstr(arg, "-std=") == arg)
             {
                char * buf;
                int size = cppOptionsLen + 1 + strlen(arg) * 2 + 1;
