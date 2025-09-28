@@ -128,6 +128,7 @@ CXXFLAGS += $(ARCH_FLAGS)
 OFLAGS += $(ARCH_FLAGS)
 endif
 
-CFLAGS += -fmessage-length=0
+# This eC SDK is currently incompatible with C23, due to conflicting bool data type
+CFLAGS += -fmessage-length=0 -std=gnu11
 
 EARFLAGS = q

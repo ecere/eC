@@ -65,7 +65,7 @@ ffi_ecrt.set_source('_pyecrt',
                '#include "ecrt.h"',
                sources=srcs,
                define_macros=[('BINDINGS_SHARED', None), ('ECRT_EXPORT', None)],
-               extra_compile_args=['-DECPRFX=eC_', '-DMS_WIN64', '-O2'], #--export-dynamic' ]
+               extra_compile_args=['-std=gnu11', '-DECPRFX=eC_', '-DMS_WIN64', '-O2'], #--export-dynamic' ]
                include_dirs=[bindings_py_dir, incdir],
                libraries=libs,
                extra_link_args=extra_link_args,

@@ -673,8 +673,10 @@ troubleshoot-toolchain:
 	@$(info -- more related variables --)
 	@$(call info_check_var_defined,DESTDIR,var_full)
 	@$(call info_check_var_defined,PREFIXLIBDIR,var_full)
+	@$(call info_check_var_defined,CFLAGS,var_full)
 	@$(call info_check_var_defined,CPPFLAGS,var_full)
 	@$(call info_check_var_defined,ROOT_ABSPATH,var_full)
+	@$(call info_check_var_defined,LD_LIBRARY_PATH,var_full)
 	@$(call info_check_var_defined,DYLD_LIBRARY_PATH,var_full)
 
 NOT_PARALLEL_TARGETS += troubleshoot-openssl

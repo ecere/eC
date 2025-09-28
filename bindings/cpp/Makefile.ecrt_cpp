@@ -20,13 +20,16 @@ TARGET_TYPE = sharedlib
 # FLAGS
 
 ifndef DEBIAN_PACKAGE
-CFLAGS = -std=c++17 -fno-exceptions -fno-rtti -Wcomment
+CFLAGS = -Wcomment
 LDFLAGS =
 endif
 PRJ_CFLAGS =
 CECFLAGS =
 OFLAGS = -Wl,-nostdlib
 LIBS =
+
+# NOTE: The C++ bindings are compatible with c++20, but setting to c++17 for older compilers
+CXXFLAGS += -std=c++17 -fno-exceptions -fno-rtti
 
 ifdef DEBUG
 NOSTRIP := y
@@ -136,7 +139,7 @@ $(OBJ)$(BINDING_NAME).c$(O): ../c/$(BINDING_NAME).c
 endif
 
 $(OBJ)$(BINDING_NAME)$(O): $(BINDING_NAME).cpp
-	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,$<) -o $(call quote_path,$@)
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,$<) -o $(call quote_path,$@)
 
 .PHONY: cleantarget
 cleantarget:

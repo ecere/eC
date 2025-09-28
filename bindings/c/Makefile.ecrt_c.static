@@ -66,14 +66,14 @@ $(OBJECTS): | objdir
 
 $(TARGET): $(SOURCES) $(OBJECTS) | objdir
 	$(AR) rcs $(CBINDING_STATIC_LIB) $(_OBJECTS)
-	$(call mkdir,$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
-	$(call cp,$(CBINDING_STATIC_LIB),$(EC_SDK_SRC)obj/$(PLATFORM)/lib)
+	$(call mkdir,$(EC_SDK_SRC)obj/$(PLATFORM)$(COMPILER_SUFFIX)/lib)
+	$(call cp,$(CBINDING_STATIC_LIB),$(EC_SDK_SRC)obj/$(PLATFORM)$(COMPILER_SUFFIX)/lib)
 
 cleantarget:
 	$(call rm,$(TARGET))
 
 clean: cleantarget
-	$(call rm,_OBJECTS)
+	$(call rm,$(_OBJECTS))
 	$(call rm,$(OBJ)/$(BINDING_NAME)_cStatic.a)
 
 realclean: cleantarget
