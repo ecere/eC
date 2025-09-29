@@ -2191,6 +2191,7 @@ static void cleanFinalDigits(char * number, int numDigits)
    }
 }
 
+#ifndef EC_BOOTSTRAP
 // #include "ccstr.h"
 default int ccStrPrintDouble( char *str, int bufsize, int decimals, double value );
 
@@ -2198,6 +2199,7 @@ public int printDouble( char *str, int bufsize, int decimals, double value )
 {
    return ccStrPrintDouble( str, bufsize, decimals, value);
 }
+#endif
 
 static char * Float_OnGetString(Class _class, float * data, char * string, void * fieldData, ObjectNotationType * onType)
 {
