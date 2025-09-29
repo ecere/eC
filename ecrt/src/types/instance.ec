@@ -2509,10 +2509,12 @@ public dllexport Class eSystem_RegisterClass(ClassType type, const char * name, 
             if(name[c] == '.' || (name[c] == ':' && name[c+1] == ':'))
             {
                NameSpace * newSpace;
+               int len = c - start;
+               char * spaceName = _malloc(len + 1);
 
-               char * spaceName = _malloc(c - start + 1);
-               strncpy(spaceName, name + start, c - start);
-               spaceName[c-start] = '\0';
+               if(len) // This works around a warning in GCC 15
+                  strncpy(spaceName, name + start, len);
+               spaceName[len] = '\0';
 
                newSpace = (NameSpace *)nameSpace->nameSpaces.FindString(spaceName);
                if(!newSpace)
@@ -3378,9 +3380,11 @@ static BTNamedLink SearchNameSpace(NameSpace nameSpace, const char * name, void 
       if(level == 0 && (ch == '.' || (ch == ':' && name[c+1] == ':')))
       {
          NameSpace * newSpace;
-         char * spaceName = _malloc(c - start + 1);
-         memcpy(spaceName, name + start, c - start);
-         spaceName[c-start] = '\0';
+         int len = c - start;
+         char * spaceName = _malloc(len + 1);
+         if(len) // This works around a warning from GCC 15
+            memcpy(spaceName, name + start, len);
+         spaceName[len] = '\0';
          newSpace = (NameSpace *)nameSpace.nameSpaces.FindString(spaceName);
          _free(spaceName);
          if(!newSpace)
@@ -6237,10 +6241,12 @@ public dllexport DefinedExpression eSystem_RegisterDefine(const char * name, con
          if(name[c] == '.' || (name[c] == ':' && name[c+1] == ':'))
          {
             NameSpace * newSpace;
+            int len = c-start;
+            char * spaceName = _malloc(len + 1);
 
-            char * spaceName = _malloc(c - start + 1);
-            strncpy(spaceName, name + start, c - start);
-            spaceName[c-start] = '\0';
+            if(len) // This works around a warning from GCC 15
+               strncpy(spaceName, name + start, len);
+            spaceName[len] = '\0';
 
             newSpace = (NameSpace *)nameSpace->nameSpaces.FindString(spaceName);
             if(!newSpace)
@@ -6296,10 +6302,12 @@ public dllexport GlobalFunction eSystem_RegisterFunction(const char * name, cons
          if(name[c] == '.' || (name[c] == ':' && name[c+1] == ':'))
          {
             NameSpace * newSpace;
+            int len = c - start;
+            char * spaceName = _malloc(len + 1);
 
-            char * spaceName = _malloc(c - start + 1);
-            strncpy(spaceName, name + start, c - start);
-            spaceName[c-start] = '\0';
+            if(len) // This works around a warning from GCC 15
+               strncpy(spaceName, name + start, len);
+            spaceName[len] = '\0';
 
             newSpace = (NameSpace *)nameSpace->nameSpaces.FindString(spaceName);
             if(!newSpace)
