@@ -97,7 +97,7 @@ ifneq ($(TARGET_PLATFORM),$(HOST_PLATFORM))
 endif
 
 # FIXME: TARGET_ARCH is never defined but inherits a triple value?
-# CROSS_BITDEPTH is defined when it shoudl not be
+# CROSS_BITDEPTH is defined when it should not be
 ifneq ($(TARGET_ARCH),$(HOST_ARCH))
    CROSS_BITDEPTH := defined
 endif
@@ -456,7 +456,8 @@ SHAREDLIB := $(if $(SHARED_LIBRARY_TARGET),$(if $(OSX_TARGET),-dynamiclib -singl
 LINKOPT :=
 STRIPOPT := $(if $(OSX_TARGET),$(if $(SHARED_LIBRARY_TARGET),-x, -u -r), -x --strip-unneeded --remove-section=.comment --remove-section=.note)
 HOST_SODESTDIR := obj/$(HOST_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(if $(WINDOWS_HOST),bin,lib)/
-SODESTDIR := obj/$(TARGET_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(if $(WINDOWS_TARGET),bin,lib)/
+TARGET_SODESTDIR := obj/$(TARGET_PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(if $(WINDOWS_TARGET),bin,lib)/
+SODESTDIR = obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(if $(WINDOWS_TARGET),bin,lib)/
 
 # EXCLUDED_LIBS TOOL
 _L = $(if $(filter $(1),$(EXCLUDED_LIBS)),,-l$(1))
@@ -645,6 +646,7 @@ troubleshoot-core:
 	@$(call info_check_var_defined,HOST_ARCH,var_full)
 	@$(call info_check_var_defined,TARGET_ARCH,var_full)
 	@$(call info_check_var_defined,CROSS_BITDEPTH,var_full)
+	@$(call info_check_var_defined,COMPILER_SUFFIX,var_full)
 	@$(info -- arch variables --)
 	@$(call info_check_var_defined,ARCH,var_full)
 	@$(call info_check_var_defined,ARCH_FLAGS,var_full)

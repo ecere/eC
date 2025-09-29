@@ -62,20 +62,23 @@ jobs:
         cd output && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-linux.tar.gz * &&
         cd .. && cd obj && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-linux-x86_64.tar.gz
         linux && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-linux-i686.tar.gz
-        linux.x32 && cd .. && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-bindings-linux.tar.gz bindings &&
+        linux.x32 && cd .. &&
         make PLATFORM=win32 &&
         mkdir output-win32 &&
+        make PLATFORM=win32 cpp_bindings &&
         make PLATFORM=win32 DESTDIR=output-win32 install &&
         cd output-win32 &&
         tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-windows-x86_64.tar.gz * &&
         cd .. && make PLATFORM=win32 ARCH=x32 &&
+        make PLATFORM=win32 ARCH=x32 cpp_bindings &&
         mkdir output-win32-x32 &&
         make PLATFORM=win32 ARCH=x32 DESTDIR=output-win32-x32 install &&
         cd output-win32-x32 && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-output-windows-i686.tar.gz * &&
         cd .. &&
         cd obj && tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-windows-x86_64.tar.gz win32 &&
         tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-windows-i686.tar.gz win32.x32 &&
-        cd ..
+        cd .. &&
+        tar czf @project_name@-@tag@-@branch@-@commit_hash@-@build_number@-bindings.tar.gz bindings
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !PublishArtifactStep
@@ -104,9 +107,9 @@ jobs:
     artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-binaries-linux-i686.tar.gz'
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !PublishArtifactStep
-    name: ArtefactsLinuxBindings
+    name: ArtefactsBindings
     sourcePath: .
-    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-bindings-linux.tar.gz'
+    artifacts: '@project_name@-@tag@-@branch@-@commit_hash@-@build_number@-bindings.tar.gz'
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !PublishArtifactStep
     name: ArtefactsWindowsBinaries

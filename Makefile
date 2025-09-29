@@ -2,7 +2,7 @@ ifneq ($(V),1)
 .SILENT:
 endif
 
-.PHONY: all bootstrap cleantarget clean realclean wipeclean distclean ecrt ectp ecp ecc ecs ecrt_static ectp_static outputdirs bindings clean_python_bindings install
+.PHONY: all bootstrap cleantarget clean realclean wipeclean distclean ecrt ectp ecp ecc ecs ecrt_static ectp_static outputdirs bindings clean_python_bindings c_bindings cpp_bindings py_bindings rust_bindings install
 
 CONFIG := release
 
@@ -273,8 +273,6 @@ update_ecs:
 	@echo Regenerating ecs bootstrapper...
 	+cd ecs && $(_MAKE) -f Makefile.bootstrap clean
 	+cd ecs && $(_MAKE) -f Makefile.bootstrap
-
-clean_bindings:
 
 c_bindings:
 	@echo Building C bindings...
