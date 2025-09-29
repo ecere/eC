@@ -103,13 +103,13 @@ size_t _size;
 size_t pos;
 } eC_gcc_struct;
 
-extern void *  __eCNameSpace__eC__types__eSystem_New(unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_New(size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_New0(unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_New0(size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_Renew(void *  memory, unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_Renew(void *  memory, size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, size_t size);
 
 extern void __eCNameSpace__eC__types__eSystem_Delete(void *  memory);
 

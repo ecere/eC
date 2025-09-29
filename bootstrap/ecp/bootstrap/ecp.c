@@ -118,13 +118,13 @@ size_t _size;
 size_t pos;
 } eC_gcc_struct;
 
-extern void *  __eCNameSpace__eC__types__eSystem_New(unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_New(size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_New0(unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_New0(size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_Renew(void *  memory, unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_Renew(void *  memory, size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, size_t size);
 
 extern void __eCNameSpace__eC__types__eSystem_Delete(void *  memory);
 
@@ -172,8 +172,6 @@ extern void SetParsingType(unsigned int b);
 
 extern int strcmp(const char * , const char * );
 
-extern char * strstr(const char * , const char * );
-
 extern char *  PrintInt64(long long result);
 
 extern int printf(const char * , ...);
@@ -194,6 +192,8 @@ extern void __eCNameSpace__eC__types__ChangeCh(char *  string, char ch1, char ch
 extern int GetRuntimeBits(void);
 
 extern size_t strlen(const char * );
+
+extern char *  strstr(const char * , const char * );
 
 extern char *  PassArg(char *  output, const char *  input);
 

@@ -115,13 +115,13 @@ size_t _size;
 size_t pos;
 } eC_gcc_struct;
 
-extern void *  __eCNameSpace__eC__types__eSystem_New(unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_New(size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_New0(unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_New0(size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_Renew(void *  memory, unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_Renew(void *  memory, size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, size_t size);
 
 extern void __eCNameSpace__eC__types__eSystem_Delete(void *  memory);
 
@@ -453,6 +453,13 @@ if(__eCPointer___eCNameSpace__eC__files__TempFile->allocated < __eCPointer___eCN
 __eCPointer___eCNameSpace__eC__files__TempFile->allocated *= 2;
 if(__eCPointer___eCNameSpace__eC__files__TempFile->allocated < __eCPointer___eCNameSpace__eC__files__TempFile->size)
 __eCPointer___eCNameSpace__eC__files__TempFile->allocated = __eCPointer___eCNameSpace__eC__files__TempFile->size * 2;
+if(__eCPointer___eCNameSpace__eC__files__TempFile->allocated > (0xffffffff))
+__eCPointer___eCNameSpace__eC__files__TempFile->allocated = (0xffffffff);
+if(__eCPointer___eCNameSpace__eC__files__TempFile->allocated < __eCPointer___eCNameSpace__eC__files__TempFile->size)
+{
+__eCPointer___eCNameSpace__eC__files__TempFile->size = __eCPointer___eCNameSpace__eC__files__TempFile->allocated;
+writeSize = __eCPointer___eCNameSpace__eC__files__TempFile->size - __eCPointer___eCNameSpace__eC__files__TempFile->position;
+}
 __eCPointer___eCNameSpace__eC__files__TempFile->buffer = __eCNameSpace__eC__types__eSystem_Renew0(__eCPointer___eCNameSpace__eC__files__TempFile->buffer, sizeof(unsigned char) * (__eCPointer___eCNameSpace__eC__files__TempFile->allocated));
 if(!__eCPointer___eCNameSpace__eC__files__TempFile->buffer)
 {

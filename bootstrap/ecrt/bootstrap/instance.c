@@ -125,13 +125,13 @@ int ferror(FILE * stream);
 int fileno(FILE * stream);
 
 
-void * __eCNameSpace__eC__types__eSystem_Renew(void * memory, unsigned int size);
+void * __eCNameSpace__eC__types__eSystem_Renew(void * memory, size_t size);
 
-void * __eCNameSpace__eC__types__eSystem_Renew0(void * memory, unsigned int size);
+void * __eCNameSpace__eC__types__eSystem_Renew0(void * memory, size_t size);
 
-void * __eCNameSpace__eC__types__eSystem_New(unsigned int size);
+void * __eCNameSpace__eC__types__eSystem_New(size_t size);
 
-void * __eCNameSpace__eC__types__eSystem_New0(unsigned int size);
+void * __eCNameSpace__eC__types__eSystem_New0(size_t size);
 
 void __eCNameSpace__eC__types__eSystem_Delete(void * memory);
 
@@ -177,7 +177,7 @@ static uint64 __eCNameSpace__eC__types__TOTAL_MEM = 0;
 
 static uint64 __eCNameSpace__eC__types__OUTSIDE_MEM = 0;
 
-static unsigned int __eCNameSpace__eC__types__log1_5i(unsigned int number)
+static size_t __eCNameSpace__eC__types__log1_5i(size_t number)
 {
 unsigned int pos;
 uint64 current = sizeof(void *);
@@ -195,7 +195,7 @@ current += 8 - (current & 7);
 return pos;
 }
 
-static unsigned int __eCNameSpace__eC__types__pow1_5(unsigned int number)
+static size_t __eCNameSpace__eC__types__pow1_5(unsigned int number)
 {
 unsigned int pos;
 uint64 current = sizeof(void *);
@@ -208,10 +208,10 @@ current = 2;
 if(current & 7)
 current += 8 - (current & 7);
 }
-return (unsigned int)current;
+return (size_t)current;
 }
 
-static unsigned int __eCNameSpace__eC__types__pow1_5i(unsigned int number)
+static size_t __eCNameSpace__eC__types__pow1_5i(unsigned int number)
 {
 unsigned int pos;
 uint64 current = sizeof(void *);
@@ -219,14 +219,14 @@ uint64 current = sizeof(void *);
 for(pos = 0; pos < 31; pos++)
 {
 if(current >= number)
-return (unsigned int)current;
+return (size_t)current;
 current = current * 3 / 2;
 if(current == 1)
 current = 2;
 if(current & 7)
 current += 8 - (current & 7);
 }
-return (unsigned int)current;
+return (size_t)current;
 }
 
 unsigned int __eCNameSpace__eC__types__log2i(unsigned int number)
@@ -907,7 +907,7 @@ void __eCMethod___eCNameSpace__eC__containers__OldList_Add(struct __eCNameSpace_
 
 void __eCMethod___eCNameSpace__eC__containers__OldList_Free(struct __eCNameSpace__eC__containers__OldList * this, void (*  freeFn)(void * ));
 
-void __eCNameSpace__eC__types__memswap(unsigned char * a, unsigned char * b, unsigned int size)
+void __eCNameSpace__eC__types__memswap(unsigned char * a, unsigned char * b, size_t size)
 {
 unsigned int c;
 unsigned char buffer[1024];
@@ -1257,19 +1257,19 @@ struct __eCNameSpace__eC__types__BlockPool
 {
 struct __eCNameSpace__eC__types__MemBlock * first, * last;
 struct __eCNameSpace__eC__types__MemBlock * free;
-unsigned int blockSize;
-unsigned int blockSpace;
+size_t blockSize;
+size_t blockSpace;
 int numParts;
 int numBlocks;
-unsigned int totalSize;
-unsigned int usedSpace;
+size_t totalSize;
+size_t usedSpace;
 } eC_gcc_struct;
 
 struct __eCNameSpace__eC__types__MemPart
 {
 void * memory;
 int blocksUsed;
-int size;
+ssize_t size;
 struct __eCNameSpace__eC__types__BlockPool * pool;
 } eC_gcc_struct;
 
@@ -1279,7 +1279,7 @@ struct __eCNameSpace__eC__types__MemBlock
 {
 struct __eCNameSpace__eC__types__MemBlock * prev, * next;
 struct __eCNameSpace__eC__types__MemPart * part;
-unsigned int size;
+size_t size;
 } eC_gcc_struct;
 
 unsigned int __eCMethod___eCNameSpace__eC__types__BlockPool_Expand(struct __eCNameSpace__eC__types__BlockPool * this, unsigned int numBlocks)
@@ -1428,7 +1428,7 @@ free(block);
 }
 }
 
-static void * __eCNameSpace__eC__types___mymalloc(unsigned int size)
+static void * __eCNameSpace__eC__types___mymalloc(size_t size)
 {
 struct __eCNameSpace__eC__types__MemBlock * block = (((void *)0));
 
@@ -1470,7 +1470,7 @@ __eCNameSpace__eC__types___myfree(pointer);
 }
 }
 
-static void * __eCNameSpace__eC__types___mycalloc(int n, unsigned int size)
+static void * __eCNameSpace__eC__types___mycalloc(int n, size_t size)
 {
 void * pointer = __eCNameSpace__eC__types___mymalloc(n * size);
 
@@ -1479,7 +1479,7 @@ memset(pointer, 0, n * size);
 return pointer;
 }
 
-static void * __eCNameSpace__eC__types___myrealloc(void * pointer, unsigned int size)
+static void * __eCNameSpace__eC__types___myrealloc(void * pointer, size_t size)
 {
 struct __eCNameSpace__eC__types__MemBlock * block = pointer ? ((struct __eCNameSpace__eC__types__MemBlock *)((unsigned char *)pointer - sizeof(struct __eCNameSpace__eC__types__MemBlock))) : (((void *)0));
 void * newPointer = (((void *)0));
@@ -1490,8 +1490,8 @@ if(block)
 {
 if(pool)
 {
-unsigned int ns = __eCNameSpace__eC__types__pow1_5i(size);
-unsigned int mod = ns % sizeof(void *);
+size_t ns = __eCNameSpace__eC__types__pow1_5i(size);
+size_t mod = ns % sizeof(void *);
 
 if(mod)
 ns += sizeof(void *) - mod;
@@ -1520,7 +1520,7 @@ if(!newPointer)
 newPointer = __eCNameSpace__eC__types___mymalloc(size);
 if(pointer && newPointer)
 {
-unsigned int __simpleStruct0;
+size_t __simpleStruct0;
 
 memcpy(newPointer, pointer, (__simpleStruct0 = block->size, (size < __simpleStruct0) ? size : __simpleStruct0));
 __eCNameSpace__eC__types___myfree(pointer);
@@ -1529,7 +1529,7 @@ __eCNameSpace__eC__types___myfree(pointer);
 return newPointer;
 }
 
-static void * __eCNameSpace__eC__types___mycrealloc(void * pointer, unsigned int size)
+static void * __eCNameSpace__eC__types___mycrealloc(void * pointer, size_t size)
 {
 struct __eCNameSpace__eC__types__MemBlock * block = pointer ? ((struct __eCNameSpace__eC__types__MemBlock *)((unsigned char *)pointer - sizeof(struct __eCNameSpace__eC__types__MemBlock))) : (((void *)0));
 void * newPointer = (((void *)0));
@@ -1540,14 +1540,14 @@ if(block)
 {
 if(pool)
 {
-unsigned int ns = __eCNameSpace__eC__types__pow1_5i(size);
-unsigned int mod = ns % sizeof(void *);
+size_t ns = __eCNameSpace__eC__types__pow1_5i(size);
+size_t mod = ns % sizeof(void *);
 
 if(mod)
 ns += sizeof(void *) - mod;
 if(ns == (*pool).blockSize)
 {
-int extra = size - block->size;
+ssize_t extra = size - block->size;
 
 newPointer = pointer;
 (*pool).usedSpace += extra;
@@ -1562,7 +1562,7 @@ struct __eCNameSpace__eC__types__MemBlock * newBlock = realloc(block, sizeof(str
 
 if(newBlock)
 {
-int extra = size - newBlock->size;
+ssize_t extra = size - newBlock->size;
 
 __eCNameSpace__eC__types__TOTAL_MEM += extra;
 __eCNameSpace__eC__types__OUTSIDE_MEM += extra;
@@ -1580,7 +1580,7 @@ if(newPointer)
 {
 if(pointer)
 {
-unsigned int __simpleStruct0;
+size_t __simpleStruct0;
 
 memcpy(newPointer, pointer, (__simpleStruct0 = block->size, (size < __simpleStruct0) ? size : __simpleStruct0));
 if(size > block->size)
@@ -1594,7 +1594,7 @@ memset((unsigned char *)newPointer, 0, size);
 return newPointer;
 }
 
-static void * __eCNameSpace__eC__types___malloc(unsigned int size)
+static void * __eCNameSpace__eC__types___malloc(size_t size)
 {
 void * pointer;
 
@@ -1608,7 +1608,7 @@ if(memory)
 __eCNameSpace__eC__types___free(memory);
 }
 
-static void * __eCNameSpace__eC__types___calloc(int n, unsigned int size)
+static void * __eCNameSpace__eC__types___calloc(int n, size_t size)
 {
 void * pointer;
 
@@ -1616,7 +1616,7 @@ pointer = n && size ? __eCNameSpace__eC__types___mycalloc(1, n * size + 2 * 0) :
 return pointer ? ((unsigned char *)pointer + 0) : (((void *)0));
 }
 
-static void * __eCNameSpace__eC__types___realloc(void * pointer, unsigned int size)
+static void * __eCNameSpace__eC__types___realloc(void * pointer, size_t size)
 {
 if(!size)
 {
@@ -1627,7 +1627,7 @@ pointer = __eCNameSpace__eC__types___myrealloc(pointer, size);
 return pointer ? ((unsigned char *)pointer + 0) : (((void *)0));
 }
 
-static void * __eCNameSpace__eC__types___crealloc(void * pointer, unsigned int size)
+static void * __eCNameSpace__eC__types___crealloc(void * pointer, size_t size)
 {
 if(!size)
 {
@@ -1639,22 +1639,22 @@ pointer = __eCNameSpace__eC__types___mycrealloc(pointer, size);
 return pointer ? ((unsigned char *)pointer + 0) : (((void *)0));
 }
 
-void * __eCNameSpace__eC__types__eSystem_New(unsigned int size)
+void * __eCNameSpace__eC__types__eSystem_New(size_t size)
 {
 return __eCNameSpace__eC__types___malloc(size);
 }
 
-void * __eCNameSpace__eC__types__eSystem_New0(unsigned int size)
+void * __eCNameSpace__eC__types__eSystem_New0(size_t size)
 {
 return __eCNameSpace__eC__types___calloc(1, size);
 }
 
-void * __eCNameSpace__eC__types__eSystem_Renew(void * memory, unsigned int size)
+void * __eCNameSpace__eC__types__eSystem_Renew(void * memory, size_t size)
 {
 return __eCNameSpace__eC__types___realloc(memory, size);
 }
 
-void * __eCNameSpace__eC__types__eSystem_Renew0(void * memory, unsigned int size)
+void * __eCNameSpace__eC__types__eSystem_Renew0(void * memory, size_t size)
 {
 return __eCNameSpace__eC__types___crealloc(memory, size);
 }
@@ -1958,10 +1958,12 @@ level--;
 if(level == 0 && (ch == '.' || (ch == ':' && name[c + 1] == ':')))
 {
 struct __eCNameSpace__eC__types__NameSpace * newSpace;
-char * spaceName = __eCNameSpace__eC__types___malloc(c - start + 1);
+int len = c - start;
+char * spaceName = __eCNameSpace__eC__types___malloc(len + 1);
 
-memcpy(spaceName, name + start, c - start);
-spaceName[c - start] = '\0';
+if(len)
+memcpy(spaceName, name + start, len);
+spaceName[len] = '\0';
 newSpace = (struct __eCNameSpace__eC__types__NameSpace *)__eCMethod___eCNameSpace__eC__containers__BinaryTree_FindString(&nameSpace->nameSpaces, spaceName);
 __eCNameSpace__eC__types___free(spaceName);
 if(!newSpace)
@@ -3386,10 +3388,12 @@ for(c = 0; name[c]; c++)
 if(name[c] == '.' || (name[c] == ':' && name[c + 1] == ':'))
 {
 struct __eCNameSpace__eC__types__NameSpace * newSpace;
-char * spaceName = __eCNameSpace__eC__types___malloc(c - start + 1);
+int len = c - start;
+char * spaceName = __eCNameSpace__eC__types___malloc(len + 1);
 
-strncpy(spaceName, name + start, c - start);
-spaceName[c - start] = '\0';
+if(len)
+strncpy(spaceName, name + start, len);
+spaceName[len] = '\0';
 newSpace = (struct __eCNameSpace__eC__types__NameSpace *)__eCMethod___eCNameSpace__eC__containers__BinaryTree_FindString(&(*nameSpace).nameSpaces, spaceName);
 if(!newSpace)
 {
@@ -3917,10 +3921,12 @@ for(c = 0; name[c]; c++)
 if(name[c] == '.' || (name[c] == ':' && name[c + 1] == ':'))
 {
 struct __eCNameSpace__eC__types__NameSpace * newSpace;
-char * spaceName = __eCNameSpace__eC__types___malloc(c - start + 1);
+int len = c - start;
+char * spaceName = __eCNameSpace__eC__types___malloc(len + 1);
 
-strncpy(spaceName, name + start, c - start);
-spaceName[c - start] = '\0';
+if(len)
+strncpy(spaceName, name + start, len);
+spaceName[len] = '\0';
 newSpace = (struct __eCNameSpace__eC__types__NameSpace *)__eCMethod___eCNameSpace__eC__containers__BinaryTree_FindString(&(*nameSpace).nameSpaces, spaceName);
 if(!newSpace)
 {
@@ -4755,10 +4761,12 @@ for(c = 0; name[c]; c++)
 if(name[c] == '.' || (name[c] == ':' && name[c + 1] == ':'))
 {
 struct __eCNameSpace__eC__types__NameSpace * newSpace;
-char * spaceName = __eCNameSpace__eC__types___malloc(c - start + 1);
+int len = c - start;
+char * spaceName = __eCNameSpace__eC__types___malloc(len + 1);
 
-strncpy(spaceName, name + start, c - start);
-spaceName[c - start] = '\0';
+if(len)
+strncpy(spaceName, name + start, len);
+spaceName[len] = '\0';
 newSpace = (struct __eCNameSpace__eC__types__NameSpace *)__eCMethod___eCNameSpace__eC__containers__BinaryTree_FindString(&(*nameSpace).nameSpaces, spaceName);
 if(!newSpace)
 {
@@ -6891,7 +6899,6 @@ class->fixed = (unsigned int)1;
 class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::MemBlock", 0, sizeof(struct __eCNameSpace__eC__types__MemBlock), 0, (void *)0, (void *)0, module, 2, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__MemBlock = class;
-__eCNameSpace__eC__types__eClass_AddDataMember(class, (((void *)0)), (((void *)0)), 0, sizeof(void *) > 4 ? sizeof(void *) : 4, 2);
 class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::MemPart", 0, sizeof(struct __eCNameSpace__eC__types__MemPart), 0, (void *)0, (void *)0, module, 2, 1);
 if(((struct __eCNameSpace__eC__types__Module *)(((char *)module + sizeof(struct __eCNameSpace__eC__types__Instance))))->application == ((struct __eCNameSpace__eC__types__Module *)(((char *)__thisModule + sizeof(struct __eCNameSpace__eC__types__Instance))))->application && class)
 __eCClass___eCNameSpace__eC__types__MemPart = class;
@@ -6905,15 +6912,15 @@ __eCNameSpace__eC__types__eClass_AddMethod(class, "Remove", "void Remove(eC::typ
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "first", "eC::types::MemBlock", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "last", "eC::types::MemBlock", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "free", "eC::types::MemBlock", sizeof(void *), 0xF000F000, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "blockSize", "uint", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "blockSpace", "uint", 4, 4, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "blockSize", "uintsize", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "blockSpace", "uintsize", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "numParts", "int", 4, 4, 1);
 __eCNameSpace__eC__types__eClass_AddDataMember(class, "numBlocks", "int", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "totalSize", "uint", 4, 4, 1);
-__eCNameSpace__eC__types__eClass_AddDataMember(class, "usedSpace", "uint", 4, 4, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "totalSize", "uintsize", sizeof(void *), 0xF000F000, 1);
+__eCNameSpace__eC__types__eClass_AddDataMember(class, "usedSpace", "uintsize", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::log2i", "uint eC::types::log2i(uint number)", __eCNameSpace__eC__types__log2i, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::pow2i", "uint eC::types::pow2i(uint number)", __eCNameSpace__eC__types__pow2i, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::memswap", "void eC::types::memswap(byte * a, byte * b, uint size)", __eCNameSpace__eC__types__memswap, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::memswap", "void eC::types::memswap(byte * a, byte * b, uintsize size)", __eCNameSpace__eC__types__memswap, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CheckConsistency", "void eC::types::CheckConsistency(void)", __eCNameSpace__eC__types__CheckConsistency, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CheckMemory", "void eC::types::CheckMemory(void)", __eCNameSpace__eC__types__CheckMemory, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterClass", "eC::types::Class eC::types::eSystem_RegisterClass(eC::types::ClassType type, const char * name, const char * baseName, int size, int sizeClass, bool (* Constructor)(void *), void (* Destructor)(void *), eC::types::Module module, eC::types::AccessMode declMode, eC::types::AccessMode inheritanceAccess)", __eCNameSpace__eC__types__eSystem_RegisterClass, module, 1);
@@ -6962,10 +6969,10 @@ __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterD
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_RegisterFunction", "eC::types::GlobalFunction eC::types::eSystem_RegisterFunction(const char * name, const char * type, void * func, eC::types::Module module, eC::types::AccessMode declMode)", __eCNameSpace__eC__types__eSystem_RegisterFunction, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_FindDefine", "eC::types::DefinedExpression eC::types::eSystem_FindDefine(eC::types::Module module, const char * name)", __eCNameSpace__eC__types__eSystem_FindDefine, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_FindFunction", "eC::types::GlobalFunction eC::types::eSystem_FindFunction(eC::types::Module module, const char * name)", __eCNameSpace__eC__types__eSystem_FindFunction, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Renew", "void * eC::types::eSystem_Renew(void * memory, uint size)", __eCNameSpace__eC__types__eSystem_Renew, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Renew0", "void * eC::types::eSystem_Renew0(void * memory, uint size)", __eCNameSpace__eC__types__eSystem_Renew0, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_New", "void * eC::types::eSystem_New(uint size)", __eCNameSpace__eC__types__eSystem_New, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_New0", "void * eC::types::eSystem_New0(uint size)", __eCNameSpace__eC__types__eSystem_New0, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Renew", "void * eC::types::eSystem_Renew(void * memory, uintsize size)", __eCNameSpace__eC__types__eSystem_Renew, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Renew0", "void * eC::types::eSystem_Renew0(void * memory, uintsize size)", __eCNameSpace__eC__types__eSystem_Renew0, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_New", "void * eC::types::eSystem_New(uintsize size)", __eCNameSpace__eC__types__eSystem_New, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_New0", "void * eC::types::eSystem_New0(uintsize size)", __eCNameSpace__eC__types__eSystem_New0, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eSystem_Delete", "void eC::types::eSystem_Delete(void * memory)", __eCNameSpace__eC__types__eSystem_Delete, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_FireSelfWatchers", "void eC::types::eInstance_FireSelfWatchers(eC::types::Instance instance, eC::types::Property _property)", __eCNameSpace__eC__types__eInstance_FireSelfWatchers, module, 1);
 __eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::eInstance_FireWatchers", "void eC::types::eInstance_FireWatchers(eC::types::Instance instance, eC::types::Property _property)", __eCNameSpace__eC__types__eInstance_FireWatchers, module, 1);

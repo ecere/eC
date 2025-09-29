@@ -66,7 +66,7 @@ typedef unsigned __int64 uint64;
 #endif
 #include <stdint.h>
 #include <sys/types.h>
-void __eCNameSpace__eC__types__FillBytesBy2(void * area, unsigned short value, unsigned int count)
+void __eCNameSpace__eC__types__FillBytesBy2(void * area, unsigned short value, size_t count)
 {
 unsigned short * dest = area;
 int c;
@@ -75,7 +75,7 @@ for(c = 0; c < count; c++)
 dest[c] = value;
 }
 
-void __eCNameSpace__eC__types__FillBytesBy4(void * area, unsigned int value, unsigned int count)
+void __eCNameSpace__eC__types__FillBytesBy4(void * area, unsigned int value, size_t count)
 {
 unsigned int * dest = area;
 int c;
@@ -123,13 +123,13 @@ size_t _size;
 size_t pos;
 } eC_gcc_struct;
 
-extern void *  __eCNameSpace__eC__types__eSystem_New(unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_New(size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_New0(unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_New0(size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_Renew(void *  memory, unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_Renew(void *  memory, size_t size);
 
-extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, unsigned int size);
+extern void *  __eCNameSpace__eC__types__eSystem_Renew0(void *  memory, size_t size);
 
 extern void __eCNameSpace__eC__types__eSystem_Delete(void *  memory);
 
@@ -141,27 +141,27 @@ extern void *  memset(void *  area, int value, size_t count);
 
 struct __eCNameSpace__eC__types__GlobalFunction;
 
-void __eCNameSpace__eC__types__MoveBytes(void * dest, const void * source, unsigned int count)
+void __eCNameSpace__eC__types__MoveBytes(void * dest, const void * source, size_t count)
 {
 memmove(dest, source, count);
 }
 
-void __eCNameSpace__eC__types__CopyBytes(void * dest, const void * source, uint64 count)
+void __eCNameSpace__eC__types__CopyBytes(void * dest, const void * source, size_t count)
 {
 memcpy(dest, source, count);
 }
 
-void __eCNameSpace__eC__types__CopyBytesBy2(void * dest, const void * source, unsigned int count)
+void __eCNameSpace__eC__types__CopyBytesBy2(void * dest, const void * source, size_t count)
 {
 memcpy(dest, source, count << 1);
 }
 
-void __eCNameSpace__eC__types__CopyBytesBy4(void * dest, const void * source, unsigned int count)
+void __eCNameSpace__eC__types__CopyBytesBy4(void * dest, const void * source, size_t count)
 {
 memcpy(dest, source, count << 2);
 }
 
-void __eCNameSpace__eC__types__FillBytes(void * area, unsigned char value, unsigned int count)
+void __eCNameSpace__eC__types__FillBytes(void * area, unsigned char value, size_t count)
 {
 memset(area, value, count);
 }
@@ -408,13 +408,13 @@ void __eCRegisterModule_memory(struct __eCNameSpace__eC__types__Instance * modul
 {
 struct __eCNameSpace__eC__types__Class __attribute__((unused)) * class;
 
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MoveBytes", "void eC::types::MoveBytes(void * dest, const void * source, uint count)", __eCNameSpace__eC__types__MoveBytes, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytes", "void eC::types::CopyBytes(void * dest, const void * source, uint64 count)", __eCNameSpace__eC__types__CopyBytes, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytesBy2", "void eC::types::CopyBytesBy2(void * dest, const void * source, uint count)", __eCNameSpace__eC__types__CopyBytesBy2, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytesBy4", "void eC::types::CopyBytesBy4(void * dest, const void * source, uint count)", __eCNameSpace__eC__types__CopyBytesBy4, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytes", "void eC::types::FillBytes(void * area, byte value, uint count)", __eCNameSpace__eC__types__FillBytes, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytesBy2", "void eC::types::FillBytesBy2(void * area, uint16 value, uint count)", __eCNameSpace__eC__types__FillBytesBy2, module, 1);
-__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytesBy4", "void eC::types::FillBytesBy4(void * area, uint value, uint count)", __eCNameSpace__eC__types__FillBytesBy4, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::MoveBytes", "void eC::types::MoveBytes(void * dest, const void * source, uintsize count)", __eCNameSpace__eC__types__MoveBytes, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytes", "void eC::types::CopyBytes(void * dest, const void * source, uintsize count)", __eCNameSpace__eC__types__CopyBytes, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytesBy2", "void eC::types::CopyBytesBy2(void * dest, const void * source, uintsize count)", __eCNameSpace__eC__types__CopyBytesBy2, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::CopyBytesBy4", "void eC::types::CopyBytesBy4(void * dest, const void * source, uintsize count)", __eCNameSpace__eC__types__CopyBytesBy4, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytes", "void eC::types::FillBytes(void * area, byte value, uintsize count)", __eCNameSpace__eC__types__FillBytes, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytesBy2", "void eC::types::FillBytesBy2(void * area, uint16 value, uintsize count)", __eCNameSpace__eC__types__FillBytesBy2, module, 1);
+__eCNameSpace__eC__types__eSystem_RegisterFunction("eC::types::FillBytesBy4", "void eC::types::FillBytesBy4(void * area, uint value, uintsize count)", __eCNameSpace__eC__types__FillBytesBy4, module, 1);
 }
 
 void __eCUnregisterModule_memory(struct __eCNameSpace__eC__types__Instance * module)
