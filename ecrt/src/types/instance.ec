@@ -160,10 +160,10 @@ default const char * AndroidInterface_GetLibLocation(Module m);
 public define null = ((void *)0);
 
 dllexport Class eSystem_FindClass(Module module, const char * name);
-dllexport void * eSystem_Renew(void * memory, unsigned int size);
-dllexport void * eSystem_Renew0(void * memory, unsigned int size);
-dllexport void * eSystem_New(unsigned int size);
-dllexport void * eSystem_New0(unsigned int size);
+dllexport void * eSystem_Renew(void * memory, uintsize size);
+dllexport void * eSystem_Renew0(void * memory, uintsize size);
+dllexport void * eSystem_New(uintsize size);
+dllexport void * eSystem_New0(uintsize size);
 dllexport void eSystem_Delete(void * memory);
 dllexport void * eInstance_New(Class _class);
 
@@ -734,7 +734,7 @@ static class MemInfo : BTNode //struct
    */
 
    byte * oldmem;
-   uint size;
+   uintsize size;
    bool freed;
    const char * _class;
    uint id;
@@ -793,7 +793,7 @@ private class MemBlock : struct
 {
    MemBlock prev, next;
    MemPart part;
-   uint size;
+   uintsize size;
 #if !defined(MEMINFO) && defined(MEMTRACKING)
    Class _class;
 #endif
@@ -803,7 +803,7 @@ private class MemPart : struct
 {
    void * memory;
    int blocksUsed;
-   int size;
+   intsize size;
    BlockPool * pool;
 };
 /*
@@ -974,13 +974,13 @@ private struct BlockPool
 {
    MemBlock first, last;
    MemBlock free;
-   uint blockSize;
-   uint blockSpace;
+   uintsize blockSize;
+   uintsize blockSpace;
    //MemPart * parts;
    int numParts;
    int numBlocks;
-   uint totalSize;
-   uint usedSpace;
+   uintsize totalSize;
+   uintsize usedSpace;
 
    bool Expand(uint numBlocks)
    {
@@ -1215,7 +1215,7 @@ static uint NextFibonacci(uint number)
 }
 */
 
-static uint log1_5i(uint number)
+static uintsize log1_5i(uintsize number)
 {
    uint pos;
    uint64 current = sizeof(void *);
@@ -1231,7 +1231,7 @@ static uint log1_5i(uint number)
    return pos;
 }
 
-static uint pow1_5(uint number)
+static uintsize pow1_5(uint number)
 {
    uint pos;
    uint64 current = sizeof(void *);
@@ -1241,10 +1241,10 @@ static uint pow1_5(uint number)
       if(current == 1) current = 2;
       if(current & 7) current += 8 - (current & 7);
    }
-   return (uint)current;
+   return (uintsize)current;
 }
 
-static uint pow1_5i(uint number)
+static uintsize pow1_5i(uint number)
 {
    uint pos;
    uint64 current = sizeof(void *);
@@ -1252,12 +1252,12 @@ static uint pow1_5i(uint number)
    for(pos=0; pos < NUM_POOLS; pos++)
    {
       if(current >= number)
-         return (uint)current;
+         return (uintsize)current;
       current = current * 3 / 2;
       if(current == 1) current = 2;
       if(current & 7) current += 8 - (current & 7);
    }
-   return (uint)current;
+   return (uintsize)current;
 }
 #endif
 
@@ -1304,7 +1304,7 @@ static void InitMemory()
 #endif
 
 #if !defined(MEMINFO) && !defined(DISABLE_MEMMGR)
-static void * _mymalloc(unsigned int size)
+static void * _mymalloc(uintsize size)
 {
    MemBlock block = null;
    if(size)
@@ -1341,7 +1341,7 @@ static void * _mymalloc(unsigned int size)
    return block ? ((struct MemBlock *)block + 1) : null;
 }
 
-static void * _mycalloc(int n, unsigned int size)
+static void * _mycalloc(int n, uintsize size)
 {
    void * pointer = _mymalloc(n * size);
    if(pointer)
@@ -1380,7 +1380,7 @@ static void _myfree(void * pointer)
    }
 }
 
-static void * _myrealloc(void * pointer, unsigned int size)
+static void * _myrealloc(void * pointer, uintsize size)
 {
    MemBlock block = pointer ? ((MemBlock)((byte *)pointer - sizeof(class MemBlock))) : null;
    void * newPointer = null;
@@ -1394,8 +1394,8 @@ static void * _myrealloc(void * pointer, unsigned int size)
       if(pool)
       {
          // if((1 << pool) >= size && (pool - SIZE_POSITION(size)) <= 1)
-         uint ns = NEXT_SIZE(size);
-         uint mod = ns % sizeof(void *);
+         uintsize ns = NEXT_SIZE(size);
+         uintsize mod = ns % sizeof(void *);
          if(mod) ns += sizeof(void *)-mod;
          if(ns == pool->blockSize)
          {
@@ -1428,7 +1428,7 @@ static void * _myrealloc(void * pointer, unsigned int size)
    return newPointer;
 }
 
-static void * _mycrealloc(void * pointer, unsigned int size)
+static void * _mycrealloc(void * pointer, uintsize size)
 {
    MemBlock block = pointer ? ((MemBlock)((byte *)pointer - sizeof(class MemBlock))) : null;
    void * newPointer = null;
@@ -1443,12 +1443,12 @@ static void * _mycrealloc(void * pointer, unsigned int size)
       if(pool)
       {
          // if((1 << pool) >= size && (pool - SIZE_POSITION(size)) <= 1)
-         uint ns = NEXT_SIZE(size);
-         uint mod = ns % sizeof(void *);
+         uintsize ns = NEXT_SIZE(size);
+         uintsize mod = ns % sizeof(void *);
          if(mod) ns += sizeof(void *)-mod;
          if(ns == pool->blockSize)
          {
-            int extra = size - block.size;
+            intsize extra = size - block.size;
             newPointer = pointer;
             pool->usedSpace += extra;
             if(extra > 0)
@@ -1461,7 +1461,7 @@ static void * _mycrealloc(void * pointer, unsigned int size)
          MemBlock newBlock = realloc(block, sizeof(class MemBlock) + size);
          if(newBlock)
          {
-            int extra = size - newBlock.size;
+            intsize extra = size - newBlock.size;
             TOTAL_MEM += extra;
             OUTSIDE_MEM += extra;
             newPointer = ((struct MemBlock *)newBlock + 1);
@@ -1509,7 +1509,7 @@ static void * _mycrealloc(void * pointer, unsigned int size)
    const uintsize allocSizePrefixLen = sizeof(size_t);
 #endif
 
-static void * _malloc(unsigned int size)
+static void * _malloc(uintsize size)
 {
 #if defined(DISABLE_MEMMGR) && !defined(MEMINFO)
 
@@ -1585,7 +1585,7 @@ static void * _malloc(unsigned int size)
 #endif
 }
 
-static void * _calloc(int n, unsigned int size)
+static void * _calloc(int n, uintsize size)
 {
 #if defined(DISABLE_MEMMGR) && !defined(MEMINFO)
 
@@ -1660,7 +1660,7 @@ static void * _calloc(int n, unsigned int size)
 #endif
 }
 
-static void * _realloc(void * pointer, unsigned int size)
+static void * _realloc(void * pointer, uintsize size)
 {
 #if defined(DISABLE_MEMMGR) && !defined(MEMINFO)
 
@@ -1778,7 +1778,7 @@ static void * _realloc(void * pointer, unsigned int size)
 #endif
 }
 
-static void * _crealloc(void * pointer, unsigned int size)
+static void * _crealloc(void * pointer, uintsize size)
 {
 #if defined(DISABLE_MEMMGR) && !defined(MEMINFO)
    byte * p;
@@ -1797,7 +1797,7 @@ static void * _crealloc(void * pointer, unsigned int size)
    if(size > s && p)
       memset((byte *)p + s, 0, size - s);
    if(size && !p)
-      printf("_crealloc failed allocating %d bytes!\n", size);
+      printf("_crealloc failed allocating %d bytes!\n", (uint)size); // FIXME:
    return p;
 #else
    if(!size) { if(pointer) _free(pointer); return null; }
@@ -2032,7 +2032,7 @@ static void _free(void * pointer)
    }
 }
 
-public void memswap(byte * a, byte * b, uint size)
+public void memswap(byte * a, byte * b, uintsize size)
 {
    uint c;
    byte buffer[1024];
@@ -6378,17 +6378,17 @@ public dllexport GlobalFunction eSystem_FindFunction(Module module, const char *
    return null;
 }
 
-public dllexport void * eSystem_Renew(void * memory, unsigned int size)
+public dllexport void * eSystem_Renew(void * memory, uintsize size)
 {
    return _realloc(memory, size);
 }
 
-public dllexport void * eSystem_Renew0(void * memory, unsigned int size)
+public dllexport void * eSystem_Renew0(void * memory, uintsize size)
 {
    return _crealloc(memory, size);
 }
 
-public dllexport void * eSystem_New(unsigned int size)
+public dllexport void * eSystem_New(uintsize size)
 {
 /*#ifdef _DEBUG
    void * pointer = _malloc(size);
@@ -6399,7 +6399,7 @@ public dllexport void * eSystem_New(unsigned int size)
 //#endif
 }
 
-public dllexport void * eSystem_New0(unsigned int size)
+public dllexport void * eSystem_New0(uintsize size)
 {
    return _calloc(1,size);
 }

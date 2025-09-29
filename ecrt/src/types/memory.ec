@@ -2,12 +2,12 @@ namespace types;
 
 import "System"
 
-public void MoveBytes(void * dest, const void * source, uint count)
+public void MoveBytes(void * dest, const void * source, uintsize count)
 {
    memmove(dest, source, count);
 }
 
-public void CopyBytes(void * dest, const void * source, uint64 count)
+public void CopyBytes(void * dest, const void * source, uintsize count)
 {
 #if !defined(EC_BOOTSTRAP) && (defined(__WATCOMC__) || defined(__MSC__) || defined(__BORLANDC__))
    _asm
@@ -41,7 +41,7 @@ public void CopyBytes(void * dest, const void * source, uint64 count)
 #endif
 }
 
-public void CopyBytesBy2(void * dest, const void * source, uint count)
+public void CopyBytesBy2(void * dest, const void * source, uintsize count)
 {
 #if !defined(EC_BOOTSTRAP) && (defined(__WATCOMC__) || defined(__MSC__) || defined(__BORLANDC__))
    _asm
@@ -75,7 +75,7 @@ public void CopyBytesBy2(void * dest, const void * source, uint count)
 #endif
 }
 
-public void CopyBytesBy4(void * dest, const void * source, uint count)
+public void CopyBytesBy4(void * dest, const void * source, uintsize count)
 {
 #if !defined(EC_BOOTSTRAP) && (defined(__WATCOMC__) || defined(__MSC__) || defined(__BORLANDC__))
    _asm
@@ -109,7 +109,7 @@ public void CopyBytesBy4(void * dest, const void * source, uint count)
 #endif
 }
 
-public void FillBytes(void * area, byte value, uint count)
+public void FillBytes(void * area, byte value, uintsize count)
 {
 #if !defined(EC_BOOTSTRAP) && (defined(__WATCOMC__) || defined(__MSC__) || defined(__BORLANDC__))
    __asm
@@ -141,7 +141,7 @@ public void FillBytes(void * area, byte value, uint count)
 #endif
 }
 
-public void FillBytesBy2(void * area, uint16 value, uint count)
+public void FillBytesBy2(void * area, uint16 value, uintsize count)
 {
 #if !defined(EC_BOOTSTRAP) && (defined(__WATCOMC__) || defined(__MSC__) || defined(__BORLANDC__))
    _asm
@@ -177,7 +177,7 @@ public void FillBytesBy2(void * area, uint16 value, uint count)
 #endif
 }
 
-public void FillBytesBy4(void * area, uint32 value, uint count)
+public void FillBytesBy4(void * area, uint32 value, uintsize count)
 {
 #if !defined(EC_BOOTSTRAP) && (defined(__WATCOMC__) || defined(__MSC__) || defined(__BORLANDC__))
    _asm
