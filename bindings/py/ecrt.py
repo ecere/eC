@@ -387,6 +387,13 @@ class Instance:
       if impl != ffi.NULL and (impl is None or impl._class.bindingsClass != ffi.NULL):
          ffi.cast("void **", ffi.cast("char *", self.impl) + self.impl._class.offset)[0] = self.handle
 
+   def __enter__(self):
+      return self
+
+   def __exit__(self, exc_type, exc_val, exc_tb):
+      c = type(self)
+      Instance.delete(self)
+
    def delete(self):
       lib.Instance_delete(self.impl)
       self.impl = ffi.NULL
