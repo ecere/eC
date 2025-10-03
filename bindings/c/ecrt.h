@@ -33,6 +33,10 @@ extern "C" {
 #include <stdarg.h>
 #include <string.h>
 
+#if defined(__EMSCRIPTEN__)
+#include <emscripten.h>
+#endif
+
 
 #if !defined(ECRT_MODULE_NAME)
 #define ECRT_MODULE_NAME "ecrt"
@@ -44,6 +48,9 @@ extern "C" {
 #elif defined(__WIN32__)
 #define LIB_EXPORT __attribute__((dllexport)) __attribute__ ((visibility("default")))
 #define LIB_IMPORT __attribute__((dllimport))
+#elif defined(__EMSCRIPTEN__)
+#define LIB_EXPORT EMSCRIPTEN_KEEPALIVE
+#define LIB_IMPORT
 #else
 #define LIB_EXPORT __attribute__ ((visibility("default")))
 #define LIB_IMPORT
