@@ -36,10 +36,12 @@ CONSOLE = -mwindows
 # INCLUDES
 
 _CF_DIR = ../
+ifndef COMPILER
 USE_BOOTSTRAP := defined
+endif
 
 include $(_CF_DIR)crossplatform.mk
-include $(_CF_DIR)default.cf
+include $(_CF_DIR)$(COMPILER).cf
 
 ifdef PREFIXLIBDIR
 CFLAGS += -DDEB_HOST_MULTIARCH=\"$(call escspace,$(PREFIXLIBDIR))\"
