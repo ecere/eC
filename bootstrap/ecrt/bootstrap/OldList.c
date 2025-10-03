@@ -80,6 +80,9 @@ struct __eCNameSpace__eC__types__DataValue
 {
 union
 {
+double d;
+long long i64;
+uint64 ui64;
 char c;
 unsigned char uc;
 short s;
@@ -88,9 +91,6 @@ int i;
 unsigned int ui;
 void *  p;
 float f;
-double d;
-long long i64;
-uint64 ui64;
 } eC_gcc_struct __anon1;
 } eC_gcc_struct;
 

@@ -612,6 +612,9 @@ public struct NameSpace
 
 public union DataValue
 {
+   double d;
+   int64 i64;
+   uint64 ui64;
    char c;
    unsigned char uc;
    short s;
@@ -620,9 +623,6 @@ public union DataValue
    unsigned int ui;
    void * p;
    float f;
-   double d;
-   int64 i64;
-   uint64 ui64;
 };
 
 public class DataMember : struct

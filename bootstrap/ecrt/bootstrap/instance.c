@@ -159,6 +159,9 @@ struct __eCNameSpace__eC__types__DataValue
 {
 union
 {
+double d;
+long long i64;
+uint64 ui64;
 char c;
 unsigned char uc;
 short s;
@@ -167,9 +170,6 @@ int i;
 unsigned int ui;
 void * p;
 float f;
-double d;
-long long i64;
-uint64 ui64;
 } eC_gcc_struct __anon1;
 } eC_gcc_struct;
 
@@ -6790,6 +6790,9 @@ __eCClass___eCNameSpace__eC__types__DataValue = class;
 {
 struct __eCNameSpace__eC__types__DataMember * dataMember0 = __eCNameSpace__eC__types__eMember_New(1, 1);
 
+__eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "d", "double", 8, 8, 1);
+__eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "i64", "int64", 8, 8, 1);
+__eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "ui64", "uint64", 8, 8, 1);
 __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "c", "char", 1, 1, 1);
 __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "uc", "byte", 1, 1, 1);
 __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "s", "short", 2, 2, 1);
@@ -6798,9 +6801,6 @@ __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "i", "int", 4, 4, 1
 __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "ui", "uint", 4, 4, 1);
 __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "p", "void *", sizeof(void *), 0xF000F000, 1);
 __eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "f", "float", 4, 4, 1);
-__eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "d", "double", 8, 8, 1);
-__eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "i64", "int64", 8, 8, 1);
-__eCNameSpace__eC__types__eMember_AddDataMember(dataMember0, "ui64", "uint64", 8, 8, 1);
 __eCNameSpace__eC__types__eClass_AddMember(class, dataMember0);
 }
 class = __eCNameSpace__eC__types__eSystem_RegisterClass(5, "eC::types::DataMember", 0, sizeof(struct __eCNameSpace__eC__types__DataMember), 0, (void *)0, (void *)0, module, 1, 1);
