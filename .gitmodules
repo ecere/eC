@@ -1,0 +1,4 @@
+[submodule "deps/zlib/src"]
+	path = deps/zlib/src
+	url = https://github.com/madler/zlib.git
+	shallow = true
