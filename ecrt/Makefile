@@ -314,6 +314,7 @@ ifdef SHARED_LIBRARY_TARGET
 ifdef LINUX_HOST
 ifndef SKIP_SONAME
 	$(if $(basename $(VER)),ln -sf $(LP)$(MODULE)$(SO)$(VER) ../$(HOST_SODESTDIR)$(LP)$(MODULE)$(SO)$(basename $(VER)),)
+	$(if $(basename $(basename $(VER))),ln -sf $(LP)$(MODULE)$(SO)$(VER) ../$(HOST_SODESTDIR)$(LP)$(MODULE)$(SO)$(basename $(basename $(VER))),)
 	$(if $(VER),ln -sf $(LP)$(MODULE)$(SO)$(VER) ../$(HOST_SODESTDIR)$(LP)$(MODULE)$(SO),)
 endif
 endif
