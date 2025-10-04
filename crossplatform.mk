@@ -14,6 +14,10 @@ endif
 
 CROSSPLATFORM_MK := defined
 
+ifndef EC_SDK_SRC
+EC_SDK_SRC := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+endif
+
 ifndef VERBOSE
 MAKEFLAGS += --no-print-directory
 endif
