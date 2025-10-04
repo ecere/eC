@@ -5,6 +5,7 @@ import "System"
 import "Array"
 import "AVLTree"
 import "List"
+import "fieldValue"
 
 default:
 __attribute__((unused)) static void UnusedFunction()
@@ -2186,7 +2187,7 @@ static bool WriteArray(File f, Class type, Container array, int indent, bool eCO
       Class arrayType = type.templateArgs[0].dataTypeClass ? type.templateArgs[0].dataTypeClass :
          eClass_IsDerived(type, class(Container)) && eClass_IsDerived(array._class, type) ? array._class.templateArgs[0].dataTypeClass : null;
       const String tName = arrayType ? (arrayType.templateClass ? arrayType.templateClass.name : arrayType.name) : "";
-      bool spacing = compactArrays.Find(tName) == null;
+      bool spacing = arrayType != class(FieldValue) && compactArrays.Find(tName) == null;
       f.Puts(spacing ? "[\n" : "[ ");
       if(spacing) indent++;
 
@@ -2442,9 +2443,10 @@ static bool WriteValue(File f, Class type, DataValue value, int indent, bool eCO
       f.Puts(value.i == SetBool::true ? "true" : value.i == SetBool::false ? "false" : "unset");
    else if(type.type == enumClass)
       WriteNumber(f, type, value, indent, eCON, stringMap, false, false, forceQuotes);
-   else if(eClass_IsDerived(type, class(Map)))
+   else if(type.type == normalClass && eClass_IsDerived(type, class(Map)))
       WriteMap(f, type, value.p, indent, eCON, stringMap, capitalize);
-   else if(eClass_IsDerived(type, class(Container)))
+   // NOTE: eClass_IsDerived() currently returns false for BuiltInContainer
+   else if(type.type == normalClass && eClass_IsDerived(type, class(Container)))
       WriteArray(f, type, value.p, indent, eCON, stringMap, capitalize);
    else if(type.type == normalClass || type.type == noHeadClass || type.type == structClass)
    {
@@ -2479,7 +2481,7 @@ static bool WriteValue(File f, Class type, DataValue value, int indent, bool eCO
 static bool WriteONObject(File f, Class objectType, void * object, int indent, bool eCON, Map<String, const String> stringMap, bool omitDefaultIdentifier, JSONFirstLetterCapitalization capitalize, Container forMap)
 {
    const String tName = objectType.templateClass ? objectType.templateClass.name : objectType.name;
-   bool spacing = compactTypes.Find(tName) == null;
+   bool spacing = objectType != class(FieldValue) && compactTypes.Find(tName) == null;
 
    if(object)
    {
@@ -2954,7 +2956,7 @@ public bool WriteJSONObjectMapped(File f, Class objectType, void * object, int i
    /*
     * Print the JSON representation of an object to a file.
     * NOTE: The 'indent' parameter is kept for backwards compatibiity reasons, but
-    * it shouild always be passed as 0 (zero).
+    * it should always be passed as 0 (zero).
     * */
    bool result = false;
    if(object)
