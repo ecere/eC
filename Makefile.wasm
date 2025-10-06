@@ -1,0 +1,20 @@
+ifneq ($(V),1)
+.SILENT:
+endif
+
+.PHONY: all clean
+
+all:
+	@echo "Building 32-bit toolchain..."
+	+$(MAKE) ARCH=x32
+	@echo "Building WebAssembly zlib..."
+	+cd deps/zlib && COMPILER=wasm $(MAKE) -f Makefile
+	@echo "Building WebAssembly eC runtime..."
+	+cd ecrt && COMPILER=wasm $(MAKE) -f Makefile.static
+	@echo "Building WebAssembly C bindings to eC runtime..."
+	+cd bindings/c && COMPILER=wasm $(MAKE) -f Makefile.ecrt_c.static
+	@echo "All done!"
+
+clean:
+	+cd ecrt && COMPILER=wasm $(MAKE) -f Makefile.static clean
+	+cd bindings/c && COMPILER=wasm $(MAKE) -f Makefile.ecrt_c.static clean

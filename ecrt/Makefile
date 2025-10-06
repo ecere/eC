@@ -188,7 +188,7 @@ endif
 # Careful to keep ../deps/glext as -isystem instead of generated -I
 PRJ_CFLAGS += \
 	 $(if $(WINDOWS_TARGET), \
-			 -I../deps/zlib-1.2.8) \
+			 -I../deps/zlib/src) \
 	 $(if $(DEBUG), -g, -O2 -ffast-math) $(FPIC) -w \
 			 -DBUILDING_ECRT \
 			 $(FVISIBILITY)
@@ -220,7 +220,7 @@ ifdef WINDOWS_TARGET
 
 ifndef STATIC_LIBRARY_TARGET
 OFLAGS += \
-	 -L../deps/zlib-1.2.8/obj/release.$(PLATFORM)$(COMPILER_SUFFIX) \
+	 -L../deps/zlib/obj/release.$(PLATFORM)$(COMPILER_SUFFIX) \
 	 -static-libgcc
 
 LIBS += \

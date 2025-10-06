@@ -276,6 +276,7 @@ $(TARGET): $(SOURCES) $(RESOURCES_EAR) $(SYMBOLS) $(OBJECTS) | objdir
 	$(call addtolistfile,$(ECOBJECTS1),$(OBJ)objects.lst)
 	$(call addtolistfile,$(ECOBJECTS2),$(OBJ)objects.lst)
 	$(AR) rcs $(TARGET) $(OBJECTS) $(LIBS)
+	$(call mkdir,../obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib)
 	$(call cp,$(TARGET),../obj/$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/lib/)
 
 # SYMBOL RULES
