@@ -15,7 +15,9 @@ namespace types;
 
  #define DISABLE_MEMMGR
  #define _NOMUTEX
+ #define bool _bool
 #include <emscripten.h>
+ #undef bool
 #define OFFSET(s, m) ((uint)(uintptr) (&((s *) 0)->m))
 #endif
 
@@ -6674,8 +6676,8 @@ static void LoadCOM(Module module)
 
    // Create bool class
    boolClass = eSystem_RegisterClass(ClassType::enumClass, "bool", "uint", 0, 0, null, null, module, baseSystemAccess, publicAccess);
-   eEnum_AddFixedValue(boolClass, "true",  bool::true);
-   eEnum_AddFixedValue(boolClass, "false", bool::false);
+   eEnum_AddFixedValue(boolClass, "true",  1); //bool::true); // Review why this is breaking with emcc
+   eEnum_AddFixedValue(boolClass, "false", 0); //bool::false);
 
    // Create Module class
    moduleClass = eSystem_RegisterClass(normalClass, "eC::types::Module", null, force64Bits ? 8 + 32 + 32 + 32 + 32 + 8 + 8 + 8 + 8 + 8 + 4 + 4 + (32 + 8 + 8 + 4*32) + (32 + 8 + 8 + 4*32) :

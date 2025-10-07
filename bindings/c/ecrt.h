@@ -34,7 +34,9 @@ extern "C" {
 #include <string.h>
 
 #if defined(__EMSCRIPTEN__)
+#define bool _bool
 #include <emscripten.h>
+#undef bool
 #endif
 
 
