@@ -48,43 +48,35 @@ RES =
 
 TARGET_NAME := z
 
-TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)$(TARGET_NAME)$(A)
+TARGET = obj/$(CONFIG).$(PLATFORM)$(COMPILER_SUFFIX)$(DEBUG_SUFFIX)/$(LP)$(TARGET_NAME)$(OUT)
 
 _OBJECTS = \
-	$(OBJ)adler32.o \
-	$(OBJ)compress.o \
-	$(OBJ)crc32.o \
-	$(OBJ)deflate.o \
-	$(OBJ)infback.o \
-	$(OBJ)inffast.o \
-	$(OBJ)inflate.o \
-	$(OBJ)inftrees.o \
-	$(OBJ)trees.o \
-	$(OBJ)uncompr.o \
-	$(OBJ)zutil.o \
-	$(OBJ)gzclose.o \
-	$(OBJ)gzlib.o \
-	$(OBJ)gzread.o \
-	$(OBJ)gzwrite.o
+	$(OBJ)adler32$(O) \
+	$(OBJ)compress$(O) \
+	$(OBJ)crc32$(O) \
+	$(OBJ)deflate$(O) \
+	$(OBJ)infback$(O) \
+	$(OBJ)inffast$(O) \
+	$(OBJ)inflate$(O) \
+	$(OBJ)inftrees$(O) \
+	$(OBJ)trees$(O) \
+	$(OBJ)uncompr$(O) \
+	$(OBJ)zutil$(O)
 
 OBJECTS = $(_OBJECTS)
 
 SOURCES = \
-	adler32.c \
-	compress.c \
-	crc32.c \
-	deflate.c \
-	infback.c \
-	inffast.c \
-	inflate.c \
-	inftrees.c \
-	trees.c \
-	uncompr.c \
-	zutil.c \
-	gzclose.c \
-	gzlib.c \
-	gzread.c \
-	gzwrite.c
+	src/adler32.c \
+	src/compress.c \
+	src/crc32.c \
+	src/deflate.c \
+	src/infback.c \
+	src/inffast.c \
+	src/inflate.c \
+	src/inftrees.c \
+	src/trees.c \
+	src/uncompr.c \
+	src/zutil.c
 
 RESOURCES =
 
@@ -101,7 +93,7 @@ CECFLAGS += -cpp $(_CPP)
 all: objdir $(TARGET)
 
 objdir:
-	$(call mkdir,$(OBJ))
+	$(if $(wildcard $(OBJ)),,$(call mkdir,$(OBJ)))
 
 $(SYMBOLS): | objdir
 $(OBJECTS): | objdir
@@ -168,18 +160,6 @@ $(OBJ)uncompr$(O): src/uncompr.c
 
 $(OBJ)zutil$(O): src/zutil.c
 	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/zutil.c) -o $(call quote_path,$@)
-
-$(OBJ)gzclose$(O): src/gzclose.c
-	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/gzclose.c) -o $(call quote_path,$@)
-
-$(OBJ)gzlib$(O): src/gzlib.c
-	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/gzlib.c) -o $(call quote_path,$@)
-
-$(OBJ)gzread$(O): src/gzread.c
-	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/gzread.c) -o $(call quote_path,$@)
-
-$(OBJ)gzwrite$(O): src/gzwrite.c
-	$(CC) $(CFLAGS) $(PRJ_CFLAGS) -c $(call quote_path,src/gzwrite.c) -o $(call quote_path,$@)
 
 cleantarget:
 	$(call rm,$(OBJ)objects.lst)

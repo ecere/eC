@@ -55,12 +55,7 @@
             "inftrees.c",
             "trees.c",
             "uncompr.c",
-            "zutil.c",
-            "gzclose.c",
-            "gzguts.h",
-            "gzlib.c",
-            "gzread.c",
-            "gzwrite.c"
+            "zutil.c"
          ]
       }
    ],
