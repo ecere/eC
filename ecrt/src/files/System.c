@@ -53,10 +53,10 @@ typedef uint64 FileSize64;
 #define MAX_FILENAME 274
 
 void __eCNameSpace__eC__types__eSystem_Delete(void * memory);
-void * __eCNameSpace__eC__types__eSystem_New(unsigned int size);
-void * __eCNameSpace__eC__types__eSystem_New0(unsigned int size);
-void * __eCNameSpace__eC__types__eSystem_Renew(void * memory, unsigned int size);
-void * __eCNameSpace__eC__types__eSystem_Renew0(void * memory, unsigned int size);
+void * __eCNameSpace__eC__types__eSystem_New(size_t size);
+void * __eCNameSpace__eC__types__eSystem_New0(size_t size);
+void * __eCNameSpace__eC__types__eSystem_Renew(void * memory, size_t size);
+void * __eCNameSpace__eC__types__eSystem_Renew0(void * memory, size_t size);
 
 unsigned short * __eCNameSpace__eC__i18n__UTF8toUTF16(const char * source, int * wordCount);
 unsigned short * __eCNameSpace__eC__i18n__UTF8toUTF16Buffer(const char * source, uint16 * dest, int max);
