@@ -1016,6 +1016,9 @@ static void OutputSpecifier(Specifier spec, File f, bool typeName)
             case FLOAT16:
                f.Puts("_Float16");
                break;
+            case BF16:
+               f.Puts("__bf16");
+               break;
             case VALIST:
                f.Puts("__builtin_va_list");
                break;

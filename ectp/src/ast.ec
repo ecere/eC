@@ -701,6 +701,7 @@ public TypeName MkTypeNameGuessDecl(OldList qualifiers, Declarator declarator)
                else if(spec.specifier == INT128) s = "__int128";
                else if(spec.specifier == FLOAT128) s = "__float128";
                else if(spec.specifier == FLOAT16) s = "_Float16";
+               else if(spec.specifier == BF16) s = "__bf16";
             }
             if(s)
             {
@@ -888,6 +889,7 @@ Declaration MkDeclaration(OldList specifiers, OldList initDeclarators)
                         else if(spec.specifier == INT128) s = "__int128";
                         else if(spec.specifier == FLOAT128) s = "__float128";
                         else if(spec.specifier == FLOAT16) s = "_Float16";
+                        else if(spec.specifier == BF16) s = "__bf16";
                      }
                      if(s)
                      {
@@ -924,6 +926,7 @@ Declaration MkDeclaration(OldList specifiers, OldList initDeclarators)
                   else if(spec.specifier == INT128) s = "__int128";
                   else if(spec.specifier == FLOAT128) s = "__float128";
                   else if(spec.specifier == FLOAT16) s = "_Float16";
+                  else if(spec.specifier == BF16) s = "__bf16";
                }
                if(s)
                {
@@ -1059,6 +1062,7 @@ Declaration MkStructDeclaration(OldList specifiers, OldList declarators, Specifi
                else if(spec.specifier == INT128) s = "__int128";
                else if(spec.specifier == FLOAT128) s = "__float128";
                else if(spec.specifier == FLOAT16) s = "_Float16";
+               else if(spec.specifier == BF16) s = "__bf16";
             }
             if(s)
             {
@@ -2405,6 +2409,7 @@ static Type ProcessTypeSpecs(OldList specs, bool assumeEllipsis, bool keepTypeNa
             else if(spec.specifier == INT128) specType.kind = int128Type;
             else if(spec.specifier == FLOAT128) specType.kind = float128Type;
             else if(spec.specifier == FLOAT16) specType.kind = float16Type;
+            else if(spec.specifier == BF16) specType.kind = bf16Type;
             else if(spec.specifier == VALIST)
                specType.kind = vaListType;
             else if(spec.specifier == SHORT) specType.kind = shortType;
