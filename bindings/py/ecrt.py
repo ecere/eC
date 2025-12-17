@@ -169,7 +169,10 @@ def ecPtr(_pyObject):
 def TA(a):
    u = ffi.new("eC_DataValue *")
    if type(a) == int:
-      u.i64 = a
+      if a > 0:
+         u.ui64 = a
+      else:
+         u.i64 = a
    elif type(a) == float:
       u.f = a
    elif isinstance(a, Instance) or isinstance(a, Struct):
