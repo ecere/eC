@@ -398,8 +398,12 @@ class Instance:
       Instance.delete(self)
 
    def delete(self):
+      if self.impl != ffi.NULL and self.impl._class.bindingsClass == ffi.NULL:
+         Instance.instances.remove(self)
+         self.handle = 0
       lib.Instance_delete(self.impl)
       self.impl = ffi.NULL
+
    '''def onCompare(self, other):
       if self is None or self.impl == ffi.NULL: return None
       c = type(self)
