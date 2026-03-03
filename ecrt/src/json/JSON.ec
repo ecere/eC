@@ -2120,11 +2120,20 @@ static bool WriteMap(File f, Class type, Map map, int indent, bool eCON, Map<Str
       bool spacing = eCON || (tArg && (strchr(tArg + 1, '<') || strstr(tArg + 1, "GeometryData") || strstr(tArg + 1, "UMSFieldValue") ||
             isFieldValue));
       // REVIEW: Work around to sort "op" first
+      MapNode typeNode = isFieldValue ?
+         (MapNode)((Map<String, FieldValue>)map).GetAtPosition("type", false, null) : null;
       MapNode opNode = isFieldValue ?
          (MapNode)((Map<String, FieldValue>)map).GetAtPosition("op", false, null) : null;
+      MapNode propNode = isFieldValue ?
+         (MapNode)((Map<String, FieldValue>)map).GetAtPosition("property", false, null) : null;
+      MapNode sysIdNode = isFieldValue ?
+         (MapNode)((Map<String, FieldValue>)map).GetAtPosition("sysId", false, null) : null;
       MapIterator it { map = (void*)map };
       Class mapNodeClass = map._class.templateArgs[0].dataTypeClass;
       bool jsonDicMap = false;
+
+      if(propNode || sysIdNode) spacing = false; // Avoid new line for property objects
+
       if(mapNodeClass && mapNodeClass.templateClass && eClass_IsDerived(mapNodeClass.templateClass, class(MapNode)))
       {
          //Class mapKeyClass = mapNodeClass.templateArgs[0].dataTypeClass;
@@ -2151,20 +2160,24 @@ static bool WriteMap(File f, Class type, Map map, int indent, bool eCON, Map<Str
          f.Puts(spacing ? "[\n" : "[ ");
       if(spacing) indent++;
 
-      if(opNode)
+      for(nn : [ opNode, typeNode ])
       {
-         Class ot = opNode && mapNodeClass.type == normalClass ? ((Instance)opNode)._class : mapNodeClass;
-         if(!isFirst)
-            f.Puts(spacing ? ",\n" : ", ");
-         else
-            isFirst = false;
-         if(spacing) for(i = 0; i<indent; i++) f.Puts(indentModule);
-         WriteONObject(f, ot, opNode, indent, eCON, stringMap, true, capitalize, map);
+         MapNode n = nn;
+         if(n)
+         {
+            Class ot = mapNodeClass.type == normalClass ? ((Instance)n)._class : mapNodeClass;
+            if(!isFirst)
+               f.Puts(spacing ? ",\n" : ", ");
+            else
+               isFirst = false;
+            if(spacing) for(i = 0; i<indent; i++) f.Puts(indentModule);
+            WriteONObject(f, ot, n, indent, eCON, stringMap, true, capitalize, map);
+         }
       }
       while(it.Next())
       {
          MapNode n = (MapNode)it.pointer;
-         if(n != opNode)
+         if(n != opNode && n != typeNode)
          {
             Class ot = n && mapNodeClass.type == normalClass ? ((Instance)n)._class : mapNodeClass;
             if(!isFirst)
