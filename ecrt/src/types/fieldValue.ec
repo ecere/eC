@@ -375,7 +375,8 @@ public struct FieldValue
 
    String formatArray(char * tempString, void * fieldData, ObjectNotationType * onType)
    {
-      String temp = PrintObjectNotationString( a._class, a, *onType, 0, false, keepCase);
+      uint indent = fieldData ? *(uint *)fieldData : 0;
+      String temp = PrintObjectNotationString( a._class, a, onType ? *onType : none, indent, false, keepCase);
       if(temp && strlen(temp) > 16000)
       {
 #ifdef _DEBUG
@@ -393,7 +394,8 @@ public struct FieldValue
    String formatMap(char * tempString, void * fieldData, ObjectNotationType * onType)
    {
       // Depending on the object notation and number of elements:
-      String temp = PrintObjectNotationString( m._class, m, onType ? *onType : none, 0, false, keepCase);
+      uint indent = fieldData ? *(uint *)fieldData : 0;
+      String temp = PrintObjectNotationString( m._class, m, onType ? *onType : none, indent, false, keepCase);
       if(temp && strlen(temp) > 16000)
       {
 #ifdef _DEBUG

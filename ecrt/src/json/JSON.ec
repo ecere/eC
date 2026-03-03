@@ -2116,8 +2116,12 @@ static bool WriteMap(File f, Class type, Map map, int indent, bool eCON, Map<Str
       bool isFirst = true;
       Class arrayType = (type = map._class, type.templateArgs[0].dataTypeClass);
       const String tArg = strchr(arrayType.name, '<');
+      bool isFieldValue = tArg && strstr(tArg + 1, "FieldValue");
       bool spacing = eCON || (tArg && (strchr(tArg + 1, '<') || strstr(tArg + 1, "GeometryData") || strstr(tArg + 1, "UMSFieldValue") ||
-            strstr(tArg + 1, "FieldValue")));
+            isFieldValue));
+      // REVIEW: Work around to sort "op" first
+      MapNode opNode = isFieldValue ?
+         (MapNode)((Map<String, FieldValue>)map).GetAtPosition("op", false, null) : null;
       MapIterator it { map = (void*)map };
       Class mapNodeClass = map._class.templateArgs[0].dataTypeClass;
       bool jsonDicMap = false;
@@ -2147,17 +2151,30 @@ static bool WriteMap(File f, Class type, Map map, int indent, bool eCON, Map<Str
          f.Puts(spacing ? "[\n" : "[ ");
       if(spacing) indent++;
 
-      while(it.Next())
+      if(opNode)
       {
-         MapNode n = (MapNode)it.pointer;
-         Class ot = n && mapNodeClass.type == normalClass ? ((Instance)n)._class : mapNodeClass;
+         Class ot = opNode && mapNodeClass.type == normalClass ? ((Instance)opNode)._class : mapNodeClass;
          if(!isFirst)
             f.Puts(spacing ? ",\n" : ", ");
          else
             isFirst = false;
          if(spacing) for(i = 0; i<indent; i++) f.Puts(indentModule);
+         WriteONObject(f, ot, opNode, indent, eCON, stringMap, true, capitalize, map);
+      }
+      while(it.Next())
+      {
+         MapNode n = (MapNode)it.pointer;
+         if(n != opNode)
+         {
+            Class ot = n && mapNodeClass.type == normalClass ? ((Instance)n)._class : mapNodeClass;
+            if(!isFirst)
+               f.Puts(spacing ? ",\n" : ", ");
+            else
+               isFirst = false;
+            if(spacing) for(i = 0; i<indent; i++) f.Puts(indentModule);
 
-         WriteONObject(f, ot, n, indent, eCON, stringMap, true, capitalize, map);
+            WriteONObject(f, ot, n, indent, eCON, stringMap, true, capitalize, map);
+         }
       }
       if(spacing)
       {
@@ -2494,7 +2511,8 @@ static bool WriteONObject(File f, Class objectType, void * object, int indent, b
       if(objectType._vTbl[__eCVMethodID_class_OnGetString] != objectType.base._vTbl[__eCVMethodID_class_OnGetString])
       {
          buffer[0] = 0;
-         string = ((const char *(*)())(void *)objectType._vTbl[__eCVMethodID_class_OnGetString])(objectType, object, buffer, null, &onType);
+         string = ((const char *(*)())(void *)objectType._vTbl[__eCVMethodID_class_OnGetString])(objectType,
+            object, buffer, &indent /*null*/, &onType);
          quote = false;
          // NOTE: Returning null from OnGetString() means to use the default object serialization below
          //       rather than serializing as null
