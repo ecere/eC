@@ -926,7 +926,7 @@ else if(!strcmp(arg + 1, "t32") || !strcmp(arg + 1, "t64"))
 {
 targetBits = !strcmp(arg + 1, "t32") ? 32 : 64;
 }
-else if(arg[1] == 'D' || arg[1] == 'I' || strstr(arg, "-std=") == arg)
+else if(arg[1] == 'D' || arg[1] == 'I' || strstr(arg, "-std=") == arg || strstr(arg, "--target=") == arg)
 {
 char * buf;
 int size = cppOptionsLen + 1 + strlen(arg) * 2 + 1;
@@ -989,7 +989,7 @@ c++;
 else
 valid = 0;
 }
-else if(!strcmp(arg + 1, "isystem") || !strcmp(arg + 1, "isysroot") || !strcmp(arg + 1, "s") || !strcmp(arg + 1, "include") || !strcmp(arg, "--source-map-base"))
+else if(!strcmp(arg + 1, "isystem") || !strcmp(arg + 1, "isysroot") || !strcmp(arg + 1, "s") || !strcmp(arg + 1, "include") || !strcmp(arg, "--source-map-base") || !strcmp(arg + 1, "arch"))
 {
 if(c + 1 < ((struct __eCNameSpace__eC__types__Application *)(((char *)this + sizeof(struct __eCNameSpace__eC__types__Module) + sizeof(struct __eCNameSpace__eC__types__Instance))))->argc)
 {
