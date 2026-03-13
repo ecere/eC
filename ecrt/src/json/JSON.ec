@@ -2124,15 +2124,27 @@ static bool WriteMap(File f, Class type, Map map, int indent, bool eCON, Map<Str
          (MapNode)((Map<String, FieldValue>)map).GetAtPosition("type", false, null) : null;
       MapNode opNode = isFieldValue ?
          (MapNode)((Map<String, FieldValue>)map).GetAtPosition("op", false, null) : null;
-      MapNode propNode = isFieldValue ?
-         (MapNode)((Map<String, FieldValue>)map).GetAtPosition("property", false, null) : null;
-      MapNode sysIdNode = isFieldValue ?
-         (MapNode)((Map<String, FieldValue>)map).GetAtPosition("sysId", false, null) : null;
       MapIterator it { map = (void*)map };
       Class mapNodeClass = map._class.templateArgs[0].dataTypeClass;
       bool jsonDicMap = false;
 
-      if(propNode || sysIdNode) spacing = false; // Avoid new line for property objects
+      if(isFieldValue && (
+         ((Map<String, FieldValue>)map).GetAtPosition("property", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("sysId", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("date", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("timestamp", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("interval", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("px", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("m", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("ft", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("pc", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("pt", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("em", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("in", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("cm", false, null) ||
+         ((Map<String, FieldValue>)map).GetAtPosition("mm", false, null))
+         )
+         spacing = false; // Avoid new line for property and temporal objects
 
       if(mapNodeClass && mapNodeClass.templateClass && eClass_IsDerived(mapNodeClass.templateClass, class(MapNode)))
       {
