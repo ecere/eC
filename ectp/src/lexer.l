@@ -3,7 +3,7 @@ L         [a-zA-Z_]
 H         [a-fA-F0-9]
 E         [Ee][+-]?{D}+
 P         [Pp][+-]?{D}+
-FS         (f|F|l|L|i|I|j|J)*
+FS         (f|F|l|L|i|I|j|J|f16)*
 IS         (u|U|l|L|i|I|j|J)*
 IDENT    {L}({L}|{D})*
 
