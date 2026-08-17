@@ -928,6 +928,7 @@ typedef size_t uintsize;
 
 #define MAXDWORD (0xffffffff)
 
+#undef MAXFLOAT
 #define MAXFLOAT (3.40282346638528860e+38f)
 
 #define MAXINT (((int)0x7fffffff))
