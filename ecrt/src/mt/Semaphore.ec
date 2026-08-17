@@ -1,3 +1,4 @@
+#undef __BLOCKS__
 #define _Noreturn
 
 default:

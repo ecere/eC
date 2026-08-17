@@ -1,3 +1,6 @@
+#undef __BLOCKS__
+#define _Noreturn
+
 import "Semaphore"
 import "Mutex"
 
