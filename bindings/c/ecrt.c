@@ -4,8 +4,73 @@
 
 // Global Functions Pointers
 
+LIB_EXPORT C(GlobalFunction) * FUNCTION(hash32Data);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(qsortr);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(qsortrx);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(iSO8859_1toUTF8);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF16toUTF8);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF16toUTF8Buffer);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF32toUTF8Len);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8GetChar);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8Validate);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8toUTF16);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8toUTF16Buffer);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getCurrentThreadID);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(changeCh);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(changeChars);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(changeExtension);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(checkConsistency);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(checkMemory);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(copyString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(escapeCString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(floatFromString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getActiveDesigner);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getExtension);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getHexValue);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getLastDirectory);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getRuntimePlatform);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getValue);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(isPathInsideOf);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(locateModule);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(makePathRelative);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(pathCat);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(pathCatSlash);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printx);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printBigSize);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printBuf);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printLn);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printLnBuf);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printLnString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printSize);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printStdArgsToBuffer);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(rSearchString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(repeatCh);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(searchString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(setActiveDesigner);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(splitArchivePath);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(splitDirectory);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(stringLikePattern);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(stripChars);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(stripExtension);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(stripLastDirectory);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(stripQuotes);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(tokenize);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(tokenizeWith);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(trimLSpaces);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(trimRSpaces);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(unescapeCString);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(unescapeCStringLoose);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(eSystem_LockMem);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(eSystem_UnlockMem);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(ishexdigit);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(log2i);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(memswap);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(pow2i);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(printDouble);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(queryMemInfo);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(strchrmax);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(archiveOpen);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(archiveQuerySize);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(changeWorkingDir);
@@ -45,6 +110,7 @@ LIB_EXPORT C(GlobalFunction) * FUNCTION(makeSlashPath);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(makeSystemPath);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(moveFile);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(moveFileEx);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(processFileNotifications);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(removeDir);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(renameFile);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(resetError);
@@ -52,22 +118,17 @@ LIB_EXPORT C(GlobalFunction) * FUNCTION(setEnvironment);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(setErrorLevel);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(setLoggingMode);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(shellOpen);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(signalEvent);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(unsetEnvironment);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(waitEvent);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(debugBreakpoint);
+LIB_EXPORT C(GlobalFunction) * FUNCTION(getEventSemaphore);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(charMatchCategories);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(getAlNum);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(getCharCategory);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(getCombiningClass);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(iSO8859_1toUTF8);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF16BEtoUTF8Buffer);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF16toUTF8);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF16toUTF8Buffer);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF32toUTF8Len);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8GetChar);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8Validate);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8toISO8859_1);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8toUTF16);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8toUTF16Buffer);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8toUTF16BufferLen);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(uTF8toUTF16Len);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(accenti);
@@ -89,72 +150,17 @@ LIB_EXPORT C(GlobalFunction) * FUNCTION(writeJSONObject);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(writeJSONObject2);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(writeJSONObjectMapped);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(writeONString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(getCurrentThreadID);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(getRandom);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(getTime);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(randomSeed);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(__sleep);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(changeCh);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(changeChars);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(changeExtension);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(checkConsistency);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(checkMemory);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(copyBytes);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(copyBytesBy2);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(copyBytesBy4);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(copyString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(escapeCString);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(fillBytes);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(fillBytesBy2);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(fillBytesBy4);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(floatFromString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(getActiveDesigner);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(getExtension);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(getHexValue);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(getLastDirectory);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(getRuntimePlatform);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(getString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(getValue);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(isPathInsideOf);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(locateModule);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(makePathRelative);
 LIB_EXPORT C(GlobalFunction) * FUNCTION(moveBytes);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(pathCat);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(pathCatSlash);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printx);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printBigSize);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printBuf);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printLn);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printLnBuf);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printLnString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printSize);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printStdArgsToBuffer);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(printString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(rSearchString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(repeatCh);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(searchString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(setActiveDesigner);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(splitArchivePath);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(splitDirectory);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(stringLikePattern);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(stripChars);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(stripExtension);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(stripLastDirectory);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(stripQuotes);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(tokenize);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(tokenizeWith);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(trimLSpaces);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(trimRSpaces);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(unescapeCString);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(unescapeCStringLoose);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(eSystem_LockMem);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(eSystem_UnlockMem);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(ishexdigit);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(log2i);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(memswap);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(pow2i);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(queryMemInfo);
-LIB_EXPORT C(GlobalFunction) * FUNCTION(strchrmax);
 
 
 
@@ -176,23 +182,6 @@ LIB_EXPORT C(Method) * METHOD(double, nan);
 
 LIB_EXPORT C(Method) * METHOD(float, inf);
 LIB_EXPORT C(Method) * METHOD(float, nan);
-
-LIB_EXPORT C(Method) * METHOD(Application, main);
-
-LIB_EXPORT C(Method) * METHOD(Module, load);
-LIB_EXPORT C(Method) * METHOD(Module, onLoad);
-LIB_EXPORT C(Method) * METHOD(Module, onUnload);
-LIB_EXPORT C(Method) * METHOD(Module, unload);
-
-LIB_EXPORT C(Method) * METHOD(FieldValue, compareInt);
-LIB_EXPORT C(Method) * METHOD(FieldValue, compareReal);
-LIB_EXPORT C(Method) * METHOD(FieldValue, compareText);
-LIB_EXPORT C(Method) * METHOD(FieldValue, formatArray);
-LIB_EXPORT C(Method) * METHOD(FieldValue, formatFloat);
-LIB_EXPORT C(Method) * METHOD(FieldValue, formatInteger);
-LIB_EXPORT C(Method) * METHOD(FieldValue, formatMap);
-LIB_EXPORT C(Method) * METHOD(FieldValue, getArrayOrMap);
-LIB_EXPORT C(Method) * METHOD(FieldValue, stringify);
 
 LIB_EXPORT C(Method) * METHOD(AVLNode, find);
 
@@ -292,6 +281,66 @@ LIB_EXPORT C(Method) * METHOD(OldList, removeAll);
 LIB_EXPORT C(Method) * METHOD(OldList, sort);
 LIB_EXPORT C(Method) * METHOD(OldList, swap);
 
+LIB_EXPORT C(Method) * METHOD(Mutex, release);
+LIB_EXPORT C(Method) * METHOD(Mutex, wait);
+
+LIB_EXPORT C(Method) * METHOD(Application, main);
+
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, addObject);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, createNew);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, createObject);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, destroyObject);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, droppedObject);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, fixProperty);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, listToolBoxClasses);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, postCreateObject);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, prepareTestObject);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, reset);
+LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, selectObject);
+
+LIB_EXPORT C(Method) * METHOD(DesignerBase, addDefaultMethod);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, addToolBoxClass);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, codeAddObject);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, deleteObject);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, findObject);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, modifyCode);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, objectContainsCode);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, renameObject);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, selectObjectFromDesigner);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, sheetAddObject);
+LIB_EXPORT C(Method) * METHOD(DesignerBase, updateProperties);
+
+LIB_EXPORT C(Method) * METHOD(IOChannel, get);
+LIB_EXPORT C(Method) * METHOD(IOChannel, put);
+LIB_EXPORT C(Method) * METHOD(IOChannel, readData);
+LIB_EXPORT C(Method) * METHOD(IOChannel, serialize);
+LIB_EXPORT C(Method) * METHOD(IOChannel, unserialize);
+LIB_EXPORT C(Method) * METHOD(IOChannel, writeData);
+
+LIB_EXPORT C(Method) * METHOD(Module, load);
+LIB_EXPORT C(Method) * METHOD(Module, onLoad);
+LIB_EXPORT C(Method) * METHOD(Module, onUnload);
+LIB_EXPORT C(Method) * METHOD(Module, unload);
+
+LIB_EXPORT C(Method) * METHOD(SerialBuffer, free);
+
+LIB_EXPORT C(Method) * METHOD(ZString, concat);
+LIB_EXPORT C(Method) * METHOD(ZString, concatf);
+LIB_EXPORT C(Method) * METHOD(ZString, concatn);
+LIB_EXPORT C(Method) * METHOD(ZString, concatx);
+LIB_EXPORT C(Method) * METHOD(ZString, copy);
+LIB_EXPORT C(Method) * METHOD(ZString, copyString);
+
+LIB_EXPORT C(Method) * METHOD(FieldValue, compareInt);
+LIB_EXPORT C(Method) * METHOD(FieldValue, compareReal);
+LIB_EXPORT C(Method) * METHOD(FieldValue, compareText);
+LIB_EXPORT C(Method) * METHOD(FieldValue, formatArray);
+LIB_EXPORT C(Method) * METHOD(FieldValue, formatFloat);
+LIB_EXPORT C(Method) * METHOD(FieldValue, formatInteger);
+LIB_EXPORT C(Method) * METHOD(FieldValue, formatMap);
+LIB_EXPORT C(Method) * METHOD(FieldValue, getArrayOrMap);
+LIB_EXPORT C(Method) * METHOD(FieldValue, stringify);
+
 LIB_EXPORT C(Method) * METHOD(Archive, clear);
 LIB_EXPORT C(Method) * METHOD(Archive, fileExists);
 LIB_EXPORT C(Method) * METHOD(Archive, fileOpen);
@@ -375,9 +424,6 @@ LIB_EXPORT C(Method) * METHOD(JSONParser, getObject);
 LIB_EXPORT C(Method) * METHOD(Condition, signal);
 LIB_EXPORT C(Method) * METHOD(Condition, wait);
 
-LIB_EXPORT C(Method) * METHOD(Mutex, release);
-LIB_EXPORT C(Method) * METHOD(Mutex, wait);
-
 LIB_EXPORT C(Method) * METHOD(Semaphore, release);
 LIB_EXPORT C(Method) * METHOD(Semaphore, tryWait);
 LIB_EXPORT C(Method) * METHOD(Semaphore, wait);
@@ -400,46 +446,6 @@ LIB_EXPORT C(Method) * METHOD(Box, clipOffset);
 LIB_EXPORT C(Method) * METHOD(Box, isPointInside);
 LIB_EXPORT C(Method) * METHOD(Box, overlap);
 
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, addObject);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, createNew);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, createObject);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, destroyObject);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, droppedObject);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, fixProperty);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, listToolBoxClasses);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, postCreateObject);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, prepareTestObject);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, reset);
-LIB_EXPORT C(Method) * METHOD(ClassDesignerBase, selectObject);
-
-LIB_EXPORT C(Method) * METHOD(DesignerBase, addDefaultMethod);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, addToolBoxClass);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, codeAddObject);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, deleteObject);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, findObject);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, modifyCode);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, objectContainsCode);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, renameObject);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, selectObjectFromDesigner);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, sheetAddObject);
-LIB_EXPORT C(Method) * METHOD(DesignerBase, updateProperties);
-
-LIB_EXPORT C(Method) * METHOD(IOChannel, get);
-LIB_EXPORT C(Method) * METHOD(IOChannel, put);
-LIB_EXPORT C(Method) * METHOD(IOChannel, readData);
-LIB_EXPORT C(Method) * METHOD(IOChannel, serialize);
-LIB_EXPORT C(Method) * METHOD(IOChannel, unserialize);
-LIB_EXPORT C(Method) * METHOD(IOChannel, writeData);
-
-LIB_EXPORT C(Method) * METHOD(SerialBuffer, free);
-
-LIB_EXPORT C(Method) * METHOD(ZString, concat);
-LIB_EXPORT C(Method) * METHOD(ZString, concatf);
-LIB_EXPORT C(Method) * METHOD(ZString, concatn);
-LIB_EXPORT C(Method) * METHOD(ZString, concatx);
-LIB_EXPORT C(Method) * METHOD(ZString, copy);
-LIB_EXPORT C(Method) * METHOD(ZString, copyString);
-
 
 
 
@@ -451,18 +457,6 @@ LIB_EXPORT double (* double_nan)(void);
 
 LIB_EXPORT float (* float_inf)(void);
 LIB_EXPORT float (* float_nan)(void);
-
-
-
-LIB_EXPORT int (* FieldValue_compareInt)(C(FieldValue) * __this, C(FieldValue) * other);
-LIB_EXPORT int (* FieldValue_compareReal)(C(FieldValue) * __this, C(FieldValue) * other);
-LIB_EXPORT int (* FieldValue_compareText)(C(FieldValue) * __this, C(FieldValue) * other);
-LIB_EXPORT C(String) (* FieldValue_formatArray)(C(FieldValue) * __this, char * tempString, void * fieldData, C(ObjectNotationType) * onType);
-LIB_EXPORT C(String) (* FieldValue_formatFloat)(C(FieldValue) * __this, char * stringOutput, C(bool) fixDot);
-LIB_EXPORT C(String) (* FieldValue_formatInteger)(C(FieldValue) * __this, char * stringOutput);
-LIB_EXPORT C(String) (* FieldValue_formatMap)(C(FieldValue) * __this, char * tempString, void * fieldData, C(ObjectNotationType) * onType);
-LIB_EXPORT C(bool) (* FieldValue_getArrayOrMap)(const char * string, C(Class) * destClass, void ** destination);
-LIB_EXPORT C(String) (* FieldValue_stringify)(C(FieldValue) * __this);
 
 LIB_EXPORT thisclass(AVLNode *) (* AVLNode_find)(C(AVLNode) * __this, C(Class) * Tclass, TP(AVLNode, T) key);
 
@@ -524,6 +518,37 @@ LIB_EXPORT void (* OldList_removeAll)(C(OldList) * __this, void (* freeFn)(void 
 LIB_EXPORT void (* OldList_sort)(C(OldList) * __this, int (* compare)(void *, void *, void *), void * data);
 LIB_EXPORT void (* OldList_swap)(C(OldList) * __this, void * item1, void * item2);
 
+LIB_EXPORT void (* Mutex_release)(C(Mutex) * __this);
+LIB_EXPORT void (* Mutex_wait)(C(Mutex) * __this);
+
+
+
+
+LIB_EXPORT void (* IOChannel_get)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
+LIB_EXPORT void (* IOChannel_put)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
+LIB_EXPORT void (* IOChannel_serialize)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
+LIB_EXPORT void (* IOChannel_unserialize)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
+
+
+LIB_EXPORT void (* SerialBuffer_free)(C(SerialBuffer) __this);
+
+LIB_EXPORT void (* ZString_concat)(C(ZString) __this, C(ZString) s);
+LIB_EXPORT void (* ZString_concatf)(C(ZString) __this, const char * format, ...);
+LIB_EXPORT void (* ZString_concatn)(C(ZString) __this, C(ZString) s, int l);
+LIB_EXPORT void (* ZString_concatx)(C(ZString) __this, typed_object_class_ptr class_object, const void * object, ...);
+LIB_EXPORT void (* ZString_copy)(C(ZString) __this, C(ZString) s);
+LIB_EXPORT void (* ZString_copyString)(C(ZString) __this, const char * value, int newLen);
+
+LIB_EXPORT int (* FieldValue_compareInt)(C(FieldValue) * __this, C(FieldValue) * other);
+LIB_EXPORT int (* FieldValue_compareReal)(C(FieldValue) * __this, C(FieldValue) * other);
+LIB_EXPORT int (* FieldValue_compareText)(C(FieldValue) * __this, C(FieldValue) * other);
+LIB_EXPORT C(String) (* FieldValue_formatArray)(C(FieldValue) * __this, char * tempString, void * fieldData, C(ObjectNotationType) * onType);
+LIB_EXPORT C(String) (* FieldValue_formatFloat)(C(FieldValue) * __this, char * stringOutput, C(bool) fixDot);
+LIB_EXPORT C(String) (* FieldValue_formatInteger)(C(FieldValue) * __this, char * stringOutput);
+LIB_EXPORT C(String) (* FieldValue_formatMap)(C(FieldValue) * __this, char * tempString, void * fieldData, C(ObjectNotationType) * onType);
+LIB_EXPORT C(bool) (* FieldValue_getArrayOrMap)(const char * string, C(Class) * destClass, void ** destination);
+LIB_EXPORT C(String) (* FieldValue_stringify)(C(FieldValue) * __this);
+
 
 LIB_EXPORT C(bool) (* ArchiveDir_add)(C(ArchiveDir) __this, const char * name, const char * path, C(ArchiveAddMode) addMode, int compression, int * ratio, uint * newPosition);
 
@@ -569,9 +594,6 @@ LIB_EXPORT C(JSONResult) (* JSONParser_getObject)(C(JSONParser) __this, C(Class)
 LIB_EXPORT void (* Condition_signal)(C(Condition) * __this);
 LIB_EXPORT void (* Condition_wait)(C(Condition) * __this, C(Mutex) * mutex);
 
-LIB_EXPORT void (* Mutex_release)(C(Mutex) * __this);
-LIB_EXPORT void (* Mutex_wait)(C(Mutex) * __this);
-
 LIB_EXPORT void (* Semaphore_release)(C(Semaphore) * __this);
 LIB_EXPORT C(bool) (* Semaphore_tryWait)(C(Semaphore) * __this);
 LIB_EXPORT void (* Semaphore_wait)(C(Semaphore) * __this);
@@ -592,22 +614,6 @@ LIB_EXPORT void (* Box_clip)(C(Box) * __this, C(Box) * against);
 LIB_EXPORT void (* Box_clipOffset)(C(Box) * __this, C(Box) * against, int x, int y);
 LIB_EXPORT C(bool) (* Box_isPointInside)(C(Box) * __this, C(Point) * point);
 LIB_EXPORT C(bool) (* Box_overlap)(C(Box) * __this, C(Box) * box);
-
-
-
-LIB_EXPORT void (* IOChannel_get)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
-LIB_EXPORT void (* IOChannel_put)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
-LIB_EXPORT void (* IOChannel_serialize)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
-LIB_EXPORT void (* IOChannel_unserialize)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
-
-LIB_EXPORT void (* SerialBuffer_free)(C(SerialBuffer) __this);
-
-LIB_EXPORT void (* ZString_concat)(C(ZString) __this, C(ZString) s);
-LIB_EXPORT void (* ZString_concatf)(C(ZString) __this, const char * format, ...);
-LIB_EXPORT void (* ZString_concatn)(C(ZString) __this, C(ZString) s, int l);
-LIB_EXPORT void (* ZString_concatx)(C(ZString) __this, typed_object_class_ptr class_object, const void * object, ...);
-LIB_EXPORT void (* ZString_copy)(C(ZString) __this, C(ZString) s);
-LIB_EXPORT void (* ZString_copyString)(C(ZString) __this, const char * value, int newLen);
 
 
 
@@ -750,6 +756,52 @@ LIB_EXPORT thisclass(MapNode *) (* MapNode_get_minimum)(const C(MapNode) * m);
 LIB_EXPORT C(Property) * PROPERTY(MapNode, maximum);
 LIB_EXPORT thisclass(MapNode *) (* MapNode_get_maximum)(const C(MapNode) * m);
 
+LIB_EXPORT C(Property) * PROPERTY(Mutex, lockCount);
+LIB_EXPORT int (* Mutex_get_lockCount)(const C(Mutex) * m);
+
+LIB_EXPORT C(Property) * PROPERTY(Mutex, owningThread);
+LIB_EXPORT int64 (* Mutex_get_owningThread)(const C(Mutex) * m);
+
+LIB_EXPORT C(Property) * PROPERTY(Class, char_ptr);
+LIB_EXPORT void (* Class_from_char_ptr)(const C(Class) * c, const char * value);
+LIB_EXPORT const char * (* Class_to_char_ptr)(const C(Class) * c);
+
+LIB_EXPORT C(Property) * PROPERTY(DesignerBase, classDesigner);
+LIB_EXPORT void (* DesignerBase_set_classDesigner)(const C(DesignerBase) d, C(ClassDesignerBase) value);
+LIB_EXPORT C(ClassDesignerBase) (* DesignerBase_get_classDesigner)(const C(DesignerBase) d);
+
+LIB_EXPORT C(Property) * PROPERTY(DesignerBase, objectClass);
+LIB_EXPORT void (* DesignerBase_set_objectClass)(const C(DesignerBase) d, const char * value);
+LIB_EXPORT const char * (* DesignerBase_get_objectClass)(const C(DesignerBase) d);
+
+LIB_EXPORT C(Property) * PROPERTY(DesignerBase, isDragging);
+LIB_EXPORT void (* DesignerBase_set_isDragging)(const C(DesignerBase) d, C(bool) value);
+LIB_EXPORT C(bool) (* DesignerBase_get_isDragging)(const C(DesignerBase) d);
+
+LIB_EXPORT C(Property) * PROPERTY(Platform, char_ptr);
+LIB_EXPORT C(Platform) (* Platform_from_char_ptr)(const char * c);
+LIB_EXPORT const char * (* Platform_to_char_ptr)(const C(Platform) platform);
+
+LIB_EXPORT C(Property) * PROPERTY(SerialBuffer, buffer);
+LIB_EXPORT void (* SerialBuffer_set_buffer)(const C(SerialBuffer) s, byte * value);
+LIB_EXPORT byte * (* SerialBuffer_get_buffer)(const C(SerialBuffer) s);
+
+LIB_EXPORT C(Property) * PROPERTY(SerialBuffer, size);
+LIB_EXPORT void (* SerialBuffer_set_size)(const C(SerialBuffer) s, uint value);
+LIB_EXPORT uint (* SerialBuffer_get_size)(const C(SerialBuffer) s);
+
+LIB_EXPORT C(Property) * PROPERTY(ZString, string);
+LIB_EXPORT void (* ZString_set_string)(const C(ZString) z, const char * value);
+LIB_EXPORT const char * (* ZString_get_string)(const C(ZString) z);
+
+LIB_EXPORT C(Property) * PROPERTY(ZString, char_ptr);
+LIB_EXPORT C(ZString) (* ZString_from_char_ptr)(const char * c);
+LIB_EXPORT const char * (* ZString_to_char_ptr)(const C(ZString) z);
+
+LIB_EXPORT C(Property) * PROPERTY(ZString, String);
+LIB_EXPORT C(ZString) (* ZString_from_String)(const C(String) string);
+LIB_EXPORT constString (* ZString_to_String)(const C(ZString) z);
+
 LIB_EXPORT C(Property) * PROPERTY(Archive, totalSize);
 LIB_EXPORT void (* Archive_set_totalSize)(const C(Archive) a, C(FileSize) value);
 LIB_EXPORT C(FileSize) (* Archive_get_totalSize)(const C(Archive) a);
@@ -876,12 +928,6 @@ LIB_EXPORT C(Property) * PROPERTY(Condition, name);
 LIB_EXPORT void (* Condition_set_name)(const C(Condition) * c, const char * value);
 LIB_EXPORT const char * (* Condition_get_name)(const C(Condition) * c);
 
-LIB_EXPORT C(Property) * PROPERTY(Mutex, lockCount);
-LIB_EXPORT int (* Mutex_get_lockCount)(const C(Mutex) * m);
-
-LIB_EXPORT C(Property) * PROPERTY(Mutex, owningThread);
-LIB_EXPORT int64 (* Mutex_get_owningThread)(const C(Mutex) * m);
-
 LIB_EXPORT C(Property) * PROPERTY(Semaphore, initCount);
 LIB_EXPORT void (* Semaphore_set_initCount)(const C(Semaphore) * s, int value);
 LIB_EXPORT int (* Semaphore_get_initCount)(const C(Semaphore) * s);
@@ -935,55 +981,15 @@ LIB_EXPORT C(Property) * PROPERTY(Centimeters, Meters);
 LIB_EXPORT double (* Centimeters_from_Meters)(const C(Distance) meters);
 LIB_EXPORT C(Distance) (* Centimeters_to_Meters)(const double centimeters);
 
-LIB_EXPORT C(Property) * PROPERTY(Class, char_ptr);
-LIB_EXPORT void (* Class_from_char_ptr)(const C(Class) * c, const char * value);
-LIB_EXPORT const char * (* Class_to_char_ptr)(const C(Class) * c);
-
 LIB_EXPORT C(Property) * PROPERTY(Degrees, Radians);
 LIB_EXPORT double (* Degrees_from_Radians)(const C(Angle) radians);
 LIB_EXPORT C(Angle) (* Degrees_to_Radians)(const double degrees);
-
-LIB_EXPORT C(Property) * PROPERTY(DesignerBase, classDesigner);
-LIB_EXPORT void (* DesignerBase_set_classDesigner)(const C(DesignerBase) d, C(ClassDesignerBase) value);
-LIB_EXPORT C(ClassDesignerBase) (* DesignerBase_get_classDesigner)(const C(DesignerBase) d);
-
-LIB_EXPORT C(Property) * PROPERTY(DesignerBase, objectClass);
-LIB_EXPORT void (* DesignerBase_set_objectClass)(const C(DesignerBase) d, const char * value);
-LIB_EXPORT const char * (* DesignerBase_get_objectClass)(const C(DesignerBase) d);
-
-LIB_EXPORT C(Property) * PROPERTY(DesignerBase, isDragging);
-LIB_EXPORT void (* DesignerBase_set_isDragging)(const C(DesignerBase) d, C(bool) value);
-LIB_EXPORT C(bool) (* DesignerBase_get_isDragging)(const C(DesignerBase) d);
 
 LIB_EXPORT C(Property) * PROPERTY(Feet, Meters);
 LIB_EXPORT double (* Feet_from_Meters)(const C(Distance) meters);
 LIB_EXPORT C(Distance) (* Feet_to_Meters)(const double feet);
 
 
-LIB_EXPORT C(Property) * PROPERTY(Platform, char_ptr);
-LIB_EXPORT C(Platform) (* Platform_from_char_ptr)(const char * c);
-LIB_EXPORT const char * (* Platform_to_char_ptr)(const C(Platform) platform);
-
-
-LIB_EXPORT C(Property) * PROPERTY(SerialBuffer, buffer);
-LIB_EXPORT void (* SerialBuffer_set_buffer)(const C(SerialBuffer) s, byte * value);
-LIB_EXPORT byte * (* SerialBuffer_get_buffer)(const C(SerialBuffer) s);
-
-LIB_EXPORT C(Property) * PROPERTY(SerialBuffer, size);
-LIB_EXPORT void (* SerialBuffer_set_size)(const C(SerialBuffer) s, uint value);
-LIB_EXPORT uint (* SerialBuffer_get_size)(const C(SerialBuffer) s);
-
-LIB_EXPORT C(Property) * PROPERTY(ZString, string);
-LIB_EXPORT void (* ZString_set_string)(const C(ZString) z, const char * value);
-LIB_EXPORT const char * (* ZString_get_string)(const C(ZString) z);
-
-LIB_EXPORT C(Property) * PROPERTY(ZString, char_ptr);
-LIB_EXPORT C(ZString) (* ZString_from_char_ptr)(const char * c);
-LIB_EXPORT const char * (* ZString_to_char_ptr)(const C(ZString) z);
-
-LIB_EXPORT C(Property) * PROPERTY(ZString, String);
-LIB_EXPORT C(ZString) (* ZString_from_String)(const C(String) string);
-LIB_EXPORT constString (* ZString_to_String)(const C(ZString) z);
 
 
 // Properties
@@ -994,6 +1000,7 @@ LIB_EXPORT constString (* ZString_to_String)(const C(ZString) z);
 // Classes
 
 // bitClass
+LIB_EXPORT C(Class) * CO(EscapeCStringOptions);
 LIB_EXPORT C(Class) * CO(FieldTypeEx);
 LIB_EXPORT C(Class) * CO(ArchiveOpenFlags);
 LIB_EXPORT C(Class) * CO(ErrorCode);
@@ -1004,12 +1011,22 @@ LIB_EXPORT C(Class) * CO(PipeOpenMode);
 LIB_EXPORT C(Class) * CO(CharCategories);
 LIB_EXPORT C(Class) * CO(UnicodeDecomposition);
 LIB_EXPORT C(Class) * CO(JSONTypeOptions);
-LIB_EXPORT C(Class) * CO(EscapeCStringOptions);
 // enumClass
 // LIB_EXPORT C(Class) * CO(bool);
+LIB_EXPORT C(Class) * CO(TreePrintStyle);
+LIB_EXPORT C(Class) * CO(AccessMode);
+LIB_EXPORT C(Class) * CO(BackSlashEscaping);
+LIB_EXPORT C(Class) * CO(ClassType);
+LIB_EXPORT C(Class) * CO(DataMemberType);
+LIB_EXPORT C(Class) * CO(ImportType);
+LIB_EXPORT C(Class) * CO(MethodType);
+LIB_EXPORT C(Class) * CO(ObjectNotationType);
+LIB_EXPORT C(Class) * CO(Platform);
+LIB_EXPORT C(Class) * CO(StringAllocType);
+LIB_EXPORT C(Class) * CO(TemplateMemberType);
+LIB_EXPORT C(Class) * CO(TemplateParameterType);
 LIB_EXPORT C(Class) * CO(FieldType);
 LIB_EXPORT C(Class) * CO(FieldValueFormat);
-LIB_EXPORT C(Class) * CO(TreePrintStyle);
 LIB_EXPORT C(Class) * CO(ArchiveAddMode);
 LIB_EXPORT C(Class) * CO(ErrorLevel);
 LIB_EXPORT C(Class) * CO(FileLock);
@@ -1028,19 +1045,9 @@ LIB_EXPORT C(Class) * CO(SettingsIOResult);
 LIB_EXPORT C(Class) * CO(ThreadPriority);
 LIB_EXPORT C(Class) * CO(DayOfTheWeek);
 LIB_EXPORT C(Class) * CO(Month);
-LIB_EXPORT C(Class) * CO(AccessMode);
-LIB_EXPORT C(Class) * CO(BackSlashEscaping);
-LIB_EXPORT C(Class) * CO(ClassType);
-LIB_EXPORT C(Class) * CO(DataMemberType);
-LIB_EXPORT C(Class) * CO(ImportType);
-LIB_EXPORT C(Class) * CO(MethodType);
-LIB_EXPORT C(Class) * CO(ObjectNotationType);
-LIB_EXPORT C(Class) * CO(Platform);
-LIB_EXPORT C(Class) * CO(StringAllocType);
-LIB_EXPORT C(Class) * CO(TemplateMemberType);
-LIB_EXPORT C(Class) * CO(TemplateParameterType);
 // unitClass
 LIB_EXPORT C(Class) * CO(unichar);
+LIB_EXPORT C(Class) * CO(Angle);
 LIB_EXPORT C(Class) * CO(FileSize);
 LIB_EXPORT C(Class) * CO(FileSize64);
 LIB_EXPORT C(Class) * CO(SecSince1970);
@@ -1048,7 +1055,6 @@ LIB_EXPORT C(Class) * CO(Seconds);
 LIB_EXPORT C(Class) * CO(Time);
 LIB_EXPORT C(Class) * CO(TimeStamp);
 LIB_EXPORT C(Class) * CO(TimeStamp32);
-LIB_EXPORT C(Class) * CO(Angle);
 LIB_EXPORT C(Class) * CO(Centimeters);
 LIB_EXPORT C(Class) * CO(Degrees);
 LIB_EXPORT C(Class) * CO(Distance);
@@ -1076,7 +1082,6 @@ LIB_EXPORT C(Class) * CO(uint64);
 LIB_EXPORT C(Class) * CO(uintptr);
 LIB_EXPORT C(Class) * CO(uintsize);
 // structClass
-LIB_EXPORT C(Class) * CO(FieldValue);
 LIB_EXPORT C(Class) * CO(BinaryTree);
 LIB_EXPORT C(Class) * CO(BuiltInContainer);
 LIB_EXPORT C(Class) * CO(HashMapIterator);
@@ -1089,19 +1094,20 @@ LIB_EXPORT C(Class) * CO(LinkElement);
 LIB_EXPORT C(Class) * CO(MapIterator);
 LIB_EXPORT C(Class) * CO(OldList);
 LIB_EXPORT C(Class) * CO(StringBinaryTree);
+LIB_EXPORT C(Class) * CO(ClassTemplateArgument);
+LIB_EXPORT C(Class) * CO(DataValue);
+LIB_EXPORT C(Class) * CO(NameSpace);
+LIB_EXPORT C(Class) * CO(StaticString);
+LIB_EXPORT C(Class) * CO(FieldValue);
 LIB_EXPORT C(Class) * CO(FileListing);
 LIB_EXPORT C(Class) * CO(FileStats);
 LIB_EXPORT C(Class) * CO(Date);
 LIB_EXPORT C(Class) * CO(DateTime);
 LIB_EXPORT C(Class) * CO(Box);
-LIB_EXPORT C(Class) * CO(ClassTemplateArgument);
-LIB_EXPORT C(Class) * CO(DataValue);
-LIB_EXPORT C(Class) * CO(NameSpace);
 LIB_EXPORT C(Class) * CO(Point);
 LIB_EXPORT C(Class) * CO(Pointd);
 LIB_EXPORT C(Class) * CO(Pointf);
 LIB_EXPORT C(Class) * CO(Size);
-LIB_EXPORT C(Class) * CO(StaticString);
 // noHeadClass
 LIB_EXPORT C(Class) * CO(AVLNode);
 LIB_EXPORT C(Class) * CO(AVLNode);
@@ -1117,14 +1123,13 @@ LIB_EXPORT C(Class) * CO(MapNode);
 LIB_EXPORT C(Class) * CO(MapNode);
 LIB_EXPORT C(Class) * CO(MapNode);
 LIB_EXPORT C(Class) * CO(MapNode);
+LIB_EXPORT C(Class) * CO(MapNode);
 LIB_EXPORT C(Class) * CO(NamedItem);
 LIB_EXPORT C(Class) * CO(NamedLink);
 LIB_EXPORT C(Class) * CO(NamedLink64);
 LIB_EXPORT C(Class) * CO(OldLink);
 LIB_EXPORT C(Class) * CO(StringBTNode);
-LIB_EXPORT C(Class) * CO(Condition);
 LIB_EXPORT C(Class) * CO(Mutex);
-LIB_EXPORT C(Class) * CO(Semaphore);
 LIB_EXPORT C(Class) * CO(BTNamedLink);
 LIB_EXPORT C(Class) * CO(BitMember);
 LIB_EXPORT C(Class) * CO(Class);
@@ -1138,11 +1143,10 @@ LIB_EXPORT C(Class) * CO(Method);
 LIB_EXPORT C(Class) * CO(ObjectInfo);
 LIB_EXPORT C(Class) * CO(Property);
 LIB_EXPORT C(Class) * CO(SubModule);
+LIB_EXPORT C(Class) * CO(Condition);
+LIB_EXPORT C(Class) * CO(Semaphore);
 // normalClass
 LIB_EXPORT C(Class) * CO(String);
-LIB_EXPORT C(Class) * CO(Application);
-LIB_EXPORT C(Class) * CO(Instance);
-LIB_EXPORT C(Class) * CO(Module);
 LIB_EXPORT C(Class) * CO(AVLTree);
 LIB_EXPORT C(Class) * CO(Array);
 LIB_EXPORT C(Class) * CO(Array);
@@ -1168,6 +1172,15 @@ LIB_EXPORT C(Class) * CO(Map);
 LIB_EXPORT C(Class) * CO(Map);
 LIB_EXPORT C(Class) * CO(Map);
 LIB_EXPORT C(Class) * CO(Map);
+LIB_EXPORT C(Class) * CO(Application);
+LIB_EXPORT C(Class) * CO(CIString);
+LIB_EXPORT C(Class) * CO(ClassDesignerBase);
+LIB_EXPORT C(Class) * CO(DesignerBase);
+LIB_EXPORT C(Class) * CO(IOChannel);
+LIB_EXPORT C(Class) * CO(Instance);
+LIB_EXPORT C(Class) * CO(Module);
+LIB_EXPORT C(Class) * CO(SerialBuffer);
+LIB_EXPORT C(Class) * CO(ZString);
 LIB_EXPORT C(Class) * CO(Archive);
 LIB_EXPORT C(Class) * CO(ArchiveDir);
 LIB_EXPORT C(Class) * CO(BufferedFile);
@@ -1186,12 +1199,6 @@ LIB_EXPORT C(Class) * CO(JSONGlobalSettings);
 LIB_EXPORT C(Class) * CO(JSONParser);
 LIB_EXPORT C(Class) * CO(OptionsMap);
 LIB_EXPORT C(Class) * CO(Thread);
-LIB_EXPORT C(Class) * CO(CIString);
-LIB_EXPORT C(Class) * CO(ClassDesignerBase);
-LIB_EXPORT C(Class) * CO(DesignerBase);
-LIB_EXPORT C(Class) * CO(IOChannel);
-LIB_EXPORT C(Class) * CO(SerialBuffer);
-LIB_EXPORT C(Class) * CO(ZString);
 
 
 
@@ -1207,11 +1214,6 @@ LIB_EXPORT int M_VTBLID(class, onGetString);
 LIB_EXPORT int M_VTBLID(class, onSaveEdit);
 LIB_EXPORT int M_VTBLID(class, onSerialize);
 LIB_EXPORT int M_VTBLID(class, onUnserialize);
-
-LIB_EXPORT int M_VTBLID(Application, main);
-
-LIB_EXPORT int M_VTBLID(Module, onLoad);
-LIB_EXPORT int M_VTBLID(Module, onUnload);
 
 LIB_EXPORT int M_VTBLID(BuiltInContainer, add);
 LIB_EXPORT int M_VTBLID(BuiltInContainer, copy);
@@ -1252,6 +1254,38 @@ LIB_EXPORT int M_VTBLID(Container, remove);
 LIB_EXPORT int M_VTBLID(Container, removeAll);
 LIB_EXPORT int M_VTBLID(Container, setData);
 LIB_EXPORT int M_VTBLID(Container, sort);
+
+LIB_EXPORT int M_VTBLID(Application, main);
+
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, addObject);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, createNew);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, createObject);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, destroyObject);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, droppedObject);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, fixProperty);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, listToolBoxClasses);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, postCreateObject);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, prepareTestObject);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, reset);
+LIB_EXPORT int M_VTBLID(ClassDesignerBase, selectObject);
+
+LIB_EXPORT int M_VTBLID(DesignerBase, addDefaultMethod);
+LIB_EXPORT int M_VTBLID(DesignerBase, addToolBoxClass);
+LIB_EXPORT int M_VTBLID(DesignerBase, codeAddObject);
+LIB_EXPORT int M_VTBLID(DesignerBase, deleteObject);
+LIB_EXPORT int M_VTBLID(DesignerBase, findObject);
+LIB_EXPORT int M_VTBLID(DesignerBase, modifyCode);
+LIB_EXPORT int M_VTBLID(DesignerBase, objectContainsCode);
+LIB_EXPORT int M_VTBLID(DesignerBase, renameObject);
+LIB_EXPORT int M_VTBLID(DesignerBase, selectObjectFromDesigner);
+LIB_EXPORT int M_VTBLID(DesignerBase, sheetAddObject);
+LIB_EXPORT int M_VTBLID(DesignerBase, updateProperties);
+
+LIB_EXPORT int M_VTBLID(IOChannel, readData);
+LIB_EXPORT int M_VTBLID(IOChannel, writeData);
+
+LIB_EXPORT int M_VTBLID(Module, onLoad);
+LIB_EXPORT int M_VTBLID(Module, onUnload);
 
 LIB_EXPORT int M_VTBLID(Archive, clear);
 LIB_EXPORT int M_VTBLID(Archive, fileExists);
@@ -1299,40 +1333,78 @@ LIB_EXPORT int M_VTBLID(GlobalSettingsDriver, save);
 
 LIB_EXPORT int M_VTBLID(Thread, main);
 
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, addObject);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, createNew);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, createObject);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, destroyObject);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, droppedObject);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, fixProperty);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, listToolBoxClasses);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, postCreateObject);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, prepareTestObject);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, reset);
-LIB_EXPORT int M_VTBLID(ClassDesignerBase, selectObject);
-
-LIB_EXPORT int M_VTBLID(DesignerBase, addDefaultMethod);
-LIB_EXPORT int M_VTBLID(DesignerBase, addToolBoxClass);
-LIB_EXPORT int M_VTBLID(DesignerBase, codeAddObject);
-LIB_EXPORT int M_VTBLID(DesignerBase, deleteObject);
-LIB_EXPORT int M_VTBLID(DesignerBase, findObject);
-LIB_EXPORT int M_VTBLID(DesignerBase, modifyCode);
-LIB_EXPORT int M_VTBLID(DesignerBase, objectContainsCode);
-LIB_EXPORT int M_VTBLID(DesignerBase, renameObject);
-LIB_EXPORT int M_VTBLID(DesignerBase, selectObjectFromDesigner);
-LIB_EXPORT int M_VTBLID(DesignerBase, sheetAddObject);
-LIB_EXPORT int M_VTBLID(DesignerBase, updateProperties);
-
-LIB_EXPORT int M_VTBLID(IOChannel, readData);
-LIB_EXPORT int M_VTBLID(IOChannel, writeData);
-
 
 
 
 // Global Functions
 
+LIB_EXPORT uint (* F(hash32Data))(const void * data, int size);
 LIB_EXPORT void (* F(qsortr))(void * base, uintsize nel, uintsize width, int (* compare)(void * arg, const void * a, const void * b), void * arg);
 LIB_EXPORT void (* F(qsortrx))(void * base, uintsize nel, uintsize width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), void * arg, C(bool) deref, C(bool) ascending);
+LIB_EXPORT int (* F(iSO8859_1toUTF8))(const char * source, char * dest, int max);
+LIB_EXPORT char * (* F(uTF16toUTF8))(const uint16 * source);
+LIB_EXPORT int (* F(uTF16toUTF8Buffer))(const uint16 * source, char * dest, int max);
+LIB_EXPORT int (* F(uTF32toUTF8Len))(const unichar * source, int count, char * dest, int max);
+LIB_EXPORT unichar (* F(uTF8GetChar))(const char * string, int * numBytes);
+LIB_EXPORT C(bool) (* F(uTF8Validate))(const char * source);
+LIB_EXPORT uint16 * (* F(uTF8toUTF16))(const char * source, int * wordCount);
+LIB_EXPORT int (* F(uTF8toUTF16Buffer))(const char * source, uint16 * dest, int max);
+LIB_EXPORT int64 (* F(getCurrentThreadID))(void);
+LIB_EXPORT void (* F(changeCh))(char * string, char ch1, char ch2);
+LIB_EXPORT void (* F(changeChars))(char * string, const char * chars, char alt);
+LIB_EXPORT char * (* F(changeExtension))(const char * string, const char * ext, char * output);
+LIB_EXPORT void (* F(checkConsistency))(void);
+LIB_EXPORT void (* F(checkMemory))(void);
+LIB_EXPORT char * (* F(copyString))(const char * string);
+LIB_EXPORT int (* F(escapeCString))(C(String) outString, int bufferLen, constString s, C(EscapeCStringOptions) options);
+LIB_EXPORT double (* F(floatFromString))(const char * string);
+LIB_EXPORT C(DesignerBase) (* F(getActiveDesigner))(void);
+LIB_EXPORT char * (* F(getExtension))(const char * string, char * output);
+LIB_EXPORT uint (* F(getHexValue))(const char ** buffer);
+LIB_EXPORT char * (* F(getLastDirectory))(const char * string, char * output);
+LIB_EXPORT C(Platform) (* F(getRuntimePlatform))(void);
+LIB_EXPORT C(bool) (* F(getString))(const char ** buffer, char * string, int max);
+LIB_EXPORT int (* F(getValue))(const char ** buffer);
+LIB_EXPORT C(bool) (* F(isPathInsideOf))(const char * path, const char * of);
+LIB_EXPORT C(bool) (* F(locateModule))(const char * name, const char * fileName);
+LIB_EXPORT char * (* F(makePathRelative))(const char * path, const char * to, char * destination);
+LIB_EXPORT char * (* F(pathCat))(char * string, const char * addedPath);
+LIB_EXPORT char * (* F(pathCatSlash))(char * string, const char * addedPath);
+LIB_EXPORT void (* F(printx))(typed_object_class_ptr class_object, const void * object, ...);
+LIB_EXPORT void (* F(printBigSize))(char * string, double size, int prec);
+LIB_EXPORT int (* F(printBuf))(char * buffer, int maxLen, typed_object_class_ptr class_object, const void * object, ...);
+LIB_EXPORT void (* F(printLn))(typed_object_class_ptr class_object, const void * object, ...);
+LIB_EXPORT int (* F(printLnBuf))(char * buffer, int maxLen, typed_object_class_ptr class_object, const void * object, ...);
+LIB_EXPORT char * (* F(printLnString))(typed_object_class_ptr class_object, const void * object, ...);
+LIB_EXPORT void (* F(printSize))(char * string, uint64 size, int prec);
+LIB_EXPORT int (* F(printStdArgsToBuffer))(char * buffer, int maxLen, typed_object_class_ptr class_object, const void * object, va_list args);
+LIB_EXPORT char * (* F(printString))(typed_object_class_ptr class_object, const void * object, ...);
+LIB_EXPORT char * (* F(rSearchString))(const char * buffer, const char * subStr, int maxLen, C(bool) matchCase, C(bool) matchWord);
+LIB_EXPORT void (* F(repeatCh))(char * string, int count, char ch);
+LIB_EXPORT char * (* F(searchString))(const char * buffer, int start, const char * subStr, C(bool) matchCase, C(bool) matchWord);
+LIB_EXPORT void (* F(setActiveDesigner))(C(DesignerBase) designer);
+LIB_EXPORT C(bool) (* F(splitArchivePath))(const char * fileName, char * archiveName, const char ** archiveFile);
+LIB_EXPORT char * (* F(splitDirectory))(const char * string, char * part, char * rest);
+LIB_EXPORT C(bool) (* F(stringLikePattern))(constString string, constString pattern);
+LIB_EXPORT char * (* F(stripChars))(C(String) string, constString chars);
+LIB_EXPORT C(bool) (* F(stripExtension))(char * string);
+LIB_EXPORT char * (* F(stripLastDirectory))(const char * string, char * output);
+LIB_EXPORT char * (* F(stripQuotes))(const char * string, char * output);
+LIB_EXPORT int (* F(tokenize))(char * string, int maxTokens, char * tokens[], C(BackSlashEscaping) esc);
+LIB_EXPORT int (* F(tokenizeWith))(char * string, int maxTokens, char * tokens[], const char * tokenizers, C(bool) escapeBackSlashes);
+LIB_EXPORT char * (* F(trimLSpaces))(const char * string, char * output);
+LIB_EXPORT char * (* F(trimRSpaces))(const char * string, char * output);
+LIB_EXPORT int (* F(unescapeCString))(char * d, const char * s, int len);
+LIB_EXPORT int (* F(unescapeCStringLoose))(char * d, const char * s, int len);
+LIB_EXPORT void (* F(eSystem_LockMem))(void);
+LIB_EXPORT void (* F(eSystem_UnlockMem))(void);
+LIB_EXPORT C(bool) (* F(ishexdigit))(char x);
+LIB_EXPORT uint (* F(log2i))(uint number);
+LIB_EXPORT void (* F(memswap))(byte * a, byte * b, uintsize size);
+LIB_EXPORT uint (* F(pow2i))(uint number);
+LIB_EXPORT int (* F(printDouble))(char * str, int bufsize, int decimals, double value);
+LIB_EXPORT void (* F(queryMemInfo))(char * string);
+LIB_EXPORT char * (* F(strchrmax))(const char * s, int c, int max);
 LIB_EXPORT C(Archive) (* F(archiveOpen))(const char * fileName, C(ArchiveOpenFlags) flags);
 LIB_EXPORT C(bool) (* F(archiveQuerySize))(const char * fileName, C(FileSize) * size);
 LIB_EXPORT C(bool) (* F(changeWorkingDir))(const char * buf);
@@ -1372,6 +1444,7 @@ LIB_EXPORT void (* F(makeSlashPath))(char * p);
 LIB_EXPORT void (* F(makeSystemPath))(char * p);
 LIB_EXPORT C(bool) (* F(moveFile))(const char * source, const char * dest);
 LIB_EXPORT C(bool) (* F(moveFileEx))(const char * source, const char * dest, C(MoveFileOptions) options);
+LIB_EXPORT C(bool) (* F(processFileNotifications))(void);
 LIB_EXPORT C(bool) (* F(removeDir))(const char * path);
 LIB_EXPORT C(bool) (* F(renameFile))(const char * oldName, const char * newName);
 LIB_EXPORT void (* F(resetError))(void);
@@ -1379,22 +1452,17 @@ LIB_EXPORT void (* F(setEnvironment))(const char * envName, const char * envValu
 LIB_EXPORT void (* F(setErrorLevel))(C(ErrorLevel) level);
 LIB_EXPORT void (* F(setLoggingMode))(C(LoggingMode) mode, void * where);
 LIB_EXPORT C(bool) (* F(shellOpen))(const char * fileName, ...);
+LIB_EXPORT void (* F(signalEvent))(void);
 LIB_EXPORT void (* F(unsetEnvironment))(const char * envName);
+LIB_EXPORT void (* F(waitEvent))(void);
 LIB_EXPORT void (* F(debugBreakpoint))(void);
+LIB_EXPORT C(Semaphore) * (* F(getEventSemaphore))(void);
 LIB_EXPORT C(bool) (* F(charMatchCategories))(unichar ch, C(CharCategories) categories);
 LIB_EXPORT C(bool) (* F(getAlNum))(const char ** input, char * string, int max);
 LIB_EXPORT C(CharCategory) (* F(getCharCategory))(unichar ch);
 LIB_EXPORT uint (* F(getCombiningClass))(unichar ch);
-LIB_EXPORT int (* F(iSO8859_1toUTF8))(const char * source, char * dest, int max);
 LIB_EXPORT int (* F(uTF16BEtoUTF8Buffer))(const uint16 * source, byte * dest, int max);
-LIB_EXPORT char * (* F(uTF16toUTF8))(const uint16 * source);
-LIB_EXPORT int (* F(uTF16toUTF8Buffer))(const uint16 * source, char * dest, int max);
-LIB_EXPORT int (* F(uTF32toUTF8Len))(const unichar * source, int count, char * dest, int max);
-LIB_EXPORT unichar (* F(uTF8GetChar))(const char * string, int * numBytes);
-LIB_EXPORT C(bool) (* F(uTF8Validate))(const char * source);
 LIB_EXPORT int (* F(uTF8toISO8859_1))(const char * source, char * dest, int max);
-LIB_EXPORT uint16 * (* F(uTF8toUTF16))(const char * source, int * wordCount);
-LIB_EXPORT int (* F(uTF8toUTF16Buffer))(const char * source, uint16 * dest, int max);
 LIB_EXPORT int (* F(uTF8toUTF16BufferLen))(const char * source, uint16 * dest, int max, int len);
 LIB_EXPORT uint16 * (* F(uTF8toUTF16Len))(const char * source, int byteCount, int * wordCount);
 LIB_EXPORT C(String) (* F(accenti))(constString string);
@@ -1416,72 +1484,17 @@ LIB_EXPORT C(bool) (* F(writeJSONObject))(C(File) f, C(Class) * objectType, void
 LIB_EXPORT C(bool) (* F(writeJSONObject2))(C(File) f, C(Class) * objectType, void * object, int indent, C(JSONFirstLetterCapitalization) capitalize);
 LIB_EXPORT C(bool) (* F(writeJSONObjectMapped))(C(File) f, C(Class) * objectType, void * object, int indent, C(Map) stringMap);
 LIB_EXPORT C(bool) (* F(writeONString))(C(File) f, constString s, C(bool) eCON, int indent);
-LIB_EXPORT int64 (* F(getCurrentThreadID))(void);
 LIB_EXPORT int (* F(getRandom))(int lo, int hi);
 LIB_EXPORT C(Time) (* F(getTime))(void);
 LIB_EXPORT void (* F(randomSeed))(uint seed);
 LIB_EXPORT void (* F(__sleep))(C(Time) seconds);
-LIB_EXPORT void (* F(changeCh))(char * string, char ch1, char ch2);
-LIB_EXPORT void (* F(changeChars))(char * string, const char * chars, char alt);
-LIB_EXPORT char * (* F(changeExtension))(const char * string, const char * ext, char * output);
-LIB_EXPORT void (* F(checkConsistency))(void);
-LIB_EXPORT void (* F(checkMemory))(void);
 LIB_EXPORT void (* F(copyBytes))(void * dest, const void * source, uintsize count);
 LIB_EXPORT void (* F(copyBytesBy2))(void * dest, const void * source, uintsize count);
 LIB_EXPORT void (* F(copyBytesBy4))(void * dest, const void * source, uintsize count);
-LIB_EXPORT char * (* F(copyString))(const char * string);
-LIB_EXPORT int (* F(escapeCString))(C(String) outString, int bufferLen, constString s, C(EscapeCStringOptions) options);
 LIB_EXPORT void (* F(fillBytes))(void * area, byte value, uintsize count);
 LIB_EXPORT void (* F(fillBytesBy2))(void * area, uint16 value, uintsize count);
 LIB_EXPORT void (* F(fillBytesBy4))(void * area, uint value, uintsize count);
-LIB_EXPORT double (* F(floatFromString))(const char * string);
-LIB_EXPORT C(DesignerBase) (* F(getActiveDesigner))(void);
-LIB_EXPORT char * (* F(getExtension))(const char * string, char * output);
-LIB_EXPORT uint (* F(getHexValue))(const char ** buffer);
-LIB_EXPORT char * (* F(getLastDirectory))(const char * string, char * output);
-LIB_EXPORT C(Platform) (* F(getRuntimePlatform))(void);
-LIB_EXPORT C(bool) (* F(getString))(const char ** buffer, char * string, int max);
-LIB_EXPORT int (* F(getValue))(const char ** buffer);
-LIB_EXPORT C(bool) (* F(isPathInsideOf))(const char * path, const char * of);
-LIB_EXPORT C(bool) (* F(locateModule))(const char * name, const char * fileName);
-LIB_EXPORT char * (* F(makePathRelative))(const char * path, const char * to, char * destination);
 LIB_EXPORT void (* F(moveBytes))(void * dest, const void * source, uintsize count);
-LIB_EXPORT char * (* F(pathCat))(char * string, const char * addedPath);
-LIB_EXPORT char * (* F(pathCatSlash))(char * string, const char * addedPath);
-LIB_EXPORT void (* F(printx))(typed_object_class_ptr class_object, const void * object, ...);
-LIB_EXPORT void (* F(printBigSize))(char * string, double size, int prec);
-LIB_EXPORT int (* F(printBuf))(char * buffer, int maxLen, typed_object_class_ptr class_object, const void * object, ...);
-LIB_EXPORT void (* F(printLn))(typed_object_class_ptr class_object, const void * object, ...);
-LIB_EXPORT int (* F(printLnBuf))(char * buffer, int maxLen, typed_object_class_ptr class_object, const void * object, ...);
-LIB_EXPORT char * (* F(printLnString))(typed_object_class_ptr class_object, const void * object, ...);
-LIB_EXPORT void (* F(printSize))(char * string, uint64 size, int prec);
-LIB_EXPORT int (* F(printStdArgsToBuffer))(char * buffer, int maxLen, typed_object_class_ptr class_object, const void * object, va_list args);
-LIB_EXPORT char * (* F(printString))(typed_object_class_ptr class_object, const void * object, ...);
-LIB_EXPORT char * (* F(rSearchString))(const char * buffer, const char * subStr, int maxLen, C(bool) matchCase, C(bool) matchWord);
-LIB_EXPORT void (* F(repeatCh))(char * string, int count, char ch);
-LIB_EXPORT char * (* F(searchString))(const char * buffer, int start, const char * subStr, C(bool) matchCase, C(bool) matchWord);
-LIB_EXPORT void (* F(setActiveDesigner))(C(DesignerBase) designer);
-LIB_EXPORT C(bool) (* F(splitArchivePath))(const char * fileName, char * archiveName, const char ** archiveFile);
-LIB_EXPORT char * (* F(splitDirectory))(const char * string, char * part, char * rest);
-LIB_EXPORT C(bool) (* F(stringLikePattern))(constString string, constString pattern);
-LIB_EXPORT char * (* F(stripChars))(C(String) string, constString chars);
-LIB_EXPORT C(bool) (* F(stripExtension))(char * string);
-LIB_EXPORT char * (* F(stripLastDirectory))(const char * string, char * output);
-LIB_EXPORT char * (* F(stripQuotes))(const char * string, char * output);
-LIB_EXPORT int (* F(tokenize))(char * string, int maxTokens, char * tokens[], C(BackSlashEscaping) esc);
-LIB_EXPORT int (* F(tokenizeWith))(char * string, int maxTokens, char * tokens[], const char * tokenizers, C(bool) escapeBackSlashes);
-LIB_EXPORT char * (* F(trimLSpaces))(const char * string, char * output);
-LIB_EXPORT char * (* F(trimRSpaces))(const char * string, char * output);
-LIB_EXPORT int (* F(unescapeCString))(char * d, const char * s, int len);
-LIB_EXPORT int (* F(unescapeCStringLoose))(char * d, const char * s, int len);
-LIB_EXPORT void (* F(eSystem_LockMem))(void);
-LIB_EXPORT void (* F(eSystem_UnlockMem))(void);
-LIB_EXPORT C(bool) (* F(ishexdigit))(char x);
-LIB_EXPORT uint (* F(log2i))(uint number);
-LIB_EXPORT void (* F(memswap))(byte * a, byte * b, uintsize size);
-LIB_EXPORT uint (* F(pow2i))(uint number);
-LIB_EXPORT void (* F(queryMemInfo))(char * string);
-LIB_EXPORT char * (* F(strchrmax))(const char * s, int c, int max);
 
 
 LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bool) guiApp, int argc, char * argv[])
@@ -1612,68 +1625,7 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          CO(uint64) = eC_findClass(app, "uint64");
          CO(uintptr) = eC_findClass(app, "uintptr");
          CO(uintsize) = eC_findClass(app, "uintsize");
-         CO(Application) = eC_findClass(app, "Application");
-         if(CO(Application))
-         {
-            METHOD(Application, main) = Class_findMethod(CO(Application), "Main", app);
-            if(METHOD(Application, main))
-               M_VTBLID(Application, main) = METHOD(Application, main)->vid;
-         }
-         CO(Instance) = eC_findClass(app, "Instance");
-         CO(Module) = eC_findClass(app, "Module");
-         if(CO(Module))
-         {
-            METHOD(Module, onLoad) = Class_findMethod(CO(Module), "OnLoad", app);
-            if(METHOD(Module, onLoad))
-               M_VTBLID(Module, onLoad) = METHOD(Module, onLoad)->vid;
-
-            METHOD(Module, onUnload) = Class_findMethod(CO(Module), "OnUnload", app);
-            if(METHOD(Module, onUnload))
-               M_VTBLID(Module, onUnload) = METHOD(Module, onUnload)->vid;
-         }
          CO(unichar) = eC_findClass(app, "unichar");
-         CO(FieldType) = eC_findClass(app, "FieldType");
-         CO(FieldTypeEx) = eC_findClass(app, "FieldTypeEx");
-         CO(FieldValue) = eC_findClass(app, "FieldValue");
-         if(CO(FieldValue))
-         {
-            METHOD(FieldValue, compareInt) = Class_findMethod(CO(FieldValue), "compareInt", app);
-            if(METHOD(FieldValue, compareInt))
-               FieldValue_compareInt = (int (*)(C(FieldValue) *, C(FieldValue) *))METHOD(FieldValue, compareInt)->function;
-
-            METHOD(FieldValue, compareReal) = Class_findMethod(CO(FieldValue), "compareReal", app);
-            if(METHOD(FieldValue, compareReal))
-               FieldValue_compareReal = (int (*)(C(FieldValue) *, C(FieldValue) *))METHOD(FieldValue, compareReal)->function;
-
-            METHOD(FieldValue, compareText) = Class_findMethod(CO(FieldValue), "compareText", app);
-            if(METHOD(FieldValue, compareText))
-               FieldValue_compareText = (int (*)(C(FieldValue) *, C(FieldValue) *))METHOD(FieldValue, compareText)->function;
-
-            METHOD(FieldValue, formatArray) = Class_findMethod(CO(FieldValue), "formatArray", app);
-            if(METHOD(FieldValue, formatArray))
-               FieldValue_formatArray = (C(String) (*)(C(FieldValue) *, char *, void *, C(ObjectNotationType) *))METHOD(FieldValue, formatArray)->function;
-
-            METHOD(FieldValue, formatFloat) = Class_findMethod(CO(FieldValue), "formatFloat", app);
-            if(METHOD(FieldValue, formatFloat))
-               FieldValue_formatFloat = (C(String) (*)(C(FieldValue) *, char *, C(bool)))METHOD(FieldValue, formatFloat)->function;
-
-            METHOD(FieldValue, formatInteger) = Class_findMethod(CO(FieldValue), "formatInteger", app);
-            if(METHOD(FieldValue, formatInteger))
-               FieldValue_formatInteger = (C(String) (*)(C(FieldValue) *, char *))METHOD(FieldValue, formatInteger)->function;
-
-            METHOD(FieldValue, formatMap) = Class_findMethod(CO(FieldValue), "formatMap", app);
-            if(METHOD(FieldValue, formatMap))
-               FieldValue_formatMap = (C(String) (*)(C(FieldValue) *, char *, void *, C(ObjectNotationType) *))METHOD(FieldValue, formatMap)->function;
-
-            METHOD(FieldValue, getArrayOrMap) = Class_findMethod(CO(FieldValue), "getArrayOrMap", app);
-            if(METHOD(FieldValue, getArrayOrMap))
-               FieldValue_getArrayOrMap = (C(bool) (*)(const char *, C(Class) *, void **))METHOD(FieldValue, getArrayOrMap)->function;
-
-            METHOD(FieldValue, stringify) = Class_findMethod(CO(FieldValue), "stringify", app);
-            if(METHOD(FieldValue, stringify))
-               FieldValue_stringify = (C(String) (*)(C(FieldValue) *))METHOD(FieldValue, stringify)->function;
-         }
-         CO(FieldValueFormat) = eC_findClass(app, "FieldValueFormat");
          CO(AVLNode) = eC_findClass(app, "AVLNode");
          if(CO(AVLNode))
          {
@@ -2259,6 +2211,346 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          CO(StringBTNode) = eC_findClass(app, "StringBTNode");
          CO(StringBinaryTree) = eC_findClass(app, "StringBinaryTree");
          CO(TreePrintStyle) = eC_findClass(app, "TreePrintStyle");
+         CO(Mutex) = eC_findClass(app, "Mutex");
+         if(CO(Mutex))
+         {
+            METHOD(Mutex, release) = Class_findMethod(CO(Mutex), "Release", app);
+            if(METHOD(Mutex, release))
+               Mutex_release = (void (*)(C(Mutex) *))METHOD(Mutex, release)->function;
+
+            METHOD(Mutex, wait) = Class_findMethod(CO(Mutex), "Wait", app);
+            if(METHOD(Mutex, wait))
+               Mutex_wait = (void (*)(C(Mutex) *))METHOD(Mutex, wait)->function;
+
+            PROPERTY(Mutex, lockCount) = Class_findProperty(CO(Mutex), "lockCount", app);
+            if(PROPERTY(Mutex, lockCount))
+               Mutex_get_lockCount = (void *)PROPERTY(Mutex, lockCount)->Get;
+
+            PROPERTY(Mutex, owningThread) = Class_findProperty(CO(Mutex), "owningThread", app);
+            if(PROPERTY(Mutex, owningThread))
+               Mutex_get_owningThread = (void *)PROPERTY(Mutex, owningThread)->Get;
+         }
+         CO(AccessMode) = eC_findClass(app, "AccessMode");
+         CO(Angle) = eC_findClass(app, "Angle");
+         CO(Application) = eC_findClass(app, "Application");
+         if(CO(Application))
+         {
+            METHOD(Application, main) = Class_findMethod(CO(Application), "Main", app);
+            if(METHOD(Application, main))
+               M_VTBLID(Application, main) = METHOD(Application, main)->vid;
+         }
+         CO(BTNamedLink) = eC_findClass(app, "BTNamedLink");
+         CO(BackSlashEscaping) = eC_findClass(app, "BackSlashEscaping");
+         CO(BitMember) = eC_findClass(app, "BitMember");
+         CO(CIString) = eC_findClass(app, "CIString");
+         CO(Class) = eC_findClass(app, "Class");
+         if(CO(Class))
+         {
+            PROPERTY(Class, char_ptr) = Class_findProperty(CO(Class), "char *", app);
+            if(PROPERTY(Class, char_ptr))
+            {
+               Class_from_char_ptr = (void *)PROPERTY(Class, char_ptr)->Set;
+               Class_to_char_ptr = (void *)PROPERTY(Class, char_ptr)->Get;
+            }
+         }
+         CO(ClassDesignerBase) = eC_findClass(app, "ClassDesignerBase");
+         if(CO(ClassDesignerBase))
+         {
+            METHOD(ClassDesignerBase, addObject) = Class_findMethod(CO(ClassDesignerBase), "AddObject", app);
+            if(METHOD(ClassDesignerBase, addObject))
+               M_VTBLID(ClassDesignerBase, addObject) = METHOD(ClassDesignerBase, addObject)->vid;
+
+            METHOD(ClassDesignerBase, createNew) = Class_findMethod(CO(ClassDesignerBase), "CreateNew", app);
+            if(METHOD(ClassDesignerBase, createNew))
+               M_VTBLID(ClassDesignerBase, createNew) = METHOD(ClassDesignerBase, createNew)->vid;
+
+            METHOD(ClassDesignerBase, createObject) = Class_findMethod(CO(ClassDesignerBase), "CreateObject", app);
+            if(METHOD(ClassDesignerBase, createObject))
+               M_VTBLID(ClassDesignerBase, createObject) = METHOD(ClassDesignerBase, createObject)->vid;
+
+            METHOD(ClassDesignerBase, destroyObject) = Class_findMethod(CO(ClassDesignerBase), "DestroyObject", app);
+            if(METHOD(ClassDesignerBase, destroyObject))
+               M_VTBLID(ClassDesignerBase, destroyObject) = METHOD(ClassDesignerBase, destroyObject)->vid;
+
+            METHOD(ClassDesignerBase, droppedObject) = Class_findMethod(CO(ClassDesignerBase), "DroppedObject", app);
+            if(METHOD(ClassDesignerBase, droppedObject))
+               M_VTBLID(ClassDesignerBase, droppedObject) = METHOD(ClassDesignerBase, droppedObject)->vid;
+
+            METHOD(ClassDesignerBase, fixProperty) = Class_findMethod(CO(ClassDesignerBase), "FixProperty", app);
+            if(METHOD(ClassDesignerBase, fixProperty))
+               M_VTBLID(ClassDesignerBase, fixProperty) = METHOD(ClassDesignerBase, fixProperty)->vid;
+
+            METHOD(ClassDesignerBase, listToolBoxClasses) = Class_findMethod(CO(ClassDesignerBase), "ListToolBoxClasses", app);
+            if(METHOD(ClassDesignerBase, listToolBoxClasses))
+               M_VTBLID(ClassDesignerBase, listToolBoxClasses) = METHOD(ClassDesignerBase, listToolBoxClasses)->vid;
+
+            METHOD(ClassDesignerBase, postCreateObject) = Class_findMethod(CO(ClassDesignerBase), "PostCreateObject", app);
+            if(METHOD(ClassDesignerBase, postCreateObject))
+               M_VTBLID(ClassDesignerBase, postCreateObject) = METHOD(ClassDesignerBase, postCreateObject)->vid;
+
+            METHOD(ClassDesignerBase, prepareTestObject) = Class_findMethod(CO(ClassDesignerBase), "PrepareTestObject", app);
+            if(METHOD(ClassDesignerBase, prepareTestObject))
+               M_VTBLID(ClassDesignerBase, prepareTestObject) = METHOD(ClassDesignerBase, prepareTestObject)->vid;
+
+            METHOD(ClassDesignerBase, reset) = Class_findMethod(CO(ClassDesignerBase), "Reset", app);
+            if(METHOD(ClassDesignerBase, reset))
+               M_VTBLID(ClassDesignerBase, reset) = METHOD(ClassDesignerBase, reset)->vid;
+
+            METHOD(ClassDesignerBase, selectObject) = Class_findMethod(CO(ClassDesignerBase), "SelectObject", app);
+            if(METHOD(ClassDesignerBase, selectObject))
+               M_VTBLID(ClassDesignerBase, selectObject) = METHOD(ClassDesignerBase, selectObject)->vid;
+         }
+         CO(ClassProperty) = eC_findClass(app, "ClassProperty");
+         CO(ClassTemplateArgument) = eC_findClass(app, "ClassTemplateArgument");
+         CO(ClassTemplateParameter) = eC_findClass(app, "ClassTemplateParameter");
+         CO(ClassType) = eC_findClass(app, "ClassType");
+         CO(DataMember) = eC_findClass(app, "DataMember");
+         CO(DataMemberType) = eC_findClass(app, "DataMemberType");
+         CO(DataValue) = eC_findClass(app, "DataValue");
+         CO(DefinedExpression) = eC_findClass(app, "DefinedExpression");
+         CO(DesignerBase) = eC_findClass(app, "DesignerBase");
+         if(CO(DesignerBase))
+         {
+            METHOD(DesignerBase, addDefaultMethod) = Class_findMethod(CO(DesignerBase), "AddDefaultMethod", app);
+            if(METHOD(DesignerBase, addDefaultMethod))
+               M_VTBLID(DesignerBase, addDefaultMethod) = METHOD(DesignerBase, addDefaultMethod)->vid;
+
+            METHOD(DesignerBase, addToolBoxClass) = Class_findMethod(CO(DesignerBase), "AddToolBoxClass", app);
+            if(METHOD(DesignerBase, addToolBoxClass))
+               M_VTBLID(DesignerBase, addToolBoxClass) = METHOD(DesignerBase, addToolBoxClass)->vid;
+
+            METHOD(DesignerBase, codeAddObject) = Class_findMethod(CO(DesignerBase), "CodeAddObject", app);
+            if(METHOD(DesignerBase, codeAddObject))
+               M_VTBLID(DesignerBase, codeAddObject) = METHOD(DesignerBase, codeAddObject)->vid;
+
+            METHOD(DesignerBase, deleteObject) = Class_findMethod(CO(DesignerBase), "DeleteObject", app);
+            if(METHOD(DesignerBase, deleteObject))
+               M_VTBLID(DesignerBase, deleteObject) = METHOD(DesignerBase, deleteObject)->vid;
+
+            METHOD(DesignerBase, findObject) = Class_findMethod(CO(DesignerBase), "FindObject", app);
+            if(METHOD(DesignerBase, findObject))
+               M_VTBLID(DesignerBase, findObject) = METHOD(DesignerBase, findObject)->vid;
+
+            METHOD(DesignerBase, modifyCode) = Class_findMethod(CO(DesignerBase), "ModifyCode", app);
+            if(METHOD(DesignerBase, modifyCode))
+               M_VTBLID(DesignerBase, modifyCode) = METHOD(DesignerBase, modifyCode)->vid;
+
+            METHOD(DesignerBase, objectContainsCode) = Class_findMethod(CO(DesignerBase), "ObjectContainsCode", app);
+            if(METHOD(DesignerBase, objectContainsCode))
+               M_VTBLID(DesignerBase, objectContainsCode) = METHOD(DesignerBase, objectContainsCode)->vid;
+
+            METHOD(DesignerBase, renameObject) = Class_findMethod(CO(DesignerBase), "RenameObject", app);
+            if(METHOD(DesignerBase, renameObject))
+               M_VTBLID(DesignerBase, renameObject) = METHOD(DesignerBase, renameObject)->vid;
+
+            METHOD(DesignerBase, selectObjectFromDesigner) = Class_findMethod(CO(DesignerBase), "SelectObjectFromDesigner", app);
+            if(METHOD(DesignerBase, selectObjectFromDesigner))
+               M_VTBLID(DesignerBase, selectObjectFromDesigner) = METHOD(DesignerBase, selectObjectFromDesigner)->vid;
+
+            METHOD(DesignerBase, sheetAddObject) = Class_findMethod(CO(DesignerBase), "SheetAddObject", app);
+            if(METHOD(DesignerBase, sheetAddObject))
+               M_VTBLID(DesignerBase, sheetAddObject) = METHOD(DesignerBase, sheetAddObject)->vid;
+
+            METHOD(DesignerBase, updateProperties) = Class_findMethod(CO(DesignerBase), "UpdateProperties", app);
+            if(METHOD(DesignerBase, updateProperties))
+               M_VTBLID(DesignerBase, updateProperties) = METHOD(DesignerBase, updateProperties)->vid;
+
+            PROPERTY(DesignerBase, classDesigner) = Class_findProperty(CO(DesignerBase), "classDesigner", app);
+            if(PROPERTY(DesignerBase, classDesigner))
+            {
+               DesignerBase_set_classDesigner = (void *)PROPERTY(DesignerBase, classDesigner)->Set;
+               DesignerBase_get_classDesigner = (void *)PROPERTY(DesignerBase, classDesigner)->Get;
+            }
+
+            PROPERTY(DesignerBase, objectClass) = Class_findProperty(CO(DesignerBase), "objectClass", app);
+            if(PROPERTY(DesignerBase, objectClass))
+            {
+               DesignerBase_set_objectClass = (void *)PROPERTY(DesignerBase, objectClass)->Set;
+               DesignerBase_get_objectClass = (void *)PROPERTY(DesignerBase, objectClass)->Get;
+            }
+
+            PROPERTY(DesignerBase, isDragging) = Class_findProperty(CO(DesignerBase), "isDragging", app);
+            if(PROPERTY(DesignerBase, isDragging))
+            {
+               DesignerBase_set_isDragging = (void *)PROPERTY(DesignerBase, isDragging)->Set;
+               DesignerBase_get_isDragging = (void *)PROPERTY(DesignerBase, isDragging)->Get;
+            }
+         }
+         CO(EnumClassData) = eC_findClass(app, "EnumClassData");
+         CO(EscapeCStringOptions) = eC_findClass(app, "EscapeCStringOptions");
+         CO(GlobalFunction) = eC_findClass(app, "GlobalFunction");
+         CO(IOChannel) = eC_findClass(app, "IOChannel");
+         if(CO(IOChannel))
+         {
+            METHOD(IOChannel, get) = Class_findMethod(CO(IOChannel), "Get", app);
+            if(METHOD(IOChannel, get))
+               IOChannel_get = (void (*)(C(IOChannel), typed_object_class_ptr, void *))METHOD(IOChannel, get)->function;
+
+            METHOD(IOChannel, put) = Class_findMethod(CO(IOChannel), "Put", app);
+            if(METHOD(IOChannel, put))
+               IOChannel_put = (void (*)(C(IOChannel), typed_object_class_ptr, void *))METHOD(IOChannel, put)->function;
+
+            METHOD(IOChannel, readData) = Class_findMethod(CO(IOChannel), "ReadData", app);
+            if(METHOD(IOChannel, readData))
+               M_VTBLID(IOChannel, readData) = METHOD(IOChannel, readData)->vid;
+
+            METHOD(IOChannel, serialize) = Class_findMethod(CO(IOChannel), "Serialize", app);
+            if(METHOD(IOChannel, serialize))
+               IOChannel_serialize = (void (*)(C(IOChannel), typed_object_class_ptr, void *))METHOD(IOChannel, serialize)->function;
+
+            METHOD(IOChannel, unserialize) = Class_findMethod(CO(IOChannel), "Unserialize", app);
+            if(METHOD(IOChannel, unserialize))
+               IOChannel_unserialize = (void (*)(C(IOChannel), typed_object_class_ptr, void *))METHOD(IOChannel, unserialize)->function;
+
+            METHOD(IOChannel, writeData) = Class_findMethod(CO(IOChannel), "WriteData", app);
+            if(METHOD(IOChannel, writeData))
+               M_VTBLID(IOChannel, writeData) = METHOD(IOChannel, writeData)->vid;
+         }
+         CO(ImportType) = eC_findClass(app, "ImportType");
+         CO(Instance) = eC_findClass(app, "Instance");
+         CO(Method) = eC_findClass(app, "Method");
+         CO(MethodType) = eC_findClass(app, "MethodType");
+         CO(Module) = eC_findClass(app, "Module");
+         if(CO(Module))
+         {
+            METHOD(Module, onLoad) = Class_findMethod(CO(Module), "OnLoad", app);
+            if(METHOD(Module, onLoad))
+               M_VTBLID(Module, onLoad) = METHOD(Module, onLoad)->vid;
+
+            METHOD(Module, onUnload) = Class_findMethod(CO(Module), "OnUnload", app);
+            if(METHOD(Module, onUnload))
+               M_VTBLID(Module, onUnload) = METHOD(Module, onUnload)->vid;
+         }
+         CO(NameSpace) = eC_findClass(app, "NameSpace");
+         CO(ObjectInfo) = eC_findClass(app, "ObjectInfo");
+         CO(ObjectNotationType) = eC_findClass(app, "ObjectNotationType");
+         CO(Platform) = eC_findClass(app, "Platform");
+         if(CO(Platform))
+         {
+            PROPERTY(Platform, char_ptr) = Class_findProperty(CO(Platform), "char *", app);
+            if(PROPERTY(Platform, char_ptr))
+            {
+               Platform_from_char_ptr = (void *)PROPERTY(Platform, char_ptr)->Set;
+               Platform_to_char_ptr = (void *)PROPERTY(Platform, char_ptr)->Get;
+            }
+         }
+         CO(Property) = eC_findClass(app, "Property");
+         CO(SerialBuffer) = eC_findClass(app, "SerialBuffer");
+         if(CO(SerialBuffer))
+         {
+            METHOD(SerialBuffer, free) = Class_findMethod(CO(SerialBuffer), "Free", app);
+            if(METHOD(SerialBuffer, free))
+               SerialBuffer_free = (void (*)(C(SerialBuffer)))METHOD(SerialBuffer, free)->function;
+
+            PROPERTY(SerialBuffer, buffer) = Class_findProperty(CO(SerialBuffer), "buffer", app);
+            if(PROPERTY(SerialBuffer, buffer))
+            {
+               SerialBuffer_set_buffer = (void *)PROPERTY(SerialBuffer, buffer)->Set;
+               SerialBuffer_get_buffer = (void *)PROPERTY(SerialBuffer, buffer)->Get;
+            }
+
+            PROPERTY(SerialBuffer, size) = Class_findProperty(CO(SerialBuffer), "size", app);
+            if(PROPERTY(SerialBuffer, size))
+            {
+               SerialBuffer_set_size = (void *)PROPERTY(SerialBuffer, size)->Set;
+               SerialBuffer_get_size = (void *)PROPERTY(SerialBuffer, size)->Get;
+            }
+         }
+         CO(StaticString) = eC_findClass(app, "StaticString");
+         CO(StringAllocType) = eC_findClass(app, "StringAllocType");
+         CO(SubModule) = eC_findClass(app, "SubModule");
+         CO(TemplateMemberType) = eC_findClass(app, "TemplateMemberType");
+         CO(TemplateParameterType) = eC_findClass(app, "TemplateParameterType");
+         CO(ZString) = eC_findClass(app, "ZString");
+         if(CO(ZString))
+         {
+            METHOD(ZString, concat) = Class_findMethod(CO(ZString), "concat", app);
+            if(METHOD(ZString, concat))
+               ZString_concat = (void (*)(C(ZString), C(ZString)))METHOD(ZString, concat)->function;
+
+            METHOD(ZString, concatf) = Class_findMethod(CO(ZString), "concatf", app);
+            if(METHOD(ZString, concatf))
+               ZString_concatf = (void (*)(C(ZString), const char *, ...))METHOD(ZString, concatf)->function;
+
+            METHOD(ZString, concatn) = Class_findMethod(CO(ZString), "concatn", app);
+            if(METHOD(ZString, concatn))
+               ZString_concatn = (void (*)(C(ZString), C(ZString), int))METHOD(ZString, concatn)->function;
+
+            METHOD(ZString, concatx) = Class_findMethod(CO(ZString), "concatx", app);
+            if(METHOD(ZString, concatx))
+               ZString_concatx = (void (*)(C(ZString), typed_object_class_ptr, const void *, ...))METHOD(ZString, concatx)->function;
+
+            METHOD(ZString, copy) = Class_findMethod(CO(ZString), "copy", app);
+            if(METHOD(ZString, copy))
+               ZString_copy = (void (*)(C(ZString), C(ZString)))METHOD(ZString, copy)->function;
+
+            METHOD(ZString, copyString) = Class_findMethod(CO(ZString), "copyString", app);
+            if(METHOD(ZString, copyString))
+               ZString_copyString = (void (*)(C(ZString), const char *, int))METHOD(ZString, copyString)->function;
+
+            PROPERTY(ZString, char_ptr) = Class_findProperty(CO(ZString), "char *", app);
+            if(PROPERTY(ZString, char_ptr))
+            {
+               ZString_from_char_ptr = (void *)PROPERTY(ZString, char_ptr)->Set;
+               ZString_to_char_ptr = (void *)PROPERTY(ZString, char_ptr)->Get;
+            }
+
+            PROPERTY(ZString, String) = Class_findProperty(CO(ZString), "String", app);
+            if(PROPERTY(ZString, String))
+            {
+               ZString_from_String = (void *)PROPERTY(ZString, String)->Set;
+               ZString_to_String = (void *)PROPERTY(ZString, String)->Get;
+            }
+
+            PROPERTY(ZString, string) = Class_findProperty(CO(ZString), "string", app);
+            if(PROPERTY(ZString, string))
+            {
+               ZString_set_string = (void *)PROPERTY(ZString, string)->Set;
+               ZString_get_string = (void *)PROPERTY(ZString, string)->Get;
+            }
+         }
+         CO(FieldType) = eC_findClass(app, "FieldType");
+         CO(FieldTypeEx) = eC_findClass(app, "FieldTypeEx");
+         CO(FieldValue) = eC_findClass(app, "FieldValue");
+         if(CO(FieldValue))
+         {
+            METHOD(FieldValue, compareInt) = Class_findMethod(CO(FieldValue), "compareInt", app);
+            if(METHOD(FieldValue, compareInt))
+               FieldValue_compareInt = (int (*)(C(FieldValue) *, C(FieldValue) *))METHOD(FieldValue, compareInt)->function;
+
+            METHOD(FieldValue, compareReal) = Class_findMethod(CO(FieldValue), "compareReal", app);
+            if(METHOD(FieldValue, compareReal))
+               FieldValue_compareReal = (int (*)(C(FieldValue) *, C(FieldValue) *))METHOD(FieldValue, compareReal)->function;
+
+            METHOD(FieldValue, compareText) = Class_findMethod(CO(FieldValue), "compareText", app);
+            if(METHOD(FieldValue, compareText))
+               FieldValue_compareText = (int (*)(C(FieldValue) *, C(FieldValue) *))METHOD(FieldValue, compareText)->function;
+
+            METHOD(FieldValue, formatArray) = Class_findMethod(CO(FieldValue), "formatArray", app);
+            if(METHOD(FieldValue, formatArray))
+               FieldValue_formatArray = (C(String) (*)(C(FieldValue) *, char *, void *, C(ObjectNotationType) *))METHOD(FieldValue, formatArray)->function;
+
+            METHOD(FieldValue, formatFloat) = Class_findMethod(CO(FieldValue), "formatFloat", app);
+            if(METHOD(FieldValue, formatFloat))
+               FieldValue_formatFloat = (C(String) (*)(C(FieldValue) *, char *, C(bool)))METHOD(FieldValue, formatFloat)->function;
+
+            METHOD(FieldValue, formatInteger) = Class_findMethod(CO(FieldValue), "formatInteger", app);
+            if(METHOD(FieldValue, formatInteger))
+               FieldValue_formatInteger = (C(String) (*)(C(FieldValue) *, char *))METHOD(FieldValue, formatInteger)->function;
+
+            METHOD(FieldValue, formatMap) = Class_findMethod(CO(FieldValue), "formatMap", app);
+            if(METHOD(FieldValue, formatMap))
+               FieldValue_formatMap = (C(String) (*)(C(FieldValue) *, char *, void *, C(ObjectNotationType) *))METHOD(FieldValue, formatMap)->function;
+
+            METHOD(FieldValue, getArrayOrMap) = Class_findMethod(CO(FieldValue), "getArrayOrMap", app);
+            if(METHOD(FieldValue, getArrayOrMap))
+               FieldValue_getArrayOrMap = (C(bool) (*)(const char *, C(Class) *, void **))METHOD(FieldValue, getArrayOrMap)->function;
+
+            METHOD(FieldValue, stringify) = Class_findMethod(CO(FieldValue), "stringify", app);
+            if(METHOD(FieldValue, stringify))
+               FieldValue_stringify = (C(String) (*)(C(FieldValue) *))METHOD(FieldValue, stringify)->function;
+         }
+         CO(FieldValueFormat) = eC_findClass(app, "FieldValueFormat");
          CO(Archive) = eC_findClass(app, "Archive");
          if(CO(Archive))
          {
@@ -2823,25 +3115,6 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
                Condition_get_name = (void *)PROPERTY(Condition, name)->Get;
             }
          }
-         CO(Mutex) = eC_findClass(app, "Mutex");
-         if(CO(Mutex))
-         {
-            METHOD(Mutex, release) = Class_findMethod(CO(Mutex), "Release", app);
-            if(METHOD(Mutex, release))
-               Mutex_release = (void (*)(C(Mutex) *))METHOD(Mutex, release)->function;
-
-            METHOD(Mutex, wait) = Class_findMethod(CO(Mutex), "Wait", app);
-            if(METHOD(Mutex, wait))
-               Mutex_wait = (void (*)(C(Mutex) *))METHOD(Mutex, wait)->function;
-
-            PROPERTY(Mutex, lockCount) = Class_findProperty(CO(Mutex), "lockCount", app);
-            if(PROPERTY(Mutex, lockCount))
-               Mutex_get_lockCount = (void *)PROPERTY(Mutex, lockCount)->Get;
-
-            PROPERTY(Mutex, owningThread) = Class_findProperty(CO(Mutex), "owningThread", app);
-            if(PROPERTY(Mutex, owningThread))
-               Mutex_get_owningThread = (void *)PROPERTY(Mutex, owningThread)->Get;
-         }
          CO(Semaphore) = eC_findClass(app, "Semaphore");
          if(CO(Semaphore))
          {
@@ -2982,11 +3255,6 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          {
          }
          CO(TimeStamp32) = eC_findClass(app, "TimeStamp32");
-         CO(AccessMode) = eC_findClass(app, "AccessMode");
-         CO(Angle) = eC_findClass(app, "Angle");
-         CO(BTNamedLink) = eC_findClass(app, "BTNamedLink");
-         CO(BackSlashEscaping) = eC_findClass(app, "BackSlashEscaping");
-         CO(BitMember) = eC_findClass(app, "BitMember");
          CO(Box) = eC_findClass(app, "Box");
          if(CO(Box))
          {
@@ -3020,7 +3288,6 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
                Box_get_height = (void *)PROPERTY(Box, height)->Get;
             }
          }
-         CO(CIString) = eC_findClass(app, "CIString");
          CO(Centimeters) = eC_findClass(app, "Centimeters");
          if(CO(Centimeters))
          {
@@ -3031,71 +3298,6 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
                Centimeters_to_Meters = (void *)PROPERTY(Centimeters, Meters)->Get;
             }
          }
-         CO(Class) = eC_findClass(app, "Class");
-         if(CO(Class))
-         {
-            PROPERTY(Class, char_ptr) = Class_findProperty(CO(Class), "char *", app);
-            if(PROPERTY(Class, char_ptr))
-            {
-               Class_from_char_ptr = (void *)PROPERTY(Class, char_ptr)->Set;
-               Class_to_char_ptr = (void *)PROPERTY(Class, char_ptr)->Get;
-            }
-         }
-         CO(ClassDesignerBase) = eC_findClass(app, "ClassDesignerBase");
-         if(CO(ClassDesignerBase))
-         {
-            METHOD(ClassDesignerBase, addObject) = Class_findMethod(CO(ClassDesignerBase), "AddObject", app);
-            if(METHOD(ClassDesignerBase, addObject))
-               M_VTBLID(ClassDesignerBase, addObject) = METHOD(ClassDesignerBase, addObject)->vid;
-
-            METHOD(ClassDesignerBase, createNew) = Class_findMethod(CO(ClassDesignerBase), "CreateNew", app);
-            if(METHOD(ClassDesignerBase, createNew))
-               M_VTBLID(ClassDesignerBase, createNew) = METHOD(ClassDesignerBase, createNew)->vid;
-
-            METHOD(ClassDesignerBase, createObject) = Class_findMethod(CO(ClassDesignerBase), "CreateObject", app);
-            if(METHOD(ClassDesignerBase, createObject))
-               M_VTBLID(ClassDesignerBase, createObject) = METHOD(ClassDesignerBase, createObject)->vid;
-
-            METHOD(ClassDesignerBase, destroyObject) = Class_findMethod(CO(ClassDesignerBase), "DestroyObject", app);
-            if(METHOD(ClassDesignerBase, destroyObject))
-               M_VTBLID(ClassDesignerBase, destroyObject) = METHOD(ClassDesignerBase, destroyObject)->vid;
-
-            METHOD(ClassDesignerBase, droppedObject) = Class_findMethod(CO(ClassDesignerBase), "DroppedObject", app);
-            if(METHOD(ClassDesignerBase, droppedObject))
-               M_VTBLID(ClassDesignerBase, droppedObject) = METHOD(ClassDesignerBase, droppedObject)->vid;
-
-            METHOD(ClassDesignerBase, fixProperty) = Class_findMethod(CO(ClassDesignerBase), "FixProperty", app);
-            if(METHOD(ClassDesignerBase, fixProperty))
-               M_VTBLID(ClassDesignerBase, fixProperty) = METHOD(ClassDesignerBase, fixProperty)->vid;
-
-            METHOD(ClassDesignerBase, listToolBoxClasses) = Class_findMethod(CO(ClassDesignerBase), "ListToolBoxClasses", app);
-            if(METHOD(ClassDesignerBase, listToolBoxClasses))
-               M_VTBLID(ClassDesignerBase, listToolBoxClasses) = METHOD(ClassDesignerBase, listToolBoxClasses)->vid;
-
-            METHOD(ClassDesignerBase, postCreateObject) = Class_findMethod(CO(ClassDesignerBase), "PostCreateObject", app);
-            if(METHOD(ClassDesignerBase, postCreateObject))
-               M_VTBLID(ClassDesignerBase, postCreateObject) = METHOD(ClassDesignerBase, postCreateObject)->vid;
-
-            METHOD(ClassDesignerBase, prepareTestObject) = Class_findMethod(CO(ClassDesignerBase), "PrepareTestObject", app);
-            if(METHOD(ClassDesignerBase, prepareTestObject))
-               M_VTBLID(ClassDesignerBase, prepareTestObject) = METHOD(ClassDesignerBase, prepareTestObject)->vid;
-
-            METHOD(ClassDesignerBase, reset) = Class_findMethod(CO(ClassDesignerBase), "Reset", app);
-            if(METHOD(ClassDesignerBase, reset))
-               M_VTBLID(ClassDesignerBase, reset) = METHOD(ClassDesignerBase, reset)->vid;
-
-            METHOD(ClassDesignerBase, selectObject) = Class_findMethod(CO(ClassDesignerBase), "SelectObject", app);
-            if(METHOD(ClassDesignerBase, selectObject))
-               M_VTBLID(ClassDesignerBase, selectObject) = METHOD(ClassDesignerBase, selectObject)->vid;
-         }
-         CO(ClassProperty) = eC_findClass(app, "ClassProperty");
-         CO(ClassTemplateArgument) = eC_findClass(app, "ClassTemplateArgument");
-         CO(ClassTemplateParameter) = eC_findClass(app, "ClassTemplateParameter");
-         CO(ClassType) = eC_findClass(app, "ClassType");
-         CO(DataMember) = eC_findClass(app, "DataMember");
-         CO(DataMemberType) = eC_findClass(app, "DataMemberType");
-         CO(DataValue) = eC_findClass(app, "DataValue");
-         CO(DefinedExpression) = eC_findClass(app, "DefinedExpression");
          CO(Degrees) = eC_findClass(app, "Degrees");
          if(CO(Degrees))
          {
@@ -3106,77 +3308,7 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
                Degrees_to_Radians = (void *)PROPERTY(Degrees, Radians)->Get;
             }
          }
-         CO(DesignerBase) = eC_findClass(app, "DesignerBase");
-         if(CO(DesignerBase))
-         {
-            METHOD(DesignerBase, addDefaultMethod) = Class_findMethod(CO(DesignerBase), "AddDefaultMethod", app);
-            if(METHOD(DesignerBase, addDefaultMethod))
-               M_VTBLID(DesignerBase, addDefaultMethod) = METHOD(DesignerBase, addDefaultMethod)->vid;
-
-            METHOD(DesignerBase, addToolBoxClass) = Class_findMethod(CO(DesignerBase), "AddToolBoxClass", app);
-            if(METHOD(DesignerBase, addToolBoxClass))
-               M_VTBLID(DesignerBase, addToolBoxClass) = METHOD(DesignerBase, addToolBoxClass)->vid;
-
-            METHOD(DesignerBase, codeAddObject) = Class_findMethod(CO(DesignerBase), "CodeAddObject", app);
-            if(METHOD(DesignerBase, codeAddObject))
-               M_VTBLID(DesignerBase, codeAddObject) = METHOD(DesignerBase, codeAddObject)->vid;
-
-            METHOD(DesignerBase, deleteObject) = Class_findMethod(CO(DesignerBase), "DeleteObject", app);
-            if(METHOD(DesignerBase, deleteObject))
-               M_VTBLID(DesignerBase, deleteObject) = METHOD(DesignerBase, deleteObject)->vid;
-
-            METHOD(DesignerBase, findObject) = Class_findMethod(CO(DesignerBase), "FindObject", app);
-            if(METHOD(DesignerBase, findObject))
-               M_VTBLID(DesignerBase, findObject) = METHOD(DesignerBase, findObject)->vid;
-
-            METHOD(DesignerBase, modifyCode) = Class_findMethod(CO(DesignerBase), "ModifyCode", app);
-            if(METHOD(DesignerBase, modifyCode))
-               M_VTBLID(DesignerBase, modifyCode) = METHOD(DesignerBase, modifyCode)->vid;
-
-            METHOD(DesignerBase, objectContainsCode) = Class_findMethod(CO(DesignerBase), "ObjectContainsCode", app);
-            if(METHOD(DesignerBase, objectContainsCode))
-               M_VTBLID(DesignerBase, objectContainsCode) = METHOD(DesignerBase, objectContainsCode)->vid;
-
-            METHOD(DesignerBase, renameObject) = Class_findMethod(CO(DesignerBase), "RenameObject", app);
-            if(METHOD(DesignerBase, renameObject))
-               M_VTBLID(DesignerBase, renameObject) = METHOD(DesignerBase, renameObject)->vid;
-
-            METHOD(DesignerBase, selectObjectFromDesigner) = Class_findMethod(CO(DesignerBase), "SelectObjectFromDesigner", app);
-            if(METHOD(DesignerBase, selectObjectFromDesigner))
-               M_VTBLID(DesignerBase, selectObjectFromDesigner) = METHOD(DesignerBase, selectObjectFromDesigner)->vid;
-
-            METHOD(DesignerBase, sheetAddObject) = Class_findMethod(CO(DesignerBase), "SheetAddObject", app);
-            if(METHOD(DesignerBase, sheetAddObject))
-               M_VTBLID(DesignerBase, sheetAddObject) = METHOD(DesignerBase, sheetAddObject)->vid;
-
-            METHOD(DesignerBase, updateProperties) = Class_findMethod(CO(DesignerBase), "UpdateProperties", app);
-            if(METHOD(DesignerBase, updateProperties))
-               M_VTBLID(DesignerBase, updateProperties) = METHOD(DesignerBase, updateProperties)->vid;
-
-            PROPERTY(DesignerBase, classDesigner) = Class_findProperty(CO(DesignerBase), "classDesigner", app);
-            if(PROPERTY(DesignerBase, classDesigner))
-            {
-               DesignerBase_set_classDesigner = (void *)PROPERTY(DesignerBase, classDesigner)->Set;
-               DesignerBase_get_classDesigner = (void *)PROPERTY(DesignerBase, classDesigner)->Get;
-            }
-
-            PROPERTY(DesignerBase, objectClass) = Class_findProperty(CO(DesignerBase), "objectClass", app);
-            if(PROPERTY(DesignerBase, objectClass))
-            {
-               DesignerBase_set_objectClass = (void *)PROPERTY(DesignerBase, objectClass)->Set;
-               DesignerBase_get_objectClass = (void *)PROPERTY(DesignerBase, objectClass)->Get;
-            }
-
-            PROPERTY(DesignerBase, isDragging) = Class_findProperty(CO(DesignerBase), "isDragging", app);
-            if(PROPERTY(DesignerBase, isDragging))
-            {
-               DesignerBase_set_isDragging = (void *)PROPERTY(DesignerBase, isDragging)->Set;
-               DesignerBase_get_isDragging = (void *)PROPERTY(DesignerBase, isDragging)->Get;
-            }
-         }
          CO(Distance) = eC_findClass(app, "Distance");
-         CO(EnumClassData) = eC_findClass(app, "EnumClassData");
-         CO(EscapeCStringOptions) = eC_findClass(app, "EscapeCStringOptions");
          CO(Feet) = eC_findClass(app, "Feet");
          if(CO(Feet))
          {
@@ -3187,142 +3319,27 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
                Feet_to_Meters = (void *)PROPERTY(Feet, Meters)->Get;
             }
          }
-         CO(GlobalFunction) = eC_findClass(app, "GlobalFunction");
-         CO(IOChannel) = eC_findClass(app, "IOChannel");
-         if(CO(IOChannel))
-         {
-            METHOD(IOChannel, get) = Class_findMethod(CO(IOChannel), "Get", app);
-            if(METHOD(IOChannel, get))
-               IOChannel_get = (void (*)(C(IOChannel), typed_object_class_ptr, void *))METHOD(IOChannel, get)->function;
-
-            METHOD(IOChannel, put) = Class_findMethod(CO(IOChannel), "Put", app);
-            if(METHOD(IOChannel, put))
-               IOChannel_put = (void (*)(C(IOChannel), typed_object_class_ptr, void *))METHOD(IOChannel, put)->function;
-
-            METHOD(IOChannel, readData) = Class_findMethod(CO(IOChannel), "ReadData", app);
-            if(METHOD(IOChannel, readData))
-               M_VTBLID(IOChannel, readData) = METHOD(IOChannel, readData)->vid;
-
-            METHOD(IOChannel, serialize) = Class_findMethod(CO(IOChannel), "Serialize", app);
-            if(METHOD(IOChannel, serialize))
-               IOChannel_serialize = (void (*)(C(IOChannel), typed_object_class_ptr, void *))METHOD(IOChannel, serialize)->function;
-
-            METHOD(IOChannel, unserialize) = Class_findMethod(CO(IOChannel), "Unserialize", app);
-            if(METHOD(IOChannel, unserialize))
-               IOChannel_unserialize = (void (*)(C(IOChannel), typed_object_class_ptr, void *))METHOD(IOChannel, unserialize)->function;
-
-            METHOD(IOChannel, writeData) = Class_findMethod(CO(IOChannel), "WriteData", app);
-            if(METHOD(IOChannel, writeData))
-               M_VTBLID(IOChannel, writeData) = METHOD(IOChannel, writeData)->vid;
-         }
-         CO(ImportType) = eC_findClass(app, "ImportType");
          CO(Meters) = eC_findClass(app, "Meters");
          if(CO(Meters))
          {
          }
-         CO(Method) = eC_findClass(app, "Method");
-         CO(MethodType) = eC_findClass(app, "MethodType");
          CO(MinMaxValue) = eC_findClass(app, "MinMaxValue");
-         CO(NameSpace) = eC_findClass(app, "NameSpace");
-         CO(ObjectInfo) = eC_findClass(app, "ObjectInfo");
-         CO(ObjectNotationType) = eC_findClass(app, "ObjectNotationType");
-         CO(Platform) = eC_findClass(app, "Platform");
-         if(CO(Platform))
-         {
-            PROPERTY(Platform, char_ptr) = Class_findProperty(CO(Platform), "char *", app);
-            if(PROPERTY(Platform, char_ptr))
-            {
-               Platform_from_char_ptr = (void *)PROPERTY(Platform, char_ptr)->Set;
-               Platform_to_char_ptr = (void *)PROPERTY(Platform, char_ptr)->Get;
-            }
-         }
          CO(Point) = eC_findClass(app, "Point");
          CO(Pointd) = eC_findClass(app, "Pointd");
          CO(Pointf) = eC_findClass(app, "Pointf");
-         CO(Property) = eC_findClass(app, "Property");
          CO(Radians) = eC_findClass(app, "Radians");
          if(CO(Radians))
          {
          }
-         CO(SerialBuffer) = eC_findClass(app, "SerialBuffer");
-         if(CO(SerialBuffer))
-         {
-            METHOD(SerialBuffer, free) = Class_findMethod(CO(SerialBuffer), "Free", app);
-            if(METHOD(SerialBuffer, free))
-               SerialBuffer_free = (void (*)(C(SerialBuffer)))METHOD(SerialBuffer, free)->function;
-
-            PROPERTY(SerialBuffer, buffer) = Class_findProperty(CO(SerialBuffer), "buffer", app);
-            if(PROPERTY(SerialBuffer, buffer))
-            {
-               SerialBuffer_set_buffer = (void *)PROPERTY(SerialBuffer, buffer)->Set;
-               SerialBuffer_get_buffer = (void *)PROPERTY(SerialBuffer, buffer)->Get;
-            }
-
-            PROPERTY(SerialBuffer, size) = Class_findProperty(CO(SerialBuffer), "size", app);
-            if(PROPERTY(SerialBuffer, size))
-            {
-               SerialBuffer_set_size = (void *)PROPERTY(SerialBuffer, size)->Set;
-               SerialBuffer_get_size = (void *)PROPERTY(SerialBuffer, size)->Get;
-            }
-         }
          CO(Size) = eC_findClass(app, "Size");
-         CO(StaticString) = eC_findClass(app, "StaticString");
-         CO(StringAllocType) = eC_findClass(app, "StringAllocType");
-         CO(SubModule) = eC_findClass(app, "SubModule");
-         CO(TemplateMemberType) = eC_findClass(app, "TemplateMemberType");
-         CO(TemplateParameterType) = eC_findClass(app, "TemplateParameterType");
-         CO(ZString) = eC_findClass(app, "ZString");
-         if(CO(ZString))
-         {
-            METHOD(ZString, concat) = Class_findMethod(CO(ZString), "concat", app);
-            if(METHOD(ZString, concat))
-               ZString_concat = (void (*)(C(ZString), C(ZString)))METHOD(ZString, concat)->function;
-
-            METHOD(ZString, concatf) = Class_findMethod(CO(ZString), "concatf", app);
-            if(METHOD(ZString, concatf))
-               ZString_concatf = (void (*)(C(ZString), const char *, ...))METHOD(ZString, concatf)->function;
-
-            METHOD(ZString, concatn) = Class_findMethod(CO(ZString), "concatn", app);
-            if(METHOD(ZString, concatn))
-               ZString_concatn = (void (*)(C(ZString), C(ZString), int))METHOD(ZString, concatn)->function;
-
-            METHOD(ZString, concatx) = Class_findMethod(CO(ZString), "concatx", app);
-            if(METHOD(ZString, concatx))
-               ZString_concatx = (void (*)(C(ZString), typed_object_class_ptr, const void *, ...))METHOD(ZString, concatx)->function;
-
-            METHOD(ZString, copy) = Class_findMethod(CO(ZString), "copy", app);
-            if(METHOD(ZString, copy))
-               ZString_copy = (void (*)(C(ZString), C(ZString)))METHOD(ZString, copy)->function;
-
-            METHOD(ZString, copyString) = Class_findMethod(CO(ZString), "copyString", app);
-            if(METHOD(ZString, copyString))
-               ZString_copyString = (void (*)(C(ZString), const char *, int))METHOD(ZString, copyString)->function;
-
-            PROPERTY(ZString, char_ptr) = Class_findProperty(CO(ZString), "char *", app);
-            if(PROPERTY(ZString, char_ptr))
-            {
-               ZString_from_char_ptr = (void *)PROPERTY(ZString, char_ptr)->Set;
-               ZString_to_char_ptr = (void *)PROPERTY(ZString, char_ptr)->Get;
-            }
-
-            PROPERTY(ZString, String) = Class_findProperty(CO(ZString), "String", app);
-            if(PROPERTY(ZString, String))
-            {
-               ZString_from_String = (void *)PROPERTY(ZString, String)->Set;
-               ZString_to_String = (void *)PROPERTY(ZString, String)->Get;
-            }
-
-            PROPERTY(ZString, string) = Class_findProperty(CO(ZString), "string", app);
-            if(PROPERTY(ZString, string))
-            {
-               ZString_set_string = (void *)PROPERTY(ZString, string)->Set;
-               ZString_get_string = (void *)PROPERTY(ZString, string)->Get;
-            }
-         }
 
 
 
          // Set up all the function pointers, ...
+
+         FUNCTION(hash32Data) = eC_findFunction(app, "hash32Data");
+         if(FUNCTION(hash32Data))
+            F(hash32Data) = (void *)FUNCTION(hash32Data)->function;
 
          FUNCTION(qsortr) = eC_findFunction(app, "qsortr");
          if(FUNCTION(qsortr))
@@ -3331,6 +3348,262 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          FUNCTION(qsortrx) = eC_findFunction(app, "qsortrx");
          if(FUNCTION(qsortrx))
             F(qsortrx) = (void *)FUNCTION(qsortrx)->function;
+
+         FUNCTION(iSO8859_1toUTF8) = eC_findFunction(app, "ISO8859_1toUTF8");
+         if(FUNCTION(iSO8859_1toUTF8))
+            F(iSO8859_1toUTF8) = (void *)FUNCTION(iSO8859_1toUTF8)->function;
+
+         FUNCTION(uTF16toUTF8) = eC_findFunction(app, "UTF16toUTF8");
+         if(FUNCTION(uTF16toUTF8))
+            F(uTF16toUTF8) = (void *)FUNCTION(uTF16toUTF8)->function;
+
+         FUNCTION(uTF16toUTF8Buffer) = eC_findFunction(app, "UTF16toUTF8Buffer");
+         if(FUNCTION(uTF16toUTF8Buffer))
+            F(uTF16toUTF8Buffer) = (void *)FUNCTION(uTF16toUTF8Buffer)->function;
+
+         FUNCTION(uTF32toUTF8Len) = eC_findFunction(app, "UTF32toUTF8Len");
+         if(FUNCTION(uTF32toUTF8Len))
+            F(uTF32toUTF8Len) = (void *)FUNCTION(uTF32toUTF8Len)->function;
+
+         FUNCTION(uTF8GetChar) = eC_findFunction(app, "UTF8GetChar");
+         if(FUNCTION(uTF8GetChar))
+            F(uTF8GetChar) = (void *)FUNCTION(uTF8GetChar)->function;
+
+         FUNCTION(uTF8Validate) = eC_findFunction(app, "UTF8Validate");
+         if(FUNCTION(uTF8Validate))
+            F(uTF8Validate) = (void *)FUNCTION(uTF8Validate)->function;
+
+         FUNCTION(uTF8toUTF16) = eC_findFunction(app, "UTF8toUTF16");
+         if(FUNCTION(uTF8toUTF16))
+            F(uTF8toUTF16) = (void *)FUNCTION(uTF8toUTF16)->function;
+
+         FUNCTION(uTF8toUTF16Buffer) = eC_findFunction(app, "UTF8toUTF16Buffer");
+         if(FUNCTION(uTF8toUTF16Buffer))
+            F(uTF8toUTF16Buffer) = (void *)FUNCTION(uTF8toUTF16Buffer)->function;
+
+         FUNCTION(getCurrentThreadID) = eC_findFunction(app, "GetCurrentThreadID");
+         if(FUNCTION(getCurrentThreadID))
+            F(getCurrentThreadID) = (void *)FUNCTION(getCurrentThreadID)->function;
+
+         FUNCTION(changeCh) = eC_findFunction(app, "ChangeCh");
+         if(FUNCTION(changeCh))
+            F(changeCh) = (void *)FUNCTION(changeCh)->function;
+
+         FUNCTION(changeChars) = eC_findFunction(app, "ChangeChars");
+         if(FUNCTION(changeChars))
+            F(changeChars) = (void *)FUNCTION(changeChars)->function;
+
+         FUNCTION(changeExtension) = eC_findFunction(app, "ChangeExtension");
+         if(FUNCTION(changeExtension))
+            F(changeExtension) = (void *)FUNCTION(changeExtension)->function;
+
+         FUNCTION(checkConsistency) = eC_findFunction(app, "CheckConsistency");
+         if(FUNCTION(checkConsistency))
+            F(checkConsistency) = (void *)FUNCTION(checkConsistency)->function;
+
+         FUNCTION(checkMemory) = eC_findFunction(app, "CheckMemory");
+         if(FUNCTION(checkMemory))
+            F(checkMemory) = (void *)FUNCTION(checkMemory)->function;
+
+         FUNCTION(copyString) = eC_findFunction(app, "CopyString");
+         if(FUNCTION(copyString))
+            F(copyString) = (void *)FUNCTION(copyString)->function;
+
+         FUNCTION(escapeCString) = eC_findFunction(app, "EscapeCString");
+         if(FUNCTION(escapeCString))
+            F(escapeCString) = (void *)FUNCTION(escapeCString)->function;
+
+         FUNCTION(floatFromString) = eC_findFunction(app, "FloatFromString");
+         if(FUNCTION(floatFromString))
+            F(floatFromString) = (void *)FUNCTION(floatFromString)->function;
+
+         FUNCTION(getActiveDesigner) = eC_findFunction(app, "GetActiveDesigner");
+         if(FUNCTION(getActiveDesigner))
+            F(getActiveDesigner) = (void *)FUNCTION(getActiveDesigner)->function;
+
+         FUNCTION(getExtension) = eC_findFunction(app, "GetExtension");
+         if(FUNCTION(getExtension))
+            F(getExtension) = (void *)FUNCTION(getExtension)->function;
+
+         FUNCTION(getHexValue) = eC_findFunction(app, "GetHexValue");
+         if(FUNCTION(getHexValue))
+            F(getHexValue) = (void *)FUNCTION(getHexValue)->function;
+
+         FUNCTION(getLastDirectory) = eC_findFunction(app, "GetLastDirectory");
+         if(FUNCTION(getLastDirectory))
+            F(getLastDirectory) = (void *)FUNCTION(getLastDirectory)->function;
+
+         FUNCTION(getRuntimePlatform) = eC_findFunction(app, "GetRuntimePlatform");
+         if(FUNCTION(getRuntimePlatform))
+            F(getRuntimePlatform) = (void *)FUNCTION(getRuntimePlatform)->function;
+
+         FUNCTION(getString) = eC_findFunction(app, "GetString");
+         if(FUNCTION(getString))
+            F(getString) = (void *)FUNCTION(getString)->function;
+
+         FUNCTION(getValue) = eC_findFunction(app, "GetValue");
+         if(FUNCTION(getValue))
+            F(getValue) = (void *)FUNCTION(getValue)->function;
+
+         FUNCTION(isPathInsideOf) = eC_findFunction(app, "IsPathInsideOf");
+         if(FUNCTION(isPathInsideOf))
+            F(isPathInsideOf) = (void *)FUNCTION(isPathInsideOf)->function;
+
+         FUNCTION(locateModule) = eC_findFunction(app, "LocateModule");
+         if(FUNCTION(locateModule))
+            F(locateModule) = (void *)FUNCTION(locateModule)->function;
+
+         FUNCTION(makePathRelative) = eC_findFunction(app, "MakePathRelative");
+         if(FUNCTION(makePathRelative))
+            F(makePathRelative) = (void *)FUNCTION(makePathRelative)->function;
+
+         FUNCTION(pathCat) = eC_findFunction(app, "PathCat");
+         if(FUNCTION(pathCat))
+            F(pathCat) = (void *)FUNCTION(pathCat)->function;
+
+         FUNCTION(pathCatSlash) = eC_findFunction(app, "PathCatSlash");
+         if(FUNCTION(pathCatSlash))
+            F(pathCatSlash) = (void *)FUNCTION(pathCatSlash)->function;
+
+         FUNCTION(printx) = eC_findFunction(app, "Print");
+         if(FUNCTION(printx))
+            F(printx) = (void *)FUNCTION(printx)->function;
+
+         FUNCTION(printBigSize) = eC_findFunction(app, "PrintBigSize");
+         if(FUNCTION(printBigSize))
+            F(printBigSize) = (void *)FUNCTION(printBigSize)->function;
+
+         FUNCTION(printBuf) = eC_findFunction(app, "PrintBuf");
+         if(FUNCTION(printBuf))
+            F(printBuf) = (void *)FUNCTION(printBuf)->function;
+
+         FUNCTION(printLn) = eC_findFunction(app, "PrintLn");
+         if(FUNCTION(printLn))
+            F(printLn) = (void *)FUNCTION(printLn)->function;
+
+         FUNCTION(printLnBuf) = eC_findFunction(app, "PrintLnBuf");
+         if(FUNCTION(printLnBuf))
+            F(printLnBuf) = (void *)FUNCTION(printLnBuf)->function;
+
+         FUNCTION(printLnString) = eC_findFunction(app, "PrintLnString");
+         if(FUNCTION(printLnString))
+            F(printLnString) = (void *)FUNCTION(printLnString)->function;
+
+         FUNCTION(printSize) = eC_findFunction(app, "PrintSize");
+         if(FUNCTION(printSize))
+            F(printSize) = (void *)FUNCTION(printSize)->function;
+
+         FUNCTION(printStdArgsToBuffer) = eC_findFunction(app, "PrintStdArgsToBuffer");
+         if(FUNCTION(printStdArgsToBuffer))
+            F(printStdArgsToBuffer) = (void *)FUNCTION(printStdArgsToBuffer)->function;
+
+         FUNCTION(printString) = eC_findFunction(app, "PrintString");
+         if(FUNCTION(printString))
+            F(printString) = (void *)FUNCTION(printString)->function;
+
+         FUNCTION(rSearchString) = eC_findFunction(app, "RSearchString");
+         if(FUNCTION(rSearchString))
+            F(rSearchString) = (void *)FUNCTION(rSearchString)->function;
+
+         FUNCTION(repeatCh) = eC_findFunction(app, "RepeatCh");
+         if(FUNCTION(repeatCh))
+            F(repeatCh) = (void *)FUNCTION(repeatCh)->function;
+
+         FUNCTION(searchString) = eC_findFunction(app, "SearchString");
+         if(FUNCTION(searchString))
+            F(searchString) = (void *)FUNCTION(searchString)->function;
+
+         FUNCTION(setActiveDesigner) = eC_findFunction(app, "SetActiveDesigner");
+         if(FUNCTION(setActiveDesigner))
+            F(setActiveDesigner) = (void *)FUNCTION(setActiveDesigner)->function;
+
+         FUNCTION(splitArchivePath) = eC_findFunction(app, "SplitArchivePath");
+         if(FUNCTION(splitArchivePath))
+            F(splitArchivePath) = (void *)FUNCTION(splitArchivePath)->function;
+
+         FUNCTION(splitDirectory) = eC_findFunction(app, "SplitDirectory");
+         if(FUNCTION(splitDirectory))
+            F(splitDirectory) = (void *)FUNCTION(splitDirectory)->function;
+
+         FUNCTION(stringLikePattern) = eC_findFunction(app, "StringLikePattern");
+         if(FUNCTION(stringLikePattern))
+            F(stringLikePattern) = (void *)FUNCTION(stringLikePattern)->function;
+
+         FUNCTION(stripChars) = eC_findFunction(app, "StripChars");
+         if(FUNCTION(stripChars))
+            F(stripChars) = (void *)FUNCTION(stripChars)->function;
+
+         FUNCTION(stripExtension) = eC_findFunction(app, "StripExtension");
+         if(FUNCTION(stripExtension))
+            F(stripExtension) = (void *)FUNCTION(stripExtension)->function;
+
+         FUNCTION(stripLastDirectory) = eC_findFunction(app, "StripLastDirectory");
+         if(FUNCTION(stripLastDirectory))
+            F(stripLastDirectory) = (void *)FUNCTION(stripLastDirectory)->function;
+
+         FUNCTION(stripQuotes) = eC_findFunction(app, "StripQuotes");
+         if(FUNCTION(stripQuotes))
+            F(stripQuotes) = (void *)FUNCTION(stripQuotes)->function;
+
+         FUNCTION(tokenize) = eC_findFunction(app, "Tokenize");
+         if(FUNCTION(tokenize))
+            F(tokenize) = (void *)FUNCTION(tokenize)->function;
+
+         FUNCTION(tokenizeWith) = eC_findFunction(app, "TokenizeWith");
+         if(FUNCTION(tokenizeWith))
+            F(tokenizeWith) = (void *)FUNCTION(tokenizeWith)->function;
+
+         FUNCTION(trimLSpaces) = eC_findFunction(app, "TrimLSpaces");
+         if(FUNCTION(trimLSpaces))
+            F(trimLSpaces) = (void *)FUNCTION(trimLSpaces)->function;
+
+         FUNCTION(trimRSpaces) = eC_findFunction(app, "TrimRSpaces");
+         if(FUNCTION(trimRSpaces))
+            F(trimRSpaces) = (void *)FUNCTION(trimRSpaces)->function;
+
+         FUNCTION(unescapeCString) = eC_findFunction(app, "UnescapeCString");
+         if(FUNCTION(unescapeCString))
+            F(unescapeCString) = (void *)FUNCTION(unescapeCString)->function;
+
+         FUNCTION(unescapeCStringLoose) = eC_findFunction(app, "UnescapeCStringLoose");
+         if(FUNCTION(unescapeCStringLoose))
+            F(unescapeCStringLoose) = (void *)FUNCTION(unescapeCStringLoose)->function;
+
+         FUNCTION(eSystem_LockMem) = eC_findFunction(app, "eSystem_LockMem");
+         if(FUNCTION(eSystem_LockMem))
+            F(eSystem_LockMem) = (void *)FUNCTION(eSystem_LockMem)->function;
+
+         FUNCTION(eSystem_UnlockMem) = eC_findFunction(app, "eSystem_UnlockMem");
+         if(FUNCTION(eSystem_UnlockMem))
+            F(eSystem_UnlockMem) = (void *)FUNCTION(eSystem_UnlockMem)->function;
+
+         FUNCTION(ishexdigit) = eC_findFunction(app, "ishexdigit");
+         if(FUNCTION(ishexdigit))
+            F(ishexdigit) = (void *)FUNCTION(ishexdigit)->function;
+
+         FUNCTION(log2i) = eC_findFunction(app, "log2i");
+         if(FUNCTION(log2i))
+            F(log2i) = (void *)FUNCTION(log2i)->function;
+
+         FUNCTION(memswap) = eC_findFunction(app, "memswap");
+         if(FUNCTION(memswap))
+            F(memswap) = (void *)FUNCTION(memswap)->function;
+
+         FUNCTION(pow2i) = eC_findFunction(app, "pow2i");
+         if(FUNCTION(pow2i))
+            F(pow2i) = (void *)FUNCTION(pow2i)->function;
+
+         FUNCTION(printDouble) = eC_findFunction(app, "printDouble");
+         if(FUNCTION(printDouble))
+            F(printDouble) = (void *)FUNCTION(printDouble)->function;
+
+         FUNCTION(queryMemInfo) = eC_findFunction(app, "queryMemInfo");
+         if(FUNCTION(queryMemInfo))
+            F(queryMemInfo) = (void *)FUNCTION(queryMemInfo)->function;
+
+         FUNCTION(strchrmax) = eC_findFunction(app, "strchrmax");
+         if(FUNCTION(strchrmax))
+            F(strchrmax) = (void *)FUNCTION(strchrmax)->function;
 
          FUNCTION(archiveOpen) = eC_findFunction(app, "ArchiveOpen");
          if(FUNCTION(archiveOpen))
@@ -3488,6 +3761,10 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          if(FUNCTION(moveFileEx))
             F(moveFileEx) = (void *)FUNCTION(moveFileEx)->function;
 
+         FUNCTION(processFileNotifications) = eC_findFunction(app, "ProcessFileNotifications");
+         if(FUNCTION(processFileNotifications))
+            F(processFileNotifications) = (void *)FUNCTION(processFileNotifications)->function;
+
          FUNCTION(removeDir) = eC_findFunction(app, "RemoveDir");
          if(FUNCTION(removeDir))
             F(removeDir) = (void *)FUNCTION(removeDir)->function;
@@ -3516,13 +3793,25 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          if(FUNCTION(shellOpen))
             F(shellOpen) = (void *)FUNCTION(shellOpen)->function;
 
+         FUNCTION(signalEvent) = eC_findFunction(app, "SignalEvent");
+         if(FUNCTION(signalEvent))
+            F(signalEvent) = (void *)FUNCTION(signalEvent)->function;
+
          FUNCTION(unsetEnvironment) = eC_findFunction(app, "UnsetEnvironment");
          if(FUNCTION(unsetEnvironment))
             F(unsetEnvironment) = (void *)FUNCTION(unsetEnvironment)->function;
 
+         FUNCTION(waitEvent) = eC_findFunction(app, "WaitEvent");
+         if(FUNCTION(waitEvent))
+            F(waitEvent) = (void *)FUNCTION(waitEvent)->function;
+
          FUNCTION(debugBreakpoint) = eC_findFunction(app, "debugBreakpoint");
          if(FUNCTION(debugBreakpoint))
             F(debugBreakpoint) = (void *)FUNCTION(debugBreakpoint)->function;
+
+         FUNCTION(getEventSemaphore) = eC_findFunction(app, "getEventSemaphore");
+         if(FUNCTION(getEventSemaphore))
+            F(getEventSemaphore) = (void *)FUNCTION(getEventSemaphore)->function;
 
          FUNCTION(charMatchCategories) = eC_findFunction(app, "CharMatchCategories");
          if(FUNCTION(charMatchCategories))
@@ -3540,45 +3829,13 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          if(FUNCTION(getCombiningClass))
             F(getCombiningClass) = (void *)FUNCTION(getCombiningClass)->function;
 
-         FUNCTION(iSO8859_1toUTF8) = eC_findFunction(app, "ISO8859_1toUTF8");
-         if(FUNCTION(iSO8859_1toUTF8))
-            F(iSO8859_1toUTF8) = (void *)FUNCTION(iSO8859_1toUTF8)->function;
-
          FUNCTION(uTF16BEtoUTF8Buffer) = eC_findFunction(app, "UTF16BEtoUTF8Buffer");
          if(FUNCTION(uTF16BEtoUTF8Buffer))
             F(uTF16BEtoUTF8Buffer) = (void *)FUNCTION(uTF16BEtoUTF8Buffer)->function;
 
-         FUNCTION(uTF16toUTF8) = eC_findFunction(app, "UTF16toUTF8");
-         if(FUNCTION(uTF16toUTF8))
-            F(uTF16toUTF8) = (void *)FUNCTION(uTF16toUTF8)->function;
-
-         FUNCTION(uTF16toUTF8Buffer) = eC_findFunction(app, "UTF16toUTF8Buffer");
-         if(FUNCTION(uTF16toUTF8Buffer))
-            F(uTF16toUTF8Buffer) = (void *)FUNCTION(uTF16toUTF8Buffer)->function;
-
-         FUNCTION(uTF32toUTF8Len) = eC_findFunction(app, "UTF32toUTF8Len");
-         if(FUNCTION(uTF32toUTF8Len))
-            F(uTF32toUTF8Len) = (void *)FUNCTION(uTF32toUTF8Len)->function;
-
-         FUNCTION(uTF8GetChar) = eC_findFunction(app, "UTF8GetChar");
-         if(FUNCTION(uTF8GetChar))
-            F(uTF8GetChar) = (void *)FUNCTION(uTF8GetChar)->function;
-
-         FUNCTION(uTF8Validate) = eC_findFunction(app, "UTF8Validate");
-         if(FUNCTION(uTF8Validate))
-            F(uTF8Validate) = (void *)FUNCTION(uTF8Validate)->function;
-
          FUNCTION(uTF8toISO8859_1) = eC_findFunction(app, "UTF8toISO8859_1");
          if(FUNCTION(uTF8toISO8859_1))
             F(uTF8toISO8859_1) = (void *)FUNCTION(uTF8toISO8859_1)->function;
-
-         FUNCTION(uTF8toUTF16) = eC_findFunction(app, "UTF8toUTF16");
-         if(FUNCTION(uTF8toUTF16))
-            F(uTF8toUTF16) = (void *)FUNCTION(uTF8toUTF16)->function;
-
-         FUNCTION(uTF8toUTF16Buffer) = eC_findFunction(app, "UTF8toUTF16Buffer");
-         if(FUNCTION(uTF8toUTF16Buffer))
-            F(uTF8toUTF16Buffer) = (void *)FUNCTION(uTF8toUTF16Buffer)->function;
 
          FUNCTION(uTF8toUTF16BufferLen) = eC_findFunction(app, "UTF8toUTF16BufferLen");
          if(FUNCTION(uTF8toUTF16BufferLen))
@@ -3664,10 +3921,6 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          if(FUNCTION(writeONString))
             F(writeONString) = (void *)FUNCTION(writeONString)->function;
 
-         FUNCTION(getCurrentThreadID) = eC_findFunction(app, "GetCurrentThreadID");
-         if(FUNCTION(getCurrentThreadID))
-            F(getCurrentThreadID) = (void *)FUNCTION(getCurrentThreadID)->function;
-
          FUNCTION(getRandom) = eC_findFunction(app, "GetRandom");
          if(FUNCTION(getRandom))
             F(getRandom) = (void *)FUNCTION(getRandom)->function;
@@ -3684,26 +3937,6 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          if(FUNCTION(__sleep))
             F(__sleep) = (void *)FUNCTION(__sleep)->function;
 
-         FUNCTION(changeCh) = eC_findFunction(app, "ChangeCh");
-         if(FUNCTION(changeCh))
-            F(changeCh) = (void *)FUNCTION(changeCh)->function;
-
-         FUNCTION(changeChars) = eC_findFunction(app, "ChangeChars");
-         if(FUNCTION(changeChars))
-            F(changeChars) = (void *)FUNCTION(changeChars)->function;
-
-         FUNCTION(changeExtension) = eC_findFunction(app, "ChangeExtension");
-         if(FUNCTION(changeExtension))
-            F(changeExtension) = (void *)FUNCTION(changeExtension)->function;
-
-         FUNCTION(checkConsistency) = eC_findFunction(app, "CheckConsistency");
-         if(FUNCTION(checkConsistency))
-            F(checkConsistency) = (void *)FUNCTION(checkConsistency)->function;
-
-         FUNCTION(checkMemory) = eC_findFunction(app, "CheckMemory");
-         if(FUNCTION(checkMemory))
-            F(checkMemory) = (void *)FUNCTION(checkMemory)->function;
-
          FUNCTION(copyBytes) = eC_findFunction(app, "CopyBytes");
          if(FUNCTION(copyBytes))
             F(copyBytes) = (void *)FUNCTION(copyBytes)->function;
@@ -3715,14 +3948,6 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          FUNCTION(copyBytesBy4) = eC_findFunction(app, "CopyBytesBy4");
          if(FUNCTION(copyBytesBy4))
             F(copyBytesBy4) = (void *)FUNCTION(copyBytesBy4)->function;
-
-         FUNCTION(copyString) = eC_findFunction(app, "CopyString");
-         if(FUNCTION(copyString))
-            F(copyString) = (void *)FUNCTION(copyString)->function;
-
-         FUNCTION(escapeCString) = eC_findFunction(app, "EscapeCString");
-         if(FUNCTION(escapeCString))
-            F(escapeCString) = (void *)FUNCTION(escapeCString)->function;
 
          FUNCTION(fillBytes) = eC_findFunction(app, "FillBytes");
          if(FUNCTION(fillBytes))
@@ -3736,197 +3961,9 @@ LIB_EXPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bo
          if(FUNCTION(fillBytesBy4))
             F(fillBytesBy4) = (void *)FUNCTION(fillBytesBy4)->function;
 
-         FUNCTION(floatFromString) = eC_findFunction(app, "FloatFromString");
-         if(FUNCTION(floatFromString))
-            F(floatFromString) = (void *)FUNCTION(floatFromString)->function;
-
-         FUNCTION(getActiveDesigner) = eC_findFunction(app, "GetActiveDesigner");
-         if(FUNCTION(getActiveDesigner))
-            F(getActiveDesigner) = (void *)FUNCTION(getActiveDesigner)->function;
-
-         FUNCTION(getExtension) = eC_findFunction(app, "GetExtension");
-         if(FUNCTION(getExtension))
-            F(getExtension) = (void *)FUNCTION(getExtension)->function;
-
-         FUNCTION(getHexValue) = eC_findFunction(app, "GetHexValue");
-         if(FUNCTION(getHexValue))
-            F(getHexValue) = (void *)FUNCTION(getHexValue)->function;
-
-         FUNCTION(getLastDirectory) = eC_findFunction(app, "GetLastDirectory");
-         if(FUNCTION(getLastDirectory))
-            F(getLastDirectory) = (void *)FUNCTION(getLastDirectory)->function;
-
-         FUNCTION(getRuntimePlatform) = eC_findFunction(app, "GetRuntimePlatform");
-         if(FUNCTION(getRuntimePlatform))
-            F(getRuntimePlatform) = (void *)FUNCTION(getRuntimePlatform)->function;
-
-         FUNCTION(getString) = eC_findFunction(app, "GetString");
-         if(FUNCTION(getString))
-            F(getString) = (void *)FUNCTION(getString)->function;
-
-         FUNCTION(getValue) = eC_findFunction(app, "GetValue");
-         if(FUNCTION(getValue))
-            F(getValue) = (void *)FUNCTION(getValue)->function;
-
-         FUNCTION(isPathInsideOf) = eC_findFunction(app, "IsPathInsideOf");
-         if(FUNCTION(isPathInsideOf))
-            F(isPathInsideOf) = (void *)FUNCTION(isPathInsideOf)->function;
-
-         FUNCTION(locateModule) = eC_findFunction(app, "LocateModule");
-         if(FUNCTION(locateModule))
-            F(locateModule) = (void *)FUNCTION(locateModule)->function;
-
-         FUNCTION(makePathRelative) = eC_findFunction(app, "MakePathRelative");
-         if(FUNCTION(makePathRelative))
-            F(makePathRelative) = (void *)FUNCTION(makePathRelative)->function;
-
          FUNCTION(moveBytes) = eC_findFunction(app, "MoveBytes");
          if(FUNCTION(moveBytes))
             F(moveBytes) = (void *)FUNCTION(moveBytes)->function;
-
-         FUNCTION(pathCat) = eC_findFunction(app, "PathCat");
-         if(FUNCTION(pathCat))
-            F(pathCat) = (void *)FUNCTION(pathCat)->function;
-
-         FUNCTION(pathCatSlash) = eC_findFunction(app, "PathCatSlash");
-         if(FUNCTION(pathCatSlash))
-            F(pathCatSlash) = (void *)FUNCTION(pathCatSlash)->function;
-
-         FUNCTION(printx) = eC_findFunction(app, "Print");
-         if(FUNCTION(printx))
-            F(printx) = (void *)FUNCTION(printx)->function;
-
-         FUNCTION(printBigSize) = eC_findFunction(app, "PrintBigSize");
-         if(FUNCTION(printBigSize))
-            F(printBigSize) = (void *)FUNCTION(printBigSize)->function;
-
-         FUNCTION(printBuf) = eC_findFunction(app, "PrintBuf");
-         if(FUNCTION(printBuf))
-            F(printBuf) = (void *)FUNCTION(printBuf)->function;
-
-         FUNCTION(printLn) = eC_findFunction(app, "PrintLn");
-         if(FUNCTION(printLn))
-            F(printLn) = (void *)FUNCTION(printLn)->function;
-
-         FUNCTION(printLnBuf) = eC_findFunction(app, "PrintLnBuf");
-         if(FUNCTION(printLnBuf))
-            F(printLnBuf) = (void *)FUNCTION(printLnBuf)->function;
-
-         FUNCTION(printLnString) = eC_findFunction(app, "PrintLnString");
-         if(FUNCTION(printLnString))
-            F(printLnString) = (void *)FUNCTION(printLnString)->function;
-
-         FUNCTION(printSize) = eC_findFunction(app, "PrintSize");
-         if(FUNCTION(printSize))
-            F(printSize) = (void *)FUNCTION(printSize)->function;
-
-         FUNCTION(printStdArgsToBuffer) = eC_findFunction(app, "PrintStdArgsToBuffer");
-         if(FUNCTION(printStdArgsToBuffer))
-            F(printStdArgsToBuffer) = (void *)FUNCTION(printStdArgsToBuffer)->function;
-
-         FUNCTION(printString) = eC_findFunction(app, "PrintString");
-         if(FUNCTION(printString))
-            F(printString) = (void *)FUNCTION(printString)->function;
-
-         FUNCTION(rSearchString) = eC_findFunction(app, "RSearchString");
-         if(FUNCTION(rSearchString))
-            F(rSearchString) = (void *)FUNCTION(rSearchString)->function;
-
-         FUNCTION(repeatCh) = eC_findFunction(app, "RepeatCh");
-         if(FUNCTION(repeatCh))
-            F(repeatCh) = (void *)FUNCTION(repeatCh)->function;
-
-         FUNCTION(searchString) = eC_findFunction(app, "SearchString");
-         if(FUNCTION(searchString))
-            F(searchString) = (void *)FUNCTION(searchString)->function;
-
-         FUNCTION(setActiveDesigner) = eC_findFunction(app, "SetActiveDesigner");
-         if(FUNCTION(setActiveDesigner))
-            F(setActiveDesigner) = (void *)FUNCTION(setActiveDesigner)->function;
-
-         FUNCTION(splitArchivePath) = eC_findFunction(app, "SplitArchivePath");
-         if(FUNCTION(splitArchivePath))
-            F(splitArchivePath) = (void *)FUNCTION(splitArchivePath)->function;
-
-         FUNCTION(splitDirectory) = eC_findFunction(app, "SplitDirectory");
-         if(FUNCTION(splitDirectory))
-            F(splitDirectory) = (void *)FUNCTION(splitDirectory)->function;
-
-         FUNCTION(stringLikePattern) = eC_findFunction(app, "StringLikePattern");
-         if(FUNCTION(stringLikePattern))
-            F(stringLikePattern) = (void *)FUNCTION(stringLikePattern)->function;
-
-         FUNCTION(stripChars) = eC_findFunction(app, "StripChars");
-         if(FUNCTION(stripChars))
-            F(stripChars) = (void *)FUNCTION(stripChars)->function;
-
-         FUNCTION(stripExtension) = eC_findFunction(app, "StripExtension");
-         if(FUNCTION(stripExtension))
-            F(stripExtension) = (void *)FUNCTION(stripExtension)->function;
-
-         FUNCTION(stripLastDirectory) = eC_findFunction(app, "StripLastDirectory");
-         if(FUNCTION(stripLastDirectory))
-            F(stripLastDirectory) = (void *)FUNCTION(stripLastDirectory)->function;
-
-         FUNCTION(stripQuotes) = eC_findFunction(app, "StripQuotes");
-         if(FUNCTION(stripQuotes))
-            F(stripQuotes) = (void *)FUNCTION(stripQuotes)->function;
-
-         FUNCTION(tokenize) = eC_findFunction(app, "Tokenize");
-         if(FUNCTION(tokenize))
-            F(tokenize) = (void *)FUNCTION(tokenize)->function;
-
-         FUNCTION(tokenizeWith) = eC_findFunction(app, "TokenizeWith");
-         if(FUNCTION(tokenizeWith))
-            F(tokenizeWith) = (void *)FUNCTION(tokenizeWith)->function;
-
-         FUNCTION(trimLSpaces) = eC_findFunction(app, "TrimLSpaces");
-         if(FUNCTION(trimLSpaces))
-            F(trimLSpaces) = (void *)FUNCTION(trimLSpaces)->function;
-
-         FUNCTION(trimRSpaces) = eC_findFunction(app, "TrimRSpaces");
-         if(FUNCTION(trimRSpaces))
-            F(trimRSpaces) = (void *)FUNCTION(trimRSpaces)->function;
-
-         FUNCTION(unescapeCString) = eC_findFunction(app, "UnescapeCString");
-         if(FUNCTION(unescapeCString))
-            F(unescapeCString) = (void *)FUNCTION(unescapeCString)->function;
-
-         FUNCTION(unescapeCStringLoose) = eC_findFunction(app, "UnescapeCStringLoose");
-         if(FUNCTION(unescapeCStringLoose))
-            F(unescapeCStringLoose) = (void *)FUNCTION(unescapeCStringLoose)->function;
-
-         FUNCTION(eSystem_LockMem) = eC_findFunction(app, "eSystem_LockMem");
-         if(FUNCTION(eSystem_LockMem))
-            F(eSystem_LockMem) = (void *)FUNCTION(eSystem_LockMem)->function;
-
-         FUNCTION(eSystem_UnlockMem) = eC_findFunction(app, "eSystem_UnlockMem");
-         if(FUNCTION(eSystem_UnlockMem))
-            F(eSystem_UnlockMem) = (void *)FUNCTION(eSystem_UnlockMem)->function;
-
-         FUNCTION(ishexdigit) = eC_findFunction(app, "ishexdigit");
-         if(FUNCTION(ishexdigit))
-            F(ishexdigit) = (void *)FUNCTION(ishexdigit)->function;
-
-         FUNCTION(log2i) = eC_findFunction(app, "log2i");
-         if(FUNCTION(log2i))
-            F(log2i) = (void *)FUNCTION(log2i)->function;
-
-         FUNCTION(memswap) = eC_findFunction(app, "memswap");
-         if(FUNCTION(memswap))
-            F(memswap) = (void *)FUNCTION(memswap)->function;
-
-         FUNCTION(pow2i) = eC_findFunction(app, "pow2i");
-         if(FUNCTION(pow2i))
-            F(pow2i) = (void *)FUNCTION(pow2i)->function;
-
-         FUNCTION(queryMemInfo) = eC_findFunction(app, "queryMemInfo");
-         if(FUNCTION(queryMemInfo))
-            F(queryMemInfo) = (void *)FUNCTION(queryMemInfo)->function;
-
-         FUNCTION(strchrmax) = eC_findFunction(app, "strchrmax");
-         if(FUNCTION(strchrmax))
-            F(strchrmax) = (void *)FUNCTION(strchrmax)->function;
 
       }
    }

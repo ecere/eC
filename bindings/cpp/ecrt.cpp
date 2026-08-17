@@ -1,8 +1,5 @@
 #include "ecrt.hpp"
 
-TCPPClass<Application> Application::_cpp_class;
-TCPPClass<Instance> Instance::_cpp_class;
-TCPPClass<Module> Module::_cpp_class;
 TCPPClass<AVLTree> AVLTree::_cpp_class;
 TCPPClass<Array> Array::_cpp_class;
 TCPPClass<Container> Container::_cpp_class;
@@ -12,6 +9,12 @@ TCPPClass<HashTable> HashTable::_cpp_class;
 TCPPClass<LinkList> LinkList::_cpp_class;
 TCPPClass<List> List::_cpp_class;
 TCPPClass<Map> Map::_cpp_class;
+TCPPClass<Application> Application::_cpp_class;
+TCPPClass<IOChannel> IOChannel::_cpp_class;
+TCPPClass<Instance> Instance::_cpp_class;
+TCPPClass<Module> Module::_cpp_class;
+TCPPClass<SerialBuffer> SerialBuffer::_cpp_class;
+TCPPClass<ZString> ZString::_cpp_class;
 TCPPClass<Archive> Archive::_cpp_class;
 TCPPClass<ArchiveDir> ArchiveDir::_cpp_class;
 TCPPClass<BufferedFile> BufferedFile::_cpp_class;
@@ -30,19 +33,15 @@ TCPPClass<JSONGlobalSettings> JSONGlobalSettings::_cpp_class;
 TCPPClass<JSONParser> JSONParser::_cpp_class;
 TCPPClass<OptionsMap> OptionsMap::_cpp_class;
 TCPPClass<Thread> Thread::_cpp_class;
-TCPPClass<IOChannel> IOChannel::_cpp_class;
-TCPPClass<SerialBuffer> SerialBuffer::_cpp_class;
-TCPPClass<ZString> ZString::_cpp_class;
 
 int ecrt_cpp_init(const Module & module)
 {
-   if(!ZString::_cpp_class.impl)
+   if(!Thread::_cpp_class.impl)
    {
 #ifdef _DEBUG
       // printf("%s_cpp_init\n", "ecrt");
 #endif
 
-   TStruct<FieldValue>::_class = CO(FieldValue);
    TStruct<BinaryTree>::_class = CO(BinaryTree);
    TStruct<BuiltInContainer>::_class = CO(BuiltInContainer);
    TStruct<HashMapIterator>::_class = CO(HashMapIterator);
@@ -55,47 +54,21 @@ int ecrt_cpp_init(const Module & module)
    TStruct<MapIterator>::_class = CO(MapIterator);
    TStruct<OldList>::_class = CO(OldList);
    TStruct<StringBinaryTree>::_class = CO(StringBinaryTree);
+   TStruct<ClassTemplateArgument>::_class = CO(ClassTemplateArgument);
+   TStruct<DataValue>::_class = CO(DataValue);
+   TStruct<NameSpace>::_class = CO(NameSpace);
+   TStruct<StaticString>::_class = CO(StaticString);
+   TStruct<FieldValue>::_class = CO(FieldValue);
    TStruct<FileListing>::_class = CO(FileListing);
    TStruct<FileStats>::_class = CO(FileStats);
    TStruct<Date>::_class = CO(Date);
    TStruct<DateTime>::_class = CO(DateTime);
    TStruct<Box>::_class = CO(Box);
-   TStruct<ClassTemplateArgument>::_class = CO(ClassTemplateArgument);
-   TStruct<DataValue>::_class = CO(DataValue);
-   TStruct<NameSpace>::_class = CO(NameSpace);
    TStruct<Point>::_class = CO(Point);
    TStruct<Pointd>::_class = CO(Pointd);
    TStruct<Pointf>::_class = CO(Pointf);
    TStruct<Size>::_class = CO(Size);
-   TStruct<StaticString>::_class = CO(StaticString);
 
-   Application::_cpp_class.setup(
-         (XClass *)eC_registerClass(
-               ClassType_normalClass,
-               "CPP" "Application", "Application",
-               sizeof(Instance *), 0,
-               (C(bool) (*)(void *)) Application::constructor,
-               (void(*)(void *)) Application::destructor,
-               (module).impl,
-               AccessMode_privateAccess, AccessMode_publicAccess));
-   Instance::_cpp_class.setup(
-         (XClass *)eC_registerClass(
-               ClassType_normalClass,
-               "CPP" "Instance", "Instance",
-               sizeof(Instance *), 0,
-               (C(bool) (*)(void *)) Instance::constructor,
-               (void(*)(void *)) Instance::destructor,
-               (module).impl,
-               AccessMode_privateAccess, AccessMode_publicAccess));
-   Module::_cpp_class.setup(
-         (XClass *)eC_registerClass(
-               ClassType_normalClass,
-               "CPP" "Module", "Module",
-               sizeof(Instance *), 0,
-               (C(bool) (*)(void *)) Module::constructor,
-               (void(*)(void *)) Module::destructor,
-               (module).impl,
-               AccessMode_privateAccess, AccessMode_publicAccess));
    AVLTree::_cpp_class.setup(
          (XClass *)eC_registerClass(
                ClassType_normalClass,
@@ -175,6 +148,60 @@ int ecrt_cpp_init(const Module & module)
                sizeof(Instance *), 0,
                null,
                null,
+               (module).impl,
+               AccessMode_privateAccess, AccessMode_publicAccess));
+   Application::_cpp_class.setup(
+         (XClass *)eC_registerClass(
+               ClassType_normalClass,
+               "CPP" "Application", "Application",
+               sizeof(Instance *), 0,
+               (C(bool) (*)(void *)) Application::constructor,
+               (void(*)(void *)) Application::destructor,
+               (module).impl,
+               AccessMode_privateAccess, AccessMode_publicAccess));
+   IOChannel::_cpp_class.setup(
+         (XClass *)eC_registerClass(
+               ClassType_normalClass,
+               "CPP" "IOChannel", "IOChannel",
+               sizeof(Instance *), 0,
+               (C(bool) (*)(void *)) IOChannel::constructor,
+               (void(*)(void *)) IOChannel::destructor,
+               (module).impl,
+               AccessMode_privateAccess, AccessMode_publicAccess));
+   Instance::_cpp_class.setup(
+         (XClass *)eC_registerClass(
+               ClassType_normalClass,
+               "CPP" "Instance", "Instance",
+               sizeof(Instance *), 0,
+               (C(bool) (*)(void *)) Instance::constructor,
+               (void(*)(void *)) Instance::destructor,
+               (module).impl,
+               AccessMode_privateAccess, AccessMode_publicAccess));
+   Module::_cpp_class.setup(
+         (XClass *)eC_registerClass(
+               ClassType_normalClass,
+               "CPP" "Module", "Module",
+               sizeof(Instance *), 0,
+               (C(bool) (*)(void *)) Module::constructor,
+               (void(*)(void *)) Module::destructor,
+               (module).impl,
+               AccessMode_privateAccess, AccessMode_publicAccess));
+   SerialBuffer::_cpp_class.setup(
+         (XClass *)eC_registerClass(
+               ClassType_normalClass,
+               "CPP" "SerialBuffer", "SerialBuffer",
+               sizeof(Instance *), 0,
+               (C(bool) (*)(void *)) SerialBuffer::constructor,
+               (void(*)(void *)) SerialBuffer::destructor,
+               (module).impl,
+               AccessMode_privateAccess, AccessMode_publicAccess));
+   ZString::_cpp_class.setup(
+         (XClass *)eC_registerClass(
+               ClassType_normalClass,
+               "CPP" "ZString", "ZString",
+               sizeof(Instance *), 0,
+               (C(bool) (*)(void *)) ZString::constructor,
+               (void(*)(void *)) ZString::destructor,
                (module).impl,
                AccessMode_privateAccess, AccessMode_publicAccess));
    Archive::_cpp_class.setup(
@@ -337,33 +364,6 @@ int ecrt_cpp_init(const Module & module)
                sizeof(Instance *), 0,
                (C(bool) (*)(void *)) Thread::constructor,
                (void(*)(void *)) Thread::destructor,
-               (module).impl,
-               AccessMode_privateAccess, AccessMode_publicAccess));
-   IOChannel::_cpp_class.setup(
-         (XClass *)eC_registerClass(
-               ClassType_normalClass,
-               "CPP" "IOChannel", "IOChannel",
-               sizeof(Instance *), 0,
-               (C(bool) (*)(void *)) IOChannel::constructor,
-               (void(*)(void *)) IOChannel::destructor,
-               (module).impl,
-               AccessMode_privateAccess, AccessMode_publicAccess));
-   SerialBuffer::_cpp_class.setup(
-         (XClass *)eC_registerClass(
-               ClassType_normalClass,
-               "CPP" "SerialBuffer", "SerialBuffer",
-               sizeof(Instance *), 0,
-               (C(bool) (*)(void *)) SerialBuffer::constructor,
-               (void(*)(void *)) SerialBuffer::destructor,
-               (module).impl,
-               AccessMode_privateAccess, AccessMode_publicAccess));
-   ZString::_cpp_class.setup(
-         (XClass *)eC_registerClass(
-               ClassType_normalClass,
-               "CPP" "ZString", "ZString",
-               sizeof(Instance *), 0,
-               (C(bool) (*)(void *)) ZString::constructor,
-               (void(*)(void *)) ZString::destructor,
                (module).impl,
                AccessMode_privateAccess, AccessMode_publicAccess));
    }
@@ -707,25 +707,6 @@ void Application::class_registration(CPPClass & _cpp_class)
 
 
 }
-
-/////////////////////////////////////////////////////////////// [ecrt]/ //////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-
-
-///////////////////////////////////////////////////////////// [ecrt]/eC //////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-
-   FieldTypeEx::FieldTypeEx(FieldType type, bool mustFree, FieldValueFormat format, bool isUnsigned, bool isDateTime)
-   {
-      impl = FIELDTYPEEX(type, mustFree, format, isUnsigned, isDateTime);
-   }
-
-////////////////////////////////////////////////////// [ecrt]/eC::types //////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-
    EscapeCStringOptions::EscapeCStringOptions(bool escapeSingleQuote, bool escapeDoubleQuotes, bool writeQuotes, bool multiLine, int indent)
    {
       impl = ESCAPECSTRINGOPTIONS(escapeSingleQuote, escapeDoubleQuotes, writeQuotes, multiLine, indent);
@@ -785,6 +766,11 @@ void ZString::class_registration(CPPClass & _cpp_class)
 {
 }
 
+////////////////////////////////////////////////////// [ecrt]/eC::types //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
 ///////////////////////////////////////////////// [ecrt]/eC::containers //////// ////////////////
 //////////////////////////////////////////////////////////////////////////////// ////////////////
 //////////////////////////////////////////////////////////////////////////////// ////////////////
@@ -816,6 +802,30 @@ void List::class_registration(CPPClass & _cpp_class)
 void Map::class_registration(CPPClass & _cpp_class)
 {
 }
+
+/////////////////////////////////////////////////////// [ecrt]/eC::i18n //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
+///////////////////////////////////////////////////////// [ecrt]/eC::mt //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
+/////////////////////////////////////////////////////////////// [ecrt]/ //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
+///////////////////////////////////////////////////////////// [ecrt]/eC //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+   FieldTypeEx::FieldTypeEx(FieldType type, bool mustFree, FieldValueFormat format, bool isUnsigned, bool isDateTime)
+   {
+      impl = FIELDTYPEEX(type, mustFree, format, isUnsigned, isDateTime);
+   }
 
 ////////////////////////////////////////////////////// [ecrt]/eC::files //////// ////////////////
 //////////////////////////////////////////////////////////////////////////////// ////////////////

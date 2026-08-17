@@ -10,13 +10,7 @@
 #if !defined(__ECRT_H__)
 #define __ECRT_H__
 
-#ifndef CPP11
-#if defined(__cplusplus) && __cplusplus >= 201103L
-#define CPP11 1
-#else
-#define CPP11 0
-#endif
-#endif
+#define CPP11 (defined(__cplusplus) && __cplusplus >= 201103L)
 
 #ifdef __cplusplus
 
@@ -33,12 +27,6 @@ extern "C" {
 #include <stdarg.h>
 #include <string.h>
 
-#if defined(__EMSCRIPTEN__)
-#define bool _bool
-#include <emscripten.h>
-#undef bool
-#endif
-
 
 #if !defined(ECRT_MODULE_NAME)
 #define ECRT_MODULE_NAME "ecrt"
@@ -50,9 +38,6 @@ extern "C" {
 #elif defined(__WIN32__)
 #define LIB_EXPORT __attribute__((dllexport)) __attribute__ ((visibility("default")))
 #define LIB_IMPORT __attribute__((dllimport))
-#elif defined(__EMSCRIPTEN__)
-#define LIB_EXPORT EMSCRIPTEN_KEEPALIVE
-#define LIB_IMPORT
 #else
 #define LIB_EXPORT __attribute__ ((visibility("default")))
 #define LIB_IMPORT
@@ -417,27 +402,12 @@ enum C(Alignment)
    Alignment_right = 0x1,
    Alignment_center = 0x2
 };
-typedef uint32_t C(DataDisplayFlags);
 
 // libec stuff
 typedef void C(Type);
 typedef void C(Instantiation);
 typedef void C(ClassDefinition);
-
 typedef struct CM(Instance) * C(Instance);
-typedef C(Instance) C(Surface);
-typedef C(Instance) C(Window);
-typedef C(Window) C(CommonControl);
-typedef C(CommonControl) C(DataBox);
-typedef C(CommonControl) C(EditBox);
-
-typedef int C(MinMaxValue);
-struct C(Size)
-{
-   C(MinMaxValue) w;
-   C(MinMaxValue) h;
-};
-typedef struct C(Size) C(Size);
 
 // namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
 // namespace /////////////// ////////  eC||types  /////////////////////////////////////////////// ////////////////////////////////
@@ -445,6 +415,16 @@ typedef struct C(Size) C(Size);
 
 
 // start -- moved backwards outputs
+typedef struct C(BTNamedLink) C(BTNamedLink);
+struct C(BTNamedLink)
+{
+   const char * name;
+   C(BTNamedLink) * parent;
+   C(BTNamedLink) * left;
+   C(BTNamedLink) * right;
+   int depth;
+   void * data;
+};
 typedef struct C(BTNode) C(BTNode);
 typedef uintptr_t uintptr;
 struct C(BTNode)
@@ -628,67 +608,6 @@ struct C(Class)
    C(bool) byValueSystemClass;
    void * bindingsClass;
 };
-typedef struct C(Method) C(Method);
-// end -- moved backwards outputs
-struct CM(Application)
-{
-   int argc;
-   const char ** argv;
-   int exitCode;
-   C(bool) isGUIApp;
-   C(OldList) allModules;
-   char * parsedCommand;
-   C(NameSpace) systemNameSpace;
-};
-extern THIS_LIB_IMPORT int M_VTBLID(Application, main);
-// void Application_main(C(Application) __i);
-#define Application_main(__i) \
-   VMETHOD(CO(Application), Application, main, __i, void, \
-      C(Application), \
-      __i)
-extern THIS_LIB_IMPORT C(Method) * METHOD(Application, main);
-
-struct CM(Instance)
-{
-   void ** _vTbl;
-   C(Class) * _class;
-   int _refCount;
-};
-
-extern THIS_LIB_IMPORT int M_VTBLID(Module, onLoad);
-// C(bool) Module_onLoad(C(Module) __i);
-#define Module_onLoad(__i) \
-   VMETHOD(CO(Module), Module, onLoad, __i, C(bool), \
-      C(Module), \
-      __i)
-extern THIS_LIB_IMPORT C(Method) * METHOD(Module, onLoad);
-
-extern THIS_LIB_IMPORT int M_VTBLID(Module, onUnload);
-// void Module_onUnload(C(Module) __i);
-#define Module_onUnload(__i) \
-   VMETHOD(CO(Module), Module, onUnload, __i, void, \
-      C(Module), \
-      __i)
-extern THIS_LIB_IMPORT C(Method) * METHOD(Module, onUnload);
-
-
-
-// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
-// namespace /////////////// ////////  eC||types  /////////////////////////////////////////////// ////////////////////////////////
-// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
-
-
-// start -- moved backwards outputs
-typedef struct C(BTNamedLink) C(BTNamedLink);
-struct C(BTNamedLink)
-{
-   const char * name;
-   C(BTNamedLink) * parent;
-   C(BTNamedLink) * left;
-   C(BTNamedLink) * right;
-   int depth;
-   void * data;
-};
 typedef struct C(BitMember) C(BitMember);
 #if CPP11
 enum C(DataMemberType) : int
@@ -763,6 +682,9 @@ struct C(DataValue)
 {
    union
    {
+      double d;
+      int64 i64;
+      uint64 ui64;
       char c;
       byte uc;
       short s;
@@ -771,11 +693,9 @@ struct C(DataValue)
       uint ui;
       void * p;
       float f;
-      double d;
-      int64 i64;
-      uint64 ui64;
    };
 };
+typedef struct C(Method) C(Method);
 #if CPP11
 enum C(MethodType) : int
 #else
@@ -913,6 +833,12 @@ struct C(GlobalFunction)
    C(Type) * dataType;
    void * symbol;
 };
+struct CM(Instance)
+{
+   void ** _vTbl;
+   C(Class) * _class;
+   int _refCount;
+};
 typedef struct C(ObjectInfo) C(ObjectInfo);
 struct C(ObjectInfo)
 {
@@ -946,13 +872,11 @@ enum C(BackSlashEscaping)
    BackSlashEscaping_forArgsPassing = 0x2
 };
 
-typedef struct C(Box) C(Box);
 typedef C(Instance) C(ClassDesignerBase);
 typedef C(Instance) C(DesignerBase);
 typedef uint32_t uint32;
 typedef uint32 C(EscapeCStringOptions);
 typedef C(Instance) C(IOChannel);
-typedef int C(MinMaxValue);
 #if CPP11
 enum C(Platform) : int
 #else
@@ -966,7 +890,6 @@ enum C(Platform)
    Platform_apple = 0x3
 };
 
-typedef struct C(Point) C(Point);
 typedef C(IOChannel) C(SerialBuffer);
 typedef struct C(Size) C(Size);
 typedef char * C(String);
@@ -1005,9 +928,7 @@ typedef size_t uintsize;
 
 #define MAXDWORD (0xffffffff)
 
-#ifndef MAXFLOAT
 #define MAXFLOAT (3.40282346638528860e+38f)
-#endif
 
 #define MAXINT (((int)0x7fffffff))
 
@@ -1035,8 +956,6 @@ typedef size_t uintsize;
 
 #define MININT64 (((long long)0x8000000000000000LL))
 
-#define Pi (((C(Angle))(3.1415926535897932384626433832795028841971)))
-
 #if defined(__cplusplus)
 #define null 0
 #else
@@ -1045,7 +964,6 @@ typedef size_t uintsize;
 
 typedef double C(Angle);
 typedef char * C(CIString);
-typedef double C(Distance);
 typedef struct C(EnumClassData) C(EnumClassData);
 #if CPP11
 enum C(ObjectNotationType) : uint
@@ -1059,38 +977,24 @@ enum C(ObjectNotationType)
    ObjectNotationType_json = 0x2
 };
 
-typedef struct C(Pointd) C(Pointd);
-typedef struct C(Pointf) C(Pointf);
 typedef struct C(StaticString) C(StaticString);
-struct C(Box)
+struct CM(Application)
 {
-   int left;
-   int top;
-   int right;
-   int bottom;
+   int argc;
+   const char ** argv;
+   int exitCode;
+   C(bool) isGUIApp;
+   C(OldList) allModules;
+   char * parsedCommand;
+   C(NameSpace) systemNameSpace;
 };
-extern THIS_LIB_IMPORT void (* Box_clip)(C(Box) * __this, C(Box) * against);
-
-extern THIS_LIB_IMPORT void (* Box_clipOffset)(C(Box) * __this, C(Box) * against, int x, int y);
-
-extern THIS_LIB_IMPORT C(bool) (* Box_isPointInside)(C(Box) * __this, C(Point) * point);
-
-extern THIS_LIB_IMPORT C(bool) (* Box_overlap)(C(Box) * __this, C(Box) * box);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Box, width);
-extern THIS_LIB_IMPORT void (* Box_set_width)(const C(Box) * b, int value);
-extern THIS_LIB_IMPORT int (* Box_get_width)(const C(Box) * b);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Box, height);
-extern THIS_LIB_IMPORT void (* Box_set_height)(const C(Box) * b, int value);
-extern THIS_LIB_IMPORT int (* Box_get_height)(const C(Box) * b);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Centimeters, Meters);
-extern THIS_LIB_IMPORT double (* Centimeters_from_Meters)(const C(Distance) meters);
-extern THIS_LIB_IMPORT C(Distance) (* Centimeters_to_Meters)(const double centimeters);
-#define Centimeters(x) CENTIMETERS(x)
-#define CENTIMETERS(x)  ((C(Distance))((x) * 0.01))
-#define Distance_in_Centimeters(x)  ((double)((x) * 100))
+extern THIS_LIB_IMPORT int M_VTBLID(Application, main);
+// void Application_main(C(Application) __i);
+#define Application_main(__i) \
+   VMETHOD(CO(Application), Application, main, __i, void, \
+      C(Application), \
+      __i)
+extern THIS_LIB_IMPORT C(Method) * METHOD(Application, main);
 
 extern THIS_LIB_IMPORT C(Property) * PROPERTY(Class, char_ptr);
 extern THIS_LIB_IMPORT void (* Class_from_char_ptr)(const C(Class) * c, const char * value);
@@ -1183,13 +1087,6 @@ extern THIS_LIB_IMPORT int M_VTBLID(ClassDesignerBase, selectObject);
       C(ClassDesignerBase) _ARG C(ObjectInfo) * _ARG C(Instance), \
       __i _ARG object _ARG control)
 extern THIS_LIB_IMPORT C(Method) * METHOD(ClassDesignerBase, selectObject);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Degrees, Radians);
-extern THIS_LIB_IMPORT double (* Degrees_from_Radians)(const C(Angle) radians);
-extern THIS_LIB_IMPORT C(Angle) (* Degrees_to_Radians)(const double degrees);
-#define Degrees(x) DEGREES(x)
-#define DEGREES(x)  ((C(Angle))((x) * 0.0174532925199433))
-#define Angle_in_Degrees(x)  ((double)((x) * 57.2957795130823))
 
 struct CM(DesignerBase)
 {
@@ -1325,13 +1222,6 @@ struct C(EnumClassData)
 #define ESCAPECSTRINGOPTIONS(escapeSingleQuote, escapeDoubleQuotes, writeQuotes, multiLine, indent)                (((((((C(EscapeCStringOptions))(escapeSingleQuote)) << ESCAPECSTRINGOPTIONS_escapeSingleQuote_SHIFT) | ((C(EscapeCStringOptions))(escapeDoubleQuotes)) << ESCAPECSTRINGOPTIONS_escapeDoubleQuotes_SHIFT) | ((C(EscapeCStringOptions))(writeQuotes)) << ESCAPECSTRINGOPTIONS_writeQuotes_SHIFT) | ((C(EscapeCStringOptions))(multiLine)) << ESCAPECSTRINGOPTIONS_multiLine_SHIFT) | ((C(EscapeCStringOptions))(indent)) << ESCAPECSTRINGOPTIONS_indent_SHIFT)
 
 
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Feet, Meters);
-extern THIS_LIB_IMPORT double (* Feet_from_Meters)(const C(Distance) meters);
-extern THIS_LIB_IMPORT C(Distance) (* Feet_to_Meters)(const double feet);
-#define Feet(x) FEET(x)
-#define FEET(x)  ((C(Distance))((x) * 0.304800003767014))
-#define Distance_in_Feet(x)  ((double)((x) * 3.28083985446533))
-
 extern THIS_LIB_IMPORT void (* IOChannel_get)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
 
 extern THIS_LIB_IMPORT void (* IOChannel_put)(C(IOChannel) __this, typed_object_class_ptr class_data, void * data);
@@ -1356,32 +1246,27 @@ extern THIS_LIB_IMPORT int M_VTBLID(IOChannel, writeData);
       __i _ARG data _ARG numBytes)
 extern THIS_LIB_IMPORT C(Method) * METHOD(IOChannel, writeData);
 
-#define Meters(x) METERS(x)
-#define METERS(x)  ((C(Distance))(x))
-#define Distance_in_Meters(x)  ((double)(x))
+
+extern THIS_LIB_IMPORT int M_VTBLID(Module, onLoad);
+// C(bool) Module_onLoad(C(Module) __i);
+#define Module_onLoad(__i) \
+   VMETHOD(CO(Module), Module, onLoad, __i, C(bool), \
+      C(Module), \
+      __i)
+extern THIS_LIB_IMPORT C(Method) * METHOD(Module, onLoad);
+
+extern THIS_LIB_IMPORT int M_VTBLID(Module, onUnload);
+// void Module_onUnload(C(Module) __i);
+#define Module_onUnload(__i) \
+   VMETHOD(CO(Module), Module, onUnload, __i, void, \
+      C(Module), \
+      __i)
+extern THIS_LIB_IMPORT C(Method) * METHOD(Module, onUnload);
+
 
 extern THIS_LIB_IMPORT C(Property) * PROPERTY(Platform, char_ptr);
 extern THIS_LIB_IMPORT C(Platform) (* Platform_from_char_ptr)(const char * c);
 extern THIS_LIB_IMPORT const char * (* Platform_to_char_ptr)(const C(Platform) platform);
-
-struct C(Point)
-{
-   int x;
-   int y;
-};
-struct C(Pointd)
-{
-   double x;
-   double y;
-};
-struct C(Pointf)
-{
-   float x;
-   float y;
-};
-#define Radians(x) RADIANS(x)
-#define RADIANS(x)  ((C(Angle))(x))
-#define Angle_in_Radians(x)  ((double)(x))
 
 struct CM(SerialBuffer)
 {
@@ -1400,11 +1285,6 @@ extern THIS_LIB_IMPORT C(Property) * PROPERTY(SerialBuffer, size);
 extern THIS_LIB_IMPORT void (* SerialBuffer_set_size)(const C(SerialBuffer) s, uint value);
 extern THIS_LIB_IMPORT uint (* SerialBuffer_get_size)(const C(SerialBuffer) s);
 
-/*struct C(Size)
-{
-   C(MinMaxValue) w;
-   C(MinMaxValue) h;
-};*/
 struct C(StaticString)
 {
    char string[1];
@@ -1447,14 +1327,8 @@ extern THIS_LIB_IMPORT void (* F(changeChars))(char * string, const char * chars
 extern THIS_LIB_IMPORT char * (* F(changeExtension))(const char * string, const char * ext, char * output);
 extern THIS_LIB_IMPORT void (* F(checkConsistency))(void);
 extern THIS_LIB_IMPORT void (* F(checkMemory))(void);
-extern THIS_LIB_IMPORT void (* F(copyBytes))(void * dest, const void * source, uintsize count);
-extern THIS_LIB_IMPORT void (* F(copyBytesBy2))(void * dest, const void * source, uintsize count);
-extern THIS_LIB_IMPORT void (* F(copyBytesBy4))(void * dest, const void * source, uintsize count);
 extern THIS_LIB_IMPORT char * (* F(copyString))(const char * string);
 extern THIS_LIB_IMPORT int (* F(escapeCString))(C(String) outString, int bufferLen, constString s, C(EscapeCStringOptions) options);
-extern THIS_LIB_IMPORT void (* F(fillBytes))(void * area, byte value, uintsize count);
-extern THIS_LIB_IMPORT void (* F(fillBytesBy2))(void * area, uint16 value, uintsize count);
-extern THIS_LIB_IMPORT void (* F(fillBytesBy4))(void * area, uint value, uintsize count);
 extern THIS_LIB_IMPORT double (* F(floatFromString))(const char * string);
 extern THIS_LIB_IMPORT C(DesignerBase) (* F(getActiveDesigner))(void);
 extern THIS_LIB_IMPORT char * (* F(getExtension))(const char * string, char * output);
@@ -1466,7 +1340,6 @@ extern THIS_LIB_IMPORT int (* F(getValue))(const char ** buffer);
 extern THIS_LIB_IMPORT C(bool) (* F(isPathInsideOf))(const char * path, const char * of);
 extern THIS_LIB_IMPORT C(bool) (* F(locateModule))(const char * name, const char * fileName);
 extern THIS_LIB_IMPORT char * (* F(makePathRelative))(const char * path, const char * to, char * destination);
-extern THIS_LIB_IMPORT void (* F(moveBytes))(void * dest, const void * source, uintsize count);
 extern THIS_LIB_IMPORT char * (* F(pathCat))(char * string, const char * addedPath);
 extern THIS_LIB_IMPORT char * (* F(pathCatSlash))(char * string, const char * addedPath);
 extern THIS_LIB_IMPORT void (* F(printx))(typed_object_class_ptr class_object, const void * object, ...);
@@ -1501,8 +1374,104 @@ extern THIS_LIB_IMPORT C(bool) (* F(ishexdigit))(char x);
 extern THIS_LIB_IMPORT uint (* F(log2i))(uint number);
 extern THIS_LIB_IMPORT void (* F(memswap))(byte * a, byte * b, uintsize size);
 extern THIS_LIB_IMPORT uint (* F(pow2i))(uint number);
+extern THIS_LIB_IMPORT int (* F(printDouble))(char * str, int bufsize, int decimals, double value);
 extern THIS_LIB_IMPORT void (* F(queryMemInfo))(char * string);
 extern THIS_LIB_IMPORT char * (* F(strchrmax))(const char * s, int c, int max);
+
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// ////////  eC||types  /////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+
+
+// start -- moved backwards outputs
+typedef struct C(Box) C(Box);
+typedef int C(MinMaxValue);
+typedef struct C(Point) C(Point);
+// end -- moved backwards outputs
+#define Pi (((C(Angle))(3.1415926535897932384626433832795028841971)))
+
+typedef double C(Distance);
+typedef struct C(Pointd) C(Pointd);
+typedef struct C(Pointf) C(Pointf);
+struct C(Box)
+{
+   int left;
+   int top;
+   int right;
+   int bottom;
+};
+extern THIS_LIB_IMPORT void (* Box_clip)(C(Box) * __this, C(Box) * against);
+
+extern THIS_LIB_IMPORT void (* Box_clipOffset)(C(Box) * __this, C(Box) * against, int x, int y);
+
+extern THIS_LIB_IMPORT C(bool) (* Box_isPointInside)(C(Box) * __this, C(Point) * point);
+
+extern THIS_LIB_IMPORT C(bool) (* Box_overlap)(C(Box) * __this, C(Box) * box);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Box, width);
+extern THIS_LIB_IMPORT void (* Box_set_width)(const C(Box) * b, int value);
+extern THIS_LIB_IMPORT int (* Box_get_width)(const C(Box) * b);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Box, height);
+extern THIS_LIB_IMPORT void (* Box_set_height)(const C(Box) * b, int value);
+extern THIS_LIB_IMPORT int (* Box_get_height)(const C(Box) * b);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Centimeters, Meters);
+extern THIS_LIB_IMPORT double (* Centimeters_from_Meters)(const C(Distance) meters);
+extern THIS_LIB_IMPORT C(Distance) (* Centimeters_to_Meters)(const double centimeters);
+#define Centimeters(x) CENTIMETERS(x)
+#define CENTIMETERS(x)  ((C(Distance))((x) * 0.01))
+#define Distance_in_Centimeters(x)  ((double)((x) * 100))
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Degrees, Radians);
+extern THIS_LIB_IMPORT double (* Degrees_from_Radians)(const C(Angle) radians);
+extern THIS_LIB_IMPORT C(Angle) (* Degrees_to_Radians)(const double degrees);
+#define Degrees(x) DEGREES(x)
+#define DEGREES(x)  ((C(Angle))((x) * 0.0174532925199433))
+#define Angle_in_Degrees(x)  ((double)((x) * 57.2957795130823))
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Feet, Meters);
+extern THIS_LIB_IMPORT double (* Feet_from_Meters)(const C(Distance) meters);
+extern THIS_LIB_IMPORT C(Distance) (* Feet_to_Meters)(const double feet);
+#define Feet(x) FEET(x)
+#define FEET(x)  ((C(Distance))((x) * 0.304800003767014))
+#define Distance_in_Feet(x)  ((double)((x) * 3.28083985446533))
+
+#define Meters(x) METERS(x)
+#define METERS(x)  ((C(Distance))(x))
+#define Distance_in_Meters(x)  ((double)(x))
+
+struct C(Point)
+{
+   int x;
+   int y;
+};
+struct C(Pointd)
+{
+   double x;
+   double y;
+};
+struct C(Pointf)
+{
+   float x;
+   float y;
+};
+#define Radians(x) RADIANS(x)
+#define RADIANS(x)  ((C(Angle))(x))
+#define Angle_in_Radians(x)  ((double)(x))
+
+struct C(Size)
+{
+   C(MinMaxValue) w;
+   C(MinMaxValue) h;
+};
+extern THIS_LIB_IMPORT void (* F(copyBytes))(void * dest, const void * source, uintsize count);
+extern THIS_LIB_IMPORT void (* F(copyBytesBy2))(void * dest, const void * source, uintsize count);
+extern THIS_LIB_IMPORT void (* F(copyBytesBy4))(void * dest, const void * source, uintsize count);
+extern THIS_LIB_IMPORT void (* F(fillBytes))(void * area, byte value, uintsize count);
+extern THIS_LIB_IMPORT void (* F(fillBytesBy2))(void * area, uint16 value, uintsize count);
+extern THIS_LIB_IMPORT void (* F(fillBytesBy4))(void * area, uint value, uintsize count);
+extern THIS_LIB_IMPORT void (* F(moveBytes))(void * dest, const void * source, uintsize count);
 
 // namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
 // namespace /////////////// ////////    //////////////////////////////////////////////////////// ////////////////////////////////
@@ -1523,6 +1492,7 @@ typedef C(CustomAVLTree) C(Map);
 
 typedef intptr_t intptr;
 typedef ssize_t intsize;
+typedef uint32_t unichar;
 typedef C(Map) T(Map, String, FieldValue);
 typedef C(Array) T(Array, FieldValue);
 typedef C(Map) T(Map, String, JSONTypeOptions);
@@ -1711,126 +1681,13 @@ extern THIS_LIB_IMPORT int (* float_get_signBit)(const float f);
 
 
 // namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
-// namespace /////////////// ////////    //////////////////////////////////////////////////////// ////////////////////////////////
-// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
-
-
-#define jsonIndentWidth (3)
-
-typedef uint32_t unichar;
-
-// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
-// namespace /////////////// ////////  eC  ////////////////////////////////////////////////////// ////////////////////////////////
-// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
-
-
-// start -- moved backwards outputs
-typedef uint64_t TP(Container, T);
-struct CM(Array)
-{
-   TP(Container, T) * array;
-   uint count;
-   uint minAllocSize;
-};
-typedef int C(FieldTypeEx);
-typedef struct C(FieldValue) C(FieldValue);
-// end -- moved backwards outputs
-#if CPP11
-enum C(FieldType) : int
-#else
-typedef int C(FieldType);
-enum C(FieldType)
-#endif
-{
-   FieldType_integer = 0x1,
-   FieldType_real = 0x2,
-   FieldType_text = 0x3,
-   FieldType_blob = 0x4,
-   FieldType_nil = 0x5,
-   FieldType_array = 0x6,
-   FieldType_map = 0x7
-};
-
-#if CPP11
-enum C(FieldValueFormat) : int
-#else
-typedef int C(FieldValueFormat);
-enum C(FieldValueFormat)
-#endif
-{
-   FieldValueFormat_decimal = 0x0,
-   FieldValueFormat_unset = 0x0,
-   FieldValueFormat_hex = 0x1,
-   FieldValueFormat_octal = 0x2,
-   FieldValueFormat_binary = 0x3,
-   FieldValueFormat_exponential = 0x4,
-   FieldValueFormat_boolean = 0x5,
-   FieldValueFormat_textObj = 0x6,
-   FieldValueFormat_color = 0x7
-};
-
-#define FIELDTYPEEX_type_SHIFT                           0
-#define FIELDTYPEEX_type_MASK                            0x7
-#define FIELDTYPEEX_type(x)                              ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_type_MASK) >> FIELDTYPEEX_type_SHIFT)
-#define FIELDTYPEEX_SET_type(x, type)                       (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_type_MASK)) | (((C(FieldTypeEx))(type)) << FIELDTYPEEX_type_SHIFT)
-#define FIELDTYPEEX_mustFree_SHIFT                       3
-#define FIELDTYPEEX_mustFree_MASK                        0x8
-#define FIELDTYPEEX_mustFree(x)                          ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_mustFree_MASK) >> FIELDTYPEEX_mustFree_SHIFT)
-#define FIELDTYPEEX_SET_mustFree(x, mustFree)                   (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_mustFree_MASK)) | (((C(FieldTypeEx))(mustFree)) << FIELDTYPEEX_mustFree_SHIFT)
-#define FIELDTYPEEX_format_SHIFT                         4
-#define FIELDTYPEEX_format_MASK                          0xF0
-#define FIELDTYPEEX_format(x)                            ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_format_MASK) >> FIELDTYPEEX_format_SHIFT)
-#define FIELDTYPEEX_SET_format(x, format)                     (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_format_MASK)) | (((C(FieldTypeEx))(format)) << FIELDTYPEEX_format_SHIFT)
-#define FIELDTYPEEX_isUnsigned_SHIFT                     8
-#define FIELDTYPEEX_isUnsigned_MASK                      0x100
-#define FIELDTYPEEX_isUnsigned(x)                        ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_isUnsigned_MASK) >> FIELDTYPEEX_isUnsigned_SHIFT)
-#define FIELDTYPEEX_SET_isUnsigned(x, isUnsigned)                 (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_isUnsigned_MASK)) | (((C(FieldTypeEx))(isUnsigned)) << FIELDTYPEEX_isUnsigned_SHIFT)
-#define FIELDTYPEEX_isDateTime_SHIFT                     9
-#define FIELDTYPEEX_isDateTime_MASK                      0x200
-#define FIELDTYPEEX_isDateTime(x)                        ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_isDateTime_MASK) >> FIELDTYPEEX_isDateTime_SHIFT)
-#define FIELDTYPEEX_SET_isDateTime(x, isDateTime)                 (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_isDateTime_MASK)) | (((C(FieldTypeEx))(isDateTime)) << FIELDTYPEEX_isDateTime_SHIFT)
-#define FIELDTYPEEX(type, mustFree, format, isUnsigned, isDateTime)                         (((((((C(FieldTypeEx))(type)) << FIELDTYPEEX_type_SHIFT) | ((C(FieldTypeEx))(mustFree)) << FIELDTYPEEX_mustFree_SHIFT) | ((C(FieldTypeEx))(format)) << FIELDTYPEEX_format_SHIFT) | ((C(FieldTypeEx))(isUnsigned)) << FIELDTYPEEX_isUnsigned_SHIFT) | ((C(FieldTypeEx))(isDateTime)) << FIELDTYPEEX_isDateTime_SHIFT)
-
-
-struct C(FieldValue)
-{
-   C(FieldTypeEx) type;
-   union
-   {
-      int64 i;
-      double r;
-      C(String) s;
-      void * b;
-      C(Array) a;
-      C(Map) m;
-   };
-};
-extern THIS_LIB_IMPORT int (* FieldValue_compareInt)(C(FieldValue) * __this, C(FieldValue) * other);
-
-extern THIS_LIB_IMPORT int (* FieldValue_compareReal)(C(FieldValue) * __this, C(FieldValue) * other);
-
-extern THIS_LIB_IMPORT int (* FieldValue_compareText)(C(FieldValue) * __this, C(FieldValue) * other);
-
-extern THIS_LIB_IMPORT C(String) (* FieldValue_formatArray)(C(FieldValue) * __this, char * tempString, void * fieldData, C(ObjectNotationType) * onType);
-
-extern THIS_LIB_IMPORT C(String) (* FieldValue_formatFloat)(C(FieldValue) * __this, char * stringOutput, C(bool) fixDot);
-
-extern THIS_LIB_IMPORT C(String) (* FieldValue_formatInteger)(C(FieldValue) * __this, char * stringOutput);
-
-extern THIS_LIB_IMPORT C(String) (* FieldValue_formatMap)(C(FieldValue) * __this, char * tempString, void * fieldData, C(ObjectNotationType) * onType);
-
-extern THIS_LIB_IMPORT C(bool) (* FieldValue_getArrayOrMap)(const char * string, C(Class) * destClass, void ** destination);
-
-extern THIS_LIB_IMPORT C(String) (* FieldValue_stringify)(C(FieldValue) * __this);
-
-
-// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
 // namespace /////////////// ////////  eC||containers  ////////////////////////////////////////// ////////////////////////////////
 // namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
 
 
 // start -- moved backwards outputs
 typedef uint64_t TP(AVLNode, T);
+typedef uint64_t TP(Container, T);
 typedef uint64_t TP(CustomAVLTree, BT);
 typedef uint64_t TP(LinkElement, T);
 typedef uint64_t TP(LinkList, LT);
@@ -1929,14 +1786,14 @@ typedef struct C(ListItem) C(ListItem);
 typedef struct C(MapIterator) C(MapIterator);
 typedef struct C(MapNode) C(MapNode);
 typedef struct C(StringBinaryTree) C(StringBinaryTree);
-typedef uint64_t TP(Container, D);
-typedef uint64_t TP(HashMapIterator, KT);
-typedef uint64_t TP(Iterator, T);
-typedef uint64_t TP(HashMapIterator, VT);
-typedef uint64_t TP(MapIterator, V);
-typedef uint64_t TP(Container, I);
 typedef uint64_t TP(MapIterator, KT);
+typedef uint64_t TP(HashMapIterator, VT);
+typedef uint64_t TP(Iterator, T);
+typedef uint64_t TP(Container, I);
+typedef uint64_t TP(Container, D);
 typedef uint64_t TP(MapNode, KT);
+typedef uint64_t TP(HashMapIterator, KT);
+typedef uint64_t TP(MapIterator, V);
 typedef uint64_t TP(Iterator, IT);
 struct C(AVLNode)
 {
@@ -1963,6 +1820,12 @@ extern THIS_LIB_IMPORT int (* AVLNode_get_count)(const C(AVLNode) * a);
 extern THIS_LIB_IMPORT C(Property) * PROPERTY(AVLNode, depthProp);
 extern THIS_LIB_IMPORT int (* AVLNode_get_depthProp)(const C(AVLNode) * a);
 
+struct CM(Array)
+{
+   TP(Container, T) * array;
+   uint count;
+   uint minAllocSize;
+};
 extern THIS_LIB_IMPORT C(Property) * PROPERTY(Array, size);
 extern THIS_LIB_IMPORT void (* Array_set_size)(const C(Array) a, uint value);
 extern THIS_LIB_IMPORT uint (* Array_get_size)(const C(Array) a);
@@ -2531,8 +2394,229 @@ struct C(StringBinaryTree)
    int (* CompareKey)(C(BinaryTree) * tree, uintptr a, uintptr b);
    void (* FreeKey)(void * key);
 };
+extern THIS_LIB_IMPORT uint (* F(hash32Data))(const void * data, int size);
 extern THIS_LIB_IMPORT void (* F(qsortr))(void * base, uintsize nel, uintsize width, int (* compare)(void * arg, const void * a, const void * b), void * arg);
 extern THIS_LIB_IMPORT void (* F(qsortrx))(void * base, uintsize nel, uintsize width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), void * arg, C(bool) deref, C(bool) ascending);
+
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// ////////  eC||i18n  //////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+
+
+extern THIS_LIB_IMPORT int (* F(iSO8859_1toUTF8))(const char * source, char * dest, int max);
+extern THIS_LIB_IMPORT char * (* F(uTF16toUTF8))(const uint16 * source);
+extern THIS_LIB_IMPORT int (* F(uTF16toUTF8Buffer))(const uint16 * source, char * dest, int max);
+extern THIS_LIB_IMPORT int (* F(uTF32toUTF8Len))(const unichar * source, int count, char * dest, int max);
+extern THIS_LIB_IMPORT unichar (* F(uTF8GetChar))(const char * string, int * numBytes);
+extern THIS_LIB_IMPORT C(bool) (* F(uTF8Validate))(const char * source);
+extern THIS_LIB_IMPORT uint16 * (* F(uTF8toUTF16))(const char * source, int * wordCount);
+extern THIS_LIB_IMPORT int (* F(uTF8toUTF16Buffer))(const char * source, uint16 * dest, int max);
+
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// ////////  eC||mt  ////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+
+
+// start -- moved backwards outputs
+typedef struct C(Mutex) C(Mutex);
+// end -- moved backwards outputs
+struct C(Mutex)
+{
+   byte __ecere_padding[56];
+};
+extern THIS_LIB_IMPORT void (* Mutex_release)(C(Mutex) * __this);
+
+extern THIS_LIB_IMPORT void (* Mutex_wait)(C(Mutex) * __this);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Mutex, lockCount);
+extern THIS_LIB_IMPORT int (* Mutex_get_lockCount)(const C(Mutex) * m);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Mutex, owningThread);
+extern THIS_LIB_IMPORT int64 (* Mutex_get_owningThread)(const C(Mutex) * m);
+
+extern THIS_LIB_IMPORT int64 (* F(getCurrentThreadID))(void);
+
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// ////////    //////////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+
+
+#define jsonIndentWidth (3)
+
+
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// ////////  eC  ////////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+
+
+// start -- moved backwards outputs
+typedef int C(FieldTypeEx);
+typedef struct C(FieldValue) C(FieldValue);
+// end -- moved backwards outputs
+#if CPP11
+enum C(FieldType) : int
+#else
+typedef int C(FieldType);
+enum C(FieldType)
+#endif
+{
+   FieldType_integer = 0x1,
+   FieldType_real = 0x2,
+   FieldType_text = 0x3,
+   FieldType_blob = 0x4,
+   FieldType_nil = 0x5,
+   FieldType_array = 0x6,
+   FieldType_map = 0x7
+};
+
+#if CPP11
+enum C(FieldValueFormat) : int
+#else
+typedef int C(FieldValueFormat);
+enum C(FieldValueFormat)
+#endif
+{
+   FieldValueFormat_decimal = 0x0,
+   FieldValueFormat_unset = 0x0,
+   FieldValueFormat_hex = 0x1,
+   FieldValueFormat_octal = 0x2,
+   FieldValueFormat_binary = 0x3,
+   FieldValueFormat_exponential = 0x4,
+   FieldValueFormat_boolean = 0x5,
+   FieldValueFormat_textObj = 0x6,
+   FieldValueFormat_color = 0x7
+};
+
+#define FIELDTYPEEX_type_SHIFT                           0
+#define FIELDTYPEEX_type_MASK                            0x7
+#define FIELDTYPEEX_type(x)                              ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_type_MASK) >> FIELDTYPEEX_type_SHIFT)
+#define FIELDTYPEEX_SET_type(x, type)                       (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_type_MASK)) | (((C(FieldTypeEx))(type)) << FIELDTYPEEX_type_SHIFT)
+#define FIELDTYPEEX_mustFree_SHIFT                       3
+#define FIELDTYPEEX_mustFree_MASK                        0x8
+#define FIELDTYPEEX_mustFree(x)                          ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_mustFree_MASK) >> FIELDTYPEEX_mustFree_SHIFT)
+#define FIELDTYPEEX_SET_mustFree(x, mustFree)                   (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_mustFree_MASK)) | (((C(FieldTypeEx))(mustFree)) << FIELDTYPEEX_mustFree_SHIFT)
+#define FIELDTYPEEX_format_SHIFT                         4
+#define FIELDTYPEEX_format_MASK                          0xF0
+#define FIELDTYPEEX_format(x)                            ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_format_MASK) >> FIELDTYPEEX_format_SHIFT)
+#define FIELDTYPEEX_SET_format(x, format)                     (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_format_MASK)) | (((C(FieldTypeEx))(format)) << FIELDTYPEEX_format_SHIFT)
+#define FIELDTYPEEX_isUnsigned_SHIFT                     8
+#define FIELDTYPEEX_isUnsigned_MASK                      0x100
+#define FIELDTYPEEX_isUnsigned(x)                        ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_isUnsigned_MASK) >> FIELDTYPEEX_isUnsigned_SHIFT)
+#define FIELDTYPEEX_SET_isUnsigned(x, isUnsigned)                 (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_isUnsigned_MASK)) | (((C(FieldTypeEx))(isUnsigned)) << FIELDTYPEEX_isUnsigned_SHIFT)
+#define FIELDTYPEEX_isDateTime_SHIFT                     9
+#define FIELDTYPEEX_isDateTime_MASK                      0x200
+#define FIELDTYPEEX_isDateTime(x)                        ((((C(FieldTypeEx))(x)) & FIELDTYPEEX_isDateTime_MASK) >> FIELDTYPEEX_isDateTime_SHIFT)
+#define FIELDTYPEEX_SET_isDateTime(x, isDateTime)                 (x) = ((C(FieldTypeEx))(x) & ~((C(FieldTypeEx))FIELDTYPEEX_isDateTime_MASK)) | (((C(FieldTypeEx))(isDateTime)) << FIELDTYPEEX_isDateTime_SHIFT)
+#define FIELDTYPEEX(type, mustFree, format, isUnsigned, isDateTime)                         (((((((C(FieldTypeEx))(type)) << FIELDTYPEEX_type_SHIFT) | ((C(FieldTypeEx))(mustFree)) << FIELDTYPEEX_mustFree_SHIFT) | ((C(FieldTypeEx))(format)) << FIELDTYPEEX_format_SHIFT) | ((C(FieldTypeEx))(isUnsigned)) << FIELDTYPEEX_isUnsigned_SHIFT) | ((C(FieldTypeEx))(isDateTime)) << FIELDTYPEEX_isDateTime_SHIFT)
+
+
+struct C(FieldValue)
+{
+   C(FieldTypeEx) type;
+   union
+   {
+      int64 i;
+      double r;
+      C(String) s;
+      void * b;
+      C(Array) a;
+      C(Map) m;
+   };
+};
+extern THIS_LIB_IMPORT int (* FieldValue_compareInt)(C(FieldValue) * __this, C(FieldValue) * other);
+
+extern THIS_LIB_IMPORT int (* FieldValue_compareReal)(C(FieldValue) * __this, C(FieldValue) * other);
+
+extern THIS_LIB_IMPORT int (* FieldValue_compareText)(C(FieldValue) * __this, C(FieldValue) * other);
+
+extern THIS_LIB_IMPORT C(String) (* FieldValue_formatArray)(C(FieldValue) * __this, char * tempString, void * fieldData, C(ObjectNotationType) * onType);
+
+extern THIS_LIB_IMPORT C(String) (* FieldValue_formatFloat)(C(FieldValue) * __this, char * stringOutput, C(bool) fixDot);
+
+extern THIS_LIB_IMPORT C(String) (* FieldValue_formatInteger)(C(FieldValue) * __this, char * stringOutput);
+
+extern THIS_LIB_IMPORT C(String) (* FieldValue_formatMap)(C(FieldValue) * __this, char * tempString, void * fieldData, C(ObjectNotationType) * onType);
+
+extern THIS_LIB_IMPORT C(bool) (* FieldValue_getArrayOrMap)(const char * string, C(Class) * destClass, void ** destination);
+
+extern THIS_LIB_IMPORT C(String) (* FieldValue_stringify)(C(FieldValue) * __this);
+
+
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// ////////  eC||mt  ////////////////////////////////////////////////// ////////////////////////////////
+// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
+
+
+// start -- moved backwards outputs
+typedef struct C(Condition) C(Condition);
+typedef struct C(Semaphore) C(Semaphore);
+typedef C(Instance) C(Thread);
+#if CPP11
+enum C(ThreadPriority) : int
+#else
+typedef int C(ThreadPriority);
+enum C(ThreadPriority)
+#endif
+{
+   ThreadPriority_normal = 0x0,
+   ThreadPriority_aboveNormal = 0x1,
+   ThreadPriority_belowNormal = -1,
+   ThreadPriority_highest = 0x2,
+   ThreadPriority_lowest = -2,
+   ThreadPriority_idle = -15,
+   ThreadPriority_timeCritical = 0xF
+};
+
+// end -- moved backwards outputs
+struct C(Condition)
+{
+   byte __ecere_padding[40];
+};
+extern THIS_LIB_IMPORT void (* Condition_signal)(C(Condition) * __this);
+
+extern THIS_LIB_IMPORT void (* Condition_wait)(C(Condition) * __this, C(Mutex) * mutex);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Condition, name);
+extern THIS_LIB_IMPORT void (* Condition_set_name)(const C(Condition) * c, const char * value);
+extern THIS_LIB_IMPORT const char * (* Condition_get_name)(const C(Condition) * c);
+
+struct C(Semaphore)
+{
+   byte __ecere_padding[40];
+};
+extern THIS_LIB_IMPORT void (* Semaphore_release)(C(Semaphore) * __this);
+
+extern THIS_LIB_IMPORT C(bool) (* Semaphore_tryWait)(C(Semaphore) * __this);
+
+extern THIS_LIB_IMPORT void (* Semaphore_wait)(C(Semaphore) * __this);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Semaphore, initCount);
+extern THIS_LIB_IMPORT void (* Semaphore_set_initCount)(const C(Semaphore) * s, int value);
+extern THIS_LIB_IMPORT int (* Semaphore_get_initCount)(const C(Semaphore) * s);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Semaphore, maxCount);
+extern THIS_LIB_IMPORT void (* Semaphore_set_maxCount)(const C(Semaphore) * s, int value);
+extern THIS_LIB_IMPORT int (* Semaphore_get_maxCount)(const C(Semaphore) * s);
+
+extern THIS_LIB_IMPORT void (* Thread_create)(C(Thread) __this);
+
+extern THIS_LIB_IMPORT void (* Thread_kill)(C(Thread) __this);
+
+extern THIS_LIB_IMPORT int M_VTBLID(Thread, main);
+// uint Thread_main(C(Thread) __i);
+#define Thread_main(__i) \
+   VMETHOD(CO(Thread), Thread, main, __i, uint, \
+      C(Thread), \
+      __i)
+extern THIS_LIB_IMPORT C(Method) * METHOD(Thread, main);
+
+extern THIS_LIB_IMPORT void (* Thread_setPriority)(C(Thread) __this, C(ThreadPriority) priority);
+
+extern THIS_LIB_IMPORT void (* Thread_wait)(C(Thread) __this);
+
+extern THIS_LIB_IMPORT C(Property) * PROPERTY(Thread, created);
+extern THIS_LIB_IMPORT C(bool) (* Thread_get_created)(const C(Thread) t);
+
 
 // namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
 // namespace /////////////// ////////  eC||time  //////////////////////////////////////////////// ////////////////////////////////
@@ -3366,6 +3450,7 @@ extern THIS_LIB_IMPORT void (* F(makeSlashPath))(char * p);
 extern THIS_LIB_IMPORT void (* F(makeSystemPath))(char * p);
 extern THIS_LIB_IMPORT C(bool) (* F(moveFile))(const char * source, const char * dest);
 extern THIS_LIB_IMPORT C(bool) (* F(moveFileEx))(const char * source, const char * dest, C(MoveFileOptions) options);
+extern THIS_LIB_IMPORT C(bool) (* F(processFileNotifications))(void);
 extern THIS_LIB_IMPORT C(bool) (* F(removeDir))(const char * path);
 extern THIS_LIB_IMPORT C(bool) (* F(renameFile))(const char * oldName, const char * newName);
 extern THIS_LIB_IMPORT void (* F(resetError))(void);
@@ -3373,8 +3458,11 @@ extern THIS_LIB_IMPORT void (* F(setEnvironment))(const char * envName, const ch
 extern THIS_LIB_IMPORT void (* F(setErrorLevel))(C(ErrorLevel) level);
 extern THIS_LIB_IMPORT void (* F(setLoggingMode))(C(LoggingMode) mode, void * where);
 extern THIS_LIB_IMPORT C(bool) (* F(shellOpen))(const char * fileName, ...);
+extern THIS_LIB_IMPORT void (* F(signalEvent))(void);
 extern THIS_LIB_IMPORT void (* F(unsetEnvironment))(const char * envName);
+extern THIS_LIB_IMPORT void (* F(waitEvent))(void);
 extern THIS_LIB_IMPORT void (* F(debugBreakpoint))(void);
+extern THIS_LIB_IMPORT C(Semaphore) * (* F(getEventSemaphore))(void);
 
 // namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
 // namespace /////////////// ////////  eC||i18n  //////////////////////////////////////////////// ////////////////////////////////
@@ -3675,16 +3763,8 @@ extern THIS_LIB_IMPORT C(bool) (* F(charMatchCategories))(unichar ch, C(CharCate
 extern THIS_LIB_IMPORT C(bool) (* F(getAlNum))(const char ** input, char * string, int max);
 extern THIS_LIB_IMPORT C(CharCategory) (* F(getCharCategory))(unichar ch);
 extern THIS_LIB_IMPORT uint (* F(getCombiningClass))(unichar ch);
-extern THIS_LIB_IMPORT int (* F(iSO8859_1toUTF8))(const char * source, char * dest, int max);
 extern THIS_LIB_IMPORT int (* F(uTF16BEtoUTF8Buffer))(const uint16 * source, byte * dest, int max);
-extern THIS_LIB_IMPORT char * (* F(uTF16toUTF8))(const uint16 * source);
-extern THIS_LIB_IMPORT int (* F(uTF16toUTF8Buffer))(const uint16 * source, char * dest, int max);
-extern THIS_LIB_IMPORT int (* F(uTF32toUTF8Len))(const unichar * source, int count, char * dest, int max);
-extern THIS_LIB_IMPORT unichar (* F(uTF8GetChar))(const char * string, int * numBytes);
-extern THIS_LIB_IMPORT C(bool) (* F(uTF8Validate))(const char * source);
 extern THIS_LIB_IMPORT int (* F(uTF8toISO8859_1))(const char * source, char * dest, int max);
-extern THIS_LIB_IMPORT uint16 * (* F(uTF8toUTF16))(const char * source, int * wordCount);
-extern THIS_LIB_IMPORT int (* F(uTF8toUTF16Buffer))(const char * source, uint16 * dest, int max);
 extern THIS_LIB_IMPORT int (* F(uTF8toUTF16BufferLen))(const char * source, uint16 * dest, int max, int len);
 extern THIS_LIB_IMPORT uint16 * (* F(uTF8toUTF16Len))(const char * source, int byteCount, int * wordCount);
 extern THIS_LIB_IMPORT C(String) (* F(accenti))(constString string);
@@ -3932,109 +4012,13 @@ extern THIS_LIB_IMPORT C(bool) (* F(writeJSONObject))(C(File) f, C(Class) * obje
 extern THIS_LIB_IMPORT C(bool) (* F(writeJSONObject2))(C(File) f, C(Class) * objectType, void * object, int indent, C(JSONFirstLetterCapitalization) capitalize);
 extern THIS_LIB_IMPORT C(bool) (* F(writeJSONObjectMapped))(C(File) f, C(Class) * objectType, void * object, int indent, C(Map) stringMap);
 extern THIS_LIB_IMPORT C(bool) (* F(writeONString))(C(File) f, constString s, C(bool) eCON, int indent);
-
-// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
-// namespace /////////////// ////////  eC||mt  ////////////////////////////////////////////////// ////////////////////////////////
-// namespace /////////////// //////////////////////////////////////////////////////////////////// ////////////////////////////////
-
-
-// start -- moved backwards outputs
-typedef struct C(Condition) C(Condition);
-typedef struct C(Mutex) C(Mutex);
-typedef struct C(Semaphore) C(Semaphore);
-typedef C(Instance) C(Thread);
-#if CPP11
-enum C(ThreadPriority) : int
-#else
-typedef int C(ThreadPriority);
-enum C(ThreadPriority)
-#endif
-{
-   ThreadPriority_normal = 0x0,
-   ThreadPriority_aboveNormal = 0x1,
-   ThreadPriority_belowNormal = -1,
-   ThreadPriority_highest = 0x2,
-   ThreadPriority_lowest = -2,
-   ThreadPriority_idle = -15,
-   ThreadPriority_timeCritical = 0xF
-};
-
-// end -- moved backwards outputs
-struct C(Condition)
-{
-   byte __ecere_padding[40];
-};
-extern THIS_LIB_IMPORT void (* Condition_signal)(C(Condition) * __this);
-
-extern THIS_LIB_IMPORT void (* Condition_wait)(C(Condition) * __this, C(Mutex) * mutex);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Condition, name);
-extern THIS_LIB_IMPORT void (* Condition_set_name)(const C(Condition) * c, const char * value);
-extern THIS_LIB_IMPORT const char * (* Condition_get_name)(const C(Condition) * c);
-
-struct C(Mutex)
-{
-   byte __ecere_padding[56];
-};
-extern THIS_LIB_IMPORT void (* Mutex_release)(C(Mutex) * __this);
-
-extern THIS_LIB_IMPORT void (* Mutex_wait)(C(Mutex) * __this);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Mutex, lockCount);
-extern THIS_LIB_IMPORT int (* Mutex_get_lockCount)(const C(Mutex) * m);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Mutex, owningThread);
-extern THIS_LIB_IMPORT int64 (* Mutex_get_owningThread)(const C(Mutex) * m);
-
-struct C(Semaphore)
-{
-   byte __ecere_padding[40];
-};
-extern THIS_LIB_IMPORT void (* Semaphore_release)(C(Semaphore) * __this);
-
-extern THIS_LIB_IMPORT C(bool) (* Semaphore_tryWait)(C(Semaphore) * __this);
-
-extern THIS_LIB_IMPORT void (* Semaphore_wait)(C(Semaphore) * __this);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Semaphore, initCount);
-extern THIS_LIB_IMPORT void (* Semaphore_set_initCount)(const C(Semaphore) * s, int value);
-extern THIS_LIB_IMPORT int (* Semaphore_get_initCount)(const C(Semaphore) * s);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Semaphore, maxCount);
-extern THIS_LIB_IMPORT void (* Semaphore_set_maxCount)(const C(Semaphore) * s, int value);
-extern THIS_LIB_IMPORT int (* Semaphore_get_maxCount)(const C(Semaphore) * s);
-
-extern THIS_LIB_IMPORT void (* Thread_create)(C(Thread) __this);
-
-extern THIS_LIB_IMPORT void (* Thread_kill)(C(Thread) __this);
-
-extern THIS_LIB_IMPORT int M_VTBLID(Thread, main);
-// uint Thread_main(C(Thread) __i);
-#define Thread_main(__i) \
-   VMETHOD(CO(Thread), Thread, main, __i, uint, \
-      C(Thread), \
-      __i)
-extern THIS_LIB_IMPORT C(Method) * METHOD(Thread, main);
-
-extern THIS_LIB_IMPORT void (* Thread_setPriority)(C(Thread) __this, C(ThreadPriority) priority);
-
-extern THIS_LIB_IMPORT void (* Thread_wait)(C(Thread) __this);
-
-extern THIS_LIB_IMPORT C(Property) * PROPERTY(Thread, created);
-extern THIS_LIB_IMPORT C(bool) (* Thread_get_created)(const C(Thread) t);
-
-extern THIS_LIB_IMPORT int64 (* F(getCurrentThreadID))(void);
-extern THIS_LIB_IMPORT C(Class) * CO(Application);
-extern THIS_LIB_IMPORT C(Class) * CO(Instance);
-extern THIS_LIB_IMPORT C(Class) * CO(Module);
 extern THIS_LIB_IMPORT C(Class) * CO(AccessMode);
 extern THIS_LIB_IMPORT C(Class) * CO(Angle);
+extern THIS_LIB_IMPORT C(Class) * CO(Application);
 extern THIS_LIB_IMPORT C(Class) * CO(BTNamedLink);
 extern THIS_LIB_IMPORT C(Class) * CO(BackSlashEscaping);
 extern THIS_LIB_IMPORT C(Class) * CO(BitMember);
-extern THIS_LIB_IMPORT C(Class) * CO(Box);
 extern THIS_LIB_IMPORT C(Class) * CO(CIString);
-extern THIS_LIB_IMPORT C(Class) * CO(Centimeters);
 extern THIS_LIB_IMPORT C(Class) * CO(Class);
 extern THIS_LIB_IMPORT C(Class) * CO(ClassDesignerBase);
 extern THIS_LIB_IMPORT C(Class) * CO(ClassProperty);
@@ -4045,36 +4029,40 @@ extern THIS_LIB_IMPORT C(Class) * CO(DataMember);
 extern THIS_LIB_IMPORT C(Class) * CO(DataMemberType);
 extern THIS_LIB_IMPORT C(Class) * CO(DataValue);
 extern THIS_LIB_IMPORT C(Class) * CO(DefinedExpression);
-extern THIS_LIB_IMPORT C(Class) * CO(Degrees);
 extern THIS_LIB_IMPORT C(Class) * CO(DesignerBase);
-extern THIS_LIB_IMPORT C(Class) * CO(Distance);
 extern THIS_LIB_IMPORT C(Class) * CO(EnumClassData);
 extern THIS_LIB_IMPORT C(Class) * CO(EscapeCStringOptions);
-extern THIS_LIB_IMPORT C(Class) * CO(Feet);
 extern THIS_LIB_IMPORT C(Class) * CO(GlobalFunction);
 extern THIS_LIB_IMPORT C(Class) * CO(IOChannel);
 extern THIS_LIB_IMPORT C(Class) * CO(ImportType);
-extern THIS_LIB_IMPORT C(Class) * CO(Meters);
+extern THIS_LIB_IMPORT C(Class) * CO(Instance);
 extern THIS_LIB_IMPORT C(Class) * CO(Method);
 extern THIS_LIB_IMPORT C(Class) * CO(MethodType);
-extern THIS_LIB_IMPORT C(Class) * CO(MinMaxValue);
+extern THIS_LIB_IMPORT C(Class) * CO(Module);
 extern THIS_LIB_IMPORT C(Class) * CO(NameSpace);
 extern THIS_LIB_IMPORT C(Class) * CO(ObjectInfo);
 extern THIS_LIB_IMPORT C(Class) * CO(ObjectNotationType);
 extern THIS_LIB_IMPORT C(Class) * CO(Platform);
-extern THIS_LIB_IMPORT C(Class) * CO(Point);
-extern THIS_LIB_IMPORT C(Class) * CO(Pointd);
-extern THIS_LIB_IMPORT C(Class) * CO(Pointf);
 extern THIS_LIB_IMPORT C(Class) * CO(Property);
-extern THIS_LIB_IMPORT C(Class) * CO(Radians);
 extern THIS_LIB_IMPORT C(Class) * CO(SerialBuffer);
-extern THIS_LIB_IMPORT C(Class) * CO(Size);
 extern THIS_LIB_IMPORT C(Class) * CO(StaticString);
 extern THIS_LIB_IMPORT C(Class) * CO(StringAllocType);
 extern THIS_LIB_IMPORT C(Class) * CO(SubModule);
 extern THIS_LIB_IMPORT C(Class) * CO(TemplateMemberType);
 extern THIS_LIB_IMPORT C(Class) * CO(TemplateParameterType);
 extern THIS_LIB_IMPORT C(Class) * CO(ZString);
+extern THIS_LIB_IMPORT C(Class) * CO(Box);
+extern THIS_LIB_IMPORT C(Class) * CO(Centimeters);
+extern THIS_LIB_IMPORT C(Class) * CO(Degrees);
+extern THIS_LIB_IMPORT C(Class) * CO(Distance);
+extern THIS_LIB_IMPORT C(Class) * CO(Feet);
+extern THIS_LIB_IMPORT C(Class) * CO(Meters);
+extern THIS_LIB_IMPORT C(Class) * CO(MinMaxValue);
+extern THIS_LIB_IMPORT C(Class) * CO(Point);
+extern THIS_LIB_IMPORT C(Class) * CO(Pointd);
+extern THIS_LIB_IMPORT C(Class) * CO(Pointf);
+extern THIS_LIB_IMPORT C(Class) * CO(Radians);
+extern THIS_LIB_IMPORT C(Class) * CO(Size);
 extern THIS_LIB_IMPORT C(Class) * CO(String);
 extern THIS_LIB_IMPORT C(Class) * CO(byte);
 extern THIS_LIB_IMPORT C(Class) * CO(char);
@@ -4094,10 +4082,6 @@ extern THIS_LIB_IMPORT C(Class) * CO(uint32);
 extern THIS_LIB_IMPORT C(Class) * CO(uint64);
 extern THIS_LIB_IMPORT C(Class) * CO(uintptr);
 extern THIS_LIB_IMPORT C(Class) * CO(uintsize);
-extern THIS_LIB_IMPORT C(Class) * CO(FieldType);
-extern THIS_LIB_IMPORT C(Class) * CO(FieldTypeEx);
-extern THIS_LIB_IMPORT C(Class) * CO(FieldValue);
-extern THIS_LIB_IMPORT C(Class) * CO(FieldValueFormat);
 extern THIS_LIB_IMPORT C(Class) * CO(AVLNode);
 extern THIS_LIB_IMPORT C(Class) * CO(AVLTree);
 extern THIS_LIB_IMPORT C(Class) * CO(Array);
@@ -4128,6 +4112,15 @@ extern THIS_LIB_IMPORT C(Class) * CO(OldList);
 extern THIS_LIB_IMPORT C(Class) * CO(StringBTNode);
 extern THIS_LIB_IMPORT C(Class) * CO(StringBinaryTree);
 extern THIS_LIB_IMPORT C(Class) * CO(TreePrintStyle);
+extern THIS_LIB_IMPORT C(Class) * CO(Mutex);
+extern THIS_LIB_IMPORT C(Class) * CO(FieldType);
+extern THIS_LIB_IMPORT C(Class) * CO(FieldTypeEx);
+extern THIS_LIB_IMPORT C(Class) * CO(FieldValue);
+extern THIS_LIB_IMPORT C(Class) * CO(FieldValueFormat);
+extern THIS_LIB_IMPORT C(Class) * CO(Condition);
+extern THIS_LIB_IMPORT C(Class) * CO(Semaphore);
+extern THIS_LIB_IMPORT C(Class) * CO(Thread);
+extern THIS_LIB_IMPORT C(Class) * CO(ThreadPriority);
 extern THIS_LIB_IMPORT C(Class) * CO(Date);
 extern THIS_LIB_IMPORT C(Class) * CO(DateTime);
 extern THIS_LIB_IMPORT C(Class) * CO(DayOfTheWeek);
@@ -4182,11 +4175,6 @@ extern THIS_LIB_IMPORT C(Class) * CO(JSONTypeOptions);
 extern THIS_LIB_IMPORT C(Class) * CO(OptionsMap);
 extern THIS_LIB_IMPORT C(Class) * CO(SetBool);
 extern THIS_LIB_IMPORT C(Class) * CO(SettingsIOResult);
-extern THIS_LIB_IMPORT C(Class) * CO(Condition);
-extern THIS_LIB_IMPORT C(Class) * CO(Mutex);
-extern THIS_LIB_IMPORT C(Class) * CO(Semaphore);
-extern THIS_LIB_IMPORT C(Class) * CO(Thread);
-extern THIS_LIB_IMPORT C(Class) * CO(ThreadPriority);
 
 
 ////////////////////////////////////////////////// dll function imports //////// ////////////////
@@ -4264,7 +4252,7 @@ extern LIB_IMPORT void __eCNameSpace__eC__types__eSystem_SetPoolingDisabled(C(bo
 
 extern C(Module) __thisModule;
 
-extern THIS_LIB_IMPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) loadEcere, C(bool) guiApp, int argc, char * argv[]);
+extern THIS_LIB_IMPORT C(Application) ecrt_init(C(Module) fromModule, C(bool) obsolete, C(bool) guiApp, int argc, char * argv[]);
 
 
 

@@ -245,7 +245,7 @@
 #define VIRTUAL_METHOD_PROTO(n, ncpp, c, b, r, p0, ep, p) \
    struct c ## _ ## n ## _Functor \
    { \
-      [[no_unique_address]] int _[0]; \
+      [[no_unique_address]] int _[0]{}; \
       typedef r (* FunctionType)(p0 p); \
       inline FunctionType operator= (FunctionType func); \
       inline r operator()(ep p); \
@@ -278,7 +278,7 @@
 #define TVIRTUAL_METHOD_PROTO(n, ncpp, c, b, r, p0, ep, p) \
    struct c ## _ ## n ## _Functor \
    { \
-      [[no_unique_address]] int _[0]; \
+      [[no_unique_address]] int _[0]{}; \
       typedef r (* FunctionType)(p0 p); \
       inline FunctionType operator= (FunctionType func); \
       inline r operator()(ep p); \
@@ -469,7 +469,7 @@ template <typename... T> static constexpr const char * getTemplateArgsString = j
 struct n ## _Prop \
    { \
       constexpr n ## _Prop() :_() { }; \
-      [[no_unique_address]] int _[0]; \
+      [[no_unique_address]] int _[0]{}; \
       sg \
    } n;
 
@@ -727,13 +727,6 @@ public:
    TC* operator->() const { return object; }
 };
 
-class Application;
-class Instance;
-class Module;
-enum class FieldType : int;
-class FieldTypeEx;
-struct FieldValue;
-enum class FieldValueFormat : int;
 template <class TC, C(Class) ** TCO> class TAVLNode;
 typedef TAVLNode<C(AVLNode), &CO(AVLNode)> AVLNode;
 class AVLTree;
@@ -789,6 +782,61 @@ template <class TC, C(Class) ** TCO> class TStringBTNode;
 typedef TStringBTNode<C(StringBTNode), &CO(StringBTNode)> StringBTNode;
 struct StringBinaryTree;
 enum class TreePrintStyle : int;
+template <class TC, C(Class) ** TCO> class TMutex;
+typedef TMutex<C(Mutex), &CO(Mutex)> Mutex;
+enum class Access_Mode : int;
+class Angle;
+class Application;
+template <class TC, C(Class) ** TCO> class TBTNamedLink;
+typedef TBTNamedLink<C(BTNamedLink), &CO(BTNamedLink)> BTNamedLink;
+enum class BackSlashEscaping : uint;
+template <class TC, C(Class) ** TCO> class TBitMember;
+typedef TBitMember<C(BitMember), &CO(BitMember)> BitMember;
+template <class TC, C(Class) ** TCO> class TClass;
+typedef TClass<C(Class), &CO(Class)> Class;
+template <class TC, C(Class) ** TCO> class TClassProperty;
+typedef TClassProperty<C(ClassProperty), &CO(ClassProperty)> ClassProperty;
+struct ClassTemplateArgument;
+template <class TC, C(Class) ** TCO> class TClassTemplateParameter;
+typedef TClassTemplateParameter<C(ClassTemplateParameter), &CO(ClassTemplateParameter)> ClassTemplateParameter;
+enum class ClassType : int;
+template <class TC, C(Class) ** TCO> class TDataMember;
+typedef TDataMember<C(DataMember), &CO(DataMember)> DataMember;
+enum class DataMemberType : int;
+struct DataValue;
+template <class TC, C(Class) ** TCO> class TDefinedExpression;
+typedef TDefinedExpression<C(DefinedExpression), &CO(DefinedExpression)> DefinedExpression;
+template <class TC, C(Class) ** TCO> class TEnumClassData;
+typedef TEnumClassData<C(EnumClassData), &CO(EnumClassData)> EnumClassData;
+class EscapeCStringOptions;
+template <class TC, C(Class) ** TCO> class TGlobalFunction;
+typedef TGlobalFunction<C(GlobalFunction), &CO(GlobalFunction)> GlobalFunction;
+class IOChannel;
+enum class ImportType : int;
+class Instance;
+template <class TC, C(Class) ** TCO> class TMethod;
+typedef TMethod<C(Method), &CO(Method)> Method;
+enum class MethodType : int;
+class Module;
+struct NameSpace;
+template <class TC, C(Class) ** TCO> class TObjectInfo;
+typedef TObjectInfo<C(ObjectInfo), &CO(ObjectInfo)> ObjectInfo;
+enum class ObjectNotationType : uint;
+enum class Platform : int;
+template <class TC, C(Class) ** TCO> class TProperty;
+typedef TProperty<C(Property), &CO(Property)> Property;
+class SerialBuffer;
+struct StaticString;
+enum class StringAllocType : int;
+template <class TC, C(Class) ** TCO> class TSubModule;
+typedef TSubModule<C(SubModule), &CO(SubModule)> SubModule;
+enum class TemplateMemberType : int;
+enum class TemplateParameterType : int;
+class ZString;
+enum class FieldType : int;
+class FieldTypeEx;
+struct FieldValue;
+enum class FieldValueFormat : int;
 class Archive;
 enum class ArchiveAddMode : int;
 class ArchiveDir;
@@ -836,8 +884,6 @@ enum class SetBool : uint;
 enum class SettingsIOResult : int;
 template <class TC, C(Class) ** TCO> class TCondition;
 typedef TCondition<C(Condition), &CO(Condition)> Condition;
-template <class TC, C(Class) ** TCO> class TMutex;
-typedef TMutex<C(Mutex), &CO(Mutex)> Mutex;
 template <class TC, C(Class) ** TCO> class TSemaphore;
 typedef TSemaphore<C(Semaphore), &CO(Semaphore)> Semaphore;
 class Thread;
@@ -851,142 +897,27 @@ class Seconds;
 class Time;
 class TimeStamp;
 class TimeStamp32;
-enum class Access_Mode : int;
-class Angle;
-template <class TC, C(Class) ** TCO> class TBTNamedLink;
-typedef TBTNamedLink<C(BTNamedLink), &CO(BTNamedLink)> BTNamedLink;
-enum class BackSlashEscaping : uint;
-template <class TC, C(Class) ** TCO> class TBitMember;
-typedef TBitMember<C(BitMember), &CO(BitMember)> BitMember;
 struct Box;
 class Centimeters;
-template <class TC, C(Class) ** TCO> class TClass;
-typedef TClass<C(Class), &CO(Class)> Class;
-template <class TC, C(Class) ** TCO> class TClassProperty;
-typedef TClassProperty<C(ClassProperty), &CO(ClassProperty)> ClassProperty;
-struct ClassTemplateArgument;
-template <class TC, C(Class) ** TCO> class TClassTemplateParameter;
-typedef TClassTemplateParameter<C(ClassTemplateParameter), &CO(ClassTemplateParameter)> ClassTemplateParameter;
-enum class ClassType : int;
-template <class TC, C(Class) ** TCO> class TDataMember;
-typedef TDataMember<C(DataMember), &CO(DataMember)> DataMember;
-enum class DataMemberType : int;
-struct DataValue;
-template <class TC, C(Class) ** TCO> class TDefinedExpression;
-typedef TDefinedExpression<C(DefinedExpression), &CO(DefinedExpression)> DefinedExpression;
 class Degrees;
 class Distance;
-template <class TC, C(Class) ** TCO> class TEnumClassData;
-typedef TEnumClassData<C(EnumClassData), &CO(EnumClassData)> EnumClassData;
-class EscapeCStringOptions;
 class Feet;
-template <class TC, C(Class) ** TCO> class TGlobalFunction;
-typedef TGlobalFunction<C(GlobalFunction), &CO(GlobalFunction)> GlobalFunction;
-class IOChannel;
-enum class ImportType : int;
 class Meters;
-template <class TC, C(Class) ** TCO> class TMethod;
-typedef TMethod<C(Method), &CO(Method)> Method;
-enum class MethodType : int;
 class MinMaxValue;
-struct NameSpace;
-template <class TC, C(Class) ** TCO> class TObjectInfo;
-typedef TObjectInfo<C(ObjectInfo), &CO(ObjectInfo)> ObjectInfo;
-enum class ObjectNotationType : uint;
-enum class Platform : int;
 struct Point;
 struct Pointd;
 struct Pointf;
-template <class TC, C(Class) ** TCO> class TProperty;
-typedef TProperty<C(Property), &CO(Property)> Property;
 class Radians;
-class SerialBuffer;
 struct Size;
-struct StaticString;
-enum class StringAllocType : int;
-template <class TC, C(Class) ** TCO> class TSubModule;
-typedef TSubModule<C(SubModule), &CO(SubModule)> SubModule;
-enum class TemplateMemberType : int;
-enum class TemplateParameterType : int;
-class ZString;
 
 int ecrt_cpp_init(const Module & module);
 
 
 enum class Alignment : int;
 
-class DataDisplayFlags
-{
-public:
-   C(DataDisplayFlags) impl;
-   constexpr DataDisplayFlags() : impl(0) { }
-   constexpr DataDisplayFlags(C(DataDisplayFlags) impl) : impl(impl) { }
-   operator C(DataDisplayFlags)() { return impl; }
-   DataDisplayFlags & operator =(C(DataDisplayFlags) impl) { impl = impl; return *this; }
-   bool operator ==(const DataDisplayFlags & value) const { return impl == value.impl; }
-   bool operator !=(const DataDisplayFlags & value) const { return impl != value.impl; }
-
-   struct selected_Prop
-   {
-      constexpr selected_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      inline bool operator= (bool v);
-      inline DataDisplayFlags::selected_Prop & operator= (DataDisplayFlags::selected_Prop & prop);
-      inline operator bool () const;
-   } selected;
-   struct fullRow_Prop
-   {
-      constexpr fullRow_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      inline bool operator= (bool v);
-      inline DataDisplayFlags::fullRow_Prop & operator= (DataDisplayFlags::fullRow_Prop & prop);
-      inline operator bool () const;
-   } fullRow;
-   struct current_Prop
-   {
-      constexpr current_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      inline bool operator= (bool v);
-      inline DataDisplayFlags::current_Prop & operator= (DataDisplayFlags::current_Prop & prop);
-      inline operator bool () const;
-   } current;
-   struct active_Prop
-   {
-      constexpr active_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      inline bool operator= (bool v);
-      inline DataDisplayFlags::active_Prop & operator= (DataDisplayFlags::active_Prop & prop);
-      inline operator bool () const;
-   } active;
-   struct dropBox_Prop
-   {
-      constexpr dropBox_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      inline bool operator= (bool v);
-      inline DataDisplayFlags::dropBox_Prop & operator= (DataDisplayFlags::dropBox_Prop & prop);
-      inline operator bool () const;
-   } dropBox;
-   struct header_Prop
-   {
-      constexpr header_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      inline bool operator= (bool v);
-      inline DataDisplayFlags::header_Prop & operator= (DataDisplayFlags::header_Prop & prop);
-      inline operator bool () const;
-   } header;
-   struct firstField_Prop
-   {
-      constexpr firstField_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      inline bool operator= (bool v);
-      inline DataDisplayFlags::firstField_Prop & operator= (DataDisplayFlags::firstField_Prop & prop);
-      inline operator bool () const;
-   } firstField;
-};
-
 struct Struct
 {
-   [[no_unique_address]] int _[0];
+   [[no_unique_address]] int _[0]{};
    void * operator new   (uintsize count) { return eC_new(count); }
    void * operator new [](uintsize count) { return eC_new(count); }
    void operator delete   (void * ptr) { eC_delete(ptr); }
@@ -999,61 +930,61 @@ struct TStruct : public Struct
    static C(Class) * _class;
    struct Struct_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline int operator()( /*6Bj*/Instance & object);
    } onCompare;
 
    struct Struct_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( /*6Bj*/Instance & newData);
    } onCopy;
 
    struct Struct_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
    } onDisplay;
 
    struct Struct_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline Instance & operator()( /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
    } onEdit;
 
    struct Struct_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( );
    } onFree;
 
    struct Struct_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline bool operator()( /*6Fj*/const char * string);
    } onGetDataFromString;
 
    struct Struct_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline const char * operator()( /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
    } onGetString;
 
    struct Struct_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline bool operator()( /*6Fj*/Instance & window, /*6Fj*/void * object);
    } onSaveEdit;
 
    struct Struct_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( /*6Fj*/IOChannel & channel);
    } onSerialize;
 
    struct Struct_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( /*6Fj*/IOChannel & channel);
    } onUnserialize;
 
@@ -1177,7 +1108,7 @@ public:
 
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -1186,7 +1117,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -1195,7 +1126,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -1204,7 +1135,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -1213,7 +1144,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -1222,7 +1153,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -1231,7 +1162,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -1240,7 +1171,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -1249,7 +1180,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -1258,7 +1189,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -1351,61 +1282,61 @@ public:
    void operator delete [](void * ptr) { eC_delete(ptr); }
    struct NHInstance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline int operator()( /*6Bj*/Instance & object);
    } onCompare;
 
    struct NHInstance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( /*6Bj*/Instance & newData);
    } onCopy;
 
    struct NHInstance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
    } onDisplay;
 
    struct NHInstance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline Instance & operator()( /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
    } onEdit;
 
    struct NHInstance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( );
    } onFree;
 
    struct NHInstance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline bool operator()( /*6Fj*/const char * string);
    } onGetDataFromString;
 
    struct NHInstance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline const char * operator()( /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
    } onGetString;
 
    struct NHInstance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline bool operator()( /*6Fj*/Instance & window, /*6Fj*/void * object);
    } onSaveEdit;
 
    struct NHInstance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( /*6Fj*/IOChannel & channel);
    } onSerialize;
 
    struct NHInstance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       inline void operator()( /*6Fj*/IOChannel & channel);
    } onUnserialize;
 
@@ -1484,678 +1415,67 @@ template<> inline float  fromTA<float>(uint64 x) { C(DataValue) p = { }; p.ui64 
 template<> inline int    fromTA<int>(uint64 x) { C(DataValue) p = { }; p.ui64 = x; return p.i; }
 
 
-#define REG_Module_onLoad(m, c)   REGVMETHOD(Module, onLoad,   c::m, (/*1Ab*/Module & self), c, ())
-#define REG_Module_onUnload(m, c) REGVMETHOD(Module, onUnload, c::m, (/*1Ab*/Module & self), c, ())
-
-#define REG_Module(c) \
-      Module::class_registration(_cpp_class); \
-      REG_Module_onLoad(onLoad, c); \
-      REG_Module_onUnload(onUnload, c);
-
-#define MODULE_VIRTUAL_METHODS_PROTO(c) \
-   VIRTUAL_METHOD_PROTO(onLoad, onLoad, c, Module, \
-      bool, c &, , ); \
-   VIRTUAL_METHOD_PROTO(onUnload, onUnload, c, Module, \
-      void, c &, , );
-
-#define MODULE_VIRTUAL_METHODS(c) \
-VIRTUAL_METHOD(onLoad, onLoad, c, Module, \
-   bool, c &, , , \
-   return (bool)Module_onLoad(self ? self->impl : (C(Module))null);); \
-VIRTUAL_METHOD(onUnload, onUnload, c, Module, \
-   void, c &, , , \
-   Module_onUnload(self ? self->impl : (C(Module))null););
-
-class Module : public Instance
+template <class TC, C(Class) ** TCO>
+inline int TNHInstance<TC, TCO>::NHInstance_onCompare_Functor::operator()( /*6Bj*/Instance & object)
 {
-public:
-   inline Module(Module && i)
-   {
-      Instance * self = (Instance *)this;
-      self->impl = i.impl;
-      self->vTbl = i.vTbl;
-      self->mustFree = i.mustFree; /* checking: should this be in all these instances? */
-      i.impl = null;
-      i.vTbl = null;
-   }
-   inline Module & operator= (Module && i)
-   {
-      Instance * self = (Instance *)this;
-      if(self->impl)
-      {
-         C(Instance) impl = self->impl;
-         int refCount = impl->_refCount;
-         Instance_decRef(impl);
-         if(refCount > 1)
-         {
-            Instance ** inst = (Instance **)&INSTANCEL(impl, impl->_class);
-            if(inst && *inst == self)
-               *inst = null;
-         }
-      }
-      self->impl = i.impl;
-      self->vTbl = i.vTbl;
-      self->mustFree = i.mustFree; /* checking: should this be in all these instances? */
-      i.impl = null;
-      i.vTbl = null;
-      return *this;
-   }
-   Module() : Module((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
-   struct Instance_onCompare_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
-      inline FunctionType operator= (FunctionType func);
-      inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
-   } onCompare;
-   // inline static void register_onCompare(CPPClass & cl, Instance::Instance_onCompare_Functor::FunctionType func)
+   return _onCompare((*TCO), impl, /*7Al*/object.impl);
+}
 
-   struct Instance_onCopy_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
-   } onCopy;
-   // inline static void register_onCopy(CPPClass & cl, Instance::Instance_onCopy_Functor::FunctionType func)
-
-   struct Instance_onDisplay_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
-   } onDisplay;
-   // inline static void register_onDisplay(CPPClass & cl, Instance::Instance_onDisplay_Functor::FunctionType func)
-
-   struct Instance_onEdit_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
-      inline FunctionType operator= (FunctionType func);
-      inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
-   } onEdit;
-   // inline static void register_onEdit(CPPClass & cl, Instance::Instance_onEdit_Functor::FunctionType func)
-
-   struct Instance_onFree_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance &);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ );
-   } onFree;
-   // inline static void register_onFree(CPPClass & cl, Instance::Instance_onFree_Functor::FunctionType func)
-
-   struct Instance_onGetDataFromString_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
-      inline FunctionType operator= (FunctionType func);
-      inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
-   } onGetDataFromString;
-   // inline static void register_onGetDataFromString(CPPClass & cl, Instance::Instance_onGetDataFromString_Functor::FunctionType func)
-
-   struct Instance_onGetString_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
-      inline FunctionType operator= (FunctionType func);
-      inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
-   } onGetString;
-   // inline static void register_onGetString(CPPClass & cl, Instance::Instance_onGetString_Functor::FunctionType func)
-
-   struct Instance_onSaveEdit_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
-      inline FunctionType operator= (FunctionType func);
-      inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
-   } onSaveEdit;
-   // inline static void register_onSaveEdit(CPPClass & cl, Instance::Instance_onSaveEdit_Functor::FunctionType func)
-
-   struct Instance_onSerialize_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
-   } onSerialize;
-   // inline static void register_onSerialize(CPPClass & cl, Instance::Instance_onSerialize_Functor::FunctionType func)
-
-   struct Instance_onUnserialize_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
-   } onUnserialize;
-   // inline static void register_onUnserialize(CPPClass & cl, Instance::Instance_onUnserialize_Functor::FunctionType func)
-
-   static TCPPClass<Module> _cpp_class;
-   static C(bool) constructor(C(Instance) i, C(bool) alloc)
-   {
-      if(alloc && !INSTANCEL(i, i->_class))
-      {
-         Module * inst = new Module(i, _cpp_class);
-         if(inst)
-         {
-            /* printf("Must free!\n");*/
-            inst->mustFree = true;
-         }
-         return inst != null;
-      }
-      return true;
-   }
-   static void destructor(C(Instance) i)
-   {
-      Module * inst = (Module *)INSTANCEL(i, i->_class);
-      if(inst)
-      {
-         if(_cpp_class.destructor)
-            ((void (*)(Module & self))_cpp_class.destructor)(*inst);
-         if(inst->mustFree)
-            delete inst;
-      }
-   }
-   explicit inline Module(C(Instance) _impl, CPPClass & cl = _cpp_class) : Instance(_impl, cl) { }
-
-   struct Module_onLoad_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef bool (* FunctionType)(Module &);
-      inline FunctionType operator= (FunctionType func);
-      inline bool operator()( );
-   } onLoad;
-   // inline static void register_onLoad(CPPClass & cl, Module::Module_onLoad_Functor::FunctionType func)
-
-   struct Module_onUnload_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Module &);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()( );
-   } onUnload;
-   // inline static void register_onUnload(CPPClass & cl, Module::Module_onUnload_Functor::FunctionType func)
-
-};
-
-#define REG_Application_main(m, c) REGVMETHOD(Application, main, c::m, (/*1Ab*/Application & self), c, ())
-
-#define REG_Application(c) \
-      Application::class_registration(_cpp_class); \
-      REG_Module_onLoad(onLoad, c); \
-      REG_Module_onUnload(onUnload, c); \
-      REG_Application_main(main, c);
-
-#define APPLICATION_VIRTUAL_METHODS_PROTO(c) \
-   VIRTUAL_METHOD_PROTO(main, main, c, Application, \
-      void, c &, , );
-
-#define APPLICATION_VIRTUAL_METHODS(c) \
-VIRTUAL_METHOD(main, main, c, Application, \
-   void, c &, , , \
-   Application_main(self ? self->impl : (C(Application))null););
-
-int ecrt_cpp_init(const Module & module);
-
-class Application : public Module
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onCopy_Functor::operator()( /*6Bj*/Instance & newData)
 {
-public:
-   inline Application(Application && i)
-   {
-      Instance * self = (Instance *)this;
-      self->impl = i.impl;
-      self->vTbl = i.vTbl;
-      self->mustFree = i.mustFree; /* checking: should this be in all these instances? */
-      i.impl = null;
-      i.vTbl = null;
-   }
-   inline Application & operator= (Application && i)
-   {
-      Instance * self = (Instance *)this;
-      if(self->impl)
-      {
-         C(Instance) impl = self->impl;
-         int refCount = impl->_refCount;
-         Instance_decRef(impl);
-         if(refCount > 1)
-         {
-            Instance ** inst = (Instance **)&INSTANCEL(impl, impl->_class);
-            if(inst && *inst == self)
-               *inst = null;
-         }
-      }
-      self->impl = i.impl;
-      self->vTbl = i.vTbl;
-      self->mustFree = i.mustFree; /* checking: should this be in all these instances? */
-      i.impl = null;
-      i.vTbl = null;
-      return *this;
-   }
-   inline Application() : Application(ecrt_init_CALL(__LINK_ECERE__)) { }
-   struct Instance_onCompare_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
-      inline FunctionType operator= (FunctionType func);
-      inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
-   } onCompare;
-   // inline static void register_onCompare(CPPClass & cl, Instance::Instance_onCompare_Functor::FunctionType func)
+   _onCopy((*TCO), impl, /*7Al*/newData.impl);
+}
 
-   struct Instance_onCopy_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
-   } onCopy;
-   // inline static void register_onCopy(CPPClass & cl, Instance::Instance_onCopy_Functor::FunctionType func)
-
-   struct Instance_onDisplay_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
-   } onDisplay;
-   // inline static void register_onDisplay(CPPClass & cl, Instance::Instance_onDisplay_Functor::FunctionType func)
-
-   struct Instance_onEdit_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
-      inline FunctionType operator= (FunctionType func);
-      inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
-   } onEdit;
-   // inline static void register_onEdit(CPPClass & cl, Instance::Instance_onEdit_Functor::FunctionType func)
-
-   struct Instance_onFree_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance &);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ );
-   } onFree;
-   // inline static void register_onFree(CPPClass & cl, Instance::Instance_onFree_Functor::FunctionType func)
-
-   struct Instance_onGetDataFromString_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
-      inline FunctionType operator= (FunctionType func);
-      inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
-   } onGetDataFromString;
-   // inline static void register_onGetDataFromString(CPPClass & cl, Instance::Instance_onGetDataFromString_Functor::FunctionType func)
-
-   struct Instance_onGetString_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
-      inline FunctionType operator= (FunctionType func);
-      inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
-   } onGetString;
-   // inline static void register_onGetString(CPPClass & cl, Instance::Instance_onGetString_Functor::FunctionType func)
-
-   struct Instance_onSaveEdit_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
-      inline FunctionType operator= (FunctionType func);
-      inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
-   } onSaveEdit;
-   // inline static void register_onSaveEdit(CPPClass & cl, Instance::Instance_onSaveEdit_Functor::FunctionType func)
-
-   struct Instance_onSerialize_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
-   } onSerialize;
-   // inline static void register_onSerialize(CPPClass & cl, Instance::Instance_onSerialize_Functor::FunctionType func)
-
-   struct Instance_onUnserialize_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
-   } onUnserialize;
-   // inline static void register_onUnserialize(CPPClass & cl, Instance::Instance_onUnserialize_Functor::FunctionType func)
-
-   static TCPPClass<Application> _cpp_class;
-   static C(bool) constructor(C(Instance) i, C(bool) alloc)
-   {
-      if(alloc && !INSTANCEL(i, i->_class))
-      {
-         Application * inst = new Application(i, _cpp_class);
-         if(inst)
-         {
-            /* printf("Must free!\n");*/
-            inst->mustFree = true;
-         }
-         return inst != null;
-      }
-      return true;
-   }
-   static void destructor(C(Instance) i)
-   {
-      Application * inst = (Application *)INSTANCEL(i, i->_class);
-      if(inst)
-      {
-         if(_cpp_class.destructor)
-            ((void (*)(Application & self))_cpp_class.destructor)(*inst);
-         if(inst->mustFree)
-            delete inst;
-      }
-   }
-   explicit inline Application(C(Instance) _impl, CPPClass & cl = _cpp_class) : Module(_impl, cl)
-   {
-      ecrt_cpp_init(*this);
-      INSTANCEL(impl, impl->_class) = this;
-      incref(impl);
-      vTbl = _cpp_class.vTbl;
-      __thisModule = impl;
-   }
-   ~Application()
-   {
-      Instance_decRef(impl);
-   }
-
-   struct Application_main_Functor
-   {
-      [[no_unique_address]] int _[0];
-      typedef void (* FunctionType)(Application &);
-      inline FunctionType operator= (FunctionType func);
-      inline void operator()( );
-   } main;
-   // inline static void register_main(CPPClass & cl, Application::Application_main_Functor::FunctionType func)
-
-   static void class_registration(CPPClass & _cpp_class);
-
-   inline Application(int argc, const char ** argv, int exitCode, bool isGUIApp, OldList allModules, char * parsedCommand, NameSpace systemNameSpace);
-
-   struct argc_Prop
-   {
-      constexpr argc_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Application::argc_Prop & operator= (Application::argc_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } argc;
-   struct argv_Prop
-   {
-      constexpr argv_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/const char ** operator= (/*0H*/const char ** v);
-      /*regSet*/inline Application::argv_Prop & operator= (Application::argv_Prop & prop);
-      /*regGet*/inline operator /*0I*/const char ** () const;
-   } argv;
-   struct exitCode_Prop
-   {
-      constexpr exitCode_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Application::exitCode_Prop & operator= (Application::exitCode_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } exitCode;
-   struct isGUIApp_Prop
-   {
-      constexpr isGUIApp_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
-      /*regSet*/inline Application::isGUIApp_Prop & operator= (Application::isGUIApp_Prop & prop);
-      /*regGet*/inline operator /*0I*/bool () const;
-   } isGUIApp;
-   struct allModules_Prop
-   {
-      constexpr allModules_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
-      /*regSet*/inline Application::allModules_Prop & operator= (Application::allModules_Prop & prop);
-      /*regGet*/inline operator /*0I*/OldList () const;
-   } allModules;
-   struct parsedCommand_Prop
-   {
-      constexpr parsedCommand_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
-      /*regSet*/inline Application::parsedCommand_Prop & operator= (Application::parsedCommand_Prop & prop);
-      /*regGet*/inline operator /*0I*/char * () const;
-   } parsedCommand;
-   struct systemNameSpace_Prop
-   {
-      constexpr systemNameSpace_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/NameSpace operator= (/*0H*/NameSpace v);
-      /*regSet*/inline Application::systemNameSpace_Prop & operator= (Application::systemNameSpace_Prop & prop);
-      /*regGet*/inline operator /*0I*/NameSpace () const;
-   } systemNameSpace;
-};
-
-enum class FieldType : int
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onDisplay_Functor::operator()( /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags)
 {
-   integer = FieldType_integer,
-   real = FieldType_real,
-   text = FieldType_text,
-   blob = FieldType_blob,
-   nil = FieldType_nil,
-   array = FieldType_array,
-   map = FieldType_map
-};
+   _onDisplay((*TCO), impl, /*7Al*/surface.impl, /*7Al*/x, /*7Al*/y, /*7Al*/width, /*7Al*/fieldData, /*7Al*/alignment, /*7Al*/displayFlags);
+}
 
-class FieldTypeEx
+template <class TC, C(Class) ** TCO>
+inline Instance & TNHInstance<TC, TCO>::NHInstance_onEdit_Functor::operator()( /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData)
 {
-public:
-   C(FieldTypeEx) impl;
-   constexpr FieldTypeEx() : impl(0) { }
-   constexpr FieldTypeEx(C(FieldTypeEx) impl) : impl(impl) { }
-   FieldTypeEx(FieldType type, bool mustFree, FieldValueFormat format, bool isUnsigned, bool isDateTime);
-   operator C(FieldTypeEx)() { return impl; }
-   FieldTypeEx & operator =(C(FieldTypeEx) impl) { impl = impl; return *this; }
-   bool operator ==(const FieldTypeEx & value) const { return impl == value.impl; }
-   bool operator !=(const FieldTypeEx & value) const { return impl != value.impl; }
+   C(Instance) retInstance = _onEdit((*TCO), impl, /*7Al*/dataBox.impl, /*7Al*/obsolete.impl, /*7Al*/x, /*7Al*/y, /*7Al*/w, /*7Al*/h, /*7Al*/userData);
+         return *(Instance *)INSTANCEL(retInstance, retInstance->_class);
+}
 
-   struct type_Prop
-   {
-      constexpr type_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/FieldType operator= (/*0H*/FieldType v);
-      /*regSet*/inline FieldTypeEx::type_Prop & operator= (FieldTypeEx::type_Prop & prop);
-      /*regGet*/inline operator /*0I*/FieldType () const;
-   } type;
-   struct mustFree_Prop
-   {
-      constexpr mustFree_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
-      /*regSet*/inline FieldTypeEx::mustFree_Prop & operator= (FieldTypeEx::mustFree_Prop & prop);
-      /*regGet*/inline operator /*0I*/bool () const;
-   } mustFree;
-   struct format_Prop
-   {
-      constexpr format_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/FieldValueFormat operator= (/*0H*/FieldValueFormat v);
-      /*regSet*/inline FieldTypeEx::format_Prop & operator= (FieldTypeEx::format_Prop & prop);
-      /*regGet*/inline operator /*0I*/FieldValueFormat () const;
-   } format;
-   struct isUnsigned_Prop
-   {
-      constexpr isUnsigned_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
-      /*regSet*/inline FieldTypeEx::isUnsigned_Prop & operator= (FieldTypeEx::isUnsigned_Prop & prop);
-      /*regGet*/inline operator /*0I*/bool () const;
-   } isUnsigned;
-   struct isDateTime_Prop
-   {
-      constexpr isDateTime_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
-      /*regSet*/inline FieldTypeEx::isDateTime_Prop & operator= (FieldTypeEx::isDateTime_Prop & prop);
-      /*regGet*/inline operator /*0I*/bool () const;
-   } isDateTime;
-};
-
-struct FieldValue : public TStruct<FieldValue>
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onFree_Functor::operator()( )
 {
-public:
-   C(FieldValue) impl;
-   constexpr FieldValue() : impl({}) { }
-   constexpr FieldValue(const C(FieldValue) impl) : impl(impl) { }
+   _onFree((*TCO), impl);
+}
 
-   inline int compareInt(/*1Ab*/FieldValue & other); // FieldValue_compareInt
-   inline int compareInt(/*1Ac*/FieldValue * other); // FieldValue_compareInt
-   inline int compareReal(/*1Ab*/FieldValue & other); // FieldValue_compareReal
-   inline int compareReal(/*1Ac*/FieldValue * other); // FieldValue_compareReal
-   inline int compareText(/*1Ab*/FieldValue & other); // FieldValue_compareText
-   inline int compareText(/*1Ac*/FieldValue * other); // FieldValue_compareText
-   inline C(String) formatArray(/*1Ab*/char * tempString, /*1Ab*/void * fieldData, /*1Ab*/ObjectNotationType * onType); // FieldValue_formatArray
-   inline C(String) formatFloat(/*1Ab*/char * stringOutput, /*1Ab*/bool fixDot); // FieldValue_formatFloat
-   inline C(String) formatInteger(/*1Ab*/char * stringOutput); // FieldValue_formatInteger
-   inline C(String) formatMap(/*1Ab*/char * tempString, /*1Ab*/void * fieldData, /*1Ab*/ObjectNotationType * onType); // FieldValue_formatMap
-   static inline C(bool) getArrayOrMap(/*1Ab*/const char * string, /*1Ab*/Class destClass, /*1Ab*/void ** destination); // FieldValue_getArrayOrMap
-   inline C(String) stringify(); // FieldValue_stringify
-
-   inline FieldValue(FieldTypeEx type, int64 i, double r, char * s, void * b);
-
-   struct type_Prop
-   {
-      constexpr type_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/FieldTypeEx operator= (/*0H*/FieldTypeEx v);
-      /*regSet*/inline FieldValue::type_Prop & operator= (FieldValue::type_Prop & prop);
-      /*regGet*/inline operator /*0I*/FieldTypeEx () const;
-   } type;
-   struct i_Prop
-   {
-      constexpr i_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int64 operator= (/*0H*/int64 v);
-      /*regSet*/inline FieldValue::i_Prop & operator= (FieldValue::i_Prop & prop);
-      /*regGet*/inline operator /*0I*/int64 () const;
-   } i;
-   struct r_Prop
-   {
-      constexpr r_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/double operator= (/*0H*/double v);
-      /*regSet*/inline FieldValue::r_Prop & operator= (FieldValue::r_Prop & prop);
-      /*regGet*/inline operator /*0I*/double () const;
-   } r;
-   struct s_Prop
-   {
-      constexpr s_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
-      /*regSet*/inline FieldValue::s_Prop & operator= (FieldValue::s_Prop & prop);
-      /*regGet*/inline operator /*0I*/char * () const;
-   } s;
-   struct b_Prop
-   {
-      constexpr b_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
-      /*regSet*/inline FieldValue::b_Prop & operator= (FieldValue::b_Prop & prop);
-      /*regGet*/inline operator /*0I*/void * () const;
-   } b;
-   struct a_Prop
-   {
-      constexpr a_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/TArray<FieldValue _ARG int _ARG FieldValue> operator= (/*0H*/TArray<FieldValue _ARG int _ARG FieldValue> v);
-      /*regSet*/inline FieldValue::a_Prop & operator= (FieldValue::a_Prop & prop);
-      /*regGet*/inline operator /*0I*/TArray<FieldValue _ARG int _ARG FieldValue> () const;
-   } a;
-   struct m_Prop
-   {
-      constexpr m_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/TMap<C(String) _ARG FieldValue> operator= (/*0H*/TMap<C(String) _ARG FieldValue> v);
-      /*regSet*/inline FieldValue::m_Prop & operator= (FieldValue::m_Prop & prop);
-      /*regGet*/inline operator /*0I*/TMap<C(String) _ARG FieldValue> () const;
-   } m;
-};
-
-enum class FieldValueFormat : int
+template <class TC, C(Class) ** TCO>
+inline bool TNHInstance<TC, TCO>::NHInstance_onGetDataFromString_Functor::operator()( /*6Fj*/const char * string)
 {
-   decimal = FieldValueFormat_decimal,
-   unset = FieldValueFormat_unset,
-   hex = FieldValueFormat_hex,
-   octal = FieldValueFormat_octal,
-   binary = FieldValueFormat_binary,
-   exponential = FieldValueFormat_exponential,
-   boolean = FieldValueFormat_boolean,
-   textObj = FieldValueFormat_textObj,
-   color = FieldValueFormat_color
-};
+   return (bool)_onGetDataFromString((*TCO), impl, /*7Al*/string);
+}
 
-class Angle
+template <class TC, C(Class) ** TCO>
+inline const char * TNHInstance<TC, TCO>::NHInstance_onGetString_Functor::operator()( /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType)
 {
-public:
-   C(Angle) impl;
-   constexpr Angle() : impl(0) { }
-   constexpr Angle(C(Angle) value) : impl(value) { }
-   operator C(Angle)() const { return impl; }
-   constexpr Angle(const Angle & value) : impl(value.impl) { }
-   Angle & operator =(double value) { impl = value; return *this; }
-   Angle & operator +=(Angle value) { impl += value.impl; return *this; }
-   Angle & operator -=(Angle value) { impl -= value.impl; return *this; }
-   Angle operator +(const Angle & b) const { return Angle(impl + b.impl); }
-   Angle operator -(const Angle & b) const { return Angle(impl - b.impl); }
-   bool operator ==(const Angle & value) const { return impl == value.impl; }
-   bool operator !=(const Angle & value) const { return impl != value.impl; }
-   bool operator <(const Angle & value) const { return impl < value.impl; }
-   bool operator >(const Angle & value) const { return impl > value.impl; }
-   bool operator <=(const Angle & value) const { return impl <= value.impl; }
-   bool operator >=(const Angle & value) const { return impl >= value.impl; }
-   bool operator ==(double value) const { return impl == Angle(value).impl; }
-   bool operator !=(double value) const { return impl != Angle(value).impl; }
-   bool operator <(double value) const { return impl < Angle(value).impl; }
-   bool operator >(double value) const { return impl > Angle(value).impl; }
-   bool operator <=(double value) const { return impl <= Angle(value).impl; }
-   bool operator >=(double value) const { return impl >= Angle(value).impl; }
-   bool operator ==(int value) const { return impl == Angle(value).impl; }
-   bool operator !=(int value) const { return impl != Angle(value).impl; }
-   bool operator <(int value) const { return impl < Angle(value).impl; }
-   bool operator >(int value) const { return impl > Angle(value).impl; }
-   bool operator <=(int value) const { return impl <= Angle(value).impl; }
-   bool operator >=(int value) const { return impl >= Angle(value).impl; }
-};
+   return _onGetString((*TCO), impl, /*7Al*/tempString, /*7Al*/reserved, /*7Al*/(C(ObjectNotationType) *)onType);
+}
 
-class Distance
+template <class TC, C(Class) ** TCO>
+inline bool TNHInstance<TC, TCO>::NHInstance_onSaveEdit_Functor::operator()( /*6Fj*/Instance & window, /*6Fj*/void * object)
 {
-public:
-   C(Distance) impl;
-   constexpr Distance() : impl(0) { }
-   constexpr Distance(C(Distance) value) : impl(value) { }
-   operator C(Distance)() const { return impl; }
-   constexpr Distance(const Distance & value) : impl(value.impl) { }
-   Distance & operator =(double value) { impl = value; return *this; }
-   Distance & operator +=(Distance value) { impl += value.impl; return *this; }
-   Distance & operator -=(Distance value) { impl -= value.impl; return *this; }
-   Distance operator +(const Distance & b) const { return Distance(impl + b.impl); }
-   Distance operator -(const Distance & b) const { return Distance(impl - b.impl); }
-   bool operator ==(const Distance & value) const { return impl == value.impl; }
-   bool operator !=(const Distance & value) const { return impl != value.impl; }
-   bool operator <(const Distance & value) const { return impl < value.impl; }
-   bool operator >(const Distance & value) const { return impl > value.impl; }
-   bool operator <=(const Distance & value) const { return impl <= value.impl; }
-   bool operator >=(const Distance & value) const { return impl >= value.impl; }
-   bool operator ==(double value) const { return impl == Distance(value).impl; }
-   bool operator !=(double value) const { return impl != Distance(value).impl; }
-   bool operator <(double value) const { return impl < Distance(value).impl; }
-   bool operator >(double value) const { return impl > Distance(value).impl; }
-   bool operator <=(double value) const { return impl <= Distance(value).impl; }
-   bool operator >=(double value) const { return impl >= Distance(value).impl; }
-   bool operator ==(int value) const { return impl == Distance(value).impl; }
-   bool operator !=(int value) const { return impl != Distance(value).impl; }
-   bool operator <(int value) const { return impl < Distance(value).impl; }
-   bool operator >(int value) const { return impl > Distance(value).impl; }
-   bool operator <=(int value) const { return impl <= Distance(value).impl; }
-   bool operator >=(int value) const { return impl >= Distance(value).impl; }
-};
+   return (bool)_onSaveEdit((*TCO), impl, /*7Al*/window.impl, /*7Al*/object);
+}
+
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onSerialize_Functor::operator()( /*6Fj*/IOChannel & channel)
+{
+   _onSerialize((*TCO), impl, /*7Al*/channel.impl);
+}
+
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onUnserialize_Functor::operator()( /*6Fj*/IOChannel & channel)
+{
+   _onUnserialize((*TCO), impl, /*7Al*/channel.impl);
+}
+
 
 #define REG_IOChannel_readData(m, c)  REGVMETHOD(IOChannel, readData,  c::m, (/*1Ab*/IOChannel & self, /*1Ab*/void * data, /*1Ab*/uintsize numBytes),       c, (/*4Im*/data, /*4Im*/numBytes))
 #define REG_IOChannel_writeData(m, c) REGVMETHOD(IOChannel, writeData, c::m, (/*1Ab*/IOChannel & self, /*1Ab*/const void * data, /*1Ab*/uintsize numBytes), c, (/*4Im*/data, /*4Im*/numBytes))
@@ -2216,7 +1536,7 @@ public:
    IOChannel() : IOChannel((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -2225,7 +1545,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -2234,7 +1554,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -2243,7 +1563,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -2252,7 +1572,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -2261,7 +1581,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -2270,7 +1590,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -2279,7 +1599,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -2288,7 +1608,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -2297,7 +1617,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -2339,7 +1659,7 @@ public:
 
    struct IOChannel_readData_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef uintsize (* FunctionType)(IOChannel & , /*6Fj*/void * data, /*6Fj*/uintsize numBytes);
       inline FunctionType operator= (FunctionType func);
       inline uintsize operator()( /*6Fj*/void * data, /*6Fj*/uintsize numBytes);
@@ -2348,7 +1668,7 @@ public:
 
    struct IOChannel_writeData_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef uintsize (* FunctionType)(IOChannel & , /*6Fj*/const void * data, /*6Fj*/uintsize numBytes);
       inline FunctionType operator= (FunctionType func);
       inline uintsize operator()( /*6Fj*/const void * data, /*6Fj*/uintsize numBytes);
@@ -2356,6 +1676,201 @@ public:
    // inline static void register_writeData(CPPClass & cl, IOChannel::IOChannel_writeData_Functor::FunctionType func)
 
    static void class_registration(CPPClass & _cpp_class);
+};
+
+#define REG_Module_onLoad(m, c)   REGVMETHOD(Module, onLoad,   c::m, (/*1Ab*/Module & self), c, ())
+#define REG_Module_onUnload(m, c) REGVMETHOD(Module, onUnload, c::m, (/*1Ab*/Module & self), c, ())
+
+#define REG_Module(c) \
+      Module::class_registration(_cpp_class); \
+      REG_Module_onLoad(onLoad, c); \
+      REG_Module_onUnload(onUnload, c);
+
+#define MODULE_VIRTUAL_METHODS_PROTO(c) \
+   VIRTUAL_METHOD_PROTO(onLoad, onLoad, c, Module, \
+      bool, c &, , ); \
+   VIRTUAL_METHOD_PROTO(onUnload, onUnload, c, Module, \
+      void, c &, , );
+
+#define MODULE_VIRTUAL_METHODS(c) \
+VIRTUAL_METHOD(onLoad, onLoad, c, Module, \
+   bool, c &, , , \
+   return (bool)Module_onLoad(self ? self->impl : (C(Module))null);); \
+VIRTUAL_METHOD(onUnload, onUnload, c, Module, \
+   void, c &, , , \
+   Module_onUnload(self ? self->impl : (C(Module))null););
+
+class Module : public Instance
+{
+public:
+   inline Module(Module && i)
+   {
+      Instance * self = (Instance *)this;
+      self->impl = i.impl;
+      self->vTbl = i.vTbl;
+      self->mustFree = i.mustFree; /* checking: should this be in all these instances? */
+      i.impl = null;
+      i.vTbl = null;
+   }
+   inline Module & operator= (Module && i)
+   {
+      Instance * self = (Instance *)this;
+      if(self->impl)
+      {
+         C(Instance) impl = self->impl;
+         int refCount = impl->_refCount;
+         Instance_decRef(impl);
+         if(refCount > 1)
+         {
+            Instance ** inst = (Instance **)&INSTANCEL(impl, impl->_class);
+            if(inst && *inst == self)
+               *inst = null;
+         }
+      }
+      self->impl = i.impl;
+      self->vTbl = i.vTbl;
+      self->mustFree = i.mustFree; /* checking: should this be in all these instances? */
+      i.impl = null;
+      i.vTbl = null;
+      return *this;
+   }
+   Module() : Module((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
+   struct Instance_onCompare_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
+      inline FunctionType operator= (FunctionType func);
+      inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
+   } onCompare;
+   // inline static void register_onCompare(CPPClass & cl, Instance::Instance_onCompare_Functor::FunctionType func)
+
+   struct Instance_onCopy_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
+   } onCopy;
+   // inline static void register_onCopy(CPPClass & cl, Instance::Instance_onCopy_Functor::FunctionType func)
+
+   struct Instance_onDisplay_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
+   } onDisplay;
+   // inline static void register_onDisplay(CPPClass & cl, Instance::Instance_onDisplay_Functor::FunctionType func)
+
+   struct Instance_onEdit_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
+      inline FunctionType operator= (FunctionType func);
+      inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
+   } onEdit;
+   // inline static void register_onEdit(CPPClass & cl, Instance::Instance_onEdit_Functor::FunctionType func)
+
+   struct Instance_onFree_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance &);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ );
+   } onFree;
+   // inline static void register_onFree(CPPClass & cl, Instance::Instance_onFree_Functor::FunctionType func)
+
+   struct Instance_onGetDataFromString_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
+      inline FunctionType operator= (FunctionType func);
+      inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
+   } onGetDataFromString;
+   // inline static void register_onGetDataFromString(CPPClass & cl, Instance::Instance_onGetDataFromString_Functor::FunctionType func)
+
+   struct Instance_onGetString_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
+      inline FunctionType operator= (FunctionType func);
+      inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
+   } onGetString;
+   // inline static void register_onGetString(CPPClass & cl, Instance::Instance_onGetString_Functor::FunctionType func)
+
+   struct Instance_onSaveEdit_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
+      inline FunctionType operator= (FunctionType func);
+      inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
+   } onSaveEdit;
+   // inline static void register_onSaveEdit(CPPClass & cl, Instance::Instance_onSaveEdit_Functor::FunctionType func)
+
+   struct Instance_onSerialize_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
+   } onSerialize;
+   // inline static void register_onSerialize(CPPClass & cl, Instance::Instance_onSerialize_Functor::FunctionType func)
+
+   struct Instance_onUnserialize_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
+   } onUnserialize;
+   // inline static void register_onUnserialize(CPPClass & cl, Instance::Instance_onUnserialize_Functor::FunctionType func)
+
+   static TCPPClass<Module> _cpp_class;
+   static C(bool) constructor(C(Instance) i, C(bool) alloc)
+   {
+      if(alloc && !INSTANCEL(i, i->_class))
+      {
+         Module * inst = new Module(i, _cpp_class);
+         if(inst)
+         {
+            /* printf("Must free!\n");*/
+            inst->mustFree = true;
+         }
+         return inst != null;
+      }
+      return true;
+   }
+   static void destructor(C(Instance) i)
+   {
+      Module * inst = (Module *)INSTANCEL(i, i->_class);
+      if(inst)
+      {
+         if(_cpp_class.destructor)
+            ((void (*)(Module & self))_cpp_class.destructor)(*inst);
+         if(inst->mustFree)
+            delete inst;
+      }
+   }
+   explicit inline Module(C(Instance) _impl, CPPClass & cl = _cpp_class) : Instance(_impl, cl) { }
+
+   struct Module_onLoad_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef bool (* FunctionType)(Module &);
+      inline FunctionType operator= (FunctionType func);
+      inline bool operator()( );
+   } onLoad;
+   // inline static void register_onLoad(CPPClass & cl, Module::Module_onLoad_Functor::FunctionType func)
+
+   struct Module_onUnload_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Module &);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()( );
+   } onUnload;
+   // inline static void register_onUnload(CPPClass & cl, Module::Module_onUnload_Functor::FunctionType func)
+
 };
 
 enum class Access_Mode : int
@@ -2367,6 +1882,293 @@ enum class Access_Mode : int
    baseSystemAccess = AccessMode_baseSystemAccess
 };
 
+class Angle
+{
+public:
+   C(Angle) impl;
+   constexpr Angle() : impl(0) { }
+   constexpr Angle(C(Angle) value) : impl(value) { }
+   operator C(Angle)() const { return impl; }
+   constexpr Angle(const Angle & value) : impl(value.impl) { }
+   Angle & operator =(double value) { impl = value; return *this; }
+   Angle & operator +=(Angle value) { impl += value.impl; return *this; }
+   Angle & operator -=(Angle value) { impl -= value.impl; return *this; }
+   Angle operator +(const Angle & b) const { return Angle(impl + b.impl); }
+   Angle operator -(const Angle & b) const { return Angle(impl - b.impl); }
+   bool operator ==(const Angle & value) const { return impl == value.impl; }
+   bool operator !=(const Angle & value) const { return impl != value.impl; }
+   bool operator <(const Angle & value) const { return impl < value.impl; }
+   bool operator >(const Angle & value) const { return impl > value.impl; }
+   bool operator <=(const Angle & value) const { return impl <= value.impl; }
+   bool operator >=(const Angle & value) const { return impl >= value.impl; }
+   bool operator ==(double value) const { return impl == Angle(value).impl; }
+   bool operator !=(double value) const { return impl != Angle(value).impl; }
+   bool operator <(double value) const { return impl < Angle(value).impl; }
+   bool operator >(double value) const { return impl > Angle(value).impl; }
+   bool operator <=(double value) const { return impl <= Angle(value).impl; }
+   bool operator >=(double value) const { return impl >= Angle(value).impl; }
+   bool operator ==(int value) const { return impl == Angle(value).impl; }
+   bool operator !=(int value) const { return impl != Angle(value).impl; }
+   bool operator <(int value) const { return impl < Angle(value).impl; }
+   bool operator >(int value) const { return impl > Angle(value).impl; }
+   bool operator <=(int value) const { return impl <= Angle(value).impl; }
+   bool operator >=(int value) const { return impl >= Angle(value).impl; }
+};
+
+#define REG_Application_main(m, c) REGVMETHOD(Application, main, c::m, (/*1Ab*/Application & self), c, ())
+
+#define REG_Application(c) \
+      Application::class_registration(_cpp_class); \
+      REG_Module_onLoad(onLoad, c); \
+      REG_Module_onUnload(onUnload, c); \
+      REG_Application_main(main, c);
+
+#define APPLICATION_VIRTUAL_METHODS_PROTO(c) \
+   VIRTUAL_METHOD_PROTO(main, main, c, Application, \
+      void, c &, , );
+
+#define APPLICATION_VIRTUAL_METHODS(c) \
+VIRTUAL_METHOD(main, main, c, Application, \
+   void, c &, , , \
+   Application_main(self ? self->impl : (C(Application))null););
+
+int ecrt_cpp_init(const Module & module);
+
+class Application : public Module
+{
+public:
+   inline Application(Application && i)
+   {
+      Instance * self = (Instance *)this;
+      self->impl = i.impl;
+      self->vTbl = i.vTbl;
+      self->mustFree = i.mustFree; /* checking: should this be in all these instances? */
+      i.impl = null;
+      i.vTbl = null;
+   }
+   inline Application & operator= (Application && i)
+   {
+      Instance * self = (Instance *)this;
+      if(self->impl)
+      {
+         C(Instance) impl = self->impl;
+         int refCount = impl->_refCount;
+         Instance_decRef(impl);
+         if(refCount > 1)
+         {
+            Instance ** inst = (Instance **)&INSTANCEL(impl, impl->_class);
+            if(inst && *inst == self)
+               *inst = null;
+         }
+      }
+      self->impl = i.impl;
+      self->vTbl = i.vTbl;
+      self->mustFree = i.mustFree; /* checking: should this be in all these instances? */
+      i.impl = null;
+      i.vTbl = null;
+      return *this;
+   }
+   inline Application() : Application(ecrt_init_CALL(__LINK_ECERE__)) { }
+   struct Instance_onCompare_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
+      inline FunctionType operator= (FunctionType func);
+      inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
+   } onCompare;
+   // inline static void register_onCompare(CPPClass & cl, Instance::Instance_onCompare_Functor::FunctionType func)
+
+   struct Instance_onCopy_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
+   } onCopy;
+   // inline static void register_onCopy(CPPClass & cl, Instance::Instance_onCopy_Functor::FunctionType func)
+
+   struct Instance_onDisplay_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
+   } onDisplay;
+   // inline static void register_onDisplay(CPPClass & cl, Instance::Instance_onDisplay_Functor::FunctionType func)
+
+   struct Instance_onEdit_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
+      inline FunctionType operator= (FunctionType func);
+      inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
+   } onEdit;
+   // inline static void register_onEdit(CPPClass & cl, Instance::Instance_onEdit_Functor::FunctionType func)
+
+   struct Instance_onFree_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance &);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ );
+   } onFree;
+   // inline static void register_onFree(CPPClass & cl, Instance::Instance_onFree_Functor::FunctionType func)
+
+   struct Instance_onGetDataFromString_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
+      inline FunctionType operator= (FunctionType func);
+      inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
+   } onGetDataFromString;
+   // inline static void register_onGetDataFromString(CPPClass & cl, Instance::Instance_onGetDataFromString_Functor::FunctionType func)
+
+   struct Instance_onGetString_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
+      inline FunctionType operator= (FunctionType func);
+      inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
+   } onGetString;
+   // inline static void register_onGetString(CPPClass & cl, Instance::Instance_onGetString_Functor::FunctionType func)
+
+   struct Instance_onSaveEdit_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
+      inline FunctionType operator= (FunctionType func);
+      inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
+   } onSaveEdit;
+   // inline static void register_onSaveEdit(CPPClass & cl, Instance::Instance_onSaveEdit_Functor::FunctionType func)
+
+   struct Instance_onSerialize_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
+   } onSerialize;
+   // inline static void register_onSerialize(CPPClass & cl, Instance::Instance_onSerialize_Functor::FunctionType func)
+
+   struct Instance_onUnserialize_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
+   } onUnserialize;
+   // inline static void register_onUnserialize(CPPClass & cl, Instance::Instance_onUnserialize_Functor::FunctionType func)
+
+   static TCPPClass<Application> _cpp_class;
+   static C(bool) constructor(C(Instance) i, C(bool) alloc)
+   {
+      if(alloc && !INSTANCEL(i, i->_class))
+      {
+         Application * inst = new Application(i, _cpp_class);
+         if(inst)
+         {
+            /* printf("Must free!\n");*/
+            inst->mustFree = true;
+         }
+         return inst != null;
+      }
+      return true;
+   }
+   static void destructor(C(Instance) i)
+   {
+      Application * inst = (Application *)INSTANCEL(i, i->_class);
+      if(inst)
+      {
+         if(_cpp_class.destructor)
+            ((void (*)(Application & self))_cpp_class.destructor)(*inst);
+         if(inst->mustFree)
+            delete inst;
+      }
+   }
+   explicit inline Application(C(Instance) _impl, CPPClass & cl = _cpp_class) : Module(_impl, cl)
+   {
+      ecrt_cpp_init(*this);
+      INSTANCEL(impl, impl->_class) = this;
+      incref(impl);
+      vTbl = _cpp_class.vTbl;
+      __thisModule = impl;
+   }
+   ~Application()
+   {
+      Instance_decRef(impl);
+   }
+
+   struct Application_main_Functor
+   {
+      [[no_unique_address]] int _[0]{};
+      typedef void (* FunctionType)(Application &);
+      inline FunctionType operator= (FunctionType func);
+      inline void operator()( );
+   } main;
+   // inline static void register_main(CPPClass & cl, Application::Application_main_Functor::FunctionType func)
+
+   static void class_registration(CPPClass & _cpp_class);
+
+   inline Application(int argc, const char ** argv, int exitCode, bool isGUIApp, OldList allModules, char * parsedCommand, NameSpace systemNameSpace);
+
+   struct argc_Prop
+   {
+      constexpr argc_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Application::argc_Prop & operator= (Application::argc_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } argc;
+   struct argv_Prop
+   {
+      constexpr argv_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/const char ** operator= (/*0H*/const char ** v);
+      /*regSet*/inline Application::argv_Prop & operator= (Application::argv_Prop & prop);
+      /*regGet*/inline operator /*0I*/const char ** () const;
+   } argv;
+   struct exitCode_Prop
+   {
+      constexpr exitCode_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Application::exitCode_Prop & operator= (Application::exitCode_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } exitCode;
+   struct isGUIApp_Prop
+   {
+      constexpr isGUIApp_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
+      /*regSet*/inline Application::isGUIApp_Prop & operator= (Application::isGUIApp_Prop & prop);
+      /*regGet*/inline operator /*0I*/bool () const;
+   } isGUIApp;
+   struct allModules_Prop
+   {
+      constexpr allModules_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
+      /*regSet*/inline Application::allModules_Prop & operator= (Application::allModules_Prop & prop);
+      /*regGet*/inline operator /*0I*/OldList () const;
+   } allModules;
+   struct parsedCommand_Prop
+   {
+      constexpr parsedCommand_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
+      /*regSet*/inline Application::parsedCommand_Prop & operator= (Application::parsedCommand_Prop & prop);
+      /*regGet*/inline operator /*0I*/char * () const;
+   } parsedCommand;
+   struct systemNameSpace_Prop
+   {
+      constexpr systemNameSpace_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/NameSpace operator= (/*0H*/NameSpace v);
+      /*regSet*/inline Application::systemNameSpace_Prop & operator= (Application::systemNameSpace_Prop & prop);
+      /*regGet*/inline operator /*0I*/NameSpace () const;
+   } systemNameSpace;
+};
+
 template <class TC, C(Class) ** TCO>
 class TBTNamedLink : public TNHInstance<TC, TCO>
 {
@@ -2376,7 +2178,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TBTNamedLink<TC, TCO>::name_Prop & operator= (typename TBTNamedLink<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -2384,7 +2186,7 @@ public:
    struct parent_Prop
    {
       constexpr parent_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BTNamedLink operator= (/*0H*/BTNamedLink & v);
       /*regSet*/inline typename TBTNamedLink<TC, TCO>::parent_Prop & operator= (typename TBTNamedLink<TC, TCO>::parent_Prop & prop);
       /*regGet*/inline operator /*0I*/BTNamedLink () const;
@@ -2392,7 +2194,7 @@ public:
    struct left_Prop
    {
       constexpr left_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BTNamedLink operator= (/*0H*/BTNamedLink & v);
       /*regSet*/inline typename TBTNamedLink<TC, TCO>::left_Prop & operator= (typename TBTNamedLink<TC, TCO>::left_Prop & prop);
       /*regGet*/inline operator /*0I*/BTNamedLink () const;
@@ -2400,7 +2202,7 @@ public:
    struct right_Prop
    {
       constexpr right_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BTNamedLink operator= (/*0H*/BTNamedLink & v);
       /*regSet*/inline typename TBTNamedLink<TC, TCO>::right_Prop & operator= (typename TBTNamedLink<TC, TCO>::right_Prop & prop);
       /*regGet*/inline operator /*0I*/BTNamedLink () const;
@@ -2408,7 +2210,7 @@ public:
    struct depth_Prop
    {
       constexpr depth_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TBTNamedLink<TC, TCO>::depth_Prop & operator= (typename TBTNamedLink<TC, TCO>::depth_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2416,7 +2218,7 @@ public:
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TBTNamedLink<TC, TCO>::data_Prop & operator= (typename TBTNamedLink<TC, TCO>::data_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -2436,7 +2238,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BitMember operator= (/*0H*/BitMember & v);
       /*regSet*/inline typename TBitMember<TC, TCO>::prev_Prop & operator= (typename TBitMember<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/BitMember () const;
@@ -2444,7 +2246,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BitMember operator= (/*0H*/BitMember & v);
       /*regSet*/inline typename TBitMember<TC, TCO>::next_Prop & operator= (typename TBitMember<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/BitMember () const;
@@ -2452,7 +2254,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TBitMember<TC, TCO>::name_Prop & operator= (typename TBitMember<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -2460,7 +2262,7 @@ public:
    struct isProperty_Prop
    {
       constexpr isProperty_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TBitMember<TC, TCO>::isProperty_Prop & operator= (typename TBitMember<TC, TCO>::isProperty_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -2468,7 +2270,7 @@ public:
    struct memberAccess_Prop
    {
       constexpr memberAccess_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Access_Mode operator= (/*0H*/Access_Mode v);
       /*regSet*/inline typename TBitMember<TC, TCO>::memberAccess_Prop & operator= (typename TBitMember<TC, TCO>::memberAccess_Prop & prop);
       /*regGet*/inline operator /*0I*/Access_Mode () const;
@@ -2476,7 +2278,7 @@ public:
    struct id_Prop
    {
       constexpr id_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TBitMember<TC, TCO>::id_Prop & operator= (typename TBitMember<TC, TCO>::id_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2484,7 +2286,7 @@ public:
    struct _class_Prop
    {
       constexpr _class_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TBitMember<TC, TCO>::_class_Prop & operator= (typename TBitMember<TC, TCO>::_class_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -2492,7 +2294,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TBitMember<TC, TCO>::dataTypeString_Prop & operator= (typename TBitMember<TC, TCO>::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -2500,7 +2302,7 @@ public:
    struct dataTypeClass_Prop
    {
       constexpr dataTypeClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TBitMember<TC, TCO>::dataTypeClass_Prop & operator= (typename TBitMember<TC, TCO>::dataTypeClass_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -2508,7 +2310,7 @@ public:
    struct type_Prop
    {
       constexpr type_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DataMemberType operator= (/*0H*/DataMemberType v);
       /*regSet*/inline typename TBitMember<TC, TCO>::type_Prop & operator= (typename TBitMember<TC, TCO>::type_Prop & prop);
       /*regGet*/inline operator /*0I*/DataMemberType () const;
@@ -2516,7 +2318,7 @@ public:
    struct size_Prop
    {
       constexpr size_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TBitMember<TC, TCO>::size_Prop & operator= (typename TBitMember<TC, TCO>::size_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2524,7 +2326,7 @@ public:
    struct pos_Prop
    {
       constexpr pos_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TBitMember<TC, TCO>::pos_Prop & operator= (typename TBitMember<TC, TCO>::pos_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2532,7 +2334,7 @@ public:
    struct mask_Prop
    {
       constexpr mask_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint64 operator= (/*0H*/uint64 v);
       /*regSet*/inline typename TBitMember<TC, TCO>::mask_Prop & operator= (typename TBitMember<TC, TCO>::mask_Prop & prop);
       /*regGet*/inline operator /*0I*/uint64 () const;
@@ -2541,106 +2343,6 @@ public:
    {
       this->impl = null; // How to know not to delete?
    }
-};
-
-struct Box : public TStruct<Box>
-{
-public:
-   C(Box) impl;
-   constexpr Box() : impl({}) { }
-   constexpr Box(const C(Box) impl) : impl(impl) { }
-
-   inline void clip(/*1Ab*/Box & against); // Box_clip
-   inline void clip(/*1Ac*/Box * against); // Box_clip
-   inline void clipOffset(/*1Ab*/Box & against, /*1Ab*/int x, /*1Ab*/int y); // Box_clipOffset
-   inline void clipOffset(/*1Ac*/Box * against, /*1Ac*/int x, /*1Ac*/int y); // Box_clipOffset
-   inline C(bool) isPointInside(/*1Ab*/Point & point); // Box_isPointInside
-   inline C(bool) isPointInside(/*1Ac*/Point * point); // Box_isPointInside
-   inline C(bool) overlap(/*1Ab*/Box & box); // Box_overlap
-   inline C(bool) overlap(/*1Ac*/Box * box); // Box_overlap
-
-   inline Box(int left, int top, int right, int bottom);
-
-   struct width_Prop
-   {
-      constexpr width_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Box::width_Prop & operator= (Box::width_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } width;
-   struct height_Prop
-   {
-      constexpr height_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Box::height_Prop & operator= (Box::height_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } height;
-
-   struct left_Prop
-   {
-      constexpr left_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Box::left_Prop & operator= (Box::left_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } left;
-   struct top_Prop
-   {
-      constexpr top_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Box::top_Prop & operator= (Box::top_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } top;
-   struct right_Prop
-   {
-      constexpr right_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Box::right_Prop & operator= (Box::right_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } right;
-   struct bottom_Prop
-   {
-      constexpr bottom_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Box::bottom_Prop & operator= (Box::bottom_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } bottom;
-};
-
-class Centimeters : public Distance
-{
-public:
-   constexpr Centimeters() : Distance() { }
-   constexpr Centimeters(const Distance value) : Distance(value) { }
-   constexpr Centimeters(double value) : Distance(CENTIMETERS(value)) { }
-   constexpr operator double() const { return Distance_in_Centimeters(impl); }
-   constexpr Centimeters & operator =(double value) { impl = CENTIMETERS(value); return *this; }
-   bool operator ==(const Centimeters & value) const { return impl == value.impl; }
-   bool operator !=(const Centimeters & value) const { return impl != value.impl; }
-   bool operator <(const Centimeters & value) const { return impl < value.impl; }
-   bool operator >(const Centimeters & value) const { return impl > value.impl; }
-   bool operator <=(const Centimeters & value) const { return impl <= value.impl; }
-   bool operator >=(const Centimeters & value) const { return impl >= value.impl; }
-   bool operator ==(double value) const { return impl == Centimeters(value).impl; }
-   bool operator !=(double value) const { return impl != Centimeters(value).impl; }
-   bool operator <(double value) const { return impl < Centimeters(value).impl; }
-   bool operator >(double value) const { return impl > Centimeters(value).impl; }
-   bool operator <=(double value) const { return impl <= Centimeters(value).impl; }
-   bool operator >=(double value) const { return impl >= Centimeters(value).impl; }
-   bool operator ==(int value) const { return impl == Centimeters(value).impl; }
-   bool operator !=(int value) const { return impl != Centimeters(value).impl; }
-   bool operator <(int value) const { return impl < Centimeters(value).impl; }
-   bool operator >(int value) const { return impl > Centimeters(value).impl; }
-   bool operator <=(int value) const { return impl <= Centimeters(value).impl; }
-   bool operator >=(int value) const { return impl >= Centimeters(value).impl; }
-   inline constexpr operator Meters() const;
-   inline constexpr Centimeters(const Meters & m);
-   inline constexpr Centimeters & operator =(const Meters & m);
 };
 
 template <class TC, C(Class) ** TCO>
@@ -2652,7 +2354,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TClass<TC, TCO>::prev_Prop & operator= (typename TClass<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -2660,7 +2362,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TClass<TC, TCO>::next_Prop & operator= (typename TClass<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -2668,7 +2370,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClass<TC, TCO>::name_Prop & operator= (typename TClass<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -2676,7 +2378,7 @@ public:
    struct offset_Prop
    {
       constexpr offset_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::offset_Prop & operator= (typename TClass<TC, TCO>::offset_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2684,7 +2386,7 @@ public:
    struct structSize_Prop
    {
       constexpr structSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::structSize_Prop & operator= (typename TClass<TC, TCO>::structSize_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2692,7 +2394,7 @@ public:
    struct _vTbl_Prop
    {
       constexpr _vTbl_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void ** operator= (/*0H*/void ** v);
       /*regSet*/inline typename TClass<TC, TCO>::_vTbl_Prop & operator= (typename TClass<TC, TCO>::_vTbl_Prop & prop);
       /*regGet*/inline operator /*0I*/void ** () const;
@@ -2700,7 +2402,7 @@ public:
    struct vTblSize_Prop
    {
       constexpr vTblSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::vTblSize_Prop & operator= (typename TClass<TC, TCO>::vTblSize_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2708,7 +2410,7 @@ public:
    struct offsetClass_Prop
    {
       constexpr offsetClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::offsetClass_Prop & operator= (typename TClass<TC, TCO>::offsetClass_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2716,7 +2418,7 @@ public:
    struct sizeClass_Prop
    {
       constexpr sizeClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::sizeClass_Prop & operator= (typename TClass<TC, TCO>::sizeClass_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2724,7 +2426,7 @@ public:
    struct base_Prop
    {
       constexpr base_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TClass<TC, TCO>::base_Prop & operator= (typename TClass<TC, TCO>::base_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -2732,7 +2434,7 @@ public:
    struct methods_Prop
    {
       constexpr methods_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline typename TClass<TC, TCO>::methods_Prop & operator= (typename TClass<TC, TCO>::methods_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -2740,7 +2442,7 @@ public:
    struct members_Prop
    {
       constexpr members_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline typename TClass<TC, TCO>::members_Prop & operator= (typename TClass<TC, TCO>::members_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -2748,7 +2450,7 @@ public:
    struct prop_Prop
    {
       constexpr prop_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline typename TClass<TC, TCO>::prop_Prop & operator= (typename TClass<TC, TCO>::prop_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -2756,7 +2458,7 @@ public:
    struct membersAndProperties_Prop
    {
       constexpr membersAndProperties_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TClass<TC, TCO>::membersAndProperties_Prop & operator= (typename TClass<TC, TCO>::membersAndProperties_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -2764,7 +2466,7 @@ public:
    struct classProperties_Prop
    {
       constexpr classProperties_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline typename TClass<TC, TCO>::classProperties_Prop & operator= (typename TClass<TC, TCO>::classProperties_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -2772,7 +2474,7 @@ public:
    struct derivatives_Prop
    {
       constexpr derivatives_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TClass<TC, TCO>::derivatives_Prop & operator= (typename TClass<TC, TCO>::derivatives_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -2780,7 +2482,7 @@ public:
    struct memberID_Prop
    {
       constexpr memberID_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::memberID_Prop & operator= (typename TClass<TC, TCO>::memberID_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2788,7 +2490,7 @@ public:
    struct startMemberID_Prop
    {
       constexpr startMemberID_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::startMemberID_Prop & operator= (typename TClass<TC, TCO>::startMemberID_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2796,7 +2498,7 @@ public:
    struct type_Prop
    {
       constexpr type_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ClassType operator= (/*0H*/ClassType v);
       /*regSet*/inline typename TClass<TC, TCO>::type_Prop & operator= (typename TClass<TC, TCO>::type_Prop & prop);
       /*regGet*/inline operator /*0I*/ClassType () const;
@@ -2804,7 +2506,7 @@ public:
    struct module_Prop
    {
       constexpr module_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Module operator= (/*0H*/Module v);
       /*regSet*/inline typename TClass<TC, TCO>::module_Prop & operator= (typename TClass<TC, TCO>::module_Prop & prop);
       /*regGet*/inline operator /*0I*/Module () const;
@@ -2812,7 +2514,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClass<TC, TCO>::dataTypeString_Prop & operator= (typename TClass<TC, TCO>::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -2820,7 +2522,7 @@ public:
    struct typeSize_Prop
    {
       constexpr typeSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::typeSize_Prop & operator= (typename TClass<TC, TCO>::typeSize_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2828,7 +2530,7 @@ public:
    struct defaultAlignment_Prop
    {
       constexpr defaultAlignment_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::defaultAlignment_Prop & operator= (typename TClass<TC, TCO>::defaultAlignment_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2836,7 +2538,7 @@ public:
    struct memberOffset_Prop
    {
       constexpr memberOffset_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::memberOffset_Prop & operator= (typename TClass<TC, TCO>::memberOffset_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2844,7 +2546,7 @@ public:
    struct selfWatchers_Prop
    {
       constexpr selfWatchers_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TClass<TC, TCO>::selfWatchers_Prop & operator= (typename TClass<TC, TCO>::selfWatchers_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -2852,7 +2554,7 @@ public:
    struct designerClass_Prop
    {
       constexpr designerClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClass<TC, TCO>::designerClass_Prop & operator= (typename TClass<TC, TCO>::designerClass_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -2860,7 +2562,7 @@ public:
    struct noExpansion_Prop
    {
       constexpr noExpansion_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TClass<TC, TCO>::noExpansion_Prop & operator= (typename TClass<TC, TCO>::noExpansion_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -2868,7 +2570,7 @@ public:
    struct defaultProperty_Prop
    {
       constexpr defaultProperty_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClass<TC, TCO>::defaultProperty_Prop & operator= (typename TClass<TC, TCO>::defaultProperty_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -2876,7 +2578,7 @@ public:
    struct comRedefinition_Prop
    {
       constexpr comRedefinition_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TClass<TC, TCO>::comRedefinition_Prop & operator= (typename TClass<TC, TCO>::comRedefinition_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -2884,7 +2586,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::count_Prop & operator= (typename TClass<TC, TCO>::count_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2892,7 +2594,7 @@ public:
    struct isRemote_Prop
    {
       constexpr isRemote_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::isRemote_Prop & operator= (typename TClass<TC, TCO>::isRemote_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2900,7 +2602,7 @@ public:
    struct internalDecl_Prop
    {
       constexpr internalDecl_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TClass<TC, TCO>::internalDecl_Prop & operator= (typename TClass<TC, TCO>::internalDecl_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -2908,7 +2610,7 @@ public:
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TClass<TC, TCO>::data_Prop & operator= (typename TClass<TC, TCO>::data_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -2916,7 +2618,7 @@ public:
    struct computeSize_Prop
    {
       constexpr computeSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TClass<TC, TCO>::computeSize_Prop & operator= (typename TClass<TC, TCO>::computeSize_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -2924,7 +2626,7 @@ public:
    struct structAlignment_Prop
    {
       constexpr structAlignment_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/short operator= (/*0H*/short v);
       /*regSet*/inline typename TClass<TC, TCO>::structAlignment_Prop & operator= (typename TClass<TC, TCO>::structAlignment_Prop & prop);
       /*regGet*/inline operator /*0I*/short () const;
@@ -2932,7 +2634,7 @@ public:
    struct pointerAlignment_Prop
    {
       constexpr pointerAlignment_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/short operator= (/*0H*/short v);
       /*regSet*/inline typename TClass<TC, TCO>::pointerAlignment_Prop & operator= (typename TClass<TC, TCO>::pointerAlignment_Prop & prop);
       /*regGet*/inline operator /*0I*/short () const;
@@ -2940,7 +2642,7 @@ public:
    struct destructionWatchOffset_Prop
    {
       constexpr destructionWatchOffset_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::destructionWatchOffset_Prop & operator= (typename TClass<TC, TCO>::destructionWatchOffset_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -2948,7 +2650,7 @@ public:
    struct fixed_Prop
    {
       constexpr fixed_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TClass<TC, TCO>::fixed_Prop & operator= (typename TClass<TC, TCO>::fixed_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -2956,7 +2658,7 @@ public:
    struct delayedCPValues_Prop
    {
       constexpr delayedCPValues_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TClass<TC, TCO>::delayedCPValues_Prop & operator= (typename TClass<TC, TCO>::delayedCPValues_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -2964,7 +2666,7 @@ public:
    struct inheritanceAccess_Prop
    {
       constexpr inheritanceAccess_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Access_Mode operator= (/*0H*/Access_Mode v);
       /*regSet*/inline typename TClass<TC, TCO>::inheritanceAccess_Prop & operator= (typename TClass<TC, TCO>::inheritanceAccess_Prop & prop);
       /*regGet*/inline operator /*0I*/Access_Mode () const;
@@ -2972,7 +2674,7 @@ public:
    struct fullName_Prop
    {
       constexpr fullName_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClass<TC, TCO>::fullName_Prop & operator= (typename TClass<TC, TCO>::fullName_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -2980,7 +2682,7 @@ public:
    struct symbol_Prop
    {
       constexpr symbol_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TClass<TC, TCO>::symbol_Prop & operator= (typename TClass<TC, TCO>::symbol_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -2988,7 +2690,7 @@ public:
    struct conversions_Prop
    {
       constexpr conversions_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TClass<TC, TCO>::conversions_Prop & operator= (typename TClass<TC, TCO>::conversions_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -2996,7 +2698,7 @@ public:
    struct templateParams_Prop
    {
       constexpr templateParams_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TClass<TC, TCO>::templateParams_Prop & operator= (typename TClass<TC, TCO>::templateParams_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -3004,7 +2706,7 @@ public:
    struct templateClass_Prop
    {
       constexpr templateClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TClass<TC, TCO>::templateClass_Prop & operator= (typename TClass<TC, TCO>::templateClass_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -3012,7 +2714,7 @@ public:
    struct templatized_Prop
    {
       constexpr templatized_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TClass<TC, TCO>::templatized_Prop & operator= (typename TClass<TC, TCO>::templatized_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -3020,7 +2722,7 @@ public:
    struct numParams_Prop
    {
       constexpr numParams_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClass<TC, TCO>::numParams_Prop & operator= (typename TClass<TC, TCO>::numParams_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3028,7 +2730,7 @@ public:
    struct isInstanceClass_Prop
    {
       constexpr isInstanceClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TClass<TC, TCO>::isInstanceClass_Prop & operator= (typename TClass<TC, TCO>::isInstanceClass_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -3036,7 +2738,7 @@ public:
    struct byValueSystemClass_Prop
    {
       constexpr byValueSystemClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TClass<TC, TCO>::byValueSystemClass_Prop & operator= (typename TClass<TC, TCO>::byValueSystemClass_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -3044,7 +2746,7 @@ public:
    struct bindingsClass_Prop
    {
       constexpr bindingsClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TClass<TC, TCO>::bindingsClass_Prop & operator= (typename TClass<TC, TCO>::bindingsClass_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -3064,7 +2766,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClassProperty<TC, TCO>::name_Prop & operator= (typename TClassProperty<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3072,7 +2774,7 @@ public:
    struct parent_Prop
    {
       constexpr parent_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ClassProperty operator= (/*0H*/ClassProperty & v);
       /*regSet*/inline typename TClassProperty<TC, TCO>::parent_Prop & operator= (typename TClassProperty<TC, TCO>::parent_Prop & prop);
       /*regGet*/inline operator /*0I*/ClassProperty () const;
@@ -3080,7 +2782,7 @@ public:
    struct left_Prop
    {
       constexpr left_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ClassProperty operator= (/*0H*/ClassProperty & v);
       /*regSet*/inline typename TClassProperty<TC, TCO>::left_Prop & operator= (typename TClassProperty<TC, TCO>::left_Prop & prop);
       /*regGet*/inline operator /*0I*/ClassProperty () const;
@@ -3088,7 +2790,7 @@ public:
    struct right_Prop
    {
       constexpr right_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ClassProperty operator= (/*0H*/ClassProperty & v);
       /*regSet*/inline typename TClassProperty<TC, TCO>::right_Prop & operator= (typename TClassProperty<TC, TCO>::right_Prop & prop);
       /*regGet*/inline operator /*0I*/ClassProperty () const;
@@ -3096,7 +2798,7 @@ public:
    struct depth_Prop
    {
       constexpr depth_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TClassProperty<TC, TCO>::depth_Prop & operator= (typename TClassProperty<TC, TCO>::depth_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3104,7 +2806,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClassProperty<TC, TCO>::dataTypeString_Prop & operator= (typename TClassProperty<TC, TCO>::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3112,7 +2814,7 @@ public:
    struct constant_Prop
    {
       constexpr constant_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TClassProperty<TC, TCO>::constant_Prop & operator= (typename TClassProperty<TC, TCO>::constant_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -3135,7 +2837,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline ClassTemplateArgument::dataTypeString_Prop & operator= (ClassTemplateArgument::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3143,7 +2845,7 @@ public:
    struct dataTypeClass_Prop
    {
       constexpr dataTypeClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline ClassTemplateArgument::dataTypeClass_Prop & operator= (ClassTemplateArgument::dataTypeClass_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -3151,7 +2853,7 @@ public:
    struct expression_Prop
    {
       constexpr expression_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DataValue operator= (/*0H*/DataValue v);
       /*regSet*/inline ClassTemplateArgument::expression_Prop & operator= (ClassTemplateArgument::expression_Prop & prop);
       /*regGet*/inline operator /*0I*/DataValue () const;
@@ -3159,7 +2861,7 @@ public:
    struct memberString_Prop
    {
       constexpr memberString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline ClassTemplateArgument::memberString_Prop & operator= (ClassTemplateArgument::memberString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3167,7 +2869,7 @@ public:
    struct member_Prop
    {
       constexpr member_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DataMember operator= (/*0H*/DataMember & v);
       /*regSet*/inline ClassTemplateArgument::member_Prop & operator= (ClassTemplateArgument::member_Prop & prop);
       /*regGet*/inline operator /*0I*/DataMember () const;
@@ -3175,7 +2877,7 @@ public:
    struct prop_Prop
    {
       constexpr prop_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Property operator= (/*0H*/Property & v);
       /*regSet*/inline ClassTemplateArgument::prop_Prop & operator= (ClassTemplateArgument::prop_Prop & prop);
       /*regGet*/inline operator /*0I*/Property () const;
@@ -3183,7 +2885,7 @@ public:
    struct method_Prop
    {
       constexpr method_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Method operator= (/*0H*/Method & v);
       /*regSet*/inline ClassTemplateArgument::method_Prop & operator= (ClassTemplateArgument::method_Prop & prop);
       /*regGet*/inline operator /*0I*/Method () const;
@@ -3199,7 +2901,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ClassTemplateParameter operator= (/*0H*/ClassTemplateParameter & v);
       /*regSet*/inline typename TClassTemplateParameter<TC, TCO>::prev_Prop & operator= (typename TClassTemplateParameter<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/ClassTemplateParameter () const;
@@ -3207,7 +2909,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ClassTemplateParameter operator= (/*0H*/ClassTemplateParameter & v);
       /*regSet*/inline typename TClassTemplateParameter<TC, TCO>::next_Prop & operator= (typename TClassTemplateParameter<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/ClassTemplateParameter () const;
@@ -3215,7 +2917,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClassTemplateParameter<TC, TCO>::name_Prop & operator= (typename TClassTemplateParameter<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3223,7 +2925,7 @@ public:
    struct type_Prop
    {
       constexpr type_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TemplateParameterType operator= (/*0H*/TemplateParameterType v);
       /*regSet*/inline typename TClassTemplateParameter<TC, TCO>::type_Prop & operator= (typename TClassTemplateParameter<TC, TCO>::type_Prop & prop);
       /*regGet*/inline operator /*0I*/TemplateParameterType () const;
@@ -3231,7 +2933,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TClassTemplateParameter<TC, TCO>::dataTypeString_Prop & operator= (typename TClassTemplateParameter<TC, TCO>::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3239,7 +2941,7 @@ public:
    struct memberType_Prop
    {
       constexpr memberType_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TemplateMemberType operator= (/*0H*/TemplateMemberType v);
       /*regSet*/inline typename TClassTemplateParameter<TC, TCO>::memberType_Prop & operator= (typename TClassTemplateParameter<TC, TCO>::memberType_Prop & prop);
       /*regGet*/inline operator /*0I*/TemplateMemberType () const;
@@ -3247,7 +2949,7 @@ public:
    struct defaultArg_Prop
    {
       constexpr defaultArg_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ClassTemplateArgument operator= (/*0H*/ClassTemplateArgument v);
       /*regSet*/inline typename TClassTemplateParameter<TC, TCO>::defaultArg_Prop & operator= (typename TClassTemplateParameter<TC, TCO>::defaultArg_Prop & prop);
       /*regGet*/inline operator /*0I*/ClassTemplateArgument () const;
@@ -3255,7 +2957,7 @@ public:
    struct param_Prop
    {
       constexpr param_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TClassTemplateParameter<TC, TCO>::param_Prop & operator= (typename TClassTemplateParameter<TC, TCO>::param_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -3287,7 +2989,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DataMember operator= (/*0H*/DataMember & v);
       /*regSet*/inline typename TDataMember<TC, TCO>::prev_Prop & operator= (typename TDataMember<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/DataMember () const;
@@ -3295,7 +2997,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DataMember operator= (/*0H*/DataMember & v);
       /*regSet*/inline typename TDataMember<TC, TCO>::next_Prop & operator= (typename TDataMember<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/DataMember () const;
@@ -3303,7 +3005,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TDataMember<TC, TCO>::name_Prop & operator= (typename TDataMember<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3311,7 +3013,7 @@ public:
    struct isProperty_Prop
    {
       constexpr isProperty_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TDataMember<TC, TCO>::isProperty_Prop & operator= (typename TDataMember<TC, TCO>::isProperty_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -3319,7 +3021,7 @@ public:
    struct memberAccess_Prop
    {
       constexpr memberAccess_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Access_Mode operator= (/*0H*/Access_Mode v);
       /*regSet*/inline typename TDataMember<TC, TCO>::memberAccess_Prop & operator= (typename TDataMember<TC, TCO>::memberAccess_Prop & prop);
       /*regGet*/inline operator /*0I*/Access_Mode () const;
@@ -3327,7 +3029,7 @@ public:
    struct id_Prop
    {
       constexpr id_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TDataMember<TC, TCO>::id_Prop & operator= (typename TDataMember<TC, TCO>::id_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3335,7 +3037,7 @@ public:
    struct _class_Prop
    {
       constexpr _class_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TDataMember<TC, TCO>::_class_Prop & operator= (typename TDataMember<TC, TCO>::_class_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -3343,7 +3045,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TDataMember<TC, TCO>::dataTypeString_Prop & operator= (typename TDataMember<TC, TCO>::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3351,7 +3053,7 @@ public:
    struct dataTypeClass_Prop
    {
       constexpr dataTypeClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TDataMember<TC, TCO>::dataTypeClass_Prop & operator= (typename TDataMember<TC, TCO>::dataTypeClass_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -3359,7 +3061,7 @@ public:
    struct type_Prop
    {
       constexpr type_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DataMemberType operator= (/*0H*/DataMemberType v);
       /*regSet*/inline typename TDataMember<TC, TCO>::type_Prop & operator= (typename TDataMember<TC, TCO>::type_Prop & prop);
       /*regGet*/inline operator /*0I*/DataMemberType () const;
@@ -3367,7 +3069,7 @@ public:
    struct offset_Prop
    {
       constexpr offset_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TDataMember<TC, TCO>::offset_Prop & operator= (typename TDataMember<TC, TCO>::offset_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3375,7 +3077,7 @@ public:
    struct memberID_Prop
    {
       constexpr memberID_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TDataMember<TC, TCO>::memberID_Prop & operator= (typename TDataMember<TC, TCO>::memberID_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3383,7 +3085,7 @@ public:
    struct members_Prop
    {
       constexpr members_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TDataMember<TC, TCO>::members_Prop & operator= (typename TDataMember<TC, TCO>::members_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -3391,7 +3093,7 @@ public:
    struct membersAlpha_Prop
    {
       constexpr membersAlpha_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline typename TDataMember<TC, TCO>::membersAlpha_Prop & operator= (typename TDataMember<TC, TCO>::membersAlpha_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -3399,7 +3101,7 @@ public:
    struct memberOffset_Prop
    {
       constexpr memberOffset_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TDataMember<TC, TCO>::memberOffset_Prop & operator= (typename TDataMember<TC, TCO>::memberOffset_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3407,7 +3109,7 @@ public:
    struct structAlignment_Prop
    {
       constexpr structAlignment_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/short operator= (/*0H*/short v);
       /*regSet*/inline typename TDataMember<TC, TCO>::structAlignment_Prop & operator= (typename TDataMember<TC, TCO>::structAlignment_Prop & prop);
       /*regGet*/inline operator /*0I*/short () const;
@@ -3415,7 +3117,7 @@ public:
    struct pointerAlignment_Prop
    {
       constexpr pointerAlignment_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/short operator= (/*0H*/short v);
       /*regSet*/inline typename TDataMember<TC, TCO>::pointerAlignment_Prop & operator= (typename TDataMember<TC, TCO>::pointerAlignment_Prop & prop);
       /*regGet*/inline operator /*0I*/short () const;
@@ -3440,76 +3142,12 @@ public:
    constexpr DataValue() : impl({}) { }
    constexpr DataValue(const C(DataValue) impl) : impl(impl) { }
 
-   inline DataValue(char c, unsigned char uc, short s, uint16 us, int i, uint ui, void * p, float f, double d, int64 i64, uint64 ui64);
+   inline DataValue(double d, int64 i64, uint64 ui64, char c, unsigned char uc, short s, uint16 us, int i, uint ui, void * p, float f);
 
-   struct c_Prop
-   {
-      constexpr c_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/char operator= (/*0H*/char v);
-      /*regSet*/inline DataValue::c_Prop & operator= (DataValue::c_Prop & prop);
-      /*regGet*/inline operator /*0I*/char () const;
-   } c;
-   struct uc_Prop
-   {
-      constexpr uc_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/unsigned char operator= (/*0H*/unsigned char v);
-      /*regSet*/inline DataValue::uc_Prop & operator= (DataValue::uc_Prop & prop);
-      /*regGet*/inline operator /*0I*/unsigned char () const;
-   } uc;
-   struct s_Prop
-   {
-      constexpr s_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/short operator= (/*0H*/short v);
-      /*regSet*/inline DataValue::s_Prop & operator= (DataValue::s_Prop & prop);
-      /*regGet*/inline operator /*0I*/short () const;
-   } s;
-   struct us_Prop
-   {
-      constexpr us_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/uint16 operator= (/*0H*/uint16 v);
-      /*regSet*/inline DataValue::us_Prop & operator= (DataValue::us_Prop & prop);
-      /*regGet*/inline operator /*0I*/uint16 () const;
-   } us;
-   struct i_Prop
-   {
-      constexpr i_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline DataValue::i_Prop & operator= (DataValue::i_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } i;
-   struct ui_Prop
-   {
-      constexpr ui_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
-      /*regSet*/inline DataValue::ui_Prop & operator= (DataValue::ui_Prop & prop);
-      /*regGet*/inline operator /*0I*/uint () const;
-   } ui;
-   struct p_Prop
-   {
-      constexpr p_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
-      /*regSet*/inline DataValue::p_Prop & operator= (DataValue::p_Prop & prop);
-      /*regGet*/inline operator /*0I*/void * () const;
-   } p;
-   struct f_Prop
-   {
-      constexpr f_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/float operator= (/*0H*/float v);
-      /*regSet*/inline DataValue::f_Prop & operator= (DataValue::f_Prop & prop);
-      /*regGet*/inline operator /*0I*/float () const;
-   } f;
    struct d_Prop
    {
       constexpr d_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/double operator= (/*0H*/double v);
       /*regSet*/inline DataValue::d_Prop & operator= (DataValue::d_Prop & prop);
       /*regGet*/inline operator /*0I*/double () const;
@@ -3517,7 +3155,7 @@ public:
    struct i64_Prop
    {
       constexpr i64_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int64 operator= (/*0H*/int64 v);
       /*regSet*/inline DataValue::i64_Prop & operator= (DataValue::i64_Prop & prop);
       /*regGet*/inline operator /*0I*/int64 () const;
@@ -3525,11 +3163,75 @@ public:
    struct ui64_Prop
    {
       constexpr ui64_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint64 operator= (/*0H*/uint64 v);
       /*regSet*/inline DataValue::ui64_Prop & operator= (DataValue::ui64_Prop & prop);
       /*regGet*/inline operator /*0I*/uint64 () const;
    } ui64;
+   struct c_Prop
+   {
+      constexpr c_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/char operator= (/*0H*/char v);
+      /*regSet*/inline DataValue::c_Prop & operator= (DataValue::c_Prop & prop);
+      /*regGet*/inline operator /*0I*/char () const;
+   } c;
+   struct uc_Prop
+   {
+      constexpr uc_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/unsigned char operator= (/*0H*/unsigned char v);
+      /*regSet*/inline DataValue::uc_Prop & operator= (DataValue::uc_Prop & prop);
+      /*regGet*/inline operator /*0I*/unsigned char () const;
+   } uc;
+   struct s_Prop
+   {
+      constexpr s_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/short operator= (/*0H*/short v);
+      /*regSet*/inline DataValue::s_Prop & operator= (DataValue::s_Prop & prop);
+      /*regGet*/inline operator /*0I*/short () const;
+   } s;
+   struct us_Prop
+   {
+      constexpr us_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/uint16 operator= (/*0H*/uint16 v);
+      /*regSet*/inline DataValue::us_Prop & operator= (DataValue::us_Prop & prop);
+      /*regGet*/inline operator /*0I*/uint16 () const;
+   } us;
+   struct i_Prop
+   {
+      constexpr i_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline DataValue::i_Prop & operator= (DataValue::i_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } i;
+   struct ui_Prop
+   {
+      constexpr ui_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
+      /*regSet*/inline DataValue::ui_Prop & operator= (DataValue::ui_Prop & prop);
+      /*regGet*/inline operator /*0I*/uint () const;
+   } ui;
+   struct p_Prop
+   {
+      constexpr p_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
+      /*regSet*/inline DataValue::p_Prop & operator= (DataValue::p_Prop & prop);
+      /*regGet*/inline operator /*0I*/void * () const;
+   } p;
+   struct f_Prop
+   {
+      constexpr f_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/float operator= (/*0H*/float v);
+      /*regSet*/inline DataValue::f_Prop & operator= (DataValue::f_Prop & prop);
+      /*regGet*/inline operator /*0I*/float () const;
+   } f;
 };
 
 template <class TC, C(Class) ** TCO>
@@ -3541,7 +3243,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DefinedExpression operator= (/*0H*/DefinedExpression & v);
       /*regSet*/inline typename TDefinedExpression<TC, TCO>::prev_Prop & operator= (typename TDefinedExpression<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/DefinedExpression () const;
@@ -3549,7 +3251,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DefinedExpression operator= (/*0H*/DefinedExpression & v);
       /*regSet*/inline typename TDefinedExpression<TC, TCO>::next_Prop & operator= (typename TDefinedExpression<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/DefinedExpression () const;
@@ -3557,7 +3259,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TDefinedExpression<TC, TCO>::name_Prop & operator= (typename TDefinedExpression<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3565,7 +3267,7 @@ public:
    struct value_Prop
    {
       constexpr value_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TDefinedExpression<TC, TCO>::value_Prop & operator= (typename TDefinedExpression<TC, TCO>::value_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3574,37 +3276,6 @@ public:
    {
       this->impl = null; // How to know not to delete?
    }
-};
-
-class Degrees : public Angle
-{
-public:
-   constexpr Degrees() : Angle() { }
-   constexpr Degrees(const Angle value) : Angle(value) { }
-   constexpr Degrees(double value) : Angle(DEGREES(value)) { }
-   constexpr operator double() const { return Angle_in_Degrees(impl); }
-   constexpr Degrees & operator =(double value) { impl = DEGREES(value); return *this; }
-   bool operator ==(const Degrees & value) const { return impl == value.impl; }
-   bool operator !=(const Degrees & value) const { return impl != value.impl; }
-   bool operator <(const Degrees & value) const { return impl < value.impl; }
-   bool operator >(const Degrees & value) const { return impl > value.impl; }
-   bool operator <=(const Degrees & value) const { return impl <= value.impl; }
-   bool operator >=(const Degrees & value) const { return impl >= value.impl; }
-   bool operator ==(double value) const { return impl == Degrees(value).impl; }
-   bool operator !=(double value) const { return impl != Degrees(value).impl; }
-   bool operator <(double value) const { return impl < Degrees(value).impl; }
-   bool operator >(double value) const { return impl > Degrees(value).impl; }
-   bool operator <=(double value) const { return impl <= Degrees(value).impl; }
-   bool operator >=(double value) const { return impl >= Degrees(value).impl; }
-   bool operator ==(int value) const { return impl == Degrees(value).impl; }
-   bool operator !=(int value) const { return impl != Degrees(value).impl; }
-   bool operator <(int value) const { return impl < Degrees(value).impl; }
-   bool operator >(int value) const { return impl > Degrees(value).impl; }
-   bool operator <=(int value) const { return impl <= Degrees(value).impl; }
-   bool operator >=(int value) const { return impl >= Degrees(value).impl; }
-   inline constexpr operator Radians() const;
-   inline constexpr Degrees(const Radians & r);
-   inline constexpr Degrees & operator =(const Radians & r);
 };
 
 template <class TC, C(Class) ** TCO>
@@ -3616,7 +3287,7 @@ public:
    struct values_Prop
    {
       constexpr values_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TEnumClassData<TC, TCO>::values_Prop & operator= (typename TEnumClassData<TC, TCO>::values_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -3624,7 +3295,7 @@ public:
    struct largest_Prop
    {
       constexpr largest_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int64 operator= (/*0H*/int64 v);
       /*regSet*/inline typename TEnumClassData<TC, TCO>::largest_Prop & operator= (typename TEnumClassData<TC, TCO>::largest_Prop & prop);
       /*regGet*/inline operator /*0I*/int64 () const;
@@ -3650,7 +3321,7 @@ public:
    struct escapeSingleQuote_Prop
    {
       constexpr escapeSingleQuote_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline EscapeCStringOptions::escapeSingleQuote_Prop & operator= (EscapeCStringOptions::escapeSingleQuote_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -3658,7 +3329,7 @@ public:
    struct escapeDoubleQuotes_Prop
    {
       constexpr escapeDoubleQuotes_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline EscapeCStringOptions::escapeDoubleQuotes_Prop & operator= (EscapeCStringOptions::escapeDoubleQuotes_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -3666,7 +3337,7 @@ public:
    struct writeQuotes_Prop
    {
       constexpr writeQuotes_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline EscapeCStringOptions::writeQuotes_Prop & operator= (EscapeCStringOptions::writeQuotes_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -3674,7 +3345,7 @@ public:
    struct multiLine_Prop
    {
       constexpr multiLine_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline EscapeCStringOptions::multiLine_Prop & operator= (EscapeCStringOptions::multiLine_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -3682,42 +3353,11 @@ public:
    struct indent_Prop
    {
       constexpr indent_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline EscapeCStringOptions::indent_Prop & operator= (EscapeCStringOptions::indent_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
    } indent;
-};
-
-class Feet : public Distance
-{
-public:
-   constexpr Feet() : Distance() { }
-   constexpr Feet(const Distance value) : Distance(value) { }
-   constexpr Feet(double value) : Distance(FEET(value)) { }
-   constexpr operator double() const { return Distance_in_Feet(impl); }
-   constexpr Feet & operator =(double value) { impl = FEET(value); return *this; }
-   bool operator ==(const Feet & value) const { return impl == value.impl; }
-   bool operator !=(const Feet & value) const { return impl != value.impl; }
-   bool operator <(const Feet & value) const { return impl < value.impl; }
-   bool operator >(const Feet & value) const { return impl > value.impl; }
-   bool operator <=(const Feet & value) const { return impl <= value.impl; }
-   bool operator >=(const Feet & value) const { return impl >= value.impl; }
-   bool operator ==(double value) const { return impl == Feet(value).impl; }
-   bool operator !=(double value) const { return impl != Feet(value).impl; }
-   bool operator <(double value) const { return impl < Feet(value).impl; }
-   bool operator >(double value) const { return impl > Feet(value).impl; }
-   bool operator <=(double value) const { return impl <= Feet(value).impl; }
-   bool operator >=(double value) const { return impl >= Feet(value).impl; }
-   bool operator ==(int value) const { return impl == Feet(value).impl; }
-   bool operator !=(int value) const { return impl != Feet(value).impl; }
-   bool operator <(int value) const { return impl < Feet(value).impl; }
-   bool operator >(int value) const { return impl > Feet(value).impl; }
-   bool operator <=(int value) const { return impl <= Feet(value).impl; }
-   bool operator >=(int value) const { return impl >= Feet(value).impl; }
-   inline constexpr operator Meters() const;
-   inline constexpr Feet(const Meters & m);
-   inline constexpr Feet & operator =(const Meters & m);
 };
 
 template <class TC, C(Class) ** TCO>
@@ -3729,7 +3369,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/GlobalFunction operator= (/*0H*/GlobalFunction & v);
       /*regSet*/inline typename TGlobalFunction<TC, TCO>::prev_Prop & operator= (typename TGlobalFunction<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/GlobalFunction () const;
@@ -3737,7 +3377,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/GlobalFunction operator= (/*0H*/GlobalFunction & v);
       /*regSet*/inline typename TGlobalFunction<TC, TCO>::next_Prop & operator= (typename TGlobalFunction<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/GlobalFunction () const;
@@ -3745,7 +3385,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TGlobalFunction<TC, TCO>::name_Prop & operator= (typename TGlobalFunction<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3753,7 +3393,7 @@ public:
    struct module_Prop
    {
       constexpr module_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Module operator= (/*0H*/Module v);
       /*regSet*/inline typename TGlobalFunction<TC, TCO>::module_Prop & operator= (typename TGlobalFunction<TC, TCO>::module_Prop & prop);
       /*regGet*/inline operator /*0I*/Module () const;
@@ -3761,7 +3401,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TGlobalFunction<TC, TCO>::dataTypeString_Prop & operator= (typename TGlobalFunction<TC, TCO>::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3769,7 +3409,7 @@ public:
    struct symbol_Prop
    {
       constexpr symbol_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TGlobalFunction<TC, TCO>::symbol_Prop & operator= (typename TGlobalFunction<TC, TCO>::symbol_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -3789,40 +3429,6 @@ enum class ImportType : int
    comCheckImport = ImportType_comCheckImport
 };
 
-class Meters : public Distance
-{
-public:
-   constexpr Meters() : Distance() { }
-   constexpr Meters(const Distance value) : Distance(value) { }
-   constexpr Meters(double value) : Distance(METERS(value)) { }
-   constexpr operator double() const { return Distance_in_Meters(impl); }
-   constexpr Meters & operator =(double value) { impl = METERS(value); return *this; }
-   bool operator ==(const Meters & value) const { return impl == value.impl; }
-   bool operator !=(const Meters & value) const { return impl != value.impl; }
-   bool operator <(const Meters & value) const { return impl < value.impl; }
-   bool operator >(const Meters & value) const { return impl > value.impl; }
-   bool operator <=(const Meters & value) const { return impl <= value.impl; }
-   bool operator >=(const Meters & value) const { return impl >= value.impl; }
-   bool operator ==(double value) const { return impl == Meters(value).impl; }
-   bool operator !=(double value) const { return impl != Meters(value).impl; }
-   bool operator <(double value) const { return impl < Meters(value).impl; }
-   bool operator >(double value) const { return impl > Meters(value).impl; }
-   bool operator <=(double value) const { return impl <= Meters(value).impl; }
-   bool operator >=(double value) const { return impl >= Meters(value).impl; }
-   bool operator ==(int value) const { return impl == Meters(value).impl; }
-   bool operator !=(int value) const { return impl != Meters(value).impl; }
-   bool operator <(int value) const { return impl < Meters(value).impl; }
-   bool operator >(int value) const { return impl > Meters(value).impl; }
-   bool operator <=(int value) const { return impl <= Meters(value).impl; }
-   bool operator >=(int value) const { return impl >= Meters(value).impl; }
-   inline Meters operator= (Centimeters value);
-   inline Meters(Centimeters value);
-   inline operator Centimeters() const;
-   inline Meters operator= (Feet value);
-   inline Meters(Feet value);
-   inline operator Feet() const;
-};
-
 template <class TC, C(Class) ** TCO>
 class TMethod : public TNHInstance<TC, TCO>
 {
@@ -3832,7 +3438,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TMethod<TC, TCO>::name_Prop & operator= (typename TMethod<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3840,7 +3446,7 @@ public:
    struct parent_Prop
    {
       constexpr parent_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Method operator= (/*0H*/Method & v);
       /*regSet*/inline typename TMethod<TC, TCO>::parent_Prop & operator= (typename TMethod<TC, TCO>::parent_Prop & prop);
       /*regGet*/inline operator /*0I*/Method () const;
@@ -3848,7 +3454,7 @@ public:
    struct left_Prop
    {
       constexpr left_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Method operator= (/*0H*/Method & v);
       /*regSet*/inline typename TMethod<TC, TCO>::left_Prop & operator= (typename TMethod<TC, TCO>::left_Prop & prop);
       /*regGet*/inline operator /*0I*/Method () const;
@@ -3856,7 +3462,7 @@ public:
    struct right_Prop
    {
       constexpr right_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Method operator= (/*0H*/Method & v);
       /*regSet*/inline typename TMethod<TC, TCO>::right_Prop & operator= (typename TMethod<TC, TCO>::right_Prop & prop);
       /*regGet*/inline operator /*0I*/Method () const;
@@ -3864,7 +3470,7 @@ public:
    struct depth_Prop
    {
       constexpr depth_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TMethod<TC, TCO>::depth_Prop & operator= (typename TMethod<TC, TCO>::depth_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3872,7 +3478,7 @@ public:
    struct vid_Prop
    {
       constexpr vid_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TMethod<TC, TCO>::vid_Prop & operator= (typename TMethod<TC, TCO>::vid_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3880,7 +3486,7 @@ public:
    struct type_Prop
    {
       constexpr type_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/MethodType operator= (/*0H*/MethodType v);
       /*regSet*/inline typename TMethod<TC, TCO>::type_Prop & operator= (typename TMethod<TC, TCO>::type_Prop & prop);
       /*regGet*/inline operator /*0I*/MethodType () const;
@@ -3888,7 +3494,7 @@ public:
    struct _class_Prop
    {
       constexpr _class_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TMethod<TC, TCO>::_class_Prop & operator= (typename TMethod<TC, TCO>::_class_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -3896,7 +3502,7 @@ public:
    struct symbol_Prop
    {
       constexpr symbol_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TMethod<TC, TCO>::symbol_Prop & operator= (typename TMethod<TC, TCO>::symbol_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -3904,7 +3510,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TMethod<TC, TCO>::dataTypeString_Prop & operator= (typename TMethod<TC, TCO>::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3912,7 +3518,7 @@ public:
    struct memberAccess_Prop
    {
       constexpr memberAccess_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Access_Mode operator= (/*0H*/Access_Mode v);
       /*regSet*/inline typename TMethod<TC, TCO>::memberAccess_Prop & operator= (typename TMethod<TC, TCO>::memberAccess_Prop & prop);
       /*regGet*/inline operator /*0I*/Access_Mode () const;
@@ -3929,33 +3535,6 @@ enum class MethodType : int
    virtualMethod = MethodType_virtualMethod
 };
 
-class MinMaxValue
-{
-public:
-   C(MinMaxValue) impl;
-   constexpr MinMaxValue() : impl(0) { }
-   constexpr MinMaxValue(C(MinMaxValue) value) : impl(value) { }
-   operator C(MinMaxValue)() const { return impl; }
-   constexpr MinMaxValue(const MinMaxValue & value) : impl(value.impl) { }
-   MinMaxValue & operator =(int value) { impl = value; return *this; }
-   MinMaxValue & operator +=(MinMaxValue value) { impl += value.impl; return *this; }
-   MinMaxValue & operator -=(MinMaxValue value) { impl -= value.impl; return *this; }
-   MinMaxValue operator +(const MinMaxValue & b) const { return MinMaxValue(impl + b.impl); }
-   MinMaxValue operator -(const MinMaxValue & b) const { return MinMaxValue(impl - b.impl); }
-   bool operator ==(const MinMaxValue & value) const { return impl == value.impl; }
-   bool operator !=(const MinMaxValue & value) const { return impl != value.impl; }
-   bool operator <(const MinMaxValue & value) const { return impl < value.impl; }
-   bool operator >(const MinMaxValue & value) const { return impl > value.impl; }
-   bool operator <=(const MinMaxValue & value) const { return impl <= value.impl; }
-   bool operator >=(const MinMaxValue & value) const { return impl >= value.impl; }
-   bool operator ==(int value) const { return impl == MinMaxValue(value).impl; }
-   bool operator !=(int value) const { return impl != MinMaxValue(value).impl; }
-   bool operator <(int value) const { return impl < MinMaxValue(value).impl; }
-   bool operator >(int value) const { return impl > MinMaxValue(value).impl; }
-   bool operator <=(int value) const { return impl <= MinMaxValue(value).impl; }
-   bool operator >=(int value) const { return impl >= MinMaxValue(value).impl; }
-};
-
 struct NameSpace : public TStruct<NameSpace>
 {
 public:
@@ -3966,7 +3545,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline NameSpace::name_Prop & operator= (NameSpace::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -3974,7 +3553,7 @@ public:
    struct depth_Prop
    {
       constexpr depth_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline NameSpace::depth_Prop & operator= (NameSpace::depth_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -3982,7 +3561,7 @@ public:
    struct nameSpaces_Prop
    {
       constexpr nameSpaces_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline NameSpace::nameSpaces_Prop & operator= (NameSpace::nameSpaces_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -3990,7 +3569,7 @@ public:
    struct classes_Prop
    {
       constexpr classes_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline NameSpace::classes_Prop & operator= (NameSpace::classes_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -3998,7 +3577,7 @@ public:
    struct defines_Prop
    {
       constexpr defines_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline NameSpace::defines_Prop & operator= (NameSpace::defines_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -4006,7 +3585,7 @@ public:
    struct functions_Prop
    {
       constexpr functions_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BinaryTree operator= (/*0H*/BinaryTree v);
       /*regSet*/inline NameSpace::functions_Prop & operator= (NameSpace::functions_Prop & prop);
       /*regGet*/inline operator /*0I*/BinaryTree () const;
@@ -4022,7 +3601,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ObjectInfo operator= (/*0H*/ObjectInfo & v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::prev_Prop & operator= (typename TObjectInfo<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/ObjectInfo () const;
@@ -4030,7 +3609,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ObjectInfo operator= (/*0H*/ObjectInfo & v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::next_Prop & operator= (typename TObjectInfo<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/ObjectInfo () const;
@@ -4038,7 +3617,7 @@ public:
    struct instance_Prop
    {
       constexpr instance_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Instance operator= (/*0H*/Instance v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::instance_Prop & operator= (typename TObjectInfo<TC, TCO>::instance_Prop & prop);
       /*regGet*/inline operator /*0I*/Instance () const;
@@ -4046,7 +3625,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::name_Prop & operator= (typename TObjectInfo<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/char * () const;
@@ -4054,7 +3633,7 @@ public:
    struct deleted_Prop
    {
       constexpr deleted_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::deleted_Prop & operator= (typename TObjectInfo<TC, TCO>::deleted_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -4062,7 +3641,7 @@ public:
    struct oClass_Prop
    {
       constexpr oClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ObjectInfo operator= (/*0H*/ObjectInfo & v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::oClass_Prop & operator= (typename TObjectInfo<TC, TCO>::oClass_Prop & prop);
       /*regGet*/inline operator /*0I*/ObjectInfo () const;
@@ -4070,7 +3649,7 @@ public:
    struct instances_Prop
    {
       constexpr instances_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldList operator= (/*0H*/OldList v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::instances_Prop & operator= (typename TObjectInfo<TC, TCO>::instances_Prop & prop);
       /*regGet*/inline operator /*0I*/OldList () const;
@@ -4078,7 +3657,7 @@ public:
    struct modified_Prop
    {
       constexpr modified_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::modified_Prop & operator= (typename TObjectInfo<TC, TCO>::modified_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -4086,7 +3665,7 @@ public:
    struct i18nStrings_Prop
    {
       constexpr i18nStrings_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TObjectInfo<TC, TCO>::i18nStrings_Prop & operator= (typename TObjectInfo<TC, TCO>::i18nStrings_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -4105,87 +3684,6 @@ enum class Platform : int
    apple = Platform_apple
 };
 
-struct Point : public TStruct<Point>
-{
-public:
-   C(Point) impl;
-   constexpr Point() : impl({}) { }
-   constexpr Point(const C(Point) impl) : impl(impl) { }
-
-   inline Point(int x, int y);
-
-   struct x_Prop
-   {
-      constexpr x_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Point::x_Prop & operator= (Point::x_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } x;
-   struct y_Prop
-   {
-      constexpr y_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
-      /*regSet*/inline Point::y_Prop & operator= (Point::y_Prop & prop);
-      /*regGet*/inline operator /*0I*/int () const;
-   } y;
-};
-
-struct Pointd : public TStruct<Pointd>
-{
-public:
-   C(Pointd) impl;
-   constexpr Pointd() : impl({}) { }
-   constexpr Pointd(const C(Pointd) impl) : impl(impl) { }
-
-   inline Pointd(double x, double y);
-
-   struct x_Prop
-   {
-      constexpr x_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/double operator= (/*0H*/double v);
-      /*regSet*/inline Pointd::x_Prop & operator= (Pointd::x_Prop & prop);
-      /*regGet*/inline operator /*0I*/double () const;
-   } x;
-   struct y_Prop
-   {
-      constexpr y_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/double operator= (/*0H*/double v);
-      /*regSet*/inline Pointd::y_Prop & operator= (Pointd::y_Prop & prop);
-      /*regGet*/inline operator /*0I*/double () const;
-   } y;
-};
-
-struct Pointf : public TStruct<Pointf>
-{
-public:
-   C(Pointf) impl;
-   constexpr Pointf() : impl({}) { }
-   constexpr Pointf(const C(Pointf) impl) : impl(impl) { }
-
-   inline Pointf(float x, float y);
-
-   struct x_Prop
-   {
-      constexpr x_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/float operator= (/*0H*/float v);
-      /*regSet*/inline Pointf::x_Prop & operator= (Pointf::x_Prop & prop);
-      /*regGet*/inline operator /*0I*/float () const;
-   } x;
-   struct y_Prop
-   {
-      constexpr y_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/float operator= (/*0H*/float v);
-      /*regSet*/inline Pointf::y_Prop & operator= (Pointf::y_Prop & prop);
-      /*regGet*/inline operator /*0I*/float () const;
-   } y;
-};
-
 template <class TC, C(Class) ** TCO>
 class TProperty : public TNHInstance<TC, TCO>
 {
@@ -4195,7 +3693,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Property operator= (/*0H*/Property & v);
       /*regSet*/inline typename TProperty<TC, TCO>::prev_Prop & operator= (typename TProperty<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/Property () const;
@@ -4203,7 +3701,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Property operator= (/*0H*/Property & v);
       /*regSet*/inline typename TProperty<TC, TCO>::next_Prop & operator= (typename TProperty<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/Property () const;
@@ -4211,7 +3709,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TProperty<TC, TCO>::name_Prop & operator= (typename TProperty<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -4219,7 +3717,7 @@ public:
    struct isProperty_Prop
    {
       constexpr isProperty_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TProperty<TC, TCO>::isProperty_Prop & operator= (typename TProperty<TC, TCO>::isProperty_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -4227,7 +3725,7 @@ public:
    struct memberAccess_Prop
    {
       constexpr memberAccess_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Access_Mode operator= (/*0H*/Access_Mode v);
       /*regSet*/inline typename TProperty<TC, TCO>::memberAccess_Prop & operator= (typename TProperty<TC, TCO>::memberAccess_Prop & prop);
       /*regGet*/inline operator /*0I*/Access_Mode () const;
@@ -4235,7 +3733,7 @@ public:
    struct id_Prop
    {
       constexpr id_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TProperty<TC, TCO>::id_Prop & operator= (typename TProperty<TC, TCO>::id_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -4243,7 +3741,7 @@ public:
    struct _class_Prop
    {
       constexpr _class_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TProperty<TC, TCO>::_class_Prop & operator= (typename TProperty<TC, TCO>::_class_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -4251,7 +3749,7 @@ public:
    struct dataTypeString_Prop
    {
       constexpr dataTypeString_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TProperty<TC, TCO>::dataTypeString_Prop & operator= (typename TProperty<TC, TCO>::dataTypeString_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -4259,7 +3757,7 @@ public:
    struct dataTypeClass_Prop
    {
       constexpr dataTypeClass_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline typename TProperty<TC, TCO>::dataTypeClass_Prop & operator= (typename TProperty<TC, TCO>::dataTypeClass_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -4267,7 +3765,7 @@ public:
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TProperty<TC, TCO>::data_Prop & operator= (typename TProperty<TC, TCO>::data_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -4275,7 +3773,7 @@ public:
    struct symbol_Prop
    {
       constexpr symbol_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TProperty<TC, TCO>::symbol_Prop & operator= (typename TProperty<TC, TCO>::symbol_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -4283,7 +3781,7 @@ public:
    struct vid_Prop
    {
       constexpr vid_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TProperty<TC, TCO>::vid_Prop & operator= (typename TProperty<TC, TCO>::vid_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -4291,7 +3789,7 @@ public:
    struct conversion_Prop
    {
       constexpr conversion_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TProperty<TC, TCO>::conversion_Prop & operator= (typename TProperty<TC, TCO>::conversion_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -4299,7 +3797,7 @@ public:
    struct watcherOffset_Prop
    {
       constexpr watcherOffset_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
       /*regSet*/inline typename TProperty<TC, TCO>::watcherOffset_Prop & operator= (typename TProperty<TC, TCO>::watcherOffset_Prop & prop);
       /*regGet*/inline operator /*0I*/uint () const;
@@ -4307,7 +3805,7 @@ public:
    struct category_Prop
    {
       constexpr category_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TProperty<TC, TCO>::category_Prop & operator= (typename TProperty<TC, TCO>::category_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -4315,7 +3813,7 @@ public:
    struct compiled_Prop
    {
       constexpr compiled_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TProperty<TC, TCO>::compiled_Prop & operator= (typename TProperty<TC, TCO>::compiled_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -4323,7 +3821,7 @@ public:
    struct selfWatchable_Prop
    {
       constexpr selfWatchable_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TProperty<TC, TCO>::selfWatchable_Prop & operator= (typename TProperty<TC, TCO>::selfWatchable_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -4331,7 +3829,7 @@ public:
    struct isWatchable_Prop
    {
       constexpr isWatchable_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline typename TProperty<TC, TCO>::isWatchable_Prop & operator= (typename TProperty<TC, TCO>::isWatchable_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -4340,37 +3838,6 @@ public:
    {
       this->impl = null; // How to know not to delete?
    }
-};
-
-class Radians : public Angle
-{
-public:
-   constexpr Radians() : Angle() { }
-   constexpr Radians(const Angle value) : Angle(value) { }
-   constexpr Radians(double value) : Angle(RADIANS(value)) { }
-   constexpr operator double() const { return Angle_in_Radians(impl); }
-   constexpr Radians & operator =(double value) { impl = RADIANS(value); return *this; }
-   bool operator ==(const Radians & value) const { return impl == value.impl; }
-   bool operator !=(const Radians & value) const { return impl != value.impl; }
-   bool operator <(const Radians & value) const { return impl < value.impl; }
-   bool operator >(const Radians & value) const { return impl > value.impl; }
-   bool operator <=(const Radians & value) const { return impl <= value.impl; }
-   bool operator >=(const Radians & value) const { return impl >= value.impl; }
-   bool operator ==(double value) const { return impl == Radians(value).impl; }
-   bool operator !=(double value) const { return impl != Radians(value).impl; }
-   bool operator <(double value) const { return impl < Radians(value).impl; }
-   bool operator >(double value) const { return impl > Radians(value).impl; }
-   bool operator <=(double value) const { return impl <= Radians(value).impl; }
-   bool operator >=(double value) const { return impl >= Radians(value).impl; }
-   bool operator ==(int value) const { return impl == Radians(value).impl; }
-   bool operator !=(int value) const { return impl != Radians(value).impl; }
-   bool operator <(int value) const { return impl < Radians(value).impl; }
-   bool operator >(int value) const { return impl > Radians(value).impl; }
-   bool operator <=(int value) const { return impl <= Radians(value).impl; }
-   bool operator >=(int value) const { return impl >= Radians(value).impl; }
-   inline Radians operator= (Degrees value);
-   inline Radians(Degrees value);
-   inline operator Degrees() const;
 };
 
 
@@ -4420,7 +3887,7 @@ public:
    SerialBuffer() : SerialBuffer((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -4429,7 +3896,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -4438,7 +3905,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -4447,7 +3914,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -4456,7 +3923,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -4465,7 +3932,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -4474,7 +3941,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -4483,7 +3950,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -4492,7 +3959,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -4501,7 +3968,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -4545,7 +4012,7 @@ public:
    struct buffer_Prop
    {
       constexpr buffer_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/unsigned char * operator= (/*0H*/unsigned char * v);
       /*regSet*/inline SerialBuffer::buffer_Prop & operator= (SerialBuffer::buffer_Prop & prop);
       /*regGet*/inline operator /*0I*/unsigned char * () const;
@@ -4553,7 +4020,7 @@ public:
    struct size_Prop
    {
       constexpr size_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
       /*regSet*/inline SerialBuffer::size_Prop & operator= (SerialBuffer::size_Prop & prop);
       /*regGet*/inline operator /*0I*/uint () const;
@@ -4562,7 +4029,7 @@ public:
    struct _buffer_Prop
    {
       constexpr _buffer_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/unsigned char * operator= (/*0H*/unsigned char * v);
       /*regSet*/inline SerialBuffer::_buffer_Prop & operator= (SerialBuffer::_buffer_Prop & prop);
       /*regGet*/inline operator /*0I*/unsigned char * () const;
@@ -4570,7 +4037,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uintsize operator= (/*0H*/uintsize v);
       /*regSet*/inline SerialBuffer::count_Prop & operator= (SerialBuffer::count_Prop & prop);
       /*regGet*/inline operator /*0I*/uintsize () const;
@@ -4578,7 +4045,7 @@ public:
    struct _size_Prop
    {
       constexpr _size_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uintsize operator= (/*0H*/uintsize v);
       /*regSet*/inline SerialBuffer::_size_Prop & operator= (SerialBuffer::_size_Prop & prop);
       /*regGet*/inline operator /*0I*/uintsize () const;
@@ -4586,40 +4053,11 @@ public:
    struct pos_Prop
    {
       constexpr pos_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uintsize operator= (/*0H*/uintsize v);
       /*regSet*/inline SerialBuffer::pos_Prop & operator= (SerialBuffer::pos_Prop & prop);
       /*regGet*/inline operator /*0I*/uintsize () const;
    } pos;
-};
-
-struct Size : public TStruct<Size>
-{
-public:
-   C(Size) impl;
-   constexpr Size() : impl({}) { }
-   constexpr Size(const C(Size) impl) : impl(impl) { }
-
-   inline Size(MinMaxValue w, MinMaxValue h);
-
-   struct w_Prop
-   {
-      constexpr w_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/MinMaxValue operator= (/*0H*/MinMaxValue v);
-      /*regSet*/inline Size::w_Prop & operator= (Size::w_Prop & prop);
-      /*regGet*/inline operator /*0I*/MinMaxValue () const;
-      /*regGet*/inline operator /*0J*/C(MinMaxValue) () const;
-   } w;
-   struct h_Prop
-   {
-      constexpr h_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/MinMaxValue operator= (/*0H*/MinMaxValue v);
-      /*regSet*/inline Size::h_Prop & operator= (Size::h_Prop & prop);
-      /*regGet*/inline operator /*0I*/MinMaxValue () const;
-      /*regGet*/inline operator /*0J*/C(MinMaxValue) () const;
-   } h;
 };
 
 struct StaticString : public TStruct<StaticString>
@@ -4646,7 +4084,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/SubModule operator= (/*0H*/SubModule & v);
       /*regSet*/inline typename TSubModule<TC, TCO>::prev_Prop & operator= (typename TSubModule<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/SubModule () const;
@@ -4654,7 +4092,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/SubModule operator= (/*0H*/SubModule & v);
       /*regSet*/inline typename TSubModule<TC, TCO>::next_Prop & operator= (typename TSubModule<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/SubModule () const;
@@ -4662,7 +4100,7 @@ public:
    struct module_Prop
    {
       constexpr module_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Module operator= (/*0H*/Module v);
       /*regSet*/inline typename TSubModule<TC, TCO>::module_Prop & operator= (typename TSubModule<TC, TCO>::module_Prop & prop);
       /*regGet*/inline operator /*0I*/Module () const;
@@ -4670,7 +4108,7 @@ public:
    struct importMode_Prop
    {
       constexpr importMode_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Access_Mode operator= (/*0H*/Access_Mode v);
       /*regSet*/inline typename TSubModule<TC, TCO>::importMode_Prop & operator= (typename TSubModule<TC, TCO>::importMode_Prop & prop);
       /*regGet*/inline operator /*0I*/Access_Mode () const;
@@ -4743,7 +4181,7 @@ public:
    ZString() : ZString((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -4752,7 +4190,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -4761,7 +4199,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -4770,7 +4208,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -4779,7 +4217,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -4788,7 +4226,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -4797,7 +4235,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -4806,7 +4244,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -4815,7 +4253,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -4824,7 +4262,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -4873,7 +4311,7 @@ public:
    struct string_Prop
    {
       constexpr string_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline ZString::string_Prop & operator= (ZString::string_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -4882,7 +4320,7 @@ public:
    struct _string_Prop
    {
       constexpr _string_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
       /*regSet*/inline ZString::_string_Prop & operator= (ZString::_string_Prop & prop);
       /*regGet*/inline operator /*0I*/char * () const;
@@ -4890,7 +4328,7 @@ public:
    struct len_Prop
    {
       constexpr len_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline ZString::len_Prop & operator= (ZString::len_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -4898,7 +4336,7 @@ public:
    struct allocType_Prop
    {
       constexpr allocType_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/StringAllocType operator= (/*0H*/StringAllocType v);
       /*regSet*/inline ZString::allocType_Prop & operator= (ZString::allocType_Prop & prop);
       /*regGet*/inline operator /*0I*/StringAllocType () const;
@@ -4906,7 +4344,7 @@ public:
    struct size_Prop
    {
       constexpr size_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline ZString::size_Prop & operator= (ZString::size_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -4914,7 +4352,7 @@ public:
    struct minSize_Prop
    {
       constexpr minSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline ZString::minSize_Prop & operator= (ZString::minSize_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -4922,11 +4360,408 @@ public:
    struct maxSize_Prop
    {
       constexpr maxSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline ZString::maxSize_Prop & operator= (ZString::maxSize_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
    } maxSize;
+};
+
+class Distance
+{
+public:
+   C(Distance) impl;
+   constexpr Distance() : impl(0) { }
+   constexpr Distance(C(Distance) value) : impl(value) { }
+   operator C(Distance)() const { return impl; }
+   constexpr Distance(const Distance & value) : impl(value.impl) { }
+   Distance & operator =(double value) { impl = value; return *this; }
+   Distance & operator +=(Distance value) { impl += value.impl; return *this; }
+   Distance & operator -=(Distance value) { impl -= value.impl; return *this; }
+   Distance operator +(const Distance & b) const { return Distance(impl + b.impl); }
+   Distance operator -(const Distance & b) const { return Distance(impl - b.impl); }
+   bool operator ==(const Distance & value) const { return impl == value.impl; }
+   bool operator !=(const Distance & value) const { return impl != value.impl; }
+   bool operator <(const Distance & value) const { return impl < value.impl; }
+   bool operator >(const Distance & value) const { return impl > value.impl; }
+   bool operator <=(const Distance & value) const { return impl <= value.impl; }
+   bool operator >=(const Distance & value) const { return impl >= value.impl; }
+   bool operator ==(double value) const { return impl == Distance(value).impl; }
+   bool operator !=(double value) const { return impl != Distance(value).impl; }
+   bool operator <(double value) const { return impl < Distance(value).impl; }
+   bool operator >(double value) const { return impl > Distance(value).impl; }
+   bool operator <=(double value) const { return impl <= Distance(value).impl; }
+   bool operator >=(double value) const { return impl >= Distance(value).impl; }
+   bool operator ==(int value) const { return impl == Distance(value).impl; }
+   bool operator !=(int value) const { return impl != Distance(value).impl; }
+   bool operator <(int value) const { return impl < Distance(value).impl; }
+   bool operator >(int value) const { return impl > Distance(value).impl; }
+   bool operator <=(int value) const { return impl <= Distance(value).impl; }
+   bool operator >=(int value) const { return impl >= Distance(value).impl; }
+};
+
+struct Box : public TStruct<Box>
+{
+public:
+   C(Box) impl;
+   constexpr Box() : impl({}) { }
+   constexpr Box(const C(Box) impl) : impl(impl) { }
+
+   inline void clip(/*1Ab*/Box & against); // Box_clip
+   inline void clip(/*1Ac*/Box * against); // Box_clip
+   inline void clipOffset(/*1Ab*/Box & against, /*1Ab*/int x, /*1Ab*/int y); // Box_clipOffset
+   inline void clipOffset(/*1Ac*/Box * against, /*1Ac*/int x, /*1Ac*/int y); // Box_clipOffset
+   inline C(bool) isPointInside(/*1Ab*/Point & point); // Box_isPointInside
+   inline C(bool) isPointInside(/*1Ac*/Point * point); // Box_isPointInside
+   inline C(bool) overlap(/*1Ab*/Box & box); // Box_overlap
+   inline C(bool) overlap(/*1Ac*/Box * box); // Box_overlap
+
+   inline Box(int left, int top, int right, int bottom);
+
+   struct width_Prop
+   {
+      constexpr width_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Box::width_Prop & operator= (Box::width_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } width;
+   struct height_Prop
+   {
+      constexpr height_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Box::height_Prop & operator= (Box::height_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } height;
+
+   struct left_Prop
+   {
+      constexpr left_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Box::left_Prop & operator= (Box::left_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } left;
+   struct top_Prop
+   {
+      constexpr top_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Box::top_Prop & operator= (Box::top_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } top;
+   struct right_Prop
+   {
+      constexpr right_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Box::right_Prop & operator= (Box::right_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } right;
+   struct bottom_Prop
+   {
+      constexpr bottom_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Box::bottom_Prop & operator= (Box::bottom_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } bottom;
+};
+
+class Centimeters : public Distance
+{
+public:
+   constexpr Centimeters() : Distance() { }
+   constexpr Centimeters(const Distance value) : Distance(value) { }
+   constexpr Centimeters(double value) : Distance(CENTIMETERS(value)) { }
+   constexpr operator double() const { return Distance_in_Centimeters(impl); }
+   constexpr Centimeters & operator =(double value) { impl = CENTIMETERS(value); return *this; }
+   bool operator ==(const Centimeters & value) const { return impl == value.impl; }
+   bool operator !=(const Centimeters & value) const { return impl != value.impl; }
+   bool operator <(const Centimeters & value) const { return impl < value.impl; }
+   bool operator >(const Centimeters & value) const { return impl > value.impl; }
+   bool operator <=(const Centimeters & value) const { return impl <= value.impl; }
+   bool operator >=(const Centimeters & value) const { return impl >= value.impl; }
+   bool operator ==(double value) const { return impl == Centimeters(value).impl; }
+   bool operator !=(double value) const { return impl != Centimeters(value).impl; }
+   bool operator <(double value) const { return impl < Centimeters(value).impl; }
+   bool operator >(double value) const { return impl > Centimeters(value).impl; }
+   bool operator <=(double value) const { return impl <= Centimeters(value).impl; }
+   bool operator >=(double value) const { return impl >= Centimeters(value).impl; }
+   bool operator ==(int value) const { return impl == Centimeters(value).impl; }
+   bool operator !=(int value) const { return impl != Centimeters(value).impl; }
+   bool operator <(int value) const { return impl < Centimeters(value).impl; }
+   bool operator >(int value) const { return impl > Centimeters(value).impl; }
+   bool operator <=(int value) const { return impl <= Centimeters(value).impl; }
+   bool operator >=(int value) const { return impl >= Centimeters(value).impl; }
+   inline constexpr operator Meters() const;
+   inline constexpr Centimeters(const Meters & m);
+   inline constexpr Centimeters & operator =(const Meters & m);
+};
+
+class Degrees : public Angle
+{
+public:
+   constexpr Degrees() : Angle() { }
+   constexpr Degrees(const Angle value) : Angle(value) { }
+   constexpr Degrees(double value) : Angle(DEGREES(value)) { }
+   constexpr operator double() const { return Angle_in_Degrees(impl); }
+   constexpr Degrees & operator =(double value) { impl = DEGREES(value); return *this; }
+   bool operator ==(const Degrees & value) const { return impl == value.impl; }
+   bool operator !=(const Degrees & value) const { return impl != value.impl; }
+   bool operator <(const Degrees & value) const { return impl < value.impl; }
+   bool operator >(const Degrees & value) const { return impl > value.impl; }
+   bool operator <=(const Degrees & value) const { return impl <= value.impl; }
+   bool operator >=(const Degrees & value) const { return impl >= value.impl; }
+   bool operator ==(double value) const { return impl == Degrees(value).impl; }
+   bool operator !=(double value) const { return impl != Degrees(value).impl; }
+   bool operator <(double value) const { return impl < Degrees(value).impl; }
+   bool operator >(double value) const { return impl > Degrees(value).impl; }
+   bool operator <=(double value) const { return impl <= Degrees(value).impl; }
+   bool operator >=(double value) const { return impl >= Degrees(value).impl; }
+   bool operator ==(int value) const { return impl == Degrees(value).impl; }
+   bool operator !=(int value) const { return impl != Degrees(value).impl; }
+   bool operator <(int value) const { return impl < Degrees(value).impl; }
+   bool operator >(int value) const { return impl > Degrees(value).impl; }
+   bool operator <=(int value) const { return impl <= Degrees(value).impl; }
+   bool operator >=(int value) const { return impl >= Degrees(value).impl; }
+   inline constexpr operator Radians() const;
+   inline constexpr Degrees(const Radians & r);
+   inline constexpr Degrees & operator =(const Radians & r);
+};
+
+class Feet : public Distance
+{
+public:
+   constexpr Feet() : Distance() { }
+   constexpr Feet(const Distance value) : Distance(value) { }
+   constexpr Feet(double value) : Distance(FEET(value)) { }
+   constexpr operator double() const { return Distance_in_Feet(impl); }
+   constexpr Feet & operator =(double value) { impl = FEET(value); return *this; }
+   bool operator ==(const Feet & value) const { return impl == value.impl; }
+   bool operator !=(const Feet & value) const { return impl != value.impl; }
+   bool operator <(const Feet & value) const { return impl < value.impl; }
+   bool operator >(const Feet & value) const { return impl > value.impl; }
+   bool operator <=(const Feet & value) const { return impl <= value.impl; }
+   bool operator >=(const Feet & value) const { return impl >= value.impl; }
+   bool operator ==(double value) const { return impl == Feet(value).impl; }
+   bool operator !=(double value) const { return impl != Feet(value).impl; }
+   bool operator <(double value) const { return impl < Feet(value).impl; }
+   bool operator >(double value) const { return impl > Feet(value).impl; }
+   bool operator <=(double value) const { return impl <= Feet(value).impl; }
+   bool operator >=(double value) const { return impl >= Feet(value).impl; }
+   bool operator ==(int value) const { return impl == Feet(value).impl; }
+   bool operator !=(int value) const { return impl != Feet(value).impl; }
+   bool operator <(int value) const { return impl < Feet(value).impl; }
+   bool operator >(int value) const { return impl > Feet(value).impl; }
+   bool operator <=(int value) const { return impl <= Feet(value).impl; }
+   bool operator >=(int value) const { return impl >= Feet(value).impl; }
+   inline constexpr operator Meters() const;
+   inline constexpr Feet(const Meters & m);
+   inline constexpr Feet & operator =(const Meters & m);
+};
+
+class Meters : public Distance
+{
+public:
+   constexpr Meters() : Distance() { }
+   constexpr Meters(const Distance value) : Distance(value) { }
+   constexpr Meters(double value) : Distance(METERS(value)) { }
+   constexpr operator double() const { return Distance_in_Meters(impl); }
+   constexpr Meters & operator =(double value) { impl = METERS(value); return *this; }
+   bool operator ==(const Meters & value) const { return impl == value.impl; }
+   bool operator !=(const Meters & value) const { return impl != value.impl; }
+   bool operator <(const Meters & value) const { return impl < value.impl; }
+   bool operator >(const Meters & value) const { return impl > value.impl; }
+   bool operator <=(const Meters & value) const { return impl <= value.impl; }
+   bool operator >=(const Meters & value) const { return impl >= value.impl; }
+   bool operator ==(double value) const { return impl == Meters(value).impl; }
+   bool operator !=(double value) const { return impl != Meters(value).impl; }
+   bool operator <(double value) const { return impl < Meters(value).impl; }
+   bool operator >(double value) const { return impl > Meters(value).impl; }
+   bool operator <=(double value) const { return impl <= Meters(value).impl; }
+   bool operator >=(double value) const { return impl >= Meters(value).impl; }
+   bool operator ==(int value) const { return impl == Meters(value).impl; }
+   bool operator !=(int value) const { return impl != Meters(value).impl; }
+   bool operator <(int value) const { return impl < Meters(value).impl; }
+   bool operator >(int value) const { return impl > Meters(value).impl; }
+   bool operator <=(int value) const { return impl <= Meters(value).impl; }
+   bool operator >=(int value) const { return impl >= Meters(value).impl; }
+   inline Meters operator= (Centimeters value);
+   inline Meters(Centimeters value);
+   inline operator Centimeters() const;
+   inline Meters operator= (Feet value);
+   inline Meters(Feet value);
+   inline operator Feet() const;
+};
+
+class MinMaxValue
+{
+public:
+   C(MinMaxValue) impl;
+   constexpr MinMaxValue() : impl(0) { }
+   constexpr MinMaxValue(C(MinMaxValue) value) : impl(value) { }
+   operator C(MinMaxValue)() const { return impl; }
+   constexpr MinMaxValue(const MinMaxValue & value) : impl(value.impl) { }
+   MinMaxValue & operator =(int value) { impl = value; return *this; }
+   MinMaxValue & operator +=(MinMaxValue value) { impl += value.impl; return *this; }
+   MinMaxValue & operator -=(MinMaxValue value) { impl -= value.impl; return *this; }
+   MinMaxValue operator +(const MinMaxValue & b) const { return MinMaxValue(impl + b.impl); }
+   MinMaxValue operator -(const MinMaxValue & b) const { return MinMaxValue(impl - b.impl); }
+   bool operator ==(const MinMaxValue & value) const { return impl == value.impl; }
+   bool operator !=(const MinMaxValue & value) const { return impl != value.impl; }
+   bool operator <(const MinMaxValue & value) const { return impl < value.impl; }
+   bool operator >(const MinMaxValue & value) const { return impl > value.impl; }
+   bool operator <=(const MinMaxValue & value) const { return impl <= value.impl; }
+   bool operator >=(const MinMaxValue & value) const { return impl >= value.impl; }
+   bool operator ==(int value) const { return impl == MinMaxValue(value).impl; }
+   bool operator !=(int value) const { return impl != MinMaxValue(value).impl; }
+   bool operator <(int value) const { return impl < MinMaxValue(value).impl; }
+   bool operator >(int value) const { return impl > MinMaxValue(value).impl; }
+   bool operator <=(int value) const { return impl <= MinMaxValue(value).impl; }
+   bool operator >=(int value) const { return impl >= MinMaxValue(value).impl; }
+};
+
+struct Point : public TStruct<Point>
+{
+public:
+   C(Point) impl;
+   constexpr Point() : impl({}) { }
+   constexpr Point(const C(Point) impl) : impl(impl) { }
+
+   inline Point(int x, int y);
+
+   struct x_Prop
+   {
+      constexpr x_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Point::x_Prop & operator= (Point::x_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } x;
+   struct y_Prop
+   {
+      constexpr y_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
+      /*regSet*/inline Point::y_Prop & operator= (Point::y_Prop & prop);
+      /*regGet*/inline operator /*0I*/int () const;
+   } y;
+};
+
+struct Pointd : public TStruct<Pointd>
+{
+public:
+   C(Pointd) impl;
+   constexpr Pointd() : impl({}) { }
+   constexpr Pointd(const C(Pointd) impl) : impl(impl) { }
+
+   inline Pointd(double x, double y);
+
+   struct x_Prop
+   {
+      constexpr x_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/double operator= (/*0H*/double v);
+      /*regSet*/inline Pointd::x_Prop & operator= (Pointd::x_Prop & prop);
+      /*regGet*/inline operator /*0I*/double () const;
+   } x;
+   struct y_Prop
+   {
+      constexpr y_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/double operator= (/*0H*/double v);
+      /*regSet*/inline Pointd::y_Prop & operator= (Pointd::y_Prop & prop);
+      /*regGet*/inline operator /*0I*/double () const;
+   } y;
+};
+
+struct Pointf : public TStruct<Pointf>
+{
+public:
+   C(Pointf) impl;
+   constexpr Pointf() : impl({}) { }
+   constexpr Pointf(const C(Pointf) impl) : impl(impl) { }
+
+   inline Pointf(float x, float y);
+
+   struct x_Prop
+   {
+      constexpr x_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/float operator= (/*0H*/float v);
+      /*regSet*/inline Pointf::x_Prop & operator= (Pointf::x_Prop & prop);
+      /*regGet*/inline operator /*0I*/float () const;
+   } x;
+   struct y_Prop
+   {
+      constexpr y_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/float operator= (/*0H*/float v);
+      /*regSet*/inline Pointf::y_Prop & operator= (Pointf::y_Prop & prop);
+      /*regGet*/inline operator /*0I*/float () const;
+   } y;
+};
+
+class Radians : public Angle
+{
+public:
+   constexpr Radians() : Angle() { }
+   constexpr Radians(const Angle value) : Angle(value) { }
+   constexpr Radians(double value) : Angle(RADIANS(value)) { }
+   constexpr operator double() const { return Angle_in_Radians(impl); }
+   constexpr Radians & operator =(double value) { impl = RADIANS(value); return *this; }
+   bool operator ==(const Radians & value) const { return impl == value.impl; }
+   bool operator !=(const Radians & value) const { return impl != value.impl; }
+   bool operator <(const Radians & value) const { return impl < value.impl; }
+   bool operator >(const Radians & value) const { return impl > value.impl; }
+   bool operator <=(const Radians & value) const { return impl <= value.impl; }
+   bool operator >=(const Radians & value) const { return impl >= value.impl; }
+   bool operator ==(double value) const { return impl == Radians(value).impl; }
+   bool operator !=(double value) const { return impl != Radians(value).impl; }
+   bool operator <(double value) const { return impl < Radians(value).impl; }
+   bool operator >(double value) const { return impl > Radians(value).impl; }
+   bool operator <=(double value) const { return impl <= Radians(value).impl; }
+   bool operator >=(double value) const { return impl >= Radians(value).impl; }
+   bool operator ==(int value) const { return impl == Radians(value).impl; }
+   bool operator !=(int value) const { return impl != Radians(value).impl; }
+   bool operator <(int value) const { return impl < Radians(value).impl; }
+   bool operator >(int value) const { return impl > Radians(value).impl; }
+   bool operator <=(int value) const { return impl <= Radians(value).impl; }
+   bool operator >=(int value) const { return impl >= Radians(value).impl; }
+   inline Radians operator= (Degrees value);
+   inline Radians(Degrees value);
+   inline operator Degrees() const;
+};
+
+struct Size : public TStruct<Size>
+{
+public:
+   C(Size) impl;
+   constexpr Size() : impl({}) { }
+   constexpr Size(const C(Size) impl) : impl(impl) { }
+
+   inline Size(MinMaxValue w, MinMaxValue h);
+
+   struct w_Prop
+   {
+      constexpr w_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/MinMaxValue operator= (/*0H*/MinMaxValue v);
+      /*regSet*/inline Size::w_Prop & operator= (Size::w_Prop & prop);
+      /*regGet*/inline operator /*0I*/MinMaxValue () const;
+      /*regGet*/inline operator /*0J*/C(MinMaxValue) () const;
+   } w;
+   struct h_Prop
+   {
+      constexpr h_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/MinMaxValue operator= (/*0H*/MinMaxValue v);
+      /*regSet*/inline Size::h_Prop & operator= (Size::h_Prop & prop);
+      /*regGet*/inline operator /*0I*/MinMaxValue () const;
+      /*regGet*/inline operator /*0J*/C(MinMaxValue) () const;
+   } h;
 };
 
 struct BinaryTree : public TStruct<BinaryTree>
@@ -4953,20 +4788,20 @@ public:
    struct first_Prop
    {
       constexpr first_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/BTNode () const;
    } first;
    struct last_Prop
    {
       constexpr last_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/BTNode () const;
    } last;
 
    struct root_Prop
    {
       constexpr root_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BTNode operator= (/*0H*/BTNode & v);
       /*regSet*/inline BinaryTree::root_Prop & operator= (BinaryTree::root_Prop & prop);
       /*regGet*/inline operator /*0I*/BTNode () const;
@@ -4974,7 +4809,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline BinaryTree::count_Prop & operator= (BinaryTree::count_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -5142,7 +4977,7 @@ template <typename TP_T, typename TP_I = int, typename TP_D = TP_T>
 class TContainer : public Instance, public Container
 {
 public:
-   inline TContainer(TContainer<TP_T, TP_I, TP_D> && i)
+   inline TContainer<TP_T, TP_I, TP_D>(TContainer<TP_T, TP_I, TP_D> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5199,7 +5034,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TContainer(C(Instance) _impl, CPPClass & cl = _cpp_class) : Instance(_impl, cl)
+   explicit inline TContainer <TP_T, TP_I, TP_D>(C(Instance) _impl, CPPClass & cl = _cpp_class) : Instance(_impl, cl)
  { }
 
    TContainer(std::initializer_list<TP_D> list) : TContainer()
@@ -5228,7 +5063,7 @@ public:
 
    struct Container_add_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef IteratorPointer (* FunctionType)(TContainer & , /*6Ej*/TP_T value);
       inline FunctionType operator= (FunctionType func);
       inline IteratorPointer operator()( /*6Ej*/TP_T value);
@@ -5237,7 +5072,7 @@ public:
 
    struct Container_copy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(TContainer & , /*6Fj*/TContainer & source);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( /*6Fj*/TContainer & source);
@@ -5246,7 +5081,7 @@ public:
 
    struct Container_delete_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer it);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( /*6Fj*/IteratorPointer it);
@@ -5255,7 +5090,7 @@ public:
 
    struct Container_find_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef IteratorPointer (* FunctionType)(TContainer & , /*6Ej*/TP_D value);
       inline FunctionType operator= (FunctionType func);
       inline IteratorPointer operator()( /*6Ej*/TP_D value);
@@ -5264,7 +5099,7 @@ public:
 
    struct Container_free_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(TContainer &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( );
@@ -5273,7 +5108,7 @@ public:
 
    struct Container_freeIterator_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer it);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( /*6Fj*/IteratorPointer it);
@@ -5282,7 +5117,7 @@ public:
 
    struct Container_getAtPosition_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef IteratorPointer (* FunctionType)(TContainer & , /*6Ej*/TP_I pos, /*6Fj*/bool create, /*6Cj*/C(bool) * justAdded);
       inline FunctionType operator= (FunctionType func);
       inline IteratorPointer operator()( /*6Ej*/TP_I pos, /*6Fj*/bool create, /*6Cj*/C(bool) * justAdded);
@@ -5291,7 +5126,7 @@ public:
 
    struct Container_getCount_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(TContainer &);
       inline FunctionType operator= (FunctionType func);
       inline int operator()( );
@@ -5300,7 +5135,7 @@ public:
 
    struct Container_getData_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef TP_D (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer pointer);
       inline FunctionType operator= (FunctionType func);
       inline TP_D operator()( /*6Fj*/IteratorPointer pointer);
@@ -5309,7 +5144,7 @@ public:
 
    struct Container_getFirst_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef IteratorPointer (* FunctionType)(TContainer &);
       inline FunctionType operator= (FunctionType func);
       inline IteratorPointer operator()( );
@@ -5318,7 +5153,7 @@ public:
 
    struct Container_getLast_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef IteratorPointer (* FunctionType)(TContainer &);
       inline FunctionType operator= (FunctionType func);
       inline IteratorPointer operator()( );
@@ -5327,7 +5162,7 @@ public:
 
    struct Container_getNext_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef IteratorPointer (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer pointer);
       inline FunctionType operator= (FunctionType func);
       inline IteratorPointer operator()( /*6Fj*/IteratorPointer pointer);
@@ -5336,7 +5171,7 @@ public:
 
    struct Container_getPrev_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef IteratorPointer (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer pointer);
       inline FunctionType operator= (FunctionType func);
       inline IteratorPointer operator()( /*6Fj*/IteratorPointer pointer);
@@ -5345,7 +5180,7 @@ public:
 
    struct Container_insert_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef IteratorPointer (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer after, /*6Ej*/TP_T value);
       inline FunctionType operator= (FunctionType func);
       inline IteratorPointer operator()( /*6Fj*/IteratorPointer after, /*6Ej*/TP_T value);
@@ -5354,7 +5189,7 @@ public:
 
    struct Container_move_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer it, /*6Fj*/IteratorPointer after);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( /*6Fj*/IteratorPointer it, /*6Fj*/IteratorPointer after);
@@ -5363,7 +5198,7 @@ public:
 
    struct Container_remove_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer it);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( /*6Fj*/IteratorPointer it);
@@ -5372,7 +5207,7 @@ public:
 
    struct Container_removeAll_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(TContainer &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( );
@@ -5381,7 +5216,7 @@ public:
 
    struct Container_setData_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(TContainer & , /*6Fj*/IteratorPointer pointer, /*6Ej*/TP_D data);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/IteratorPointer pointer, /*6Ej*/TP_D data);
@@ -5390,7 +5225,7 @@ public:
 
    struct Container_sort_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(TContainer & , /*6Fj*/bool ascending);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( /*6Fj*/bool ascending);
@@ -5402,20 +5237,20 @@ public:
    struct copySrc_Prop
    {
       constexpr copySrc_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0A*/const TContainer<TP_T, TP_I, TP_D> & operator= (/*0A*/const TContainer<TP_T, TP_I, TP_D> & v);
       /*nstSet*/inline /*0C*/const TContainer<TP_T, TP_I, TP_D> * operator= (/*0C*/const TContainer<TP_T, TP_I, TP_D> * v);
    } copySrc;
    struct firstIterator_Prop
    {
       constexpr firstIterator_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/TIterator<TP_T, TP_D> () const;
    } firstIterator;
    struct lastIterator_Prop
    {
       constexpr lastIterator_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/TIterator<TP_T, TP_D> () const;
    } lastIterator;
 };
@@ -5439,7 +5274,7 @@ template <typename TP_BT, typename TP_KT = uint64>
 class TCustomAVLTree : public TContainer<TP_BT, TP_KT>, public CustomAVLTree
 {
 public:
-   inline TCustomAVLTree(TCustomAVLTree<TP_BT, TP_KT> && i)
+   inline TCustomAVLTree<TP_BT, TP_KT>(TCustomAVLTree<TP_BT, TP_KT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5496,7 +5331,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TCustomAVLTree(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_BT, TP_KT>(_impl, cl)
+   explicit inline TCustomAVLTree <TP_BT, TP_KT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_BT, TP_KT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -5519,7 +5354,7 @@ public:
    struct root_Prop
    {
       constexpr root_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TP_BT operator= (/*0H*/TP_BT v);
       /*regSet*/inline TCustomAVLTree<TP_BT _ARG TP_KT>::root_Prop & operator= (TCustomAVLTree<TP_BT _ARG TP_KT>::root_Prop & prop);
       /*regGet*/inline operator /*0I*/TP_BT () const;
@@ -5527,7 +5362,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline TCustomAVLTree<TP_BT _ARG TP_KT>::count_Prop & operator= (TCustomAVLTree<TP_BT _ARG TP_KT>::count_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -5555,13 +5390,10 @@ public:
    inline C(bool) prev(); // Iterator_prev
    inline void remove(); // Iterator_remove
 
-   // FIXME: index() not generated?
-   inline C(bool) index(TP_IT index, C(bool) create); // Iterator_index
-
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0A*/const TP_T & operator= (/*0A*/const TP_T & v);
       /*regSet*/inline TIterator<TP_T _ARG TP_IT>::data_Prop & operator= (TIterator<TP_T _ARG TP_IT>::data_Prop & prop);
       /*nstSet*/inline /*0C*/const TP_T * operator= (/*0C*/const TP_T * v);
@@ -5574,7 +5406,7 @@ public:
    struct container_Prop
    {
       constexpr container_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TContainer<TP_T, TP_IT> operator= (/*0H*/TContainer<TP_T, TP_IT> v);
       /*regSet*/inline TIterator<TP_T _ARG TP_IT>::container_Prop & operator= (TIterator<TP_T _ARG TP_IT>::container_Prop & prop);
       /*regGet*/inline operator /*0I*/TContainer<TP_T, TP_IT> () const;
@@ -5582,7 +5414,7 @@ public:
    struct pointer_Prop
    {
       constexpr pointer_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/IteratorPointer operator= (/*0H*/IteratorPointer & v);
       /*regSet*/inline TIterator<TP_T _ARG TP_IT>::pointer_Prop & operator= (TIterator<TP_T _ARG TP_IT>::pointer_Prop & prop);
       /*regGet*/inline operator /*0I*/IteratorPointer () const;
@@ -5608,7 +5440,7 @@ template <typename TP_LT = ListItem>
 class TLinkList : public TContainer<TP_LT>, public LinkList
 {
 public:
-   inline TLinkList(TLinkList<TP_LT> && i)
+   inline TLinkList<TP_LT>(TLinkList<TP_LT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5665,7 +5497,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TLinkList(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_LT>(_impl, cl)
+   explicit inline TLinkList <TP_LT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_LT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -5688,7 +5520,7 @@ public:
    struct first_Prop
    {
       constexpr first_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TP_LT operator= (/*0H*/TP_LT v);
       /*regSet*/inline TLinkList<TP_LT>::first_Prop & operator= (TLinkList<TP_LT>::first_Prop & prop);
       /*regGet*/inline operator /*0I*/TP_LT () const;
@@ -5696,7 +5528,7 @@ public:
    struct last_Prop
    {
       constexpr last_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TP_LT operator= (/*0H*/TP_LT v);
       /*regSet*/inline TLinkList<TP_LT>::last_Prop & operator= (TLinkList<TP_LT>::last_Prop & prop);
       /*regGet*/inline operator /*0I*/TP_LT () const;
@@ -5704,7 +5536,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline TLinkList<TP_LT>::count_Prop & operator= (TLinkList<TP_LT>::count_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -5721,7 +5553,7 @@ public:
    struct link_Prop
    {
       constexpr link_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0Z*/const LinkElement & operator= (/*0Z*/const LinkElement & v);
       /*regSet*/inline typename TListItem<TC, TCO>::link_Prop & operator= (typename TListItem<TC, TCO>::link_Prop & prop);
       /*regGet*/inline operator /*0I*/LinkElement & () const;
@@ -5729,18 +5561,18 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/C(Class) * operator= (/*0H*/C(Class) * v);
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/ListItem operator= (/*0H*/ListItem & v);
       /*regSet*/inline typename TListItem<TC, TCO>::prev_Prop & operator= (typename TListItem<TC, TCO>::prev_Prop & prop);
-      /*regGet*/inline operator /*0I*/C(Class) * () const;
+      /*regGet*/inline operator /*0I*/ListItem () const;
    } prev;
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*nstSet*/inline /*0H*/C(Class) * operator= (/*0H*/C(Class) * v);
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/ListItem operator= (/*0H*/ListItem & v);
       /*regSet*/inline typename TListItem<TC, TCO>::next_Prop & operator= (typename TListItem<TC, TCO>::next_Prop & prop);
-      /*regGet*/inline operator /*0I*/C(Class) * () const;
+      /*regGet*/inline operator /*0I*/ListItem () const;
    } next;
    ~TListItem()
    {
@@ -5767,7 +5599,7 @@ template <typename TP_AT>
 class TAVLTree : public TCustomAVLTree<TP_AT>, public AVLTree
 {
 public:
-   inline TAVLTree(TAVLTree<TP_AT> && i)
+   inline TAVLTree<TP_AT>(TAVLTree<TP_AT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5824,7 +5656,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TAVLTree(C(Instance) _impl, CPPClass & cl = _cpp_class) : TCustomAVLTree<TP_AT>(_impl, cl)
+   explicit inline TAVLTree <TP_AT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TCustomAVLTree<TP_AT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -5878,7 +5710,7 @@ template <typename TP_T, typename TP_I = int, typename TP_D = TP_T>
 class TArray : public TContainer<TP_T, TP_I, TP_D>, public Array
 {
 public:
-   inline TArray(TArray<TP_T, TP_I, TP_D> && i)
+   inline TArray<TP_T, TP_I, TP_D>(TArray<TP_T, TP_I, TP_D> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5935,7 +5767,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TArray(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_T, TP_I, TP_D>(_impl, cl)
+   explicit inline TArray <TP_T, TP_I, TP_D>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_T, TP_I, TP_D>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -5955,12 +5787,12 @@ public:
       return *this;
    }
 
-   inline TArray(TP(Container, T) * array, uint count, uint minAllocSize, uint size);
+   inline TArray<TP_T, TP_I, TP_D>(TP(Container, T) * array, uint count, uint minAllocSize, uint size);
 
    struct size_Prop
    {
       constexpr size_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
       /*regSet*/inline TArray<TP_T _ARG TP_I _ARG TP_D>::size_Prop & operator= (TArray<TP_T _ARG TP_I _ARG TP_D>::size_Prop & prop);
       /*regGet*/inline operator /*0I*/uint () const;
@@ -5968,7 +5800,7 @@ public:
    struct minAllocSize_Prop
    {
       constexpr minAllocSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
       /*regSet*/inline TArray<TP_T _ARG TP_I _ARG TP_D>::minAllocSize_Prop & operator= (TArray<TP_T _ARG TP_I _ARG TP_D>::minAllocSize_Prop & prop);
       /*regGet*/inline operator /*0I*/uint () const;
@@ -5977,7 +5809,7 @@ public:
    struct array_Prop
    {
       constexpr array_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TP(Container, T) * operator= (/*0H*/TP(Container, T) * v);
       /*regSet*/inline TArray<TP_T _ARG TP_I _ARG TP_D>::array_Prop & operator= (TArray<TP_T _ARG TP_I _ARG TP_D>::array_Prop & prop);
       /*regGet*/inline operator /*0I*/TP(Container, T) * () const;
@@ -5985,7 +5817,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
       /*regSet*/inline TArray<TP_T _ARG TP_I _ARG TP_D>::count_Prop & operator= (TArray<TP_T _ARG TP_I _ARG TP_D>::count_Prop & prop);
       /*regGet*/inline operator /*0I*/uint () const;
@@ -6004,44 +5836,44 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/BTNode () const;
    } prev;
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/BTNode () const;
    } next;
    struct minimum_Prop
    {
       constexpr minimum_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/BTNode () const;
    } minimum;
    struct maximum_Prop
    {
       constexpr maximum_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/BTNode () const;
    } maximum;
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/int () const;
    } count;
    struct depthProp_Prop
    {
       constexpr depthProp_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/int () const;
    } depthProp;
 
    struct key_Prop
    {
       constexpr key_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uintptr operator= (/*0H*/uintptr v);
       /*regSet*/inline typename TBTNode<TC, TCO>::key_Prop & operator= (typename TBTNode<TC, TCO>::key_Prop & prop);
       /*regGet*/inline operator /*0I*/uintptr () const;
@@ -6049,7 +5881,7 @@ public:
    struct parent_Prop
    {
       constexpr parent_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BTNode operator= (/*0H*/BTNode & v);
       /*regSet*/inline typename TBTNode<TC, TCO>::parent_Prop & operator= (typename TBTNode<TC, TCO>::parent_Prop & prop);
       /*regGet*/inline operator /*0I*/BTNode () const;
@@ -6057,7 +5889,7 @@ public:
    struct left_Prop
    {
       constexpr left_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BTNode operator= (/*0H*/BTNode & v);
       /*regSet*/inline typename TBTNode<TC, TCO>::left_Prop & operator= (typename TBTNode<TC, TCO>::left_Prop & prop);
       /*regGet*/inline operator /*0I*/BTNode () const;
@@ -6065,7 +5897,7 @@ public:
    struct right_Prop
    {
       constexpr right_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BTNode operator= (/*0H*/BTNode & v);
       /*regSet*/inline typename TBTNode<TC, TCO>::right_Prop & operator= (typename TBTNode<TC, TCO>::right_Prop & prop);
       /*regGet*/inline operator /*0I*/BTNode () const;
@@ -6073,7 +5905,7 @@ public:
    struct depth_Prop
    {
       constexpr depth_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TBTNode<TC, TCO>::depth_Prop & operator= (typename TBTNode<TC, TCO>::depth_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -6096,7 +5928,7 @@ public:
    struct _vTbl_Prop
    {
       constexpr _vTbl_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void ** operator= (/*0H*/void ** v);
       /*regSet*/inline BuiltInContainer::_vTbl_Prop & operator= (BuiltInContainer::_vTbl_Prop & prop);
       /*regGet*/inline operator /*0I*/void ** () const;
@@ -6104,7 +5936,7 @@ public:
    struct _class_Prop
    {
       constexpr _class_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline BuiltInContainer::_class_Prop & operator= (BuiltInContainer::_class_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -6112,7 +5944,7 @@ public:
    struct _refCount_Prop
    {
       constexpr _refCount_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline BuiltInContainer::_refCount_Prop & operator= (BuiltInContainer::_refCount_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -6120,7 +5952,7 @@ public:
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline BuiltInContainer::data_Prop & operator= (BuiltInContainer::data_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -6128,7 +5960,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline BuiltInContainer::count_Prop & operator= (BuiltInContainer::count_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -6136,7 +5968,7 @@ public:
    struct type_Prop
    {
       constexpr type_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Class operator= (/*0H*/Class & v);
       /*regSet*/inline BuiltInContainer::type_Prop & operator= (BuiltInContainer::type_Prop & prop);
       /*regGet*/inline operator /*0I*/Class () const;
@@ -6162,7 +5994,7 @@ template <typename TP_KT = int64, typename TP_VT = uintptr>
 class THashMap : public TContainer<TP_KT, TP_VT>, public HashMap
 {
 public:
-   inline THashMap(THashMap<TP_KT, TP_VT> && i)
+   inline THashMap<TP_KT, TP_VT>(THashMap<TP_KT, TP_VT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -6219,7 +6051,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline THashMap(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_KT, TP_VT>(_impl, cl)
+   explicit inline THashMap <TP_KT, TP_VT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_KT, TP_VT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -6242,20 +6074,20 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/int () const;
    } count;
    struct initSize_Prop
    {
       constexpr initSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0G*/int operator= (/*0G*/int v);
    } initSize;
 
    struct noRemResize_Prop
    {
       constexpr noRemResize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline THashMap<TP_KT _ARG TP_VT>::noRemResize_Prop & operator= (THashMap<TP_KT _ARG TP_VT>::noRemResize_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -6280,7 +6112,7 @@ public:
    struct map_Prop
    {
       constexpr map_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0A*/const THashMap<TP_KT, TP_VT> & operator= (/*0A*/const THashMap<TP_KT, TP_VT> & v);
       /*regSet*/inline THashMapIterator<TP_KT _ARG TP_VT>::map_Prop & operator= (THashMapIterator<TP_KT _ARG TP_VT>::map_Prop & prop);
       /*nstSet*/inline /*0C*/const THashMap<TP_KT, TP_VT> * operator= (/*0C*/const THashMap<TP_KT, TP_VT> * v);
@@ -6292,7 +6124,7 @@ public:
    struct key_Prop
    {
       constexpr key_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0B*/TIH<TP_KT> () const;
       /*regGet*/inline TIH<TP_KT> operator /*0D*/-> () const;
       /*regGet*/inline operator /*0E*/TP_KT () const;
@@ -6301,7 +6133,7 @@ public:
    struct value_Prop
    {
       constexpr value_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0A*/const TP_VT & operator= (/*0A*/const TP_VT & v);
       /*regSet*/inline THashMapIterator<TP_KT _ARG TP_VT>::value_Prop & operator= (THashMapIterator<TP_KT _ARG TP_VT>::value_Prop & prop);
       /*nstSet*/inline /*0C*/const TP_VT * operator= (/*0C*/const TP_VT * v);
@@ -6331,7 +6163,7 @@ template <typename TP_KT = int64>
 class THashTable : public TContainer<TP_KT>, public HashTable
 {
 public:
-   inline THashTable(THashTable<TP_KT> && i)
+   inline THashTable<TP_KT>(THashTable<TP_KT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -6388,7 +6220,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline THashTable(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_KT>(_impl, cl)
+   explicit inline THashTable <TP_KT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_KT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -6411,7 +6243,7 @@ public:
    struct initSize_Prop
    {
       constexpr initSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0G*/int operator= (/*0G*/int v);
    } initSize;
 };
@@ -6427,7 +6259,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Item operator= (/*0H*/Item & v);
       /*regSet*/inline typename TItem<TC, TCO>::prev_Prop & operator= (typename TItem<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/Item () const;
@@ -6435,7 +6267,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Item operator= (/*0H*/Item & v);
       /*regSet*/inline typename TItem<TC, TCO>::next_Prop & operator= (typename TItem<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/Item () const;
@@ -6456,7 +6288,7 @@ public:
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint64 operator= (/*0H*/uint64 v);
       /*regSet*/inline typename TLink<TC, TCO>::data_Prop & operator= (typename TLink<TC, TCO>::data_Prop & prop);
       /*regGet*/inline operator /*0I*/uint64 () const;
@@ -6485,7 +6317,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TP_T operator= (/*0H*/TP_T v);
       /*regSet*/inline TLinkElement<TP_T>::prev_Prop & operator= (TLinkElement<TP_T>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/TP_T () const;
@@ -6493,7 +6325,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/TP_T operator= (/*0H*/TP_T v);
       /*regSet*/inline TLinkElement<TP_T>::next_Prop & operator= (TLinkElement<TP_T>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/TP_T () const;
@@ -6519,7 +6351,7 @@ template <typename TP_LLT>
 class TList : public TLinkList<TP_LLT>, public List
 {
 public:
-   inline TList(TList<TP_LLT> && i)
+   inline TList<TP_LLT>(TList<TP_LLT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -6576,7 +6408,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TList(C(Instance) _impl, CPPClass & cl = _cpp_class) : TLinkList<TP_LLT>(_impl, cl)
+   explicit inline TList <TP_LLT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TLinkList<TP_LLT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -6616,7 +6448,7 @@ template <typename TP_MT, typename TP_V>
 class TMap : public TCustomAVLTree<TP_MT, TP_V>, public Map
 {
 public:
-   inline TMap(TMap<TP_MT, TP_V> && i)
+   inline TMap<TP_MT, TP_V>(TMap<TP_MT, TP_V> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -6673,7 +6505,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TMap(C(Instance) _impl, CPPClass & cl = _cpp_class) : TCustomAVLTree<TP_MT, TP_V>(_impl, cl)
+   explicit inline TMap <TP_MT, TP_V>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TCustomAVLTree<TP_MT, TP_V>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -6696,7 +6528,7 @@ public:
    struct mapSrc_Prop
    {
       constexpr mapSrc_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0A*/const Map & operator= (/*0A*/const Map & v);
       /*nstSet*/inline /*0C*/const Map * operator= (/*0C*/const Map * v);
    } mapSrc;
@@ -6717,13 +6549,10 @@ public:
    constexpr TMapIterator() : impl({}) { }
    constexpr TMapIterator(const C(MapIterator) impl) : impl(impl) { }
 
-   // REVIEW: How to generate this here since MapIterator inherits from Iterator?
-   inline C(bool) index(TP_KT index, C(bool) create);
-
    struct map_Prop
    {
       constexpr map_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0A*/const TMap<TP_KT, TP_V> & operator= (/*0A*/const TMap<TP_KT, TP_V> & v);
       /*regSet*/inline TMapIterator<TP_KT _ARG TP_V>::map_Prop & operator= (TMapIterator<TP_KT _ARG TP_V>::map_Prop & prop);
       /*nstSet*/inline /*0C*/const TMap<TP_KT, TP_V> * operator= (/*0C*/const TMap<TP_KT, TP_V> * v);
@@ -6735,7 +6564,7 @@ public:
    struct key_Prop
    {
       constexpr key_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0B*/TIH<TP_KT> () const;
       /*regGet*/inline TIH<TP_KT> operator /*0D*/-> () const;
       /*regGet*/inline operator /*0E*/TP_KT () const;
@@ -6744,7 +6573,7 @@ public:
    struct value_Prop
    {
       constexpr value_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0A*/const TP_V & operator= (/*0A*/const TP_V & v);
       /*regSet*/inline TMapIterator<TP_KT _ARG TP_V>::value_Prop & operator= (TMapIterator<TP_KT _ARG TP_V>::value_Prop & prop);
       /*nstSet*/inline /*0C*/const TP_V * operator= (/*0C*/const TP_V * v);
@@ -6764,7 +6593,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/NamedItem operator= (/*0H*/NamedItem & v);
       /*regSet*/inline typename TNamedItem<TC, TCO>::prev_Prop & operator= (typename TNamedItem<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/NamedItem () const;
@@ -6772,7 +6601,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/NamedItem operator= (/*0H*/NamedItem & v);
       /*regSet*/inline typename TNamedItem<TC, TCO>::next_Prop & operator= (typename TNamedItem<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/NamedItem () const;
@@ -6780,7 +6609,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
       /*regSet*/inline typename TNamedItem<TC, TCO>::name_Prop & operator= (typename TNamedItem<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/char * () const;
@@ -6800,7 +6629,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/NamedLink operator= (/*0H*/NamedLink & v);
       /*regSet*/inline typename TNamedLink<TC, TCO>::prev_Prop & operator= (typename TNamedLink<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/NamedLink () const;
@@ -6808,7 +6637,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/NamedLink operator= (/*0H*/NamedLink & v);
       /*regSet*/inline typename TNamedLink<TC, TCO>::next_Prop & operator= (typename TNamedLink<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/NamedLink () const;
@@ -6816,7 +6645,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
       /*regSet*/inline typename TNamedLink<TC, TCO>::name_Prop & operator= (typename TNamedLink<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/char * () const;
@@ -6824,7 +6653,7 @@ public:
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TNamedLink<TC, TCO>::data_Prop & operator= (typename TNamedLink<TC, TCO>::data_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -6844,7 +6673,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/NamedLink64 operator= (/*0H*/NamedLink64 & v);
       /*regSet*/inline typename TNamedLink64<TC, TCO>::prev_Prop & operator= (typename TNamedLink64<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/NamedLink64 () const;
@@ -6852,7 +6681,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/NamedLink64 operator= (/*0H*/NamedLink64 & v);
       /*regSet*/inline typename TNamedLink64<TC, TCO>::next_Prop & operator= (typename TNamedLink64<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/NamedLink64 () const;
@@ -6860,7 +6689,7 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
       /*regSet*/inline typename TNamedLink64<TC, TCO>::name_Prop & operator= (typename TNamedLink64<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/char * () const;
@@ -6868,7 +6697,7 @@ public:
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int64 operator= (/*0H*/int64 v);
       /*regSet*/inline typename TNamedLink64<TC, TCO>::data_Prop & operator= (typename TNamedLink64<TC, TCO>::data_Prop & prop);
       /*regGet*/inline operator /*0I*/int64 () const;
@@ -6890,7 +6719,7 @@ public:
    struct prev_Prop
    {
       constexpr prev_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldLink operator= (/*0H*/OldLink & v);
       /*regSet*/inline typename TOldLink<TC, TCO>::prev_Prop & operator= (typename TOldLink<TC, TCO>::prev_Prop & prop);
       /*regGet*/inline operator /*0I*/OldLink () const;
@@ -6898,7 +6727,7 @@ public:
    struct next_Prop
    {
       constexpr next_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/OldLink operator= (/*0H*/OldLink & v);
       /*regSet*/inline typename TOldLink<TC, TCO>::next_Prop & operator= (typename TOldLink<TC, TCO>::next_Prop & prop);
       /*regGet*/inline operator /*0I*/OldLink () const;
@@ -6906,7 +6735,7 @@ public:
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline typename TOldLink<TC, TCO>::data_Prop & operator= (typename TOldLink<TC, TCO>::data_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -6947,7 +6776,7 @@ public:
    struct first_Prop
    {
       constexpr first_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline OldList::first_Prop & operator= (OldList::first_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -6955,7 +6784,7 @@ public:
    struct last_Prop
    {
       constexpr last_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline OldList::last_Prop & operator= (OldList::last_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -6963,7 +6792,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline OldList::count_Prop & operator= (OldList::count_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -6971,7 +6800,7 @@ public:
    struct offset_Prop
    {
       constexpr offset_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
       /*regSet*/inline OldList::offset_Prop & operator= (OldList::offset_Prop & prop);
       /*regGet*/inline operator /*0I*/uint () const;
@@ -6979,7 +6808,7 @@ public:
    struct circ_Prop
    {
       constexpr circ_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline OldList::circ_Prop & operator= (OldList::circ_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -6995,7 +6824,7 @@ public:
    struct key_Prop
    {
       constexpr key_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
       /*regSet*/inline typename TStringBTNode<TC, TCO>::key_Prop & operator= (typename TStringBTNode<TC, TCO>::key_Prop & prop);
       /*regGet*/inline operator /*0I*/char * () const;
@@ -7003,7 +6832,7 @@ public:
    struct parent_Prop
    {
       constexpr parent_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/StringBTNode operator= (/*0H*/StringBTNode & v);
       /*regSet*/inline typename TStringBTNode<TC, TCO>::parent_Prop & operator= (typename TStringBTNode<TC, TCO>::parent_Prop & prop);
       /*regGet*/inline operator /*0I*/StringBTNode () const;
@@ -7011,7 +6840,7 @@ public:
    struct left_Prop
    {
       constexpr left_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/StringBTNode operator= (/*0H*/StringBTNode & v);
       /*regSet*/inline typename TStringBTNode<TC, TCO>::left_Prop & operator= (typename TStringBTNode<TC, TCO>::left_Prop & prop);
       /*regGet*/inline operator /*0I*/StringBTNode () const;
@@ -7019,7 +6848,7 @@ public:
    struct right_Prop
    {
       constexpr right_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/StringBTNode operator= (/*0H*/StringBTNode & v);
       /*regSet*/inline typename TStringBTNode<TC, TCO>::right_Prop & operator= (typename TStringBTNode<TC, TCO>::right_Prop & prop);
       /*regGet*/inline operator /*0I*/StringBTNode () const;
@@ -7027,7 +6856,7 @@ public:
    struct depth_Prop
    {
       constexpr depth_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TStringBTNode<TC, TCO>::depth_Prop & operator= (typename TStringBTNode<TC, TCO>::depth_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -7062,20 +6891,20 @@ public:
    struct first_Prop
    {
       constexpr first_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/BTNode () const;
    } first;
    struct last_Prop
    {
       constexpr last_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/BTNode () const;
    } last;
 
    struct root_Prop
    {
       constexpr root_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/BTNode operator= (/*0H*/BTNode & v);
       /*regSet*/inline StringBinaryTree::root_Prop & operator= (StringBinaryTree::root_Prop & prop);
       /*regGet*/inline operator /*0I*/BTNode () const;
@@ -7083,7 +6912,7 @@ public:
    struct count_Prop
    {
       constexpr count_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline StringBinaryTree::count_Prop & operator= (StringBinaryTree::count_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -7096,6 +6925,191 @@ enum class TreePrintStyle : int
    postOrder = TreePrintStyle_postOrder,
    preOrder = TreePrintStyle_preOrder,
    depthOrder = TreePrintStyle_depthOrder
+};
+
+template <class TC, C(Class) ** TCO>
+class TMutex : public TNHInstance<TC, TCO>
+{
+public:
+   using TNHInstance<TC, TCO>::TNHInstance;
+
+   inline void release(); // Mutex_release
+   inline void wait(); // Mutex_wait
+
+   struct lockCount_Prop
+   {
+      constexpr lockCount_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*regGet*/inline operator /*0I*/int () const;
+   } lockCount;
+   struct owningThread_Prop
+   {
+      constexpr owningThread_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*regGet*/inline operator /*0I*/int64 () const;
+   } owningThread;
+   ~TMutex()
+   {
+      this->impl = null; // How to know not to delete?
+   }
+};
+
+enum class FieldType : int
+{
+   integer = FieldType_integer,
+   real = FieldType_real,
+   text = FieldType_text,
+   blob = FieldType_blob,
+   nil = FieldType_nil,
+   array = FieldType_array,
+   map = FieldType_map
+};
+
+class FieldTypeEx
+{
+public:
+   C(FieldTypeEx) impl;
+   constexpr FieldTypeEx() : impl(0) { }
+   constexpr FieldTypeEx(C(FieldTypeEx) impl) : impl(impl) { }
+   FieldTypeEx(FieldType type, bool mustFree, FieldValueFormat format, bool isUnsigned, bool isDateTime);
+   operator C(FieldTypeEx)() { return impl; }
+   FieldTypeEx & operator =(C(FieldTypeEx) impl) { impl = impl; return *this; }
+   bool operator ==(const FieldTypeEx & value) const { return impl == value.impl; }
+   bool operator !=(const FieldTypeEx & value) const { return impl != value.impl; }
+
+   struct type_Prop
+   {
+      constexpr type_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/FieldType operator= (/*0H*/FieldType v);
+      /*regSet*/inline FieldTypeEx::type_Prop & operator= (FieldTypeEx::type_Prop & prop);
+      /*regGet*/inline operator /*0I*/FieldType () const;
+   } type;
+   struct mustFree_Prop
+   {
+      constexpr mustFree_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
+      /*regSet*/inline FieldTypeEx::mustFree_Prop & operator= (FieldTypeEx::mustFree_Prop & prop);
+      /*regGet*/inline operator /*0I*/bool () const;
+   } mustFree;
+   struct format_Prop
+   {
+      constexpr format_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/FieldValueFormat operator= (/*0H*/FieldValueFormat v);
+      /*regSet*/inline FieldTypeEx::format_Prop & operator= (FieldTypeEx::format_Prop & prop);
+      /*regGet*/inline operator /*0I*/FieldValueFormat () const;
+   } format;
+   struct isUnsigned_Prop
+   {
+      constexpr isUnsigned_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
+      /*regSet*/inline FieldTypeEx::isUnsigned_Prop & operator= (FieldTypeEx::isUnsigned_Prop & prop);
+      /*regGet*/inline operator /*0I*/bool () const;
+   } isUnsigned;
+   struct isDateTime_Prop
+   {
+      constexpr isDateTime_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
+      /*regSet*/inline FieldTypeEx::isDateTime_Prop & operator= (FieldTypeEx::isDateTime_Prop & prop);
+      /*regGet*/inline operator /*0I*/bool () const;
+   } isDateTime;
+};
+
+struct FieldValue : public TStruct<FieldValue>
+{
+public:
+   C(FieldValue) impl;
+   constexpr FieldValue() : impl({}) { }
+   constexpr FieldValue(const C(FieldValue) impl) : impl(impl) { }
+
+   inline int compareInt(/*1Ab*/FieldValue & other); // FieldValue_compareInt
+   inline int compareInt(/*1Ac*/FieldValue * other); // FieldValue_compareInt
+   inline int compareReal(/*1Ab*/FieldValue & other); // FieldValue_compareReal
+   inline int compareReal(/*1Ac*/FieldValue * other); // FieldValue_compareReal
+   inline int compareText(/*1Ab*/FieldValue & other); // FieldValue_compareText
+   inline int compareText(/*1Ac*/FieldValue * other); // FieldValue_compareText
+   inline C(String) formatArray(/*1Ab*/char * tempString, /*1Ab*/void * fieldData, /*1Ab*/ObjectNotationType * onType); // FieldValue_formatArray
+   inline C(String) formatFloat(/*1Ab*/char * stringOutput, /*1Ab*/bool fixDot); // FieldValue_formatFloat
+   inline C(String) formatInteger(/*1Ab*/char * stringOutput); // FieldValue_formatInteger
+   inline C(String) formatMap(/*1Ab*/char * tempString, /*1Ab*/void * fieldData, /*1Ab*/ObjectNotationType * onType); // FieldValue_formatMap
+   static inline C(bool) getArrayOrMap(/*1Ab*/const char * string, /*1Ab*/Class destClass, /*1Ab*/void ** destination); // FieldValue_getArrayOrMap
+   inline C(String) stringify(); // FieldValue_stringify
+
+   inline FieldValue(FieldTypeEx type, int64 i, double r, char * s, void * b);
+
+   struct type_Prop
+   {
+      constexpr type_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/FieldTypeEx operator= (/*0H*/FieldTypeEx v);
+      /*regSet*/inline FieldValue::type_Prop & operator= (FieldValue::type_Prop & prop);
+      /*regGet*/inline operator /*0I*/FieldTypeEx () const;
+   } type;
+   struct i_Prop
+   {
+      constexpr i_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/int64 operator= (/*0H*/int64 v);
+      /*regSet*/inline FieldValue::i_Prop & operator= (FieldValue::i_Prop & prop);
+      /*regGet*/inline operator /*0I*/int64 () const;
+   } i;
+   struct r_Prop
+   {
+      constexpr r_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/double operator= (/*0H*/double v);
+      /*regSet*/inline FieldValue::r_Prop & operator= (FieldValue::r_Prop & prop);
+      /*regGet*/inline operator /*0I*/double () const;
+   } r;
+   struct s_Prop
+   {
+      constexpr s_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/char * operator= (/*0H*/char * v);
+      /*regSet*/inline FieldValue::s_Prop & operator= (FieldValue::s_Prop & prop);
+      /*regGet*/inline operator /*0I*/char * () const;
+   } s;
+   struct b_Prop
+   {
+      constexpr b_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
+      /*regSet*/inline FieldValue::b_Prop & operator= (FieldValue::b_Prop & prop);
+      /*regGet*/inline operator /*0I*/void * () const;
+   } b;
+   struct a_Prop
+   {
+      constexpr a_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/TArray<FieldValue _ARG int _ARG FieldValue> operator= (/*0H*/TArray<FieldValue _ARG int _ARG FieldValue> v);
+      /*regSet*/inline FieldValue::a_Prop & operator= (FieldValue::a_Prop & prop);
+      /*regGet*/inline operator /*0I*/TArray<FieldValue _ARG int _ARG FieldValue> () const;
+   } a;
+   struct m_Prop
+   {
+      constexpr m_Prop() :_() { };
+      [[no_unique_address]] int _[0]{};
+      /*nstSet*/inline /*0H*/TMap<C(String) _ARG FieldValue> operator= (/*0H*/TMap<C(String) _ARG FieldValue> v);
+      /*regSet*/inline FieldValue::m_Prop & operator= (FieldValue::m_Prop & prop);
+      /*regGet*/inline operator /*0I*/TMap<C(String) _ARG FieldValue> () const;
+   } m;
+};
+
+enum class FieldValueFormat : int
+{
+   decimal = FieldValueFormat_decimal,
+   unset = FieldValueFormat_unset,
+   hex = FieldValueFormat_hex,
+   octal = FieldValueFormat_octal,
+   binary = FieldValueFormat_binary,
+   exponential = FieldValueFormat_exponential,
+   boolean = FieldValueFormat_boolean,
+   textObj = FieldValueFormat_textObj,
+   color = FieldValueFormat_color
 };
 
 #define REG_File_close(m, c)       REGVMETHOD(File, close,       c::m, (/*1Ab*/File & self),                                                                                    c, ())
@@ -7250,7 +7264,7 @@ public:
    File() : File((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -7259,7 +7273,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -7268,7 +7282,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -7277,7 +7291,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -7286,7 +7300,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -7295,7 +7309,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -7304,7 +7318,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -7313,7 +7327,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -7322,7 +7336,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -7331,7 +7345,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -7382,7 +7396,7 @@ public:
 
    struct File_close_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(File &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( );
@@ -7391,7 +7405,7 @@ public:
 
    struct File_closeInput_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(File &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( );
@@ -7400,7 +7414,7 @@ public:
 
    struct File_closeOutput_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(File &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( );
@@ -7409,7 +7423,7 @@ public:
 
    struct File_eof_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(File &);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( );
@@ -7418,7 +7432,7 @@ public:
 
    struct File_getSize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef uint64 (* FunctionType)(File &);
       inline FunctionType operator= (FunctionType func);
       inline uint64 operator()( );
@@ -7427,7 +7441,7 @@ public:
 
    struct File_getc_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(File & , /*6Fj*/char * ch);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/char * ch);
@@ -7436,7 +7450,7 @@ public:
 
    struct File_lock_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(File & , /*6Fj*/FileLock type, /*6Fj*/uint64 start, /*6Fj*/uint64 length, /*6Fj*/bool wait);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/FileLock type, /*6Fj*/uint64 start, /*6Fj*/uint64 length, /*6Fj*/bool wait);
@@ -7445,7 +7459,7 @@ public:
 
    struct File_putc_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(File & , /*6Fj*/char ch);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/char ch);
@@ -7454,7 +7468,7 @@ public:
 
    struct File_puts_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(File & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/const char * string);
@@ -7463,7 +7477,7 @@ public:
 
    struct File_read_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef uintsize (* FunctionType)(File & , /*6Fj*/void * buffer, /*6Fj*/uintsize size, /*6Fj*/uintsize count);
       inline FunctionType operator= (FunctionType func);
       inline uintsize operator()( /*6Fj*/void * buffer, /*6Fj*/uintsize size, /*6Fj*/uintsize count);
@@ -7472,7 +7486,7 @@ public:
 
    struct File_seek_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(File & , /*6Fj*/int64 pos, /*6Fj*/FileSeekMode mode);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/int64 pos, /*6Fj*/FileSeekMode mode);
@@ -7481,7 +7495,7 @@ public:
 
    struct File_tell_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef uint64 (* FunctionType)(File &);
       inline FunctionType operator= (FunctionType func);
       inline uint64 operator()( );
@@ -7490,7 +7504,7 @@ public:
 
    struct File_truncate_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(File & , /*6Fj*/uint64 size);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/uint64 size);
@@ -7499,7 +7513,7 @@ public:
 
    struct File_unlock_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(File & , /*6Fj*/uint64 start, /*6Fj*/uint64 length, /*6Fj*/bool wait);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/uint64 start, /*6Fj*/uint64 length, /*6Fj*/bool wait);
@@ -7508,7 +7522,7 @@ public:
 
    struct File_write_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef uintsize (* FunctionType)(File & , /*6Fj*/const void * buffer, /*6Fj*/uintsize size, /*6Fj*/uintsize count);
       inline FunctionType operator= (FunctionType func);
       inline uintsize operator()( /*6Fj*/const void * buffer, /*6Fj*/uintsize size, /*6Fj*/uintsize count);
@@ -7522,7 +7536,7 @@ public:
    struct input_Prop
    {
       constexpr input_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline File::input_Prop & operator= (File::input_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -7530,7 +7544,7 @@ public:
    struct output_Prop
    {
       constexpr output_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/void * operator= (/*0H*/void * v);
       /*regSet*/inline File::output_Prop & operator= (File::output_Prop & prop);
       /*regGet*/inline operator /*0I*/void * () const;
@@ -7538,13 +7552,13 @@ public:
    struct buffered_Prop
    {
       constexpr buffered_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0G*/bool operator= (/*0G*/bool v);
    } buffered;
    struct eof_Prop
    {
       constexpr eof_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/bool () const;
    } eof;
 };
@@ -7563,7 +7577,7 @@ public:
    struct isFile_Prop
    {
       constexpr isFile_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isFile_Prop & operator= (FileAttribs::isFile_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7571,7 +7585,7 @@ public:
    struct isArchive_Prop
    {
       constexpr isArchive_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isArchive_Prop & operator= (FileAttribs::isArchive_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7579,7 +7593,7 @@ public:
    struct isHidden_Prop
    {
       constexpr isHidden_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isHidden_Prop & operator= (FileAttribs::isHidden_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7587,7 +7601,7 @@ public:
    struct isReadOnly_Prop
    {
       constexpr isReadOnly_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isReadOnly_Prop & operator= (FileAttribs::isReadOnly_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7595,7 +7609,7 @@ public:
    struct isSystem_Prop
    {
       constexpr isSystem_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isSystem_Prop & operator= (FileAttribs::isSystem_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7603,7 +7617,7 @@ public:
    struct isTemporary_Prop
    {
       constexpr isTemporary_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isTemporary_Prop & operator= (FileAttribs::isTemporary_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7611,7 +7625,7 @@ public:
    struct isDirectory_Prop
    {
       constexpr isDirectory_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isDirectory_Prop & operator= (FileAttribs::isDirectory_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7619,7 +7633,7 @@ public:
    struct isDrive_Prop
    {
       constexpr isDrive_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isDrive_Prop & operator= (FileAttribs::isDrive_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7627,7 +7641,7 @@ public:
    struct isCDROM_Prop
    {
       constexpr isCDROM_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isCDROM_Prop & operator= (FileAttribs::isCDROM_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7635,7 +7649,7 @@ public:
    struct isRemote_Prop
    {
       constexpr isRemote_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isRemote_Prop & operator= (FileAttribs::isRemote_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7643,7 +7657,7 @@ public:
    struct isRemovable_Prop
    {
       constexpr isRemovable_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isRemovable_Prop & operator= (FileAttribs::isRemovable_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7651,7 +7665,7 @@ public:
    struct isServer_Prop
    {
       constexpr isServer_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isServer_Prop & operator= (FileAttribs::isServer_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7659,7 +7673,7 @@ public:
    struct isShare_Prop
    {
       constexpr isShare_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileAttribs::isShare_Prop & operator= (FileAttribs::isShare_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -7769,7 +7783,7 @@ public:
    ArchiveDir() : ArchiveDir((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -7778,7 +7792,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -7787,7 +7801,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -7796,7 +7810,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -7805,7 +7819,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -7814,7 +7828,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -7823,7 +7837,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -7832,7 +7846,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -7841,7 +7855,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -7850,7 +7864,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -7889,7 +7903,7 @@ public:
 
    struct ArchiveDir_addFromFile_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(ArchiveDir & , /*6Fj*/const char * name, /*6Fj*/File & input, /*6Fj*/FileStats & stats, /*6Fj*/ArchiveAddMode addMode, /*6Fj*/int compression, /*6Fj*/int * ratio, /*6Fj*/uint * newPosition);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/const char * name, /*6Fj*/File & input, /*6Fj*/FileStats & stats, /*6Fj*/ArchiveAddMode addMode, /*6Fj*/int compression, /*6Fj*/int * ratio, /*6Fj*/uint * newPosition);
@@ -7898,7 +7912,7 @@ public:
 
    struct ArchiveDir_addFromFileAtPosition_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(ArchiveDir & , /*6Fj*/uint position, /*6Fj*/const char * name, /*6Fj*/File & input, /*6Fj*/FileStats & stats, /*6Fj*/ArchiveAddMode addMode, /*6Fj*/int compression, /*6Fj*/int * ratio, /*6Fj*/uint * newPosition);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/uint position, /*6Fj*/const char * name, /*6Fj*/File & input, /*6Fj*/FileStats & stats, /*6Fj*/ArchiveAddMode addMode, /*6Fj*/int compression, /*6Fj*/int * ratio, /*6Fj*/uint * newPosition);
@@ -7907,7 +7921,7 @@ public:
 
    struct ArchiveDir_delete_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(ArchiveDir & , /*6Fj*/const char * fileName);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/const char * fileName);
@@ -7916,7 +7930,7 @@ public:
 
    struct ArchiveDir_fileExists_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef FileAttribs (* FunctionType)(ArchiveDir & , /*6Fj*/const char * fileName);
       inline FunctionType operator= (FunctionType func);
       inline FileAttribs operator()( /*6Fj*/const char * fileName);
@@ -7925,7 +7939,7 @@ public:
 
    struct ArchiveDir_fileOpen_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef File * (* FunctionType)(ArchiveDir & , /*6Fj*/const char * fileName);
       inline FunctionType operator= (FunctionType func);
       inline File * operator()( /*6Fj*/const char * fileName);
@@ -7934,7 +7948,7 @@ public:
 
    struct ArchiveDir_move_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(ArchiveDir & , /*6Fj*/const char * name, /*6Fj*/ArchiveDir & to);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/const char * name, /*6Fj*/ArchiveDir & to);
@@ -7943,7 +7957,7 @@ public:
 
    struct ArchiveDir_openDirectory_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef ArchiveDir * (* FunctionType)(ArchiveDir & , /*6Fj*/const char * name, /*6Fj*/FileStats & stats, /*6Fj*/ArchiveAddMode addMode);
       inline FunctionType operator= (FunctionType func);
       inline ArchiveDir * operator()( /*6Fj*/const char * name, /*6Fj*/FileStats & stats, /*6Fj*/ArchiveAddMode addMode);
@@ -7952,7 +7966,7 @@ public:
 
    struct ArchiveDir_rename_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(ArchiveDir & , /*6Fj*/const char * name, /*6Fj*/const char * newName);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( /*6Fj*/const char * name, /*6Fj*/const char * newName);
@@ -7983,7 +7997,7 @@ public:
    struct level_Prop
    {
       constexpr level_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/ErrorLevel operator= (/*0H*/ErrorLevel v);
       /*regSet*/inline ErrorCode::level_Prop & operator= (ErrorCode::level_Prop & prop);
       /*regGet*/inline operator /*0I*/ErrorLevel () const;
@@ -7991,7 +8005,7 @@ public:
    struct code_Prop
    {
       constexpr code_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint operator= (/*0H*/uint v);
       /*regSet*/inline ErrorCode::code_Prop & operator= (ErrorCode::code_Prop & prop);
       /*regGet*/inline operator /*0I*/uint () const;
@@ -8103,7 +8117,7 @@ public:
    Archive() : Archive((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -8112,7 +8126,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -8121,7 +8135,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -8130,7 +8144,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -8139,7 +8153,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -8148,7 +8162,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -8157,7 +8171,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -8166,7 +8180,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -8175,7 +8189,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -8184,7 +8198,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -8221,7 +8235,7 @@ public:
 
    struct Archive_clear_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Archive &);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()( );
@@ -8230,7 +8244,7 @@ public:
 
    struct Archive_fileExists_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef FileAttribs (* FunctionType)(Archive & , /*6Fj*/const char * fileName);
       inline FunctionType operator= (FunctionType func);
       inline FileAttribs operator()( /*6Fj*/const char * fileName);
@@ -8239,7 +8253,7 @@ public:
 
    struct Archive_fileOpen_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef File * (* FunctionType)(Archive & , /*6Fj*/const char * fileName);
       inline FunctionType operator= (FunctionType func);
       inline File * operator()( /*6Fj*/const char * fileName);
@@ -8248,7 +8262,7 @@ public:
 
    struct Archive_fileOpenAtPosition_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef File * (* FunctionType)(Archive & , /*6Fj*/uint position);
       inline FunctionType operator= (FunctionType func);
       inline File * operator()( /*6Fj*/uint position);
@@ -8257,7 +8271,7 @@ public:
 
    struct Archive_fileOpenCompressed_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef File * (* FunctionType)(Archive & , /*6Fj*/const char * fileName, /*6Cj*/C(bool) * isCompressed, /*6Fj*/uint64 * ucSize);
       inline FunctionType operator= (FunctionType func);
       inline File * operator()( /*6Fj*/const char * fileName, /*6Cj*/C(bool) * isCompressed, /*6Fj*/uint64 * ucSize);
@@ -8266,7 +8280,7 @@ public:
 
    struct Archive_openDirectory_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef ArchiveDir * (* FunctionType)(Archive & , /*6Fj*/const char * name, /*6Fj*/FileStats & stats, /*6Fj*/ArchiveAddMode addMode);
       inline FunctionType operator= (FunctionType func);
       inline ArchiveDir * operator()( /*6Fj*/const char * name, /*6Fj*/FileStats & stats, /*6Fj*/ArchiveAddMode addMode);
@@ -8275,7 +8289,7 @@ public:
 
    struct Archive_setBufferRead_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Archive & , /*6Fj*/uint bufferRead);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( /*6Fj*/uint bufferRead);
@@ -8284,7 +8298,7 @@ public:
 
    struct Archive_setBufferSize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Archive & , /*6Fj*/uint bufferSize);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( /*6Fj*/uint bufferSize);
@@ -8298,7 +8312,7 @@ public:
    struct totalSize_Prop
    {
       constexpr totalSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/FileSize operator= (/*0H*/FileSize v);
       /*regSet*/inline Archive::totalSize_Prop & operator= (Archive::totalSize_Prop & prop);
       /*regGet*/inline operator /*0I*/FileSize () const;
@@ -8307,13 +8321,13 @@ public:
    struct bufferSize_Prop
    {
       constexpr bufferSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0G*/uint operator= (/*0G*/uint v);
    } bufferSize;
    struct bufferRead_Prop
    {
       constexpr bufferRead_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0G*/uint operator= (/*0G*/uint v);
    } bufferRead;
 };
@@ -8341,7 +8355,7 @@ public:
    struct writeAccess_Prop
    {
       constexpr writeAccess_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline ArchiveOpenFlags::writeAccess_Prop & operator= (ArchiveOpenFlags::writeAccess_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -8349,7 +8363,7 @@ public:
    struct buffered_Prop
    {
       constexpr buffered_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline ArchiveOpenFlags::buffered_Prop & operator= (ArchiveOpenFlags::buffered_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -8357,7 +8371,7 @@ public:
    struct exclusive_Prop
    {
       constexpr exclusive_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline ArchiveOpenFlags::exclusive_Prop & operator= (ArchiveOpenFlags::exclusive_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -8365,7 +8379,7 @@ public:
    struct waitLock_Prop
    {
       constexpr waitLock_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline ArchiveOpenFlags::waitLock_Prop & operator= (ArchiveOpenFlags::waitLock_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -8434,7 +8448,7 @@ public:
    BufferedFile() : BufferedFile((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -8443,7 +8457,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -8452,7 +8466,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -8461,7 +8475,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -8470,7 +8484,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -8479,7 +8493,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -8488,7 +8502,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -8497,7 +8511,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -8506,7 +8520,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -8515,7 +8529,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -8555,7 +8569,7 @@ public:
    struct handle_Prop
    {
       constexpr handle_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0A*/const File & operator= (/*0A*/const File & v);
       /*regSet*/inline BufferedFile::handle_Prop & operator= (BufferedFile::handle_Prop & prop);
       /*nstSet*/inline /*0C*/const File * operator= (/*0C*/const File * v);
@@ -8567,7 +8581,7 @@ public:
    struct bufferSize_Prop
    {
       constexpr bufferSize_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uintsize operator= (/*0H*/uintsize v);
       /*regSet*/inline BufferedFile::bufferSize_Prop & operator= (BufferedFile::bufferSize_Prop & prop);
       /*regGet*/inline operator /*0I*/uintsize () const;
@@ -8575,7 +8589,7 @@ public:
    struct bufferRead_Prop
    {
       constexpr bufferRead_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uintsize operator= (/*0H*/uintsize v);
       /*regSet*/inline BufferedFile::bufferRead_Prop & operator= (BufferedFile::bufferRead_Prop & prop);
       /*regGet*/inline operator /*0I*/uintsize () const;
@@ -8644,7 +8658,7 @@ public:
    ConsoleFile() : ConsoleFile((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -8653,7 +8667,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -8662,7 +8676,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -8671,7 +8685,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -8680,7 +8694,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -8689,7 +8703,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -8698,7 +8712,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -8707,7 +8721,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -8716,7 +8730,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -8725,7 +8739,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -8825,7 +8839,7 @@ public:
    DualPipe() : DualPipe((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -8834,7 +8848,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -8843,7 +8857,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -8852,7 +8866,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -8861,7 +8875,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -8870,7 +8884,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -8879,7 +8893,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -8888,7 +8902,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -8897,7 +8911,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -8906,7 +8920,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -8974,7 +8988,7 @@ public:
    struct created_Prop
    {
       constexpr created_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileChange::created_Prop & operator= (FileChange::created_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -8982,7 +8996,7 @@ public:
    struct renamed_Prop
    {
       constexpr renamed_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileChange::renamed_Prop & operator= (FileChange::renamed_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -8990,7 +9004,7 @@ public:
    struct modified_Prop
    {
       constexpr modified_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileChange::modified_Prop & operator= (FileChange::modified_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -8998,7 +9012,7 @@ public:
    struct deleted_Prop
    {
       constexpr deleted_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileChange::deleted_Prop & operator= (FileChange::deleted_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9006,7 +9020,7 @@ public:
    struct attribs_Prop
    {
       constexpr attribs_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline FileChange::attribs_Prop & operator= (FileChange::attribs_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9028,26 +9042,26 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/const char * () const;
    } name;
    struct path_Prop
    {
       constexpr path_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/const char * () const;
    } path;
    struct stats_Prop
    {
       constexpr stats_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/FileStats () const;
    } stats;
 
    struct directory_Prop
    {
       constexpr directory_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline FileListing::directory_Prop & operator= (FileListing::directory_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -9055,7 +9069,7 @@ public:
    struct extensions_Prop
    {
       constexpr extensions_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline FileListing::extensions_Prop & operator= (FileListing::extensions_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -9128,7 +9142,7 @@ public:
    FileMonitor() : FileMonitor((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { FileMonitor_set_userData(this->impl, this); }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -9137,7 +9151,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -9146,7 +9160,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -9155,7 +9169,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -9164,7 +9178,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -9173,7 +9187,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -9182,7 +9196,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -9191,7 +9205,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -9200,7 +9214,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -9209,7 +9223,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -9249,7 +9263,7 @@ public:
 
    struct FileMonitor_onDirNotify_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(any_object , /*6Fj*/FileChange action, /*6Fj*/const char * fileName, /*6Fj*/const char * param);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Fk*/any_object o_ , /*6Fj*/FileChange action, /*6Fj*/const char * fileName, /*6Fj*/const char * param);
@@ -9258,7 +9272,7 @@ public:
 
    struct FileMonitor_onFileNotify_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(any_object , /*6Fj*/FileChange action, /*6Fj*/const char * param);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Fk*/any_object o_ , /*6Fj*/FileChange action, /*6Fj*/const char * param);
@@ -9276,19 +9290,19 @@ public:
    struct userData_Prop
    {
       constexpr userData_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0G*/void * operator= (/*0G*/void * v);
    } userData;
    struct fileChange_Prop
    {
       constexpr fileChange_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0G*/FileChange operator= (/*0G*/FileChange v);
    } fileChange;
    struct fileName_Prop
    {
       constexpr fileName_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline FileMonitor::fileName_Prop & operator= (FileMonitor::fileName_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -9296,7 +9310,7 @@ public:
    struct directoryName_Prop
    {
       constexpr directoryName_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline FileMonitor::directoryName_Prop & operator= (FileMonitor::directoryName_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -9386,7 +9400,7 @@ public:
    struct attribs_Prop
    {
       constexpr attribs_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/FileAttribs operator= (/*0H*/FileAttribs v);
       /*regSet*/inline FileStats::attribs_Prop & operator= (FileStats::attribs_Prop & prop);
       /*regGet*/inline operator /*0I*/FileAttribs () const;
@@ -9394,7 +9408,7 @@ public:
    struct size_Prop
    {
       constexpr size_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uint64 operator= (/*0H*/uint64 v);
       /*regSet*/inline FileStats::size_Prop & operator= (FileStats::size_Prop & prop);
       /*regGet*/inline operator /*0I*/uint64 () const;
@@ -9402,7 +9416,7 @@ public:
    struct accessed_Prop
    {
       constexpr accessed_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/SecSince1970 operator= (/*0H*/SecSince1970 v);
       /*regSet*/inline FileStats::accessed_Prop & operator= (FileStats::accessed_Prop & prop);
       /*regGet*/inline operator /*0I*/SecSince1970 () const;
@@ -9411,7 +9425,7 @@ public:
    struct modified_Prop
    {
       constexpr modified_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/SecSince1970 operator= (/*0H*/SecSince1970 v);
       /*regSet*/inline FileStats::modified_Prop & operator= (FileStats::modified_Prop & prop);
       /*regGet*/inline operator /*0I*/SecSince1970 () const;
@@ -9420,7 +9434,7 @@ public:
    struct created_Prop
    {
       constexpr created_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/SecSince1970 operator= (/*0H*/SecSince1970 v);
       /*regSet*/inline FileStats::created_Prop & operator= (FileStats::created_Prop & prop);
       /*regGet*/inline operator /*0I*/SecSince1970 () const;
@@ -9462,7 +9476,7 @@ public:
    struct overwrite_Prop
    {
       constexpr overwrite_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline MoveFileOptions::overwrite_Prop & operator= (MoveFileOptions::overwrite_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9470,7 +9484,7 @@ public:
    struct sync_Prop
    {
       constexpr sync_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline MoveFileOptions::sync_Prop & operator= (MoveFileOptions::sync_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9492,7 +9506,7 @@ public:
    struct output_Prop
    {
       constexpr output_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline PipeOpenMode::output_Prop & operator= (PipeOpenMode::output_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9500,7 +9514,7 @@ public:
    struct error_Prop
    {
       constexpr error_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline PipeOpenMode::error_Prop & operator= (PipeOpenMode::error_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9508,7 +9522,7 @@ public:
    struct input_Prop
    {
       constexpr input_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline PipeOpenMode::input_Prop & operator= (PipeOpenMode::input_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9516,7 +9530,7 @@ public:
    struct showWindow_Prop
    {
       constexpr showWindow_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline PipeOpenMode::showWindow_Prop & operator= (PipeOpenMode::showWindow_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9595,7 +9609,7 @@ public:
    TempFile() : TempFile((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -9604,7 +9618,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -9613,7 +9627,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -9622,7 +9636,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -9631,7 +9645,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -9640,7 +9654,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -9649,7 +9663,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -9658,7 +9672,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -9667,7 +9681,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -9676,7 +9690,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -9720,7 +9734,7 @@ public:
    struct openMode_Prop
    {
       constexpr openMode_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/FileOpenMode operator= (/*0H*/FileOpenMode v);
       /*regSet*/inline TempFile::openMode_Prop & operator= (TempFile::openMode_Prop & prop);
       /*regGet*/inline operator /*0I*/FileOpenMode () const;
@@ -9728,7 +9742,7 @@ public:
    struct buffer_Prop
    {
       constexpr buffer_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/unsigned char * operator= (/*0H*/unsigned char * v);
       /*regSet*/inline TempFile::buffer_Prop & operator= (TempFile::buffer_Prop & prop);
       /*regGet*/inline operator /*0I*/unsigned char * () const;
@@ -9736,7 +9750,7 @@ public:
    struct size_Prop
    {
       constexpr size_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uintsize operator= (/*0H*/uintsize v);
       /*regSet*/inline TempFile::size_Prop & operator= (TempFile::size_Prop & prop);
       /*regGet*/inline operator /*0I*/uintsize () const;
@@ -9744,7 +9758,7 @@ public:
    struct allocated_Prop
    {
       constexpr allocated_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/uintsize operator= (/*0H*/uintsize v);
       /*regSet*/inline TempFile::allocated_Prop & operator= (TempFile::allocated_Prop & prop);
       /*regGet*/inline operator /*0I*/uintsize () const;
@@ -9769,7 +9783,7 @@ public:
    struct none_Prop
    {
       constexpr none_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::none_Prop & operator= (CharCategories::none_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9777,7 +9791,7 @@ public:
    struct markNonSpacing_Prop
    {
       constexpr markNonSpacing_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::markNonSpacing_Prop & operator= (CharCategories::markNonSpacing_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9785,7 +9799,7 @@ public:
    struct markSpacing_Prop
    {
       constexpr markSpacing_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::markSpacing_Prop & operator= (CharCategories::markSpacing_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9793,7 +9807,7 @@ public:
    struct markEnclosing_Prop
    {
       constexpr markEnclosing_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::markEnclosing_Prop & operator= (CharCategories::markEnclosing_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9801,7 +9815,7 @@ public:
    struct numberDecimalDigit_Prop
    {
       constexpr numberDecimalDigit_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::numberDecimalDigit_Prop & operator= (CharCategories::numberDecimalDigit_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9809,7 +9823,7 @@ public:
    struct numberLetter_Prop
    {
       constexpr numberLetter_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::numberLetter_Prop & operator= (CharCategories::numberLetter_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9817,7 +9831,7 @@ public:
    struct numberOther_Prop
    {
       constexpr numberOther_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::numberOther_Prop & operator= (CharCategories::numberOther_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9825,7 +9839,7 @@ public:
    struct separatorSpace_Prop
    {
       constexpr separatorSpace_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::separatorSpace_Prop & operator= (CharCategories::separatorSpace_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9833,7 +9847,7 @@ public:
    struct separatorLine_Prop
    {
       constexpr separatorLine_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::separatorLine_Prop & operator= (CharCategories::separatorLine_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9841,7 +9855,7 @@ public:
    struct separatorParagraph_Prop
    {
       constexpr separatorParagraph_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::separatorParagraph_Prop & operator= (CharCategories::separatorParagraph_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9849,7 +9863,7 @@ public:
    struct otherControl_Prop
    {
       constexpr otherControl_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::otherControl_Prop & operator= (CharCategories::otherControl_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9857,7 +9871,7 @@ public:
    struct otherFormat_Prop
    {
       constexpr otherFormat_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::otherFormat_Prop & operator= (CharCategories::otherFormat_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9865,7 +9879,7 @@ public:
    struct otherSurrogate_Prop
    {
       constexpr otherSurrogate_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::otherSurrogate_Prop & operator= (CharCategories::otherSurrogate_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9873,7 +9887,7 @@ public:
    struct otherPrivateUse_Prop
    {
       constexpr otherPrivateUse_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::otherPrivateUse_Prop & operator= (CharCategories::otherPrivateUse_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9881,7 +9895,7 @@ public:
    struct otherNotAssigned_Prop
    {
       constexpr otherNotAssigned_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::otherNotAssigned_Prop & operator= (CharCategories::otherNotAssigned_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9889,7 +9903,7 @@ public:
    struct letterUpperCase_Prop
    {
       constexpr letterUpperCase_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::letterUpperCase_Prop & operator= (CharCategories::letterUpperCase_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9897,7 +9911,7 @@ public:
    struct letterLowerCase_Prop
    {
       constexpr letterLowerCase_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::letterLowerCase_Prop & operator= (CharCategories::letterLowerCase_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9905,7 +9919,7 @@ public:
    struct letterTitleCase_Prop
    {
       constexpr letterTitleCase_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::letterTitleCase_Prop & operator= (CharCategories::letterTitleCase_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9913,7 +9927,7 @@ public:
    struct letterModifier_Prop
    {
       constexpr letterModifier_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::letterModifier_Prop & operator= (CharCategories::letterModifier_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9921,7 +9935,7 @@ public:
    struct letterOther_Prop
    {
       constexpr letterOther_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::letterOther_Prop & operator= (CharCategories::letterOther_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9929,7 +9943,7 @@ public:
    struct punctuationConnector_Prop
    {
       constexpr punctuationConnector_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::punctuationConnector_Prop & operator= (CharCategories::punctuationConnector_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9937,7 +9951,7 @@ public:
    struct punctuationDash_Prop
    {
       constexpr punctuationDash_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::punctuationDash_Prop & operator= (CharCategories::punctuationDash_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9945,7 +9959,7 @@ public:
    struct punctuationOpen_Prop
    {
       constexpr punctuationOpen_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::punctuationOpen_Prop & operator= (CharCategories::punctuationOpen_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9953,7 +9967,7 @@ public:
    struct punctuationClose_Prop
    {
       constexpr punctuationClose_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::punctuationClose_Prop & operator= (CharCategories::punctuationClose_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9961,7 +9975,7 @@ public:
    struct punctuationInitial_Prop
    {
       constexpr punctuationInitial_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::punctuationInitial_Prop & operator= (CharCategories::punctuationInitial_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9969,7 +9983,7 @@ public:
    struct punctuationFinal_Prop
    {
       constexpr punctuationFinal_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::punctuationFinal_Prop & operator= (CharCategories::punctuationFinal_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9977,7 +9991,7 @@ public:
    struct punctuationOther_Prop
    {
       constexpr punctuationOther_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::punctuationOther_Prop & operator= (CharCategories::punctuationOther_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9985,7 +9999,7 @@ public:
    struct symbolMath_Prop
    {
       constexpr symbolMath_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::symbolMath_Prop & operator= (CharCategories::symbolMath_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -9993,7 +10007,7 @@ public:
    struct symbolCurrency_Prop
    {
       constexpr symbolCurrency_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::symbolCurrency_Prop & operator= (CharCategories::symbolCurrency_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10001,7 +10015,7 @@ public:
    struct symbolModifier_Prop
    {
       constexpr symbolModifier_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::symbolModifier_Prop & operator= (CharCategories::symbolModifier_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10009,7 +10023,7 @@ public:
    struct symbolOther_Prop
    {
       constexpr symbolOther_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline CharCategories::symbolOther_Prop & operator= (CharCategories::symbolOther_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10108,7 +10122,7 @@ public:
    struct canonical_Prop
    {
       constexpr canonical_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::canonical_Prop & operator= (UnicodeDecomposition::canonical_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10116,7 +10130,7 @@ public:
    struct compat_Prop
    {
       constexpr compat_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::compat_Prop & operator= (UnicodeDecomposition::compat_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10124,7 +10138,7 @@ public:
    struct fraction_Prop
    {
       constexpr fraction_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::fraction_Prop & operator= (UnicodeDecomposition::fraction_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10132,7 +10146,7 @@ public:
    struct font_Prop
    {
       constexpr font_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::font_Prop & operator= (UnicodeDecomposition::font_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10140,7 +10154,7 @@ public:
    struct noBreak_Prop
    {
       constexpr noBreak_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::noBreak_Prop & operator= (UnicodeDecomposition::noBreak_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10148,7 +10162,7 @@ public:
    struct initial_Prop
    {
       constexpr initial_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::initial_Prop & operator= (UnicodeDecomposition::initial_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10156,7 +10170,7 @@ public:
    struct final_Prop
    {
       constexpr final_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::final_Prop & operator= (UnicodeDecomposition::final_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10164,7 +10178,7 @@ public:
    struct medial_Prop
    {
       constexpr medial_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::medial_Prop & operator= (UnicodeDecomposition::medial_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10172,7 +10186,7 @@ public:
    struct isolated_Prop
    {
       constexpr isolated_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::isolated_Prop & operator= (UnicodeDecomposition::isolated_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10180,7 +10194,7 @@ public:
    struct circle_Prop
    {
       constexpr circle_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::circle_Prop & operator= (UnicodeDecomposition::circle_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10188,7 +10202,7 @@ public:
    struct square_Prop
    {
       constexpr square_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::square_Prop & operator= (UnicodeDecomposition::square_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10196,7 +10210,7 @@ public:
    struct sub_Prop
    {
       constexpr sub_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::sub_Prop & operator= (UnicodeDecomposition::sub_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10204,7 +10218,7 @@ public:
    struct super_Prop
    {
       constexpr super_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::super_Prop & operator= (UnicodeDecomposition::super_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10212,7 +10226,7 @@ public:
    struct small_Prop
    {
       constexpr small_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::small_Prop & operator= (UnicodeDecomposition::small_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10220,7 +10234,7 @@ public:
    struct vertical_Prop
    {
       constexpr vertical_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::vertical_Prop & operator= (UnicodeDecomposition::vertical_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10228,7 +10242,7 @@ public:
    struct wide_Prop
    {
       constexpr wide_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::wide_Prop & operator= (UnicodeDecomposition::wide_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10236,7 +10250,7 @@ public:
    struct narrow_Prop
    {
       constexpr narrow_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline UnicodeDecomposition::narrow_Prop & operator= (UnicodeDecomposition::narrow_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10317,7 +10331,7 @@ public:
    GlobalSettings() : GlobalSettings((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -10326,7 +10340,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -10335,7 +10349,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -10344,7 +10358,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -10353,7 +10367,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -10362,7 +10376,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -10371,7 +10385,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -10380,7 +10394,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -10389,7 +10403,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -10398,7 +10412,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -10439,7 +10453,7 @@ public:
 
    struct GlobalSettings_load_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef SettingsIOResult (* FunctionType)(GlobalSettings &);
       inline FunctionType operator= (FunctionType func);
       inline SettingsIOResult operator()( );
@@ -10448,7 +10462,7 @@ public:
 
    struct GlobalSettings_onAskReloadSettings_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(GlobalSettings &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()( );
@@ -10457,7 +10471,7 @@ public:
 
    struct GlobalSettings_save_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef SettingsIOResult (* FunctionType)(GlobalSettings &);
       inline FunctionType operator= (FunctionType func);
       inline SettingsIOResult operator()( );
@@ -10471,7 +10485,7 @@ public:
    struct settingsName_Prop
    {
       constexpr settingsName_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline GlobalSettings::settingsName_Prop & operator= (GlobalSettings::settingsName_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -10479,7 +10493,7 @@ public:
    struct settingsExtension_Prop
    {
       constexpr settingsExtension_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline GlobalSettings::settingsExtension_Prop & operator= (GlobalSettings::settingsExtension_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -10487,7 +10501,7 @@ public:
    struct settingsDirectory_Prop
    {
       constexpr settingsDirectory_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline GlobalSettings::settingsDirectory_Prop & operator= (GlobalSettings::settingsDirectory_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -10495,7 +10509,7 @@ public:
    struct settingsLocation_Prop
    {
       constexpr settingsLocation_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline GlobalSettings::settingsLocation_Prop & operator= (GlobalSettings::settingsLocation_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -10503,7 +10517,7 @@ public:
    struct settingsFilePath_Prop
    {
       constexpr settingsFilePath_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline GlobalSettings::settingsFilePath_Prop & operator= (GlobalSettings::settingsFilePath_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
@@ -10511,7 +10525,7 @@ public:
    struct allowDefaultLocations_Prop
    {
       constexpr allowDefaultLocations_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline GlobalSettings::allowDefaultLocations_Prop & operator= (GlobalSettings::allowDefaultLocations_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10519,7 +10533,7 @@ public:
    struct allUsers_Prop
    {
       constexpr allUsers_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline GlobalSettings::allUsers_Prop & operator= (GlobalSettings::allUsers_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10527,7 +10541,7 @@ public:
    struct portable_Prop
    {
       constexpr portable_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline GlobalSettings::portable_Prop & operator= (GlobalSettings::portable_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10535,7 +10549,7 @@ public:
    struct driver_Prop
    {
       constexpr driver_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*//*CT-D*/constString operator= (/*0H*//*CT-D*/constString v);
       /*regSet*/inline GlobalSettings::driver_Prop & operator= (GlobalSettings::driver_Prop & prop);
       /*regGet*/inline operator /*0I*//*CT-D*/constString () const;
@@ -10543,14 +10557,14 @@ public:
    struct isGlobalPath_Prop
    {
       constexpr isGlobalPath_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/bool () const;
    } isGlobalPath;
 
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/GlobalSettingsData operator= (/*0H*/GlobalSettingsData v);
       /*regSet*/inline GlobalSettings::data_Prop & operator= (GlobalSettings::data_Prop & prop);
       /*regGet*/inline operator /*0I*/GlobalSettingsData () const;
@@ -10558,7 +10572,7 @@ public:
    struct dataOwner_Prop
    {
       constexpr dataOwner_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/C(GlobalSettingsData)* operator= (/*0H*/C(GlobalSettingsData)* v);
       /*regSet*/inline GlobalSettings::dataOwner_Prop & operator= (GlobalSettings::dataOwner_Prop & prop);
       /*regGet*/inline operator /*0I*/C(GlobalSettingsData)* () const;
@@ -10624,7 +10638,7 @@ public:
    GlobalSettingsDriver() : GlobalSettingsDriver((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -10633,7 +10647,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -10642,7 +10656,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -10651,7 +10665,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -10660,7 +10674,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -10669,7 +10683,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -10678,7 +10692,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -10687,7 +10701,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -10696,7 +10710,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -10705,7 +10719,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -10742,7 +10756,7 @@ public:
 
    struct GlobalSettingsDriver_load_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef SettingsIOResult (* FunctionType)(GlobalSettingsDriver & , /*6Fj*/File & f, /*6Fj*/GlobalSettings & globalSettings);
       inline FunctionType operator= (FunctionType func);
       inline SettingsIOResult operator()( /*6Fj*/File & f, /*6Fj*/GlobalSettings & globalSettings);
@@ -10751,7 +10765,7 @@ public:
 
    struct GlobalSettingsDriver_save_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef SettingsIOResult (* FunctionType)(GlobalSettingsDriver & , /*6Fj*/File & f, /*6Fj*/GlobalSettings & globalSettings);
       inline FunctionType operator= (FunctionType func);
       inline SettingsIOResult operator()( /*6Fj*/File & f, /*6Fj*/GlobalSettings & globalSettings);
@@ -10806,7 +10820,7 @@ public:
    JSONParser() : JSONParser((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -10815,7 +10829,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -10824,7 +10838,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -10833,7 +10847,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -10842,7 +10856,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -10851,7 +10865,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -10860,7 +10874,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -10869,7 +10883,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -10878,7 +10892,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -10887,7 +10901,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -10929,7 +10943,7 @@ public:
    struct debug_Prop
    {
       constexpr debug_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONParser::debug_Prop & operator= (JSONParser::debug_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10937,7 +10951,7 @@ public:
    struct warnings_Prop
    {
       constexpr warnings_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONParser::warnings_Prop & operator= (JSONParser::warnings_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -10946,7 +10960,7 @@ public:
    struct f_Prop
    {
       constexpr f_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/File operator= (/*0H*/File v);
       /*regSet*/inline JSONParser::f_Prop & operator= (JSONParser::f_Prop & prop);
       /*regGet*/inline operator /*0I*/File () const;
@@ -10954,7 +10968,7 @@ public:
    struct customJsonOptions_Prop
    {
       constexpr customJsonOptions_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0Z*/const OptionsMap & operator= (/*0Z*/const OptionsMap & v);
       /*regSet*/inline JSONParser::customJsonOptions_Prop & operator= (JSONParser::customJsonOptions_Prop & prop);
       /*regGet*/inline operator /*0I*/OptionsMap * () const;
@@ -11008,7 +11022,7 @@ public:
    ECONGlobalSettings() : ECONGlobalSettings((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -11017,7 +11031,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -11026,7 +11040,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -11035,7 +11049,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -11044,7 +11058,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -11053,7 +11067,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -11062,7 +11076,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -11071,7 +11085,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -11080,7 +11094,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11089,7 +11103,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11172,7 +11186,7 @@ public:
    ECONParser() : ECONParser((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -11181,7 +11195,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -11190,7 +11204,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -11199,7 +11213,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -11208,7 +11222,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -11217,7 +11231,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -11226,7 +11240,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -11235,7 +11249,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -11244,7 +11258,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11253,7 +11267,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11339,7 +11353,7 @@ public:
    GlobalAppSettings() : GlobalAppSettings((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -11348,7 +11362,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -11357,7 +11371,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -11366,7 +11380,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -11375,7 +11389,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -11384,7 +11398,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -11393,7 +11407,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -11402,7 +11416,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -11411,7 +11425,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11420,7 +11434,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11513,7 +11527,7 @@ public:
    GlobalSettingsData() : GlobalSettingsData((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -11522,7 +11536,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -11531,7 +11545,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -11540,7 +11554,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -11549,7 +11563,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -11558,7 +11572,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -11567,7 +11581,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -11576,7 +11590,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -11585,7 +11599,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11594,7 +11608,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11686,7 +11700,7 @@ public:
    JSONGlobalSettings() : JSONGlobalSettings((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -11695,7 +11709,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -11704,7 +11718,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -11713,7 +11727,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -11722,7 +11736,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -11731,7 +11745,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -11740,7 +11754,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -11749,7 +11763,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -11758,7 +11772,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11767,7 +11781,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -11827,7 +11841,7 @@ public:
    struct numbersUseOGDFS_Prop
    {
       constexpr numbersUseOGDFS_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONTypeOptions::numbersUseOGDFS_Prop & operator= (JSONTypeOptions::numbersUseOGDFS_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -11835,7 +11849,7 @@ public:
    struct boolUseOGDFS_Prop
    {
       constexpr boolUseOGDFS_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONTypeOptions::boolUseOGDFS_Prop & operator= (JSONTypeOptions::boolUseOGDFS_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -11843,7 +11857,7 @@ public:
    struct nullUseOGDFS_Prop
    {
       constexpr nullUseOGDFS_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONTypeOptions::nullUseOGDFS_Prop & operator= (JSONTypeOptions::nullUseOGDFS_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -11851,7 +11865,7 @@ public:
    struct stringUseOGDFS_Prop
    {
       constexpr stringUseOGDFS_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONTypeOptions::stringUseOGDFS_Prop & operator= (JSONTypeOptions::stringUseOGDFS_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -11859,7 +11873,7 @@ public:
    struct arrayUseOGDFS_Prop
    {
       constexpr arrayUseOGDFS_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONTypeOptions::arrayUseOGDFS_Prop & operator= (JSONTypeOptions::arrayUseOGDFS_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -11867,7 +11881,7 @@ public:
    struct objectUseOGDFS_Prop
    {
       constexpr objectUseOGDFS_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONTypeOptions::objectUseOGDFS_Prop & operator= (JSONTypeOptions::objectUseOGDFS_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -11875,7 +11889,7 @@ public:
    struct stripQuotesForOGDFS_Prop
    {
       constexpr stripQuotesForOGDFS_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONTypeOptions::stripQuotesForOGDFS_Prop & operator= (JSONTypeOptions::stripQuotesForOGDFS_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -11883,7 +11897,7 @@ public:
    struct strictOGDFS_Prop
    {
       constexpr strictOGDFS_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/bool operator= (/*0H*/bool v);
       /*regSet*/inline JSONTypeOptions::strictOGDFS_Prop & operator= (JSONTypeOptions::strictOGDFS_Prop & prop);
       /*regGet*/inline operator /*0I*/bool () const;
@@ -11935,7 +11949,7 @@ public:
    OptionsMap() : OptionsMap((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -11944,7 +11958,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -11953,7 +11967,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -11962,7 +11976,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -11971,7 +11985,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -11980,7 +11994,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -11989,7 +12003,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -11998,7 +12012,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -12007,7 +12021,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -12016,7 +12030,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -12073,39 +12087,12 @@ public:
    struct name_Prop
    {
       constexpr name_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/const char * operator= (/*0H*/const char * v);
       /*regSet*/inline typename TCondition<TC, TCO>::name_Prop & operator= (typename TCondition<TC, TCO>::name_Prop & prop);
       /*regGet*/inline operator /*0I*/const char * () const;
    } name;
    ~TCondition()
-   {
-      this->impl = null; // How to know not to delete?
-   }
-};
-
-template <class TC, C(Class) ** TCO>
-class TMutex : public TNHInstance<TC, TCO>
-{
-public:
-   using TNHInstance<TC, TCO>::TNHInstance;
-
-   inline void release(); // Mutex_release
-   inline void wait(); // Mutex_wait
-
-   struct lockCount_Prop
-   {
-      constexpr lockCount_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*regGet*/inline operator /*0I*/int () const;
-   } lockCount;
-   struct owningThread_Prop
-   {
-      constexpr owningThread_Prop() :_() { };
-      [[no_unique_address]] int _[0];
-      /*regGet*/inline operator /*0I*/int64 () const;
-   } owningThread;
-   ~TMutex()
    {
       this->impl = null; // How to know not to delete?
    }
@@ -12124,7 +12111,7 @@ public:
    struct initCount_Prop
    {
       constexpr initCount_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TSemaphore<TC, TCO>::initCount_Prop & operator= (typename TSemaphore<TC, TCO>::initCount_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12132,7 +12119,7 @@ public:
    struct maxCount_Prop
    {
       constexpr maxCount_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline typename TSemaphore<TC, TCO>::maxCount_Prop & operator= (typename TSemaphore<TC, TCO>::maxCount_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12195,7 +12182,7 @@ public:
    Thread() : Thread((C(Instance))Instance_newEx(_cpp_class.impl, false), _cpp_class) { }
    struct Instance_onCompare_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef int (* FunctionType)(Instance & , /*6Bj*/Instance & object);
       inline FunctionType operator= (FunctionType func);
       inline int operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object);
@@ -12204,7 +12191,7 @@ public:
 
    struct Instance_onCopy_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Bj*/Instance & newData);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData);
@@ -12213,7 +12200,7 @@ public:
 
    struct Instance_onDisplay_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags);
@@ -12222,7 +12209,7 @@ public:
 
    struct Instance_onEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef Instance & (* FunctionType)(Instance & , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
       inline FunctionType operator= (FunctionType func);
       inline Instance & operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData);
@@ -12231,7 +12218,7 @@ public:
 
    struct Instance_onFree_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance &);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ );
@@ -12240,7 +12227,7 @@ public:
 
    struct Instance_onGetDataFromString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/const char * string);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string);
@@ -12249,7 +12236,7 @@ public:
 
    struct Instance_onGetString_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef const char * (* FunctionType)(Instance & , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
       inline FunctionType operator= (FunctionType func);
       inline const char * operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType);
@@ -12258,7 +12245,7 @@ public:
 
    struct Instance_onSaveEdit_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef bool (* FunctionType)(Instance & , /*6Fj*/Instance & window, /*6Fj*/void * object);
       inline FunctionType operator= (FunctionType func);
       inline bool operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object);
@@ -12267,7 +12254,7 @@ public:
 
    struct Instance_onSerialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -12276,7 +12263,7 @@ public:
 
    struct Instance_onUnserialize_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef void (* FunctionType)(Instance & , /*6Fj*/IOChannel & channel);
       inline FunctionType operator= (FunctionType func);
       inline void operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel);
@@ -12318,7 +12305,7 @@ public:
 
    struct Thread_main_Functor
    {
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       typedef uint (* FunctionType)(Thread &);
       inline FunctionType operator= (FunctionType func);
       inline uint operator()( );
@@ -12330,7 +12317,7 @@ public:
    struct created_Prop
    {
       constexpr created_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/bool () const;
    } created;
 };
@@ -12375,14 +12362,14 @@ public:
    struct global_Prop
    {
       constexpr global_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/SecSince1970 () const;
       /*regGet*/inline operator /*0J*/C(SecSince1970) () const;
    } global;
    struct local_Prop
    {
       constexpr local_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/SecSince1970 () const;
       /*regGet*/inline operator /*0J*/C(SecSince1970) () const;
    } local;
@@ -12435,14 +12422,14 @@ public:
    struct dayOfTheWeek_Prop
    {
       constexpr dayOfTheWeek_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/DayOfTheWeek () const;
    } dayOfTheWeek;
 
    struct year_Prop
    {
       constexpr year_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline Date::year_Prop & operator= (Date::year_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12450,7 +12437,7 @@ public:
    struct month_Prop
    {
       constexpr month_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Month operator= (/*0H*/Month v);
       /*regSet*/inline Date::month_Prop & operator= (Date::month_Prop & prop);
       /*regGet*/inline operator /*0I*/Month () const;
@@ -12458,7 +12445,7 @@ public:
    struct day_Prop
    {
       constexpr day_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline Date::day_Prop & operator= (Date::day_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12486,7 +12473,7 @@ public:
    struct global_Prop
    {
       constexpr global_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DateTime operator= (/*0H*/DateTime v);
       /*regSet*/inline DateTime::global_Prop & operator= (DateTime::global_Prop & prop);
       /*regGet*/inline operator /*0I*/DateTime () const;
@@ -12494,7 +12481,7 @@ public:
    struct local_Prop
    {
       constexpr local_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DateTime operator= (/*0H*/DateTime v);
       /*regSet*/inline DateTime::local_Prop & operator= (DateTime::local_Prop & prop);
       /*regGet*/inline operator /*0I*/DateTime () const;
@@ -12502,14 +12489,14 @@ public:
    struct daysSince1970_Prop
    {
       constexpr daysSince1970_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*regGet*/inline operator /*0I*/int64 () const;
    } daysSince1970;
 
    struct year_Prop
    {
       constexpr year_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline DateTime::year_Prop & operator= (DateTime::year_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12517,7 +12504,7 @@ public:
    struct month_Prop
    {
       constexpr month_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/Month operator= (/*0H*/Month v);
       /*regSet*/inline DateTime::month_Prop & operator= (DateTime::month_Prop & prop);
       /*regGet*/inline operator /*0I*/Month () const;
@@ -12525,7 +12512,7 @@ public:
    struct day_Prop
    {
       constexpr day_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline DateTime::day_Prop & operator= (DateTime::day_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12533,7 +12520,7 @@ public:
    struct hour_Prop
    {
       constexpr hour_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline DateTime::hour_Prop & operator= (DateTime::hour_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12541,7 +12528,7 @@ public:
    struct minute_Prop
    {
       constexpr minute_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline DateTime::minute_Prop & operator= (DateTime::minute_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12549,7 +12536,7 @@ public:
    struct second_Prop
    {
       constexpr second_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline DateTime::second_Prop & operator= (DateTime::second_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12557,7 +12544,7 @@ public:
    struct dayOfTheWeek_Prop
    {
       constexpr dayOfTheWeek_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/DayOfTheWeek operator= (/*0H*/DayOfTheWeek v);
       /*regSet*/inline DateTime::dayOfTheWeek_Prop & operator= (DateTime::dayOfTheWeek_Prop & prop);
       /*regGet*/inline operator /*0I*/DayOfTheWeek () const;
@@ -12565,7 +12552,7 @@ public:
    struct dayInTheYear_Prop
    {
       constexpr dayInTheYear_Prop() :_() { };
-      [[no_unique_address]] int _[0];
+      [[no_unique_address]] int _[0]{};
       /*nstSet*/inline /*0H*/int operator= (/*0H*/int v);
       /*regSet*/inline DateTime::dayInTheYear_Prop & operator= (DateTime::dayInTheYear_Prop & prop);
       /*regGet*/inline operator /*0I*/int () const;
@@ -12714,7 +12701,7 @@ inline const void * vapass(const Struct & f) { return &f; }
 template <typename TSC>
 inline int TStruct<TSC>::Struct_onCompare_Functor::operator()( /*6Bj*/Instance & object)
 {
-   return Instance_onCompare(_class, this, /*7Al*/object.impl);
+   return _onCompare(_class, this, /*7Al*/object.impl);
 }
 
 template <typename TSC>
@@ -12732,7 +12719,7 @@ inline void TStruct<TSC>::Struct_onDisplay_Functor::operator()( /*6Fj*/Instance 
 template <typename TSC>
 inline Instance & TStruct<TSC>::Struct_onEdit_Functor::operator()( /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData)
 {
-   C(Instance) retInstance = Instance_onEdit(_class, this, /*7Al*/dataBox.impl, /*7Al*/obsolete.impl, /*7Al*/x, /*7Al*/y, /*7Al*/w, /*7Al*/h, /*7Al*/userData);
+   C(Instance) retInstance = _onEdit(_class, this, /*7Al*/dataBox.impl, /*7Al*/obsolete.impl, /*7Al*/x, /*7Al*/y, /*7Al*/w, /*7Al*/h, /*7Al*/userData);
          return *(Instance *)INSTANCEL(retInstance, retInstance->_class);
 }
 
@@ -12745,19 +12732,19 @@ inline void TStruct<TSC>::Struct_onFree_Functor::operator()( )
 template <typename TSC>
 inline bool TStruct<TSC>::Struct_onGetDataFromString_Functor::operator()( /*6Fj*/const char * string)
 {
-   return (bool)Instance_onGetDataFromString(_class, this, /*7Al*/string);
+   return (bool)_onGetDataFromString(_class, this, /*7Al*/string);
 }
 
 template <typename TSC>
 inline const char * TStruct<TSC>::Struct_onGetString_Functor::operator()( /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType)
 {
-   return Instance_onGetString(_class, this, /*7Al*/tempString, /*7Al*/reserved, /*7Al*/(C(ObjectNotationType) *)onType);
+   return _onGetString(_class, this, /*7Al*/tempString, /*7Al*/reserved, /*7Al*/(C(ObjectNotationType) *)onType);
 }
 
 template <typename TSC>
 inline bool TStruct<TSC>::Struct_onSaveEdit_Functor::operator()( /*6Fj*/Instance & window, /*6Fj*/void * object)
 {
-   return (bool)Instance_onSaveEdit(_class, this, /*7Al*/window.impl, /*7Al*/object);
+   return (bool)_onSaveEdit(_class, this, /*7Al*/window.impl, /*7Al*/object);
 }
 
 template <typename TSC>
@@ -12795,6 +12782,7 @@ inline void TStruct<TSC>::Struct_onUnserialize_Functor::operator()( /*6Fj*/IOCha
 //////////////////////////////////////////////////////////////////////////////// ////////////////
 //////////////////////////////////////////////////////////////////////////////// ////////////////
 
+// B (unit:unit)
 
 inline Application::Application(int argc, const char ** argv = null, int exitCode = 0, bool isGUIApp = (bool)0, OldList allModules = OldList(), char * parsedCommand = null, NameSpace systemNameSpace = NameSpace()) : Application()
 {
@@ -12993,631 +12981,6 @@ inline void Application::Application_main_Functor::operator()( )
    NameSpace value(IPTR(self->impl, Application)->systemNameSpace);
    return value;
 }
-inline Instance::Instance_onCompare_Functor::FunctionType Instance::Instance_onCompare_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onCompare);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onCompare_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onCompare_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onCompare_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onCompare)] = func;
-   return func;
-}
-inline int Instance::Instance_onCompare_Functor::operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object)
-{
-   SELF(Instance, onCompare);
-   return Instance_onCompare(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/object.impl);
-}
-// inline void Instance::register_onCompare(CPPClass & cl, Instance::Instance_onCompare_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onCompare_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onCompare)] = func;
-// }
-
-inline Instance::Instance_onCopy_Functor::FunctionType Instance::Instance_onCopy_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onCopy);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onCopy_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onCopy_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onCopy_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onCopy)] = func;
-   return func;
-}
-inline void Instance::Instance_onCopy_Functor::operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData)
-{
-   SELF(Instance, onCopy);
-   Instance_onCopy(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/newData.impl);
-}
-// inline void Instance::register_onCopy(CPPClass & cl, Instance::Instance_onCopy_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onCopy_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onCopy)] = func;
-// }
-
-inline Instance::Instance_onDisplay_Functor::FunctionType Instance::Instance_onDisplay_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onDisplay);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onDisplay_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onDisplay_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onDisplay_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onDisplay)] = func;
-   return func;
-}
-inline void Instance::Instance_onDisplay_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags)
-{
-   SELF(Instance, onDisplay);
-   Instance_onDisplay(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/surface.impl, /*7Al*/x, /*7Al*/y, /*7Al*/width, /*7Al*/fieldData, /*7Al*/alignment, /*7Al*/displayFlags);
-}
-// inline void Instance::register_onDisplay(CPPClass & cl, Instance::Instance_onDisplay_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onDisplay_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onDisplay)] = func;
-// }
-
-inline Instance::Instance_onEdit_Functor::FunctionType Instance::Instance_onEdit_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onEdit);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onEdit_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onEdit_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onEdit_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onEdit)] = func;
-   return func;
-}
-inline Instance & Instance::Instance_onEdit_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData)
-{
-   SELF(Instance, onEdit);
-   C(Instance) retInstance = Instance_onEdit(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/dataBox.impl, /*7Al*/obsolete.impl, /*7Al*/x, /*7Al*/y, /*7Al*/w, /*7Al*/h, /*7Al*/userData);
-      return *(Instance *)INSTANCEL(retInstance, retInstance->_class);
-}
-// inline void Instance::register_onEdit(CPPClass & cl, Instance::Instance_onEdit_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onEdit_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onEdit)] = func;
-// }
-
-inline Instance::Instance_onFree_Functor::FunctionType Instance::Instance_onFree_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onFree);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onFree_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onFree_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onFree_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onFree)] = func;
-   return func;
-}
-inline void Instance::Instance_onFree_Functor::operator()(/*6Bk*/Instance & o_ )
-{
-   SELF(Instance, onFree);
-   Instance_onFree(_cpp_class.impl, self ? self->impl : (C(Instance))null);
-}
-// inline void Instance::register_onFree(CPPClass & cl, Instance::Instance_onFree_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onFree_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onFree)] = func;
-// }
-
-inline Instance::Instance_onGetDataFromString_Functor::FunctionType Instance::Instance_onGetDataFromString_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onGetDataFromString);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onGetDataFromString_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onGetDataFromString_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onGetDataFromString_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onGetDataFromString)] = func;
-   return func;
-}
-inline bool Instance::Instance_onGetDataFromString_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string)
-{
-   SELF(Instance, onGetDataFromString);
-   return (bool)Instance_onGetDataFromString(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/string);
-}
-// inline void Instance::register_onGetDataFromString(CPPClass & cl, Instance::Instance_onGetDataFromString_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onGetDataFromString_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onGetDataFromString)] = func;
-// }
-
-inline Instance::Instance_onGetString_Functor::FunctionType Instance::Instance_onGetString_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onGetString);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onGetString_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onGetString_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onGetString_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onGetString)] = func;
-   return func;
-}
-inline const char * Instance::Instance_onGetString_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType)
-{
-   SELF(Instance, onGetString);
-   return Instance_onGetString(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/tempString, /*7Al*/reserved, /*7Al*/(C(ObjectNotationType) *)onType);
-}
-// inline void Instance::register_onGetString(CPPClass & cl, Instance::Instance_onGetString_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onGetString_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onGetString)] = func;
-// }
-
-inline Instance::Instance_onSaveEdit_Functor::FunctionType Instance::Instance_onSaveEdit_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onSaveEdit);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onSaveEdit_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onSaveEdit_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onSaveEdit_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onSaveEdit)] = func;
-   return func;
-}
-inline bool Instance::Instance_onSaveEdit_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object)
-{
-   SELF(Instance, onSaveEdit);
-   return (bool)Instance_onSaveEdit(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/window.impl, /*7Al*/object);
-}
-// inline void Instance::register_onSaveEdit(CPPClass & cl, Instance::Instance_onSaveEdit_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onSaveEdit_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onSaveEdit)] = func;
-// }
-
-inline Instance::Instance_onSerialize_Functor::FunctionType Instance::Instance_onSerialize_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onSerialize);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onSerialize_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onSerialize_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onSerialize_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onSerialize)] = func;
-   return func;
-}
-inline void Instance::Instance_onSerialize_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel)
-{
-   SELF(Instance, onSerialize);
-   Instance_onSerialize(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/channel.impl);
-}
-// inline void Instance::register_onSerialize(CPPClass & cl, Instance::Instance_onSerialize_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onSerialize_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onSerialize)] = func;
-// }
-
-inline Instance::Instance_onUnserialize_Functor::FunctionType Instance::Instance_onUnserialize_Functor::operator= (FunctionType func)
-{
-   SELF(Instance, onUnserialize);
-   if(self->vTbl == Instance::_cpp_class.vTbl)
-   {
-      uint size = Instance::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Instance::Instance_onUnserialize_Functor::FunctionType, size);
-      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onUnserialize_Functor::FunctionType) * size);
-   }
-   ((Instance::Instance_onUnserialize_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onUnserialize)] = func;
-   return func;
-}
-inline void Instance::Instance_onUnserialize_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel)
-{
-   SELF(Instance, onUnserialize);
-   Instance_onUnserialize(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/channel.impl);
-}
-// inline void Instance::register_onUnserialize(CPPClass & cl, Instance::Instance_onUnserialize_Functor::FunctionType func)
-// {
-//    ((Instance::Instance_onUnserialize_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onUnserialize)] = func;
-// }
-
-
-inline Module::Module_onLoad_Functor::FunctionType Module::Module_onLoad_Functor::operator= (FunctionType func)
-{
-   SELF(Module, onLoad);
-   if(self->vTbl == Module::_cpp_class.vTbl)
-   {
-      uint size = Module::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Module::Module_onLoad_Functor::FunctionType, size);
-      memcpy(self->vTbl, Module::_cpp_class.vTbl, sizeof(Module::Module_onLoad_Functor::FunctionType) * size);
-   }
-   ((Module::Module_onLoad_Functor::FunctionType *)self->vTbl)[M_VTBLID(Module, onLoad)] = func;
-   return func;
-}
-inline bool Module::Module_onLoad_Functor::operator()( )
-{
-   SELF(Module, onLoad);
-   return (bool)Module_onLoad(self ? self->impl : (C(Module))null);
-}
-// inline void Module::register_onLoad(CPPClass & cl, Module::Module_onLoad_Functor::FunctionType func)
-// {
-//    ((Module::Module_onLoad_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Module, onLoad)] = func;
-// }
-
-inline Module::Module_onUnload_Functor::FunctionType Module::Module_onUnload_Functor::operator= (FunctionType func)
-{
-   SELF(Module, onUnload);
-   if(self->vTbl == Module::_cpp_class.vTbl)
-   {
-      uint size = Module::_cpp_class.impl->vTblSize;
-      self->vTbl = (void (**)())newt(Module::Module_onUnload_Functor::FunctionType, size);
-      memcpy(self->vTbl, Module::_cpp_class.vTbl, sizeof(Module::Module_onUnload_Functor::FunctionType) * size);
-   }
-   ((Module::Module_onUnload_Functor::FunctionType *)self->vTbl)[M_VTBLID(Module, onUnload)] = func;
-   return func;
-}
-inline void Module::Module_onUnload_Functor::operator()( )
-{
-   SELF(Module, onUnload);
-   Module_onUnload(self ? self->impl : (C(Module))null);
-}
-// inline void Module::register_onUnload(CPPClass & cl, Module::Module_onUnload_Functor::FunctionType func)
-// {
-//    ((Module::Module_onUnload_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Module, onUnload)] = func;
-// }
-
-
-/////////////////////////////////////////////////////////////// [ecrt]/ //////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-
-
-///////////////////////////////////////////////////////////// [ecrt]/eC //////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-
-
-
-
-// member accessors: FieldTypeEx::type
-// (bits::enum|int)
-
-/*nstSet*/inline /*0H*/FieldType FieldTypeEx::type_Prop::operator= (/*0H*/FieldType v)
-{
-   SELF(FieldTypeEx, type);
-   FIELDTYPEEX_SET_type(self->impl, v);
-   return v;
-}
-
-/*regSet*/inline FieldTypeEx::type_Prop & FieldTypeEx::type_Prop::operator= (FieldTypeEx::type_Prop & prop)
-{
-   SELF(FieldTypeEx, type);
-   /*0H*/FieldType v = prop;
-   FIELDTYPEEX_SET_type(self->impl, v);
-   return prop;
-}
-/*regGet*/inline FieldTypeEx::type_Prop::operator /*0I*/FieldType () const
-{
-   SELF(FieldTypeEx, type);
-   return (FieldType)FIELDTYPEEX_type(self->impl);
-}
-
-// member accessors: FieldTypeEx::mustFree
-// (bits::enum|uint)
-
-/*nstSet*/inline /*0H*/bool FieldTypeEx::mustFree_Prop::operator= (/*0H*/bool v)
-{
-   SELF(FieldTypeEx, mustFree);
-   FIELDTYPEEX_SET_mustFree(self->impl, v);
-   return v;
-}
-
-/*regSet*/inline FieldTypeEx::mustFree_Prop & FieldTypeEx::mustFree_Prop::operator= (FieldTypeEx::mustFree_Prop & prop)
-{
-   SELF(FieldTypeEx, mustFree);
-   /*0H*/bool v = prop;
-   FIELDTYPEEX_SET_mustFree(self->impl, v);
-   return prop;
-}
-/*regGet*/inline FieldTypeEx::mustFree_Prop::operator /*0I*/bool () const
-{
-   SELF(FieldTypeEx, mustFree);
-   return (bool)FIELDTYPEEX_mustFree(self->impl);
-}
-
-// member accessors: FieldTypeEx::format
-// (bits::enum|int)
-
-/*nstSet*/inline /*0H*/FieldValueFormat FieldTypeEx::format_Prop::operator= (/*0H*/FieldValueFormat v)
-{
-   SELF(FieldTypeEx, format);
-   FIELDTYPEEX_SET_format(self->impl, v);
-   return v;
-}
-
-/*regSet*/inline FieldTypeEx::format_Prop & FieldTypeEx::format_Prop::operator= (FieldTypeEx::format_Prop & prop)
-{
-   SELF(FieldTypeEx, format);
-   /*0H*/FieldValueFormat v = prop;
-   FIELDTYPEEX_SET_format(self->impl, v);
-   return prop;
-}
-/*regGet*/inline FieldTypeEx::format_Prop::operator /*0I*/FieldValueFormat () const
-{
-   SELF(FieldTypeEx, format);
-   return (FieldValueFormat)FIELDTYPEEX_format(self->impl);
-}
-
-// member accessors: FieldTypeEx::isUnsigned
-// (bits::enum|uint)
-
-/*nstSet*/inline /*0H*/bool FieldTypeEx::isUnsigned_Prop::operator= (/*0H*/bool v)
-{
-   SELF(FieldTypeEx, isUnsigned);
-   FIELDTYPEEX_SET_isUnsigned(self->impl, v);
-   return v;
-}
-
-/*regSet*/inline FieldTypeEx::isUnsigned_Prop & FieldTypeEx::isUnsigned_Prop::operator= (FieldTypeEx::isUnsigned_Prop & prop)
-{
-   SELF(FieldTypeEx, isUnsigned);
-   /*0H*/bool v = prop;
-   FIELDTYPEEX_SET_isUnsigned(self->impl, v);
-   return prop;
-}
-/*regGet*/inline FieldTypeEx::isUnsigned_Prop::operator /*0I*/bool () const
-{
-   SELF(FieldTypeEx, isUnsigned);
-   return (bool)FIELDTYPEEX_isUnsigned(self->impl);
-}
-
-// member accessors: FieldTypeEx::isDateTime
-// (bits::enum|uint)
-
-/*nstSet*/inline /*0H*/bool FieldTypeEx::isDateTime_Prop::operator= (/*0H*/bool v)
-{
-   SELF(FieldTypeEx, isDateTime);
-   FIELDTYPEEX_SET_isDateTime(self->impl, v);
-   return v;
-}
-
-/*regSet*/inline FieldTypeEx::isDateTime_Prop & FieldTypeEx::isDateTime_Prop::operator= (FieldTypeEx::isDateTime_Prop & prop)
-{
-   SELF(FieldTypeEx, isDateTime);
-   /*0H*/bool v = prop;
-   FIELDTYPEEX_SET_isDateTime(self->impl, v);
-   return prop;
-}
-/*regGet*/inline FieldTypeEx::isDateTime_Prop::operator /*0I*/bool () const
-{
-   SELF(FieldTypeEx, isDateTime);
-   return (bool)FIELDTYPEEX_isDateTime(self->impl);
-}
-
-inline FieldValue::FieldValue(FieldTypeEx type, int64 i = 0, double r = 0, char * s = 0, void * b = null)
-{
-   impl.type = type;
-   impl.i = i;
-   impl.r = r;
-   impl.s = s;
-   impl.b = b;
-}
-
-
-inline int FieldValue::compareInt(/*1Ab*/FieldValue & other)
-{
-   return FieldValue_compareInt(&impl, /*5De*/&other.impl);
-}
-inline int FieldValue::compareInt(/*1Ac*/FieldValue * other)
-{
-   return FieldValue_compareInt(&impl, /*5Cf*/(C(FieldValue) *)other);
-}
-inline int FieldValue::compareReal(/*1Ab*/FieldValue & other)
-{
-   return FieldValue_compareReal(&impl, /*5De*/&other.impl);
-}
-inline int FieldValue::compareReal(/*1Ac*/FieldValue * other)
-{
-   return FieldValue_compareReal(&impl, /*5Cf*/(C(FieldValue) *)other);
-}
-inline int FieldValue::compareText(/*1Ab*/FieldValue & other)
-{
-   return FieldValue_compareText(&impl, /*5De*/&other.impl);
-}
-inline int FieldValue::compareText(/*1Ac*/FieldValue * other)
-{
-   return FieldValue_compareText(&impl, /*5Cf*/(C(FieldValue) *)other);
-}
-inline C(String) FieldValue::formatArray(/*1Ab*/char * tempString, /*1Ab*/void * fieldData, /*1Ab*/ObjectNotationType * onType)
-{
-   return FieldValue_formatArray(&impl, /*5Ge*/tempString, /*5Ge*/fieldData, /*5Ee*/(C(ObjectNotationType) *)onType);
-}
-inline C(String) FieldValue::formatFloat(/*1Ab*/char * stringOutput, /*1Ab*/bool fixDot)
-{
-   return FieldValue_formatFloat(&impl, /*5Ge*/stringOutput, /*5Ee*/(C(bool))fixDot);
-}
-inline C(String) FieldValue::formatInteger(/*1Ab*/char * stringOutput)
-{
-   return FieldValue_formatInteger(&impl, /*5Ge*/stringOutput);
-}
-inline C(String) FieldValue::formatMap(/*1Ab*/char * tempString, /*1Ab*/void * fieldData, /*1Ab*/ObjectNotationType * onType)
-{
-   return FieldValue_formatMap(&impl, /*5Ge*/tempString, /*5Ge*/fieldData, /*5Ee*/(C(ObjectNotationType) *)onType);
-}
-inline C(bool) FieldValue::getArrayOrMap(/*1Ab*/const char * string, /*1Ab*/Class destClass, /*1Ab*/void ** destination)
-{
-   return FieldValue_getArrayOrMap(/*5Ge*/string, /*5De*/destClass.impl, /*5Ge*/destination);
-}
-inline C(String) FieldValue::stringify()
-{
-   return FieldValue_stringify(&impl);
-}
-
-
-// member accessors: FieldValue::type
-// (struct::bits|int)
-
-/*nstSet*/inline /*0H*/FieldTypeEx FieldValue::type_Prop::operator= (/*0H*/FieldTypeEx v)
-{
-   SELF(FieldValue, type);
-   self->impl.type = v;
-   return v;
-}
-
-/*regSet*/inline FieldValue::type_Prop & FieldValue::type_Prop::operator= (FieldValue::type_Prop & prop)
-{
-   SELF(FieldValue, type);
-   /*0H*/FieldTypeEx v = prop;
-   self->impl.type = v;
-   return prop;
-}
-/*regGet*/inline FieldValue::type_Prop::operator /*0I*/FieldTypeEx () const
-{
-   SELF(FieldValue, type);
-   return self ? FieldTypeEx(((C(FieldValue) *)&self->impl)->type) : FieldTypeEx();
-}
-
-// member accessors: FieldValue::i
-// (struct::int64)
-
-/*nstSet*/inline /*0H*/int64 FieldValue::i_Prop::operator= (/*0H*/int64 v)
-{
-   SELF(FieldValue, i);
-   self->impl.i = v;
-   return v;
-}
-
-/*regSet*/inline FieldValue::i_Prop & FieldValue::i_Prop::operator= (FieldValue::i_Prop & prop)
-{
-   SELF(FieldValue, i);
-   /*0H*/int64 v = prop;
-   self->impl.i = v;
-   return prop;
-}
-/*regGet*/inline FieldValue::i_Prop::operator /*0I*/int64 () const
-{
-   SELF(FieldValue, i);
-   return self ? ((C(FieldValue) *)&self->impl)->i : 0;
-}
-
-// member accessors: FieldValue::r
-// (struct::double)
-
-/*nstSet*/inline /*0H*/double FieldValue::r_Prop::operator= (/*0H*/double v)
-{
-   SELF(FieldValue, r);
-   self->impl.r = v;
-   return v;
-}
-
-/*regSet*/inline FieldValue::r_Prop & FieldValue::r_Prop::operator= (FieldValue::r_Prop & prop)
-{
-   SELF(FieldValue, r);
-   /*0H*/double v = prop;
-   self->impl.r = v;
-   return prop;
-}
-/*regGet*/inline FieldValue::r_Prop::operator /*0I*/double () const
-{
-   SELF(FieldValue, r);
-   return self ? ((C(FieldValue) *)&self->impl)->r : 0;
-}
-
-// member accessors: FieldValue::s
-// (struct::string)
-
-/*nstSet*/inline /*0H*/char * FieldValue::s_Prop::operator= (/*0H*/char * v)
-{
-   SELF(FieldValue, s);
-   self->impl.s = v;
-   return v;
-}
-
-/*regSet*/inline FieldValue::s_Prop & FieldValue::s_Prop::operator= (FieldValue::s_Prop & prop)
-{
-   SELF(FieldValue, s);
-   /*0H*/char * v = prop;
-   self->impl.s = v;
-   return prop;
-}
-/*regGet*/inline FieldValue::s_Prop::operator /*0I*/char * () const
-{
-   SELF(FieldValue, s);
-   return self ? ((C(FieldValue) *)&self->impl)->s : 0;
-}
-
-// member accessors: FieldValue::b
-// (struct::void *)
-
-/*nstSet*/inline /*0H*/void * FieldValue::b_Prop::operator= (/*0H*/void * v)
-{
-   SELF(FieldValue, b);
-   self->impl.b = v;
-   return v;
-}
-
-/*regSet*/inline FieldValue::b_Prop & FieldValue::b_Prop::operator= (FieldValue::b_Prop & prop)
-{
-   SELF(FieldValue, b);
-   /*0H*/void * v = prop;
-   self->impl.b = v;
-   return prop;
-}
-/*regGet*/inline FieldValue::b_Prop::operator /*0I*/void * () const
-{
-   SELF(FieldValue, b);
-   return self ? ((C(FieldValue) *)&self->impl)->b : null;
-}
-
-// member accessors: FieldValue::a
-// (struct::normal)
-
-/*nstSet*/inline /*0H*/TArray<FieldValue _ARG int _ARG FieldValue> FieldValue::a_Prop::operator= (/*0H*/TArray<FieldValue _ARG int _ARG FieldValue> v)
-{
-   SELF(FieldValue, a);
-   self->impl.a = ((Instance *)&v)->impl;
-   return v;
-}
-
-/*regSet*/inline FieldValue::a_Prop & FieldValue::a_Prop::operator= (FieldValue::a_Prop & prop)
-{
-   SELF(FieldValue, a);
-   /*0H*/TArray<FieldValue _ARG int _ARG FieldValue> v = prop;
-   self->impl.a = ((Instance *)&v)->impl;
-   return prop;
-}
-/*regGet*/inline FieldValue::a_Prop::operator /*0I*/TArray<FieldValue _ARG int _ARG FieldValue> () const
-{
-   SELF(FieldValue, a);
-   TArray<FieldValue _ARG int _ARG FieldValue> value(((C(FieldValue) *)&self->impl)->a);
-   return value;
-}
-
-// member accessors: FieldValue::m
-// (struct::normal)
-
-/*nstSet*/inline /*0H*/TMap<C(String) _ARG FieldValue> FieldValue::m_Prop::operator= (/*0H*/TMap<C(String) _ARG FieldValue> v)
-{
-   SELF(FieldValue, m);
-   self->impl.m = ((Instance *)&v)->impl;
-   return v;
-}
-
-/*regSet*/inline FieldValue::m_Prop & FieldValue::m_Prop::operator= (FieldValue::m_Prop & prop)
-{
-   SELF(FieldValue, m);
-   /*0H*/TMap<C(String) _ARG FieldValue> v = prop;
-   self->impl.m = ((Instance *)&v)->impl;
-   return prop;
-}
-/*regGet*/inline FieldValue::m_Prop::operator /*0I*/TMap<C(String) _ARG FieldValue> () const
-{
-   SELF(FieldValue, m);
-   TMap<C(String) _ARG FieldValue> value(((C(FieldValue) *)&self->impl)->m);
-   return value;
-}
-
-////////////////////////////////////////////////////// [ecrt]/eC::types //////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-//////////////////////////////////////////////////////////////////////////////// ////////////////
-
-
-#undef Pi
-static constexpr Radians Pi { 3.1415926535897932384626433832795028841971 };
-// B (unit:unit)
 
 
 
@@ -13841,7 +13204,7 @@ static constexpr Radians Pi { 3.1415926535897932384626433832795028841971 };
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TBitMember<TC, TCO>::isProperty_Prop::operator= (/*0H*/bool v)
 {
    SELF(BitMember, isProperty);
-   ((C(BitMember) *)self->impl)->isProperty = v;
+   ((C(BitMember) *)self->impl)->isProperty = (C(bool))v;
    return v;
 }
 
@@ -13849,7 +13212,7 @@ static constexpr Radians Pi { 3.1415926535897932384626433832795028841971 };
 {
    SELF(BitMember, isProperty);
    /*0H*/bool v = prop;
-   ((C(BitMember) *)self->impl)->isProperty = v;
+   ((C(BitMember) *)self->impl)->isProperty = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TBitMember<TC, TCO>::isProperty_Prop::operator /*0I*/bool () const
@@ -14066,192 +13429,6 @@ static constexpr Radians Pi { 3.1415926535897932384626433832795028841971 };
    __attribute__((unused)) TBitMember TCTCO * self = CONTAINER_OF(this, TBitMember TCTCO, mask);
    return self ? ((C(BitMember) *)self->impl)->mask : 0;
 }
-
-inline Box::Box(int left, int top = 0, int right = 0, int bottom = 0)
-{
-   impl.left = left;
-   impl.top = top;
-   impl.right = right;
-   impl.bottom = bottom;
-}
-
-
-inline void Box::clip(/*1Ab*/Box & against)
-{
-   Box_clip(&impl, /*5De*/&against.impl);
-}
-inline void Box::clip(/*1Ac*/Box * against)
-{
-   Box_clip(&impl, /*5Cf*/(C(Box) *)against);
-}
-inline void Box::clipOffset(/*1Ab*/Box & against, /*1Ab*/int x, /*1Ab*/int y)
-{
-   Box_clipOffset(&impl, /*5De*/&against.impl, /*5Ge*/x, /*5Ge*/y);
-}
-inline void Box::clipOffset(/*1Ac*/Box * against, /*1Ac*/int x, /*1Ac*/int y)
-{
-   Box_clipOffset(&impl, /*5Cf*/(C(Box) *)against, /*5Gf*/x, /*5Gf*/y);
-}
-inline C(bool) Box::isPointInside(/*1Ab*/Point & point)
-{
-   return Box_isPointInside(&impl, /*5De*/&point.impl);
-}
-inline C(bool) Box::isPointInside(/*1Ac*/Point * point)
-{
-   return Box_isPointInside(&impl, /*5Cf*/(C(Point) *)point);
-}
-inline C(bool) Box::overlap(/*1Ab*/Box & box)
-{
-   return Box_overlap(&impl, /*5De*/&box.impl);
-}
-inline C(bool) Box::overlap(/*1Ac*/Box * box)
-{
-   return Box_overlap(&impl, /*5Cf*/(C(Box) *)box);
-}
-
-
-// property callers: Box::width
-// (struct::int)
-
-/*nstSet*/inline /*0H*/int Box::width_Prop::operator= (/*0H*/int v)
-{
-   SELF(Box, width);
-   Box_set_width(self ? &self->impl : null, v);
-   return v;
-}
-
-/*regSet*/inline Box::width_Prop & Box::width_Prop::operator= (Box::width_Prop & prop)
-{
-   SELF(Box, width);
-   /*0H*/int v = prop;
-   Box_set_width(self ? &self->impl : null, v);
-   return prop;
-}
-/*regGet*/inline Box::width_Prop::operator /*0I*/int () const
-{
-   SELF(Box, width);
-   return Box_get_width(self ? &self->impl : null);
-}
-
-// property callers: Box::height
-// (struct::int)
-
-/*nstSet*/inline /*0H*/int Box::height_Prop::operator= (/*0H*/int v)
-{
-   SELF(Box, height);
-   Box_set_height(self ? &self->impl : null, v);
-   return v;
-}
-
-/*regSet*/inline Box::height_Prop & Box::height_Prop::operator= (Box::height_Prop & prop)
-{
-   SELF(Box, height);
-   /*0H*/int v = prop;
-   Box_set_height(self ? &self->impl : null, v);
-   return prop;
-}
-/*regGet*/inline Box::height_Prop::operator /*0I*/int () const
-{
-   SELF(Box, height);
-   return Box_get_height(self ? &self->impl : null);
-}
-
-
-// member accessors: Box::left
-// (struct::int)
-
-/*nstSet*/inline /*0H*/int Box::left_Prop::operator= (/*0H*/int v)
-{
-   SELF(Box, left);
-   self->impl.left = v;
-   return v;
-}
-
-/*regSet*/inline Box::left_Prop & Box::left_Prop::operator= (Box::left_Prop & prop)
-{
-   SELF(Box, left);
-   /*0H*/int v = prop;
-   self->impl.left = v;
-   return prop;
-}
-/*regGet*/inline Box::left_Prop::operator /*0I*/int () const
-{
-   SELF(Box, left);
-   return self ? ((C(Box) *)&self->impl)->left : 0;
-}
-
-// member accessors: Box::top
-// (struct::int)
-
-/*nstSet*/inline /*0H*/int Box::top_Prop::operator= (/*0H*/int v)
-{
-   SELF(Box, top);
-   self->impl.top = v;
-   return v;
-}
-
-/*regSet*/inline Box::top_Prop & Box::top_Prop::operator= (Box::top_Prop & prop)
-{
-   SELF(Box, top);
-   /*0H*/int v = prop;
-   self->impl.top = v;
-   return prop;
-}
-/*regGet*/inline Box::top_Prop::operator /*0I*/int () const
-{
-   SELF(Box, top);
-   return self ? ((C(Box) *)&self->impl)->top : 0;
-}
-
-// member accessors: Box::right
-// (struct::int)
-
-/*nstSet*/inline /*0H*/int Box::right_Prop::operator= (/*0H*/int v)
-{
-   SELF(Box, right);
-   self->impl.right = v;
-   return v;
-}
-
-/*regSet*/inline Box::right_Prop & Box::right_Prop::operator= (Box::right_Prop & prop)
-{
-   SELF(Box, right);
-   /*0H*/int v = prop;
-   self->impl.right = v;
-   return prop;
-}
-/*regGet*/inline Box::right_Prop::operator /*0I*/int () const
-{
-   SELF(Box, right);
-   return self ? ((C(Box) *)&self->impl)->right : 0;
-}
-
-// member accessors: Box::bottom
-// (struct::int)
-
-/*nstSet*/inline /*0H*/int Box::bottom_Prop::operator= (/*0H*/int v)
-{
-   SELF(Box, bottom);
-   self->impl.bottom = v;
-   return v;
-}
-
-/*regSet*/inline Box::bottom_Prop & Box::bottom_Prop::operator= (Box::bottom_Prop & prop)
-{
-   SELF(Box, bottom);
-   /*0H*/int v = prop;
-   self->impl.bottom = v;
-   return prop;
-}
-/*regGet*/inline Box::bottom_Prop::operator /*0I*/int () const
-{
-   SELF(Box, bottom);
-   return self ? ((C(Box) *)&self->impl)->bottom : 0;
-}
-// A (unit:unit)
-inline constexpr Centimeters::operator Meters() const { return Meters(impl); }
-inline constexpr Centimeters::Centimeters(const Meters & m) : Distance(m.impl) { }
-inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl = m.impl; return *this; }
 
 
 
@@ -14870,7 +14047,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TClass<TC, TCO>::noExpansion_Prop::operator= (/*0H*/bool v)
 {
    SELF(Class, noExpansion);
-   ((C(Class) *)self->impl)->noExpansion = v;
+   ((C(Class) *)self->impl)->noExpansion = (C(bool))v;
    return v;
 }
 
@@ -14878,7 +14055,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 {
    SELF(Class, noExpansion);
    /*0H*/bool v = prop;
-   ((C(Class) *)self->impl)->noExpansion = v;
+   ((C(Class) *)self->impl)->noExpansion = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TClass<TC, TCO>::noExpansion_Prop::operator /*0I*/bool () const
@@ -14916,7 +14093,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TClass<TC, TCO>::comRedefinition_Prop::operator= (/*0H*/bool v)
 {
    SELF(Class, comRedefinition);
-   ((C(Class) *)self->impl)->comRedefinition = v;
+   ((C(Class) *)self->impl)->comRedefinition = (C(bool))v;
    return v;
 }
 
@@ -14924,7 +14101,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 {
    SELF(Class, comRedefinition);
    /*0H*/bool v = prop;
-   ((C(Class) *)self->impl)->comRedefinition = v;
+   ((C(Class) *)self->impl)->comRedefinition = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TClass<TC, TCO>::comRedefinition_Prop::operator /*0I*/bool () const
@@ -14985,7 +14162,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TClass<TC, TCO>::internalDecl_Prop::operator= (/*0H*/bool v)
 {
    SELF(Class, internalDecl);
-   ((C(Class) *)self->impl)->internalDecl = v;
+   ((C(Class) *)self->impl)->internalDecl = (C(bool))v;
    return v;
 }
 
@@ -14993,7 +14170,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 {
    SELF(Class, internalDecl);
    /*0H*/bool v = prop;
-   ((C(Class) *)self->impl)->internalDecl = v;
+   ((C(Class) *)self->impl)->internalDecl = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TClass<TC, TCO>::internalDecl_Prop::operator /*0I*/bool () const
@@ -15031,7 +14208,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TClass<TC, TCO>::computeSize_Prop::operator= (/*0H*/bool v)
 {
    SELF(Class, computeSize);
-   ((C(Class) *)self->impl)->computeSize = v;
+   ((C(Class) *)self->impl)->computeSize = (C(bool))v;
    return v;
 }
 
@@ -15039,7 +14216,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 {
    SELF(Class, computeSize);
    /*0H*/bool v = prop;
-   ((C(Class) *)self->impl)->computeSize = v;
+   ((C(Class) *)self->impl)->computeSize = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TClass<TC, TCO>::computeSize_Prop::operator /*0I*/bool () const
@@ -15123,7 +14300,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TClass<TC, TCO>::fixed_Prop::operator= (/*0H*/bool v)
 {
    SELF(Class, fixed);
-   ((C(Class) *)self->impl)->fixed = v;
+   ((C(Class) *)self->impl)->fixed = (C(bool))v;
    return v;
 }
 
@@ -15131,7 +14308,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 {
    SELF(Class, fixed);
    /*0H*/bool v = prop;
-   ((C(Class) *)self->impl)->fixed = v;
+   ((C(Class) *)self->impl)->fixed = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TClass<TC, TCO>::fixed_Prop::operator /*0I*/bool () const
@@ -15358,7 +14535,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TClass<TC, TCO>::isInstanceClass_Prop::operator= (/*0H*/bool v)
 {
    SELF(Class, isInstanceClass);
-   ((C(Class) *)self->impl)->isInstanceClass = v;
+   ((C(Class) *)self->impl)->isInstanceClass = (C(bool))v;
    return v;
 }
 
@@ -15366,7 +14543,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 {
    SELF(Class, isInstanceClass);
    /*0H*/bool v = prop;
-   ((C(Class) *)self->impl)->isInstanceClass = v;
+   ((C(Class) *)self->impl)->isInstanceClass = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TClass<TC, TCO>::isInstanceClass_Prop::operator /*0I*/bool () const
@@ -15381,7 +14558,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TClass<TC, TCO>::byValueSystemClass_Prop::operator= (/*0H*/bool v)
 {
    SELF(Class, byValueSystemClass);
-   ((C(Class) *)self->impl)->byValueSystemClass = v;
+   ((C(Class) *)self->impl)->byValueSystemClass = (C(bool))v;
    return v;
 }
 
@@ -15389,7 +14566,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 {
    SELF(Class, byValueSystemClass);
    /*0H*/bool v = prop;
-   ((C(Class) *)self->impl)->byValueSystemClass = v;
+   ((C(Class) *)self->impl)->byValueSystemClass = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TClass<TC, TCO>::byValueSystemClass_Prop::operator /*0I*/bool () const
@@ -15570,7 +14747,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TClassProperty<TC, TCO>::constant_Prop::operator= (/*0H*/bool v)
 {
    SELF(ClassProperty, constant);
-   ((C(ClassProperty) *)self->impl)->constant = v;
+   ((C(ClassProperty) *)self->impl)->constant = (C(bool))v;
    return v;
 }
 
@@ -15578,7 +14755,7 @@ inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl 
 {
    SELF(ClassProperty, constant);
    /*0H*/bool v = prop;
-   ((C(ClassProperty) *)self->impl)->constant = v;
+   ((C(ClassProperty) *)self->impl)->constant = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TClassProperty<TC, TCO>::constant_Prop::operator /*0I*/bool () const
@@ -16028,7 +15205,7 @@ inline ClassTemplateArgument::ClassTemplateArgument(const char * dataTypeString)
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TDataMember<TC, TCO>::isProperty_Prop::operator= (/*0H*/bool v)
 {
    SELF(DataMember, isProperty);
-   ((C(DataMember) *)self->impl)->isProperty = v;
+   ((C(DataMember) *)self->impl)->isProperty = (C(bool))v;
    return v;
 }
 
@@ -16036,7 +15213,7 @@ inline ClassTemplateArgument::ClassTemplateArgument(const char * dataTypeString)
 {
    SELF(DataMember, isProperty);
    /*0H*/bool v = prop;
-   ((C(DataMember) *)self->impl)->isProperty = v;
+   ((C(DataMember) *)self->impl)->isProperty = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TDataMember<TC, TCO>::isProperty_Prop::operator /*0I*/bool () const
@@ -16348,8 +15525,11 @@ inline ClassTemplateArgument::ClassTemplateArgument(const char * dataTypeString)
    return self ? ((C(DataMember) *)self->impl)->pointerAlignment : 0;
 }
 
-inline DataValue::DataValue(char c, unsigned char uc = 0, short s = 0, uint16 us = 0, int i = 0, uint ui = 0, void * p = null, float f = 0, double d = 0, int64 i64 = 0, uint64 ui64 = 0)
+inline DataValue::DataValue(double d, int64 i64 = 0, uint64 ui64 = 0, char c = 0, unsigned char uc = 0, short s = 0, uint16 us = 0, int i = 0, uint ui = 0, void * p = null, float f = 0)
 {
+   impl.d = d;
+   impl.i64 = i64;
+   impl.ui64 = ui64;
    impl.c = c;
    impl.uc = uc;
    impl.s = s;
@@ -16358,12 +15538,78 @@ inline DataValue::DataValue(char c, unsigned char uc = 0, short s = 0, uint16 us
    impl.ui = ui;
    impl.p = p;
    impl.f = f;
-   impl.d = d;
-   impl.i64 = i64;
-   impl.ui64 = ui64;
 }
 
 
+
+// member accessors: DataValue::d
+// (struct::double)
+
+/*nstSet*/inline /*0H*/double DataValue::d_Prop::operator= (/*0H*/double v)
+{
+   SELF(DataValue, d);
+   self->impl.d = v;
+   return v;
+}
+
+/*regSet*/inline DataValue::d_Prop & DataValue::d_Prop::operator= (DataValue::d_Prop & prop)
+{
+   SELF(DataValue, d);
+   /*0H*/double v = prop;
+   self->impl.d = v;
+   return prop;
+}
+/*regGet*/inline DataValue::d_Prop::operator /*0I*/double () const
+{
+   SELF(DataValue, d);
+   return self ? ((C(DataValue) *)&self->impl)->d : 0;
+}
+
+// member accessors: DataValue::i64
+// (struct::int64)
+
+/*nstSet*/inline /*0H*/int64 DataValue::i64_Prop::operator= (/*0H*/int64 v)
+{
+   SELF(DataValue, i64);
+   self->impl.i64 = v;
+   return v;
+}
+
+/*regSet*/inline DataValue::i64_Prop & DataValue::i64_Prop::operator= (DataValue::i64_Prop & prop)
+{
+   SELF(DataValue, i64);
+   /*0H*/int64 v = prop;
+   self->impl.i64 = v;
+   return prop;
+}
+/*regGet*/inline DataValue::i64_Prop::operator /*0I*/int64 () const
+{
+   SELF(DataValue, i64);
+   return self ? ((C(DataValue) *)&self->impl)->i64 : 0;
+}
+
+// member accessors: DataValue::ui64
+// (struct::uint64)
+
+/*nstSet*/inline /*0H*/uint64 DataValue::ui64_Prop::operator= (/*0H*/uint64 v)
+{
+   SELF(DataValue, ui64);
+   self->impl.ui64 = v;
+   return v;
+}
+
+/*regSet*/inline DataValue::ui64_Prop & DataValue::ui64_Prop::operator= (DataValue::ui64_Prop & prop)
+{
+   SELF(DataValue, ui64);
+   /*0H*/uint64 v = prop;
+   self->impl.ui64 = v;
+   return prop;
+}
+/*regGet*/inline DataValue::ui64_Prop::operator /*0I*/uint64 () const
+{
+   SELF(DataValue, ui64);
+   return self ? ((C(DataValue) *)&self->impl)->ui64 : 0;
+}
 
 // member accessors: DataValue::c
 // (struct::char)
@@ -16549,75 +15795,6 @@ inline DataValue::DataValue(char c, unsigned char uc = 0, short s = 0, uint16 us
    return self ? ((C(DataValue) *)&self->impl)->f : 0;
 }
 
-// member accessors: DataValue::d
-// (struct::double)
-
-/*nstSet*/inline /*0H*/double DataValue::d_Prop::operator= (/*0H*/double v)
-{
-   SELF(DataValue, d);
-   self->impl.d = v;
-   return v;
-}
-
-/*regSet*/inline DataValue::d_Prop & DataValue::d_Prop::operator= (DataValue::d_Prop & prop)
-{
-   SELF(DataValue, d);
-   /*0H*/double v = prop;
-   self->impl.d = v;
-   return prop;
-}
-/*regGet*/inline DataValue::d_Prop::operator /*0I*/double () const
-{
-   SELF(DataValue, d);
-   return self ? ((C(DataValue) *)&self->impl)->d : 0;
-}
-
-// member accessors: DataValue::i64
-// (struct::int64)
-
-/*nstSet*/inline /*0H*/int64 DataValue::i64_Prop::operator= (/*0H*/int64 v)
-{
-   SELF(DataValue, i64);
-   self->impl.i64 = v;
-   return v;
-}
-
-/*regSet*/inline DataValue::i64_Prop & DataValue::i64_Prop::operator= (DataValue::i64_Prop & prop)
-{
-   SELF(DataValue, i64);
-   /*0H*/int64 v = prop;
-   self->impl.i64 = v;
-   return prop;
-}
-/*regGet*/inline DataValue::i64_Prop::operator /*0I*/int64 () const
-{
-   SELF(DataValue, i64);
-   return self ? ((C(DataValue) *)&self->impl)->i64 : 0;
-}
-
-// member accessors: DataValue::ui64
-// (struct::uint64)
-
-/*nstSet*/inline /*0H*/uint64 DataValue::ui64_Prop::operator= (/*0H*/uint64 v)
-{
-   SELF(DataValue, ui64);
-   self->impl.ui64 = v;
-   return v;
-}
-
-/*regSet*/inline DataValue::ui64_Prop & DataValue::ui64_Prop::operator= (DataValue::ui64_Prop & prop)
-{
-   SELF(DataValue, ui64);
-   /*0H*/uint64 v = prop;
-   self->impl.ui64 = v;
-   return prop;
-}
-/*regGet*/inline DataValue::ui64_Prop::operator /*0I*/uint64 () const
-{
-   SELF(DataValue, ui64);
-   return self ? ((C(DataValue) *)&self->impl)->ui64 : 0;
-}
-
 
 
 // member accessors: DefinedExpression::prev
@@ -16713,11 +15890,6 @@ inline DataValue::DataValue(char c, unsigned char uc = 0, short s = 0, uint16 us
    __attribute__((unused)) TDefinedExpression TCTCO * self = CONTAINER_OF(this, TDefinedExpression TCTCO, value);
    return self ? ((C(DefinedExpression) *)self->impl)->value : null;
 }
-// A (unit:unit)
-inline constexpr Degrees::operator Radians() const { return Radians(impl); }
-inline constexpr Degrees::Degrees(const Radians & r) : Angle(r.impl) { }
-inline constexpr Degrees & Degrees::operator =(const Radians & r) { impl = r.impl; return *this; }
-// B (unit:unit)
 
 
 
@@ -16884,10 +16056,6 @@ inline constexpr Degrees & Degrees::operator =(const Radians & r) { impl = r.imp
    SELF(EscapeCStringOptions, indent);
    return ESCAPECSTRINGOPTIONS_indent(self->impl);
 }
-// A (unit:unit)
-inline constexpr Feet::operator Meters() const { return Meters(impl); }
-inline constexpr Feet::Feet(const Meters & m) : Distance(m.impl) { }
-inline constexpr Feet & Feet::operator =(const Meters & m) { impl = m.impl; return *this; }
 
 
 
@@ -17093,14 +16261,227 @@ inline void IOChannel::unserialize(/*1Bb*/typed_object_class_ptr class_data, voi
 {
    IOChannel_unserialize(impl, /*5Fe*/class_data, data);
 }
-// B (unit:unit)
-inline Meters Meters::operator= (Centimeters value) { return Centimeters_to_Meters(value.impl); }
-inline Meters::Meters(Centimeters value) { Centimeters_to_Meters(value.impl); }
-inline Meters::operator Centimeters() const { return Centimeters_from_Meters(impl); }
-// B (unit:unit)
-inline Meters Meters::operator= (Feet value) { return Feet_to_Meters(value.impl); }
-inline Meters::Meters(Feet value) { Feet_to_Meters(value.impl); }
-inline Meters::operator Feet() const { return Feet_from_Meters(impl); }
+inline Instance::Instance_onCompare_Functor::FunctionType Instance::Instance_onCompare_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onCompare);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onCompare_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onCompare_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onCompare_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onCompare)] = func;
+   return func;
+}
+inline int Instance::Instance_onCompare_Functor::operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & object)
+{
+   SELF(Instance, onCompare);
+   return Instance_onCompare(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/object.impl);
+}
+// inline void Instance::register_onCompare(CPPClass & cl, Instance::Instance_onCompare_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onCompare_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onCompare)] = func;
+// }
+
+inline Instance::Instance_onCopy_Functor::FunctionType Instance::Instance_onCopy_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onCopy);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onCopy_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onCopy_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onCopy_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onCopy)] = func;
+   return func;
+}
+inline void Instance::Instance_onCopy_Functor::operator()(/*6Bk*/Instance & o_ , /*6Bj*/Instance & newData)
+{
+   SELF(Instance, onCopy);
+   Instance_onCopy(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/newData.impl);
+}
+// inline void Instance::register_onCopy(CPPClass & cl, Instance::Instance_onCopy_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onCopy_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onCopy)] = func;
+// }
+
+inline Instance::Instance_onDisplay_Functor::FunctionType Instance::Instance_onDisplay_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onDisplay);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onDisplay_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onDisplay_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onDisplay_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onDisplay)] = func;
+   return func;
+}
+inline void Instance::Instance_onDisplay_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags)
+{
+   SELF(Instance, onDisplay);
+   Instance_onDisplay(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/surface.impl, /*7Al*/x, /*7Al*/y, /*7Al*/width, /*7Al*/fieldData, /*7Al*/alignment, /*7Al*/displayFlags);
+}
+// inline void Instance::register_onDisplay(CPPClass & cl, Instance::Instance_onDisplay_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onDisplay_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onDisplay)] = func;
+// }
+
+inline Instance::Instance_onEdit_Functor::FunctionType Instance::Instance_onEdit_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onEdit);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onEdit_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onEdit_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onEdit_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onEdit)] = func;
+   return func;
+}
+inline Instance & Instance::Instance_onEdit_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData)
+{
+   SELF(Instance, onEdit);
+   C(Instance) retInstance = Instance_onEdit(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/dataBox.impl, /*7Al*/obsolete.impl, /*7Al*/x, /*7Al*/y, /*7Al*/w, /*7Al*/h, /*7Al*/userData);
+      return *(Instance *)INSTANCEL(retInstance, retInstance->_class);
+}
+// inline void Instance::register_onEdit(CPPClass & cl, Instance::Instance_onEdit_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onEdit_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onEdit)] = func;
+// }
+
+inline Instance::Instance_onFree_Functor::FunctionType Instance::Instance_onFree_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onFree);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onFree_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onFree_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onFree_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onFree)] = func;
+   return func;
+}
+inline void Instance::Instance_onFree_Functor::operator()(/*6Bk*/Instance & o_ )
+{
+   SELF(Instance, onFree);
+   Instance_onFree(_cpp_class.impl, self ? self->impl : (C(Instance))null);
+}
+// inline void Instance::register_onFree(CPPClass & cl, Instance::Instance_onFree_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onFree_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onFree)] = func;
+// }
+
+inline Instance::Instance_onGetDataFromString_Functor::FunctionType Instance::Instance_onGetDataFromString_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onGetDataFromString);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onGetDataFromString_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onGetDataFromString_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onGetDataFromString_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onGetDataFromString)] = func;
+   return func;
+}
+inline bool Instance::Instance_onGetDataFromString_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/const char * string)
+{
+   SELF(Instance, onGetDataFromString);
+   return (bool)Instance_onGetDataFromString(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/string);
+}
+// inline void Instance::register_onGetDataFromString(CPPClass & cl, Instance::Instance_onGetDataFromString_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onGetDataFromString_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onGetDataFromString)] = func;
+// }
+
+inline Instance::Instance_onGetString_Functor::FunctionType Instance::Instance_onGetString_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onGetString);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onGetString_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onGetString_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onGetString_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onGetString)] = func;
+   return func;
+}
+inline const char * Instance::Instance_onGetString_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType)
+{
+   SELF(Instance, onGetString);
+   return Instance_onGetString(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/tempString, /*7Al*/reserved, /*7Al*/(C(ObjectNotationType) *)onType);
+}
+// inline void Instance::register_onGetString(CPPClass & cl, Instance::Instance_onGetString_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onGetString_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onGetString)] = func;
+// }
+
+inline Instance::Instance_onSaveEdit_Functor::FunctionType Instance::Instance_onSaveEdit_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onSaveEdit);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onSaveEdit_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onSaveEdit_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onSaveEdit_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onSaveEdit)] = func;
+   return func;
+}
+inline bool Instance::Instance_onSaveEdit_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/Instance & window, /*6Fj*/void * object)
+{
+   SELF(Instance, onSaveEdit);
+   return (bool)Instance_onSaveEdit(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/window.impl, /*7Al*/object);
+}
+// inline void Instance::register_onSaveEdit(CPPClass & cl, Instance::Instance_onSaveEdit_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onSaveEdit_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onSaveEdit)] = func;
+// }
+
+inline Instance::Instance_onSerialize_Functor::FunctionType Instance::Instance_onSerialize_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onSerialize);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onSerialize_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onSerialize_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onSerialize_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onSerialize)] = func;
+   return func;
+}
+inline void Instance::Instance_onSerialize_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel)
+{
+   SELF(Instance, onSerialize);
+   Instance_onSerialize(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/channel.impl);
+}
+// inline void Instance::register_onSerialize(CPPClass & cl, Instance::Instance_onSerialize_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onSerialize_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onSerialize)] = func;
+// }
+
+inline Instance::Instance_onUnserialize_Functor::FunctionType Instance::Instance_onUnserialize_Functor::operator= (FunctionType func)
+{
+   SELF(Instance, onUnserialize);
+   if(self->vTbl == Instance::_cpp_class.vTbl)
+   {
+      uint size = Instance::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Instance::Instance_onUnserialize_Functor::FunctionType, size);
+      memcpy(self->vTbl, Instance::_cpp_class.vTbl, sizeof(Instance::Instance_onUnserialize_Functor::FunctionType) * size);
+   }
+   ((Instance::Instance_onUnserialize_Functor::FunctionType *)self->vTbl)[M_VTBLID(Instance, onUnserialize)] = func;
+   return func;
+}
+inline void Instance::Instance_onUnserialize_Functor::operator()(/*6Bk*/Instance & o_ , /*6Fj*/IOChannel & channel)
+{
+   SELF(Instance, onUnserialize);
+   Instance_onUnserialize(_cpp_class.impl, self ? self->impl : (C(Instance))null, /*7Al*/channel.impl);
+}
+// inline void Instance::register_onUnserialize(CPPClass & cl, Instance::Instance_onUnserialize_Functor::FunctionType func)
+// {
+//    ((Instance::Instance_onUnserialize_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Instance, onUnserialize)] = func;
+// }
+
 
 
 
@@ -17361,6 +16742,51 @@ inline Meters::operator Feet() const { return Feet_from_Meters(impl); }
    return self ? ((C(Method) *)self->impl)->memberAccess : (Access_Mode)0;
 }
 
+inline Module::Module_onLoad_Functor::FunctionType Module::Module_onLoad_Functor::operator= (FunctionType func)
+{
+   SELF(Module, onLoad);
+   if(self->vTbl == Module::_cpp_class.vTbl)
+   {
+      uint size = Module::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Module::Module_onLoad_Functor::FunctionType, size);
+      memcpy(self->vTbl, Module::_cpp_class.vTbl, sizeof(Module::Module_onLoad_Functor::FunctionType) * size);
+   }
+   ((Module::Module_onLoad_Functor::FunctionType *)self->vTbl)[M_VTBLID(Module, onLoad)] = func;
+   return func;
+}
+inline bool Module::Module_onLoad_Functor::operator()( )
+{
+   SELF(Module, onLoad);
+   return (bool)Module_onLoad(self ? self->impl : (C(Module))null);
+}
+// inline void Module::register_onLoad(CPPClass & cl, Module::Module_onLoad_Functor::FunctionType func)
+// {
+//    ((Module::Module_onLoad_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Module, onLoad)] = func;
+// }
+
+inline Module::Module_onUnload_Functor::FunctionType Module::Module_onUnload_Functor::operator= (FunctionType func)
+{
+   SELF(Module, onUnload);
+   if(self->vTbl == Module::_cpp_class.vTbl)
+   {
+      uint size = Module::_cpp_class.impl->vTblSize;
+      self->vTbl = (void (**)())newt(Module::Module_onUnload_Functor::FunctionType, size);
+      memcpy(self->vTbl, Module::_cpp_class.vTbl, sizeof(Module::Module_onUnload_Functor::FunctionType) * size);
+   }
+   ((Module::Module_onUnload_Functor::FunctionType *)self->vTbl)[M_VTBLID(Module, onUnload)] = func;
+   return func;
+}
+inline void Module::Module_onUnload_Functor::operator()( )
+{
+   SELF(Module, onUnload);
+   Module_onUnload(self ? self->impl : (C(Module))null);
+}
+// inline void Module::register_onUnload(CPPClass & cl, Module::Module_onUnload_Functor::FunctionType func)
+// {
+//    ((Module::Module_onUnload_Functor::FunctionType *)cl.vTbl)[M_VTBLID(Module, onUnload)] = func;
+// }
+
+
 
 
 // member accessors: NameSpace::name
@@ -17608,7 +17034,7 @@ inline Meters::operator Feet() const { return Feet_from_Meters(impl); }
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TObjectInfo<TC, TCO>::deleted_Prop::operator= (/*0H*/bool v)
 {
    SELF(ObjectInfo, deleted);
-   ((C(ObjectInfo) *)self->impl)->deleted = v;
+   ((C(ObjectInfo) *)self->impl)->deleted = (C(bool))v;
    return v;
 }
 
@@ -17616,7 +17042,7 @@ inline Meters::operator Feet() const { return Feet_from_Meters(impl); }
 {
    SELF(ObjectInfo, deleted);
    /*0H*/bool v = prop;
-   ((C(ObjectInfo) *)self->impl)->deleted = v;
+   ((C(ObjectInfo) *)self->impl)->deleted = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TObjectInfo<TC, TCO>::deleted_Prop::operator /*0I*/bool () const
@@ -17679,7 +17105,7 @@ inline Meters::operator Feet() const { return Feet_from_Meters(impl); }
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TObjectInfo<TC, TCO>::modified_Prop::operator= (/*0H*/bool v)
 {
    SELF(ObjectInfo, modified);
-   ((C(ObjectInfo) *)self->impl)->modified = v;
+   ((C(ObjectInfo) *)self->impl)->modified = (C(bool))v;
    return v;
 }
 
@@ -17687,7 +17113,7 @@ inline Meters::operator Feet() const { return Feet_from_Meters(impl); }
 {
    SELF(ObjectInfo, modified);
    /*0H*/bool v = prop;
-   ((C(ObjectInfo) *)self->impl)->modified = v;
+   ((C(ObjectInfo) *)self->impl)->modified = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TObjectInfo<TC, TCO>::modified_Prop::operator /*0I*/bool () const
@@ -17717,168 +17143,6 @@ inline Meters::operator Feet() const { return Feet_from_Meters(impl); }
 {
    __attribute__((unused)) TObjectInfo TCTCO * self = CONTAINER_OF(this, TObjectInfo TCTCO, i18nStrings);
    return self ? ((C(ObjectInfo) *)self->impl)->i18nStrings : null;
-}
-
-inline Point::Point(int x, int y = 0)
-{
-   impl.x = x;
-   impl.y = y;
-}
-
-
-
-// member accessors: Point::x
-// (struct::int)
-
-/*nstSet*/inline /*0H*/int Point::x_Prop::operator= (/*0H*/int v)
-{
-   SELF(Point, x);
-   self->impl.x = v;
-   return v;
-}
-
-/*regSet*/inline Point::x_Prop & Point::x_Prop::operator= (Point::x_Prop & prop)
-{
-   SELF(Point, x);
-   /*0H*/int v = prop;
-   self->impl.x = v;
-   return prop;
-}
-/*regGet*/inline Point::x_Prop::operator /*0I*/int () const
-{
-   SELF(Point, x);
-   return self ? ((C(Point) *)&self->impl)->x : 0;
-}
-
-// member accessors: Point::y
-// (struct::int)
-
-/*nstSet*/inline /*0H*/int Point::y_Prop::operator= (/*0H*/int v)
-{
-   SELF(Point, y);
-   self->impl.y = v;
-   return v;
-}
-
-/*regSet*/inline Point::y_Prop & Point::y_Prop::operator= (Point::y_Prop & prop)
-{
-   SELF(Point, y);
-   /*0H*/int v = prop;
-   self->impl.y = v;
-   return prop;
-}
-/*regGet*/inline Point::y_Prop::operator /*0I*/int () const
-{
-   SELF(Point, y);
-   return self ? ((C(Point) *)&self->impl)->y : 0;
-}
-
-inline Pointd::Pointd(double x, double y = 0)
-{
-   impl.x = x;
-   impl.y = y;
-}
-
-
-
-// member accessors: Pointd::x
-// (struct::double)
-
-/*nstSet*/inline /*0H*/double Pointd::x_Prop::operator= (/*0H*/double v)
-{
-   SELF(Pointd, x);
-   self->impl.x = v;
-   return v;
-}
-
-/*regSet*/inline Pointd::x_Prop & Pointd::x_Prop::operator= (Pointd::x_Prop & prop)
-{
-   SELF(Pointd, x);
-   /*0H*/double v = prop;
-   self->impl.x = v;
-   return prop;
-}
-/*regGet*/inline Pointd::x_Prop::operator /*0I*/double () const
-{
-   SELF(Pointd, x);
-   return self ? ((C(Pointd) *)&self->impl)->x : 0;
-}
-
-// member accessors: Pointd::y
-// (struct::double)
-
-/*nstSet*/inline /*0H*/double Pointd::y_Prop::operator= (/*0H*/double v)
-{
-   SELF(Pointd, y);
-   self->impl.y = v;
-   return v;
-}
-
-/*regSet*/inline Pointd::y_Prop & Pointd::y_Prop::operator= (Pointd::y_Prop & prop)
-{
-   SELF(Pointd, y);
-   /*0H*/double v = prop;
-   self->impl.y = v;
-   return prop;
-}
-/*regGet*/inline Pointd::y_Prop::operator /*0I*/double () const
-{
-   SELF(Pointd, y);
-   return self ? ((C(Pointd) *)&self->impl)->y : 0;
-}
-
-inline Pointf::Pointf(float x, float y = 0)
-{
-   impl.x = x;
-   impl.y = y;
-}
-
-
-
-// member accessors: Pointf::x
-// (struct::float)
-
-/*nstSet*/inline /*0H*/float Pointf::x_Prop::operator= (/*0H*/float v)
-{
-   SELF(Pointf, x);
-   self->impl.x = v;
-   return v;
-}
-
-/*regSet*/inline Pointf::x_Prop & Pointf::x_Prop::operator= (Pointf::x_Prop & prop)
-{
-   SELF(Pointf, x);
-   /*0H*/float v = prop;
-   self->impl.x = v;
-   return prop;
-}
-/*regGet*/inline Pointf::x_Prop::operator /*0I*/float () const
-{
-   SELF(Pointf, x);
-   return self ? ((C(Pointf) *)&self->impl)->x : 0;
-}
-
-// member accessors: Pointf::y
-// (struct::float)
-
-/*nstSet*/inline /*0H*/float Pointf::y_Prop::operator= (/*0H*/float v)
-{
-   SELF(Pointf, y);
-   self->impl.y = v;
-   return v;
-}
-
-/*regSet*/inline Pointf::y_Prop & Pointf::y_Prop::operator= (Pointf::y_Prop & prop)
-{
-   SELF(Pointf, y);
-   /*0H*/float v = prop;
-   self->impl.y = v;
-   return prop;
-}
-/*regGet*/inline Pointf::y_Prop::operator /*0I*/float () const
-{
-   SELF(Pointf, y);
-   return self ? ((C(Pointf) *)&self->impl)->y : 0;
 }
 
 
@@ -17960,7 +17224,7 @@ inline Pointf::Pointf(float x, float y = 0)
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TProperty<TC, TCO>::isProperty_Prop::operator= (/*0H*/bool v)
 {
    SELF(Property, isProperty);
-   ((C(Property) *)self->impl)->isProperty = v;
+   ((C(Property) *)self->impl)->isProperty = (C(bool))v;
    return v;
 }
 
@@ -17968,7 +17232,7 @@ inline Pointf::Pointf(float x, float y = 0)
 {
    SELF(Property, isProperty);
    /*0H*/bool v = prop;
-   ((C(Property) *)self->impl)->isProperty = v;
+   ((C(Property) *)self->impl)->isProperty = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TProperty<TC, TCO>::isProperty_Prop::operator /*0I*/bool () const
@@ -18169,7 +17433,7 @@ inline Pointf::Pointf(float x, float y = 0)
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TProperty<TC, TCO>::conversion_Prop::operator= (/*0H*/bool v)
 {
    SELF(Property, conversion);
-   ((C(Property) *)self->impl)->conversion = v;
+   ((C(Property) *)self->impl)->conversion = (C(bool))v;
    return v;
 }
 
@@ -18177,7 +17441,7 @@ inline Pointf::Pointf(float x, float y = 0)
 {
    SELF(Property, conversion);
    /*0H*/bool v = prop;
-   ((C(Property) *)self->impl)->conversion = v;
+   ((C(Property) *)self->impl)->conversion = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TProperty<TC, TCO>::conversion_Prop::operator /*0I*/bool () const
@@ -18238,7 +17502,7 @@ inline Pointf::Pointf(float x, float y = 0)
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TProperty<TC, TCO>::compiled_Prop::operator= (/*0H*/bool v)
 {
    SELF(Property, compiled);
-   ((C(Property) *)self->impl)->compiled = v;
+   ((C(Property) *)self->impl)->compiled = (C(bool))v;
    return v;
 }
 
@@ -18246,7 +17510,7 @@ inline Pointf::Pointf(float x, float y = 0)
 {
    SELF(Property, compiled);
    /*0H*/bool v = prop;
-   ((C(Property) *)self->impl)->compiled = v;
+   ((C(Property) *)self->impl)->compiled = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TProperty<TC, TCO>::compiled_Prop::operator /*0I*/bool () const
@@ -18261,7 +17525,7 @@ inline Pointf::Pointf(float x, float y = 0)
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TProperty<TC, TCO>::selfWatchable_Prop::operator= (/*0H*/bool v)
 {
    SELF(Property, selfWatchable);
-   ((C(Property) *)self->impl)->selfWatchable = v;
+   ((C(Property) *)self->impl)->selfWatchable = (C(bool))v;
    return v;
 }
 
@@ -18269,7 +17533,7 @@ inline Pointf::Pointf(float x, float y = 0)
 {
    SELF(Property, selfWatchable);
    /*0H*/bool v = prop;
-   ((C(Property) *)self->impl)->selfWatchable = v;
+   ((C(Property) *)self->impl)->selfWatchable = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TProperty<TC, TCO>::selfWatchable_Prop::operator /*0I*/bool () const
@@ -18284,7 +17548,7 @@ inline Pointf::Pointf(float x, float y = 0)
 /*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/bool TProperty<TC, TCO>::isWatchable_Prop::operator= (/*0H*/bool v)
 {
    SELF(Property, isWatchable);
-   ((C(Property) *)self->impl)->isWatchable = v;
+   ((C(Property) *)self->impl)->isWatchable = (C(bool))v;
    return v;
 }
 
@@ -18292,7 +17556,7 @@ inline Pointf::Pointf(float x, float y = 0)
 {
    SELF(Property, isWatchable);
    /*0H*/bool v = prop;
-   ((C(Property) *)self->impl)->isWatchable = v;
+   ((C(Property) *)self->impl)->isWatchable = (C(bool))v;
    return prop;
 }
 /*regGet*/template <class TC, C(Class) ** TCO> inline TProperty<TC, TCO>::isWatchable_Prop::operator /*0I*/bool () const
@@ -18300,10 +17564,6 @@ inline Pointf::Pointf(float x, float y = 0)
    __attribute__((unused)) TProperty TCTCO * self = CONTAINER_OF(this, TProperty TCTCO, isWatchable);
    return self ? ((C(Property) *)self->impl)->isWatchable : (bool)0;
 }
-// B (unit:unit)
-inline Radians Radians::operator= (Degrees value) { return Degrees_to_Radians(value.impl); }
-inline Radians::Radians(Degrees value) { Degrees_to_Radians(value.impl); }
-inline Radians::operator Degrees() const { return Degrees_from_Radians(impl); }
 
 inline SerialBuffer::SerialBuffer(unsigned char * _buffer, uintsize count = 0, uintsize _size = 0, uintsize pos = 0, unsigned char * buffer = null, uint size = 0) : SerialBuffer()
 {
@@ -18459,70 +17719,6 @@ inline void SerialBuffer::free()
 {
    SELF(SerialBuffer, pos);
    return self ? IPTR(self->impl, SerialBuffer)->pos : 0;
-}
-
-inline Size::Size(MinMaxValue w, MinMaxValue h = 0)
-{
-   impl.w = w.impl;
-   impl.h = h.impl;
-}
-
-
-
-// member accessors: Size::w
-// (struct::unit|int)
-
-/*nstSet*/inline /*0H*/MinMaxValue Size::w_Prop::operator= (/*0H*/MinMaxValue v)
-{
-   SELF(Size, w);
-   self->impl.w = (int)v.impl;
-   return v;
-}
-
-/*regSet*/inline Size::w_Prop & Size::w_Prop::operator= (Size::w_Prop & prop)
-{
-   SELF(Size, w);
-   /*0H*/MinMaxValue v = prop;
-   self->impl.w = (int)v.impl;
-   return prop;
-}
-/*regGet*/inline Size::w_Prop::operator /*0I*/MinMaxValue () const
-{
-   SELF(Size, w);
-   return MinMaxValue(self->impl.w);
-}
-/*regGet*/inline Size::w_Prop::operator /*0J*/C(MinMaxValue) () const
-{
-   SELF(Size, w);
-   return MinMaxValue(self->w);
-}
-
-// member accessors: Size::h
-// (struct::unit|int)
-
-/*nstSet*/inline /*0H*/MinMaxValue Size::h_Prop::operator= (/*0H*/MinMaxValue v)
-{
-   SELF(Size, h);
-   self->impl.h = (int)v.impl;
-   return v;
-}
-
-/*regSet*/inline Size::h_Prop & Size::h_Prop::operator= (Size::h_Prop & prop)
-{
-   SELF(Size, h);
-   /*0H*/MinMaxValue v = prop;
-   self->impl.h = (int)v.impl;
-   return prop;
-}
-/*regGet*/inline Size::h_Prop::operator /*0I*/MinMaxValue () const
-{
-   SELF(Size, h);
-   return MinMaxValue(self->impl.h);
-}
-/*regGet*/inline Size::h_Prop::operator /*0J*/C(MinMaxValue) () const
-{
-   SELF(Size, h);
-   return MinMaxValue(self->h);
 }
 
 
@@ -18828,6 +18024,447 @@ inline void ZString::copyString(/*1Ab*/const char * value, /*1Ab*/int newLen)
 {
    SELF(ZString, maxSize);
    return self ? IPTR(self->impl, ZString)->maxSize : 0;
+}
+
+////////////////////////////////////////////////////// [ecrt]/eC::types //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
+#undef Pi
+static constexpr Radians Pi { 3.1415926535897932384626433832795028841971 };
+
+inline Box::Box(int left, int top = 0, int right = 0, int bottom = 0)
+{
+   impl.left = left;
+   impl.top = top;
+   impl.right = right;
+   impl.bottom = bottom;
+}
+
+
+inline void Box::clip(/*1Ab*/Box & against)
+{
+   Box_clip(&impl, /*5De*/&against.impl);
+}
+inline void Box::clip(/*1Ac*/Box * against)
+{
+   Box_clip(&impl, /*5Cf*/(C(Box) *)against);
+}
+inline void Box::clipOffset(/*1Ab*/Box & against, /*1Ab*/int x, /*1Ab*/int y)
+{
+   Box_clipOffset(&impl, /*5De*/&against.impl, /*5Ge*/x, /*5Ge*/y);
+}
+inline void Box::clipOffset(/*1Ac*/Box * against, /*1Ac*/int x, /*1Ac*/int y)
+{
+   Box_clipOffset(&impl, /*5Cf*/(C(Box) *)against, /*5Gf*/x, /*5Gf*/y);
+}
+inline C(bool) Box::isPointInside(/*1Ab*/Point & point)
+{
+   return Box_isPointInside(&impl, /*5De*/&point.impl);
+}
+inline C(bool) Box::isPointInside(/*1Ac*/Point * point)
+{
+   return Box_isPointInside(&impl, /*5Cf*/(C(Point) *)point);
+}
+inline C(bool) Box::overlap(/*1Ab*/Box & box)
+{
+   return Box_overlap(&impl, /*5De*/&box.impl);
+}
+inline C(bool) Box::overlap(/*1Ac*/Box * box)
+{
+   return Box_overlap(&impl, /*5Cf*/(C(Box) *)box);
+}
+
+
+// property callers: Box::width
+// (struct::int)
+
+/*nstSet*/inline /*0H*/int Box::width_Prop::operator= (/*0H*/int v)
+{
+   SELF(Box, width);
+   Box_set_width(self ? &self->impl : null, v);
+   return v;
+}
+
+/*regSet*/inline Box::width_Prop & Box::width_Prop::operator= (Box::width_Prop & prop)
+{
+   SELF(Box, width);
+   /*0H*/int v = prop;
+   Box_set_width(self ? &self->impl : null, v);
+   return prop;
+}
+/*regGet*/inline Box::width_Prop::operator /*0I*/int () const
+{
+   SELF(Box, width);
+   return Box_get_width(self ? &self->impl : null);
+}
+
+// property callers: Box::height
+// (struct::int)
+
+/*nstSet*/inline /*0H*/int Box::height_Prop::operator= (/*0H*/int v)
+{
+   SELF(Box, height);
+   Box_set_height(self ? &self->impl : null, v);
+   return v;
+}
+
+/*regSet*/inline Box::height_Prop & Box::height_Prop::operator= (Box::height_Prop & prop)
+{
+   SELF(Box, height);
+   /*0H*/int v = prop;
+   Box_set_height(self ? &self->impl : null, v);
+   return prop;
+}
+/*regGet*/inline Box::height_Prop::operator /*0I*/int () const
+{
+   SELF(Box, height);
+   return Box_get_height(self ? &self->impl : null);
+}
+
+
+// member accessors: Box::left
+// (struct::int)
+
+/*nstSet*/inline /*0H*/int Box::left_Prop::operator= (/*0H*/int v)
+{
+   SELF(Box, left);
+   self->impl.left = v;
+   return v;
+}
+
+/*regSet*/inline Box::left_Prop & Box::left_Prop::operator= (Box::left_Prop & prop)
+{
+   SELF(Box, left);
+   /*0H*/int v = prop;
+   self->impl.left = v;
+   return prop;
+}
+/*regGet*/inline Box::left_Prop::operator /*0I*/int () const
+{
+   SELF(Box, left);
+   return self ? ((C(Box) *)&self->impl)->left : 0;
+}
+
+// member accessors: Box::top
+// (struct::int)
+
+/*nstSet*/inline /*0H*/int Box::top_Prop::operator= (/*0H*/int v)
+{
+   SELF(Box, top);
+   self->impl.top = v;
+   return v;
+}
+
+/*regSet*/inline Box::top_Prop & Box::top_Prop::operator= (Box::top_Prop & prop)
+{
+   SELF(Box, top);
+   /*0H*/int v = prop;
+   self->impl.top = v;
+   return prop;
+}
+/*regGet*/inline Box::top_Prop::operator /*0I*/int () const
+{
+   SELF(Box, top);
+   return self ? ((C(Box) *)&self->impl)->top : 0;
+}
+
+// member accessors: Box::right
+// (struct::int)
+
+/*nstSet*/inline /*0H*/int Box::right_Prop::operator= (/*0H*/int v)
+{
+   SELF(Box, right);
+   self->impl.right = v;
+   return v;
+}
+
+/*regSet*/inline Box::right_Prop & Box::right_Prop::operator= (Box::right_Prop & prop)
+{
+   SELF(Box, right);
+   /*0H*/int v = prop;
+   self->impl.right = v;
+   return prop;
+}
+/*regGet*/inline Box::right_Prop::operator /*0I*/int () const
+{
+   SELF(Box, right);
+   return self ? ((C(Box) *)&self->impl)->right : 0;
+}
+
+// member accessors: Box::bottom
+// (struct::int)
+
+/*nstSet*/inline /*0H*/int Box::bottom_Prop::operator= (/*0H*/int v)
+{
+   SELF(Box, bottom);
+   self->impl.bottom = v;
+   return v;
+}
+
+/*regSet*/inline Box::bottom_Prop & Box::bottom_Prop::operator= (Box::bottom_Prop & prop)
+{
+   SELF(Box, bottom);
+   /*0H*/int v = prop;
+   self->impl.bottom = v;
+   return prop;
+}
+/*regGet*/inline Box::bottom_Prop::operator /*0I*/int () const
+{
+   SELF(Box, bottom);
+   return self ? ((C(Box) *)&self->impl)->bottom : 0;
+}
+// A (unit:unit)
+inline constexpr Centimeters::operator Meters() const { return Meters(impl); }
+inline constexpr Centimeters::Centimeters(const Meters & m) : Distance(m.impl) { }
+inline constexpr Centimeters & Centimeters::operator =(const Meters & m) { impl = m.impl; return *this; }
+// A (unit:unit)
+inline constexpr Degrees::operator Radians() const { return Radians(impl); }
+inline constexpr Degrees::Degrees(const Radians & r) : Angle(r.impl) { }
+inline constexpr Degrees & Degrees::operator =(const Radians & r) { impl = r.impl; return *this; }
+// B (unit:unit)
+// A (unit:unit)
+inline constexpr Feet::operator Meters() const { return Meters(impl); }
+inline constexpr Feet::Feet(const Meters & m) : Distance(m.impl) { }
+inline constexpr Feet & Feet::operator =(const Meters & m) { impl = m.impl; return *this; }
+// B (unit:unit)
+inline Meters Meters::operator= (Centimeters value) { return Centimeters_to_Meters(value.impl); }
+inline Meters::Meters(Centimeters value) { Centimeters_to_Meters(value.impl); }
+inline Meters::operator Centimeters() const { return Centimeters_from_Meters(impl); }
+// B (unit:unit)
+inline Meters Meters::operator= (Feet value) { return Feet_to_Meters(value.impl); }
+inline Meters::Meters(Feet value) { Feet_to_Meters(value.impl); }
+inline Meters::operator Feet() const { return Feet_from_Meters(impl); }
+
+inline Point::Point(int x, int y = 0)
+{
+   impl.x = x;
+   impl.y = y;
+}
+
+
+
+// member accessors: Point::x
+// (struct::int)
+
+/*nstSet*/inline /*0H*/int Point::x_Prop::operator= (/*0H*/int v)
+{
+   SELF(Point, x);
+   self->impl.x = v;
+   return v;
+}
+
+/*regSet*/inline Point::x_Prop & Point::x_Prop::operator= (Point::x_Prop & prop)
+{
+   SELF(Point, x);
+   /*0H*/int v = prop;
+   self->impl.x = v;
+   return prop;
+}
+/*regGet*/inline Point::x_Prop::operator /*0I*/int () const
+{
+   SELF(Point, x);
+   return self ? ((C(Point) *)&self->impl)->x : 0;
+}
+
+// member accessors: Point::y
+// (struct::int)
+
+/*nstSet*/inline /*0H*/int Point::y_Prop::operator= (/*0H*/int v)
+{
+   SELF(Point, y);
+   self->impl.y = v;
+   return v;
+}
+
+/*regSet*/inline Point::y_Prop & Point::y_Prop::operator= (Point::y_Prop & prop)
+{
+   SELF(Point, y);
+   /*0H*/int v = prop;
+   self->impl.y = v;
+   return prop;
+}
+/*regGet*/inline Point::y_Prop::operator /*0I*/int () const
+{
+   SELF(Point, y);
+   return self ? ((C(Point) *)&self->impl)->y : 0;
+}
+
+inline Pointd::Pointd(double x, double y = 0)
+{
+   impl.x = x;
+   impl.y = y;
+}
+
+
+
+// member accessors: Pointd::x
+// (struct::double)
+
+/*nstSet*/inline /*0H*/double Pointd::x_Prop::operator= (/*0H*/double v)
+{
+   SELF(Pointd, x);
+   self->impl.x = v;
+   return v;
+}
+
+/*regSet*/inline Pointd::x_Prop & Pointd::x_Prop::operator= (Pointd::x_Prop & prop)
+{
+   SELF(Pointd, x);
+   /*0H*/double v = prop;
+   self->impl.x = v;
+   return prop;
+}
+/*regGet*/inline Pointd::x_Prop::operator /*0I*/double () const
+{
+   SELF(Pointd, x);
+   return self ? ((C(Pointd) *)&self->impl)->x : 0;
+}
+
+// member accessors: Pointd::y
+// (struct::double)
+
+/*nstSet*/inline /*0H*/double Pointd::y_Prop::operator= (/*0H*/double v)
+{
+   SELF(Pointd, y);
+   self->impl.y = v;
+   return v;
+}
+
+/*regSet*/inline Pointd::y_Prop & Pointd::y_Prop::operator= (Pointd::y_Prop & prop)
+{
+   SELF(Pointd, y);
+   /*0H*/double v = prop;
+   self->impl.y = v;
+   return prop;
+}
+/*regGet*/inline Pointd::y_Prop::operator /*0I*/double () const
+{
+   SELF(Pointd, y);
+   return self ? ((C(Pointd) *)&self->impl)->y : 0;
+}
+
+inline Pointf::Pointf(float x, float y = 0)
+{
+   impl.x = x;
+   impl.y = y;
+}
+
+
+
+// member accessors: Pointf::x
+// (struct::float)
+
+/*nstSet*/inline /*0H*/float Pointf::x_Prop::operator= (/*0H*/float v)
+{
+   SELF(Pointf, x);
+   self->impl.x = v;
+   return v;
+}
+
+/*regSet*/inline Pointf::x_Prop & Pointf::x_Prop::operator= (Pointf::x_Prop & prop)
+{
+   SELF(Pointf, x);
+   /*0H*/float v = prop;
+   self->impl.x = v;
+   return prop;
+}
+/*regGet*/inline Pointf::x_Prop::operator /*0I*/float () const
+{
+   SELF(Pointf, x);
+   return self ? ((C(Pointf) *)&self->impl)->x : 0;
+}
+
+// member accessors: Pointf::y
+// (struct::float)
+
+/*nstSet*/inline /*0H*/float Pointf::y_Prop::operator= (/*0H*/float v)
+{
+   SELF(Pointf, y);
+   self->impl.y = v;
+   return v;
+}
+
+/*regSet*/inline Pointf::y_Prop & Pointf::y_Prop::operator= (Pointf::y_Prop & prop)
+{
+   SELF(Pointf, y);
+   /*0H*/float v = prop;
+   self->impl.y = v;
+   return prop;
+}
+/*regGet*/inline Pointf::y_Prop::operator /*0I*/float () const
+{
+   SELF(Pointf, y);
+   return self ? ((C(Pointf) *)&self->impl)->y : 0;
+}
+// B (unit:unit)
+inline Radians Radians::operator= (Degrees value) { return Degrees_to_Radians(value.impl); }
+inline Radians::Radians(Degrees value) { Degrees_to_Radians(value.impl); }
+inline Radians::operator Degrees() const { return Degrees_from_Radians(impl); }
+
+inline Size::Size(MinMaxValue w, MinMaxValue h = 0)
+{
+   impl.w = w.impl;
+   impl.h = h.impl;
+}
+
+
+
+// member accessors: Size::w
+// (struct::unit|int)
+
+/*nstSet*/inline /*0H*/MinMaxValue Size::w_Prop::operator= (/*0H*/MinMaxValue v)
+{
+   SELF(Size, w);
+   self->impl.w = (int)v.impl;
+   return v;
+}
+
+/*regSet*/inline Size::w_Prop & Size::w_Prop::operator= (Size::w_Prop & prop)
+{
+   SELF(Size, w);
+   /*0H*/MinMaxValue v = prop;
+   self->impl.w = (int)v.impl;
+   return prop;
+}
+/*regGet*/inline Size::w_Prop::operator /*0I*/MinMaxValue () const
+{
+   SELF(Size, w);
+   return MinMaxValue(self->impl.w);
+}
+/*regGet*/inline Size::w_Prop::operator /*0J*/C(MinMaxValue) () const
+{
+   SELF(Size, w);
+   return MinMaxValue(self->w);
+}
+
+// member accessors: Size::h
+// (struct::unit|int)
+
+/*nstSet*/inline /*0H*/MinMaxValue Size::h_Prop::operator= (/*0H*/MinMaxValue v)
+{
+   SELF(Size, h);
+   self->impl.h = (int)v.impl;
+   return v;
+}
+
+/*regSet*/inline Size::h_Prop & Size::h_Prop::operator= (Size::h_Prop & prop)
+{
+   SELF(Size, h);
+   /*0H*/MinMaxValue v = prop;
+   self->impl.h = (int)v.impl;
+   return prop;
+}
+/*regGet*/inline Size::h_Prop::operator /*0I*/MinMaxValue () const
+{
+   SELF(Size, h);
+   return MinMaxValue(self->impl.h);
+}
+/*regGet*/inline Size::h_Prop::operator /*0J*/C(MinMaxValue) () const
+{
+   SELF(Size, h);
+   return MinMaxValue(self->h);
 }
 
 ///////////////////////////////////////////////// [ecrt]/eC::containers //////// ////////////////
@@ -19619,7 +19256,7 @@ template <typename TP_T _ARG typename TP_I = int _ARG typename TP_D = TP_T>
 inline TP_D TContainer <TP_T _ARG TP_I _ARG TP_D>::Container_getData_Functor::operator()( /*6Fj*/IteratorPointer pointer)
 {
    TSELF(Container, (<TP_T _ARG TP_I _ARG TP_D>), getData);
-   return fromTA(Container_getData(self ? self->impl : (C(Container))null, /*7Al*/pointer.impl));
+   return fromTA<TP_D>(Container_getData(self ? self->impl : (C(Container))null, /*7Al*/pointer.impl));
 }
 // inline void Container::register_getData(CPPClass & cl, Container::Container_getData_Functor::FunctionType func)
 // {
@@ -20546,10 +20183,6 @@ template <typename TP_T, typename TP_IT> inline void TIterator<TP_T, TP_IT>::rem
    Iterator_remove(&impl);
 }
 
-template <typename TP_T, typename TP_IT> inline C(bool) TIterator<TP_T, TP_IT>::index(TP_IT index, C(bool) create)
-{
-   return Iterator_index(&impl, toTA(index), create);
-}
 
 // property callers: Iterator::data
 // (struct::T)
@@ -20828,50 +20461,51 @@ template <typename TP_LLT> void TList<TP_LLT>::class_registration(CPPClass & _cp
 }
 
 // member accessors: ListItem::prev
-// (nohead::thisclass)
+// (nohead::nohead)
 
-// REVIEW: These C(Class) do not look right here -- is this the base object?
-/*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/C(Class) * TListItem<TC, TCO>::prev_Prop::operator= (/*0H*/C(Class) * v)
+/*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/ListItem TListItem<TC, TCO>::prev_Prop::operator= (/*0H*/ListItem & v)
 {
    SELF(ListItem, prev);
-   ((C(ListItem) *)self->impl)->prev = (C(ListItem) *)v;
+   ((C(ListItem) *)self->impl)->prev = v.impl;
    return v;
 }
 
 /*regSet*/template <class TC, C(Class) ** TCO> inline typename TListItem<TC, TCO>::prev_Prop & TListItem<TC, TCO>::prev_Prop::operator= (typename TListItem<TC, TCO>::prev_Prop & prop)
 {
    SELF(ListItem, prev);
-   /*0H*/C(Class) * v = prop;
-   ((C(ListItem) *)self->impl)->prev = (C(ListItem) *)v;
+   /*0H*/ListItem v = prop;
+   ((C(ListItem) *)self->impl)->prev = v.impl;
    return prop;
 }
-/*regGet*/template <class TC, C(Class) ** TCO> inline TListItem<TC, TCO>::prev_Prop::operator /*0I*/C(Class) * () const
+/*regGet*/template <class TC, C(Class) ** TCO> inline TListItem<TC, TCO>::prev_Prop::operator /*0I*/ListItem () const
 {
    __attribute__((unused)) TListItem TCTCO * self = CONTAINER_OF(this, TListItem TCTCO, prev);
-   return self ? ((C(ListItem) *)self->impl)->prev : 0;
+   ListItem value(((C(ListItem) *)self->impl)->prev);
+   return value;
 }
 
 // member accessors: ListItem::next
-// (nohead::thisclass)
+// (nohead::nohead)
 
-/*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/C(Class) * TListItem<TC, TCO>::next_Prop::operator= (/*0H*/C(Class) * v)
+/*nstSet*/template <class TC, C(Class) ** TCO> inline /*0H*/ListItem TListItem<TC, TCO>::next_Prop::operator= (/*0H*/ListItem & v)
 {
    SELF(ListItem, next);
-   ((C(ListItem) *)self->impl)->next = (C(ListItem) *)v;
+   ((C(ListItem) *)self->impl)->next = v.impl;
    return v;
 }
 
 /*regSet*/template <class TC, C(Class) ** TCO> inline typename TListItem<TC, TCO>::next_Prop & TListItem<TC, TCO>::next_Prop::operator= (typename TListItem<TC, TCO>::next_Prop & prop)
 {
    SELF(ListItem, next);
-   /*0H*/C(Class) * v = prop;
-   ((C(ListItem) *)self->impl)->next = (C(ListItem) *)v;
+   /*0H*/ListItem v = prop;
+   ((C(ListItem) *)self->impl)->next = v.impl;
    return prop;
 }
-/*regGet*/template <class TC, C(Class) ** TCO> inline TListItem<TC, TCO>::next_Prop::operator /*0I*/C(Class) * () const
+/*regGet*/template <class TC, C(Class) ** TCO> inline TListItem<TC, TCO>::next_Prop::operator /*0I*/ListItem () const
 {
    __attribute__((unused)) TListItem TCTCO * self = CONTAINER_OF(this, TListItem TCTCO, next);
-   return self ? ((C(ListItem) *)self->impl)->next : 0;
+   ListItem value(((C(ListItem) *)self->impl)->next);
+   return value;
 }
 
 template <typename TP_MT, typename TP_V> TCPPClass<TMap<TP_MT, TP_V>> TMap<TP_MT, TP_V>::_cpp_class;
@@ -20899,10 +20533,6 @@ template <typename TP_MT, typename TP_V> void TMap<TP_MT, TP_V>::class_registrat
 }
 
 
-template <typename TP_KT, typename TP_KV> inline C(bool) TMapIterator<TP_KT, TP_KV>::index(TP_KT index, C(bool) create)
-{
-   return Iterator_index((C(Iterator) *)&impl, toTA(index), create);
-}
 
 
 // property callers: MapIterator::map
@@ -21804,6 +21434,395 @@ inline void StringBinaryTree::remove(/*1Ab*/BTNode node)
 {
    SELF(StringBinaryTree, count);
    return self ? ((C(StringBinaryTree) *)&self->impl)->count : 0;
+}
+
+/////////////////////////////////////////////////////// [ecrt]/eC::i18n //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
+///////////////////////////////////////////////////////// [ecrt]/eC::mt //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
+
+template <class TC, C(Class) ** TCO> inline void TMutex<TC, TCO>::release()
+{
+   Mutex_release((C(Mutex)*)this->impl);
+}
+template <class TC, C(Class) ** TCO> inline void TMutex<TC, TCO>::wait()
+{
+   Mutex_wait((C(Mutex)*)this->impl);
+}
+
+
+// property callers: Mutex::lockCount   // get only
+// (nohead::int)
+
+/*regGet*/template <class TC, C(Class) ** TCO> inline TMutex<TC, TCO>::lockCount_Prop::operator /*0I*/int () const
+{
+   __attribute__((unused)) TMutex TCTCO * self = CONTAINER_OF(this, TMutex TCTCO, lockCount);
+   return Mutex_get_lockCount(self ? self->impl : null);
+}
+
+// property callers: Mutex::owningThread   // get only
+// (nohead::int64)
+
+/*regGet*/template <class TC, C(Class) ** TCO> inline TMutex<TC, TCO>::owningThread_Prop::operator /*0I*/int64 () const
+{
+   __attribute__((unused)) TMutex TCTCO * self = CONTAINER_OF(this, TMutex TCTCO, owningThread);
+   return Mutex_get_owningThread(self ? self->impl : null);
+}
+
+/////////////////////////////////////////////////////////////// [ecrt]/ //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
+///////////////////////////////////////////////////////////// [ecrt]/eC //////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+//////////////////////////////////////////////////////////////////////////////// ////////////////
+
+
+
+
+// member accessors: FieldTypeEx::type
+// (bits::enum|int)
+
+/*nstSet*/inline /*0H*/FieldType FieldTypeEx::type_Prop::operator= (/*0H*/FieldType v)
+{
+   SELF(FieldTypeEx, type);
+   FIELDTYPEEX_SET_type(self->impl, v);
+   return v;
+}
+
+/*regSet*/inline FieldTypeEx::type_Prop & FieldTypeEx::type_Prop::operator= (FieldTypeEx::type_Prop & prop)
+{
+   SELF(FieldTypeEx, type);
+   /*0H*/FieldType v = prop;
+   FIELDTYPEEX_SET_type(self->impl, v);
+   return prop;
+}
+/*regGet*/inline FieldTypeEx::type_Prop::operator /*0I*/FieldType () const
+{
+   SELF(FieldTypeEx, type);
+   return (FieldType)FIELDTYPEEX_type(self->impl);
+}
+
+// member accessors: FieldTypeEx::mustFree
+// (bits::enum|uint)
+
+/*nstSet*/inline /*0H*/bool FieldTypeEx::mustFree_Prop::operator= (/*0H*/bool v)
+{
+   SELF(FieldTypeEx, mustFree);
+   FIELDTYPEEX_SET_mustFree(self->impl, v);
+   return v;
+}
+
+/*regSet*/inline FieldTypeEx::mustFree_Prop & FieldTypeEx::mustFree_Prop::operator= (FieldTypeEx::mustFree_Prop & prop)
+{
+   SELF(FieldTypeEx, mustFree);
+   /*0H*/bool v = prop;
+   FIELDTYPEEX_SET_mustFree(self->impl, v);
+   return prop;
+}
+/*regGet*/inline FieldTypeEx::mustFree_Prop::operator /*0I*/bool () const
+{
+   SELF(FieldTypeEx, mustFree);
+   return (bool)FIELDTYPEEX_mustFree(self->impl);
+}
+
+// member accessors: FieldTypeEx::format
+// (bits::enum|int)
+
+/*nstSet*/inline /*0H*/FieldValueFormat FieldTypeEx::format_Prop::operator= (/*0H*/FieldValueFormat v)
+{
+   SELF(FieldTypeEx, format);
+   FIELDTYPEEX_SET_format(self->impl, v);
+   return v;
+}
+
+/*regSet*/inline FieldTypeEx::format_Prop & FieldTypeEx::format_Prop::operator= (FieldTypeEx::format_Prop & prop)
+{
+   SELF(FieldTypeEx, format);
+   /*0H*/FieldValueFormat v = prop;
+   FIELDTYPEEX_SET_format(self->impl, v);
+   return prop;
+}
+/*regGet*/inline FieldTypeEx::format_Prop::operator /*0I*/FieldValueFormat () const
+{
+   SELF(FieldTypeEx, format);
+   return (FieldValueFormat)FIELDTYPEEX_format(self->impl);
+}
+
+// member accessors: FieldTypeEx::isUnsigned
+// (bits::enum|uint)
+
+/*nstSet*/inline /*0H*/bool FieldTypeEx::isUnsigned_Prop::operator= (/*0H*/bool v)
+{
+   SELF(FieldTypeEx, isUnsigned);
+   FIELDTYPEEX_SET_isUnsigned(self->impl, v);
+   return v;
+}
+
+/*regSet*/inline FieldTypeEx::isUnsigned_Prop & FieldTypeEx::isUnsigned_Prop::operator= (FieldTypeEx::isUnsigned_Prop & prop)
+{
+   SELF(FieldTypeEx, isUnsigned);
+   /*0H*/bool v = prop;
+   FIELDTYPEEX_SET_isUnsigned(self->impl, v);
+   return prop;
+}
+/*regGet*/inline FieldTypeEx::isUnsigned_Prop::operator /*0I*/bool () const
+{
+   SELF(FieldTypeEx, isUnsigned);
+   return (bool)FIELDTYPEEX_isUnsigned(self->impl);
+}
+
+// member accessors: FieldTypeEx::isDateTime
+// (bits::enum|uint)
+
+/*nstSet*/inline /*0H*/bool FieldTypeEx::isDateTime_Prop::operator= (/*0H*/bool v)
+{
+   SELF(FieldTypeEx, isDateTime);
+   FIELDTYPEEX_SET_isDateTime(self->impl, v);
+   return v;
+}
+
+/*regSet*/inline FieldTypeEx::isDateTime_Prop & FieldTypeEx::isDateTime_Prop::operator= (FieldTypeEx::isDateTime_Prop & prop)
+{
+   SELF(FieldTypeEx, isDateTime);
+   /*0H*/bool v = prop;
+   FIELDTYPEEX_SET_isDateTime(self->impl, v);
+   return prop;
+}
+/*regGet*/inline FieldTypeEx::isDateTime_Prop::operator /*0I*/bool () const
+{
+   SELF(FieldTypeEx, isDateTime);
+   return (bool)FIELDTYPEEX_isDateTime(self->impl);
+}
+
+inline FieldValue::FieldValue(FieldTypeEx type, int64 i = 0, double r = 0, char * s = 0, void * b = null)
+{
+   impl.type = type;
+   impl.i = i;
+   impl.r = r;
+   impl.s = s;
+   impl.b = b;
+}
+
+
+inline int FieldValue::compareInt(/*1Ab*/FieldValue & other)
+{
+   return FieldValue_compareInt(&impl, /*5De*/&other.impl);
+}
+inline int FieldValue::compareInt(/*1Ac*/FieldValue * other)
+{
+   return FieldValue_compareInt(&impl, /*5Cf*/(C(FieldValue) *)other);
+}
+inline int FieldValue::compareReal(/*1Ab*/FieldValue & other)
+{
+   return FieldValue_compareReal(&impl, /*5De*/&other.impl);
+}
+inline int FieldValue::compareReal(/*1Ac*/FieldValue * other)
+{
+   return FieldValue_compareReal(&impl, /*5Cf*/(C(FieldValue) *)other);
+}
+inline int FieldValue::compareText(/*1Ab*/FieldValue & other)
+{
+   return FieldValue_compareText(&impl, /*5De*/&other.impl);
+}
+inline int FieldValue::compareText(/*1Ac*/FieldValue * other)
+{
+   return FieldValue_compareText(&impl, /*5Cf*/(C(FieldValue) *)other);
+}
+inline C(String) FieldValue::formatArray(/*1Ab*/char * tempString, /*1Ab*/void * fieldData, /*1Ab*/ObjectNotationType * onType)
+{
+   return FieldValue_formatArray(&impl, /*5Ge*/tempString, /*5Ge*/fieldData, /*5Ee*/(C(ObjectNotationType) *)onType);
+}
+inline C(String) FieldValue::formatFloat(/*1Ab*/char * stringOutput, /*1Ab*/bool fixDot)
+{
+   return FieldValue_formatFloat(&impl, /*5Ge*/stringOutput, /*5Ee*/(C(bool))fixDot);
+}
+inline C(String) FieldValue::formatInteger(/*1Ab*/char * stringOutput)
+{
+   return FieldValue_formatInteger(&impl, /*5Ge*/stringOutput);
+}
+inline C(String) FieldValue::formatMap(/*1Ab*/char * tempString, /*1Ab*/void * fieldData, /*1Ab*/ObjectNotationType * onType)
+{
+   return FieldValue_formatMap(&impl, /*5Ge*/tempString, /*5Ge*/fieldData, /*5Ee*/(C(ObjectNotationType) *)onType);
+}
+inline C(bool) FieldValue::getArrayOrMap(/*1Ab*/const char * string, /*1Ab*/Class destClass, /*1Ab*/void ** destination)
+{
+   return FieldValue_getArrayOrMap(/*5Ge*/string, /*5De*/destClass.impl, /*5Ge*/destination);
+}
+inline C(String) FieldValue::stringify()
+{
+   return FieldValue_stringify(&impl);
+}
+
+
+// member accessors: FieldValue::type
+// (struct::bits|int)
+
+/*nstSet*/inline /*0H*/FieldTypeEx FieldValue::type_Prop::operator= (/*0H*/FieldTypeEx v)
+{
+   SELF(FieldValue, type);
+   self->impl.type = v;
+   return v;
+}
+
+/*regSet*/inline FieldValue::type_Prop & FieldValue::type_Prop::operator= (FieldValue::type_Prop & prop)
+{
+   SELF(FieldValue, type);
+   /*0H*/FieldTypeEx v = prop;
+   self->impl.type = v;
+   return prop;
+}
+/*regGet*/inline FieldValue::type_Prop::operator /*0I*/FieldTypeEx () const
+{
+   SELF(FieldValue, type);
+   return self ? FieldTypeEx(((C(FieldValue) *)&self->impl)->type) : FieldTypeEx();
+}
+
+// member accessors: FieldValue::i
+// (struct::int64)
+
+/*nstSet*/inline /*0H*/int64 FieldValue::i_Prop::operator= (/*0H*/int64 v)
+{
+   SELF(FieldValue, i);
+   self->impl.i = v;
+   return v;
+}
+
+/*regSet*/inline FieldValue::i_Prop & FieldValue::i_Prop::operator= (FieldValue::i_Prop & prop)
+{
+   SELF(FieldValue, i);
+   /*0H*/int64 v = prop;
+   self->impl.i = v;
+   return prop;
+}
+/*regGet*/inline FieldValue::i_Prop::operator /*0I*/int64 () const
+{
+   SELF(FieldValue, i);
+   return self ? ((C(FieldValue) *)&self->impl)->i : 0;
+}
+
+// member accessors: FieldValue::r
+// (struct::double)
+
+/*nstSet*/inline /*0H*/double FieldValue::r_Prop::operator= (/*0H*/double v)
+{
+   SELF(FieldValue, r);
+   self->impl.r = v;
+   return v;
+}
+
+/*regSet*/inline FieldValue::r_Prop & FieldValue::r_Prop::operator= (FieldValue::r_Prop & prop)
+{
+   SELF(FieldValue, r);
+   /*0H*/double v = prop;
+   self->impl.r = v;
+   return prop;
+}
+/*regGet*/inline FieldValue::r_Prop::operator /*0I*/double () const
+{
+   SELF(FieldValue, r);
+   return self ? ((C(FieldValue) *)&self->impl)->r : 0;
+}
+
+// member accessors: FieldValue::s
+// (struct::string)
+
+/*nstSet*/inline /*0H*/char * FieldValue::s_Prop::operator= (/*0H*/char * v)
+{
+   SELF(FieldValue, s);
+   self->impl.s = v;
+   return v;
+}
+
+/*regSet*/inline FieldValue::s_Prop & FieldValue::s_Prop::operator= (FieldValue::s_Prop & prop)
+{
+   SELF(FieldValue, s);
+   /*0H*/char * v = prop;
+   self->impl.s = v;
+   return prop;
+}
+/*regGet*/inline FieldValue::s_Prop::operator /*0I*/char * () const
+{
+   SELF(FieldValue, s);
+   return self ? ((C(FieldValue) *)&self->impl)->s : 0;
+}
+
+// member accessors: FieldValue::b
+// (struct::void *)
+
+/*nstSet*/inline /*0H*/void * FieldValue::b_Prop::operator= (/*0H*/void * v)
+{
+   SELF(FieldValue, b);
+   self->impl.b = v;
+   return v;
+}
+
+/*regSet*/inline FieldValue::b_Prop & FieldValue::b_Prop::operator= (FieldValue::b_Prop & prop)
+{
+   SELF(FieldValue, b);
+   /*0H*/void * v = prop;
+   self->impl.b = v;
+   return prop;
+}
+/*regGet*/inline FieldValue::b_Prop::operator /*0I*/void * () const
+{
+   SELF(FieldValue, b);
+   return self ? ((C(FieldValue) *)&self->impl)->b : null;
+}
+
+// member accessors: FieldValue::a
+// (struct::normal)
+
+/*nstSet*/inline /*0H*/TArray<FieldValue _ARG int _ARG FieldValue> FieldValue::a_Prop::operator= (/*0H*/TArray<FieldValue _ARG int _ARG FieldValue> v)
+{
+   SELF(FieldValue, a);
+   self->impl.a = ((Instance *)&v)->impl;
+   return v;
+}
+
+/*regSet*/inline FieldValue::a_Prop & FieldValue::a_Prop::operator= (FieldValue::a_Prop & prop)
+{
+   SELF(FieldValue, a);
+   /*0H*/TArray<FieldValue _ARG int _ARG FieldValue> v = prop;
+   self->impl.a = ((Instance *)&v)->impl;
+   return prop;
+}
+/*regGet*/inline FieldValue::a_Prop::operator /*0I*/TArray<FieldValue _ARG int _ARG FieldValue> () const
+{
+   SELF(FieldValue, a);
+   TArray<FieldValue _ARG int _ARG FieldValue> value(((C(FieldValue) *)&self->impl)->a);
+   return value;
+}
+
+// member accessors: FieldValue::m
+// (struct::normal)
+
+/*nstSet*/inline /*0H*/TMap<C(String) _ARG FieldValue> FieldValue::m_Prop::operator= (/*0H*/TMap<C(String) _ARG FieldValue> v)
+{
+   SELF(FieldValue, m);
+   self->impl.m = ((Instance *)&v)->impl;
+   return v;
+}
+
+/*regSet*/inline FieldValue::m_Prop & FieldValue::m_Prop::operator= (FieldValue::m_Prop & prop)
+{
+   SELF(FieldValue, m);
+   /*0H*/TMap<C(String) _ARG FieldValue> v = prop;
+   self->impl.m = ((Instance *)&v)->impl;
+   return prop;
+}
+/*regGet*/inline FieldValue::m_Prop::operator /*0I*/TMap<C(String) _ARG FieldValue> () const
+{
+   SELF(FieldValue, m);
+   TMap<C(String) _ARG FieldValue> value(((C(FieldValue) *)&self->impl)->m);
+   return value;
 }
 
 ////////////////////////////////////////////////////// [ecrt]/eC::files //////// ////////////////
@@ -25625,9 +25644,7 @@ inline C(JSONResult) JSONParser::getObject(/*1Ab*/Class objectType, /*1Ab*/void 
 {
    SELF(JSONParser, customJsonOptions);
    /*0H*/OptionsMap * v = prop;
-   // IPTR(self->impl, JSONParser)->customJsonOptions = ((Instance *)&v)->impl;
-   Instance * vInstance = (Instance *)v;  // REVIEW: Warning strict aliasing warning if casting directly
-   IPTR(self->impl, JSONParser)->customJsonOptions = vInstance->impl;
+   IPTR(self->impl, JSONParser)->customJsonOptions = ((Instance *)&v)->impl;
    return prop;
 }
 /*regGet*/inline JSONParser::customJsonOptions_Prop::operator /*0I*/OptionsMap * () const
@@ -25861,35 +25878,6 @@ template <class TC, C(Class) ** TCO> inline void TCondition<TC, TCO>::wait(/*1Ab
 {
    __attribute__((unused)) TCondition TCTCO * self = CONTAINER_OF(this, TCondition TCTCO, name);
    return Condition_get_name(self ? self->impl : null);
-}
-
-
-template <class TC, C(Class) ** TCO> inline void TMutex<TC, TCO>::release()
-{
-   Mutex_release((C(Mutex)*)this->impl);
-}
-template <class TC, C(Class) ** TCO> inline void TMutex<TC, TCO>::wait()
-{
-   Mutex_wait((C(Mutex)*)this->impl);
-}
-
-
-// property callers: Mutex::lockCount   // get only
-// (nohead::int)
-
-/*regGet*/template <class TC, C(Class) ** TCO> inline TMutex<TC, TCO>::lockCount_Prop::operator /*0I*/int () const
-{
-   __attribute__((unused)) TMutex TCTCO * self = CONTAINER_OF(this, TMutex TCTCO, lockCount);
-   return Mutex_get_lockCount(self ? self->impl : null);
-}
-
-// property callers: Mutex::owningThread   // get only
-// (nohead::int64)
-
-/*regGet*/template <class TC, C(Class) ** TCO> inline TMutex<TC, TCO>::owningThread_Prop::operator /*0I*/int64 () const
-{
-   __attribute__((unused)) TMutex TCTCO * self = CONTAINER_OF(this, TMutex TCTCO, owningThread);
-   return Mutex_get_owningThread(self ? self->impl : null);
 }
 
 
@@ -26400,21 +26388,6 @@ inline void checkMemory()
 {
    F(checkMemory)();
 }
-// function: copyBytes
-inline void copyBytes(/*1Ab*/void * dest, /*1Ab*/const void * source, /*1Ab*/uint64 count)
-{
-   F(copyBytes)(/*5Ge*/dest, /*5Ge*/source, /*5Ge*/count);
-}
-// function: copyBytesBy2
-inline void copyBytesBy2(/*1Ab*/void * dest, /*1Ab*/const void * source, /*1Ab*/uint count)
-{
-   F(copyBytesBy2)(/*5Ge*/dest, /*5Ge*/source, /*5Ge*/count);
-}
-// function: copyBytesBy4
-inline void copyBytesBy4(/*1Ab*/void * dest, /*1Ab*/const void * source, /*1Ab*/uint count)
-{
-   F(copyBytesBy4)(/*5Ge*/dest, /*5Ge*/source, /*5Ge*/count);
-}
 // function: copyString
 inline char * copyString(/*1Ab*/const char * string)
 {
@@ -26424,21 +26397,6 @@ inline char * copyString(/*1Ab*/const char * string)
 inline int escapeCString(C(String) outString, /*1Ab*/int bufferLen, constString s, /*1Ab*/EscapeCStringOptions options)
 {
    return F(escapeCString)(/*5Ge*/outString, /*5Ge*/bufferLen, /*5Ge*/s, /*5Ee*/(C(EscapeCStringOptions))options.impl);
-}
-// function: fillBytes
-inline void fillBytes(/*1Ab*/void * area, /*1Ab*/byte value, /*1Ab*/uint count)
-{
-   F(fillBytes)(/*5Ge*/area, /*5Ge*/value, /*5Ge*/count);
-}
-// function: fillBytesBy2
-inline void fillBytesBy2(/*1Ab*/void * area, /*1Ab*/uint16 value, /*1Ab*/uint count)
-{
-   F(fillBytesBy2)(/*5Ge*/area, /*5Ge*/value, /*5Ge*/count);
-}
-// function: fillBytesBy4
-inline void fillBytesBy4(/*1Ab*/void * area, /*1Ab*/uint value, /*1Ab*/uint count)
-{
-   F(fillBytesBy4)(/*5Ge*/area, /*5Ge*/value, /*5Ge*/count);
 }
 // function: floatFromString
 inline double floatFromString(/*1Ab*/const char * string)
@@ -26490,11 +26448,6 @@ inline C(bool) locateModule(/*1Ab*/const char * name, /*1Ab*/const char * fileNa
 inline char * makePathRelative(/*1Ab*/const char * path, /*1Ab*/const char * to, /*1Ab*/char * destination)
 {
    return F(makePathRelative)(/*5Ge*/path, /*5Ge*/to, /*5Ge*/destination);
-}
-// function: moveBytes
-inline void moveBytes(/*1Ab*/void * dest, /*1Ab*/const void * source, /*1Ab*/uint count)
-{
-   F(moveBytes)(/*5Ge*/dest, /*5Ge*/source, /*5Ge*/count);
 }
 // function: pathCat
 inline char * pathCat(/*1Ab*/char * string, /*1Ab*/const char * addedPath)
@@ -26671,7 +26624,7 @@ inline uint log2i(/*1Ab*/uint number)
    return F(log2i)(/*5Ge*/number);
 }
 // function: memswap
-inline void memswap(/*1Ab*/byte * a, /*1Ab*/byte * b, /*1Ab*/uint size)
+inline void memswap(/*1Ab*/byte * a, /*1Ab*/byte * b, /*1Ab*/uintsize size)
 {
    F(memswap)(/*5Ge*/a, /*5Ge*/b, /*5Ge*/size);
 }
@@ -26679,6 +26632,11 @@ inline void memswap(/*1Ab*/byte * a, /*1Ab*/byte * b, /*1Ab*/uint size)
 inline uint pow2i(/*1Ab*/uint number)
 {
    return F(pow2i)(/*5Ge*/number);
+}
+// function: printDouble
+inline int printDouble(/*1Ab*/char * str, /*1Ab*/int bufsize, /*1Ab*/int decimals, /*1Ab*/double value)
+{
+   return F(printDouble)(/*5Ge*/str, /*5Ge*/bufsize, /*5Ge*/decimals, /*5Ge*/value);
 }
 // function: queryMemInfo
 inline void queryMemInfo(/*1Ab*/char * string)
@@ -26690,6 +26648,46 @@ inline char * strchrmax(/*1Ab*/const char * s, /*1Ab*/int c, /*1Ab*/int max)
 {
    return F(strchrmax)(/*5Ge*/s, /*5Ge*/c, /*5Ge*/max);
 }
+// function: copyBytes
+inline void copyBytes(/*1Ab*/void * dest, /*1Ab*/const void * source, /*1Ab*/uintsize count)
+{
+   F(copyBytes)(/*5Ge*/dest, /*5Ge*/source, /*5Ge*/count);
+}
+// function: copyBytesBy2
+inline void copyBytesBy2(/*1Ab*/void * dest, /*1Ab*/const void * source, /*1Ab*/uintsize count)
+{
+   F(copyBytesBy2)(/*5Ge*/dest, /*5Ge*/source, /*5Ge*/count);
+}
+// function: copyBytesBy4
+inline void copyBytesBy4(/*1Ab*/void * dest, /*1Ab*/const void * source, /*1Ab*/uintsize count)
+{
+   F(copyBytesBy4)(/*5Ge*/dest, /*5Ge*/source, /*5Ge*/count);
+}
+// function: fillBytes
+inline void fillBytes(/*1Ab*/void * area, /*1Ab*/byte value, /*1Ab*/uintsize count)
+{
+   F(fillBytes)(/*5Ge*/area, /*5Ge*/value, /*5Ge*/count);
+}
+// function: fillBytesBy2
+inline void fillBytesBy2(/*1Ab*/void * area, /*1Ab*/uint16 value, /*1Ab*/uintsize count)
+{
+   F(fillBytesBy2)(/*5Ge*/area, /*5Ge*/value, /*5Ge*/count);
+}
+// function: fillBytesBy4
+inline void fillBytesBy4(/*1Ab*/void * area, /*1Ab*/uint value, /*1Ab*/uintsize count)
+{
+   F(fillBytesBy4)(/*5Ge*/area, /*5Ge*/value, /*5Ge*/count);
+}
+// function: moveBytes
+inline void moveBytes(/*1Ab*/void * dest, /*1Ab*/const void * source, /*1Ab*/uintsize count)
+{
+   F(moveBytes)(/*5Ge*/dest, /*5Ge*/source, /*5Ge*/count);
+}
+// function: hash32Data
+inline uint hash32Data(/*1Ab*/const void * data, /*1Ab*/int size)
+{
+   return F(hash32Data)(/*5Ge*/data, /*5Ge*/size);
+}
 // function: qsortr
 inline void qsortr(/*1Ab*/void * base, /*1Ab*/uintsize nel, /*1Ab*/uintsize width, int (* compare)(void * arg, const void * a, const void * b), /*1Ab*/void * arg)
 {
@@ -26699,6 +26697,51 @@ inline void qsortr(/*1Ab*/void * base, /*1Ab*/uintsize nel, /*1Ab*/uintsize widt
 inline void qsortrx(/*1Ab*/void * base, /*1Ab*/uintsize nel, /*1Ab*/uintsize width, int (* compare)(void * arg, const void * a, const void * b), int (* optCompareArgLast)(const void * a, const void * b, void * arg), /*1Ab*/void * arg, /*1Ab*/bool deref, /*1Ab*/bool ascending)
 {
    F(qsortrx)(/*5Ge*/base, /*5Ge*/nel, /*5Ge*/width, /*5Ge*/compare, /*5Ge*/optCompareArgLast, /*5Ge*/arg, /*5Ee*/(C(bool))deref, /*5Ee*/(C(bool))ascending);
+}
+// function: iSO8859_1toUTF8
+inline int iSO8859_1toUTF8(/*1Ab*/const char * source, /*1Ab*/char * dest, /*1Ab*/int max)
+{
+   return F(iSO8859_1toUTF8)(/*5Ge*/source, /*5Ge*/dest, /*5Ge*/max);
+}
+// function: uTF16toUTF8
+inline char * uTF16toUTF8(/*1Ab*/const uint16 * source)
+{
+   return F(uTF16toUTF8)(/*5Ge*/source);
+}
+// function: uTF16toUTF8Buffer
+inline int uTF16toUTF8Buffer(/*1Ab*/const uint16 * source, /*1Ab*/char * dest, /*1Ab*/int max)
+{
+   return F(uTF16toUTF8Buffer)(/*5Ge*/source, /*5Ge*/dest, /*5Ge*/max);
+}
+// function: uTF32toUTF8Len
+inline int uTF32toUTF8Len(/*1Ab*/const unichar * source, /*1Ab*/int count, /*1Ab*/char * dest, /*1Ab*/int max)
+{
+   return F(uTF32toUTF8Len)(/*5Ge*/source, /*5Ge*/count, /*5Ge*/dest, /*5Ge*/max);
+}
+// function: uTF8GetChar
+inline unichar uTF8GetChar(/*1Ab*/const char * string, /*1Ab*/int * numBytes)
+{
+   return F(uTF8GetChar)(/*5Ge*/string, /*5Ge*/numBytes);
+}
+// function: uTF8Validate
+inline C(bool) uTF8Validate(/*1Ab*/const char * source)
+{
+   return F(uTF8Validate)(/*5Ge*/source);
+}
+// function: uTF8toUTF16
+inline uint16 * uTF8toUTF16(/*1Ab*/const char * source, /*1Ab*/int * wordCount)
+{
+   return F(uTF8toUTF16)(/*5Ge*/source, /*5Ge*/wordCount);
+}
+// function: uTF8toUTF16Buffer
+inline int uTF8toUTF16Buffer(/*1Ab*/const char * source, /*1Ab*/uint16 * dest, /*1Ab*/int max)
+{
+   return F(uTF8toUTF16Buffer)(/*5Ge*/source, /*5Ge*/dest, /*5Ge*/max);
+}
+// function: getCurrentThreadID
+inline int64 getCurrentThreadID()
+{
+   return F(getCurrentThreadID)();
 }
 // function: archiveOpen
 inline Archive archiveOpen(/*1Ab*/const char * fileName, /*1Ab*/ArchiveOpenFlags flags)
@@ -26899,6 +26942,11 @@ inline C(bool) moveFileEx(/*1Ab*/const char * source, /*1Ab*/const char * dest, 
 {
    return F(moveFileEx)(/*5Ge*/source, /*5Ge*/dest, /*5Ee*/(C(MoveFileOptions))options.impl);
 }
+// function: processFileNotifications
+inline C(bool) processFileNotifications()
+{
+   return F(processFileNotifications)();
+}
 // function: removeDir
 inline C(bool) removeDir(/*1Ab*/const char * path)
 {
@@ -26934,15 +26982,30 @@ template<typename... Args> inline C(bool) shellOpen(/*1Ab*/const char * fileName
 {
    return F(shellOpen)(/*5Ge*/fileName, /*5Ae*/args...);
 }
+// function: signalEvent
+inline void signalEvent()
+{
+   F(signalEvent)();
+}
 // function: unsetEnvironment
 inline void unsetEnvironment(/*1Ab*/const char * envName)
 {
    F(unsetEnvironment)(/*5Ge*/envName);
 }
+// function: waitEvent
+inline void waitEvent()
+{
+   F(waitEvent)();
+}
 // function: debugBreakpoint
 inline void debugBreakpoint()
 {
    F(debugBreakpoint)();
+}
+// function: getEventSemaphore
+inline C(Semaphore) * getEventSemaphore()
+{
+   return F(getEventSemaphore)();
 }
 // function: charMatchCategories
 inline C(bool) charMatchCategories(/*1Ab*/unichar ch, /*1Ab*/CharCategories categories)
@@ -26964,55 +27027,15 @@ inline uint getCombiningClass(/*1Ab*/unichar ch)
 {
    return F(getCombiningClass)(/*5Ge*/ch);
 }
-// function: iSO8859_1toUTF8
-inline int iSO8859_1toUTF8(/*1Ab*/const char * source, /*1Ab*/char * dest, /*1Ab*/int max)
-{
-   return F(iSO8859_1toUTF8)(/*5Ge*/source, /*5Ge*/dest, /*5Ge*/max);
-}
 // function: uTF16BEtoUTF8Buffer
 inline int uTF16BEtoUTF8Buffer(/*1Ab*/const uint16 * source, /*1Ab*/byte * dest, /*1Ab*/int max)
 {
    return F(uTF16BEtoUTF8Buffer)(/*5Ge*/source, /*5Ge*/dest, /*5Ge*/max);
 }
-// function: uTF16toUTF8
-inline char * uTF16toUTF8(/*1Ab*/const uint16 * source)
-{
-   return F(uTF16toUTF8)(/*5Ge*/source);
-}
-// function: uTF16toUTF8Buffer
-inline int uTF16toUTF8Buffer(/*1Ab*/const uint16 * source, /*1Ab*/char * dest, /*1Ab*/int max)
-{
-   return F(uTF16toUTF8Buffer)(/*5Ge*/source, /*5Ge*/dest, /*5Ge*/max);
-}
-// function: uTF32toUTF8Len
-inline int uTF32toUTF8Len(/*1Ab*/const unichar * source, /*1Ab*/int count, /*1Ab*/char * dest, /*1Ab*/int max)
-{
-   return F(uTF32toUTF8Len)(/*5Ge*/source, /*5Ge*/count, /*5Ge*/dest, /*5Ge*/max);
-}
-// function: uTF8GetChar
-inline unichar uTF8GetChar(/*1Ab*/const char * string, /*1Ab*/int * numBytes)
-{
-   return F(uTF8GetChar)(/*5Ge*/string, /*5Ge*/numBytes);
-}
-// function: uTF8Validate
-inline C(bool) uTF8Validate(/*1Ab*/const char * source)
-{
-   return F(uTF8Validate)(/*5Ge*/source);
-}
 // function: uTF8toISO8859_1
 inline int uTF8toISO8859_1(/*1Ab*/const char * source, /*1Ab*/char * dest, /*1Ab*/int max)
 {
    return F(uTF8toISO8859_1)(/*5Ge*/source, /*5Ge*/dest, /*5Ge*/max);
-}
-// function: uTF8toUTF16
-inline uint16 * uTF8toUTF16(/*1Ab*/const char * source, /*1Ab*/int * wordCount)
-{
-   return F(uTF8toUTF16)(/*5Ge*/source, /*5Ge*/wordCount);
-}
-// function: uTF8toUTF16Buffer
-inline int uTF8toUTF16Buffer(/*1Ab*/const char * source, /*1Ab*/uint16 * dest, /*1Ab*/int max)
-{
-   return F(uTF8toUTF16Buffer)(/*5Ge*/source, /*5Ge*/dest, /*5Ge*/max);
 }
 // function: uTF8toUTF16BufferLen
 inline int uTF8toUTF16BufferLen(/*1Ab*/const char * source, /*1Ab*/uint16 * dest, /*1Ab*/int max, /*1Ab*/int len)
@@ -27119,11 +27142,6 @@ inline C(bool) writeONString(/*1Ab*/File & f, constString s, /*1Ab*/bool eCON, /
 {
    return F(writeONString)(/*5De*/f.impl, /*5Ge*/s, /*5Ee*/(C(bool))eCON, /*5Ge*/indent);
 }
-// function: getCurrentThreadID
-inline int64 getCurrentThreadID()
-{
-   return F(getCurrentThreadID)();
-}
 // function: getRandom
 inline int getRandom(/*1Ab*/int lo, /*1Ab*/int hi)
 {
@@ -27145,65 +27163,5 @@ inline void __sleep(/*1Ab*/Time seconds)
    F(__sleep)(/*5Ee*/(C(Time))seconds.impl);
 }
 
-template <class TC, C(Class) ** TCO>
-inline int TNHInstance<TC, TCO>::NHInstance_onCompare_Functor::operator()( /*6Bj*/Instance & object)
-{
-   return Instance_onCompare((*TCO), impl, /*7Al*/object.impl);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onCopy_Functor::operator()( /*6Bj*/Instance & newData)
-{
-   _onCopy((*TCO), impl, /*7Al*/newData.impl);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onDisplay_Functor::operator()( /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags)
-{
-   _onDisplay((*TCO), impl, /*7Al*/surface.impl, /*7Al*/x, /*7Al*/y, /*7Al*/width, /*7Al*/fieldData, /*7Al*/alignment, /*7Al*/displayFlags);
-}
-
-template <class TC, C(Class) ** TCO>
-inline Instance & TNHInstance<TC, TCO>::NHInstance_onEdit_Functor::operator()( /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData)
-{
-   C(Instance) retInstance = Instance_onEdit((*TCO), impl, /*7Al*/dataBox.impl, /*7Al*/obsolete.impl, /*7Al*/x, /*7Al*/y, /*7Al*/w, /*7Al*/h, /*7Al*/userData);
-         return *(Instance *)INSTANCEL(retInstance, retInstance->_class);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onFree_Functor::operator()( )
-{
-   _onFree((*TCO), impl);
-}
-
-template <class TC, C(Class) ** TCO>
-inline bool TNHInstance<TC, TCO>::NHInstance_onGetDataFromString_Functor::operator()( /*6Fj*/const char * string)
-{
-   return (bool)Instance_onGetDataFromString((*TCO), impl, /*7Al*/string);
-}
-
-template <class TC, C(Class) ** TCO>
-inline const char * TNHInstance<TC, TCO>::NHInstance_onGetString_Functor::operator()( /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType)
-{
-   return Instance_onGetString((*TCO), impl, /*7Al*/tempString, /*7Al*/reserved, /*7Al*/(C(ObjectNotationType) *)onType);
-}
-
-template <class TC, C(Class) ** TCO>
-inline bool TNHInstance<TC, TCO>::NHInstance_onSaveEdit_Functor::operator()( /*6Fj*/Instance & window, /*6Fj*/void * object)
-{
-   return (bool)Instance_onSaveEdit((*TCO), impl, /*7Al*/window.impl, /*7Al*/object);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onSerialize_Functor::operator()( /*6Fj*/IOChannel & channel)
-{
-   _onSerialize((*TCO), impl, /*7Al*/channel.impl);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onUnserialize_Functor::operator()( /*6Fj*/IOChannel & channel)
-{
-   _onUnserialize((*TCO), impl, /*7Al*/channel.impl);
-}
 
 #endif // !defined(__ECRT_HPP__)
