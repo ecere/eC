@@ -246,14 +246,14 @@ bool Instance_LocateModule(const char * name, char * fileName)
 #elif defined(__APPLE__)
    if(name && name[0])
    {
-      int imageCount = _dyld_image_count();
-      int c;
-      int nameLen = strlen(name);
+      uint imageCount = _dyld_image_count();
+      uint c;
+      int nameLen = (int)strlen(name);
       for(c = 0; c<imageCount; c++)
       {
-         struct mach_header * header = _dyld_get_image_header(c);
-         char * path = _dyld_get_image_name(c);
-         int pathLen = strlen(path);
+         //const struct mach_header * header = _dyld_get_image_header(c);
+         const char * path = _dyld_get_image_name(c);
+         int pathLen = (int)strlen(path);
          char * subStr = RSearchString(path, name, pathLen, false, false);
          if(subStr)
          {
@@ -268,9 +268,9 @@ bool Instance_LocateModule(const char * name, char * fileName)
    }
    else
    {
-      int size = MAX_LOCATION;
-      _NSGetExecutablePath(fileName, &size);
-      return true;
+      uint size = MAX_LOCATION;
+      if(!_NSGetExecutablePath(fileName, &size))
+         return true;
    }
 #elif defined(__unix__)
    //File f = FileOpen("/proc/self/maps", read);
