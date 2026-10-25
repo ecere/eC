@@ -148,5 +148,6 @@ ifeq ($(call check_flag,-fzero-init-padding-bits=unions),yes)
 endif
 
 CFLAGS += -fno-strict-aliasing
+CXXFLAGS += -fno-strict-aliasing
 
 EARFLAGS = q

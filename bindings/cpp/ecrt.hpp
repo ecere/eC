@@ -1415,68 +1415,6 @@ template<> inline float  fromTA<float>(uint64 x) { C(DataValue) p = { }; p.ui64 
 template<> inline int    fromTA<int>(uint64 x) { C(DataValue) p = { }; p.ui64 = x; return p.i; }
 
 
-template <class TC, C(Class) ** TCO>
-inline int TNHInstance<TC, TCO>::NHInstance_onCompare_Functor::operator()( /*6Bj*/Instance & object)
-{
-   return _onCompare((*TCO), impl, /*7Al*/object.impl);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onCopy_Functor::operator()( /*6Bj*/Instance & newData)
-{
-   _onCopy((*TCO), impl, /*7Al*/newData.impl);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onDisplay_Functor::operator()( /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags)
-{
-   _onDisplay((*TCO), impl, /*7Al*/surface.impl, /*7Al*/x, /*7Al*/y, /*7Al*/width, /*7Al*/fieldData, /*7Al*/alignment, /*7Al*/displayFlags);
-}
-
-template <class TC, C(Class) ** TCO>
-inline Instance & TNHInstance<TC, TCO>::NHInstance_onEdit_Functor::operator()( /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData)
-{
-   C(Instance) retInstance = _onEdit((*TCO), impl, /*7Al*/dataBox.impl, /*7Al*/obsolete.impl, /*7Al*/x, /*7Al*/y, /*7Al*/w, /*7Al*/h, /*7Al*/userData);
-         return *(Instance *)INSTANCEL(retInstance, retInstance->_class);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onFree_Functor::operator()( )
-{
-   _onFree((*TCO), impl);
-}
-
-template <class TC, C(Class) ** TCO>
-inline bool TNHInstance<TC, TCO>::NHInstance_onGetDataFromString_Functor::operator()( /*6Fj*/const char * string)
-{
-   return (bool)_onGetDataFromString((*TCO), impl, /*7Al*/string);
-}
-
-template <class TC, C(Class) ** TCO>
-inline const char * TNHInstance<TC, TCO>::NHInstance_onGetString_Functor::operator()( /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType)
-{
-   return _onGetString((*TCO), impl, /*7Al*/tempString, /*7Al*/reserved, /*7Al*/(C(ObjectNotationType) *)onType);
-}
-
-template <class TC, C(Class) ** TCO>
-inline bool TNHInstance<TC, TCO>::NHInstance_onSaveEdit_Functor::operator()( /*6Fj*/Instance & window, /*6Fj*/void * object)
-{
-   return (bool)_onSaveEdit((*TCO), impl, /*7Al*/window.impl, /*7Al*/object);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onSerialize_Functor::operator()( /*6Fj*/IOChannel & channel)
-{
-   _onSerialize((*TCO), impl, /*7Al*/channel.impl);
-}
-
-template <class TC, C(Class) ** TCO>
-inline void TNHInstance<TC, TCO>::NHInstance_onUnserialize_Functor::operator()( /*6Fj*/IOChannel & channel)
-{
-   _onUnserialize((*TCO), impl, /*7Al*/channel.impl);
-}
-
-
 #define REG_IOChannel_readData(m, c)  REGVMETHOD(IOChannel, readData,  c::m, (/*1Ab*/IOChannel & self, /*1Ab*/void * data, /*1Ab*/uintsize numBytes),       c, (/*4Im*/data, /*4Im*/numBytes))
 #define REG_IOChannel_writeData(m, c) REGVMETHOD(IOChannel, writeData, c::m, (/*1Ab*/IOChannel & self, /*1Ab*/const void * data, /*1Ab*/uintsize numBytes), c, (/*4Im*/data, /*4Im*/numBytes))
 
@@ -1677,6 +1615,67 @@ public:
 
    static void class_registration(CPPClass & _cpp_class);
 };
+
+template <class TC, C(Class) ** TCO>
+inline int TNHInstance<TC, TCO>::NHInstance_onCompare_Functor::operator()( /*6Bj*/Instance & object)
+{
+   return _onCompare((*TCO), impl, /*7Al*/object.impl);
+}
+
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onCopy_Functor::operator()( /*6Bj*/Instance & newData)
+{
+   _onCopy((*TCO), impl, /*7Al*/newData.impl);
+}
+
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onDisplay_Functor::operator()( /*6Fj*/Instance & surface, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int width, /*6Fj*/void * fieldData, /*6Fj*/int alignment, /*6Fj*/uint displayFlags)
+{
+   _onDisplay((*TCO), impl, /*7Al*/surface.impl, /*7Al*/x, /*7Al*/y, /*7Al*/width, /*7Al*/fieldData, /*7Al*/alignment, /*7Al*/displayFlags);
+}
+
+template <class TC, C(Class) ** TCO>
+inline Instance & TNHInstance<TC, TCO>::NHInstance_onEdit_Functor::operator()( /*6Fj*/Instance & dataBox, /*6Fj*/Instance & obsolete, /*6Fj*/int x, /*6Fj*/int y, /*6Fj*/int w, /*6Fj*/int h, /*6Fj*/void * userData)
+{
+   C(Instance) retInstance = _onEdit((*TCO), impl, /*7Al*/dataBox.impl, /*7Al*/obsolete.impl, /*7Al*/x, /*7Al*/y, /*7Al*/w, /*7Al*/h, /*7Al*/userData);
+         return *(Instance *)INSTANCEL(retInstance, retInstance->_class);
+}
+
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onFree_Functor::operator()( )
+{
+   _onFree((*TCO), impl);
+}
+
+template <class TC, C(Class) ** TCO>
+inline bool TNHInstance<TC, TCO>::NHInstance_onGetDataFromString_Functor::operator()( /*6Fj*/const char * string)
+{
+   return (bool)_onGetDataFromString((*TCO), impl, /*7Al*/string);
+}
+
+template <class TC, C(Class) ** TCO>
+inline const char * TNHInstance<TC, TCO>::NHInstance_onGetString_Functor::operator()( /*6Fj*/char * tempString, /*6Fj*/void * reserved, /*6Fj*/ObjectNotationType * onType)
+{
+   return _onGetString((*TCO), impl, /*7Al*/tempString, /*7Al*/reserved, /*7Al*/(C(ObjectNotationType) *)onType);
+}
+
+template <class TC, C(Class) ** TCO>
+inline bool TNHInstance<TC, TCO>::NHInstance_onSaveEdit_Functor::operator()( /*6Fj*/Instance & window, /*6Fj*/void * object)
+{
+   return (bool)_onSaveEdit((*TCO), impl, /*7Al*/window.impl, /*7Al*/object);
+}
+
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onSerialize_Functor::operator()( /*6Fj*/IOChannel & channel)
+{
+   _onSerialize((*TCO), impl, /*7Al*/channel.impl);
+}
+
+template <class TC, C(Class) ** TCO>
+inline void TNHInstance<TC, TCO>::NHInstance_onUnserialize_Functor::operator()( /*6Fj*/IOChannel & channel)
+{
+   _onUnserialize((*TCO), impl, /*7Al*/channel.impl);
+}
 
 #define REG_Module_onLoad(m, c)   REGVMETHOD(Module, onLoad,   c::m, (/*1Ab*/Module & self), c, ())
 #define REG_Module_onUnload(m, c) REGVMETHOD(Module, onUnload, c::m, (/*1Ab*/Module & self), c, ())
@@ -4977,7 +4976,7 @@ template <typename TP_T, typename TP_I = int, typename TP_D = TP_T>
 class TContainer : public Instance, public Container
 {
 public:
-   inline TContainer<TP_T, TP_I, TP_D>(TContainer<TP_T, TP_I, TP_D> && i)
+   inline TContainer(TContainer<TP_T, TP_I, TP_D> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5034,7 +5033,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TContainer <TP_T, TP_I, TP_D>(C(Instance) _impl, CPPClass & cl = _cpp_class) : Instance(_impl, cl)
+   explicit inline TContainer(C(Instance) _impl, CPPClass & cl = _cpp_class) : Instance(_impl, cl)
  { }
 
    TContainer(std::initializer_list<TP_D> list) : TContainer()
@@ -5274,7 +5273,7 @@ template <typename TP_BT, typename TP_KT = uint64>
 class TCustomAVLTree : public TContainer<TP_BT, TP_KT>, public CustomAVLTree
 {
 public:
-   inline TCustomAVLTree<TP_BT, TP_KT>(TCustomAVLTree<TP_BT, TP_KT> && i)
+   inline TCustomAVLTree(TCustomAVLTree<TP_BT, TP_KT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5331,7 +5330,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TCustomAVLTree <TP_BT, TP_KT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_BT, TP_KT>(_impl, cl)
+   explicit inline TCustomAVLTree(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_BT, TP_KT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -5390,6 +5389,9 @@ public:
    inline C(bool) prev(); // Iterator_prev
    inline void remove(); // Iterator_remove
 
+   // FIXME: index() not generated?
+   inline C(bool) index(TP_IT index, C(bool) create); // Iterator_index
+
    struct data_Prop
    {
       constexpr data_Prop() :_() { };
@@ -5440,7 +5442,7 @@ template <typename TP_LT = ListItem>
 class TLinkList : public TContainer<TP_LT>, public LinkList
 {
 public:
-   inline TLinkList<TP_LT>(TLinkList<TP_LT> && i)
+   inline TLinkList(TLinkList<TP_LT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5497,7 +5499,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TLinkList <TP_LT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_LT>(_impl, cl)
+   explicit inline TLinkList(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_LT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -5599,7 +5601,7 @@ template <typename TP_AT>
 class TAVLTree : public TCustomAVLTree<TP_AT>, public AVLTree
 {
 public:
-   inline TAVLTree<TP_AT>(TAVLTree<TP_AT> && i)
+   inline TAVLTree(TAVLTree<TP_AT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5656,7 +5658,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TAVLTree <TP_AT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TCustomAVLTree<TP_AT>(_impl, cl)
+   explicit inline TAVLTree(C(Instance) _impl, CPPClass & cl = _cpp_class) : TCustomAVLTree<TP_AT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -5710,7 +5712,7 @@ template <typename TP_T, typename TP_I = int, typename TP_D = TP_T>
 class TArray : public TContainer<TP_T, TP_I, TP_D>, public Array
 {
 public:
-   inline TArray<TP_T, TP_I, TP_D>(TArray<TP_T, TP_I, TP_D> && i)
+   inline TArray(TArray<TP_T, TP_I, TP_D> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -5767,7 +5769,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TArray <TP_T, TP_I, TP_D>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_T, TP_I, TP_D>(_impl, cl)
+   explicit inline TArray(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_T, TP_I, TP_D>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -5787,7 +5789,7 @@ public:
       return *this;
    }
 
-   inline TArray<TP_T, TP_I, TP_D>(TP(Container, T) * array, uint count, uint minAllocSize, uint size);
+   inline TArray(TP(Container, T) * array, uint count, uint minAllocSize, uint size);
 
    struct size_Prop
    {
@@ -5994,7 +5996,7 @@ template <typename TP_KT = int64, typename TP_VT = uintptr>
 class THashMap : public TContainer<TP_KT, TP_VT>, public HashMap
 {
 public:
-   inline THashMap<TP_KT, TP_VT>(THashMap<TP_KT, TP_VT> && i)
+   inline THashMap(THashMap<TP_KT, TP_VT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -6051,7 +6053,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline THashMap <TP_KT, TP_VT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_KT, TP_VT>(_impl, cl)
+   explicit inline THashMap(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_KT, TP_VT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -6163,7 +6165,7 @@ template <typename TP_KT = int64>
 class THashTable : public TContainer<TP_KT>, public HashTable
 {
 public:
-   inline THashTable<TP_KT>(THashTable<TP_KT> && i)
+   inline THashTable(THashTable<TP_KT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -6220,7 +6222,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline THashTable <TP_KT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_KT>(_impl, cl)
+   explicit inline THashTable(C(Instance) _impl, CPPClass & cl = _cpp_class) : TContainer<TP_KT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -6351,7 +6353,7 @@ template <typename TP_LLT>
 class TList : public TLinkList<TP_LLT>, public List
 {
 public:
-   inline TList<TP_LLT>(TList<TP_LLT> && i)
+   inline TList(TList<TP_LLT> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -6408,7 +6410,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TList <TP_LLT>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TLinkList<TP_LLT>(_impl, cl)
+   explicit inline TList(C(Instance) _impl, CPPClass & cl = _cpp_class) : TLinkList<TP_LLT>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -6448,7 +6450,7 @@ template <typename TP_MT, typename TP_V>
 class TMap : public TCustomAVLTree<TP_MT, TP_V>, public Map
 {
 public:
-   inline TMap<TP_MT, TP_V>(TMap<TP_MT, TP_V> && i)
+   inline TMap(TMap<TP_MT, TP_V> && i)
    {
       Instance * self = (Instance *)this;
       self->impl = i.impl;
@@ -6505,7 +6507,7 @@ public:
          if(inst->mustFree) delete inst;
       }
    }
-   explicit inline TMap <TP_MT, TP_V>(C(Instance) _impl, CPPClass & cl = _cpp_class) : TCustomAVLTree<TP_MT, TP_V>(_impl, cl)
+   explicit inline TMap(C(Instance) _impl, CPPClass & cl = _cpp_class) : TCustomAVLTree<TP_MT, TP_V>(_impl, cl)
  { }
 
    static void class_registration(CPPClass & _cpp_class);
@@ -6548,6 +6550,9 @@ public:
    C(MapIterator) impl;
    constexpr TMapIterator() : impl({}) { }
    constexpr TMapIterator(const C(MapIterator) impl) : impl(impl) { }
+
+   // REVIEW: How to generate this here since MapIterator inherits from Iterator?
+   inline C(bool) index(TP_KT index, C(bool) create);
 
    struct map_Prop
    {
@@ -20183,6 +20188,10 @@ template <typename TP_T, typename TP_IT> inline void TIterator<TP_T, TP_IT>::rem
    Iterator_remove(&impl);
 }
 
+template <typename TP_T, typename TP_IT> inline C(bool) TIterator<TP_T, TP_IT>::index(TP_IT index, C(bool) create)
+{
+   return Iterator_index(&impl, toTA(index), create);
+}
 
 // property callers: Iterator::data
 // (struct::T)
@@ -20533,7 +20542,10 @@ template <typename TP_MT, typename TP_V> void TMap<TP_MT, TP_V>::class_registrat
 }
 
 
-
+template <typename TP_KT, typename TP_KV> inline C(bool) TMapIterator<TP_KT, TP_KV>::index(TP_KT index, C(bool) create)
+{
+   return Iterator_index((C(Iterator) *)&impl, toTA(index), create);
+}
 
 // property callers: MapIterator::map
 // (struct::normal)
